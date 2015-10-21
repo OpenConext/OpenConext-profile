@@ -1,0 +1,35 @@
+language: php
+
+php:
+  - 7.0
+  - 5.6
+  - 5.5
+  - 5.4
+
+matrix:
+  allow_failures:
+  - php: 7.0
+
+env:
+  global:
+    - SYMFONY_ENV=test
+
+cache:
+  directories:
+    - ~/.composer
+
+before_script:
+  - phpenv config-add .travis.php.ini
+  - composer self-update
+  - composer install --prefer-dist
+
+script:
+  - ant
+
+notifications:
+  slack:
+    secure: vT+tzkDR3ObcqZL9fKIXjfcx00osXddsrf9XAXYB+Keag2V+x2ARC4vubJoChLROqGiu8lHuMc+jxICOedeXfpjzzBhrA9H5faeC2ttXxPIU+raDVK9xhMIWZYU+O5HTKMXFRQu0EyJx9W3ZfyBgQPzVzAnyQLU3G/W1umUS7yU1s1LRIcBZOXL8cI2pbs4PureeTcmE3Hdn41Ck5ig3ZdIzgc75cvAKUIa27sSOhZplKSGcalTZWqJKZEVbH4qOSpGO0SuscBHWoxJ7rSAsTdgoDC6NljbyxO77GjjX9peoiMpaEvhna0GttESOtC3k7E7kXJ8BDOJeRLr2C6+5lyD2xCKbb5x7wQTL/oBsUiKFOlhGxa62a6QJm5VNXdTFyLLiYi1TZCiqbr0VcjRldh5io9qM8uBbeH/W14Qzsgr9gKyVAmCGg+zo/361xxyBYUML1FoDQNmE30U3tmwTAYIXOFsXSn5Tx6arL7RTIX5T6sTeh9ooIoIQRGnOqkiFuQX88kmSL+Aetc91jWPWNFkcS27MjsRpmblDdObUJuk4k981D/NM03OzLo9QnKKQgXmD661SOfqLu7pzAy3aPxAbKqTnMnOM55krmkfFKo+ghNjdpL0OkgWIjRVGA/ed5E16YfFDb5NWLfzGLq+8a8I/+eurGmYEslLlJEo4MdY=
+
+branches:
+  only:
+    - master
