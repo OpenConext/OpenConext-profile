@@ -16,14 +16,14 @@
  * limitations under the License.
  */
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use Composer\Autoload\ClassLoader;
+namespace OpenConext\ProfileBundle\Controller;
 
-/**
- * @var ClassLoader $loader
- */
-$loader = require __DIR__.'/../vendor/autoload.php';
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
-
-return $loader;
+class DefaultController extends Controller
+{
+    public function indexAction()
+    {
+        return $this->render('OpenConextProfileBundle:Default:index.html.twig');
+    }
+}

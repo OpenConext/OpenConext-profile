@@ -1,0 +1,11 @@
+profile_homepage:
+    path:     /
+    defaults: { _controller: OpenConextProfileBundle:Default:index }
+
+profile_saml_consume_assertion:
+    path: /authentication/consume-assertion
+    defaults: { _controller: OpenConextProfileBundle:Saml:consumeAssertion }
+
+profile_saml_metadata:
+    path: /authentication/metadata
+    defaults: { _controller: OpenConextProfileBundle:Saml:metadata }

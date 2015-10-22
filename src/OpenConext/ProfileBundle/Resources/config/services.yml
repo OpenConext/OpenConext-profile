@@ -1,0 +1,4 @@
+services:
+#    open_conext_profile.example:
+#        class: OpenConext\ProfileBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

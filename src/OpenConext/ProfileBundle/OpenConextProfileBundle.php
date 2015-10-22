@@ -16,14 +16,10 @@
  * limitations under the License.
  */
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use Composer\Autoload\ClassLoader;
+namespace OpenConext\ProfileBundle;
 
-/**
- * @var ClassLoader $loader
- */
-$loader = require __DIR__.'/../vendor/autoload.php';
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
-
-return $loader;
+class OpenConextProfileBundle extends Bundle
+{
+}

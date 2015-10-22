@@ -16,14 +16,19 @@
  * limitations under the License.
  */
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use Composer\Autoload\ClassLoader;
+namespace OpenConext\ProfileBundle\DependencyInjection;
 
-/**
- * @var ClassLoader $loader
- */
-$loader = require __DIR__.'/../vendor/autoload.php';
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+class Configuration implements ConfigurationInterface
+{
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+//        $rootNode = $treeBuilder->root('open_conext_profile');
+        $treeBuilder->root('open_conext_profile');
 
-return $loader;
+        return $treeBuilder;
+    }
+}

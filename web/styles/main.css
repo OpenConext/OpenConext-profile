@@ -1,0 +1,17 @@
+.mdl-layout__content .content {
+    padding: 32px;
+}
+
+.mdl-layout__header {
+    border-bottom: 2px solid #4db3cf;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+}
+
+.mdl-layout__header-row {
+    padding-left: 32px;
+}
+
+.mdl-layout-title {
+    color: #a2a2a2;
+    font-size: 15px;
+}
