@@ -2,7 +2,7 @@
 user: profile
 timezone: Europe/Amsterdam
 server:
-  name: profile-dev.engine.coin.surf.net
+  name: profile.engine.coin.surf.net
 database:
   root_password: root
 php:
