@@ -18,6 +18,7 @@ framework:
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
+        # Default php.ini session (seem to cause problems on current dev vm)
         handler_id:  ~
     fragments:       ~
     http_method_override: true
