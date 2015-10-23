@@ -2,7 +2,7 @@
 user: profile
 timezone: Europe/Amsterdam
 server:
-  name: profile.engine.coin.surf.net
+  name: profile.vm.openconext.org
 database:
   root_password: root
 php:

@@ -5,6 +5,5 @@
     - common
     - rsyslog
     - nginx
-    - mariadb
     - php
     - app

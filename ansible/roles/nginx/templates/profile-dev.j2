@@ -5,10 +5,10 @@ server {
     root /var/www/{{ server.name }}/web;
 
     location / {
-        try_files $uri /app.php$is_args$args;
+        try_files $uri /app_dev.php$is_args$args;
     }
 
-    location ~ ^/(app|app_dev)\.php(/|$) {
+    location ~ ^/app_dev\.php(/|$) {
         fastcgi_pass                127.0.0.1:9000;
         fastcgi_split_path_info     ^(.+\.php)(/.*)$;
         include                     fastcgi_params;

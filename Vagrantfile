@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.box = "jayunit100/centos7"
 
-    config.vm.hostname = "profile.engine.coin.surf.net"
+    config.vm.hostname = "profile.vm.openconext.org"
     config.vm.network :private_network, ip: "192.168.67.10"
 
     config.hostsupdater.aliases = [
