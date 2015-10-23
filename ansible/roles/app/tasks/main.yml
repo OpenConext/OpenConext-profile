@@ -1,0 +1,8 @@
+- name: Test if app_dev.php.dist exists
+  command: test -f /var/www/{{ server.name }}/app_dev.php.dist
+  register: appdevexists
+  ignore_errors: True
+
+- name: Copy /app_dev.php.dist to /web/app_dev.php if it exists
+  command: cp /var/www/{{ server.name }}/app_dev.php.dist /var/www/{{ server.name }}/web/app_dev.php
+  when: appdevexists|success
