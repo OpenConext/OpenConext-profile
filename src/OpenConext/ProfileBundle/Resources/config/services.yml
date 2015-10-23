@@ -1,4 +1,46 @@
 services:
-#    open_conext_profile.example:
-#        class: OpenConext\ProfileBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+
+    profile.security.authentication.provider:
+        class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
+        arguments:
+            - @surfnet_saml.saml.attribute_dictionary
+
+    profile.security.authentication.listener:
+        class: OpenConext\ProfileBundle\Security\Firewall\SamlListener
+        arguments:
+            - @security.token_storage
+            - @security.authentication.manager
+            - @profile.security.authentication.saml
+            - @profile.saml.state_handler
+            - @logger
+            - @twig
+
+    profile.security.authentication.saml:
+        public: false
+        class: OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider
+        arguments:
+            - @surfnet_saml.hosted.service_provider
+            - @surfnet_saml.remote.idp
+            - @surfnet_saml.http.redirect_binding
+            - @surfnet_saml.http.post_binding
+            - @profile.saml.state_handler
+
+    profile.saml.state_handler:
+        public: false
+        class: OpenConext\ProfileBundle\Saml\StateHandler
+        arguments:
+            - @profile.session
+
+    profile.session:
+            class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
+            factory: ['@session', 'getBag']
+            arguments: ['profile']
+
+    profile.session.namespaced_attribute_bag:
+        public: false
+        class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
+        arguments:
+            - '__profile__'
+            - '/'
+        calls:
+            - [setName, ['profile']]
