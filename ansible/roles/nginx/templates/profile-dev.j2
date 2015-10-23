@@ -1,0 +1,20 @@
+server {
+    listen  80;
+    server_name {{ server.name }};
+
+    root /var/www/{{ server.name }}/web;
+
+    location / {
+        try_files $uri /app_dev.php$is_args$args;
+    }
+
+    location ~ ^/app_dev\.php(/|$) {
+        fastcgi_pass                127.0.0.1:9000;
+        fastcgi_split_path_info     ^(.+\.php)(/.*)$;
+        include                     fastcgi_params;
+        fastcgi_param               SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    error_log  /var/log/nginx/{{ server.name }}_error.log;
+    access_log /var/log/nginx/{{ server.name }}_access.log;
+}
