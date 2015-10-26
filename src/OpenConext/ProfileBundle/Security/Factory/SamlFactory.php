@@ -37,6 +37,7 @@ class SamlFactory implements SecurityFactoryInterface
             $listenerId,
             new DefinitionDecorator('profile.security.authentication.listener')
         );
+
         return array($providerId, $listenerId, $defaultEntryPoint);
     }
 

@@ -26,11 +26,13 @@ class SamlToken extends AbstractToken
      * @var \SAML2_Assertion
      */
     public $assertion;
+
     public function __construct(array $roles = array())
     {
         parent::__construct($roles);
         $this->setAuthenticated(count($roles));
     }
+
     /**
      * Returns the user credentials.
      *

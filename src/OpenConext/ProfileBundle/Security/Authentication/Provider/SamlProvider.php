@@ -31,16 +31,11 @@ class SamlProvider implements AuthenticationProviderInterface
      */
     private $attributeDictionary;
 
-    public function __construct(
-        AttributeDictionary $attributeDictionary
-    ) {
+    public function __construct(AttributeDictionary $attributeDictionary)
+    {
         $this->attributeDictionary = $attributeDictionary;
     }
 
-    /**
-     * @param  TokenInterface $token
-     * @return TokenInterface|void
-     */
     public function authenticate(TokenInterface $token)
     {
         $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
@@ -58,6 +53,7 @@ class SamlProvider implements AuthenticationProviderInterface
 
         return $authenticatedToken;
     }
+
     public function supports(TokenInterface $token)
     {
         return $token instanceof SamlToken;

@@ -84,7 +84,9 @@ class SamlInteractionProvider
             $this->serviceProvider,
             $this->identityProvider
         );
+
         $this->stateHandler->setRequestId($authnRequest->getRequestId());
+
         return $this->redirectBinding->createRedirectResponseFor($authnRequest);
     }
 
@@ -100,7 +102,9 @@ class SamlInteractionProvider
             $this->identityProvider,
             $this->serviceProvider
         );
+
         $this->stateHandler->clearRequestId();
+
         return $assertion;
     }
 
