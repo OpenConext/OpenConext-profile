@@ -23,8 +23,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class StateHandler
 {
-    const SESSION_PATH = 'openconext/profile/request';
-
     /**
      * @var NamespacedAttributeBag
      */
@@ -47,7 +45,7 @@ class StateHandler
      */
     public function setRequestId($originalRequestId)
     {
-        $this->set('request_id', $originalRequestId);
+        $this->attributeBag->set('request_id', $originalRequestId);
 
         return $this;
     }
@@ -57,7 +55,7 @@ class StateHandler
      */
     public function getRequestId()
     {
-        return $this->get('request_id');
+        return $this->attributeBag->get('request_id');
     }
 
     /**
@@ -73,7 +71,7 @@ class StateHandler
      */
     public function clearRequestId()
     {
-        $this->remove('request_id');
+        $this->attributeBag->remove('request_id');
     }
 
     /**
@@ -81,7 +79,7 @@ class StateHandler
      */
     public function setCurrentRequestUri($uri)
     {
-        $this->set('current_uri', $uri);
+        $this->attributeBag->set('current_uri', $uri);
     }
 
     /**
@@ -89,8 +87,8 @@ class StateHandler
      */
     public function getCurrentRequestUri()
     {
-        $uri = $this->get('current_uri');
-        $this->remove('current_uri');
+        $uri = $this->attributeBag->get('current_uri');
+        $this->attributeBag->remove('current_uri');
 
         return $uri;
     }
@@ -102,31 +100,5 @@ class StateHandler
     public function migrate()
     {
         $this->session->migrate();
-    }
-
-    /**
-     * @param string $key
-     * @param mixed $value Any scalar
-     */
-    protected function set($key, $value)
-    {
-        $this->attributeBag->set(self::SESSION_PATH . $key, $value);
-    }
-
-    /**
-     * @param string $key
-     * @return mixed|null Any scalar
-     */
-    protected function get($key)
-    {
-        return $this->attributeBag->get(self::SESSION_PATH . $key);
-    }
-
-    /**
-     * @param $key
-     */
-    protected function remove($key)
-    {
-        $this->attributeBag->remove(self::SESSION_PATH . $key);
     }
 }
