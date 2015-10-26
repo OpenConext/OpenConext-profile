@@ -18,9 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
-use Serializable;
-
-class User implements Serializable
+class User
 {
     /**
      * @var string
@@ -42,7 +40,13 @@ class User implements Serializable
      */
     public $commonName;
 
-    public function serialize()
+    /**
+     * Using toString in order to comply with AbstractToken's setUser method.
+     * Not implementing a UserInterface, because methods defined there will not be used.
+     *
+     * @return string
+     */
+    public function __toString()
     {
         return serialize([
             $this->nameId,
@@ -50,17 +54,5 @@ class User implements Serializable
             $this->email,
             $this->commonName
         ]);
-    }
-
-    public function unserialize($serialized)
-    {
-        $data = unserialize($serialized);
-
-        list(
-            $this->nameId,
-            $this->institution,
-            $this->email,
-            $this->commonName
-        ) = $data;
     }
 }
