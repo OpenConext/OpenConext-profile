@@ -39,8 +39,11 @@
 - name: Add user {{ user }}
   user: name={{ user }} group={{ user }} createhome=no state=present
 
-- name: Create PHP session directory
+- name: Create PHP session directory for user
   shell: mkdir /var/lib/php/session/{{ user }} && chown {{ user }}:{{ user }} /var/lib/php/session/{{ user }} creates=/var/lib/php/session/{{ user }}
+
+- name: Set execute permissions for PHP session directory
+  file: path=/var/lib/php/session mode="o+x"
 
 - name: Configure PHP-FPM
   action: template src='php-fpm-pool.conf.j2' dest='/etc/php-fpm.d/{{ server.name }}.conf' owner=nginx group=nginx
