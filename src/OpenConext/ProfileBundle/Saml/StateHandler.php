@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Saml;
 
 use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class StateHandler
 {
@@ -29,9 +30,15 @@ class StateHandler
      */
     private $attributeBag;
 
-    public function __construct(NamespacedAttributeBag $attributeBag)
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    public function __construct(NamespacedAttributeBag $attributeBag, SessionInterface $session)
     {
         $this->attributeBag = $attributeBag;
+        $this->session = $session;
     }
 
     /**
@@ -94,7 +101,7 @@ class StateHandler
      */
     public function migrate()
     {
-        $this->attributeBag->migrate();
+        $this->session->migrate();
     }
 
     /**
