@@ -33,11 +33,6 @@ class SamlToken extends AbstractToken
         $this->setAuthenticated(count($roles));
     }
 
-    /**
-     * Returns the user credentials.
-     *
-     * @return mixed The user credentials
-     */
     public function getCredentials()
     {
         return '';
