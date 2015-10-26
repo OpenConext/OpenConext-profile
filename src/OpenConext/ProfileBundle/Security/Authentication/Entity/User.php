@@ -41,7 +41,8 @@ class User
     public $commonName;
 
     /**
-     * Using toString in order to comply with AbstractToken's setUser method.
+     * Using toString in order to comply with AbstractToken's setUser method,
+     * which uses the string representation to detect changes in the user object.
      * Not implementing a UserInterface, because methods defined there will not be used.
      *
      * @return string
