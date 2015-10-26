@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,500,300' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.7/es5-shim.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <![endif]-->
     <link href="{{ asset('mdl/material.min.css') }}" rel='stylesheet' type='text/css' />
-    <link href="{{ asset('styles/main.css') }}" rel='stylesheet' type='text/css' />
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('css/roboto.css') }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('css/main.css') }}" rel='stylesheet' type='text/css' />
 {% endblock %}
 
 {% block body %}
