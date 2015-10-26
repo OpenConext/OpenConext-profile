@@ -16,23 +16,22 @@
  * limitations under the License.
  */
 
-namespace OpenConext\ProfileBundle;
+namespace OpenConext\ProfileBundle\DependencyInjection\Compiler;
 
-use OpenConext\ProfileBundle\DependencyInjection\Compiler\StateHandlerSessionPass;
-use OpenConext\ProfileBundle\Security\Factory\SamlFactory;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\Reference;
 
-class OpenConextProfileBundle extends Bundle
+class StateHandlerSessionPass implements CompilerPassInterface
 {
-    public function build(ContainerBuilder $container)
+    /**
+     * This is required to ensure that our NamespacedAttributeBag is registered in the session handler
+     * before the session is started.
+     */
+    public function process(ContainerBuilder $container)
     {
-        parent::build($container);
-
-        $container->addCompilerPass(new StateHandlerSessionPass());
-
-        /** @var \Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension $extension */
-        $extension = $container->getExtension('security');
-        $extension->addSecurityListenerFactory(new SamlFactory());
+        $container
+            ->getDefinition('session')
+            ->addMethodCall('registerBag', [new Reference('profile.session.namespaced_attribute_bag')]);
     }
 }

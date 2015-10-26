@@ -42,6 +42,7 @@ class SamlController extends Controller
 
         return $assertion->getAttributes();
     }
+
     public function metadataAction()
     {
         /** @var \Surfnet\SamlBundle\Metadata\MetadataFactory $metadataFactory */
