@@ -20,10 +20,25 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class PageController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('OpenConextProfileBundle:Default:index.html.twig');
+        return $this->forward('OpenConextProfileBundle:Page:myProfile');
+    }
+
+    public function myProfileAction()
+    {
+        return $this->render('OpenConextProfileBundle:Page:my-profile.html.twig');
+    }
+
+    public function myServicesAction()
+    {
+        return $this->render('OpenConextProfileBundle:Page:my-services.html.twig');
+    }
+
+    public function exitAction()
+    {
+        return $this->render('OpenConextProfileBundle:Page:exit.html.twig');
     }
 }

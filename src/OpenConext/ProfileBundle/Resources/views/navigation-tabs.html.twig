@@ -1,0 +1,18 @@
+<ul>
+    <li>
+        <a {% if route == 'my_profile' %}class="active"{% endif %} href="{{  path('profile_my_profile') }}">
+            My Profile
+        </a>
+    </li>
+    <li>
+        <a {% if route == 'my_services' %}class="active"{% endif %} href="{{  path('profile_my_services') }}">
+            My Services
+        </a>
+    </li>
+    <li>
+        <a {% if route == 'exit' %}class="active"{% endif %} href="{{  path('profile_exit') }}">
+            Exit
+        </a>
+    </li>
+
+</ul>

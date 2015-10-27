@@ -21,23 +21,51 @@
 
                 <div class="mdl-layout-spacer"></div>
 
-                <nav class="mdl-navigation">
-                    {#<a class="mdl-navigation__link" href="">Link</a>#}
-                    {#<a class="mdl-navigation__link" href="">Link</a>#}
-                    {#<a class="mdl-navigation__link" href="">Link</a>#}
-                    {#<a class="mdl-navigation__link" href="">Link</a>#}
+                <nav class="mdl-navigation hide-mobile">
+                    {% include 'OpenConextProfileBundle::language-switch.html.twig' %}
+                    <a class="mdl-navigation__link" href="">Help<i class="fa fa-question-circle"></i></a>
+                </nav>
+
+                <nav class="mdl-navigation show-mobile">
+                    <a class="mdl-navigation__link" href="#footer">
+                        <i class="fa fa-bars"></i>
+                    </a>
                 </nav>
             </div>
         </header>
 
         <main class="mdl-layout__content">
             <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--2-col "></div>
-                <div class="content mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="content-container mdl-color--white mdl-shadow--2dp mdl-color-text--grey-800 mdl-cell mdl-cell--10-col">
                     {% block content %}
                     {% endblock %}
                 </div>
             </div>
+
+            <footer id="footer" class="footer mdl-grid">
+                <div class="mdl-cell mdl-cell--1-col"></div>
+                <div class="mdl-cell mdl-cell--10-col">
+                    <div class="mdl-grid">
+                        <div class="footer-left mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet">
+                            <p>This is a service connected through SURFconext</p>
+                        </div>
+                        <div class="footer-mid mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">
+                            <p>{% include 'OpenConextProfileBundle::language-switch.html.twig' %}</p>
+                        </div>
+                        <div class="footer-right mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet">
+                            <ul class="footer-navigation">
+                                <li>
+                                    <a href="#">Help</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms of Service</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </main>
     </div>
 
