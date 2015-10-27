@@ -63,7 +63,7 @@ class StateHandler
      */
     public function hasRequestId()
     {
-        return $this->attributeBag->has(self::SESSION_PATH . 'request_id');
+        return $this->attributeBag->has('request_id');
     }
 
     /**
