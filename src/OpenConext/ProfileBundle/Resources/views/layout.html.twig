@@ -38,8 +38,13 @@
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--1-col"></div>
                 <div class="content-container mdl-color--white mdl-shadow--2dp mdl-color-text--grey-800 mdl-cell mdl-cell--10-col">
-                    {% block content %}
-                    {% endblock %}
+                    <div class="navigation-tabs">
+                        {% include 'OpenConextProfileBundle::navigation-tabs.html.twig' %}
+                    </div>
+                    <div class="content">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
                 </div>
             </div>
 
