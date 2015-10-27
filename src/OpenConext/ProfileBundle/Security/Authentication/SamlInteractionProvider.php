@@ -29,27 +29,27 @@ use Symfony\Component\HttpFoundation\Request;
 class SamlInteractionProvider
 {
     /**
-     * @var ServiceProvider
+     * @var \Surfnet\SamlBundle\Entity\ServiceProvider
      */
     private $serviceProvider;
 
     /**
-     * @var IdentityProvider
+     * @var \Surfnet\SamlBundle\Entity\IdentityProvider
      */
     private $identityProvider;
 
     /**
-     * @var RedirectBinding
+     * @var \Surfnet\SamlBundle\Http\RedirectBinding
      */
     private $redirectBinding;
 
     /**
-     * @var PostBinding
+     * @var \Surfnet\SamlBundle\Http\PostBinding
      */
     private $postBinding;
 
     /**
-     * @var StateHandler
+     * @var \OpenConext\ProfileBundle\Saml\StateHandler
      */
     private $stateHandler;
 
