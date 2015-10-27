@@ -1,11 +1,19 @@
-profile_homepage:
+profile.profile_overview:
     path:     /
-    defaults: { _controller: OpenConextProfileBundle:Default:index }
+    defaults: { _controller: OpenConextProfileBundle:Profile:overview }
 
-profile_saml_consume_assertion:
+profile.services_overview:
+    path:     /services
+    defaults: { _controller: OpenConextProfileBundle:Services:overview }
+
+profile.exit_overview:
+    path:     /exit
+    defaults: { _controller: OpenConextProfileBundle:Exit:overview }
+
+profile.saml_consume_assertion:
     path: /authentication/consume-assertion
     defaults: { _controller: OpenConextProfileBundle:Saml:consumeAssertion }
 
-profile_saml_metadata:
+profile.saml_metadata:
     path: /authentication/metadata
     defaults: { _controller: OpenConextProfileBundle:Saml:metadata }

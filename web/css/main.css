@@ -1,17 +1,207 @@
-.mdl-layout__content .content {
-    padding: 32px;
+/* General */
+p,
+.overview-table th,
+.overview-table td,
+.mdl-navigation__link,
+.footer .footer-navigation li a {
+    font-size: 15px;
+    font-weight: 300;
 }
 
+.mdl-layout__content a,
+.mdl-layout__header-row .mdl-navigation__link {
+    color: #4db3cf;
+    text-decoration: underline;
+}
+.hide-mobile {
+    display: none;
+}
+.show-mobile {
+    display: initial;
+}
+
+/* Components */
+.language-switch {
+    display: inline-block;
+}
+.language-switch a {
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #edf8fb;
+    padding: 8px;
+    font-weight:200;
+    color: #4db3cf;
+    vertical-align: baseline;
+}
+.language-switch .switch-left {
+    border-radius: 4px 0 0 4px;
+}
+.language-switch .switch-right {
+    border-radius: 0 4px 4px 0;
+    margin-left: -3px;
+}
+.language-switch .active,
+.language-switch a:hover {
+    color: #ffffff;
+    background-color: #4db3cf;
+}
+
+
+/* Header */
 .mdl-layout__header {
     border-bottom: 2px solid #4db3cf;
     box-shadow: 1px 1px 4px rgba(0,0,0,.2);
 }
-
 .mdl-layout__header-row {
     padding-left: 32px;
+}
+.mdl-layout__header-row, .mdl-layout__header {
+    height: 64px;
+}
+
+.mdl-layout__header .fa {
+    margin-left: 8px;
+    font-size: 24px;
+    vertical-align: middle;
+}
+.mdl-layout__header .mdl-navigation__link {
+    display: inline-block;
+    padding: 0 8px;
 }
 
 .mdl-layout-title {
     color: #a2a2a2;
     font-size: 15px;
+    font-weight: 300;
+}
+
+
+/* Content container */
+.mdl-layout__content .content-container {
+    border-radius: 4px;
+    margin-bottom: 32px;
+}
+
+/* Content container navigation tabs */
+.mdl-layout__content .navigation-tabs ul {
+    border-bottom: 1px solid #e6e6e6;
+    list-style: none;
+    padding: 0 0;
+    margin: 0;
+}
+.mdl-layout__content .navigation-tabs a {
+    text-decoration: none;
+    color: #a2a2a2;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 16px 32px;
+    margin-bottom: -1px;
+    font-weight: 300;
+    display: block;
+}
+.mdl-layout__content .navigation-tabs a:hover,
+.mdl-layout__content .navigation-tabs .active {
+    color: #4db3cf;
+}
+
+/* Content container content */
+.mdl-layout__content .content-container .content {
+    padding: 0 32px 32px 32px;
+}
+.mdl-layout__content .content-container .table-container {
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 15px;
+}
+.mdl-layout__content .content-container .overview-table {
+    min-width: 100%;
+}
+.mdl-layout__content .content-container .overview-table td,
+.mdl-layout__content .content-container .overview-table th {
+    text-align: left;
+    padding: 16px 12px;
+}
+.mdl-layout__content .content-container .overview-table th {
+    font-weight: 300;
+    color: #a2a2a2;
+}
+.mdl-layout__content .content-container .overview-table .strong {
+    font-weight: 600;
+}
+
+.mdl-layout__content .content-container h1 {
+    font-size: 24px;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid #cccccc;
+}
+.mdl-layout .footer .footer-left,
+.mdl-layout .footer .footer-mid,
+.mdl-layout .footer .footer-right {
+    text-align: center;
+    margin-bottom: 0;
+}
+.footer .footer-navigation {
+    list-style: none;
+}
+.footer .footer-navigation li {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+/* Adaptive fixes*/
+@media (min-width: 840px) {
+    .hide-mobile {
+        display: initial;
+    }
+    .show-mobile {
+        display: none;
+    }
+
+    .mdl-layout__content .content-container {
+        /* Add margin for consistency */
+        margin-top: 36px;
+    }
+
+    /* Footer */
+    .mdl-layout .footer .footer-left {
+        text-align: left;
+    }
+    .mdl-layout .footer .footer-mid {
+        text-align: center;
+    }
+    .mdl-layout .footer .footer-right {
+        text-align: right;
+    }
+
+    .footer .footer-navigation li {
+        display: inline-block;
+        margin-left: 8px;
+    }
+
+}
+@media (min-width: 960px) {
+    /* Content container navigation tabs */
+    .mdl-layout__content .navigation-tabs ul {
+        border-bottom: 1px solid #e6e6e6;
+        list-style: none;
+        padding: 0 16px;
+        margin: 0;
+    }
+    .mdl-layout__content .navigation-tabs ul li{
+        display: inline-block;
+        margin: 0 16px;
+        border: 0;
+    }
+    .mdl-layout__content .navigation-tabs a {
+        padding: 24px 0;
+        display: block;
+        margin-bottom: -1px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .mdl-layout__content .navigation-tabs a:hover,
+    .mdl-layout__content .navigation-tabs .active {
+        border-bottom: 1px solid #4db3cf;
+    }
 }
