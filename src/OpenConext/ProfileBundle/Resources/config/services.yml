@@ -2,9 +2,9 @@ services:
 
     profile.locale_listener:
         class: OpenConext\ProfileBundle\EventListener\LocaleListener
-        argument: ['%kernel.default_locale%']
+        arguments: ['%kernel.default_locale%']
         tags:
-            - { name: kerner.event_subscriber }
+            - { name: kernel.event_subscriber }
 
     profile.security.authentication.provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
