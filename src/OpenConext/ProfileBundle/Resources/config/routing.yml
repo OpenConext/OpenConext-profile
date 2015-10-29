@@ -17,3 +17,10 @@ profile.saml_consume_assertion:
 profile.saml_metadata:
     path: /authentication/metadata
     defaults: { _controller: OpenConextProfileBundle:Saml:metadata }
+
+profile.locale_switch_locale:
+    path:     /switch-locale
+    methods:  [POST]
+    defaults: { _controller: OpenConextProfileBundle:Locale:switchLocale }
+    requirements:
+        'return-url': '.+'

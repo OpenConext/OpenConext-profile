@@ -3,6 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+parameters:
+    locales: [en, nl]
+
 framework:
     translator:      { fallback: [en] }
     secret:          "%secret%"
@@ -40,7 +43,7 @@ twig:
     strict_variables: "%kernel.debug%"
 
 jms_translation:
-    locales: [en, nl]
+    locales: %locales%
     configs:
         app:
             dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]

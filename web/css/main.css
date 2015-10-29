@@ -21,10 +21,13 @@ p,
 }
 
 /* Components */
-.language-switch {
+.locale-switch {
     display: inline-block;
 }
-.language-switch a {
+.locale-switch button {
+    cursor: pointer;
+    display: inline;
+    border: 0;
     font-size: 12px;
     text-decoration: none;
     background-color: #edf8fb;
@@ -33,19 +36,18 @@ p,
     color: #4db3cf;
     vertical-align: baseline;
 }
-.language-switch .switch-left {
+.locale-switch button:first-of-type {
     border-radius: 4px 0 0 4px;
 }
-.language-switch .switch-right {
+.locale-switch button:last-of-type {
     border-radius: 0 4px 4px 0;
     margin-left: -3px;
 }
-.language-switch .active,
-.language-switch a:hover {
+.locale-switch .active,
+.locale-switch button:hover {
     color: #ffffff;
     background-color: #4db3cf;
 }
-
 
 /* Header */
 .mdl-layout__header {

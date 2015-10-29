@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-10-22T15:19:28Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2015-10-29T13:24:41Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="7425fb7026f9b83979641f820518e41c79a18c71" resname="locale.en">
+        <jms:reference-file line="44">Form/Type/SwitchLocaleType.php</jms:reference-file>
+        <source>locale.en</source>
+        <target>EN</target>
+      </trans-unit>
+      <trans-unit id="761d84a4cc10fe5c71b1e1470d29fa23498d5300" resname="locale.nl">
+        <jms:reference-file line="50">Form/Type/SwitchLocaleType.php</jms:reference-file>
+        <source>locale.nl</source>
+        <target>NL</target>
+      </trans-unit>
       <trans-unit id="fca2af8c1bc8f9dff34bf1f90074deae50974634" resname="profile.title">
-        <jms:reference-file line="13">Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="20">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.title</source>
         <target>Overzicht van jouw SURFconext-profiel.</target>
       </trans-unit>
