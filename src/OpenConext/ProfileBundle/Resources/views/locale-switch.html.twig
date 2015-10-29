@@ -1,4 +1,8 @@
-<span class="language-switch">
-    <a href="#" class="switch-left">EN</a>
-    <a href="#" class="switch-right active">NL</a>
+{% set locale_switcher = profile_locale_switcher(app.request.locale, {'return-url': app.request.uri}) %}
+
+<span class="locale-switch">
+    {{ form_start(locale_switcher) }}
+    {{ form_widget(locale_switcher.locale_en) }}
+    {{ form_widget(locale_switcher.locale_nl) }}
+    {{ form_end(locale_switcher) }}
 </span>

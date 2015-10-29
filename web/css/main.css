@@ -24,7 +24,10 @@ p,
 .locale-switch {
     display: inline-block;
 }
-.locale-switch a {
+.locale-switch button {
+    cursor: pointer;
+    display: inline;
+    border: 0;
     font-size: 12px;
     text-decoration: none;
     background-color: #edf8fb;
@@ -33,19 +36,18 @@ p,
     color: #4db3cf;
     vertical-align: baseline;
 }
-.locale-switch .switch-left {
+.locale-switch button:first-of-type {
     border-radius: 4px 0 0 4px;
 }
-.locale-switch .switch-right {
+.locale-switch button:last-of-type {
     border-radius: 0 4px 4px 0;
     margin-left: -3px;
 }
 .locale-switch .active,
-.locale-switch a:hover {
+.locale-switch button:hover {
     color: #ffffff;
     background-color: #4db3cf;
 }
-
 
 /* Header */
 .mdl-layout__header {

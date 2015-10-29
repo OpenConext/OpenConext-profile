@@ -6,6 +6,19 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    profile.form.switch_locale:
+        class: OpenConext\ProfileBundle\Form\Type\SwitchLocaleType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_switch_locale }
+
+    profile.twig.locale_extension:
+        class: OpenConext\ProfileBundle\Twig\LocaleExtension
+        arguments: [ @form.factory ]
+        tags:
+            - { name: twig.extension }
+
     profile.security.authentication.provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
         arguments:

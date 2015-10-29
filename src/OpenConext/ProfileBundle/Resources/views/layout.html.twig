@@ -22,7 +22,7 @@
                 <div class="mdl-layout-spacer"></div>
 
                 <nav class="mdl-navigation hide-mobile">
-                    {% include 'OpenConextProfileBundle::language-switch.html.twig' %}
+                    {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
                     <a class="mdl-navigation__link" href="">Help<i class="fa fa-question-circle"></i></a>
                 </nav>
 
@@ -56,7 +56,7 @@
                             <p>This is a service connected through SURFconext</p>
                         </div>
                         <div class="footer-mid mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">
-                            <p>{% include 'OpenConextProfileBundle::language-switch.html.twig' %}</p>
+                            {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
                         </div>
                         <div class="footer-right mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet">
                             <ul class="footer-navigation">
