@@ -17,13 +17,13 @@
         <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--white mdl-color-text--grey-800">
             <div class="mdl-layout__header-row">
 
-                <span class="mdl-layout-title">{{ 'profile.title'|trans }}</span>
+                <span class="mdl-layout-title">{{ 'application.title'|trans }}</span>
 
                 <div class="mdl-layout-spacer"></div>
 
                 <nav class="mdl-navigation hide-mobile">
                     {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
-                    <a class="mdl-navigation__link" href="">Help<i class="fa fa-question-circle"></i></a>
+                    <a class="mdl-navigation__link" href="https://wiki.surfnet.nl/display/conextsupport/Profile+page">{{ 'navigation.help'|trans }}<i class="fa fa-question-circle"></i></a>
                 </nav>
 
                 <nav class="mdl-navigation show-mobile">
@@ -52,19 +52,19 @@
                 <div class="mdl-cell mdl-cell--1-col"></div>
                 <div class="mdl-cell mdl-cell--10-col">
                     <div class="mdl-grid">
-                        <div class="footer-left mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet">
-                            <p>This is a service connected through SURFconext</p>
+                        <div class="footer-left mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                            <p>{{ 'notice.surfconext_connected_service'|trans|escape|format('<a href="https://www.surfconext.nl">SURFConext</a>')|raw }}</p>
                         </div>
-                        <div class="footer-mid mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet">
+                        <div class="footer-mid mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
                             {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
                         </div>
-                        <div class="footer-right mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet">
+                        <div class="footer-right mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
                             <ul class="footer-navigation">
                                 <li>
-                                    <a href="#">Help</a>
+                                    <a href="https://wiki.surfnet.nl/display/conextsupport/Profile+page">{{ 'navigation.help'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a href="#">Terms of Service</a>
+                                    <a href="{{ 'navigation.terms_of_service.link'|trans }}">{{ 'navigation.terms_of_service'|trans }}</a>
                                 </li>
                             </ul>
                         </div>

@@ -20,10 +20,10 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ExitController extends Controller
+class RemovalController extends Controller
 {
     public function overviewAction()
     {
-        return $this->render('OpenConextProfileBundle:Exit:overview.html.twig');
+        return $this->render('OpenConextProfileBundle:Removal:overview.html.twig');
     }
 }

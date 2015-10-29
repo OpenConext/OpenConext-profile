@@ -1,0 +1,16 @@
+{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ 'introduction.long_title'|trans }}</h1>
+
+    <h2>{{ 'introduction.explanation.title'|trans }}</h2>
+    <p>{{ 'introduction.explanation.introduction'|trans }}</p>
+
+    <img src="{{ asset('images/schema_nieuw.png') }}"/>
+
+    <h2>{{ 'introduction.purpose.title'|trans }}</h2>
+    <p>{{ 'introduction.purpose.profile_storage'|trans }}</p>
+    <p>{{ 'introduction.purpose.profile_removal'|trans }}</p>
+{% endblock %}
+
+
