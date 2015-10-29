@@ -43,6 +43,7 @@ class SwitchLocaleType extends AbstractType
         $builder->setMethod('POST');
 
         $builder->add('locale_en', 'submit', [
+            /** @Ignore */
             'label' => 'EN',
             'attr' => [
                 'class' => $this->renderClassIfActiveLocale('en', $options['current_locale']),
@@ -50,6 +51,7 @@ class SwitchLocaleType extends AbstractType
             ],
         ]);
         $builder->add('locale_nl', 'submit', [
+            /** @Ignore */
             'label' => 'NL',
             'attr' => [
                 'class' => $this->renderClassIfActiveLocale('nl', $options['current_locale']),
