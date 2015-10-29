@@ -37,7 +37,12 @@ class SwitchLocaleType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->setAction($this->urlGenerator->generate('profile.locale_switch_locale', ['return-url' => $options['return_url']]));
+        $builder->setAction(
+            $this->urlGenerator->generate(
+                'profile.locale_switch_locale',
+                ['return-url' => $options['return_url']]
+            )
+        );
         $builder->setMethod('POST');
 
         $builder->add('locale_en', 'submit', [
@@ -61,7 +66,7 @@ class SwitchLocaleType extends AbstractType
             'current_locale' => null,
         ]);
 
-        $resolver->isRequired('return_url');
+        $resolver->setRequired('return_url');
 
         $resolver->setAllowedTypes('current_locale', 'string');
         $resolver->setAllowedTypes('return_url', 'string');
