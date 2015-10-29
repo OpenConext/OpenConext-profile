@@ -144,6 +144,7 @@ p,
 }
 .footer .footer-navigation {
     list-style: none;
+    margin: 0;
 }
 .footer .footer-navigation li {
     display: inline-block;
