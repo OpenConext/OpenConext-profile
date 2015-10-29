@@ -20,15 +20,13 @@ namespace OpenConext\ProfileBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SwitchLocaleType extends AbstractType
 {
     /**
-     * @var UrlGeneratorInterface
+     * @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface
      */
     private $urlGenerator;
 
@@ -39,45 +37,34 @@ class SwitchLocaleType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->setAction($this->urlGenerator->generate('profile.locale_switch_locale', $options['route_parameters']));
+        $builder->setAction($this->urlGenerator->generate('profile.locale_switch_locale', ['return-url' => $options['return_url']]));
         $builder->setMethod('POST');
 
         $builder->add('locale_en', 'submit', [
-            /** @Ignore */
             'label' => 'EN',
             'attr' => [
-                'class' => $this->renderClassIfActiveLocale('en', $options['current_locale']),
-                'value' => 'en',
-            ],
+                'class' => ($options['current_locale'] === 'en') ? 'active' : ''
+            ]
         ]);
         $builder->add('locale_nl', 'submit', [
-            /** @Ignore */
             'label' => 'NL',
             'attr' => [
-                'class' => $this->renderClassIfActiveLocale('nl', $options['current_locale']),
-                'value' => 'nl',
-            ],
+                'class' => ($options['current_locale'] === 'nl') ? 'active' : '',
+            ]
         ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'route_parameters' => [],
+            'return_url' => '',
             'current_locale' => null,
         ]);
 
+        $resolver->isRequired('return_url');
+
         $resolver->setAllowedTypes('current_locale', 'string');
-        $resolver->setAllowedTypes('route_parameters', 'array');
-    }
-
-    private function renderClassIfActiveLocale($displayLocale, $currentLocale)
-    {
-        if ($currentLocale === $displayLocale) {
-            return 'active';
-        }
-
-        return '';
+        $resolver->setAllowedTypes('return_url', 'string');
     }
 
     public function getName()

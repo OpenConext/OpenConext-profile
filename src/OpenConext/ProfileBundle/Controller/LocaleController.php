@@ -44,7 +44,7 @@ class LocaleController extends Controller
             null,
             [
                 'current_locale' => $request->getLocale(),
-                'route_parameters' => ['return_url' => $returnUrl]
+                'return_url' => $returnUrl
             ]
         );
         $form->handleRequest($request);
@@ -68,7 +68,6 @@ class LocaleController extends Controller
         }
 
         $this->get('session')->set('_locale', $locale);
-
 
         return $this->redirect($returnUrl);
     }

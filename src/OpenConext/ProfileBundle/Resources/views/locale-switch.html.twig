@@ -1,4 +1,4 @@
-{% set locale_switcher = profile_locale_switcher(app.request.locale, {'return-url': app.request.uri}) %}
+{% set locale_switcher = profile_locale_switcher(app.request.locale, app.request.uri) %}
 
 <span class="locale-switch">
     {{ form_start(locale_switcher) }}

@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\EventListener;
 
+use OpenConext\ProfileBundle\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -31,6 +32,8 @@ class LocaleListener implements EventSubscriberInterface
 
     public function __construct($defaultLocale)
     {
+        Assert::string($defaultLocale);
+
         $this->defaultLocale = $defaultLocale;
     }
 

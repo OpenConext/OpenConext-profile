@@ -41,12 +41,12 @@ final class LocaleExtension extends Extension
         ];
     }
 
-    public function getLocalePreferenceForm($currentLocale, array $routeParameters)
+    public function getLocalePreferenceForm($currentLocale, $returnUrl)
     {
         $form = $this->formFactory->create(
             'profile_switch_locale',
             null,
-            ['route_parameters' => $routeParameters, 'current_locale' => $currentLocale]
+            ['return_url' => $returnUrl, 'current_locale' => $currentLocale]
         );
 
         return $form->createView();
