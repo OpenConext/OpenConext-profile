@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-10-30T10:28:08Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-10-30T10:40:16Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -11,33 +11,38 @@
         <source>profile.application.header</source>
         <target>Overview of your SURFconext profile.</target>
       </trans-unit>
+      <trans-unit id="d25aa7a2e9d40a5e7039dd3b93bd91eea40251c5" resname="profile.application.title">
+        <jms:reference-file line="6">Resources/views/base.html.twig</jms:reference-file>
+        <source>profile.application.title</source>
+        <target>SURFConext Profile</target>
+      </trans-unit>
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
-        <jms:reference-file line="7">views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.explanation.introduction</source>
         <target>Your institution uses SURFconext to allow you to login to several (cloud)services provided by your institution using your institutional account. This means you only need a single account to login instead of creating separate accounts for each service.</target>
       </trans-unit>
       <trans-unit id="4949b24da6847ff0e5ab5ba5ec14a85eb5da703e" resname="profile.introduction.explanation.title">
-        <jms:reference-file line="6">views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="10">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.explanation.title</source>
         <target>What is SURFconext?</target>
       </trans-unit>
       <trans-unit id="4a58594e3e7d64ad7c5ee1852e90242f76476563" resname="profile.introduction.long_title">
-        <jms:reference-file line="4">views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="8">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.long_title</source>
         <target>Welcome to the SURFconext profile page</target>
       </trans-unit>
       <trans-unit id="b5046cf89bbccbd70597521e4f435425bb6745a5" resname="profile.introduction.purpose.profile_storage">
-        <jms:reference-file line="12">views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.profile_storage</source>
         <target>On behalf of your institution, SURFconext passes through a limited amount of personal data to the service you are logging in to. Sometimes this will be entirely automatic but usually you are required to give explicit consent for this information transfer. This profile page provides insight in how your personal data that your institution provided via SURFconext is being used. You can see here which personal data is being stored by SURFconext and which data has been passed on to services you have logged in to.</target>
       </trans-unit>
       <trans-unit id="3b99c9d8e9e83236d4bbff4d3273ede3622649f3" resname="profile.introduction.purpose.removal">
-        <jms:reference-file line="13">views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="17">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.removal</source>
         <target>You can also remove your SURFconext profile on this page. By doing so, SURFconext will remove all personal data that it has stored about you. Please note that this has no effect on the personal data your institution and the services you have previously logged in to have stored about you.</target>
       </trans-unit>
       <trans-unit id="2cd8741e2e784f6e2df5165585c332d6be98812c" resname="profile.introduction.purpose.title">
-        <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="15">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.title</source>
         <target>What is the purpose of this profile page?</target>
       </trans-unit>
@@ -78,14 +83,9 @@
         <target>This is a service connected through %s</target>
       </trans-unit>
       <trans-unit id="e2e2fe24a85a4490f3a5d5fa646fd10d0f2fc5a9" resname="profile.profile.long_title">
-        <jms:reference-file line="4">views/Profile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="8">views/Profile/overview.html.twig</jms:reference-file>
         <source>profile.profile.long_title</source>
         <target>My SURFconext Profile</target>
-      </trans-unit>
-      <trans-unit id="86ff028abecdb68ca716e01d2500c2366c4779c9" resname="profile.services.long_title">
-        <jms:reference-file line="4">views/Services/overview.html.twig</jms:reference-file>
-        <source>profile.services.long_title</source>
-        <target>Services via SURFconext</target>
       </trans-unit>
       <trans-unit id="7285ef1aab81a438658c5ac654b93597845df3a0" resname="profile.profile.short_title">
         <jms:reference-file line="10">Resources/views/navigation-tabs.html.twig</jms:reference-file>
@@ -93,7 +93,7 @@
         <target>My Profile</target>
       </trans-unit>
       <trans-unit id="f0d2e2921f8994e3a9b289e1e60567616a52ab98" resname="profile.removal.long_title">
-        <jms:reference-file line="4">views/Removal/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="8">views/Removal/overview.html.twig</jms:reference-file>
         <source>profile.removal.long_title</source>
         <target>Remove my SURFconext Profile</target>
       </trans-unit>
@@ -101,6 +101,11 @@
         <jms:reference-file line="20">Resources/views/navigation-tabs.html.twig</jms:reference-file>
         <source>profile.removal.short_title</source>
         <target>Remove My Profile</target>
+      </trans-unit>
+      <trans-unit id="43671a6ad821d8d60b82397e2540ad5d9e15b948" resname="profile.services.long_title">
+        <jms:reference-file line="8">views/Services/overview.html.twig</jms:reference-file>
+        <source>profile.services.long_title</source>
+        <target>Services via SURFconext</target>
       </trans-unit>
       <trans-unit id="e75925b9dc5978b3bdfa5453cf7d0f4041f59d66" resname="profile.services.short_title">
         <jms:reference-file line="15">Resources/views/navigation-tabs.html.twig</jms:reference-file>

@@ -1,5 +1,9 @@
 {% extends 'OpenConextProfileBundle::layout.html.twig' %}
 
+{% block title %}
+    {{ 'profile.removal.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
 {% block content %}
     <h1>{{ 'profile.removal.long_title'|trans }}</h1>
 {% endblock %}
