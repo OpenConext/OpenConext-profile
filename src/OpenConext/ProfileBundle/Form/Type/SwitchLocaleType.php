@@ -46,13 +46,13 @@ class SwitchLocaleType extends AbstractType
         $builder->setMethod('POST');
 
         $builder->add('locale_en', 'submit', [
-            'label' => 'locale.en',
+            'label' => 'profile.locale.en',
             'attr' => [
                 'class' => ($options['current_locale'] === 'en') ? 'active' : ''
             ]
         ]);
         $builder->add('locale_nl', 'submit', [
-            'label' => 'locale.nl',
+            'label' => 'profile.locale.nl',
             'attr' => [
                 'class' => ($options['current_locale'] === 'nl') ? 'active' : '',
             ]

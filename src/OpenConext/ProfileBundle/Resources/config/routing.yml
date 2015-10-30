@@ -1,14 +1,18 @@
+profile.introduction_overview:
+    path:   /
+    defaults: { _controller: OpenConextProfileBundle:Introduction:overview }
+
 profile.profile_overview:
-    path:     /
+    path:     /profile
     defaults: { _controller: OpenConextProfileBundle:Profile:overview }
 
 profile.services_overview:
     path:     /services
     defaults: { _controller: OpenConextProfileBundle:Services:overview }
 
-profile.exit_overview:
+profile.removal_overview:
     path:     /exit
-    defaults: { _controller: OpenConextProfileBundle:Exit:overview }
+    defaults: { _controller: OpenConextProfileBundle:Removal:overview }
 
 profile.saml_consume_assertion:
     path: /authentication/consume-assertion
