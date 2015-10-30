@@ -49,4 +49,6 @@
   action: template src='php-fpm-pool.conf.j2' dest='/etc/php-fpm.d/{{ server.name }}.conf' owner=nginx group=nginx
   notify: Restart php-fpm
 
+- name: Configure PHP-FPM to run on boot
+  command: chkconfig php-fpm on
 
