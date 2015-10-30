@@ -2,22 +2,22 @@
 <ul>
     <li>
         <a {% if route == 'profile.introduction_overview' %}class="active"{% endif %} href="{{ path('profile.introduction_overview') }}">
-            {{ 'introduction.short_title'|trans }}
+            {{ 'profile.introduction.short_title'|trans }}
         </a>
     </li>
     <li>
         <a {% if route == 'profile.profile_overview' %}class="active"{% endif %} href="{{ path('profile.profile_overview') }}">
-            {{ 'profile.short_title'|trans }}
+            {{ 'profile.profile.short_title'|trans }}
         </a>
     </li>
     <li>
         <a {% if route == 'profile.services_overview' %}class="active"{% endif %} href="{{ path('profile.services_overview') }}">
-            {{ 'services.short_title'|trans }}
+            {{ 'profile.services.short_title'|trans }}
         </a>
     </li>
     <li>
         <a {% if route == 'profile.exit_overview' %}class="active"{% endif %} href="{{ path('profile.removal_overview') }}">
-            {{ 'removal.short_title'|trans }}
+            {{ 'profile.removal.short_title'|trans }}
         </a>
     </li>
 </ul>
