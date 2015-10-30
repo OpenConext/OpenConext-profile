@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-10-29T15:25:35Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-10-30T09:06:28Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="4eb93289c6b018e1ce6728a0b8b654860c7d1bac" resname="application.title">
+      <trans-unit id="a9ce9aaab6015cee9dc0ad85328fd0c5393a5542" resname="application.header">
         <jms:reference-file line="20">Resources/views/layout.html.twig</jms:reference-file>
-        <source>application.title</source>
+        <source>application.header</source>
         <target>Overview of your SURFconext profile.</target>
       </trans-unit>
       <trans-unit id="581be77b87c7f817b59a363230095016ea2844ea" resname="introduction.explanation.introduction">
