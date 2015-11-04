@@ -24,6 +24,8 @@ class ProfileController extends Controller
 {
     public function overviewAction()
     {
-        return $this->render('OpenConextProfileBundle:Profile:overview.html.twig');
+        $attributes = $this->getUser()->getAttributes();
+
+        return $this->render('OpenConextProfileBundle:Profile:overview.html.twig', ['attributes' => $attributes]);
     }
 }

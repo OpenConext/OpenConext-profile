@@ -18,27 +18,40 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
-class User
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+
+class User implements \Serializable
 {
     /**
-     * @var string
+     * @var AttributeSet
      */
-    public $nameId;
+    private $attributes;
 
     /**
-     * @var string
+     * @param AttributeSet $attributes
      */
-    public $institution;
+    public function __construct(AttributeSet $attributes)
+    {
+        $this->attributes = $attributes;
+    }
 
     /**
-     * @var string
+     * @return AttributeSet
      */
-    public $email;
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
 
-    /**
-     * @var string
-     */
-    public $commonName;
+    public function serialize()
+    {
+        return serialize($this->attributes);
+    }
+
+    public function unserialize($serialized)
+    {
+        $this->attributes = unserialize($serialized);
+    }
 
     /**
      * Using toString in order to comply with AbstractToken's setUser method,
@@ -49,11 +62,6 @@ class User
      */
     public function __toString()
     {
-        return serialize([
-            $this->nameId,
-            $this->institution,
-            $this->email,
-            $this->commonName
-        ]);
+        return serialize($this);
     }
 }
