@@ -1,0 +1,18 @@
+services:
+  openconext_eb_api.guzzle:
+    public: false
+    class: GuzzleHttp\Client
+    arguments:
+      - [] # Client options
+
+  openconext_eb_api.service.api:
+    public: false
+    class: OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient
+    arguments:
+      - @openconext_eb_api.guzzle
+
+  openconext_eb_api.repository.consent:
+    public: false
+    class: OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository
+    arguments:
+      - @openconext_eb_api.service.api

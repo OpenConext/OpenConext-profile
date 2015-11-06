@@ -64,3 +64,8 @@ services:
             - '/'
         calls:
             - [setName, ['profile']]
+
+    profile.service.consent:
+        class: OpenConext\ProfileBundle\Service\ConsentService
+        arguments:
+            - @openconext_eb_api.repository.consent

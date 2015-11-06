@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Twig;
 
-use OpenConext\ProfileBundle\Assert;
+use OpenConext\Profile\Assert;
 use Symfony\Component\Form\FormFactoryInterface;
 use Twig_Extension as Extension;
 use Twig_SimpleFunction as SimpleFunction;
