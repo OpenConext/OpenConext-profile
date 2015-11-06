@@ -18,9 +18,10 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
+use Serializable;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
-class User implements \Serializable
+class User implements Serializable
 {
     /**
      * @var AttributeSet
