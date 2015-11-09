@@ -14,4 +14,4 @@ parameters:
     engineblock_api_base_url: 'https://engine-api.vm.openconext.org/'
     engineblock_api_username: profile
     engineblock_api_password: secret
-    # engineblock_api_verify_ssl: false
+    engineblock_api_verify_ssl: true

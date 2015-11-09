@@ -75,3 +75,4 @@ open_conext_engine_block_api_client:
         base_url: %engineblock_api_base_url%
         username: %engineblock_api_username%
         password: %engineblock_api_password%
+        verify_ssl: %engineblock_api_verify_ssl%
