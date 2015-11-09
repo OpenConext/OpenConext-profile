@@ -41,17 +41,6 @@ final class Consent
     }
 
     /**
-     * @param Consent $other
-     * @return bool
-     */
-    public function equals(Consent $other)
-    {
-        return $this->serviceProvider->equals($other->serviceProvider)
-            && $this->consentGivenOn == $other->consentGivenOn
-            && $this->lastUsedOn == $other->lastUsedOn;
-    }
-
-    /**
      * @return ServiceProvider
      */
     public function getServiceProvider()

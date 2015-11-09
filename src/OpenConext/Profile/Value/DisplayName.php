@@ -47,15 +47,6 @@ final class DisplayName
         return array_key_exists($locale, $this->translations) && trim($this->translations[$locale]) !== '';
     }
 
-    /**
-     * @param DisplayName $other
-     * @return bool
-     */
-    public function equals(DisplayName $other)
-    {
-        return array_diff_assoc($this->translations, $other->translations) === [];
-    }
-
     public function __toString()
     {
         return sprintf(

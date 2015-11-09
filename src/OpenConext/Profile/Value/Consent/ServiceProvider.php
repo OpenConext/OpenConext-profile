@@ -97,18 +97,4 @@ final class ServiceProvider
 
         return $this->supportEmail;
     }
-
-    /**
-     * @param ServiceProvider $other
-     * @return bool
-     */
-    public function equals(ServiceProvider $other)
-    {
-        return $this->entity->equals($other->entity)
-            && $this->displayName->equals($other->displayName)
-            && ($this->eulaUrl === $other->eulaUrl
-                || $this->eulaUrl && $other->eulaUrl && $this->eulaUrl->equals($other->eulaUrl))
-            && ($this->supportEmail === $other->supportEmail
-                || $this->supportEmail && $other->supportEmail && $this->supportEmail->equals($other->supportEmail));
-    }
 }

@@ -39,25 +39,6 @@ final class ConsentList implements IteratorAggregate, Countable
         }
     }
 
-    /**
-     * @param ConsentList $other
-     * @return bool
-     */
-    public function equals(ConsentList $other)
-    {
-        if (count($this->consents) !== count($other->consents)) {
-            return false;
-        }
-
-        foreach ($this->consents as $i => $consent) {
-            if (!$consent->equals($other->consents[$i])){
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     private function initialiseWith(Consent $consent)
     {
         $this->consents[] = $consent;

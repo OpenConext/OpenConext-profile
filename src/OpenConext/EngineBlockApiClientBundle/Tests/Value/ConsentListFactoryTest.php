@@ -90,6 +90,6 @@ final class ConsentListFactoryTest extends TestCase
             ),
         ]);
 
-        $this->assertTrue(ConsentListFactory::create($struct)->equals($expectedConsentList));
+        $this->assertEquals($expectedConsentList, ConsentListFactory::create($struct));
     }
 }
