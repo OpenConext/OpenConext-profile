@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Serialisation;
+namespace OpenConext\EngineBlockApiClientBundle\Value;
 
 use DateTime;
 use DateTimeImmutable;
@@ -31,40 +31,40 @@ use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
 use OpenConext\Profile\Value\Url;
 
-final class ConsentListDeserialiser
+final class ConsentListFactory
 {
     /**
-     * @param mixed $json
+     * @param mixed $struct
      * @return ConsentList
      */
-    public static function fromJson($json)
+    public static function create($struct)
     {
-        Assert::isArray($json, 'Consent list JSON structure must be an associative array, got %s');
+        Assert::isArray($struct, 'Consent list JSON structure must be an associative array, got %s');
 
-        return new ConsentList(array_map([self::class, 'consentFromJson'], $json));
+        return new ConsentList(array_map([self::class, 'createConsent'], $struct));
     }
 
     /**
-     * @param mixed $json
+     * @param mixed $struct
      * @return Consent
      *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function consentFromJson($json)
+    private static function createConsent($struct)
     {
-        Assert::keyExists($json, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
-        Assert::keyExists($json, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
-        Assert::keyExists($json, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
+        Assert::keyExists($struct, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
+        Assert::keyExists($struct, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
+        Assert::keyExists($struct, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
 
-        $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $json['consent_given_on']);
-        $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $json['last_used_on']);
+        $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $struct['consent_given_on']);
+        $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $struct['last_used_on']);
 
         Assert::isInstanceOf(
             $consentGivenOn,
             DateTimeImmutable::class,
             sprintf(
                 'Consent given on date must be formatted according to the ISO8601 standard, got "%s"',
-                $json['consent_given_on']
+                $struct['consent_given_on']
             )
         );
         Assert::isInstanceOf(
@@ -72,39 +72,39 @@ final class ConsentListDeserialiser
             DateTimeImmutable::class,
             sprintf(
                 'Last used on date must be formatted according to the ISO8601 standard, got "%s"',
-                $json['last_used_on']
+                $struct['last_used_on']
             )
         );
 
         return new Consent(
-            self::serviceProviderFromJson($json['service_provider']),
+            self::createServiceProvider($struct['service_provider']),
             $consentGivenOn,
             $lastUsedOn
         );
     }
 
     /**
-     * @param mixed $json
+     * @param mixed $struct
      * @return ServiceProvider
      */
-    private static function serviceProviderFromJson($json)
+    private static function createServiceProvider($struct)
     {
-        Assert::keyExists($json, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
-        Assert::keyExists($json, 'display_name', 'Consent JSON structure must contain key "display_name"');
-        Assert::keyExists($json, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
-        Assert::keyExists($json, 'support_email', 'Consent JSON structure must contain key "support_email"');
+        Assert::keyExists($struct, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
+        Assert::keyExists($struct, 'display_name', 'Consent JSON structure must contain key "display_name"');
+        Assert::keyExists($struct, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
+        Assert::keyExists($struct, 'support_email', 'Consent JSON structure must contain key "support_email"');
 
-        $entity       = new Entity(new EntityId($json['entity_id']), EntityType::SP());
-        $displayName  = new DisplayName($json['display_name']);
+        $entity       = new Entity(new EntityId($struct['entity_id']), EntityType::SP());
+        $displayName  = new DisplayName($struct['display_name']);
         $eulaUrl      = null;
         $supportEmail = null;
 
-        if ($json['eula_url'] !== null) {
-            $eulaUrl = new Url($json['eula_url']);
+        if ($struct['eula_url'] !== null) {
+            $eulaUrl = new Url($struct['eula_url']);
         }
 
-        if ($json['support_email'] !== null) {
-            $supportEmail = new EmailAddress($json['support_email']);
+        if ($struct['support_email'] !== null) {
+            $supportEmail = new EmailAddress($struct['support_email']);
         }
 
         return new ServiceProvider($entity, $displayName, $eulaUrl, $supportEmail);

@@ -3,7 +3,7 @@
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
-use OpenConext\EngineBlockApiClientBundle\Serialisation\ConsentListDeserialiser;
+use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\ConsentRepository as ConsentRepositoryInterface;
 
@@ -26,6 +26,6 @@ final class ConsentRepository implements ConsentRepositoryInterface
 
         $consentListJson = $this->apiClient->read('consent/%s', [$userId]);
 
-        return ConsentListDeserialiser::fromJson($consentListJson);
+        return ConsentListFactory::create($consentListJson);
     }
 }
