@@ -34,37 +34,37 @@ use OpenConext\Profile\Value\Url;
 final class ConsentListFactory
 {
     /**
-     * @param mixed $struct
+     * @param mixed $data
      * @return ConsentList
      */
-    public static function create($struct)
+    public static function create($data)
     {
-        Assert::isArray($struct, 'Consent list JSON structure must be an associative array, got %s');
+        Assert::isArray($data, 'Consent list JSON structure must be an associative array, got %s');
 
-        return new ConsentList(array_map([self::class, 'createConsent'], $struct));
+        return new ConsentList(array_map([self::class, 'createConsent'], $data));
     }
 
     /**
-     * @param mixed $struct
+     * @param mixed $data
      * @return Consent
      *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createConsent($struct)
+    private static function createConsent($data)
     {
-        Assert::keyExists($struct, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
-        Assert::keyExists($struct, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
-        Assert::keyExists($struct, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
+        Assert::keyExists($data, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
+        Assert::keyExists($data, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
+        Assert::keyExists($data, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
 
-        $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $struct['consent_given_on']);
-        $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $struct['last_used_on']);
+        $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['consent_given_on']);
+        $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['last_used_on']);
 
         Assert::isInstanceOf(
             $consentGivenOn,
             DateTimeImmutable::class,
             sprintf(
                 'Consent given on date must be formatted according to the ISO8601 standard, got "%s"',
-                $struct['consent_given_on']
+                $data['consent_given_on']
             )
         );
         Assert::isInstanceOf(
@@ -72,39 +72,39 @@ final class ConsentListFactory
             DateTimeImmutable::class,
             sprintf(
                 'Last used on date must be formatted according to the ISO8601 standard, got "%s"',
-                $struct['last_used_on']
+                $data['last_used_on']
             )
         );
 
         return new Consent(
-            self::createServiceProvider($struct['service_provider']),
+            self::createServiceProvider($data['service_provider']),
             $consentGivenOn,
             $lastUsedOn
         );
     }
 
     /**
-     * @param mixed $struct
+     * @param mixed $data
      * @return ServiceProvider
      */
-    private static function createServiceProvider($struct)
+    private static function createServiceProvider($data)
     {
-        Assert::keyExists($struct, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
-        Assert::keyExists($struct, 'display_name', 'Consent JSON structure must contain key "display_name"');
-        Assert::keyExists($struct, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
-        Assert::keyExists($struct, 'support_email', 'Consent JSON structure must contain key "support_email"');
+        Assert::keyExists($data, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
+        Assert::keyExists($data, 'display_name', 'Consent JSON structure must contain key "display_name"');
+        Assert::keyExists($data, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
+        Assert::keyExists($data, 'support_email', 'Consent JSON structure must contain key "support_email"');
 
-        $entity       = new Entity(new EntityId($struct['entity_id']), EntityType::SP());
-        $displayName  = new DisplayName($struct['display_name']);
+        $entity       = new Entity(new EntityId($data['entity_id']), EntityType::SP());
+        $displayName  = new DisplayName($data['display_name']);
         $eulaUrl      = null;
         $supportEmail = null;
 
-        if ($struct['eula_url'] !== null) {
-            $eulaUrl = new Url($struct['eula_url']);
+        if ($data['eula_url'] !== null) {
+            $eulaUrl = new Url($data['eula_url']);
         }
 
-        if ($struct['support_email'] !== null) {
-            $supportEmail = new EmailAddress($struct['support_email']);
+        if ($data['support_email'] !== null) {
+            $supportEmail = new EmailAddress($data['support_email']);
         }
 
         return new ServiceProvider($entity, $displayName, $eulaUrl, $supportEmail);

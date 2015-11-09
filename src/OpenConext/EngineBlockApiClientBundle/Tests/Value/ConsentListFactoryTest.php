@@ -44,7 +44,7 @@ final class ConsentListFactoryTest extends TestCase
         $firstEula          = 'https://domain.invalid';
         $secondSupportEmail = 'support@openconext.org';
 
-        $struct = [
+        $given = [
             [
                 'service_provider' => [
                     'entity_id'     => $firstEntityId,
@@ -90,6 +90,6 @@ final class ConsentListFactoryTest extends TestCase
             ),
         ]);
 
-        $this->assertEquals($expectedConsentList, ConsentListFactory::create($struct));
+        $this->assertEquals($expectedConsentList, ConsentListFactory::create($given));
     }
 }
