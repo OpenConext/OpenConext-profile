@@ -52,9 +52,9 @@ final class ConsentListDeserialiser
      */
     private static function consentFromJson($json)
     {
-        Assert::keyExists($json, 'service_provider', "Consent JSON structure must contain key 'service_provider'");
-        Assert::keyExists($json, 'consent_given_on', "Consent JSON structure must contain key 'consent_given_on'");
-        Assert::keyExists($json, 'last_used_on', "Consent JSON structure must contain key 'last_used_on'");
+        Assert::keyExists($json, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
+        Assert::keyExists($json, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
+        Assert::keyExists($json, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
 
         $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $json['consent_given_on']);
         $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $json['last_used_on']);
@@ -89,10 +89,10 @@ final class ConsentListDeserialiser
      */
     private static function serviceProviderFromJson($json)
     {
-        Assert::keyExists($json, 'entity_id', "Consent JSON structure must contain key 'entity_id'");
-        Assert::keyExists($json, 'display_name', "Consent JSON structure must contain key 'display_name'");
-        Assert::keyExists($json, 'eula_url', "Consent JSON structure must contain key 'eula_url'");
-        Assert::keyExists($json, 'support_email', "Consent JSON structure must contain key 'support_email'");
+        Assert::keyExists($json, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
+        Assert::keyExists($json, 'display_name', 'Consent JSON structure must contain key "display_name"');
+        Assert::keyExists($json, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
+        Assert::keyExists($json, 'support_email', 'Consent JSON structure must contain key "support_email"');
 
         $entity       = new Entity(new EntityId($json['entity_id']), EntityType::SP());
         $displayName  = new DisplayName($json['display_name']);
