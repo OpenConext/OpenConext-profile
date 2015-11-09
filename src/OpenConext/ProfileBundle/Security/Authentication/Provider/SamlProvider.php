@@ -40,7 +40,7 @@ class SamlProvider implements AuthenticationProviderInterface
     {
         $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
 
-        $user = new User($translatedAssertion->getAttributeSet());
+        $user = new User($translatedAssertion->getNameID(), $translatedAssertion->getAttributeSet());
 
         $authenticatedToken = new SamlToken(['ROLE_USER']);
         $authenticatedToken->setUser($user);

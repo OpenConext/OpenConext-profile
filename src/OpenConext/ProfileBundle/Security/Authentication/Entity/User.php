@@ -18,21 +18,30 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
+use OpenConext\ProfileBundle\Assert;
 use Serializable;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class User implements Serializable
 {
     /**
+     * @var string
+     */
+    private $nameId;
+    /**
      * @var AttributeSet
      */
     private $attributes;
 
     /**
+     * @param string $nameId
      * @param AttributeSet $attributes
      */
-    public function __construct(AttributeSet $attributes)
+    public function __construct($nameId, AttributeSet $attributes)
     {
+        Assert::string($nameId);
+
+        $this->nameId = $nameId;
         $this->attributes = $attributes;
     }
 
@@ -46,12 +55,18 @@ class User implements Serializable
 
     public function serialize()
     {
-        return serialize($this->attributes);
+        return serialize([
+            $this->nameId,
+            $this->attributes
+        ]);
     }
 
     public function unserialize($serialized)
     {
-        $this->attributes = unserialize($serialized);
+        list(
+            $this->nameId,
+            $this->attributes
+        ) = unserialize($serialized);
     }
 
     /**
@@ -63,6 +78,6 @@ class User implements Serializable
      */
     public function __toString()
     {
-        return serialize($this);
+        return $this->nameId;
     }
 }
