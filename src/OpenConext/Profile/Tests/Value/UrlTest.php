@@ -47,13 +47,4 @@ class UrlTest extends TestCase
     {
         (new Url($nonString));
     }
-
-    /**
-     * @test
-     * @group value
-     */
-    public function its_scheme_can_be_verified()
-    {
-        $this->assertTrue((new Url('https://sp.invalid'))->hasScheme('https'));
-    }
 }

@@ -30,11 +30,6 @@ final class Url
     private $url;
 
     /**
-     * @var (string|int|null)[]
-     */
-    private $parts;
-
-    /**
      * @param string $url
      */
     public function __construct($url)
@@ -45,34 +40,7 @@ final class Url
             throw new InvalidArgumentException('URL must be valid');
         }
 
-        $parts = parse_url($url);
-
-        if ($parts === false) {
-            throw new LogicException('URL is valid, yet cannot be decomposed into its constituent parts');
-        }
-
         $this->url = $url;
-        $this->parts = $parts + [
-            'scheme'   => null,
-            'host'     => null,
-            'port'     => null,
-            'user'     => null,
-            'pass'     => null,
-            'path'     => null,
-            'query'    => null,
-            'fragment' => null,
-        ];
-    }
-
-    /**
-     * @param string $scheme
-     * @return bool
-     */
-    public function hasScheme($scheme)
-    {
-        Assert::string($scheme);
-
-        return strtolower($this->parts['scheme']) === strtolower($scheme);
     }
 
     /**
