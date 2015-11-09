@@ -36,7 +36,6 @@ final class Url
 
     /**
      * @param string $url
-     * @return Url
      */
     public function __construct($url)
     {
