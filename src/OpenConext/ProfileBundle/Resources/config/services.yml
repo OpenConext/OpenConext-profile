@@ -52,9 +52,9 @@ services:
             - @session
 
     profile.session:
-            class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
-            factory: ['@session', 'getBag']
-            arguments: ['profile']
+        class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
+        factory: ['@session', 'getBag']
+        arguments: ['profile']
 
     profile.session.namespaced_attribute_bag:
         public: false
