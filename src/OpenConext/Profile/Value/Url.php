@@ -19,8 +19,6 @@
 namespace OpenConext\Profile\Value;
 
 use InvalidArgumentException;
-use OpenConext\Profile\Assert;
-use OpenConext\Profile\Exception\LogicException;
 
 final class Url
 {
@@ -34,8 +32,6 @@ final class Url
      */
     public function __construct($url)
     {
-        Assert::string($url, 'URL must be string');
-
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
             throw new InvalidArgumentException('URL must be valid');
         }
