@@ -23,7 +23,7 @@
 
                 <nav class="mdl-navigation hide-mobile">
                     {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
-                    <a class="mdl-navigation__link" href="https://wiki.surfnet.nl/display/conextsupport/Profile+page">{{ 'profile.navigation.help'|trans }}<i class="fa fa-question-circle"></i></a>
+                    <a class="mdl-navigation__link" href="{{ global_view_parameters.helpUrl }}">{{ 'profile.navigation.help'|trans }}<i class="fa fa-question-circle"></i></a>
                 </nav>
 
                 <nav class="mdl-navigation show-mobile">
@@ -53,7 +53,7 @@
                 <div class="mdl-cell mdl-cell--10-col">
                     <div class="mdl-grid">
                         <div class="footer-left mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
-                            <p>{{ 'profile.notice.surfconext_connected_service'|trans|escape|format('<a href="https://www.surfconext.nl">SURFconext</a>')|raw }}</p>
+                            <p>{{ 'profile.application.platform_connection_description'|trans }} <a href="{{ global_view_parameters.platformUrl }}">{{ 'profile.application.platform_connection_name'|trans }}</a></p>
                         </div>
                         <div class="footer-mid mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
                             {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
@@ -61,10 +61,10 @@
                         <div class="footer-right mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
                             <ul class="footer-navigation">
                                 <li>
-                                    <a href="https://wiki.surfnet.nl/display/conextsupport/Profile+page">{{ 'profile.navigation.help'|trans }}</a>
+                                    <a href="{{ global_view_parameters.helpUrl }}">{{ 'profile.navigation.help'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ 'profile.navigation.terms_of_service.link'|trans }}">{{ 'profile.navigation.terms_of_service'|trans }}</a>
+                                    <a href="{{ global_view_parameters.termsOfServiceUrl }}">{{ 'profile.navigation.terms_of_service'|trans }}</a>
                                 </li>
                             </ul>
                         </div>

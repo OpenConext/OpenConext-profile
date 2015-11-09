@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: global_view_parameters.yml }
 
 parameters:
     locales: [en, nl]
@@ -41,6 +42,8 @@ monolog:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        global_view_parameters: "@profile.global_view_parameters"
 
 jms_translation:
     locales: %locales%

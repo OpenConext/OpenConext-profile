@@ -19,6 +19,15 @@ services:
         tags:
             - { name: twig.extension }
 
+    profile.global_view_parameters:
+        class: OpenConext\ProfileBundle\Service\GlobalViewParameters
+        arguments:
+            - @translator
+            - %locales%
+            - %help_url%
+            - %platform_url%
+            - %terms_of_service_url%
+
     profile.security.authentication.provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
         arguments:
