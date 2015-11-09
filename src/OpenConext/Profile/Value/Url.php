@@ -18,7 +18,7 @@
 
 namespace OpenConext\Profile\Value;
 
-use InvalidArgumentException;
+use OpenConext\Profile\Exception\InvalidArgumentException;
 
 final class Url
 {

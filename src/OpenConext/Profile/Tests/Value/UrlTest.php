@@ -39,12 +39,12 @@ class UrlTest extends TestCase
      * @test
      * @group value
      * @dataProvider nonStringProvider
-     * @expectedException \OpenConext\Profile\Exception\AssertionFailedException
+     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      *
      * @param mixed $nonString
      */
     public function it_doesnt_accept_anything_else_than_strings($nonString)
     {
-        (new Url($nonString));
+        new Url($nonString);
     }
 }
