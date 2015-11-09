@@ -16,11 +16,10 @@
  * limitations under the License.
  */
 
-namespace OpenConext\ProfileBundle;
+namespace OpenConext\EngineBlockApiClientBundle\Exception;
 
-use Assert\Assertion as BaseAssertion;
+use RuntimeException as CoreRuntimeException;
 
-class Assert extends BaseAssertion
+class RuntimeException extends CoreRuntimeException implements OpenConextEngineBlockApiClientException
 {
-    protected static $exceptionClass = 'OpenConext\ProfileBundle\Exception\AssertionFailedException';
 }

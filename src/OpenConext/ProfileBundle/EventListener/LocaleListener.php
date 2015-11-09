@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\EventListener;
 
-use OpenConext\ProfileBundle\Assert;
+use OpenConext\Profile\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
