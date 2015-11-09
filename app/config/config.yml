@@ -72,7 +72,6 @@ surfnet_saml:
 
 open_conext_engine_block_api_client:
     http_client:
-        base_url: 'https://engine-api.vm.openconext.org/'
-        verify_ssl: false
-        username: profile
-        password: secret
+        base_url: %engineblock_api_base_url%
+        username: %engineblock_api_username%
+        password: %engineblock_api_password%

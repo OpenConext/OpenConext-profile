@@ -21,3 +21,7 @@ monolog:
             type:     syslog
             ident:    openconext-profile
             facility: user
+
+open_conext_engine_block_api_client:
+    http_client:
+        verify_ssl: %engineblock_api_verify_ssl%
