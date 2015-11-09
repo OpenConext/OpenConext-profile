@@ -30,9 +30,9 @@ class UrlTest extends TestCase
      * @test
      * @group value
      */
-    public function it_can_be_deserialised()
+    public function one_can_be_created_with_a_valid_url()
     {
-        (new Url('https://domain.invalid'));
+        new Url('https://domain.invalid');
     }
 
     /**
