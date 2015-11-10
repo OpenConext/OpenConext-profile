@@ -50,5 +50,4 @@
   notify: Restart php-fpm
 
 - name: Configure PHP-FPM to run on boot
-  command: chkconfig php-fpm on
-
+  service: name=php-fpm enabled=yes
