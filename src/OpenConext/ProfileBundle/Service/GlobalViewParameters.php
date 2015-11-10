@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use InvalidArgumentException;
+use OpenConext\Profile\Assert;
 use Symfony\Component\Translation\DataCollectorTranslator;
 
 class GlobalViewParameters
@@ -27,11 +28,6 @@ class GlobalViewParameters
      * @var DataCollectorTranslator
      */
     private $translator;
-
-    /**
-     * @var array
-     */
-    private $locales;
 
     /**
      * @var array
@@ -49,12 +45,32 @@ class GlobalViewParameters
 
     /**
      * @param DataCollectorTranslator $translator
-     * @param array $locales
      * @param array $helpUrls
      * @param array $platformUrls
      * @param array $termsOfServiceUrls
      */
-    public function __construct(
+    private function __construct(
+        DataCollectorTranslator $translator,
+        array $helpUrls,
+        array $platformUrls,
+        array $termsOfServiceUrls
+    ) {
+
+        $this->translator = $translator;
+        $this->helpUrls = $helpUrls;
+        $this->platformUrls = $platformUrls;
+        $this->termsOfServiceUrls = $termsOfServiceUrls;
+    }
+
+    /**
+     * @param DataCollectorTranslator $translator
+     * @param array $locales
+     * @param array $helpUrls
+     * @param array $platformUrls
+     * @param array $termsOfServiceUrls
+     * @return GlobalViewParameters
+     */
+    public static function createForLocales(
         DataCollectorTranslator $translator,
         array $locales,
         array $helpUrls,
@@ -65,15 +81,42 @@ class GlobalViewParameters
             throw new InvalidArgumentException(sprintf(
                 'Locale "%s" is not configured as a valid locale. Currently configured locales: %s',
                 $translator->getLocale(),
-                explode(', ', $locales)
+                implode(', ', $locales)
             ));
         }
 
-        $this->translator = $translator;
-        $this->locales = $locales;
-        $this->helpUrls = $helpUrls;
-        $this->platformUrls = $platformUrls;
-        $this->termsOfServiceUrls = $termsOfServiceUrls;
+        foreach ($locales as $locale) {
+            Assert::keyExists($helpUrls, $locale, sprintf('Locale "%s" not configured for helpUrls', $locale));
+            Assert::keyExists($platformUrls, $locale, sprintf('Locale "%s" not configured for platformUrls', $locale));
+            Assert::keyExists($termsOfServiceUrls, $locale, sprintf(
+                'Locale "%s" not configured for termsOfServiceUrls',
+                $locale
+            ));
+        }
+
+        self::checkIfNoExtraLocales($helpUrls, $locales, 'helpUrls');
+        self::checkIfNoExtraLocales($platformUrls, $locales, 'platformUrls');
+        self::checkIfNoExtraLocales($termsOfServiceUrls, $locales, 'termsOfServiceUrls');
+
+        return new self($translator, $helpUrls, $platformUrls, $termsOfServiceUrls);
+    }
+
+    /**
+     * @param $translations
+     * @param $allowedLocales
+     * @param $name
+     */
+    private static function checkIfNoExtraLocales($translations, $allowedLocales, $name)
+    {
+        $localeDifference = array_diff(array_keys($translations), $allowedLocales);
+
+        if (!empty($localeDifference)) {
+            throw new InvalidArgumentException(sprintf(
+                'Unconfigured locales defined for %s: %s',
+                $name,
+                implode(', ', $localeDifference)
+            ));
+        }
     }
 
     /**
