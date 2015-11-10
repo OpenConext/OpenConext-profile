@@ -1,3 +1,4 @@
+# Strings containing '%' should be escaped by prepending '%'
 parameters:
     help_url:
         en: "https://wiki.surfnet.nl/display/conextsupport/Profile+page"
