@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-11-09T11:43:15Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-11-10T12:14:02Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -19,7 +19,7 @@
       <trans-unit id="18e70a3e75cc5e9f61e4a379a265ae1bcdb71148" resname="profile.application.platform_connection_name">
         <jms:reference-file line="56">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.platform_connection_name</source>
-        <target>SURFConext</target>
+        <target>SURFconext</target>
       </trans-unit>
       <trans-unit id="d25aa7a2e9d40a5e7039dd3b93bd91eea40251c5" resname="profile.application.title">
         <jms:reference-file line="6">Resources/views/base.html.twig</jms:reference-file>
