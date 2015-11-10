@@ -16,10 +16,9 @@
  * limitations under the License.
  */
 
-namespace OpenConext\ProfileBundle\Exception;
+namespace OpenConext\Profile\Exception;
 
 use Assert\AssertionFailedException as AssertAssertionFailedException;
-use InvalidArgumentException;
 
 class AssertionFailedException extends InvalidArgumentException implements AssertAssertionFailedException
 {

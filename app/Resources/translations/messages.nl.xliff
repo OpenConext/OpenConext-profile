@@ -118,6 +118,16 @@
         <source>profile.services.short_title</source>
         <target>Mijn diensten</target>
       </trans-unit>
+      <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
+        <jms:reference-file line="14">views/Profile/overview.html.twig</jms:reference-file>
+        <source>profile.table.attribute_name</source>
+        <target>Attribuut</target>
+      </trans-unit>
+      <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
+        <jms:reference-file line="15">views/Profile/overview.html.twig</jms:reference-file>
+        <source>profile.table.attribute_value</source>
+        <target>Waarde</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

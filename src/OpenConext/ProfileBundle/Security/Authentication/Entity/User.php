@@ -18,27 +18,49 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
-class User
+use OpenConext\ProfileBundle\Assert;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
+
+final class User
 {
     /**
      * @var string
      */
-    public $nameId;
+    private $nameId;
+    /**
+     * @var AttributeSet
+     */
+    private $attributes;
 
     /**
-     * @var string
+     * @param AssertionAdapter $assertionAdapter
+     * @return User
      */
-    public $institution;
+    public static function createFrom(AssertionAdapter $assertionAdapter)
+    {
+        return new self($assertionAdapter->getNameId(), $assertionAdapter->getAttributeSet());
+    }
 
     /**
-     * @var string
+     * @param string $nameId
+     * @param AttributeSet $attributes
      */
-    public $email;
+    private function __construct($nameId, AttributeSet $attributes)
+    {
+        Assert::string($nameId);
+
+        $this->nameId = $nameId;
+        $this->attributes = $attributes;
+    }
 
     /**
-     * @var string
+     * @return AttributeSet
      */
-    public $commonName;
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
 
     /**
      * Using toString in order to comply with AbstractToken's setUser method,
@@ -49,11 +71,6 @@ class User
      */
     public function __toString()
     {
-        return serialize([
-            $this->nameId,
-            $this->institution,
-            $this->email,
-            $this->commonName
-        ]);
+        return $this->nameId;
     }
 }

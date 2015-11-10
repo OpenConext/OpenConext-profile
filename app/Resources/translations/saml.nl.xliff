@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-11-06T12:00:09Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="e54f533f4cd55a16a89ac753eb99544c9e6f0d05" resname="profile.saml.attribute.aRecord">
+        <jms:reference-file line="115">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.aRecord</source>
+        <target state="new">profile.saml.attribute.aRecord</target>
+      </trans-unit>
+      <trans-unit id="ec5cbb1c68e623617925d46086f74182eef38c0a" resname="profile.saml.attribute.aliasedEntryName">
+        <jms:reference-file line="117">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.aliasedEntryName</source>
+        <target state="new">profile.saml.attribute.aliasedEntryName</target>
+      </trans-unit>
+      <trans-unit id="f7593c1fd88debb4ec62c588c75c393dd55b08ca" resname="profile.saml.attribute.aliasedObjectName">
+        <jms:reference-file line="119">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.aliasedObjectName</source>
+        <target state="new">profile.saml.attribute.aliasedObjectName</target>
+      </trans-unit>
+      <trans-unit id="52f7de8ee58db017beb90dddc77b5c5e5bfe4b01" resname="profile.saml.attribute.associatedDomain">
+        <jms:reference-file line="121">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.associatedDomain</source>
+        <target state="new">profile.saml.attribute.associatedDomain</target>
+      </trans-unit>
+      <trans-unit id="c232e7cf592863b9db8ba5b5340662d9452cc014" resname="profile.saml.attribute.associatedName">
+        <jms:reference-file line="123">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.associatedName</source>
+        <target state="new">profile.saml.attribute.associatedName</target>
+      </trans-unit>
+      <trans-unit id="e4e1184917a70c8ac9addfa6fe7dd6b1d5bccc1a" resname="profile.saml.attribute.audio">
+        <jms:reference-file line="63">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.audio</source>
+        <target state="new">profile.saml.attribute.audio</target>
+      </trans-unit>
+      <trans-unit id="7c28f3eeea422ebe79619d0bb2a4a93814a47b3c" resname="profile.saml.attribute.authorityRevocationList">
+        <jms:reference-file line="125">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.authorityRevocationList</source>
+        <target state="new">profile.saml.attribute.authorityRevocationList</target>
+      </trans-unit>
+      <trans-unit id="7602c86a22be744d163b932af1e7815725550bf7" resname="profile.saml.attribute.buildingName">
+        <jms:reference-file line="127">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.buildingName</source>
+        <target state="new">profile.saml.attribute.buildingName</target>
+      </trans-unit>
+      <trans-unit id="babe357dd0ff7ea000b8619e6164dc61d68d8425" resname="profile.saml.attribute.businessCategory">
+        <jms:reference-file line="129">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.businessCategory</source>
+        <target state="new">profile.saml.attribute.businessCategory</target>
+      </trans-unit>
+      <trans-unit id="17d48b80c3ad5fddcf82cf0ac9236021bf8e8b64" resname="profile.saml.attribute.c">
+        <jms:reference-file line="131">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.c</source>
+        <target state="new">profile.saml.attribute.c</target>
+      </trans-unit>
+      <trans-unit id="5b894fea4eb31c1edd6d0086589ce30eaf7fd4dd" resname="profile.saml.attribute.cACertificate">
+        <jms:reference-file line="135">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.cACertificate</source>
+        <target state="new">profile.saml.attribute.cACertificate</target>
+      </trans-unit>
+      <trans-unit id="613ddc802d2dfc65584e64122809cf9a421380bb" resname="profile.saml.attribute.cNAMERecord">
+        <jms:reference-file line="137">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.cNAMERecord</source>
+        <target state="new">profile.saml.attribute.cNAMERecord</target>
+      </trans-unit>
+      <trans-unit id="0ba2c27639fb86ecf02a378b0a86ea16db233311" resname="profile.saml.attribute.carLicense">
+        <jms:reference-file line="139">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.carLicense</source>
+        <target state="new">profile.saml.attribute.carLicense</target>
+      </trans-unit>
+      <trans-unit id="88cacef922b0ee58596fdc0428eb5d0bf3a1ab38" resname="profile.saml.attribute.certificateRevocationList">
+        <jms:reference-file line="141">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.certificateRevocationList</source>
+        <target state="new">profile.saml.attribute.certificateRevocationList</target>
+      </trans-unit>
+      <trans-unit id="fb5ef48aeb9b22c44a39e5e8730fe582d05ba1d9" resname="profile.saml.attribute.co">
+        <jms:reference-file line="143">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.co</source>
+        <target state="new">profile.saml.attribute.co</target>
+      </trans-unit>
+      <trans-unit id="1db093b4752109d5448b79f9fc3e083e1a8b1943" resname="profile.saml.attribute.commonName">
+        <jms:reference-file line="1">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.commonName</source>
+        <target>Volledige persoonsnaam</target>
+      </trans-unit>
+      <trans-unit id="c62c18c4728fa4d91920d575aed18bbc00143ac8" resname="profile.saml.attribute.countryName">
+        <jms:reference-file line="133">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.countryName</source>
+        <target state="new">profile.saml.attribute.countryName</target>
+      </trans-unit>
+      <trans-unit id="4cb5acf02c248cf005606b57ac68dba7ae240ab7" resname="profile.saml.attribute.crossCertificatePair">
+        <jms:reference-file line="147">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.crossCertificatePair</source>
+        <target state="new">profile.saml.attribute.crossCertificatePair</target>
+      </trans-unit>
+      <trans-unit id="1cc22e76688e125f1bd6a88483ea8667fe66e551" resname="profile.saml.attribute.dITRedirect">
+        <jms:reference-file line="149">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.dITRedirect</source>
+        <target state="new">profile.saml.attribute.dITRedirect</target>
+      </trans-unit>
+      <trans-unit id="67a9787721b710d7acd256dc78d547e18af46638" resname="profile.saml.attribute.dSAQuality">
+        <jms:reference-file line="151">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.dSAQuality</source>
+        <target state="new">profile.saml.attribute.dSAQuality</target>
+      </trans-unit>
+      <trans-unit id="bab0a8c8a01421b6f1085232ba46ec8f41217028" resname="profile.saml.attribute.dc">
+        <jms:reference-file line="153">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.dc</source>
+        <target state="new">profile.saml.attribute.dc</target>
+      </trans-unit>
+      <trans-unit id="820a2f6272daa1937562be2d4e83b8dadea43457" resname="profile.saml.attribute.deltaRevocationList">
+        <jms:reference-file line="157">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.deltaRevocationList</source>
+        <target state="new">profile.saml.attribute.deltaRevocationList</target>
+      </trans-unit>
+      <trans-unit id="42090b9f9244c8234690d123523e5daf05a62fa6" resname="profile.saml.attribute.departmentNumber">
+        <jms:reference-file line="159">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.departmentNumber</source>
+        <target state="new">profile.saml.attribute.departmentNumber</target>
+      </trans-unit>
+      <trans-unit id="73fd8cf1f9e59bc6db1cae860775843e518afd08" resname="profile.saml.attribute.description">
+        <jms:reference-file line="65">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.description</source>
+        <target state="new">profile.saml.attribute.description</target>
+      </trans-unit>
+      <trans-unit id="9b2a30b37bc380640dbde445489a26dda4567997" resname="profile.saml.attribute.destinationIndicator">
+        <jms:reference-file line="161">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.destinationIndicator</source>
+        <target state="new">profile.saml.attribute.destinationIndicator</target>
+      </trans-unit>
+      <trans-unit id="174e5565fff41b701f721fa871cd6b427f74d14e" resname="profile.saml.attribute.displayName">
+        <jms:reference-file line="3">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.displayName</source>
+        <target>Weergavenaam</target>
+      </trans-unit>
+      <trans-unit id="60139ddead4b257fd3b50ac9ada919656205c981" resname="profile.saml.attribute.distinguishedName">
+        <jms:reference-file line="163">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.distinguishedName</source>
+        <target state="new">profile.saml.attribute.distinguishedName</target>
+      </trans-unit>
+      <trans-unit id="488c1817cfddbec786190c66ebbfe6779b7e20a4" resname="profile.saml.attribute.dmdName">
+        <jms:reference-file line="165">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.dmdName</source>
+        <target state="new">profile.saml.attribute.dmdName</target>
+      </trans-unit>
+      <trans-unit id="7a31e7021df081eb350304620a2268408c701d1d" resname="profile.saml.attribute.dnQualifier">
+        <jms:reference-file line="167">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.dnQualifier</source>
+        <target state="new">profile.saml.attribute.dnQualifier</target>
+      </trans-unit>
+      <trans-unit id="afded0350627f1183b0f396c427511c6f1dca570" resname="profile.saml.attribute.documentAuthor">
+        <jms:reference-file line="169">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.documentAuthor</source>
+        <target state="new">profile.saml.attribute.documentAuthor</target>
+      </trans-unit>
+      <trans-unit id="b955c683225fc1ef8a8c6b6b5d99ce66d69ed035" resname="profile.saml.attribute.documentIdentifier">
+        <jms:reference-file line="171">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.documentIdentifier</source>
+        <target state="new">profile.saml.attribute.documentIdentifier</target>
+      </trans-unit>
+      <trans-unit id="e86821676dac849e80d6cc9f5f16c41c415d44a9" resname="profile.saml.attribute.documentLocation">
+        <jms:reference-file line="173">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.documentLocation</source>
+        <target state="new">profile.saml.attribute.documentLocation</target>
+      </trans-unit>
+      <trans-unit id="a720f4e7de4ed8f46e17e3e58e9095f4b8929141" resname="profile.saml.attribute.documentPublisher">
+        <jms:reference-file line="175">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.documentPublisher</source>
+        <target state="new">profile.saml.attribute.documentPublisher</target>
+      </trans-unit>
+      <trans-unit id="cc22dfa1d67791baf5e9b471dd5a2dc077b49515" resname="profile.saml.attribute.documentTitle">
+        <jms:reference-file line="177">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.documentTitle</source>
+        <target state="new">profile.saml.attribute.documentTitle</target>
+      </trans-unit>
+      <trans-unit id="8948d997a7a382976ad577ee44492a2608fe6191" resname="profile.saml.attribute.documentVersion">
+        <jms:reference-file line="179">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.documentVersion</source>
+        <target state="new">profile.saml.attribute.documentVersion</target>
+      </trans-unit>
+      <trans-unit id="77bfcbfd2e14abc4488d99de059d9d56aeb03571" resname="profile.saml.attribute.domainComponent">
+        <jms:reference-file line="155">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.domainComponent</source>
+        <target state="new">profile.saml.attribute.domainComponent</target>
+      </trans-unit>
+      <trans-unit id="65cdefbc2404d3e05f123c69d8424fefbda49bbb" resname="profile.saml.attribute.drink">
+        <jms:reference-file line="181">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.drink</source>
+        <target state="new">profile.saml.attribute.drink</target>
+      </trans-unit>
+      <trans-unit id="b5b0e19c9d7acfddad072a26dd1238de577b874e" resname="profile.saml.attribute.eduOrgHomePageURI">
+        <jms:reference-file line="185">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduOrgHomePageURI</source>
+        <target state="new">profile.saml.attribute.eduOrgHomePageURI</target>
+      </trans-unit>
+      <trans-unit id="e5b74421167790c0dfc899466681bc3d325fd138" resname="profile.saml.attribute.eduOrgIdentityAuthNPolicyURI">
+        <jms:reference-file line="187">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduOrgIdentityAuthNPolicyURI</source>
+        <target state="new">profile.saml.attribute.eduOrgIdentityAuthNPolicyURI</target>
+      </trans-unit>
+      <trans-unit id="457d1d412f560561e0a47aaab643aeede16b4396" resname="profile.saml.attribute.eduOrgLegalName">
+        <jms:reference-file line="189">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduOrgLegalName</source>
+        <target state="new">profile.saml.attribute.eduOrgLegalName</target>
+      </trans-unit>
+      <trans-unit id="3d2df1f2a741a900f18729a4f34cdea30ad7a850" resname="profile.saml.attribute.eduOrgSuperiorURI">
+        <jms:reference-file line="191">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduOrgSuperiorURI</source>
+        <target state="new">profile.saml.attribute.eduOrgSuperiorURI</target>
+      </trans-unit>
+      <trans-unit id="bc8aec20cd0f0daf439f7a14def83d9a15e17041" resname="profile.saml.attribute.eduOrgWhitePagesURI">
+        <jms:reference-file line="193">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduOrgWhitePagesURI</source>
+        <target state="new">profile.saml.attribute.eduOrgWhitePagesURI</target>
+      </trans-unit>
+      <trans-unit id="b77ec432228611bb9c7979178776c6b38951450a" resname="profile.saml.attribute.eduPersonAffiliation">
+        <jms:reference-file line="5">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonAffiliation</source>
+        <target>Betrekking</target>
+      </trans-unit>
+      <trans-unit id="4e1d6cc4879581ec6841796b738ac6d2d6532832" resname="profile.saml.attribute.eduPersonAssurance">
+        <jms:reference-file line="61">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonAssurance</source>
+        <target state="new">profile.saml.attribute.eduPersonAssurance</target>
+      </trans-unit>
+      <trans-unit id="c3911fce4ac88ee8bda26ce3fd87313e5f954b7c" resname="profile.saml.attribute.eduPersonEntitlement">
+        <jms:reference-file line="7">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonEntitlement</source>
+        <target>Recht</target>
+      </trans-unit>
+      <trans-unit id="d88796f010a96179da3d038b41361a69caccaa9c" resname="profile.saml.attribute.eduPersonNickname">
+        <jms:reference-file line="51">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonNickname</source>
+        <target state="new">profile.saml.attribute.eduPersonNickname</target>
+      </trans-unit>
+      <trans-unit id="932f40f8a79aef9568a23495eb0e2ff74ccf1545" resname="profile.saml.attribute.eduPersonOrgDN">
+        <jms:reference-file line="53">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonOrgDN</source>
+        <target state="new">profile.saml.attribute.eduPersonOrgDN</target>
+      </trans-unit>
+      <trans-unit id="e76440ba11d5d7d88fb7c73696ebcdfc96299de1" resname="profile.saml.attribute.eduPersonOrgUnitDN">
+        <jms:reference-file line="55">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonOrgUnitDN</source>
+        <target state="new">profile.saml.attribute.eduPersonOrgUnitDN</target>
+      </trans-unit>
+      <trans-unit id="8eca54fbee7488cf3493f69ba319a559a4d7887c" resname="profile.saml.attribute.eduPersonPrimaryAffiliation">
+        <jms:reference-file line="57">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonPrimaryAffiliation</source>
+        <target state="new">profile.saml.attribute.eduPersonPrimaryAffiliation</target>
+      </trans-unit>
+      <trans-unit id="1452b5c77b18a0c94f9c92bcad547c8fb66f1349" resname="profile.saml.attribute.eduPersonPrincipalName">
+        <jms:reference-file line="9">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonPrincipalName</source>
+        <target>Gebruikers-ID bij de instelling</target>
+      </trans-unit>
+      <trans-unit id="61db471726ccfd733ab857c2265fe798a2745aa4" resname="profile.saml.attribute.eduPersonScopedAffiliation">
+        <jms:reference-file line="59">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonScopedAffiliation</source>
+        <target state="new">profile.saml.attribute.eduPersonScopedAffiliation</target>
+      </trans-unit>
+      <trans-unit id="e1da5196c8a746b436760b1976816649a0e4e454" resname="profile.saml.attribute.eduPersonTargetedID">
+        <jms:reference-file line="47">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.eduPersonTargetedID</source>
+        <target>Identifier</target>
+      </trans-unit>
+      <trans-unit id="ee89a0b8fafc82ecbd1ffe2756b212b5490f8d8b" resname="profile.saml.attribute.email">
+        <jms:reference-file line="195">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.email</source>
+        <target>E-mailadres</target>
+      </trans-unit>
+      <trans-unit id="d358bb595516a535db6b291535bc647c2c927e76" resname="profile.saml.attribute.emailAddress">
+        <jms:reference-file line="197">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.emailAddress</source>
+        <target>E-mailadres</target>
+      </trans-unit>
+      <trans-unit id="424276e5faaf0a23b48376c7e312a21f4dec56e1" resname="profile.saml.attribute.employeeNumber">
+        <jms:reference-file line="201">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.employeeNumber</source>
+        <target state="new">profile.saml.attribute.employeeNumber</target>
+      </trans-unit>
+      <trans-unit id="b3bfd41fc93e4100725c6aa867449a3504fcdeb6" resname="profile.saml.attribute.employeeType">
+        <jms:reference-file line="203">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.employeeType</source>
+        <target state="new">profile.saml.attribute.employeeType</target>
+      </trans-unit>
+      <trans-unit id="6b74a6c9f5e5bf760d056e0416d690764eada7d8" resname="profile.saml.attribute.enhancedSearchGuide">
+        <jms:reference-file line="205">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.enhancedSearchGuide</source>
+        <target state="new">profile.saml.attribute.enhancedSearchGuide</target>
+      </trans-unit>
+      <trans-unit id="6b5076e2c5651cbe247445c17a82d43dee430fc4" resname="profile.saml.attribute.facsimileTelephoneNumber">
+        <jms:reference-file line="67">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.facsimileTelephoneNumber</source>
+        <target state="new">profile.saml.attribute.facsimileTelephoneNumber</target>
+      </trans-unit>
+      <trans-unit id="5e15d70f83c77b07a66c5711a22f6f5adc618634" resname="profile.saml.attribute.favouriteDrink">
+        <jms:reference-file line="183">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.favouriteDrink</source>
+        <target state="new">profile.saml.attribute.favouriteDrink</target>
+      </trans-unit>
+      <trans-unit id="4c195f56c256cf4a6f8f133a132a3b2378b916cd" resname="profile.saml.attribute.fax">
+        <jms:reference-file line="207">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.fax</source>
+        <target state="new">profile.saml.attribute.fax</target>
+      </trans-unit>
+      <trans-unit id="6c240c22a852ce3b8bdedd122f731f1a758676b7" resname="profile.saml.attribute.federationFeideSchemaVersion">
+        <jms:reference-file line="209">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.federationFeideSchemaVersion</source>
+        <target state="new">profile.saml.attribute.federationFeideSchemaVersion</target>
+      </trans-unit>
+      <trans-unit id="4e60009c759c9bf4d1bf47e59f1e30e69dd9dd4f" resname="profile.saml.attribute.friendlyCountryName">
+        <jms:reference-file line="145">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.friendlyCountryName</source>
+        <target state="new">profile.saml.attribute.friendlyCountryName</target>
+      </trans-unit>
+      <trans-unit id="45091b598127804e7bb57c9f82b43e2a47572616" resname="profile.saml.attribute.generationQualifier">
+        <jms:reference-file line="211">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.generationQualifier</source>
+        <target state="new">profile.saml.attribute.generationQualifier</target>
+      </trans-unit>
+      <trans-unit id="7aee089e74b967fb3ecbc1df9d5ba893d874a221" resname="profile.saml.attribute.givenName">
+        <jms:reference-file line="11">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.givenName</source>
+        <target state="new">profile.saml.attribute.givenName</target>
+      </trans-unit>
+      <trans-unit id="9c826eab645f1db492f21c61b61096bc853fe7a0" resname="profile.saml.attribute.homePhone">
+        <jms:reference-file line="69">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.homePhone</source>
+        <target state="new">profile.saml.attribute.homePhone</target>
+      </trans-unit>
+      <trans-unit id="7f4e55b4e281738d6e9c45aebd5608c460dba7cb" resname="profile.saml.attribute.homePostalAddress">
+        <jms:reference-file line="71">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.homePostalAddress</source>
+        <target state="new">profile.saml.attribute.homePostalAddress</target>
+      </trans-unit>
+      <trans-unit id="d0432dc076a6e1556f6dacf431f4708f16870320" resname="profile.saml.attribute.homeTelephoneNumber">
+        <jms:reference-file line="213">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.homeTelephoneNumber</source>
+        <target state="new">profile.saml.attribute.homeTelephoneNumber</target>
+      </trans-unit>
+      <trans-unit id="bf9fd2c9ceaa85f136b170fc401acdd5ce2deed7" resname="profile.saml.attribute.host">
+        <jms:reference-file line="215">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.host</source>
+        <target state="new">profile.saml.attribute.host</target>
+      </trans-unit>
+      <trans-unit id="94aed60438cf9826ca9a034d3b792389bcdb2822" resname="profile.saml.attribute.houseIdentifier">
+        <jms:reference-file line="217">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.houseIdentifier</source>
+        <target state="new">profile.saml.attribute.houseIdentifier</target>
+      </trans-unit>
+      <trans-unit id="42c38756ff00feb4b5eab42e7d6ea3728106c814" resname="profile.saml.attribute.info">
+        <jms:reference-file line="219">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.info</source>
+        <target state="new">profile.saml.attribute.info</target>
+      </trans-unit>
+      <trans-unit id="7b605788dae9d98a17b724770bd11eaa8289e848" resname="profile.saml.attribute.initials">
+        <jms:reference-file line="73">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.initials</source>
+        <target state="new">profile.saml.attribute.initials</target>
+      </trans-unit>
+      <trans-unit id="1799e02b32647a71723ea3d77c23102bd8986716" resname="profile.saml.attribute.internationaliSDNNumber">
+        <jms:reference-file line="221">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.internationaliSDNNumber</source>
+        <target state="new">profile.saml.attribute.internationaliSDNNumber</target>
+      </trans-unit>
+      <trans-unit id="9401e8ad0655f1eef01653d819d2255896d68562" resname="profile.saml.attribute.isMemberOf">
+        <jms:reference-file line="49">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.isMemberOf</source>
+        <target>Organisatielidmaatschap</target>
+      </trans-unit>
+      <trans-unit id="0dcc27092fcc3a026b183bd6d4d1515dfb0c19c7" resname="profile.saml.attribute.janetMailbox">
+        <jms:reference-file line="223">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.janetMailbox</source>
+        <target state="new">profile.saml.attribute.janetMailbox</target>
+      </trans-unit>
+      <trans-unit id="e5134be71724cde5109a403ed2aad1f49895353f" resname="profile.saml.attribute.jpegPhoto">
+        <jms:reference-file line="75">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.jpegPhoto</source>
+        <target state="new">profile.saml.attribute.jpegPhoto</target>
+      </trans-unit>
+      <trans-unit id="6601b82de96aad1236c3272014906bfd09c72c18" resname="profile.saml.attribute.knowledgeInformation">
+        <jms:reference-file line="225">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.knowledgeInformation</source>
+        <target state="new">profile.saml.attribute.knowledgeInformation</target>
+      </trans-unit>
+      <trans-unit id="4a81875282635fe23d1f1919a3ef4deacd054b28" resname="profile.saml.attribute.l">
+        <jms:reference-file line="77">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.l</source>
+        <target state="new">profile.saml.attribute.l</target>
+      </trans-unit>
+      <trans-unit id="5b245e2469bf44a2fa51689abe2db6683582f035" resname="profile.saml.attribute.labeledURI">
+        <jms:reference-file line="79">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.labeledURI</source>
+        <target state="new">profile.saml.attribute.labeledURI</target>
+      </trans-unit>
+      <trans-unit id="b5e7f8290f3afa5a7afa9d10b6da3c801aa2814c" resname="profile.saml.attribute.localityName">
+        <jms:reference-file line="227">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.localityName</source>
+        <target state="new">profile.saml.attribute.localityName</target>
+      </trans-unit>
+      <trans-unit id="88ca120e2f71be316ae18250b374a408e65ed19b" resname="profile.saml.attribute.mDRecord">
+        <jms:reference-file line="229">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.mDRecord</source>
+        <target state="new">profile.saml.attribute.mDRecord</target>
+      </trans-unit>
+      <trans-unit id="b203df0336b4339c87847d3ea15fb2cfd99f8be5" resname="profile.saml.attribute.mXRecord">
+        <jms:reference-file line="231">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.mXRecord</source>
+        <target state="new">profile.saml.attribute.mXRecord</target>
+      </trans-unit>
+      <trans-unit id="0e84e3b5db401c7fc1e0d4321ba9622f89f6a9d4" resname="profile.saml.attribute.mail">
+        <jms:reference-file line="13">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.mail</source>
+        <target>E-mailadres</target>
+      </trans-unit>
+      <trans-unit id="011fdbdd336a812e196b9b7df10af738edcb08b6" resname="profile.saml.attribute.mailPreferenceOption">
+        <jms:reference-file line="233">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.mailPreferenceOption</source>
+        <target state="new">profile.saml.attribute.mailPreferenceOption</target>
+      </trans-unit>
+      <trans-unit id="45523c3e428cdfa4237e546e5fa8c8b8bdfae560" resname="profile.saml.attribute.manager">
+        <jms:reference-file line="81">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.manager</source>
+        <target state="new">profile.saml.attribute.manager</target>
+      </trans-unit>
+      <trans-unit id="e3843c585a2a3326abd73342db5593015514b365" resname="profile.saml.attribute.member">
+        <jms:reference-file line="235">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.member</source>
+        <target state="new">profile.saml.attribute.member</target>
+      </trans-unit>
+      <trans-unit id="eebd5def6613b846db55473980fdf6f52d9e7daa" resname="profile.saml.attribute.mobile">
+        <jms:reference-file line="83">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.mobile</source>
+        <target state="new">profile.saml.attribute.mobile</target>
+      </trans-unit>
+      <trans-unit id="a7bb4a9d468390e03c1ad14375b34fd3d07392d4" resname="profile.saml.attribute.mobileTelephoneNumber">
+        <jms:reference-file line="237">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.mobileTelephoneNumber</source>
+        <target state="new">profile.saml.attribute.mobileTelephoneNumber</target>
+      </trans-unit>
+      <trans-unit id="cbd40edfe4390c985ed1d8a19efc324af6e5c196" resname="profile.saml.attribute.nSRecord">
+        <jms:reference-file line="239">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.nSRecord</source>
+        <target state="new">profile.saml.attribute.nSRecord</target>
+      </trans-unit>
+      <trans-unit id="831b329227deafd243e117b362698b20c28703e3" resname="profile.saml.attribute.name">
+        <jms:reference-file line="241">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.name</source>
+        <target state="new">profile.saml.attribute.name</target>
+      </trans-unit>
+      <trans-unit id="00362e05e36a2264538ed241072aa35c96897431" resname="profile.saml.attribute.nlDigitalAuthorIdentifier">
+        <jms:reference-file line="21">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.nlDigitalAuthorIdentifier</source>
+        <target>Digital Author Identifier (DAI)</target>
+      </trans-unit>
+      <trans-unit id="f95b2fae70481aba4d91d78fe9f1460b6de1dd6f" resname="profile.saml.attribute.nlEduPersonHomeOrganization">
+        <jms:reference-file line="23">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.nlEduPersonHomeOrganization</source>
+        <target>Weergavenaam van de instelling</target>
+      </trans-unit>
+      <trans-unit id="afed31fb0404479837bf5fd2d1b72c3985ec7ea6" resname="profile.saml.attribute.nlEduPersonOrgUnit">
+        <jms:reference-file line="25">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.nlEduPersonOrgUnit</source>
+        <target>Afdelingsnaam</target>
+      </trans-unit>
+      <trans-unit id="dabbf48375f1759d253d796189d043d9066cbf84" resname="profile.saml.attribute.nlEduPersonStudyBranch">
+        <jms:reference-file line="27">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.nlEduPersonStudyBranch</source>
+        <target>Opleiding</target>
+      </trans-unit>
+      <trans-unit id="ca2a37d3e5f0c8aac929c711148e4d71b466c235" resname="profile.saml.attribute.nlStudielinkNummer">
+        <jms:reference-file line="29">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.nlStudielinkNummer</source>
+        <target>Studielinknummer</target>
+      </trans-unit>
+      <trans-unit id="571215deca5df8e980ee44589812366685806aa6" resname="profile.saml.attribute.norEduOrgAcronym">
+        <jms:reference-file line="243">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduOrgAcronym</source>
+        <target state="new">profile.saml.attribute.norEduOrgAcronym</target>
+      </trans-unit>
+      <trans-unit id="3848cc68a5aec676c8f78b92fa4653a26b01dc4b" resname="profile.saml.attribute.norEduOrgNIN">
+        <jms:reference-file line="245">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduOrgNIN</source>
+        <target state="new">profile.saml.attribute.norEduOrgNIN</target>
+      </trans-unit>
+      <trans-unit id="43b76a672f733dbea2228b08efbb6f600a7c4b2a" resname="profile.saml.attribute.norEduOrgSchemaVersion">
+        <jms:reference-file line="247">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduOrgSchemaVersion</source>
+        <target state="new">profile.saml.attribute.norEduOrgSchemaVersion</target>
+      </trans-unit>
+      <trans-unit id="bfd017170bf3e31da745d79260caced27ee717bc" resname="profile.saml.attribute.norEduOrgUniqueIdentifier">
+        <jms:reference-file line="249">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduOrgUniqueIdentifier</source>
+        <target state="new">profile.saml.attribute.norEduOrgUniqueIdentifier</target>
+      </trans-unit>
+      <trans-unit id="815e3f8dfa55756a69579d2916a200c282b972fd" resname="profile.saml.attribute.norEduOrgUniqueNumber">
+        <jms:reference-file line="251">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduOrgUniqueNumber</source>
+        <target state="new">profile.saml.attribute.norEduOrgUniqueNumber</target>
+      </trans-unit>
+      <trans-unit id="36f3f19b34d4c541d62a6ddda7e0a4d1f752fae7" resname="profile.saml.attribute.norEduPersonBirthDate">
+        <jms:reference-file line="253">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduPersonBirthDate</source>
+        <target state="new">profile.saml.attribute.norEduPersonBirthDate</target>
+      </trans-unit>
+      <trans-unit id="ef62efb1ee0f2d0004cc568902567beacb167e5d" resname="profile.saml.attribute.norEduPersonLIN">
+        <jms:reference-file line="255">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduPersonLIN</source>
+        <target state="new">profile.saml.attribute.norEduPersonLIN</target>
+      </trans-unit>
+      <trans-unit id="f370e204274365b812b8d12ab81b1fcc56a9d5e6" resname="profile.saml.attribute.norEduPersonNIN">
+        <jms:reference-file line="257">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.norEduPersonNIN</source>
+        <target state="new">profile.saml.attribute.norEduPersonNIN</target>
+      </trans-unit>
+      <trans-unit id="b379644cb79999d77c6bb714236a1297c08f4e8c" resname="profile.saml.attribute.o">
+        <jms:reference-file line="85">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.o</source>
+        <target state="new">profile.saml.attribute.o</target>
+      </trans-unit>
+      <trans-unit id="08461b2a9d6ce2d6d3ac6202318ad126079352cd" resname="profile.saml.attribute.objectClass">
+        <jms:reference-file line="259">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.objectClass</source>
+        <target state="new">profile.saml.attribute.objectClass</target>
+      </trans-unit>
+      <trans-unit id="46ae2bf5bc961b708790d03c2970d2119250384a" resname="profile.saml.attribute.organizationName">
+        <jms:reference-file line="261">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.organizationName</source>
+        <target state="new">profile.saml.attribute.organizationName</target>
+      </trans-unit>
+      <trans-unit id="93cb8c226523e4a4491676a49b02751ab10a6ee6" resname="profile.saml.attribute.organizationalStatus">
+        <jms:reference-file line="263">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.organizationalStatus</source>
+        <target state="new">profile.saml.attribute.organizationalStatus</target>
+      </trans-unit>
+      <trans-unit id="93299eff1266fa42ae4779da9a09cbf9741a7812" resname="profile.saml.attribute.organizationalUnitName">
+        <jms:reference-file line="265">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.organizationalUnitName</source>
+        <target state="new">profile.saml.attribute.organizationalUnitName</target>
+      </trans-unit>
+      <trans-unit id="8e7c4703193f6d9952bd734a85a9b46e54a7926c" resname="profile.saml.attribute.otherMailbox">
+        <jms:reference-file line="267">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.otherMailbox</source>
+        <target state="new">profile.saml.attribute.otherMailbox</target>
+      </trans-unit>
+      <trans-unit id="ced44316b731f632796913b09d8e5b934ed9d69b" resname="profile.saml.attribute.ou">
+        <jms:reference-file line="87">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.ou</source>
+        <target state="new">profile.saml.attribute.ou</target>
+      </trans-unit>
+      <trans-unit id="095a10deb1fdd93965d58fe11d7342d8d34c53ed" resname="profile.saml.attribute.owner">
+        <jms:reference-file line="269">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.owner</source>
+        <target state="new">profile.saml.attribute.owner</target>
+      </trans-unit>
+      <trans-unit id="a3b042aaac1be98ad042756067773c110b8d0e29" resname="profile.saml.attribute.pager">
+        <jms:reference-file line="89">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.pager</source>
+        <target state="new">profile.saml.attribute.pager</target>
+      </trans-unit>
+      <trans-unit id="84bcb5f57132e5317e68a09830268290ca0cdc49" resname="profile.saml.attribute.pagerTelephoneNumber">
+        <jms:reference-file line="271">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.pagerTelephoneNumber</source>
+        <target state="new">profile.saml.attribute.pagerTelephoneNumber</target>
+      </trans-unit>
+      <trans-unit id="7590c165b8b3d6bc9bf06258f14d03b25da6d47f" resname="profile.saml.attribute.personalSignature">
+        <jms:reference-file line="273">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.personalSignature</source>
+        <target state="new">profile.saml.attribute.personalSignature</target>
+      </trans-unit>
+      <trans-unit id="00113b28452ab6977d366a9416c83a67003ecc08" resname="profile.saml.attribute.personalTitle">
+        <jms:reference-file line="275">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.personalTitle</source>
+        <target state="new">profile.saml.attribute.personalTitle</target>
+      </trans-unit>
+      <trans-unit id="9d7aa9c2f52730b92b38e159c5b1eeb3aa78bbe6" resname="profile.saml.attribute.photo">
+        <jms:reference-file line="277">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.photo</source>
+        <target state="new">profile.saml.attribute.photo</target>
+      </trans-unit>
+      <trans-unit id="e9232d4e7aaf9fa22488d1e37dbe48761d3d50d8" resname="profile.saml.attribute.physicalDeliveryOfficeName">
+        <jms:reference-file line="279">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.physicalDeliveryOfficeName</source>
+        <target state="new">profile.saml.attribute.physicalDeliveryOfficeName</target>
+      </trans-unit>
+      <trans-unit id="5399e1bca865f1e6867fb7d91c7cfc36e4fb313f" resname="profile.saml.attribute.pkcs9email">
+        <jms:reference-file line="199">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.pkcs9email</source>
+        <target>E-mailadres</target>
+      </trans-unit>
+      <trans-unit id="e371546130cdad125aa88d03a2bec04baa738657" resname="profile.saml.attribute.postOfficeBox">
+        <jms:reference-file line="95">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.postOfficeBox</source>
+        <target state="new">profile.saml.attribute.postOfficeBox</target>
+      </trans-unit>
+      <trans-unit id="f48a367076a1a2049e606caabfa4c75414ac0730" resname="profile.saml.attribute.postalAddress">
+        <jms:reference-file line="91">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.postalAddress</source>
+        <target state="new">profile.saml.attribute.postalAddress</target>
+      </trans-unit>
+      <trans-unit id="9179f6993f98fec24e2101d719f0337d5d721c60" resname="profile.saml.attribute.postalCode">
+        <jms:reference-file line="93">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.postalCode</source>
+        <target state="new">profile.saml.attribute.postalCode</target>
+      </trans-unit>
+      <trans-unit id="3428a65e8b94bed9b45f25838a4248c8d6e7eef1" resname="profile.saml.attribute.preferredDeliveryMethod">
+        <jms:reference-file line="281">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.preferredDeliveryMethod</source>
+        <target state="new">profile.saml.attribute.preferredDeliveryMethod</target>
+      </trans-unit>
+      <trans-unit id="3e5b99e3d3db35f2ee6dc5a90ac70dfbc60e9807" resname="profile.saml.attribute.preferredLanguage">
+        <jms:reference-file line="15">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.preferredLanguage</source>
+        <target>Voorkeurstaal</target>
+      </trans-unit>
+      <trans-unit id="52f96630b5fdc9a3018117831fe26bd570a3d1e3" resname="profile.saml.attribute.presentationAddress">
+        <jms:reference-file line="283">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.presentationAddress</source>
+        <target>profile.saml.attribute.presentationAddress</target>
+      </trans-unit>
+      <trans-unit id="aef9fe6980354b166fdae68e6f6311e10bf1e23a" resname="profile.saml.attribute.protocolInformation">
+        <jms:reference-file line="285">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.protocolInformation</source>
+        <target state="new">profile.saml.attribute.protocolInformation</target>
+      </trans-unit>
+      <trans-unit id="1498c427fae1ec59a1b7757a59cb755e0475932d" resname="profile.saml.attribute.pseudonym">
+        <jms:reference-file line="287">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.pseudonym</source>
+        <target state="new">profile.saml.attribute.pseudonym</target>
+      </trans-unit>
+      <trans-unit id="d79a6611901d86ba0893ecc2c4098d36b142780e" resname="profile.saml.attribute.registeredAddress">
+        <jms:reference-file line="289">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.registeredAddress</source>
+        <target state="new">profile.saml.attribute.registeredAddress</target>
+      </trans-unit>
+      <trans-unit id="a786ea21eb40b8c74e0d79768d0e4407a6144173" resname="profile.saml.attribute.roleOccupant">
+        <jms:reference-file line="291">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.roleOccupant</source>
+        <target state="new">profile.saml.attribute.roleOccupant</target>
+      </trans-unit>
+      <trans-unit id="f7e58762bc256ed2269f18ca25850bfd8f6cc56a" resname="profile.saml.attribute.roomNumber">
+        <jms:reference-file line="293">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.roomNumber</source>
+        <target state="new">profile.saml.attribute.roomNumber</target>
+      </trans-unit>
+      <trans-unit id="1c7f9a7a3e21d9178d1a3e052e4e19edd2be7f0a" resname="profile.saml.attribute.sOARecord">
+        <jms:reference-file line="295">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.sOARecord</source>
+        <target state="new">profile.saml.attribute.sOARecord</target>
+      </trans-unit>
+      <trans-unit id="f46e820958b7137f6fdd31d1d4862cd4d91463b5" resname="profile.saml.attribute.schacHomeOrganization">
+        <jms:reference-file line="31">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.schacHomeOrganization</source>
+        <target>Organisatie</target>
+      </trans-unit>
+      <trans-unit id="1e425592c19eba762377094f0fc8c09fd05fae24" resname="profile.saml.attribute.schacHomeOrganizationDirectory">
+        <jms:reference-file line="33">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.schacHomeOrganizationDirectory</source>
+        <target>Organisatie</target>
+      </trans-unit>
+      <trans-unit id="c09491f961ea52055f1ba9e32b7bcb0623322938" resname="profile.saml.attribute.schacHomeOrganizationType">
+        <jms:reference-file line="35">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.schacHomeOrganizationType</source>
+        <target>Organisatietype</target>
+      </trans-unit>
+      <trans-unit id="cee0a385b7e731ede416a049b4ab927af8ffda56" resname="profile.saml.attribute.schacPersonalUniqueCode">
+        <jms:reference-file line="37">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.schacPersonalUniqueCode</source>
+        <target>Persoonlijk nummer</target>
+      </trans-unit>
+      <trans-unit id="9ad3fe5f8d07e5e871b82b3e8e9038fcfbe89468" resname="profile.saml.attribute.searchGuide">
+        <jms:reference-file line="297">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.searchGuide</source>
+        <target state="new">profile.saml.attribute.searchGuide</target>
+      </trans-unit>
+      <trans-unit id="8aaf10a16a28d17102d3269a6066794d6fa0d83c" resname="profile.saml.attribute.secretary">
+        <jms:reference-file line="299">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.secretary</source>
+        <target state="new">profile.saml.attribute.secretary</target>
+      </trans-unit>
+      <trans-unit id="f11197422eba75e11664267f21a0a25224ddbbc6" resname="profile.saml.attribute.seeAlso">
+        <jms:reference-file line="97">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.seeAlso</source>
+        <target state="new">profile.saml.attribute.seeAlso</target>
+      </trans-unit>
+      <trans-unit id="3f8dec58c258678f74e05becca9468a82ad3892e" resname="profile.saml.attribute.serialNumber">
+        <jms:reference-file line="301">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.serialNumber</source>
+        <target state="new">profile.saml.attribute.serialNumber</target>
+      </trans-unit>
+      <trans-unit id="1cffcfcad45e538b7e78e18945d0e93a6e5d0d34" resname="profile.saml.attribute.singleLevelQuality">
+        <jms:reference-file line="303">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.singleLevelQuality</source>
+        <target state="new">profile.saml.attribute.singleLevelQuality</target>
+      </trans-unit>
+      <trans-unit id="ce8a00bdeaa9bc347e3679bba48b7add6a0b86c8" resname="profile.saml.attribute.st">
+        <jms:reference-file line="99">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.st</source>
+        <target state="new">profile.saml.attribute.st</target>
+      </trans-unit>
+      <trans-unit id="caaaec4a926468839f8121de8e62df3b32d6d9ae" resname="profile.saml.attribute.stateOrProvinceName">
+        <jms:reference-file line="305">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.stateOrProvinceName</source>
+        <target state="new">profile.saml.attribute.stateOrProvinceName</target>
+      </trans-unit>
+      <trans-unit id="fd203efe3ba0ca7176a2bebef5cab6f1e51cfaff" resname="profile.saml.attribute.street">
+        <jms:reference-file line="101">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.street</source>
+        <target state="new">profile.saml.attribute.street</target>
+      </trans-unit>
+      <trans-unit id="ba098f308cae5c565f5efe971efd92eea34230ec" resname="profile.saml.attribute.streetAddress">
+        <jms:reference-file line="307">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.streetAddress</source>
+        <target state="new">profile.saml.attribute.streetAddress</target>
+      </trans-unit>
+      <trans-unit id="83e594dce93fe825888539f0939af594ea265142" resname="profile.saml.attribute.subtreeMaximumQuality">
+        <jms:reference-file line="309">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.subtreeMaximumQuality</source>
+        <target state="new">profile.saml.attribute.subtreeMaximumQuality</target>
+      </trans-unit>
+      <trans-unit id="5558fcbbd683d93176fbe99d6bb8138dc7fe24c0" resname="profile.saml.attribute.subtreeMinimumQuality">
+        <jms:reference-file line="311">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.subtreeMinimumQuality</source>
+        <target state="new">profile.saml.attribute.subtreeMinimumQuality</target>
+      </trans-unit>
+      <trans-unit id="e8447b29f38a6b25c33d0a9743e0a45262d8d10f" resname="profile.saml.attribute.supportedAlgorithms">
+        <jms:reference-file line="313">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.supportedAlgorithms</source>
+        <target state="new">profile.saml.attribute.supportedAlgorithms</target>
+      </trans-unit>
+      <trans-unit id="b14c27d32ba05813928d6fdabd2fa4b80f9f372a" resname="profile.saml.attribute.supportedApplicationContext">
+        <jms:reference-file line="315">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.supportedApplicationContext</source>
+        <target state="new">profile.saml.attribute.supportedApplicationContext</target>
+      </trans-unit>
+      <trans-unit id="4d559f05c52a5c7e935c6cd70b508eb0c1bd6b2f" resname="profile.saml.attribute.surfconextAccountStatus">
+        <jms:reference-file line="41">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.surfconextAccountStatus</source>
+        <target>SURFconext-status</target>
+      </trans-unit>
+      <trans-unit id="dd618872e4c962aa46287681a1767fefcae2ac9f" resname="profile.saml.attribute.surfconextId">
+        <jms:reference-file line="45">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.surfconextId</source>
+        <target>Identifier</target>
+      </trans-unit>
+      <trans-unit id="33bc9f2cc9243da7214c38afa7ef932b426224b7" resname="profile.saml.attribute.surfconextLicenseInfo">
+        <jms:reference-file line="39">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.surfconextLicenseInfo</source>
+        <target>Licentieinformatie</target>
+      </trans-unit>
+      <trans-unit id="c36bf074f9cd01c80960f5ff87adb2cb0c3529bd" resname="profile.saml.attribute.surfconextVirtualOrganisationName">
+        <jms:reference-file line="43">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.surfconextVirtualOrganisationName</source>
+        <target>Naam virtuele organisatie</target>
+      </trans-unit>
+      <trans-unit id="7f536781e802524e98bd37055a9b182db5d807da" resname="profile.saml.attribute.surname">
+        <jms:reference-file line="17">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.surname</source>
+        <target>Achternaam</target>
+      </trans-unit>
+      <trans-unit id="03d8b97c4e02cd313f6ad548a151a12c1174aac5" resname="profile.saml.attribute.telephoneNumber">
+        <jms:reference-file line="103">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.telephoneNumber</source>
+        <target state="new">profile.saml.attribute.telephoneNumber</target>
+      </trans-unit>
+      <trans-unit id="d4cdb30364efe211a635042956a836d1d977ee5e" resname="profile.saml.attribute.teletexTerminalIdentifier">
+        <jms:reference-file line="317">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.teletexTerminalIdentifier</source>
+        <target state="new">profile.saml.attribute.teletexTerminalIdentifier</target>
+      </trans-unit>
+      <trans-unit id="43aae18649a6f5e00482ed5fbdebc191ddefbcb1" resname="profile.saml.attribute.telexNumber">
+        <jms:reference-file line="319">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.telexNumber</source>
+        <target state="new">profile.saml.attribute.telexNumber</target>
+      </trans-unit>
+      <trans-unit id="85d8babc738572af5032fb4882c4a6918c73bb47" resname="profile.saml.attribute.textEncodedORAddress">
+        <jms:reference-file line="321">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.textEncodedORAddress</source>
+        <target state="new">profile.saml.attribute.textEncodedORAddress</target>
+      </trans-unit>
+      <trans-unit id="245ceccd9333e97e399135102eec3f9e999b42bb" resname="profile.saml.attribute.title">
+        <jms:reference-file line="105">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.title</source>
+        <target state="new">profile.saml.attribute.title</target>
+      </trans-unit>
+      <trans-unit id="eed3fe2b11335b2093d898fbe9871dc5d2e4ec41" resname="profile.saml.attribute.uid">
+        <jms:reference-file line="19">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.uid</source>
+        <target>Gebruikers-ID</target>
+      </trans-unit>
+      <trans-unit id="1c1e92bf771fd422fad1a71eba11e7a3f7a5396c" resname="profile.saml.attribute.uniqueIdentifier">
+        <jms:reference-file line="107">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.uniqueIdentifier</source>
+        <target state="new">profile.saml.attribute.uniqueIdentifier</target>
+      </trans-unit>
+      <trans-unit id="4c38f554a7a2d3556bbc0440a304a34411c25800" resname="profile.saml.attribute.uniqueMember">
+        <jms:reference-file line="323">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.uniqueMember</source>
+        <target state="new">profile.saml.attribute.uniqueMember</target>
+      </trans-unit>
+      <trans-unit id="57cf18ebed4975a0a53b757cc30c178fea95d30a" resname="profile.saml.attribute.userCertificate">
+        <jms:reference-file line="109">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.userCertificate</source>
+        <target state="new">profile.saml.attribute.userCertificate</target>
+      </trans-unit>
+      <trans-unit id="7961ccbbb8c870d6d1851b72c14908fcf9ab9e08" resname="profile.saml.attribute.userClass">
+        <jms:reference-file line="325">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.userClass</source>
+        <target state="new">profile.saml.attribute.userClass</target>
+      </trans-unit>
+      <trans-unit id="249e21478a6d0b878cbe0519fd7e0c2d940aad67" resname="profile.saml.attribute.userPKCS12">
+        <jms:reference-file line="327">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.userPKCS12</source>
+        <target state="new">profile.saml.attribute.userPKCS12</target>
+      </trans-unit>
+      <trans-unit id="902d36bc622a08d7e4cadc802abf7a93f815fe99" resname="profile.saml.attribute.userPassword">
+        <jms:reference-file line="111">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.userPassword</source>
+        <target state="new">profile.saml.attribute.userPassword</target>
+      </trans-unit>
+      <trans-unit id="3396f47f521cc04481cc0cd1c348df51ddae0ec0" resname="profile.saml.attribute.userSMIMECertificate">
+        <jms:reference-file line="113">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.userSMIMECertificate</source>
+        <target state="new">profile.saml.attribute.userSMIMECertificate</target>
+      </trans-unit>
+      <trans-unit id="2386cabff3f96533b724c5c430f1e073fb504943" resname="profile.saml.attribute.x121Address">
+        <jms:reference-file line="329">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.x121Address</source>
+        <target state="new">profile.saml.attribute.x121Address</target>
+      </trans-unit>
+      <trans-unit id="99eb6b780c8a038e15ccc09969c2b596d5ddb50d" resname="profile.saml.attribute.x500UniqueIdentifier">
+        <jms:reference-file line="331">Resources/views/translations.html.twig</jms:reference-file>
+        <source>profile.saml.attribute.x500UniqueIdentifier</source>
+        <target state="new">profile.saml.attribute.x500UniqueIdentifier</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

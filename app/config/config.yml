@@ -72,3 +72,10 @@ surfnet_saml:
             entity_id: %saml_remote_idp_entity_id%
             sso_url: %saml_remote_idp_sso_url%
             certificate: %saml_remote_idp_certificate%
+
+open_conext_engine_block_api_client:
+    http_client:
+        base_url: %engineblock_api_base_url%
+        username: %engineblock_api_username%
+        password: %engineblock_api_password%
+        verify_ssl: %engineblock_api_verify_ssl%

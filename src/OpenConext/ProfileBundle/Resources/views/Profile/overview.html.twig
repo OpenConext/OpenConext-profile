@@ -11,19 +11,27 @@
         <table class="overview-table mdl-data-table">
             <thead>
             <tr>
-                <th>Attribute</th>
-                <th>Value</th>
+                <th>{{ 'profile.table.attribute_name'|trans }}</th>
+                <th>{{ 'profile.table.attribute_value'|trans }}</th>
             </tr>
             </thead>
             <tbody>
+            {% for attribute in app.user.attributes %}
             <tr>
-                <td class="strong">Organization</td>
-                <td>someinvalidurl.invalid</td>
+                <td class="strong">
+                    <p>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</p>
+                </td>
+                <td>
+                    {% if attribute.value is iterable %}
+                        {% for value in attribute.value %}
+                            <p>{{ value }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>{{ attribute.value }}</p>
+                    {% endif %}
+                </td>
             </tr>
-            <tr>
-                <td class="strong">Full Name</td>
-                <td>John Doe</td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
