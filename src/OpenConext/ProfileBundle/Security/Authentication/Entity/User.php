@@ -19,10 +19,10 @@
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
 use OpenConext\ProfileBundle\Assert;
-use Serializable;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
-class User implements Serializable
+final class User
 {
     /**
      * @var string
@@ -34,10 +34,19 @@ class User implements Serializable
     private $attributes;
 
     /**
+     * @param AssertionAdapter $assertionAdapter
+     * @return User
+     */
+    public static function createFrom(AssertionAdapter $assertionAdapter)
+    {
+        return new self($assertionAdapter->getNameId(), $assertionAdapter->getAttributeSet());
+    }
+
+    /**
      * @param string $nameId
      * @param AttributeSet $attributes
      */
-    public function __construct($nameId, AttributeSet $attributes)
+    private function __construct($nameId, AttributeSet $attributes)
     {
         Assert::string($nameId);
 
@@ -51,22 +60,6 @@ class User implements Serializable
     public function getAttributes()
     {
         return $this->attributes;
-    }
-
-    public function serialize()
-    {
-        return serialize([
-            $this->nameId,
-            $this->attributes
-        ]);
-    }
-
-    public function unserialize($serialized)
-    {
-        list(
-            $this->nameId,
-            $this->attributes
-        ) = unserialize($serialized);
     }
 
     /**
