@@ -19,8 +19,56 @@
 namespace OpenConext\Profile;
 
 use Assert\Assertion as BaseAssertion;
+use OpenConext\Profile\Exception\AssertionFailedException;
 
 class Assert extends BaseAssertion
 {
     protected static $exceptionClass = 'OpenConext\Profile\Exception\AssertionFailedException';
+
+    public static function keysAre(array $array, array $expectedKeys, $propertyPath = null)
+    {
+        $givenKeys = array_keys($array);
+
+        sort($givenKeys);
+        sort($expectedKeys);
+
+        if ($givenKeys === $expectedKeys) {
+            return;
+        }
+
+        $givenCount = count($givenKeys);
+        $expectedCount = count($expectedKeys);
+
+        if ($givenCount < $expectedCount) {
+            $message = sprintf(
+                'Required keys "%s" are missing',
+                implode('", "', array_diff($expectedKeys, $givenKeys))
+            );
+        } elseif ($givenCount > $expectedCount) {
+            $message = sprintf(
+                'Additional keys "%s" found',
+                implode('", "', array_diff($givenKeys, $expectedKeys))
+            );
+        } else {
+            $additional = array_diff($givenKeys, $expectedKeys);
+            $required = array_diff($expectedKeys, $givenKeys);
+
+            $message = 'Keys do not match requirements';
+            if (!empty($additional)) {
+                $message .= sprintf(
+                    ', additional keys "%s" found',
+                    implode('", "', array_diff($givenKeys, $expectedKeys))
+                );
+            }
+
+            if (!empty($required)) {
+                $message .= sprintf(
+                    ', required keys "%s" are missing',
+                    implode('", "', array_diff($expectedKeys, $givenKeys))
+                );
+            }
+        }
+
+        throw new AssertionFailedException($message, 0, $propertyPath, $array);
+    }
 }

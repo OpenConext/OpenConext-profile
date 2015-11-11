@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
 
-use OpenConext\ProfileBundle\Assert;
+use OpenConext\Profile\Assert;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 

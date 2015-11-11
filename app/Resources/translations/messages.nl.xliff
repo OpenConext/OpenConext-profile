@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-11-06T12:26:37Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2015-11-09T11:43:48Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -11,10 +11,20 @@
         <source>profile.application.header</source>
         <target>Overzicht van jouw SURFconext profiel.</target>
       </trans-unit>
+      <trans-unit id="c01fb1e47571e92614557108db2ebb516dcdb7c0" resname="profile.application.platform_connection_description">
+        <jms:reference-file line="56">Resources/views/layout.html.twig</jms:reference-file>
+        <source>profile.application.platform_connection_description</source>
+        <target>Deze dienst is verbonden via</target>
+      </trans-unit>
+      <trans-unit id="18e70a3e75cc5e9f61e4a379a265ae1bcdb71148" resname="profile.application.platform_connection_name">
+        <jms:reference-file line="56">Resources/views/layout.html.twig</jms:reference-file>
+        <source>profile.application.platform_connection_name</source>
+        <target>SURFconext</target>
+      </trans-unit>
       <trans-unit id="d25aa7a2e9d40a5e7039dd3b93bd91eea40251c5" resname="profile.application.title">
         <jms:reference-file line="6">Resources/views/base.html.twig</jms:reference-file>
         <source>profile.application.title</source>
-        <target>SURFConext Profile</target>
+        <target>SURFconext Profile</target>
       </trans-unit>
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
         <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
@@ -74,16 +84,6 @@
         <jms:reference-file line="67">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.navigation.terms_of_service</source>
         <target>Gebruiksvoorwaarden</target>
-      </trans-unit>
-      <trans-unit id="75a3be6cd149a11ffef81f6439b3767e9737dbe1" resname="profile.navigation.terms_of_service.link">
-        <jms:reference-file line="67">Resources/views/layout.html.twig</jms:reference-file>
-        <source>profile.navigation.terms_of_service.link</source>
-        <target>https://wiki.surfnet.nl/display/conextsupport/Terms+of+Service+%28NL%29</target>
-      </trans-unit>
-      <trans-unit id="d5c63f1486524f3bc3f61e3d03c9fadca6a3069d" resname="profile.notice.surfconext_connected_service">
-        <jms:reference-file line="56">Resources/views/layout.html.twig</jms:reference-file>
-        <source>profile.notice.surfconext_connected_service</source>
-        <target>Deze dienst is verbonden via %s</target>
       </trans-unit>
       <trans-unit id="e2e2fe24a85a4490f3a5d5fa646fd10d0f2fc5a9" resname="profile.profile.long_title">
         <jms:reference-file line="8">views/Profile/overview.html.twig</jms:reference-file>
