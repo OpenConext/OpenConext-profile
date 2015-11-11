@@ -21,8 +21,6 @@ services:
 
     profile.global_view_parameters:
         class: OpenConext\ProfileBundle\Service\GlobalViewParameters
-        factory: [OpenConext\ProfileBundle\Service\GlobalViewParameters, createForLocales]
-
         arguments:
             - @translator
             - %locales%
