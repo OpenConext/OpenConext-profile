@@ -41,7 +41,13 @@ final class ConsentListFactory
     {
         Assert::isArray($data, 'Consent list JSON structure must be an associative array, got %s');
 
-        return new ConsentList(array_map([self::class, 'createConsent'], $data));
+        // We cannot use self::class because translation extractions fails on that
+        $consents = array_map(
+            ['\OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory', 'createConsent'],
+            $data
+        );
+
+        return new ConsentList($consents);
     }
 
     /**
@@ -61,7 +67,8 @@ final class ConsentListFactory
 
         Assert::isInstanceOf(
             $consentGivenOn,
-            DateTimeImmutable::class,
+            // We cannot use DateTimeImmutable::class because translation extractions fails on that
+            '\DateTimeImmutable',
             sprintf(
                 'Consent given on date must be formatted according to the ISO8601 standard, got "%s"',
                 $data['consent_given_on']
@@ -69,7 +76,8 @@ final class ConsentListFactory
         );
         Assert::isInstanceOf(
             $lastUsedOn,
-            DateTimeImmutable::class,
+            // We cannot use DateTimeImmutable::class because translation extractions fails on that
+            '\DateTimeImmutable',
             sprintf(
                 'Last used on date must be formatted according to the ISO8601 standard, got "%s"',
                 $data['last_used_on']
