@@ -18,8 +18,8 @@
 
 namespace OpenConext\Profile\Value;
 
-use LogicException;
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Exception\LogicException;
 
 final class DisplayName
 {
