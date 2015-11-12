@@ -24,6 +24,20 @@ class ServicesController extends Controller
 {
     public function overviewAction()
     {
-        return $this->render('OpenConextProfileBundle:Services:overview.html.twig');
+        /** @var \Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary $attributeDictionary */
+        $attributeDictionary = $this->get('surfnet_saml.saml.attribute_dictionary');
+        $userIdDefinition = $attributeDictionary->getAttributeDefinitionByUrn('urn:oid:1.3.6.1.4.1.1076.20.40.40.1');
+
+        $user = $this->getUser();
+
+        /** @var \Surfnet\SamlBundle\SAML2\Attribute\AttributeSet $attributeSet */
+        $attributeSet = $user->getAttributes();
+        $userId = $attributeSet->getAttributeByDefinition($userIdDefinition);
+
+        /** @var \OpenConext\ProfileBundle\Service\ConsentService $consentService */
+        $consentService = $this->get('profile.service.consent');
+        $consents = $consentService->findAllFor($userId->getValue());
+
+        return $this->render('OpenConextProfileBundle:Services:overview.html.twig', ['consents' => $consents]);
     }
 }
