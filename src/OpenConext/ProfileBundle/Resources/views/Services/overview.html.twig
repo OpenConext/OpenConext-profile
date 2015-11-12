@@ -6,4 +6,72 @@
 
 {% block content %}
     <h1>{{ 'profile.services.long_title'|trans }}</h1>
+    <div class="table-container">
+        <table class="mdl-data-table overview-table">
+            {% for consent in consents %}
+                <tr class="services-table-row">
+                    <td>
+                        <a class="services-table-row-expander" href="#">
+                            <p>
+                                <i class="services-table-caret fa fa-angle-right"></i>
+                                {% if consent.serviceProvider.displayName.hasFilledTranslationForLocale(app.request.locale) %}
+                                   {{ consent.serviceProvider.displayName.translation(app.request.locale) }}
+                                {% endif %}
+                            </p>
+                        </a>
+
+                        <div class="service-table-row-content hidden">
+                            <ul>
+                                <li>{{ 'profile.services.consent_message'|trans }}</li>
+
+                                {% if consent.serviceProvider.hasEulaUrl %}
+                                    <li>
+                                        <a href="{{ consent.serviceProvider.eulaUrl }}">{{ 'profile.services.eula'|trans }}</a>
+                                    </li>
+                                {% endif %}
+
+                                {% if consent.serviceProvider.hasSupportEmail %}
+                                <li>
+                                    <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">{{ 'profile.services.support_email'|trans }}</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
+                            <table class="mdl-data-table">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'profile.table.attribute_name'|trans }}</th>
+                                    <th>{{ 'profile.table.attribute_value'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for attribute in app.user.attributes %}
+                                    <tr>
+                                        <td class="strong">
+                                            <p>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</p>
+                                        </td>
+                                        <td>
+                                            {% if attribute.value is iterable %}
+                                                {% for value in attribute.value %}
+                                                    <p>{{ value }}</p>
+                                                {% endfor %}
+                                            {% else %}
+                                                <p>{{ attribute.value }}</p>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/services.js') }}"></script>
 {% endblock %}
