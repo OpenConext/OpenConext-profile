@@ -27,7 +27,7 @@ class ServicesController extends Controller
         /** @var \Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary $attributeDictionary */
         $attributeDictionary = $this->get('surfnet_saml.saml.attribute_dictionary');
 
-        // Get the userId for the user
+        // The urn entered here should refer to an attribute containing a user id
         $userIdDefinition = $attributeDictionary->getAttributeDefinitionByUrn('urn:oid:1.3.6.1.4.1.1076.20.40.40.1');
 
         $user = $this->getUser();
