@@ -160,17 +160,14 @@ li,
 }
 
 /* Services table */
-.services-table-row:hover {
+tr.service:hover {
     background-color: initial !important;
 }
-a.services-table-row-expander {
-    text-decoration: none;
-}
-.services-table-row-expander p {
-    margin: 0;
-}
-.services-table-row-content {
-    margin-top: 16px;
+.service-name {
+    width: 100%;
+    color: #4db3cf;
+    cursor: pointer;
+    display: block;
 }
 
 /* Footer */
@@ -218,7 +215,7 @@ a.services-table-row-expander {
     }
 
     .footer-navigation {
-        margin: 16px 0;
+        margin: 0;
     }
 
     .footer .footer-navigation li {

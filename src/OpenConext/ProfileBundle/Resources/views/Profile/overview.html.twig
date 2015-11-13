@@ -17,16 +17,14 @@
             <tbody>
             {% for attribute in app.user.attributes %}
             <tr>
-                <td class="strong">
-                    <p>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</p>
+                <td>
+                    <strong>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
                 </td>
                 <td>
                     {% if attribute.value is iterable %}
-                        {% for value in attribute.value %}
-                            <p>{{ value }}</p>
-                        {% endfor %}
+                        {{ attribute.value|join(', ') }}
                     {% else %}
-                        <p>{{ attribute.value }}</p>
+                        {{ attribute.value }}
                     {% endif %}
                 </td>
             </tr>

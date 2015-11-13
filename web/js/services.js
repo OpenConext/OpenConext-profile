@@ -1,6 +1,9 @@
 $(document).ready(function() {
-    $('.services-table-row-expander').click(function() {
-        $('.services-table-caret', $(this).parent()).toggleClass('fa-angle-right').toggleClass('fa-angle-down');
-        $('.service-table-row-content', $(this).parent()).toggleClass('hidden');
+    $('.service-name .caret').addClass('fa-angle-right').removeClass('fa-angle-down');
+    $('.service-details').addClass('hidden');
+
+    $('.service-name').click(function() {
+        $('.service-name .caret', $(this).parent()).toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+        $('.service-details', $(this).parent()).toggleClass('hidden');
     });
 });

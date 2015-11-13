@@ -8,65 +8,60 @@
     <h1>{{ 'profile.services.long_title'|trans }}</h1>
     <div class="table-container">
         <table class="mdl-data-table overview-table">
-            {% for consent in consents %}
-                <tr class="services-table-row">
-                    <td>
-                        <a class="services-table-row-expander" href="#">
-                            <p>
-                                <i class="services-table-caret fa fa-angle-right"></i>
-                                {% if consent.serviceProvider.displayName.hasFilledTranslationForLocale(app.request.locale) %}
-                                   {{ consent.serviceProvider.displayName.translation(app.request.locale) }}
-                                {% endif %}
-                            </p>
-                        </a>
+        {% for consent in consents %}
+            <tr class="service">
+                <td>
+                    <span class="service-name">
+                        <i class="caret fa fa-angle-down"></i>
+                        {% if consent.serviceProvider.displayName.hasFilledTranslationForLocale(app.request.locale) %}
+                           {{ consent.serviceProvider.displayName.translation(app.request.locale) }}
+                        {% endif %}
+                    </span>
 
-                        <div class="service-table-row-content hidden">
-                            <ul>
-                                <li>{{ 'profile.services.consent_message'|trans }}</li>
+                    <div class="service-details">
+                        <ul>
+                            {% if consent.serviceProvider.hasEulaUrl %}
+                            <li>
+                                <a href="{{ consent.serviceProvider.eulaUrl }}">{{ 'profile.services.eula'|trans }}</a>
+                            </li>
+                            {% endif %}
 
-                                {% if consent.serviceProvider.hasEulaUrl %}
-                                    <li>
-                                        <a href="{{ consent.serviceProvider.eulaUrl }}">{{ 'profile.services.eula'|trans }}</a>
-                                    </li>
-                                {% endif %}
-
-                                {% if consent.serviceProvider.hasSupportEmail %}
-                                <li>
-                                    <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">{{ 'profile.services.support_email'|trans }}</a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                            <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
-                            <table class="mdl-data-table">
-                                <thead>
+                            {% if consent.serviceProvider.hasSupportEmail %}
+                            <li>
+                                <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">{{ 'profile.services.support_email'|trans }}</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        <p>{{ 'profile.services.consent_message'|trans }}</p>
+                        <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
+                        <table class="mdl-data-table">
+                            <thead>
+                            <tr>
+                                <th>{{ 'profile.table.attribute_name'|trans }}</th>
+                                <th>{{ 'profile.table.attribute_value'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for attribute in app.user.attributes %}
                                 <tr>
-                                    <th>{{ 'profile.table.attribute_name'|trans }}</th>
-                                    <th>{{ 'profile.table.attribute_value'|trans }}</th>
+                                    <td>
+                                        <strong>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                                    </td>
+                                    <td>
+                                        {% if attribute.value is iterable %}
+                                            {{ attribute.value|join(', ') }}
+                                        {% else %}
+                                           {{ attribute.value }}
+                                        {% endif %}
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                {% for attribute in app.user.attributes %}
-                                    <tr>
-                                        <td class="strong">
-                                            <p>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</p>
-                                        </td>
-                                        <td>
-                                            {% if attribute.value is iterable %}
-                                                {% for value in attribute.value %}
-                                                    <p>{{ value }}</p>
-                                                {% endfor %}
-                                            {% else %}
-                                                <p>{{ attribute.value }}</p>
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
         </table>
     </div>
 {% endblock %}
