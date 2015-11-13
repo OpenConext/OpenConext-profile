@@ -1,30 +1,43 @@
 profile.introduction_overview:
-    path:   /
-    defaults: { _controller: OpenConextProfileBundle:Introduction:overview }
+    path:       /
+    methods:    [GET]
+    defaults:
+        _controller: OpenConextProfileBundle:Introduction:overview
 
 profile.profile_overview:
-    path:     /profile
-    defaults: { _controller: OpenConextProfileBundle:Profile:overview }
+    path:       /profile
+    methods:    [GET]
+    defaults: 
+        _controller: OpenConextProfileBundle:Profile:overview
 
 profile.services_overview:
-    path:     /services
-    defaults: { _controller: OpenConextProfileBundle:Services:overview }
+    path:       /services
+    methods:    [GET]
+    defaults: 
+        _controller: OpenConextProfileBundle:Services:overview
 
 profile.removal_overview:
-    path:     /exit
-    defaults: { _controller: OpenConextProfileBundle:Removal:overview }
+    path:       /exit
+    methods:    [GET]
+    defaults: 
+        _controller: OpenConextProfileBundle:Removal:overview
 
 profile.saml_consume_assertion:
-    path: /authentication/consume-assertion
-    defaults: { _controller: OpenConextProfileBundle:Saml:consumeAssertion }
+    path:       /authentication/consume-assertion
+    methods:    [POST]
+    defaults:
+        _controller: OpenConextProfileBundle:Saml:consumeAssertion
 
 profile.saml_metadata:
-    path: /authentication/metadata
-    defaults: { _controller: OpenConextProfileBundle:Saml:metadata }
+    path:       /authentication/metadata
+    methods:    [GET]
+    defaults: 
+        _controller: OpenConextProfileBundle:Saml:metadata
 
 profile.locale_switch_locale:
-    path:     /switch-locale
-    methods:  [POST]
-    defaults: { _controller: OpenConextProfileBundle:Locale:switchLocale }
+    path:       /switch-locale
+    methods:    [POST]
+    defaults: 
+        _controller: OpenConextProfileBundle:Locale:switchLocale
     requirements:
         'return-url': '.+'
