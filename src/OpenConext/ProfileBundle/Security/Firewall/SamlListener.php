@@ -27,6 +27,7 @@ use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
@@ -40,6 +41,11 @@ use Twig_Environment as Twig;
  */
 class SamlListener implements ListenerInterface
 {
+    /**
+     * @var \Symfony\Component\HttpFoundation\Session\Session
+     */
+    private $session;
+
     /**
      * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface
      */
@@ -64,12 +70,14 @@ class SamlListener implements ListenerInterface
      * @var \OpenConext\ProfileBundle\Saml\StateHandler
      */
     private $stateHandler;
+
     /**
-     * @var Twig
+     * @var \Twig_Environment
      */
     private $twig;
 
     public function __construct(
+        Session $session,
         TokenStorageInterface $tokenStorage,
         AuthenticationManagerInterface $authenticationManager,
         SamlInteractionProvider $samlInteractionProvider,
@@ -77,6 +85,7 @@ class SamlListener implements ListenerInterface
         LoggerInterface $logger,
         Twig $twig
     ) {
+        $this->session                  = $session;
         $this->tokenStorage             = $tokenStorage;
         $this->authenticationManager    = $authenticationManager;
         $this->samlInteractionProvider  = $samlInteractionProvider;
@@ -147,7 +156,7 @@ class SamlListener implements ListenerInterface
         $this->tokenStorage->setToken($authToken);
 
         // migrate the session to prevent session hijacking
-        $this->stateHandler->migrate();
+        $this->session->migrate();
 
         $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
         $logger->notice('Authentication succeeded, redirecting to original location');

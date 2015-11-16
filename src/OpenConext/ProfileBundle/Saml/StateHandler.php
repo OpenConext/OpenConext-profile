@@ -92,13 +92,4 @@ class StateHandler
 
         return $uri;
     }
-
-    /**
-     * Migrates the current session to a new session id while maintaining all
-     * session attributes.
-     */
-    public function migrate()
-    {
-        $this->session->migrate();
-    }
 }
