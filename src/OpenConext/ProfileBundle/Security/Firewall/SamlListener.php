@@ -42,7 +42,7 @@ use Twig_Environment as Twig;
 class SamlListener implements ListenerInterface
 {
     /**
-     * @var Session
+     * @var \Symfony\Component\HttpFoundation\Session\Session
      */
     private $session;
 
@@ -72,7 +72,7 @@ class SamlListener implements ListenerInterface
     private $stateHandler;
 
     /**
-     * @var Twig
+     * @var \Twig_Environment
      */
     private $twig;
 
