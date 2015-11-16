@@ -36,6 +36,7 @@ services:
     profile.security.authentication.listener:
         class: OpenConext\ProfileBundle\Security\Firewall\SamlListener
         arguments:
+            - @session
             - @security.token_storage
             - @security.authentication.manager
             - @profile.security.authentication.saml
