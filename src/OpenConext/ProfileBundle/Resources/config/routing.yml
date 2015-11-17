@@ -1,6 +1,6 @@
 profile.introduction_overview:
     path:   /
-    defaults: { _controller: OpenConextProfileBundle:Introduction:overview }
+    defaults: { _controller: profile.controller.introduction:overviewAction }
 
 profile.profile_overview:
     path:     /profile

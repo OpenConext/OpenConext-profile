@@ -1,0 +1,5 @@
+services:
+    profile.controller.introduction:
+        class: OpenConext\ProfileBundle\Controller\IntroductionController
+        arguments:
+            - @templating
