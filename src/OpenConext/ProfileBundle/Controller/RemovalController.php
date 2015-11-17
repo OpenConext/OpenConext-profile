@@ -37,7 +37,7 @@ class RemovalController
     }
 
     /**
-     * @return mixed
+     * @return Response
      */
     public function overviewAction()
     {
