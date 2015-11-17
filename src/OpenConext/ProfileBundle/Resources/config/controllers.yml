@@ -8,3 +8,8 @@ services:
         class: OpenConext\ProfileBundle\Controller\ProfileController
         arguments:
             - @templating
+
+    profile.controller.services:
+        class: OpenConext\ProfileBundle\Controller\ServicesController
+        arguments:
+            - @templating

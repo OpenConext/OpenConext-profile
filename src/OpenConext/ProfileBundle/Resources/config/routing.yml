@@ -8,7 +8,7 @@ profile.profile_overview:
 
 profile.services_overview:
     path:     /services
-    defaults: { _controller: OpenConextProfileBundle:Services:overview }
+    defaults: { _controller: profile.controller.services:overviewAction }
 
 profile.removal_overview:
     path:     /exit
