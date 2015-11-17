@@ -18,3 +18,8 @@ services:
         class: OpenConext\ProfileBundle\Controller\RemovalController
         arguments:
             - @templating
+
+    profile.controller.saml:
+        class: OpenConext\ProfileBundle\Controller\SamlController
+        arguments:
+            - @surfnet_saml.metadata_factory

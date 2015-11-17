@@ -18,36 +18,35 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Surfnet\SamlBundle\Http\XMLResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Surfnet\SamlBundle\Metadata\MetadataFactory;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class SamlController extends Controller
+class SamlController
 {
     /**
-     * @Template
+     * @var MetadataFactory
      */
-    public function consumeAssertionAction(Request $httpRequest)
+    private $metadataFactory;
+
+    /**
+     * @param MetadataFactory $metadataFactory
+     */
+    public function __construct(MetadataFactory $metadataFactory)
     {
-        /** @var \Surfnet\SamlBundle\Http\PostBinding $postBinding */
-        $postBinding = $this->get('surfnet_saml.http.post_binding');
-
-        /** @var \SAML2_Assertion $assertion */
-        $assertion = $postBinding->processResponse(
-            $httpRequest,
-            $this->get('surfnet_saml.remote.idp'),
-            $this->get('surfnet_saml.hosted.service_provider')
-        );
-
-        return $assertion->getAttributes();
+        $this->metadataFactory = $metadataFactory;
     }
 
+    public function consumeAssertionAction()
+    {
+        throw new BadRequestHttpException('Consume Assertion should not be accessible');
+    }
+
+    /**
+     * @return XMLResponse
+     */
     public function metadataAction()
     {
-        /** @var \Surfnet\SamlBundle\Metadata\MetadataFactory $metadataFactory */
-        $metadataFactory = $this->get('surfnet_saml.metadata_factory');
-
-        return new XMLResponse($metadataFactory->generate());
+        return new XMLResponse($this->metadataFactory->generate());
     }
 }

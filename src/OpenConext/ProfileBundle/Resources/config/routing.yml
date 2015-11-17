@@ -16,11 +16,11 @@ profile.removal_overview:
 
 profile.saml_consume_assertion:
     path: /authentication/consume-assertion
-    defaults: { _controller: OpenConextProfileBundle:Saml:consumeAssertion }
+    defaults: { _controller: profile.controller.saml:consumeAssertionAction }
 
 profile.saml_metadata:
     path: /authentication/metadata
-    defaults: { _controller: OpenConextProfileBundle:Saml:metadata }
+    defaults: { _controller: profile.controller.saml:metadataAction }
 
 profile.locale_switch_locale:
     path:     /switch-locale
