@@ -36,6 +36,9 @@ class IntroductionController
         $this->templating = $templating;
     }
 
+    /**
+     * @return Response
+     */
     public function overviewAction()
     {
         return new Response($this->templating->render('OpenConextProfileBundle:Introduction:overview.html.twig'));
