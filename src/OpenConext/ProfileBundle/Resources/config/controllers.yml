@@ -13,3 +13,8 @@ services:
         class: OpenConext\ProfileBundle\Controller\ServicesController
         arguments:
             - @templating
+
+    profile.controller.removal:
+        class: OpenConext\ProfileBundle\Controller\RemovalController
+        arguments:
+            - @templating

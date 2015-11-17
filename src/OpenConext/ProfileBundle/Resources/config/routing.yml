@@ -11,8 +11,8 @@ profile.services_overview:
     defaults: { _controller: profile.controller.services:overviewAction }
 
 profile.removal_overview:
-    path:     /exit
-    defaults: { _controller: OpenConextProfileBundle:Removal:overview }
+    path:     /removal
+    defaults: { _controller: profile.controller.removal:overviewAction }
 
 profile.saml_consume_assertion:
     path: /authentication/consume-assertion
