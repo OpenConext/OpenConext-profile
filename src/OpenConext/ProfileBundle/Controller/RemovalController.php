@@ -26,14 +26,14 @@ class RemovalController
     /**
      * @var EngineInterface
      */
-    private $templating;
+    private $templateEngine;
 
     /**
-     * @param EngineInterface $templating
+     * @param EngineInterface $templateEngine
      */
-    public function __construct(EngineInterface $templating)
+    public function __construct(EngineInterface $templateEngine)
     {
-        $this->templating = $templating;
+        $this->templateEngine = $templateEngine;
     }
 
     /**
@@ -41,6 +41,6 @@ class RemovalController
      */
     public function overviewAction()
     {
-        return new Response($this->templating->render('OpenConextProfileBundle:Removal:overview.html.twig'));
+        return new Response($this->templateEngine->render('OpenConextProfileBundle:Removal:overview.html.twig'));
     }
 }

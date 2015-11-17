@@ -26,14 +26,14 @@ class ProfileController
     /**
      * @var EngineInterface
      */
-    private $templating;
+    private $templateEngine;
 
     /**
-     * @param EngineInterface $templating
+     * @param EngineInterface $templateEngine
      */
-    public function __construct(EngineInterface $templating)
+    public function __construct(EngineInterface $templateEngine)
     {
-        $this->templating = $templating;
+        $this->templateEngine = $templateEngine;
     }
 
     /**
@@ -41,6 +41,6 @@ class ProfileController
      */
     public function overviewAction()
     {
-        return new Response($this->templating->render('OpenConextProfileBundle:Profile:overview.html.twig'));
+        return new Response($this->templateEngine->render('OpenConextProfileBundle:Profile:overview.html.twig'));
     }
 }
