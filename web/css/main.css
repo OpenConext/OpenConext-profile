@@ -5,6 +5,7 @@ html, body {
 
 p,
 a,
+li,
 .overview-table th,
 .overview-table td,
 .mdl-navigation__link {
@@ -140,6 +141,9 @@ a,
 .mdl-layout__content .content-container .overview-table .strong {
     font-weight: 600;
 }
+.mdl-layout__content .content-container table *:last-child {
+    margin:0;
+}
 
 .mdl-layout__content .content-container img {
     max-width: 100%;
@@ -155,6 +159,17 @@ a,
     line-height: 1.35;
 }
 
+/* Services table */
+tr.service:hover {
+    background-color: initial !important;
+}
+.service-name {
+    width: 100%;
+    color: #4db3cf;
+    cursor: pointer;
+    display: block;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid #cccccc;
@@ -167,10 +182,7 @@ a,
 }
 .footer .footer-navigation {
     list-style: none;
-    margin: 0;
-}
-.footer .footer-navigation ul {
-    margin-left: 0;
+    padding: 0;
 }
 .footer .footer-navigation li {
     display: inline-block;
@@ -203,7 +215,7 @@ a,
     }
 
     .footer-navigation {
-        margin: 16px 0;
+        margin: 0;
     }
 
     .footer .footer-navigation li {

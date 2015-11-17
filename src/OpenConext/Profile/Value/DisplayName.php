@@ -19,6 +19,7 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Exception\LogicException;
 
 final class DisplayName
 {
@@ -45,6 +46,18 @@ final class DisplayName
         Assert::string($locale, 'Locale must be string', 'locale');
 
         return array_key_exists($locale, $this->translations) && trim($this->translations[$locale]) !== '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getTranslation($locale)
+    {
+        if (!isset($this->translations[$locale])) {
+            throw new LogicException(sprintf('Could not find translation for locale "%s"', $locale));
+        }
+
+        return $this->translations[$locale];
     }
 
     public function __toString()
