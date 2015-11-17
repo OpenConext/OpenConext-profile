@@ -4,7 +4,7 @@ profile.introduction_overview:
 
 profile.profile_overview:
     path:     /profile
-    defaults: { _controller: OpenConextProfileBundle:Profile:overview }
+    defaults: { _controller: profile.controller.profile:overviewAction }
 
 profile.services_overview:
     path:     /services

@@ -3,3 +3,8 @@ services:
         class: OpenConext\ProfileBundle\Controller\IntroductionController
         arguments:
             - @templating
+
+    profile.controller.profile:
+        class: OpenConext\ProfileBundle\Controller\ProfileController
+        arguments:
+            - @templating
