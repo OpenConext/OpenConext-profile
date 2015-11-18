@@ -23,6 +23,7 @@ use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
+use OpenConext\Profile\Value\ConsentType;
 use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\Profile\Value\Entity;
@@ -44,6 +45,11 @@ final class ConsentListFactoryTest extends TestCase
         $firstEula          = 'https://domain.invalid';
         $secondSupportEmail = 'support@openconext.org';
 
+        $givenFirstConsentTypeValue = 'explicit';
+        $expectedFirstConsentType = ConsentType::explicit();
+        $givenSecondConsentTypeValue = 'implicit';
+        $expectedSecondConsentType = ConsentType::implicit();
+
         $given = [
             [
                 'service_provider' => [
@@ -54,6 +60,7 @@ final class ConsentListFactoryTest extends TestCase
                 ],
                 'consent_given_on' => '2015-11-05T08:43:01+01:00',
                 'last_used_on'     => '2015-11-05T08:43:01+01:00',
+                'consent_type'     => $givenFirstConsentTypeValue
             ],
             [
                 'service_provider' => [
@@ -64,6 +71,7 @@ final class ConsentListFactoryTest extends TestCase
                 ],
                 'consent_given_on' => '2015-11-05T08:17:04+01:00',
                 'last_used_on'     => '2015-11-05T08:17:04+01:00',
+                'consent_type'     => $givenSecondConsentTypeValue
             ],
         ];
 
@@ -76,7 +84,8 @@ final class ConsentListFactoryTest extends TestCase
                     null
                 ),
                 new DateTimeImmutable('2015-11-05T08:43:01+01:00'),
-                new DateTimeImmutable('2015-11-05T08:43:01+01:00')
+                new DateTimeImmutable('2015-11-05T08:43:01+01:00'),
+                $expectedFirstConsentType
             ),
             new Consent(
                 new ServiceProvider(
@@ -86,7 +95,8 @@ final class ConsentListFactoryTest extends TestCase
                     new EmailAddress($secondSupportEmail)
                 ),
                 new DateTimeImmutable('2015-11-05T08:17:04+01:00'),
-                new DateTimeImmutable('2015-11-05T08:17:04+01:00')
+                new DateTimeImmutable('2015-11-05T08:17:04+01:00'),
+                $expectedSecondConsentType
             ),
         ]);
 

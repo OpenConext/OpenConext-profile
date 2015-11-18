@@ -24,6 +24,7 @@ use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
+use OpenConext\Profile\Value\ConsentType;
 use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\Profile\Value\Entity;
@@ -55,6 +56,13 @@ final class ConsentListFactory
         Assert::keyExists($data, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
         Assert::keyExists($data, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
         Assert::keyExists($data, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
+        Assert::keyExists($data, 'consent_type', 'Consent JSON structure must contain key "consent_type"');
+
+        Assert::choice(
+            $data['consent_type'],
+            [ConsentType::TYPE_EXPLICIT, ConsentType::TYPE_IMPLICIT],
+            '"%s" is not one of the valid ConsentTypes: %s'
+        );
 
         $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['consent_given_on']);
         $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['last_used_on']);
@@ -76,10 +84,17 @@ final class ConsentListFactory
             )
         );
 
+        if ($data['consent_type'] === ConsentType::TYPE_EXPLICIT) {
+            $consentType = ConsentType::explicit();
+        } else if ($data['consent_type'] === ConsentType::TYPE_IMPLICIT) {
+            $consentType = ConsentType::implicit();
+        }
+
         return new Consent(
             self::createServiceProvider($data['service_provider']),
             $consentGivenOn,
-            $lastUsedOn
+            $lastUsedOn,
+            $consentType
         );
     }
 
