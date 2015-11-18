@@ -39,7 +39,7 @@ class SamlController
 
     public function consumeAssertionAction()
     {
-        throw new BadRequestHttpException('Invalid request sent to ACS');
+        throw new BadRequestHttpException('Unexpected request sent to ACS');
     }
 
     /**
