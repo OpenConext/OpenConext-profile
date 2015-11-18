@@ -28,7 +28,7 @@ class UrlTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      */
     public function one_can_be_created_with_a_valid_url()
     {

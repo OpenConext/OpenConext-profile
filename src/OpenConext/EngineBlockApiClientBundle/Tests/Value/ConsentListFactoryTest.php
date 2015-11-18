@@ -35,7 +35,7 @@ final class ConsentListFactoryTest extends TestCase
 {
     /**
      * @test
-     * @group consent
+     * @group Consent
      */
     public function it_can_create_a_consent_list()
     {

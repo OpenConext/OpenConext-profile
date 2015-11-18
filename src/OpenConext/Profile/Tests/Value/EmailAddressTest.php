@@ -28,7 +28,7 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      */
     public function it_accepts_emails()
     {
