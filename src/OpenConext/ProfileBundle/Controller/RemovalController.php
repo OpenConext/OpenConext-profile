@@ -18,12 +18,29 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\HttpFoundation\Response;
 
-class RemovalController extends Controller
+class RemovalController
 {
+    /**
+     * @var EngineInterface
+     */
+    private $templateEngine;
+
+    /**
+     * @param EngineInterface $templateEngine
+     */
+    public function __construct(EngineInterface $templateEngine)
+    {
+        $this->templateEngine = $templateEngine;
+    }
+
+    /**
+     * @return Response
+     */
     public function overviewAction()
     {
-        return $this->render('OpenConextProfileBundle:Removal:overview.html.twig');
+        return new Response($this->templateEngine->render('OpenConextProfileBundle:Removal:overview.html.twig'));
     }
 }

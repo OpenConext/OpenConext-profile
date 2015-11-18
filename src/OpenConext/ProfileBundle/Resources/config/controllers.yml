@@ -1,0 +1,25 @@
+services:
+    profile.controller.introduction:
+        class: OpenConext\ProfileBundle\Controller\IntroductionController
+        arguments:
+            - @templating
+
+    profile.controller.profile:
+        class: OpenConext\ProfileBundle\Controller\ProfileController
+        arguments:
+            - @templating
+
+    profile.controller.services:
+        class: OpenConext\ProfileBundle\Controller\ServicesController
+        arguments:
+            - @templating
+
+    profile.controller.removal:
+        class: OpenConext\ProfileBundle\Controller\RemovalController
+        arguments:
+            - @templating
+
+    profile.controller.saml:
+        class: OpenConext\ProfileBundle\Controller\SamlController
+        arguments:
+            - @surfnet_saml.metadata_factory

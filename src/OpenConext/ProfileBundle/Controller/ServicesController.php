@@ -18,12 +18,29 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Templating\EngineInterface;
 
-class ServicesController extends Controller
+class ServicesController
 {
+    /**
+     * @var EngineInterface
+     */
+    private $templateEngine;
+
+    /**
+     * @param EngineInterface $templateEngine
+     */
+    public function __construct(EngineInterface $templateEngine)
+    {
+        $this->templateEngine = $templateEngine;
+    }
+
+    /**
+     * @return Response
+     */
     public function overviewAction()
     {
-        return $this->render('OpenConextProfileBundle:Services:overview.html.twig');
+        return new Response($this->templateEngine->render('OpenConextProfileBundle:Services:overview.html.twig'));
     }
 }
