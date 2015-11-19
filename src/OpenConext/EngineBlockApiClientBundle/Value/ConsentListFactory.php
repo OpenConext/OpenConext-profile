@@ -89,7 +89,7 @@ final class ConsentListFactory
 
         if ($data['consent_type'] === ConsentType::TYPE_EXPLICIT) {
             $consentType = ConsentType::explicit();
-        } else if ($data['consent_type'] === ConsentType::TYPE_IMPLICIT) {
+        } else {
             $consentType = ConsentType::implicit();
         }
 
