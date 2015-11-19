@@ -32,6 +32,9 @@ use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
 use OpenConext\Profile\Value\Url;
 
+/**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 final class ConsentListFactory
 {
     /**
