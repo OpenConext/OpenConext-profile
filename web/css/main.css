@@ -138,12 +138,6 @@ li,
     font-weight: 300;
     color: #a2a2a2;
 }
-.mdl-layout__content .content-container .overview-table .strong {
-    font-weight: 600;
-}
-.mdl-layout__content .content-container table *:last-child {
-    margin:0;
-}
 
 .mdl-layout__content .content-container img {
     max-width: 100%;
@@ -163,11 +157,26 @@ li,
 tr.service:hover {
     background-color: initial !important;
 }
+.service-details {
+    padding: 14px;
+}
+.service-details td {
+    width: 12px;
+}
 .service-name {
     width: 100%;
     color: #4db3cf;
     cursor: pointer;
     display: block;
+}
+.service-info tr {
+    background-color: initial !important;
+}
+.service-info td {
+    border: none;
+}
+.service-info tr td:first-child {
+    padding-left: 0 !important;
 }
 
 /* Footer */
@@ -250,6 +259,6 @@ tr.service:hover {
 
     /* Content container */
     .mdl-layout__content .content-container .introduction-explanation-image {
-        max-width: 720px;
+        max-width: 704px;
     }
 }

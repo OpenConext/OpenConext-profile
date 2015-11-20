@@ -19,20 +19,30 @@
                     </span>
 
                     <div class="service-details">
-                        <ul>
+                        <table class="service-info">
                             {% if consent.serviceProvider.hasEulaUrl %}
-                            <li>
-                                <a href="{{ consent.serviceProvider.eulaUrl }}">{{ 'profile.services.eula'|trans }}</a>
-                            </li>
+                            <tr>
+                                <td>{{ 'profile.services.eula'|trans }}:</td>
+                                <td>
+                                    <a href="{{ consent.serviceProvider.eulaUrl }}">
+                                        {{ consent.serviceProvider.eulaUrl }}
+                                    </a>
+                                </td>
+                            </tr>
                             {% endif %}
 
                             {% if consent.serviceProvider.hasSupportEmail %}
-                            <li>
-                                <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">{{ 'profile.services.support_email'|trans }}</a>
-                            </li>
+                            <tr>
+                                <td>{{ 'profile.services.supportEmail'|trans }}:</td>
+                                <td>
+                                    <i class="fa fa-envelope"></i>
+                                    <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">
+                                        {{ consent.serviceProvider.supportEmail }}
+                                    </a>
+                                </td>
+                            </tr>
                             {% endif %}
-                        </ul>
-                        <p>{{ 'profile.services.consent_message'|trans }}</p>
+                        </table>
                         <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
                         <table class="mdl-data-table">
                             <thead>
