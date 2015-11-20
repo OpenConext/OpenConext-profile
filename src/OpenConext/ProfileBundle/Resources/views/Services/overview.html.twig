@@ -17,7 +17,6 @@
                            {{ consent.serviceProvider.displayName.translation(app.request.locale) }}
                         {% endif %}
                     </span>
-
                     <div class="service-details">
                         <table class="service-info">
                             {% if consent.serviceProvider.hasEulaUrl %}
@@ -30,7 +29,6 @@
                                 </td>
                             </tr>
                             {% endif %}
-
                             {% if consent.serviceProvider.hasSupportEmail %}
                             <tr>
                                 <td>{{ 'profile.services.supportEmail'|trans }}:</td>
@@ -42,32 +40,50 @@
                                 </td>
                             </tr>
                             {% endif %}
-                        </table>
-                        <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
-                        <table class="mdl-data-table">
-                            <thead>
                             <tr>
-                                <th>{{ 'profile.table.attribute_name'|trans }}</th>
-                                <th>{{ 'profile.table.attribute_value'|trans }}</th>
+                                <td>{{ 'profile.services.consent_type'|trans }}:</td>
+                                <td>
+                                {% if consent.consentType.isExplicit %}
+                                    {{ 'profile.services.explicit_consent_given'|trans }}
+                                {% else %}
+                                    {{ 'profile.services.implicit_consent_given'|trans }}
+                                {% endif %}
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            {% for attribute in app.user.attributes %}
-                                <tr>
-                                    <td>
-                                        <strong>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
-                                    </td>
-                                    <td>
-                                        {% if attribute.value is iterable %}
-                                            {{ attribute.value|join(', ') }}
-                                        {% else %}
-                                           {{ attribute.value }}
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
+                            <tr>
+                                <td>{{ 'profile.services.consent_last_used_on'|trans }}:</td>
+                                <td>
+                                    {{ consent.lastUsedOn.date|date('Y-m-d h:i')}}
+                                </td>
+                            </tr>
                         </table>
+                        <div class="service-attributes">
+                            <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
+                            <table class="mdl-data-table">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'profile.table.attribute_name'|trans }}</th>
+                                    <th>{{ 'profile.table.attribute_value'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for attribute in app.user.attributes %}
+                                    <tr>
+                                        <td>
+                                            <strong>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                                        </td>
+                                        <td>
+                                            {% if attribute.value is iterable %}
+                                                {{ attribute.value|join(', ') }}
+                                            {% else %}
+                                               {{ attribute.value }}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </td>
             </tr>

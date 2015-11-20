@@ -157,12 +157,6 @@ li,
 tr.service:hover {
     background-color: initial !important;
 }
-.service-details {
-    padding: 14px;
-}
-.service-details td {
-    width: 12px;
-}
 .service-name {
     width: 100%;
     color: #4db3cf;
@@ -171,12 +165,23 @@ tr.service:hover {
 }
 .service-info tr {
     background-color: initial !important;
+    height: auto !important;
 }
 .service-info td {
     border: none;
+    height: auto !important;
+    padding: 4px !important;
 }
 .service-info tr td:first-child {
     padding-left: 0 !important;
+}
+
+.service-details {
+    padding: 14px;
+}
+
+.service-attributes {
+    margin-top: 32px;
 }
 
 /* Footer */
