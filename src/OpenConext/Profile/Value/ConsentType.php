@@ -70,6 +70,14 @@ final class ConsentType
     }
 
     /**
+     * @return bool
+     */
+    public function isExplicit()
+    {
+        return $this->consentType === self::TYPE_EXPLICIT;
+    }
+
+    /**
      * @return string
      */
     public function __toString()
