@@ -13,6 +13,9 @@ services:
         class: OpenConext\ProfileBundle\Controller\ServicesController
         arguments:
             - @templating
+            - @surfnet_saml.saml.attribute_dictionary
+            - @security.token_storage
+            - @profile.service.consent
 
     profile.controller.removal:
         class: OpenConext\ProfileBundle\Controller\RemovalController
