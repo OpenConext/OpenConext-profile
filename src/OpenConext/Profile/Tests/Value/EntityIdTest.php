@@ -28,7 +28,7 @@ class EntityIdTest extends UnitTest
 
     /**
      * @test
-     * @group EntityVerificationFramework
+     * @group Entity
      * @group Value
      *
      * @dataProvider notNonEmptyOrBlankStringProvider
@@ -43,7 +43,7 @@ class EntityIdTest extends UnitTest
 
     /**
      * @test
-     * @group EntityVerificationFramework
+     * @group Entity
      * @group Value
      */
     public function the_same_entity_ids_are_considered_equal()

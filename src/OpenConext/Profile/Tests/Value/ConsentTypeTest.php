@@ -18,33 +18,36 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use OpenConext\Profile\Tests\DataProvider;
-use OpenConext\Profile\Value\Url;
+use OpenConext\Profile\Value\ConsentType;
 use PHPUnit_Framework_TestCase as TestCase;
 
-class UrlTest extends TestCase
+class ConsentTypeTest extends TestCase
 {
-    use DataProvider;
-
     /**
      * @test
+     * @group Consent
      * @group Value
      */
-    public function one_can_be_created_with_a_valid_url()
+    public function different_consent_types_are_not_equal()
     {
-        new Url('https://domain.invalid');
+        $explicit = ConsentType::explicit();
+        $implicit = ConsentType::implicit();
+
+        $this->assertFalse($explicit->equals($implicit));
+        $this->assertFalse($implicit->equals($explicit));
     }
 
     /**
      * @test
-     * @group value
-     * @dataProvider nonStringProvider
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     *
-     * @param mixed $nonString
+     * @group Consent
+     * @group Value
      */
-    public function it_doesnt_accept_anything_else_than_strings($nonString)
+    public function same_type_of_consent_types_are_equal()
     {
-        new Url($nonString);
+        $explicit = ConsentType::explicit();
+        $implicit = ConsentType::implicit();
+
+        $this->assertTrue($explicit->equals(ConsentType::explicit()));
+        $this->assertTrue($implicit->equals(ConsentType::implicit()));
     }
 }

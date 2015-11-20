@@ -27,7 +27,7 @@ class EntityTest extends UnitTest
 {
     /**
      * @test
-     * @group EntityVerificationFramework
+     * @group Entity
      * @group Value
      */
     public function two_entities_with_the_same_entity_id_and_entity_type_are_equal()
