@@ -19,6 +19,7 @@
 namespace OpenConext\Profile\Value\Consent;
 
 use OpenConext\EngineBlockApiClientBundle\Exception\LogicException;
+use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\Profile\Value\Entity;
@@ -72,6 +73,21 @@ final class ServiceProvider
     public function getDisplayName()
     {
         return $this->displayName;
+    }
+
+    /**
+     * @param string $locale
+     * @return string
+     */
+    public function getLocaleAwareEntityName($locale)
+    {
+        Assert::string($locale);
+
+        if ($this->displayName->hasFilledTranslationForLocale($locale)) {
+            return $this->displayName->getTranslation($locale);
+        }
+
+        return $this->entity->getEntityId()->getEntityId();
     }
 
     /**
