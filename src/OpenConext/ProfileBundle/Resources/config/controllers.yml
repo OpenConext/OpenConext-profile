@@ -4,8 +4,8 @@ services:
         arguments:
             - @templating
 
-    profile.controller.profile:
-        class: OpenConext\ProfileBundle\Controller\ProfileController
+    profile.controller.my_profile:
+        class: OpenConext\ProfileBundle\Controller\MyProfileController
         arguments:
             - @templating
 
