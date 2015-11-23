@@ -78,4 +78,6 @@ services:
     profile.service.consent:
         class: OpenConext\ProfileBundle\Service\ConsentService
         arguments:
+            - @logger
             - @openconext_eb_api.repository.consent
+            - @saml.attribute.surfconext.id

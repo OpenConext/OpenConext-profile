@@ -6,9 +6,17 @@
 
 {% block content %}
     <h1>{{ 'profile.my_services.long_title'|trans }}</h1>
+    <p>{{ 'profile.my_services.explanation'|trans }}</p>
+    <ul>
+        <li>{{ 'profile.my_services.explanation.explicit_consent'|trans }}</li>
+        <li>{{ 'profile.my_services.explanation.implicit_consent'|trans }}</li>
+    </ul>
+    {% if consentList == null %}
+    <p><i class="prepended fa fa-warning"></i>{{ 'profile.my_services.error_loading_consent'|trans }}</p>
+    {% else %}
     <div class="table-overflow-container">
         <table class="mdl-data-table overview-table">
-        {% for consent in consents %}
+        {% for consent in consentList %}
             <tr class="service">
                 <td>
                     <span class="service-name">
@@ -62,7 +70,7 @@
                                 {% for attribute in app.user.attributes %}
                                     <tr>
                                         <td>
-                                            <strong>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                                            <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
                                         </td>
                                         <td>
                                             {% if attribute.value is iterable %}

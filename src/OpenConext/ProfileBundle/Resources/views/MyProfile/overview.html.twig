@@ -18,7 +18,7 @@
             {% for attribute in app.user.attributes %}
             <tr>
                 <td>
-                    <strong>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                    <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
                 </td>
                 <td>
                     {% if attribute.value is iterable %}

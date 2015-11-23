@@ -13,7 +13,6 @@ services:
         class: OpenConext\ProfileBundle\Controller\MyServicesController
         arguments:
             - @templating
-            - @surfnet_saml.saml.attribute_dictionary
             - @security.token_storage
             - @profile.service.consent
 
