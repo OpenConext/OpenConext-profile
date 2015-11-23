@@ -1,11 +1,11 @@
 {% extends 'OpenConextProfileBundle::layout.html.twig' %}
 
 {% block title %}
-    {{ 'profile.services.short_title'|trans }} &mdash; {{ parent() }}
+    {{ 'profile.my_services.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ 'profile.services.long_title'|trans }}</h1>
+    <h1>{{ 'profile.my_services.long_title'|trans }}</h1>
     <div class="table-container">
         <table class="mdl-data-table overview-table">
         {% for consent in consents %}
@@ -21,7 +21,7 @@
                         <table class="service-info">
                             {% if consent.serviceProvider.hasEulaUrl %}
                             <tr>
-                                <td>{{ 'profile.services.eula'|trans }}:</td>
+                                <td>{{ 'profile.my_services.eula'|trans }}:</td>
                                 <td>
                                     <a href="{{ consent.serviceProvider.eulaUrl }}">
                                         {{ consent.serviceProvider.eulaUrl }}
@@ -31,7 +31,7 @@
                             {% endif %}
                             {% if consent.serviceProvider.hasSupportEmail %}
                             <tr>
-                                <td>{{ 'profile.services.supportEmail'|trans }}:</td>
+                                <td>{{ 'profile.my_services.supportEmail'|trans }}:</td>
                                 <td>
                                     <i class="fa fa-envelope"></i>
                                     <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">
@@ -41,24 +41,24 @@
                             </tr>
                             {% endif %}
                             <tr>
-                                <td>{{ 'profile.services.consent_type'|trans }}:</td>
+                                <td>{{ 'profile.my_services.consent_type'|trans }}:</td>
                                 <td>
                                 {% if consent.consentType.isExplicit %}
-                                    {{ 'profile.services.explicit_consent_given'|trans }}
+                                    {{ 'profile.my_services.explicit_consent_given'|trans }}
                                 {% else %}
-                                    {{ 'profile.services.implicit_consent_given'|trans }}
+                                    {{ 'profile.my_services.implicit_consent_given'|trans }}
                                 {% endif %}
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'profile.services.consent_last_used_on'|trans }}:</td>
+                                <td>{{ 'profile.my_services.consent_last_used_on'|trans }}:</td>
                                 <td>
                                     {{ consent.lastUsedOn.date|date('Y-m-d h:i')}}
                                 </td>
                             </tr>
                         </table>
                         <div class="service-attributes">
-                            <p>{{ 'profile.services.attribute_release_description'|trans }}</p>
+                            <p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
                             <table class="mdl-data-table">
                                 <thead>
                                 <tr>
