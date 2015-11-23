@@ -25,6 +25,11 @@ li,
     display: initial;
 }
 
+i.prepended {
+    width: 1em;
+    margin-right: 0.5em;
+}
+
 /* Components */
 .locale-switch {
     display: inline-block;
@@ -95,6 +100,9 @@ li,
     border-radius: 4px;
     margin-bottom: 32px;
 }
+.content-container ul {
+    margin-bottom: 24px;
+}
 
 /* Content container navigation tabs */
 .mdl-layout__content .navigation-tabs ul {
@@ -162,10 +170,7 @@ tr.service:hover {
     cursor: pointer;
     display: block;
 }
-i.prepended {
-    width: 1em;
-    margin-right: 0.5em;
-}
+
 .service-info tr {
     background-color: initial !important;
     height: auto !important;
