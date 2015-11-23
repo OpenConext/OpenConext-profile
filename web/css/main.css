@@ -121,8 +121,7 @@ li,
 .mdl-layout__content .content-container .content {
     padding: 0 32px 32px 32px;
 }
-.mdl-layout__content .content-container .table-container {
-    width: 100%;
+.mdl-layout__content .content-container .table-overflow-container {
     overflow: auto;
     margin-bottom: 15px;
 }
