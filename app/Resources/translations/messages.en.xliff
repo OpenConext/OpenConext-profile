@@ -83,15 +83,15 @@
         <source>profile.navigation.terms_of_service</source>
         <target>Terms of Service</target>
       </trans-unit>
-      <trans-unit id="e2e2fe24a85a4490f3a5d5fa646fd10d0f2fc5a9" resname="profile.profile.long_title">
+      <trans-unit id="e2e2fe24a85a4490f3a5d5fa646fd10d0f2fc5a9" resname="profile.my_profile.long_title">
         <jms:reference-file line="8">views/Profile/overview.html.twig</jms:reference-file>
-        <source>profile.profile.long_title</source>
+        <source>profile.my_profile.long_title</source>
         <target>My SURFconext Profile</target>
       </trans-unit>
-      <trans-unit id="7285ef1aab81a438658c5ac654b93597845df3a0" resname="profile.profile.short_title">
+      <trans-unit id="7285ef1aab81a438658c5ac654b93597845df3a0" resname="profile.my_profile.short_title">
         <jms:reference-file line="10">Resources/views/navigation-tabs.html.twig</jms:reference-file>
         <jms:reference-file line="4">views/Profile/overview.html.twig</jms:reference-file>
-        <source>profile.profile.short_title</source>
+        <source>profile.my_profile.short_title</source>
         <target>My Profile</target>
       </trans-unit>
       <trans-unit id="f0d2e2921f8994e3a9b289e1e60567616a52ab98" resname="profile.removal.long_title">
