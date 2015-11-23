@@ -12,10 +12,7 @@
             <tr class="service">
                 <td>
                     <span class="service-name">
-                        <i class="caret fa fa-angle-down"></i>
-                        {% if consent.serviceProvider.displayName.hasFilledTranslationForLocale(app.request.locale) %}
-                           {{ consent.serviceProvider.displayName.translation(app.request.locale) }}
-                        {% endif %}
+                        <i class="prepended caret fa fa-angle-down"></i>{{ consent.serviceProvider.getLocaleAwareEntityName(app.request.locale) }}
                     </span>
                     <div class="service-details">
                         <table class="service-info">
@@ -23,9 +20,7 @@
                             <tr>
                                 <td>{{ 'profile.my_services.eula'|trans }}:</td>
                                 <td>
-                                    <a href="{{ consent.serviceProvider.eulaUrl }}">
-                                        {{ consent.serviceProvider.eulaUrl }}
-                                    </a>
+                                    <a href="{{ consent.serviceProvider.eulaUrl }}">{{ consent.serviceProvider.eulaUrl }}</a>
                                 </td>
                             </tr>
                             {% endif %}
@@ -33,10 +28,7 @@
                             <tr>
                                 <td>{{ 'profile.my_services.supportEmail'|trans }}:</td>
                                 <td>
-                                    <i class="fa fa-envelope"></i>
-                                    <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}">
-                                        {{ consent.serviceProvider.supportEmail }}
-                                    </a>
+                                    <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}"><i class="prepended fa fa-envelope"></i>{{ consent.serviceProvider.supportEmail }}</a>
                                 </td>
                             </tr>
                             {% endif %}
@@ -90,6 +82,7 @@
         {% endfor %}
         </table>
     </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

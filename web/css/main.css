@@ -162,6 +162,10 @@ tr.service:hover {
     cursor: pointer;
     display: block;
 }
+i.prepended {
+    width: 1em;
+    margin-right: 0.5em;
+}
 .service-info tr {
     background-color: initial !important;
     height: auto !important;
