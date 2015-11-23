@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
 
-class ServicesController
+class MyServicesController
 {
     /**
      * @var EngineInterface
@@ -76,7 +76,7 @@ class ServicesController
         $consents = $this->consentService->findAllFor($userId->getValue());
 
         return new Response($this->templateEngine->render(
-            'OpenConextProfileBundle:Services:overview.html.twig',
+            'OpenConextProfileBundle:MyServices:overview.html.twig',
             ['consents' => $consents]
         ));
     }

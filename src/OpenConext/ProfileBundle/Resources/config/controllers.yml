@@ -9,8 +9,8 @@ services:
         arguments:
             - @templating
 
-    profile.controller.services:
-        class: OpenConext\ProfileBundle\Controller\ServicesController
+    profile.controller.my_services:
+        class: OpenConext\ProfileBundle\Controller\MyServicesController
         arguments:
             - @templating
             - @surfnet_saml.saml.attribute_dictionary

@@ -10,11 +10,11 @@ profile.my_profile_overview:
     defaults:
         _controller: profile.controller.my_profile:overviewAction
 
-profile.services_overview:
-    path:       /services
+profile.my_services_overview:
+    path:       /my-services
     methods:    [GET]
     defaults:
-        _controller: profile.controller.services:overviewAction
+        _controller: profile.controller.my_services:overviewAction
 
 profile.removal_overview:
     path:       /removal
