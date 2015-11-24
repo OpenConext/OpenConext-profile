@@ -60,8 +60,7 @@ final class ConsentService
         if (!$user->getAttributes()->containsAttributeDefinedBy($this->identifyingAttribute)) {
             $message = sprintf(
                 'Cannot get consent list for user: user does not have identifying attribute "%s"',
-                $this->identifyingAttribute->getName(),
-                $user
+                $this->identifyingAttribute->getName()
             );
 
             $this->logger->error($message);
