@@ -18,9 +18,9 @@
         <table class="mdl-data-table overview-table">
         {% for consent in consentList %}
             <tr class="service">
-                <td>
-                    <span class="service-name">
-                        <i class="prepended caret fa fa-angle-down"></i>{{ consent.serviceProvider.getLocaleAwareEntityName(app.request.locale) }}
+                <td data-service-details-state="initial">
+                    <span class="service-name service-details-state-toggle">
+                        <i class="prepended caret fa"></i>{{ consent.serviceProvider.getLocaleAwareEntityName(app.request.locale) }}
                     </span>
                     <div class="service-details">
                         <table class="service-info">
