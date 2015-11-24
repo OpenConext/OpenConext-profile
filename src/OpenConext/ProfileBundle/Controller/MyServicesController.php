@@ -18,7 +18,6 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use Exception;
 use OpenConext\ProfileBundle\Service\ConsentService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
