@@ -18,10 +18,8 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
-use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Repository\ConsentRepository;
 use OpenConext\Profile\Value\ConsentList;
-use OpenConext\ProfileBundle\Exception\RuntimeException;
 use OpenConext\ProfileBundle\Security\Authentication\Entity\User;
 use Psr\Log\LoggerInterface;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
