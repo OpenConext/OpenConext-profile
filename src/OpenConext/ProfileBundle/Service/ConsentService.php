@@ -53,7 +53,7 @@ final class ConsentService
 
     /**
      * @param User $user
-     * @return ConsentList
+     * @return ConsentList|null
      */
     public function findAllFor(User $user)
     {
