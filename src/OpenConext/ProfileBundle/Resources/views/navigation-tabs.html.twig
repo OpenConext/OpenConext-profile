@@ -6,13 +6,13 @@
         </a>
     </li>
     <li>
-        <a {% if route == 'profile.profile_overview' %}class="active"{% endif %} href="{{ path('profile.profile_overview') }}">
-            {{ 'profile.profile.short_title'|trans }}
+        <a {% if route == 'profile.my_profile_overview' %}class="active"{% endif %} href="{{ path('profile.my_profile_overview') }}">
+            {{ 'profile.my_profile.short_title'|trans }}
         </a>
     </li>
     <li>
-        <a {% if route == 'profile.services_overview' %}class="active"{% endif %} href="{{ path('profile.services_overview') }}">
-            {{ 'profile.services.short_title'|trans }}
+        <a {% if route == 'profile.my_services_overview' %}class="active"{% endif %} href="{{ path('profile.my_services_overview') }}">
+            {{ 'profile.my_services.short_title'|trans }}
         </a>
     </li>
     <li>

@@ -21,7 +21,7 @@ namespace OpenConext\ProfileBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
-class ServicesController
+class MyProfileController
 {
     /**
      * @var EngineInterface
@@ -41,6 +41,6 @@ class ServicesController
      */
     public function overviewAction()
     {
-        return new Response($this->templateEngine->render('OpenConextProfileBundle:Services:overview.html.twig'));
+        return new Response($this->templateEngine->render('OpenConextProfileBundle:MyProfile:overview.html.twig'));
     }
 }

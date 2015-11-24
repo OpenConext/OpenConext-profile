@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-11-09T11:43:48Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2015-11-23T17:37:09Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -74,6 +74,83 @@
         <source>profile.locale.nl</source>
         <target>NL</target>
       </trans-unit>
+      <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
+        <jms:reference-file line="8">views/MyProfile/overview.html.twig</jms:reference-file>
+        <source>profile.my_profile.long_title</source>
+        <target>Mijn profiel op SURFconext</target>
+      </trans-unit>
+      <trans-unit id="f1e5e770356348259bcc4b16b55b4fbf30fdeed1" resname="profile.my_profile.short_title">
+        <jms:reference-file line="4">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="10">Resources/views/navigation-tabs.html.twig</jms:reference-file>
+        <source>profile.my_profile.short_title</source>
+        <target>Mijn profiel</target>
+      </trans-unit>
+      <trans-unit id="41aded5ca8217152487f685b47f640799d76e24f" resname="profile.my_services.attribute_release_description">
+        <jms:reference-file line="61">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.attribute_release_description</source>
+        <target>Deze dienst ontvangt de volgende gegevens over jou:</target>
+      </trans-unit>
+      <trans-unit id="3bafef555140350349fa9fdb0ffecad23694a736" resname="profile.my_services.consent_last_used_on">
+        <jms:reference-file line="54">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.consent_last_used_on</source>
+        <target>Voor het laatst gebruikt op</target>
+      </trans-unit>
+      <trans-unit id="927d4519f4715517225aa5df22bf583e6421a0cf" resname="profile.my_services.consent_type">
+        <jms:reference-file line="44">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.consent_type</source>
+        <target>Toestemming gegeven door</target>
+      </trans-unit>
+      <trans-unit id="fc4ed9e167b467c2e26198429db9e75c2914cce6" resname="profile.my_services.error_loading_consent">
+        <jms:reference-file line="15">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.error_loading_consent</source>
+        <target>De lijst met diensten waar je bent ingelogd kan niet opgehaald worden.</target>
+      </trans-unit>
+      <trans-unit id="4fe6e0fef0fda46518eed058ae7a8411633d205d" resname="profile.my_services.eula">
+        <jms:reference-file line="29">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.eula</source>
+        <target>Gebruikersovereenkomst</target>
+      </trans-unit>
+      <trans-unit id="e792a9988ccfee30143187c270b5e0dffc59020c" resname="profile.my_services.explanation">
+        <jms:reference-file line="9">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.explanation</source>
+        <target>Bekijk hier bij welke websites  je via SURFconext bent ingelogd en welke persoonsgegevens door  jouw instelling zijn doorgegeven. De diensten zijn onderverdeeld in twee groepen:</target>
+      </trans-unit>
+      <trans-unit id="a92f83f99644130d2de961b6add4752a8ed6c3cc" resname="profile.my_services.explanation.explicit_consent">
+        <jms:reference-file line="11">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.explanation.explicit_consent</source>
+        <target>Toestemming door gebruiker: bij een aantal diensten wordt vooraf aan de eerste keer inloggen, expliciet gevraagd om toestemming voor het doorgeven van een aantal persoonsgegevens.</target>
+      </trans-unit>
+      <trans-unit id="1903f16c642b35604024fbd11029cb099d14bb6e" resname="profile.my_services.explanation.implicit_consent">
+        <jms:reference-file line="12">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.explanation.implicit_consent</source>
+        <target>Toestemming door instelling: Bij een aantal diensten wordt niet expliciet toestemming gevraagd, maar worden de gegevens automatisch doorgegeven na inloggen. In deze gevallen heeft jouw instelling bepaald dat expliciete toestemming niet hoeft. </target>
+      </trans-unit>
+      <trans-unit id="286aef124b54c35d42540b3c44ef082c8b86b363" resname="profile.my_services.explicit_consent_given">
+        <jms:reference-file line="47">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.explicit_consent_given</source>
+        <target>gebruiker</target>
+      </trans-unit>
+      <trans-unit id="c815c74e5f7765a5d5e5c419a59bbff5f874a5be" resname="profile.my_services.implicit_consent_given">
+        <jms:reference-file line="49">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.implicit_consent_given</source>
+        <target>instelling</target>
+      </trans-unit>
+      <trans-unit id="107928a44903768c109c65916394c80a60c49e1e" resname="profile.my_services.long_title">
+        <jms:reference-file line="8">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.long_title</source>
+        <target>Diensten via SURFconext</target>
+      </trans-unit>
+      <trans-unit id="a56f9f031cd71cad0cbf03e1a523825720214a53" resname="profile.my_services.short_title">
+        <jms:reference-file line="4">views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="15">Resources/views/navigation-tabs.html.twig</jms:reference-file>
+        <source>profile.my_services.short_title</source>
+        <target>Mijn diensten</target>
+      </trans-unit>
+      <trans-unit id="22e22666c2969a24c385952a44da34ff2d808837" resname="profile.my_services.supportEmail">
+        <jms:reference-file line="37">views/MyServices/overview.html.twig</jms:reference-file>
+        <source>profile.my_services.supportEmail</source>
+        <target>E-mailadres support</target>
+      </trans-unit>
       <trans-unit id="cc8455ffe1c5bde28802e8445e31e3d1f5c12a7a" resname="profile.navigation.help">
         <jms:reference-file line="26">Resources/views/layout.html.twig</jms:reference-file>
         <jms:reference-file line="64">Resources/views/layout.html.twig</jms:reference-file>
@@ -84,17 +161,6 @@
         <jms:reference-file line="67">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.navigation.terms_of_service</source>
         <target>Gebruiksvoorwaarden</target>
-      </trans-unit>
-      <trans-unit id="e2e2fe24a85a4490f3a5d5fa646fd10d0f2fc5a9" resname="profile.profile.long_title">
-        <jms:reference-file line="8">views/Profile/overview.html.twig</jms:reference-file>
-        <source>profile.profile.long_title</source>
-        <target>Mijn profiel op SURFconext</target>
-      </trans-unit>
-      <trans-unit id="7285ef1aab81a438658c5ac654b93597845df3a0" resname="profile.profile.short_title">
-        <jms:reference-file line="10">Resources/views/navigation-tabs.html.twig</jms:reference-file>
-        <jms:reference-file line="4">views/Profile/overview.html.twig</jms:reference-file>
-        <source>profile.profile.short_title</source>
-        <target>Mijn profiel</target>
       </trans-unit>
       <trans-unit id="f0d2e2921f8994e3a9b289e1e60567616a52ab98" resname="profile.removal.long_title">
         <jms:reference-file line="8">views/Removal/overview.html.twig</jms:reference-file>
@@ -107,24 +173,15 @@
         <source>profile.removal.short_title</source>
         <target>Wis mijn profiel</target>
       </trans-unit>
-      <trans-unit id="43671a6ad821d8d60b82397e2540ad5d9e15b948" resname="profile.services.long_title">
-        <jms:reference-file line="8">views/Services/overview.html.twig</jms:reference-file>
-        <source>profile.services.long_title</source>
-        <target>Diensten via SURFconext</target>
-      </trans-unit>
-      <trans-unit id="e75925b9dc5978b3bdfa5453cf7d0f4041f59d66" resname="profile.services.short_title">
-        <jms:reference-file line="15">Resources/views/navigation-tabs.html.twig</jms:reference-file>
-        <jms:reference-file line="4">views/Services/overview.html.twig</jms:reference-file>
-        <source>profile.services.short_title</source>
-        <target>Mijn diensten</target>
-      </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
-        <jms:reference-file line="14">views/Profile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="13">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="65">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.table.attribute_name</source>
         <target>Attribuut</target>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
-        <jms:reference-file line="15">views/Profile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="14">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="66">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.table.attribute_value</source>
         <target>Waarde</target>
       </trans-unit>

@@ -1,12 +1,12 @@
 {% extends 'OpenConextProfileBundle::layout.html.twig' %}
 
 {% block title %}
-    {{ 'profile.profile.short_title'|trans }} &mdash; {{ parent() }}
+    {{ 'profile.my_profile.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ 'profile.profile.long_title'|trans }}</h1>
-    <div class="table-container">
+    <h1>{{ 'profile.my_profile.long_title'|trans }}</h1>
+    <div class="table-overview-container">
         <table class="overview-table mdl-data-table">
             <thead>
             <tr>
@@ -17,16 +17,14 @@
             <tbody>
             {% for attribute in app.user.attributes %}
             <tr>
-                <td class="strong">
-                    <p>{{ ('profile.saml.attribute.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</p>
+                <td>
+                    <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
                 </td>
                 <td>
                     {% if attribute.value is iterable %}
-                        {% for value in attribute.value %}
-                            <p>{{ value }}</p>
-                        {% endfor %}
+                        {{ attribute.value|join(', ') }}
                     {% else %}
-                        <p>{{ attribute.value }}</p>
+                        {{ attribute.value }}
                     {% endif %}
                 </td>
             </tr>

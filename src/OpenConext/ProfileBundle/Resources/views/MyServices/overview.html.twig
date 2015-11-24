@@ -1,0 +1,99 @@
+{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ 'profile.my_services.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ 'profile.my_services.long_title'|trans }}</h1>
+    <p>{{ 'profile.my_services.explanation'|trans }}</p>
+    <ul>
+        <li>{{ 'profile.my_services.explanation.explicit_consent'|trans }}</li>
+        <li>{{ 'profile.my_services.explanation.implicit_consent'|trans }}</li>
+    </ul>
+    {% if consentList == null %}
+    <p><i class="prepended fa fa-warning"></i>{{ 'profile.my_services.error_loading_consent'|trans }}</p>
+    {% else %}
+    <div class="table-overflow-container">
+        <table class="mdl-data-table overview-table">
+        {% for consent in consentList %}
+            <tr class="service">
+                <td data-service-details-state="initial">
+                    <span class="service-name service-details-state-toggle">
+                        <i class="prepended caret fa"></i>{{ consent.serviceProvider.getLocaleAwareEntityName(app.request.locale) }}
+                    </span>
+                    <div class="service-details">
+                        <table class="service-info">
+                            {% if consent.serviceProvider.hasEulaUrl %}
+                            <tr>
+                                <td>{{ 'profile.my_services.eula'|trans }}:</td>
+                                <td>
+                                    <a href="{{ consent.serviceProvider.eulaUrl }}">{{ consent.serviceProvider.eulaUrl }}</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% if consent.serviceProvider.hasSupportEmail %}
+                            <tr>
+                                <td>{{ 'profile.my_services.supportEmail'|trans }}:</td>
+                                <td>
+                                    <a href="{{ 'mailto:' ~ consent.serviceProvider.supportEmail }}"><i class="prepended fa fa-envelope"></i>{{ consent.serviceProvider.supportEmail }}</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <td>{{ 'profile.my_services.consent_type'|trans }}:</td>
+                                <td>
+                                {% if consent.consentType.isExplicit %}
+                                    {{ 'profile.my_services.explicit_consent_given'|trans }}
+                                {% else %}
+                                    {{ 'profile.my_services.implicit_consent_given'|trans }}
+                                {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'profile.my_services.consent_last_used_on'|trans }}:</td>
+                                <td>
+                                    {{ consent.lastUsedOn.date|date('Y-m-d h:i')}}
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="service-attributes">
+                            <p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
+                            <table class="mdl-data-table">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'profile.table.attribute_name'|trans }}</th>
+                                    <th>{{ 'profile.table.attribute_value'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for attribute in app.user.attributes %}
+                                    <tr>
+                                        <td>
+                                            <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                                        </td>
+                                        <td>
+                                            {% if attribute.value is iterable %}
+                                                {{ attribute.value|join(', ') }}
+                                            {% else %}
+                                               {{ attribute.value }}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/my-services.js') }}"></script>
+{% endblock %}
