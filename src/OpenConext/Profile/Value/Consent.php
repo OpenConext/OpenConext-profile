@@ -23,6 +23,7 @@ use DateTimeImmutable;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 final class Consent
 {
@@ -47,6 +48,11 @@ final class Consent
     private $consentType;
 
     /**
+     * @var null|AttributeSet
+     */
+    private $attributes;
+
+    /**
      * @param ServiceProvider $serviceProvider
      * @param DateTimeImmutable $consentGivenOn
      * @param DateTimeImmutable $lastUsedOn
@@ -62,6 +68,18 @@ final class Consent
         $this->consentGivenOn  = $consentGivenOn;
         $this->lastUsedOn      = $lastUsedOn;
         $this->consentType     = $consentType;
+    }
+
+    /**
+     * @param AttributeSet $attributeSet
+     * @return Consent
+     */
+    public function givenFor(AttributeSet $attributeSet)
+    {
+        $newConsent = clone $this;
+        $newConsent->attributes = $attributeSet;
+
+        return $newConsent;
     }
 
     /**
@@ -94,5 +112,13 @@ final class Consent
     public function getConsentType()
     {
         return $this->consentType;
+    }
+
+    /**
+     * @return null|AttributeSet
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 }
