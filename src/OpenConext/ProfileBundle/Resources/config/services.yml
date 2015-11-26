@@ -81,3 +81,8 @@ services:
             - @logger
             - @openconext_eb_api.repository.consent
             - @saml.attribute.surfconext.id
+
+    profile.user.user_provider:
+        class: OpenConext\ProfileBundle\User\UserProvider
+        arguments:
+            - @security.token_storage
