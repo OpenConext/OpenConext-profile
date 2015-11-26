@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Service\ConsentService;
+use OpenConext\ProfileBundle\Service\ConsentListingService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -31,38 +31,29 @@ class MyServicesController
     private $templateEngine;
 
     /**
-     * @var TokenStorageInterface
+     * @var ConsentListingService
      */
-    private $tokenStorage;
-
-    /**
-     * @var ConsentService
-     */
-    private $consentService;
+    private $consentListingService;
 
     /**
      * @param EngineInterface $templateEngine
-     * @param TokenStorageInterface $tokenStorage
-     * @param ConsentService $consentService
+     * @param ConsentListingService $consentListingService
      */
     public function __construct(
         EngineInterface $templateEngine,
-        TokenStorageInterface $tokenStorage,
-        ConsentService $consentService
+        ConsentListingService $consentListingService
     ) {
         $this->templateEngine = $templateEngine;
-        $this->tokenStorage   = $tokenStorage;
-        $this->consentService = $consentService;
+        $this->consentListingService = $consentListingService;
     }
 
     public function overviewAction()
     {
-        $user        = $this->tokenStorage->getToken()->getUser();
-        $consentList = $this->consentService->findAllFor($user);
+        $consentListing = $this->consentListingService->getConsentListing();
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',
-            ['consentList' => $consentList]
+            ['consentListing' => $consentListing]
         ));
     }
 }
