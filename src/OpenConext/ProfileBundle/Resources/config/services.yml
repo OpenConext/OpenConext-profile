@@ -86,3 +86,14 @@ services:
         class: OpenConext\ProfileBundle\User\UserProvider
         arguments:
             - @security.token_storage
+
+    profile.service.consent_listing:
+        class: OpenConext\ProfileBundle\Service\ConsentListingService
+        arguments:
+            - @profile.user.user_provider
+            - @profile.service.consent
+            - @profile.consent.blacklist_filter
+
+
+    profile.consent.blacklist_filter:
+        class: OpenConext\ProfileBundle\Consent\BlacklistFilter
