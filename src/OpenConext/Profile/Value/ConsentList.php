@@ -35,11 +35,14 @@ final class ConsentList implements IteratorAggregate, Countable
     public function __construct(array $consents)
     {
         foreach ($consents as $consent) {
-            $this->initialiseWith($consent);
+            $this->initializeWith($consent);
         }
     }
 
-    private function initialiseWith(Consent $consent)
+    /**
+     * @param Consent $consent
+     */
+    private function initializeWith(Consent $consent)
     {
         $this->consents[] = $consent;
     }
