@@ -26,7 +26,20 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('open_conext_profile');
+        $rootNode = $treeBuilder->root('open_conext_profile');
+
+        $rootNode
+            ->children()
+                ->scalarNode('allowed_transaction_attempts')
+                    ->defaultValue(3)
+                    ->validate()
+                        ->ifTrue(function ($attempts) {
+                            return !is_integer($attempts);
+                        })
+                        ->thenInvalid('Allowed transaction attempts should be an integer')
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

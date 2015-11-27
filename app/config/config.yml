@@ -79,3 +79,6 @@ open_conext_engine_block_api_client:
         username: %engineblock_api_username%
         password: %engineblock_api_password%
         verify_ssl: %engineblock_api_verify_ssl%
+
+open_conext_profile:
+    allowed_transaction_attempts: %open_conext_profile_allowed_transaction_attempts%
