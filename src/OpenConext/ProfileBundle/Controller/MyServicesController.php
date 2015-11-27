@@ -18,7 +18,8 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Service\ConsentListingService;
+use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
+use OpenConext\ProfileBundle\User\UserProvider;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -31,29 +32,38 @@ class MyServicesController
     private $templateEngine;
 
     /**
-     * @var ConsentListingService
+     * @var SpecifiedConsentListService
      */
-    private $consentListingService;
+    private $specifiedConsentListService;
+
+    /**
+     * @var UserProvider
+     */
+    private $userProvider;
 
     /**
      * @param EngineInterface $templateEngine
-     * @param ConsentListingService $consentListingService
+     * @param UserProvider $userProvider
+     * @param SpecifiedConsentListService $specifiedConsentListService
      */
     public function __construct(
         EngineInterface $templateEngine,
-        ConsentListingService $consentListingService
+        UserProvider $userProvider,
+        SpecifiedConsentListService $specifiedConsentListService
     ) {
-        $this->templateEngine = $templateEngine;
-        $this->consentListingService = $consentListingService;
+        $this->templateEngine              = $templateEngine;
+        $this->userProvider                = $userProvider;
+        $this->specifiedConsentListService = $specifiedConsentListService;
     }
 
     public function overviewAction()
     {
-        $consentListing = $this->consentListingService->getConsentListing();
+        $user = $this->userProvider->getCurrentUser();
+        $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',
-            ['consentListing' => $consentListing]
+            ['specifiedConsentList' => $specifiedConsentList]
         ));
     }
 }

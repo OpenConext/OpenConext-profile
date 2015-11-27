@@ -22,38 +22,38 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 
-final class ConsentList implements IteratorAggregate, Countable
+final class SpecifiedConsentList implements IteratorAggregate, Countable
 {
     /**
-     * @var Consent[]
+     * @var SpecifiedConsent[]
      */
     private $consents = [];
 
     /**
-     * @param Consent[] $consents
+     * @param SpecifiedConsent[] $specifiedConsents
+     * @return SpecifiedConsentList
      */
-    public function __construct(array $consents)
+    public static function createWith(array $specifiedConsents)
     {
-        foreach ($consents as $consent) {
+        return new self($specifiedConsents);
+    }
+
+    /**
+     * @param SpecifiedConsent[] $specifiedConsents
+     */
+    private function __construct(array $specifiedConsents)
+    {
+        foreach ($specifiedConsents as $consent) {
             $this->initializeWith($consent);
         }
     }
 
     /**
-     * @param Consent $consent
+     * @param SpecifiedConsent $consent
      */
-    private function initializeWith(Consent $consent)
+    private function initializeWith(SpecifiedConsent $consent)
     {
         $this->consents[] = $consent;
-    }
-
-    /**
-     * @param callable $predicate
-     * @return Consent[]
-     */
-    public function map(callable $predicate)
-    {
-        return array_map($predicate, $this->consents);
     }
 
     public function getIterator()

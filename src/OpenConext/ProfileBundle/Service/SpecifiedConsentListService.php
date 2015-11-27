@@ -20,18 +20,15 @@ namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\ConsentList;
+use OpenConext\Profile\Value\SpecifiedConsent;
+use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Exception\RuntimeException;
 use OpenConext\ProfileBundle\Security\Authentication\Entity\User;
 use OpenConext\ProfileBundle\User\UserProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Filter\AttributeFilter;
 
-class ConsentListingService
+class SpecifiedConsentListService
 {
-    /**
-     * @var UserProvider
-     */
-    private $userProvider;
-
     /**
      * @var ConsentService
      */
@@ -43,41 +40,30 @@ class ConsentListingService
     private $attributeFilter;
 
     /**
-     * @param UserProvider $userProvider
      * @param ConsentService $consentService
      * @param AttributeFilter $attributeFilter
      */
     public function __construct(
-        UserProvider $userProvider,
         ConsentService $consentService,
         AttributeFilter $attributeFilter
     ) {
-        $this->userProvider    = $userProvider;
         $this->consentService  = $consentService;
         $this->attributeFilter = $attributeFilter;
     }
 
     /**
-     * @return ConsentList
+     * @param User $user
+     * @return SpecifiedConsentList
      */
-    public function getConsentListing()
+    public function getListFor(User $user)
     {
-        if (!$this->userProvider->hasCurrentUser()) {
-            throw new RuntimeException('Cannot get consent listing: no current user available');
-        }
-
-        $user               = $this->userProvider->getCurrentUser();
         $consentList        = $this->consentService->findAllFor($user);
         $filteredAttributes = $user->getAttributes()->apply($this->attributeFilter);
 
-        $newConsents = [];
+        $specifiedConsents = $consentList->map(function (Consent $consent) use ($filteredAttributes) {
+            return SpecifiedConsent::specifies($consent, $filteredAttributes);
+        });
 
-        /** @var Consent $consent */
-        foreach ($consentList as $consent) {
-            $newConsent = $consent->givenFor($filteredAttributes);
-            $newConsents[] = $newConsent;
-        }
-
-        return new ConsentList($newConsents);
+        return SpecifiedConsentList::createWith($specifiedConsents);
     }
 }

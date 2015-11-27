@@ -13,6 +13,7 @@ services:
         class: OpenConext\ProfileBundle\Controller\MyServicesController
         arguments:
             - @templating
+            - @profile.user.user_provider
             - @profile.service.consent_listing
 
     profile.controller.removal:
