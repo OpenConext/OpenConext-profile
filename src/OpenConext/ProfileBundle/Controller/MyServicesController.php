@@ -59,9 +59,7 @@ class MyServicesController
 
     public function overviewAction()
     {
-        if (!$this->userProvider->hasCurrentUser()) {
-            throw new RuntimeException('Cannot retrieve MyServices overview: no user available');
-        }
+        // @todo Guard::userIsLoggedIn to make sure there always is a current user
 
         $user = $this->userProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);

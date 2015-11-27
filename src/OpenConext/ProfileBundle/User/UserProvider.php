@@ -38,16 +38,6 @@ class UserProvider
     }
 
     /**
-     * @return bool
-     */
-    public function hasCurrentUser()
-    {
-        $token = $this->tokenStorage->getToken();
-
-        return ($token !== null && $token->getUser() !== null);
-    }
-
-    /**
      * @return User
      */
     public function getCurrentUser()
