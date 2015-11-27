@@ -27,7 +27,7 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
     /**
      * @var SpecifiedConsent[]
      */
-    private $consents = [];
+    private $specifiedConsents = [];
 
     /**
      * @param SpecifiedConsent[] $specifiedConsents
@@ -43,26 +43,26 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
      */
     private function __construct(array $specifiedConsents)
     {
-        foreach ($specifiedConsents as $consent) {
-            $this->initializeWith($consent);
+        foreach ($specifiedConsents as $specifiedConsent) {
+            $this->initializeWith($specifiedConsent);
         }
     }
 
     /**
-     * @param SpecifiedConsent $consent
+     * @param SpecifiedConsent $specifiedConsent
      */
-    private function initializeWith(SpecifiedConsent $consent)
+    private function initializeWith(SpecifiedConsent $specifiedConsent)
     {
-        $this->consents[] = $consent;
+        $this->specifiedConsents[] = $specifiedConsent;
     }
 
     public function getIterator()
     {
-        return new ArrayIterator($this->consents);
+        return new ArrayIterator($this->specifiedConsents);
     }
 
     public function count()
     {
-        return count($this->consents);
+        return count($this->specifiedConsents);
     }
 }
