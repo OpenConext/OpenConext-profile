@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\ProfileBundle\Exception\RuntimeException;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\User\UserProvider;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,6 +59,10 @@ class MyServicesController
 
     public function overviewAction()
     {
+        if (!$this->userProvider->hasCurrentUser()) {
+            throw new RuntimeException('Cannot retrieve MyServices overview: no user available');
+        }
+
         $user = $this->userProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
