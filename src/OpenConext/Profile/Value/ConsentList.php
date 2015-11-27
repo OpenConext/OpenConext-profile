@@ -49,7 +49,7 @@ final class ConsentList implements IteratorAggregate, Countable
 
     /**
      * @param callable $predicate
-     * @return Consent[]
+     * @return array
      */
     public function map(callable $predicate)
     {
