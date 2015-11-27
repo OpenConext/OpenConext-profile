@@ -19,6 +19,20 @@ services:
         tags:
             - { name: twig.extension }
 
+    profile.twig.transaction_extension:
+        class: OpenConext\ProfileBundle\Twig\TransactionExtension
+        arguments: [ @form.factory ]
+        tags:
+            - { name: twig.extension }
+
+    profile.form.retry_transaction:
+        class: OpenConext\ProfileBundle\Form\Type\RetryTransactionType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_retry_transaction }
+
+
     profile.global_view_parameters:
         class: OpenConext\ProfileBundle\Service\GlobalViewParameters
         arguments:
