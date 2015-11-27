@@ -55,8 +55,11 @@ services:
             - @security.authentication.manager
             - @profile.security.authentication.saml
             - @profile.saml.state_handler
+            - @profile.transaction.state_handler
             - @logger
             - @twig
+            - @form.factory
+            - @router
 
     profile.security.authentication.saml:
         public: false
@@ -74,6 +77,13 @@ services:
         arguments:
             - @profile.session
             - @session
+
+    profile.transaction.state_handler:
+        public: false
+        class: OpenConext\ProfileBundle\Transaction\StateHandler
+        arguments:
+            - @profile.session
+            - %open_conext_profile_allowed_transaction_attempts%
 
     profile.session:
         class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
