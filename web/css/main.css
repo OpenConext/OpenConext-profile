@@ -60,6 +60,11 @@ i.prepended {
     background-color: #4db3cf;
 }
 
+.mdl-button--accent.mdl-button--accent.mdl-button--raised,
+.mdl-button--accent.mdl-button--accent.mdl-button--fab {
+    background-color: #4db3cf;
+}
+
 /* Header */
 .mdl-layout__header {
     border-bottom: 2px solid #4db3cf;
