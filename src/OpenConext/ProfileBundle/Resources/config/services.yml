@@ -59,7 +59,6 @@ services:
         class: OpenConext\ProfileBundle\Saml\StateHandler
         arguments:
             - @profile.session
-            - @session
 
     profile.session:
         class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
