@@ -18,10 +18,7 @@
 
 namespace OpenConext\Profile\Value;
 
-use DateTime;
 use DateTimeImmutable;
-use OpenConext\Profile\Assert;
-use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 
 final class Consent

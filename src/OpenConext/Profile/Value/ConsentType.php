@@ -26,7 +26,7 @@ final class ConsentType
     const TYPE_IMPLICIT = 'implicit';
 
     /**
-     * @var ConsentType
+     * @var string
      */
     private $consentType;
 
