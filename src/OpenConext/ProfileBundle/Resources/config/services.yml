@@ -93,6 +93,5 @@ services:
             - @profile.service.consent
             - @profile.consent.blacklist_filter
 
-
     profile.consent.blacklist_filter:
         class: OpenConext\ProfileBundle\Consent\BlacklistFilter
