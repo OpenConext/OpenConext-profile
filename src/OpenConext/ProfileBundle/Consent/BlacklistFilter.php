@@ -24,7 +24,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\Filter\AttributeFilter as AttributeFilter
 final class BlacklistFilter implements AttributeFilterInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     const BLACKLIST = [
         'urn:oid:2.5.4.42',
