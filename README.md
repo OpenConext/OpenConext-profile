@@ -17,15 +17,15 @@ inside the `project_root/ansible/ssl` directory so they can be copied during pro
 
 Use the following commands to generate the required key and certificate:
 
-   # generate private key
-   openssl genrsa -des3 -out server.key 2048
-   
-   # create certificate signing request
-   openssl req -new -key server.key -out server.csr
-   
-   # remove passphrase from key
-   cp server.key server.key.org
-   openssl rsa -in server.key.org -out server.key
-   
-   # sign ssl certificate
-   openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+    # generate private key
+    openssl genrsa -des3 -out server.key 2048
+    
+    # create certificate signing request
+    openssl req -new -key server.key -out server.csr
+    
+    # remove passphrase from key
+    cp server.key server.key.org
+    openssl rsa -in server.key.org -out server.key
+    
+    # sign ssl certificate
+    openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
