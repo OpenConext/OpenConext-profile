@@ -22,47 +22,47 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 
-final class ConsentList implements IteratorAggregate, Countable
+final class SpecifiedConsentList implements IteratorAggregate, Countable
 {
     /**
-     * @var Consent[]
+     * @var SpecifiedConsent[]
      */
-    private $consents = [];
+    private $specifiedConsents = [];
 
     /**
-     * @param Consent[] $consents
+     * @param SpecifiedConsent[] $specifiedConsents
+     * @return SpecifiedConsentList
      */
-    public function __construct(array $consents)
+    public static function createWith(array $specifiedConsents)
     {
-        foreach ($consents as $consent) {
-            $this->initializeWith($consent);
+        return new self($specifiedConsents);
+    }
+
+    /**
+     * @param SpecifiedConsent[] $specifiedConsents
+     */
+    private function __construct(array $specifiedConsents)
+    {
+        foreach ($specifiedConsents as $specifiedConsent) {
+            $this->initializeWith($specifiedConsent);
         }
     }
 
     /**
-     * @param Consent $consent
+     * @param SpecifiedConsent $specifiedConsent
      */
-    private function initializeWith(Consent $consent)
+    private function initializeWith(SpecifiedConsent $specifiedConsent)
     {
-        $this->consents[] = $consent;
-    }
-
-    /**
-     * @param callable $predicate
-     * @return array
-     */
-    public function map(callable $predicate)
-    {
-        return array_map($predicate, $this->consents);
+        $this->specifiedConsents[] = $specifiedConsent;
     }
 
     public function getIterator()
     {
-        return new ArrayIterator($this->consents);
+        return new ArrayIterator($this->specifiedConsents);
     }
 
     public function count()
     {
-        return count($this->consents);
+        return count($this->specifiedConsents);
     }
 }

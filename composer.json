@@ -13,7 +13,7 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "surfnet/stepup-saml-bundle": "^1.4",
+        "surfnet/stepup-saml-bundle": "^1.5",
         "jms/translation-bundle": "^1.1",
         "jms/di-extra-bundle": "^1.1",
         "twig/extensions": "^1.3",
