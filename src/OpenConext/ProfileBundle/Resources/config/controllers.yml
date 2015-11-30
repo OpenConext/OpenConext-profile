@@ -3,11 +3,13 @@ services:
         class: OpenConext\ProfileBundle\Controller\IntroductionController
         arguments:
             - @templating
+            - @profile.security.guard
 
     profile.controller.my_profile:
         class: OpenConext\ProfileBundle\Controller\MyProfileController
         arguments:
             - @templating
+            - @profile.security.guard
 
     profile.controller.my_services:
         class: OpenConext\ProfileBundle\Controller\MyServicesController
@@ -15,11 +17,13 @@ services:
             - @templating
             - @security.token_storage
             - @profile.service.consent
+            - @profile.security.guard
 
     profile.controller.removal:
         class: OpenConext\ProfileBundle\Controller\RemovalController
         arguments:
             - @templating
+            - @profile.security.guard
 
     profile.controller.saml:
         class: OpenConext\ProfileBundle\Controller\SamlController

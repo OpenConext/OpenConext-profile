@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\ConsentService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -39,6 +40,10 @@ class MyServicesController
      * @var ConsentService
      */
     private $consentService;
+    /**
+     * @var Guard
+     */
+    private $guard;
 
     /**
      * @param EngineInterface $templateEngine
@@ -48,15 +53,19 @@ class MyServicesController
     public function __construct(
         EngineInterface $templateEngine,
         TokenStorageInterface $tokenStorage,
-        ConsentService $consentService
+        ConsentService $consentService,
+        Guard $guard
     ) {
         $this->templateEngine = $templateEngine;
         $this->tokenStorage   = $tokenStorage;
         $this->consentService = $consentService;
+        $this->guard = $guard;
     }
 
     public function overviewAction()
     {
+        $this->guard->userIsLoggedIn();
+
         $user        = $this->tokenStorage->getToken()->getUser();
         $consentList = $this->consentService->findAllFor($user);
 
