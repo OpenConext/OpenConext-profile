@@ -48,11 +48,7 @@ class StateHandler
     {
         $attempts = $this->attributeBag->get('attempts', 0);
 
-        if ($attempts > $this->allowedAttempts) {
-            return true;
-        }
-
-        return false;
+        return $attempts > $this->allowedAttempts;
     }
 
     public function incrementAttempts()
