@@ -1,6 +1,21 @@
 server {
-    listen  80;
+    listen 80;
     server_name {{ server.name }};
+
+    error_log  /var/log/nginx/{{ server.name }}_error.log;
+    access_log /var/log/nginx/{{ server.name }}_access.log;
+
+    rewrite ^/(.*) https://{{ server.name }}/$1 permanent;
+}
+
+server {
+    listen 443 ssl;
+    server_name {{ server.name }};
+
+    ssl_certificate /etc/nginx/conf.d/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/conf.d/ssl/server.key;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers HIGH:!aNULL:!MD5;
 
     root /var/www/{{ server.name }}/web;
 
