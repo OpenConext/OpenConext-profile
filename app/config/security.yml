@@ -12,9 +12,19 @@ security:
             pattern: ^/authentication/metadata$
             anonymous: ~
 
+        switch_locale:
+            pattern: ^/switch-locale$
+            anonymous: ~
+
+        retry_saml_transaction:
+            pattern: ^/saml/retry-transaction$
+            anonymous: ~
+
         saml_based:
             saml: true
 
     access_control:
         - { path: ^/authentication, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/saml/retry-transaction, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/switch-locale, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }

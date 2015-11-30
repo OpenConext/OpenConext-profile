@@ -19,6 +19,20 @@ services:
         tags:
             - { name: twig.extension }
 
+    profile.twig.transaction_extension:
+        class: OpenConext\ProfileBundle\Twig\TransactionExtension
+        arguments: [ @form.factory ]
+        tags:
+            - { name: twig.extension }
+
+    profile.form.retry_transaction:
+        class: OpenConext\ProfileBundle\Form\Type\RetryTransactionType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_retry_transaction }
+
+
     profile.global_view_parameters:
         class: OpenConext\ProfileBundle\Service\GlobalViewParameters
         arguments:
@@ -41,8 +55,11 @@ services:
             - @security.authentication.manager
             - @profile.security.authentication.saml
             - @profile.saml.state_handler
+            - @profile.transaction.state_handler
             - @logger
             - @twig
+            - @form.factory
+            - @router
 
     profile.security.authentication.saml:
         public: false
@@ -59,6 +76,13 @@ services:
         class: OpenConext\ProfileBundle\Saml\StateHandler
         arguments:
             - @profile.session
+
+    profile.transaction.state_handler:
+        public: false
+        class: OpenConext\ProfileBundle\Transaction\StateHandler
+        arguments:
+            - @profile.session
+            - %open_conext_profile_allowed_transaction_attempts%
 
     profile.session:
         class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag

@@ -15,3 +15,5 @@ parameters:
     engineblock_api_username: profile
     engineblock_api_password: secret
     engineblock_api_verify_ssl: true
+
+    open_conext_profile_allowed_transaction_attempts: 3

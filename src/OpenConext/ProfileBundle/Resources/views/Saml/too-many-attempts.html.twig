@@ -1,0 +1,16 @@
+{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+
+{% set retry_form = profile_retry_transaction(app.request.uri) %}
+
+{% block title %}
+    {{ 'profile.saml_transaction.too_many_attempts'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ 'profile.saml_transaction.too_many_attempts'|trans }}</h1>
+    <p>{{ 'profile.saml_transaction.too_many_attempts_explanation'|trans }}</p>
+    {{ form_start(retry_form) }}
+    {{ form_widget(retry_form.retry_transaction) }}
+    {{ form_widget(retry_form.retry_transaction) }}
+    {{ form_end(retry_form) }}
+{% endblock %}

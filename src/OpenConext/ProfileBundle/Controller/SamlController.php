@@ -18,8 +18,11 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\ProfileBundle\Transaction\StateHandler;
 use Surfnet\SamlBundle\Http\XMLResponse;
 use Surfnet\SamlBundle\Metadata\MetadataFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class SamlController
@@ -30,16 +33,30 @@ class SamlController
     private $metadataFactory;
 
     /**
-     * @param MetadataFactory $metadataFactory
+     * @var StateHandler
      */
-    public function __construct(MetadataFactory $metadataFactory)
+    private $transactionStateHandler;
+
+    /**
+     * @param MetadataFactory $metadataFactory
+     * @param StateHandler $transactionStateHandler
+     */
+    public function __construct(MetadataFactory $metadataFactory, StateHandler $transactionStateHandler)
     {
-        $this->metadataFactory = $metadataFactory;
+        $this->metadataFactory         = $metadataFactory;
+        $this->transactionStateHandler = $transactionStateHandler;
     }
 
     public function consumeAssertionAction()
     {
         throw new BadRequestHttpException('Unexpected request sent to ACS');
+    }
+
+    public function retryTransactionAction(Request $request)
+    {
+        $this->transactionStateHandler->resetAttempts();
+
+        return new RedirectResponse($request->query->get('return-url'));
     }
 
     /**

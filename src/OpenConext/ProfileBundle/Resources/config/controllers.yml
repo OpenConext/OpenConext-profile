@@ -25,3 +25,4 @@ services:
         class: OpenConext\ProfileBundle\Controller\SamlController
         arguments:
             - @surfnet_saml.metadata_factory
+            - @profile.transaction.state_handler

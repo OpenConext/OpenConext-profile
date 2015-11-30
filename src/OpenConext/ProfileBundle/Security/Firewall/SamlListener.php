@@ -19,9 +19,10 @@
 namespace OpenConext\ProfileBundle\Security\Firewall;
 
 use Exception;
-use OpenConext\ProfileBundle\Saml\StateHandler;
+use OpenConext\ProfileBundle\Saml\StateHandler as SamlStateHandler;
 use OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
+use OpenConext\ProfileBundle\Transaction\StateHandler as TransactionStateHandler;
 use SAML2_Response_Exception_PreconditionNotMetException as PreconditionNotMetException;
 use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
@@ -57,11 +58,6 @@ class SamlListener implements ListenerInterface
     private $authenticationManager;
 
     /**
-     * @var \Surfnet\SamlBundle\Monolog\SamlAuthenticationLogger
-     */
-    private $logger;
-
-    /**
      * @var \OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider
      */
     private $samlInteractionProvider;
@@ -69,29 +65,51 @@ class SamlListener implements ListenerInterface
     /**
      * @var \OpenConext\ProfileBundle\Saml\StateHandler
      */
-    private $stateHandler;
+    private $samlStateHandler;
+
+    /**
+     * @var TransactionStateHandler
+     */
+    private $transactionStateHandler;
+
+    /**
+     * @var \Surfnet\SamlBundle\Monolog\SamlAuthenticationLogger
+     */
+    private $logger;
 
     /**
      * @var \Twig_Environment
      */
     private $twig;
 
+    /**
+     * @param Session $session
+     * @param TokenStorageInterface $tokenStorage
+     * @param AuthenticationManagerInterface $authenticationManager
+     * @param SamlInteractionProvider $samlInteractionProvider
+     * @param SamlStateHandler $samlStateHandler
+     * @param TransactionStateHandler $transactionStateHandler
+     * @param LoggerInterface $logger
+     * @param Twig $twig
+     */
     public function __construct(
         Session $session,
         TokenStorageInterface $tokenStorage,
         AuthenticationManagerInterface $authenticationManager,
         SamlInteractionProvider $samlInteractionProvider,
-        StateHandler $stateHandler,
+        SamlStateHandler $samlStateHandler,
+        TransactionStateHandler $transactionStateHandler,
         LoggerInterface $logger,
         Twig $twig
     ) {
-        $this->session                  = $session;
-        $this->tokenStorage             = $tokenStorage;
-        $this->authenticationManager    = $authenticationManager;
-        $this->samlInteractionProvider  = $samlInteractionProvider;
-        $this->stateHandler             = $stateHandler;
-        $this->logger                   = $logger;
-        $this->twig = $twig;
+        $this->session                 = $session;
+        $this->tokenStorage            = $tokenStorage;
+        $this->authenticationManager   = $authenticationManager;
+        $this->samlInteractionProvider = $samlInteractionProvider;
+        $this->samlStateHandler        = $samlStateHandler;
+        $this->transactionStateHandler = $transactionStateHandler;
+        $this->logger                  = $logger;
+        $this->twig                    = $twig;
     }
 
     public function handle(GetResponseEvent $event)
@@ -113,14 +131,26 @@ class SamlListener implements ListenerInterface
             return;
         }
 
+        if ($this->transactionStateHandler->tooManyAttempts()) {
+            $this->offerRetryOption($event);
+
+            return;
+        }
+
         if (!$this->samlInteractionProvider->isSamlAuthenticationInitiated()) {
             $this->sendAuthnRequest($event);
 
             return;
         }
 
-        $expectedInResponseTo = $this->stateHandler->getRequestId();
-        $logger = $this->logger;
+        if (!$event->getRequest()->request->has('SAMLResponse')) {
+            $this->sendAuthnRequest($event);
+
+            return;
+        }
+
+        $expectedInResponseTo = $this->samlStateHandler->getRequestId();
+        $logger               = $this->logger;
 
         try {
             $assertion = $this->samlInteractionProvider->processSamlResponse($event->getRequest());
@@ -158,7 +188,7 @@ class SamlListener implements ListenerInterface
         // migrate the session to prevent session hijacking
         $this->session->migrate();
 
-        $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
+        $event->setResponse(new RedirectResponse($this->samlStateHandler->getCurrentRequestUri()));
         $logger->notice('Authentication succeeded, redirecting to original location');
     }
 
@@ -167,12 +197,23 @@ class SamlListener implements ListenerInterface
      */
     private function sendAuthnRequest(GetResponseEvent $event)
     {
-        $this->stateHandler->setCurrentRequestUri($event->getRequest()->getUri());
+        $this->samlStateHandler->setCurrentRequestUri($event->getRequest()->getUri());
+        $this->transactionStateHandler->incrementAttempts();
 
         $event->setResponse($this->samlInteractionProvider->initiateSamlRequest());
 
         $logger = $this->logger;
         $logger->notice('Sending AuthnRequest');
+    }
+
+    /**
+     * @param GetResponseEvent $event
+     */
+    private function offerRetryOption(GetResponseEvent $event)
+    {
+        $event->setResponse(new Response($this->twig->render(
+            'OpenConextProfileBundle:Saml:too-many-attempts.html.twig'
+        )));
     }
 
     /**
