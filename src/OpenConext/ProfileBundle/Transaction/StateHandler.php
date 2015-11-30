@@ -27,6 +27,10 @@ class StateHandler
      * @var NamespacedAttributeBag
      */
     private $attributeBag;
+
+    /**
+     * @var int
+     */
     private $allowedAttempts;
 
     /**
