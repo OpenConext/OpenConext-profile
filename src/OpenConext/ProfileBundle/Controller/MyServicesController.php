@@ -18,7 +18,9 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Service\ConsentService;
+use OpenConext\ProfileBundle\Exception\RuntimeException;
+use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
+use OpenConext\ProfileBundle\User\UserProvider;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -31,38 +33,40 @@ class MyServicesController
     private $templateEngine;
 
     /**
-     * @var TokenStorageInterface
+     * @var SpecifiedConsentListService
      */
-    private $tokenStorage;
+    private $specifiedConsentListService;
 
     /**
-     * @var ConsentService
+     * @var UserProvider
      */
-    private $consentService;
+    private $userProvider;
 
     /**
      * @param EngineInterface $templateEngine
-     * @param TokenStorageInterface $tokenStorage
-     * @param ConsentService $consentService
+     * @param UserProvider $userProvider
+     * @param SpecifiedConsentListService $specifiedConsentListService
      */
     public function __construct(
         EngineInterface $templateEngine,
-        TokenStorageInterface $tokenStorage,
-        ConsentService $consentService
+        UserProvider $userProvider,
+        SpecifiedConsentListService $specifiedConsentListService
     ) {
-        $this->templateEngine = $templateEngine;
-        $this->tokenStorage   = $tokenStorage;
-        $this->consentService = $consentService;
+        $this->templateEngine              = $templateEngine;
+        $this->userProvider                = $userProvider;
+        $this->specifiedConsentListService = $specifiedConsentListService;
     }
 
     public function overviewAction()
     {
-        $user        = $this->tokenStorage->getToken()->getUser();
-        $consentList = $this->consentService->findAllFor($user);
+        // @todo Guard::userIsLoggedIn to make sure there always is a current user
+
+        $user = $this->userProvider->getCurrentUser();
+        $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',
-            ['consentList' => $consentList]
+            ['specifiedConsentList' => $specifiedConsentList]
         ));
     }
 }

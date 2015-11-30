@@ -59,7 +59,6 @@ services:
         class: OpenConext\ProfileBundle\Saml\StateHandler
         arguments:
             - @profile.session
-            - @session
 
     profile.session:
         class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
@@ -81,3 +80,17 @@ services:
             - @logger
             - @openconext_eb_api.repository.consent
             - @saml.attribute.surfconext.id
+
+    profile.user.user_provider:
+        class: OpenConext\ProfileBundle\User\UserProvider
+        arguments:
+            - @security.token_storage
+
+    profile.service.consent_listing:
+        class: OpenConext\ProfileBundle\Service\SpecifiedConsentListService
+        arguments:
+            - @profile.service.consent
+            - @profile.consent.blacklist_filter
+
+    profile.consent.blacklist_filter:
+        class: OpenConext\ProfileBundle\Consent\BlacklistFilter
