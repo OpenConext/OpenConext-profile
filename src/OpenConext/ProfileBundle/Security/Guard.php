@@ -18,8 +18,8 @@
 
 namespace OpenConext\ProfileBundle\Security;
 
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 final class Guard
 {
@@ -39,7 +39,7 @@ final class Guard
     public function userIsLoggedIn()
     {
         if (!$this->authorizationChecker->isGranted('ROLE_USER')) {
-            throw new AccessDeniedHttpException('User should be logged in to use this service');
+            throw new AccessDeniedException('User should be logged in to use this service');
         }
     }
 }
