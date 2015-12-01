@@ -1,42 +1,49 @@
 profile.introduction_overview:
     path:       /
     methods:    [GET]
+    schemes:    https
     defaults:
         _controller: profile.controller.introduction:overviewAction
 
 profile.my_profile_overview:
     path:       /my-profile
     methods:    [GET]
+    schemes:    https
     defaults:
         _controller: profile.controller.my_profile:overviewAction
 
 profile.my_services_overview:
     path:       /my-services
     methods:    [GET]
+    schemes:    https
     defaults:
         _controller: profile.controller.my_services:overviewAction
 
 profile.removal_overview:
     path:       /removal
     methods:    [GET]
+    schemes:    https
     defaults:
         _controller: profile.controller.removal:overviewAction
 
 profile.saml_consume_assertion:
     path:       /authentication/consume-assertion
     methods:    [POST]
+    schemes:    https
     defaults:
         _controller: profile.controller.saml:consumeAssertionAction
 
 profile.saml_metadata:
     path:       /authentication/metadata
     methods:    [GET]
+    schemes:    https
     defaults:
         _controller: profile.controller.saml:metadataAction
 
 profile.locale_switch_locale:
     path:       /switch-locale
     methods:    [POST]
+    schemes:    https
     defaults:
         _controller: OpenConextProfileBundle:Locale:switchLocale
     requirements:

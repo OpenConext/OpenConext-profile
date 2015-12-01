@@ -1,4 +1,8 @@
 services:
+    profile.security.guard:
+        class: OpenConext\ProfileBundle\Security\Guard
+        arguments:
+            - @security.authorization_checker
 
     profile.locale_listener:
         class: OpenConext\ProfileBundle\EventListener\LocaleListener

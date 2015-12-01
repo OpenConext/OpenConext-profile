@@ -18,9 +18,9 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Exception\RuntimeException;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\User\UserProvider;
+use OpenConext\ProfileBundle\Security\Guard;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -43,6 +43,11 @@ class MyServicesController
     private $userProvider;
 
     /**
+     * @var Guard
+     */
+    private $guard;
+
+    /**
      * @param EngineInterface $templateEngine
      * @param UserProvider $userProvider
      * @param SpecifiedConsentListService $specifiedConsentListService
@@ -50,16 +55,18 @@ class MyServicesController
     public function __construct(
         EngineInterface $templateEngine,
         UserProvider $userProvider,
-        SpecifiedConsentListService $specifiedConsentListService
+        SpecifiedConsentListService $specifiedConsentListService,
+        Guard $guard
     ) {
         $this->templateEngine              = $templateEngine;
         $this->userProvider                = $userProvider;
         $this->specifiedConsentListService = $specifiedConsentListService;
+        $this->guard                       = $guard;
     }
 
     public function overviewAction()
     {
-        // @todo Guard::userIsLoggedIn to make sure there always is a current user
+        $this->guard->userIsLoggedIn();
 
         $user = $this->userProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
