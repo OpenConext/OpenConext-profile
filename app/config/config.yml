@@ -35,31 +35,21 @@ nelmio_security:
         log: true
         whitelist:
             - %saml_remote_idp_host%
-
     csp:
-        report:
-            report-uri: [/nelmio/csp/report]
-            default-src: [ 'self' ]
-            object-src:
-                - 'none'
-            script-src:
-                - 'unsafe-inline'
-                - 'unsafe-eval'
-                - 'self'
+        report_logger_service: monolog.logger.security
         hosts: []
         content_types: []
         enforce:
-            report-uri: [/nelmio/csp/report]
-            script-src:
+            report-uri: [/csp/report]
+            default-src:
                 - 'self'
-
+            object-src:
+                - 'none'
     content_type:
         nosniff: true
-
     xss_protection:
         enabled: true
         mode_block: true
-
     forced_ssl:
         hsts_max_age: 2592000 # 30 days
         hsts_subdomains: true

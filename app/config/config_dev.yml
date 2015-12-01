@@ -11,6 +11,16 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
+nelmio_security:
+    csp:
+        enforce:
+            default-src:
+                - 'unsafe-inline'
+                - 'self'
+            img-src:
+                - 'data:'
+                - 'self'
+
 monolog:
     handlers:
         dev:
