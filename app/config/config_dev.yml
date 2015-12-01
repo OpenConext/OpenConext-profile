@@ -14,12 +14,15 @@ web_profiler:
 nelmio_security:
     csp:
         enforce:
-            default-src:
-                - 'unsafe-inline'
-                - 'self'
             img-src:
+                - self
                 - 'data:'
-                - 'self'
+            script-src:
+                - self
+                - unsafe-inline
+            style-src:
+                - self
+                - unsafe-inline
 
 monolog:
     handlers:
