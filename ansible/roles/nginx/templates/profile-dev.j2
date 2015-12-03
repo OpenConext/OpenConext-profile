@@ -13,8 +13,8 @@ server {
     server_name {{ server.name }};
 
     ssl                 on
-    ssl_certificate     /etc/nginx/conf.d/ssl/star.vm.openconext.org.pem;
-    ssl_certificate_key /etc/nginx/conf.d/ssl/star.vm.openconext.org.key;
+    ssl_certificate     {{ ssl_cert_path }};
+    ssl_certificate_key {{ ssl_key_path }};
     ssl_stapling on;
 
     ssl_session_timeout 60m;

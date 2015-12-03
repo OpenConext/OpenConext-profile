@@ -22,10 +22,10 @@
   shell: mkdir /etc/nginx/conf.d/ssl && chown nginx:nginx /etc/nginx/conf.d/ssl creates=/etc/nginx/conf.d/ssl
 
 - name: Copy SSL certificate
-  copy: src=star.vm.openconext.org.pem dest=/etc/nginx/conf.d/ssl/star.vm.openconext.org.pem owner=nginx group=nginx mode=600
+  copy: src=star.vm.openconext.org.pem dest={{ ssl_cert_path }} owner=nginx group=nginx mode=600
 
 - name: Copy SSL key
-  copy: src=star.vm.openconext.org.key dest=/etc/nginx/conf.d/ssl/star.vm.openconext.org.key owner=nginx group=nginx mode=600
+  copy: src=star.vm.openconext.org.key dest={{ ssl_key_path }} owner=nginx group=nginx mode=600
 
 - name: Enable nginx service
   service: name=nginx enabled=yes
