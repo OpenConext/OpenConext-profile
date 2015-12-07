@@ -18,6 +18,15 @@
 - name: Copy nginx config-file
   template: src=profile-dev.j2 dest=/etc/nginx/conf.d/profile.conf
 
+- name: Prepare for copying certificates
+  shell: mkdir /etc/nginx/conf.d/ssl && chown nginx:nginx /etc/nginx/conf.d/ssl creates=/etc/nginx/conf.d/ssl
+
+- name: Copy SSL certificate
+  copy: src=star.vm.openconext.org.pem dest={{ ssl_cert_path }} owner=nginx group=nginx mode=600
+
+- name: Copy SSL key
+  copy: src=star.vm.openconext.org.key dest={{ ssl_key_path }} owner=nginx group=nginx mode=600
+
 - name: Enable nginx service
   service: name=nginx enabled=yes
   notify:
@@ -26,6 +35,11 @@
 - name: Add firewall rule for HTTP
   sudo: yes
   firewalld: service=http permanent=true state=enabled
+  notify: Reload firewall
+
+- name: Add firewall rule for HTTPS
+  sudo: yes
+  firewalld: service=https permanent=true state=enabled
   notify: Reload firewall
 
 - name: Add eth1 interface to firewall
