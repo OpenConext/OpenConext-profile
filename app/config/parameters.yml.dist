@@ -1,7 +1,9 @@
 parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     default_locale: en
-    
+    locale_cookie_key: lang
+    locale_cookie_domain: .vm.openconext.org
+
     saml_sp_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
     saml_sp_privatekey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_privatekey.pem
     saml_metadata_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
