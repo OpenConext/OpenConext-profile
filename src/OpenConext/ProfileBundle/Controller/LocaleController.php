@@ -26,7 +26,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class LocaleController
 {
@@ -46,11 +45,6 @@ class LocaleController
     private $flashBag;
 
     /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    /**
      * @var LoggerInterface
      */
     private $logger;
@@ -59,14 +53,12 @@ class LocaleController
         FormFactoryInterface $formFactory,
         UserService $userService,
         FlashBagInterface $flashBag,
-        TranslatorInterface $translator,
         LoggerInterface $logger
     ) {
         $this->formFactory = $formFactory;
         $this->userService = $userService;
         $this->flashBag    = $flashBag;
         $this->logger      = $logger;
-        $this->translator  = $translator;
     }
 
     public function switchLocaleAction(Request $request)
