@@ -61,10 +61,11 @@ final class EmailAddressTest extends TestCase
     /**
      * @test
      * @group Value
+     * @group Schemes
      */
     public function mailto_schemes_should_be_stripped()
     {
-        $emailAddressWithMailtoScheme = new EmailAddress('mailto:invalid@email.nl');
+        $emailAddressWithMailtoScheme = new EmailAddress('mailto:invalid@email.invalid');
 
         $containsMailto = strpos($emailAddressWithMailtoScheme, 'mailto:');
 
