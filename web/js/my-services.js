@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    $('html').removeClass('no-js');
-
     $(document).on('click', '[data-service-details-state] .service-details-state-toggle', function (e) {
         var serviceDetailsState = $(e.target).parents('[data-service-details-state]'),
             serviceDetailsToggle = serviceDetailsState.attr('data-service-details-state');

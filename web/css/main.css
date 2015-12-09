@@ -70,14 +70,15 @@ i.prepended {
     color: #4db3cf;
     vertical-align: baseline;
 }
-.locale-switch button:first-of-type {
+.locale-switch button[data-locale]:first-of-type {
     border-radius: 4px 0 0 4px;
 }
-.locale-switch button:last-of-type {
+.locale-switch button[data-locale]:last-of-type {
     border-radius: 0 4px 4px 0;
 }
 .locale-switch .active,
-.locale-switch button:hover {
+.locale-switch button:hover,
+.locale-switch button:focus {
     color: #ffffff;
     background-color: #4db3cf;
 }
