@@ -43,19 +43,17 @@ final class LocaleExtension extends Extension
     }
 
     /**
-     * @param string $currentLocale
      * @param string $returnUrl
      * @return \Symfony\Component\Form\FormView
      */
-    public function getLocalePreferenceForm($currentLocale, $returnUrl)
+    public function getLocalePreferenceForm($returnUrl)
     {
-        Assert::string($currentLocale);
         Assert::string($returnUrl);
 
         $form = $this->formFactory->create(
             'profile_switch_locale',
             null,
-            ['return_url' => $returnUrl, 'current_locale' => $currentLocale]
+            ['return_url' => $returnUrl]
         );
 
         return $form->createView();

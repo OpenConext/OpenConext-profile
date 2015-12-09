@@ -45,6 +45,6 @@ profile.locale_switch_locale:
     methods:    [POST]
     schemes:    https
     defaults:
-        _controller: OpenConextProfileBundle:Locale:switchLocale
+        _controller: profile.controller.locale:switchLocaleAction
     requirements:
         'return-url': '.+'

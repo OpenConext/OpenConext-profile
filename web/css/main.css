@@ -31,10 +31,32 @@ i.prepended {
 }
 
 /* Components */
+.toast {
+    padding: 12px;
+    font-size: 10px;
+    color: #4db3cf;
+    background-color: #e2e2e2;
+}
+.toast p {
+    margin: 0;
+}
+
 .locale-switch {
     display: inline-block;
     cursor: pointer;
 }
+.locale-switch select, .locale-switch button[type=submit] {
+    display: none;
+}
+.no-js .locale-switch button[type=submit], .no-js .locale-switch select {
+    display: initial;
+}
+.no-js .locale-switch select {
+    float: left;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
 .locale-switch button {
     float: left;
     cursor: pointer;
