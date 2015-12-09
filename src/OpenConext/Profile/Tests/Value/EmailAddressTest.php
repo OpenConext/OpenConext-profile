@@ -37,7 +37,7 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      * @dataProvider nonStringProvider
      * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      *
@@ -50,7 +50,7 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      */
     public function it_can_be_invalid()
@@ -60,7 +60,20 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
+     */
+    public function mailto_schemes_should_be_stripped()
+    {
+        $emailAddressWithMailtoScheme = new EmailAddress('mailto:invalid@email.nl');
+
+        $containsMailto = strpos($emailAddressWithMailtoScheme, 'mailto:');
+
+        $this->assertFalse($containsMailto);
+    }
+
+    /**
+     * @test
+     * @group Value
      */
     public function two_emails_can_equal_each_other()
     {
@@ -72,7 +85,7 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      */
     public function two_emails_can_differ()
     {
