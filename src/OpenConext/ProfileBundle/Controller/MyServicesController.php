@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\Profile\Api\AuthenticatedUserProvider;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\User\UserProvider;
 use OpenConext\ProfileBundle\Security\Guard;
@@ -38,9 +39,9 @@ class MyServicesController
     private $specifiedConsentListService;
 
     /**
-     * @var UserProvider
+     * @var AuthenticatedUserProvider
      */
-    private $userProvider;
+    private $authenticatedUserRepository;
 
     /**
      * @var Guard
@@ -49,17 +50,18 @@ class MyServicesController
 
     /**
      * @param EngineInterface $templateEngine
-     * @param UserProvider $userProvider
+     * @param AuthenticatedUserProvider $authenticatedUserRepository
      * @param SpecifiedConsentListService $specifiedConsentListService
+     * @param Guard $guard
      */
     public function __construct(
         EngineInterface $templateEngine,
-        UserProvider $userProvider,
+        AuthenticatedUserProvider $authenticatedUserRepository,
         SpecifiedConsentListService $specifiedConsentListService,
         Guard $guard
     ) {
         $this->templateEngine              = $templateEngine;
-        $this->userProvider                = $userProvider;
+        $this->authenticatedUserRepository = $authenticatedUserRepository;
         $this->specifiedConsentListService = $specifiedConsentListService;
         $this->guard                       = $guard;
     }
@@ -68,7 +70,7 @@ class MyServicesController
     {
         $this->guard->userIsLoggedIn();
 
-        $user = $this->userProvider->getCurrentUser();
+        $user = $this->authenticatedUserRepository->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         return new Response($this->templateEngine->render(

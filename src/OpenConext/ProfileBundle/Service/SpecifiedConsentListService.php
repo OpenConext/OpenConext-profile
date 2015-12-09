@@ -23,7 +23,7 @@ use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Exception\RuntimeException;
-use OpenConext\ProfileBundle\Security\Authentication\Entity\User;
+use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\ProfileBundle\User\UserProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Filter\AttributeFilter;
 
@@ -52,10 +52,10 @@ class SpecifiedConsentListService
     }
 
     /**
-     * @param User $user
+     * @param AuthenticatedUser $user
      * @return SpecifiedConsentList
      */
-    public function getListFor(User $user)
+    public function getListFor(AuthenticatedUser $user)
     {
         $consentList        = $this->consentService->findAllFor($user);
         $filteredAttributes = $user->getAttributes()->apply($this->attributeFilter);
