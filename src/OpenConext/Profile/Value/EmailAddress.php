@@ -32,6 +32,12 @@ final class EmailAddress
      */
     public function __construct($emailAddress)
     {
+        Assert::string($emailAddress);
+
+        if (substr(strtolower($emailAddress), 0, 7) === 'mailto:') {
+            $emailAddress = substr($emailAddress, 7);
+        }
+
         Assert::email($emailAddress, 'E-mail address "%s" must be valid');
 
         $this->emailAddress = $emailAddress;
