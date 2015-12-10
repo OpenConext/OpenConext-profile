@@ -32,7 +32,7 @@ final class EmailAddress
      */
     public function __construct($emailAddress)
     {
-        Assert::email($emailAddress, 'E-mail address "%s" must be valid');
+        Assert::string($emailAddress, 'E-mail address "%s" must be a string');
 
         $this->emailAddress = $emailAddress;
     }

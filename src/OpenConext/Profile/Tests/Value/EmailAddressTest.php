@@ -37,7 +37,7 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      * @dataProvider nonStringProvider
      * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      *
@@ -50,17 +50,20 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
+     * @group Value
      */
-    public function it_can_be_invalid()
+    public function email_address_may_contain_mailto()
     {
-        new EmailAddress('@la-france.invalid');
+        $emailAddressWithMailto = 'mailto:mail@domain.invalid';
+
+        $emailAddress = new EmailAddress($emailAddressWithMailto);
+
+        $this->assertEquals($emailAddressWithMailto, (string) $emailAddress);
     }
 
     /**
      * @test
-     * @group value
+     * @group Value
      */
     public function two_emails_can_equal_each_other()
     {
@@ -72,7 +75,7 @@ final class EmailAddressTest extends TestCase
 
     /**
      * @test
-     * @group value
+     * @group Value
      */
     public function two_emails_can_differ()
     {
