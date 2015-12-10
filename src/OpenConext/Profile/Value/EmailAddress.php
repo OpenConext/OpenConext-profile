@@ -43,7 +43,7 @@ final class EmailAddress
      */
     public function equals(EmailAddress $other)
     {
-        return $this == $other;
+        return $this->emailAddress === $other->emailAddress;
     }
 
     public function __toString()
