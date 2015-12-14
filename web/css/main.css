@@ -21,8 +21,8 @@ li,
 .hide-mobile {
     display: none;
 }
-.show-mobile {
-    display: initial;
+nav.show-mobile {
+    display: block;
 }
 
 i.prepended {
@@ -32,7 +32,7 @@ i.prepended {
 
 /* Components */
 .toast {
-    padding: 12px;
+    padding: 1.5em;
     font-size: 10px;
     color: #4db3cf;
     background-color: #e2e2e2;
@@ -49,7 +49,7 @@ i.prepended {
     display: none;
 }
 .no-js .locale-switch button[type=submit], .no-js .locale-switch select {
-    display: initial;
+    display: block;
 }
 .no-js .locale-switch select {
     float: left;
@@ -185,12 +185,15 @@ i.prepended {
 
 /* Services table */
 tr.service:hover {
-    background-color: initial !important;
+    background-color: #ffffff !important;
 }
 .service-name {
     width: 100%;
     color: #4db3cf;
     display: block;
+}
+.no-js .service-details-state-toggle {
+    cursor: default;
 }
 .service-details-state-toggle {
     cursor: pointer;
@@ -205,13 +208,17 @@ tr.service:hover {
     /* Caret right */
     content: "\f105";
 }
+.no-js [data-service-details-state="initial"] .service-details {
+    display: block;
+}
+
 [data-service-details-state="initial"] .service-details,
 [data-service-details-state="closed"] .service-details {
     display: none;
 }
 
 .service-info tr {
-    background-color: initial !important;
+    background-color: #ffffff !important;
     height: auto !important;
 }
 .service-info td {
@@ -252,10 +259,10 @@ tr.service:hover {
 
 /* Adaptive fixes*/
 @media (min-width: 840px) {
-    .hide-mobile {
-        display: initial;
+    nav.hide-mobile {
+        display: block;
     }
-    .show-mobile {
+    nav.show-mobile {
         display: none;
     }
 
