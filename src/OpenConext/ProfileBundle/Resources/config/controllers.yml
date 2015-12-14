@@ -25,7 +25,6 @@ services:
             - @form.factory
             - @profile.service.user
             - @session.flash_bag
-            - @translator
             - @logger
 
     profile.controller.removal:
