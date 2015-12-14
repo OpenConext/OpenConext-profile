@@ -1,3 +1,5 @@
+# These parameters are intended to be rendered into the view according to a specific locale
+# A typical example would be showing locale-dependent external URLs
 # Strings containing '%' should be escaped by prepending '%'
 parameters:
     help_url:
