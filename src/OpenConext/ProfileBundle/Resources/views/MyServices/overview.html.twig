@@ -36,7 +36,8 @@
                             <tr>
                                 <td>{{ 'profile.my_services.supportEmail'|trans }}:</td>
                                 <td>
-                                    <a href="{{ 'mailto:' ~ specifiedConsent.consent.serviceProvider.supportEmail }}"><i class="prepended fa fa-envelope"></i>{{ specifiedConsent.consent.serviceProvider.supportEmail }}</a>
+                                    {% set supportEmail = specifiedConsent.consent.serviceProvider.supportEmail|replace({'mailto:': ''}) %}
+                                    <a href="mailto:{{ supportEmail }}"><i class="prepended fa fa-envelope"></i>{{ supportEmail }}</a>
                                 </td>
                             </tr>
                             {% endif %}
