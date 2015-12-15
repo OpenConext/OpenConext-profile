@@ -1,9 +1,9 @@
 services:
-    profile.storage.single_cookie:
+    profile.storage.locale_cookie:
         class: OpenConext\ProfileBundle\Storage\SingleCookieStorage
         arguments:
-            - %locale_cookie_domain%
-            - %locale_cookie_key%
+            - ~ # locale cookie domain
+            - ~ # locale cookie key
         tags:
             - { name: kernel.event_subscriber }
 
@@ -100,23 +100,28 @@ services:
         calls:
             - [setName, ['profile']]
 
-
     profile.service.locale:
         class: OpenConext\ProfileBundle\Service\LocaleService
         arguments:
             - @profile.repository.locale
-            - %locales%
+            - @profile.available_locales
             - @profile.default_locale
+
+    profile.available_locales:
+        class: OpenConext\Profile\Value\LocaleSet
+        factory: [OpenConext\Profile\Value\LocaleSet, create]
+        arguments:
+            - [] # available locales
 
     profile.default_locale:
         class: OpenConext\Profile\Value\Locale
         arguments:
-            - %default_locale%
+            - ~ # default locale
 
     profile.locale_storage_driver:
         class: OpenConext\ProfileBundle\Service\LocaleStorageDriver
         arguments:
-            - @profile.storage.single_cookie
+            - @profile.storage.locale_cookie
 
     profile.repository.locale:
         class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository

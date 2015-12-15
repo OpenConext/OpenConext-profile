@@ -20,6 +20,7 @@ namespace OpenConext\ProfileBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -28,10 +29,40 @@ class OpenConextProfileExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('controllers.yml');
         $loader->load('services.yml');
+
+        $this->parseCookieStorageConfiguration($config['locale_cookie_domain'], $config['locale_cookie_key'], $container);
+        $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
+        $this->parseAvailableLocaleConfiguration($config['locales'], $container);
+    }
+
+    private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container)
+    {
+        $container
+            ->getDefinition('profile.default_locale')
+            ->replaceArgument(0, $defaultLocaleConfig);
+    }
+
+    private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container)
+    {
+        $availableLocales = array_map(function ($availableLocale) {
+            return new Definition('OpenConext\Profile\Value\Locale', [$availableLocale]);
+        }, $availableLocaleConfig);
+
+        $container
+            ->getDefinition('profile.available_locales')
+            ->replaceArgument(0, $availableLocales);
+    }
+
+    private function parseCookieStorageConfiguration($localeCookieDomain, $localeCookieKey, ContainerBuilder $container)
+    {
+        $container
+            ->getDefinition('profile.storage.locale_cookie')
+            ->replaceArgument(0, $localeCookieDomain)
+            ->replaceArgument(1, $localeCookieKey);
     }
 }

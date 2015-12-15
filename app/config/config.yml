@@ -107,3 +107,9 @@ open_conext_engine_block_api_client:
         username: %engineblock_api_username%
         password: %engineblock_api_password%
         verify_ssl: %engineblock_api_verify_ssl%
+
+open_conext_profile:
+    locales: %locales%
+    default_locale: %default_locale%
+    locale_cookie_domain: %open_conext_locale_cookie_domain%
+    locale_cookie_key: %open_conext_locale_cookie_key%

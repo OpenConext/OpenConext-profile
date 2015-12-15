@@ -18,6 +18,8 @@
 
 namespace OpenConext\ProfileBundle\Form\Type;
 
+use OpenConext\Profile\Value\Locale;
+use OpenConext\Profile\Value\LocaleSet;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 use OpenConext\ProfileBundle\Service\LocaleService;
 use Symfony\Component\Form\AbstractType;
@@ -48,9 +50,7 @@ class SwitchLocaleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $availableLocales = $this->localeService->getAvailableLocales();
-        $localeChoices = array_combine($availableLocales, array_map(function ($locale) {
-            return 'profile.locale.' . $locale;
-        }, $availableLocales));
+        $localeChoices    = $this->formatLocaleChoices($availableLocales);
 
         $builder
             ->setAction(
@@ -59,7 +59,6 @@ class SwitchLocaleType extends AbstractType
                     ['return-url' => $options['return_url']]
                 )
             )
-            ->setMethod('POST')
             ->add('newLocale', 'choice', [
                 'choices' => $localeChoices,
                 'data'    => $this->localeService->getLocale()->getLocale(),
@@ -84,5 +83,23 @@ class SwitchLocaleType extends AbstractType
     public function getName()
     {
         return 'profile_switch_locale';
+    }
+
+    /**
+     * @param LocaleSet $availableLocales
+     * @return array
+     */
+    private function formatLocaleChoices(LocaleSet $availableLocales)
+    {
+        $localeChoices = [];
+
+        /** @var Locale $locale */
+        foreach ($availableLocales as $locale) {
+            $localeChoices[] = [
+                $locale->getLocale() => strtoupper($locale->getLocale())
+            ];
+        }
+
+        return $localeChoices;
     }
 }

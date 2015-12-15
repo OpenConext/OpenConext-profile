@@ -26,7 +26,53 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('open_conext_profile');
+        $rootNode = $treeBuilder->root('open_conext_profile');
+
+        $rootNode
+            ->children()
+                ->arrayNode('locales')
+                    ->info('The available application locales')
+                    ->isRequired()
+                    ->prototype('scalar')
+                        ->validate()
+                            ->ifTrue(function ($locale) {
+                                return !is_string($locale);
+                            })
+                            ->thenInvalid('Available application locales should be strings')
+                        ->end()
+                    ->end()
+                ->end()
+                ->scalarNode('default_locale')
+                    ->info('The default application locale')
+                    ->isRequired()
+                    ->validate()
+                        ->ifTrue(function ($locale) {
+                            return !is_string($locale);
+                        })
+                        ->thenInvalid('Default application locale should be a string')
+                    ->end()
+                ->end()
+                ->scalarNode('locale_cookie_domain')
+                    ->info('The domain for which the locale cookie is set')
+                    ->isRequired()
+                    ->validate()
+                        ->ifTrue(function ($domain) {
+                            return !is_string($domain);
+                        })
+                        ->thenInvalid('Locale cookie domain should be a string')
+                    ->end()
+                ->end()
+                ->scalarNode('locale_cookie_key')
+                    ->info('The key for which the locale cookie value is set')
+                    ->isRequired()
+                        ->validate()
+                            ->ifTrue(function ($key) {
+                                return !is_string($key);
+                            })
+                            ->thenInvalid('Locale cookie key should be a string')
+                        ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

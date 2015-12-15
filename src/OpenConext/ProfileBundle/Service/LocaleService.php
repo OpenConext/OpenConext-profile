@@ -22,6 +22,7 @@ use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\LocaleRepository;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\Profile\Api\User;
+use OpenConext\Profile\Value\LocaleSet;
 
 final class LocaleService
 {
@@ -31,24 +32,22 @@ final class LocaleService
     private $localeRepository;
 
     /**
-     * @var string[]
+     * @var LocaleSet
      */
     private $availableLocales;
 
     /**
-     * @var string
+     * @var Locale
      */
     private $defaultLocale;
 
     /**
      * @param LocaleRepository $localeRepository
-     * @param string[] $availableLocales
+     * @param LocaleSet $availableLocales
      * @param Locale $defaultLocale
      */
-    public function __construct(LocaleRepository $localeRepository, array $availableLocales, Locale $defaultLocale)
+    public function __construct(LocaleRepository $localeRepository, LocaleSet $availableLocales, Locale $defaultLocale)
     {
-        Assert::allString($availableLocales);
-
         $this->localeRepository = $localeRepository;
         $this->availableLocales = $availableLocales;
         $this->defaultLocale    = $defaultLocale;
@@ -60,7 +59,7 @@ final class LocaleService
      */
     public function isAvailableLocale(Locale $locale)
     {
-        return in_array($this->availableLocales, $locale->getLocale());
+        return $this->availableLocales->contains($locale);
     }
 
     /**
@@ -86,7 +85,7 @@ final class LocaleService
     }
 
     /**
-     * @return string[]
+     * @return LocaleSet
      */
     public function getAvailableLocales()
     {
