@@ -35,7 +35,11 @@ class OpenConextProfileExtension extends Extension
         $loader->load('controllers.yml');
         $loader->load('services.yml');
 
-        $this->parseCookieStorageConfiguration($config['locale_cookie_domain'], $config['locale_cookie_key'], $container);
+        $this->parseCookieStorageConfiguration(
+            $config['locale_cookie_domain'],
+            $config['locale_cookie_key'],
+            $container
+        );
         $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
         $this->parseAvailableLocaleConfiguration($config['locales'], $container);
     }
