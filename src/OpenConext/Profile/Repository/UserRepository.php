@@ -23,7 +23,7 @@ use OpenConext\Profile\Api\User;
 interface UserRepository
 {
     /**
-     * @return User
+     * @return User|null
      */
     public function findUser();
 

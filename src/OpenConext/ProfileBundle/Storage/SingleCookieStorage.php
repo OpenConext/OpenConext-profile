@@ -38,7 +38,7 @@ class SingleCookieStorage implements EventSubscriberInterface
     private $cookieKey;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $cookieValue;
 

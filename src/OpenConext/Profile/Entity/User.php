@@ -51,10 +51,6 @@ final class User implements UserInterface
 
     public function switchLocaleTo(Locale $locale)
     {
-        if ($this->locale->equals($locale)) {
-            return;
-        }
-
         $this->locale = $locale;
     }
 
@@ -64,11 +60,6 @@ final class User implements UserInterface
     }
 
     public function getId()
-    {
-        return $this->authenticatedUser->getNameId();
-    }
-
-    public function __toString()
     {
         return $this->authenticatedUser->getNameId();
     }

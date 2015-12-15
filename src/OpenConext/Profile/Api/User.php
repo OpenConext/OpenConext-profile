@@ -40,11 +40,7 @@ interface User
 
     /**
      * @param Locale $locale
+     * @return void
      */
     public function switchLocaleTo(Locale $locale);
-
-    /**
-     * @return string
-     */
-    public function __toString();
 }

@@ -21,12 +21,11 @@ namespace OpenConext\ProfileBundle\Profile\Repository;
 use OpenConext\Profile\Api\User;
 use OpenConext\Profile\Repository\UserRepository as UserRepositoryInterface;
 use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
-use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 
 class UserRepository implements UserRepositoryInterface
 {
     /**
-     * @var SessionBagInterface
+     * @var NamespacedAttributeBag
      */
     private $namespacedAttributeBag;
 
@@ -35,24 +34,17 @@ class UserRepository implements UserRepositoryInterface
         $this->namespacedAttributeBag = $namespacedAttributeBag;
     }
 
-    /**
-     * @return User
-     */
     public function findUser()
     {
         if (!$this->namespacedAttributeBag->has('user')) {
             return null;
         }
 
-        return unserialize($this->namespacedAttributeBag->get('user'));
+        return $this->namespacedAttributeBag->get('user');
     }
 
-    /**
-     * @param User $user
-     * @return void
-     */
     public function save(User $user)
     {
-        $this->namespacedAttributeBag->set('user', serialize($user));
+        $this->namespacedAttributeBag->set('user', $user);
     }
 }

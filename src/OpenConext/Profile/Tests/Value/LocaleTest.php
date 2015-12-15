@@ -33,9 +33,9 @@ class LocaleTest extends TestCase
         $localeA = new Locale('a');
         $differentThanLocaleA = new Locale('b');
 
-        $localesEqual = $localeA->equals($differentThanLocaleA);
+        $localesAreEqual = $localeA->equals($differentThanLocaleA);
 
-        $this->assertFalse($localesEqual);
+        $this->assertFalse($localesAreEqual);
     }
 
     /**

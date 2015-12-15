@@ -41,7 +41,7 @@ class MyServicesController
     /**
      * @var AuthenticatedUserProvider
      */
-    private $authenticatedUserRepository;
+    private $authenticatedUserProvider;
 
     /**
      * @var Guard
@@ -50,18 +50,18 @@ class MyServicesController
 
     /**
      * @param EngineInterface $templateEngine
-     * @param AuthenticatedUserProvider $authenticatedUserRepository
+     * @param AuthenticatedUserProvider $authenticatedUserProvider
      * @param SpecifiedConsentListService $specifiedConsentListService
      * @param Guard $guard
      */
     public function __construct(
         EngineInterface $templateEngine,
-        AuthenticatedUserProvider $authenticatedUserRepository,
+        AuthenticatedUserProvider $authenticatedUserProvider,
         SpecifiedConsentListService $specifiedConsentListService,
         Guard $guard
     ) {
         $this->templateEngine              = $templateEngine;
-        $this->authenticatedUserRepository = $authenticatedUserRepository;
+        $this->authenticatedUserProvider   = $authenticatedUserProvider;
         $this->specifiedConsentListService = $specifiedConsentListService;
         $this->guard                       = $guard;
     }
@@ -70,7 +70,7 @@ class MyServicesController
     {
         $this->guard->userIsLoggedIn();
 
-        $user = $this->authenticatedUserRepository->getCurrentUser();
+        $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         return new Response($this->templateEngine->render(

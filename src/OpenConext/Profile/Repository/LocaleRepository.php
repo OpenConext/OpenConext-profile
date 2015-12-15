@@ -23,7 +23,7 @@ use OpenConext\Profile\Value\Locale;
 interface LocaleRepository
 {
     /**
-     * @return Locale
+     * @return Locale|null
      */
     public function findLocale();
 
