@@ -2,31 +2,32 @@ $('html').removeClass('no-js');
 
 var localeSwitches  = $('.locale-switch');
 
-localeSwitches.each(function(index, localeSwitch) {
+localeSwitches.each(function (index, localeSwitch) {
     var localeOptions = $('option', localeSwitch);
 
     for (var i = 0; i < localeOptions.length; i++) {
-        var localeOptionButton = $('<button>');
+        var localeOptionButton = $('<button>'),
+            localeOption = $(localeOptions[i]);
 
-        if ($(localeOptions[i]).prop('selected')) {
-            localeOptionButton.addClass('active');
-        }
+        localeOptionButton.toggleClass('active', localeOption.prop('selected'));
 
-        localeOptionButton.text(localeOptions[i].text)
-            .attr('data-locale', localeOptions[i].value);
+        localeOptionButton.text(localeOption.text())
+            .attr('data-locale', localeOption.val());
 
         $(localeSwitch).append(localeOptionButton);
     }
 });
 
-$(document).on('click', '.locale-switch button[data-locale]' , function(e) {
-    var localeChoice = $(e.target).attr('data-locale');
+$(document).on('click', '.locale-switch button[data-locale]' , function (e) {
+    var button = $(e.target),
+        localeChoice = button.attr('data-locale'),
+        localeForm = button.parents('.locale-switch').find('form');
 
-    $('.locale-switch:first option').filter(function() {
+    localeForm.find('option').filter(function() {
         return this.value === localeChoice;
     }).prop('selected', true);
 
-    $('.locale-switch:first form').submit();
+    localeForm.submit();
 });
 
 $(document).on('click', '[data-service-details-state] .service-details-state-toggle', function (e) {
