@@ -95,9 +95,7 @@ class SwitchLocaleType extends AbstractType
 
         /** @var Locale $locale */
         foreach ($availableLocales as $locale) {
-            $localeChoices[] = [
-                $locale->getLocale() => strtoupper($locale->getLocale())
-            ];
+            $localeChoices[$locale->getLocale()] = strtoupper($locale->getLocale());
         }
 
         return $localeChoices;

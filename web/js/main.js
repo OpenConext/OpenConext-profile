@@ -1,8 +1,6 @@
 $('html').removeClass('no-js');
 
-var localeSwitches  = $('.locale-switch');
-
-localeSwitches.each(function (index, localeSwitch) {
+$('.locale-switch').each(function (index, localeSwitch) {
     var localeOptions = $('option', localeSwitch);
 
     for (var i = 0; i < localeOptions.length; i++) {
@@ -18,15 +16,12 @@ localeSwitches.each(function (index, localeSwitch) {
     }
 });
 
-$(document).on('click', '.locale-switch button[data-locale]' , function (e) {
+$(document).on('click', '.locale-switch button[data-locale]:not(.active)', function (e) {
     var button = $(e.target),
         localeChoice = button.attr('data-locale'),
         localeForm = button.parents('.locale-switch').find('form');
 
-    localeForm.find('option').filter(function() {
-        return this.value === localeChoice;
-    }).prop('selected', true);
-
+    localeForm.find('option').prop('selected', function () { return this.value === localeChoice; });
     localeForm.submit();
 });
 
