@@ -33,23 +33,23 @@
                 </nav>
             </div>
         </header>
+        <main class="mdl-layout__content">
         {% if app.session.flashbag is not empty %}
             {% for type, messages in app.session.flashBag %}
                 {% for message in messages %}
-                <div class="toast">
-                    <p>
-                        {% if type == 'success' %}
-                        <i class="fa fa-check"></i>
-                        {% elseif type == 'error' %}
-                        <i class="fa fa-exclamation-triangle"></i>
-                        {% endif %}
-                        {{ message|trans }}
-                    </p>
-                </div>
+                    <div class="toast">
+                        <p>
+                            {% if type == 'success' %}
+                                <i class="fa fa-check"></i>
+                            {% elseif type == 'error' %}
+                                <i class="fa fa-exclamation-triangle"></i>
+                            {% endif %}
+                            {{ message|trans }}
+                        </p>
+                    </div>
                 {% endfor %}
             {% endfor %}
         {% endif %}
-        <main class="mdl-layout__content">
             <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--1-col"></div>
                 <div class="content-container mdl-color--white mdl-shadow--2dp mdl-color-text--grey-800 mdl-cell mdl-cell--10-col">
