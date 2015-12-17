@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Provider;
 
-use OpenConext\ProfileBundle\Security\Authentication\Entity\User;
+use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
@@ -40,7 +40,7 @@ class SamlProvider implements AuthenticationProviderInterface
     {
         $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
 
-        $user = User::createFrom($translatedAssertion);
+        $user = AuthenticatedUser::createFrom($translatedAssertion);
 
         $authenticatedToken = new SamlToken(['ROLE_USER']);
         $authenticatedToken->setUser($user);

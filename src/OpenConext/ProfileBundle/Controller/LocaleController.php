@@ -18,12 +18,49 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
+use OpenConext\ProfileBundle\Service\UserService;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class LocaleController extends Controller
+class LocaleController
 {
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var UserService
+     */
+    private $userService;
+
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        UserService $userService,
+        FlashBagInterface $flashBag,
+        LoggerInterface $logger
+    ) {
+        $this->formFactory = $formFactory;
+        $this->userService = $userService;
+        $this->flashBag    = $flashBag;
+        $this->logger      = $logger;
+    }
+
     public function switchLocaleAction(Request $request)
     {
         $returnUrl = $request->query->get('return-url');
@@ -33,42 +70,23 @@ class LocaleController extends Controller
         $domain = $request->getSchemeAndHttpHost() . '/';
 
         if (strpos($returnUrl, $domain) !== 0) {
-            $this->get('logger')->error(sprintf(
+            $this->logger->error(sprintf(
                 'Illegal return-url for redirection after changing locale, aborting request'
             ));
             throw new BadRequestHttpException('Invalid return-url given');
         }
 
-        $form = $this->createForm(
-            'profile_switch_locale',
-            null,
-            [
-                'current_locale' => $request->getLocale(),
-                'return_url' => $returnUrl
-            ]
-        );
-        $form->handleRequest($request);
+        $command = new ChangeLocaleCommand();
 
-        if (!$form->isValid()) {
-            throw new BadRequestHttpException('Form is invalid');
-        }
+        $form = $this->formFactory->create('profile_switch_locale', $command, [])->handleRequest($request);
+        if ($form->isValid()) {
+            $this->userService->changeLocale($command);
 
-        if ($form->get('locale_en')->isClicked()) {
-            $locale = 'en';
-        } elseif ($form->get('locale_nl')->isClicked()) {
-            $locale = 'nl';
+            $this->flashBag->add('success', 'profile.locale.locale_change_success');
         } else {
-            throw new BadRequestHttpException('No locale selected');
+            $this->flashBag->add('error', 'profile.locale.locale_change_fail');
         }
 
-        $allowedLocales = $this->container->getParameter('locales');
-
-        if (!in_array($locale, $allowedLocales)) {
-            throw new BadRequestHttpException(sprintf('Locale "%s" is not supported', $locale));
-        }
-
-        $this->get('session')->set('_locale', $locale);
-
-        return $this->redirect($returnUrl);
+        return new RedirectResponse($returnUrl);
     }
 }

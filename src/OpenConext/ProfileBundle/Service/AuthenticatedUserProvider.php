@@ -16,44 +16,29 @@
  * limitations under the License.
  */
 
-namespace OpenConext\ProfileBundle\User;
+namespace OpenConext\ProfileBundle\Service;
 
-use OpenConext\ProfileBundle\Exception\LogicException;
-use OpenConext\ProfileBundle\Security\Authentication\Entity\User;
+use OpenConext\Profile\Api\AuthenticatedUserProvider as AuthenticatedUserProviderInterface;
+use OpenConext\Profile\Entity\AuthenticatedUser;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class UserProvider
+final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
     /**
      * @var TokenStorageInterface
      */
     private $tokenStorage;
 
-    /**
-     * @param TokenStorageInterface $tokenStorage
-     */
     public function __construct(TokenStorageInterface $tokenStorage)
     {
         $this->tokenStorage = $tokenStorage;
     }
 
     /**
-     * @return User
+     * @return AuthenticatedUser
      */
     public function getCurrentUser()
     {
-        $token = $this->tokenStorage->getToken();
-
-        if ($token === null) {
-            throw new LogicException('User cannot be retrieved: no token found');
-        }
-
-        $user = $token->getUser();
-
-        if ($user === null) {
-            throw new LogicException('User cannot be retrieved: user not found in token');
-        }
-
-        return $user;
+        return $this->tokenStorage->getToken()->getUser();
     }
 }

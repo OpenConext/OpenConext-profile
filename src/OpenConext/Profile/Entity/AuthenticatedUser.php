@@ -16,18 +16,19 @@
  * limitations under the License.
  */
 
-namespace OpenConext\ProfileBundle\Security\Authentication\Entity;
+namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
-final class User
+final class AuthenticatedUser
 {
     /**
      * @var string
      */
     private $nameId;
+
     /**
      * @var AttributeSet
      */
@@ -35,7 +36,7 @@ final class User
 
     /**
      * @param AssertionAdapter $assertionAdapter
-     * @return User
+     * @return AuthenticatedUser
      */
     public static function createFrom(AssertionAdapter $assertionAdapter)
     {
@@ -52,6 +53,14 @@ final class User
 
         $this->nameId = $nameId;
         $this->attributes = $attributes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameId()
+    {
+        return $this->nameId;
     }
 
     /**

@@ -15,9 +15,17 @@ services:
         class: OpenConext\ProfileBundle\Controller\MyServicesController
         arguments:
             - @templating
-            - @profile.user.user_provider
+            - @profile.provider.authenticated_user
             - @profile.service.consent_listing
             - @profile.security.guard
+
+    profile.controller.locale:
+        class: OpenConext\ProfileBundle\Controller\LocaleController
+        arguments:
+            - @form.factory
+            - @profile.service.user
+            - @session.flash_bag
+            - @logger
 
     profile.controller.removal:
         class: OpenConext\ProfileBundle\Controller\RemovalController
@@ -29,3 +37,4 @@ services:
         class: OpenConext\ProfileBundle\Controller\SamlController
         arguments:
             - @surfnet_saml.metadata_factory
+

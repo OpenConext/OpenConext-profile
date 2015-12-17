@@ -21,8 +21,8 @@ li,
 .hide-mobile {
     display: none;
 }
-.show-mobile {
-    display: initial;
+nav.show-mobile {
+    display: block;
 }
 
 i.prepended {
@@ -31,10 +31,32 @@ i.prepended {
 }
 
 /* Components */
+.toast {
+    padding: 1.5em;
+    font-size: 10px;
+    color: #4db3cf;
+    background-color: #e2e2e2;
+}
+.toast p {
+    margin: 0;
+}
+
 .locale-switch {
     display: inline-block;
     cursor: pointer;
 }
+.locale-switch select, .locale-switch button[type=submit] {
+    display: none;
+}
+.no-js .locale-switch button[type=submit], .no-js .locale-switch select {
+    display: block;
+}
+.no-js .locale-switch select {
+    float: left;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
 .locale-switch button {
     float: left;
     cursor: pointer;
@@ -48,14 +70,15 @@ i.prepended {
     color: #4db3cf;
     vertical-align: baseline;
 }
-.locale-switch button:first-of-type {
+.locale-switch button[data-locale]:first-of-type {
     border-radius: 4px 0 0 4px;
 }
-.locale-switch button:last-of-type {
+.locale-switch button[data-locale]:last-of-type {
     border-radius: 0 4px 4px 0;
 }
 .locale-switch .active,
-.locale-switch button:hover {
+.locale-switch button:hover,
+.locale-switch button:focus {
     color: #ffffff;
     background-color: #4db3cf;
 }
@@ -93,7 +116,6 @@ i.prepended {
     display: inline-block;
     padding: 0 8px;
 }
-
 
 /* Content container */
 .mdl-layout__content .content-container {
@@ -162,12 +184,15 @@ i.prepended {
 
 /* Services table */
 tr.service:hover {
-    background-color: initial !important;
+    background-color: #ffffff !important;
 }
 .service-name {
     width: 100%;
     color: #4db3cf;
     display: block;
+}
+.no-js .service-details-state-toggle {
+    cursor: default;
 }
 .service-details-state-toggle {
     cursor: pointer;
@@ -182,13 +207,17 @@ tr.service:hover {
     /* Caret right */
     content: "\f105";
 }
+.no-js [data-service-details-state="initial"] .service-details {
+    display: block;
+}
+
 [data-service-details-state="initial"] .service-details,
 [data-service-details-state="closed"] .service-details {
     display: none;
 }
 
 .service-info tr {
-    background-color: initial !important;
+    background-color: #ffffff !important;
     height: auto !important;
 }
 .service-info td {
@@ -229,10 +258,10 @@ tr.service:hover {
 
 /* Adaptive fixes*/
 @media (min-width: 840px) {
-    .hide-mobile {
-        display: initial;
+    nav.hide-mobile {
+        display: block;
     }
-    .show-mobile {
+    nav.show-mobile {
         display: none;
     }
 

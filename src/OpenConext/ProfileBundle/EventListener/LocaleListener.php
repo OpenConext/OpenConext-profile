@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\EventListener;
 
-use OpenConext\Profile\Assert;
+use OpenConext\ProfileBundle\Service\LocaleService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -26,15 +26,13 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class LocaleListener implements EventSubscriberInterface
 {
     /**
-     * @var string
+     * @var LocaleService
      */
-    private $defaultLocale;
+    private $localeService;
 
-    public function __construct($defaultLocale)
+    public function __construct(LocaleService $localeService)
     {
-        Assert::string($defaultLocale);
-
-        $this->defaultLocale = $defaultLocale;
+        $this->localeService = $localeService;
     }
 
     public function onKernelRequest(GetResponseEvent $event)
@@ -45,14 +43,14 @@ class LocaleListener implements EventSubscriberInterface
             return;
         }
 
-        $request->setLocale($request->getSession()->get('_locale', $this->defaultLocale));
+        $request->setLocale($this->localeService->getLocale()->getLocale());
     }
 
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             // must be registered before the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
-        );
+            KernelEvents::REQUEST => [['onKernelRequest', 17]],
+        ];
     }
 }

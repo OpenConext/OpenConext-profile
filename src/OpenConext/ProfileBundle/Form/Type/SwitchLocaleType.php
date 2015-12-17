@@ -18,6 +18,10 @@
 
 namespace OpenConext\ProfileBundle\Form\Type;
 
+use OpenConext\Profile\Value\Locale;
+use OpenConext\Profile\Value\LocaleSet;
+use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
+use OpenConext\ProfileBundle\Service\LocaleService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,50 +34,70 @@ class SwitchLocaleType extends AbstractType
      */
     private $urlGenerator;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
-    {
-        $this->urlGenerator = $urlGenerator;
+    /**
+     * @var LocaleService
+     */
+    private $localeService;
+
+    public function __construct(
+        UrlGeneratorInterface $urlGenerator,
+        LocaleService $localeService
+    ) {
+        $this->urlGenerator  = $urlGenerator;
+        $this->localeService = $localeService;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->setAction(
-            $this->urlGenerator->generate(
-                'profile.locale_switch_locale',
-                ['return-url' => $options['return_url']]
-            )
-        );
-        $builder->setMethod('POST');
+        $availableLocales = $this->localeService->getAvailableLocales();
+        $localeChoices    = $this->formatLocaleChoices($availableLocales);
 
-        $builder->add('locale_en', 'submit', [
-            'label' => 'profile.locale.en',
-            'attr' => [
-                'class' => ($options['current_locale'] === 'en') ? 'active' : ''
-            ]
-        ]);
-        $builder->add('locale_nl', 'submit', [
-            'label' => 'profile.locale.nl',
-            'attr' => [
-                'class' => ($options['current_locale'] === 'nl') ? 'active' : '',
-            ]
-        ]);
+        $builder
+            ->setAction(
+                $this->urlGenerator->generate(
+                    'profile.locale_switch_locale',
+                    ['return-url' => $options['return_url']]
+                )
+            )
+            ->add('newLocale', 'choice', [
+                'choices' => $localeChoices,
+                'data'    => $this->localeService->getLocale()->getLocale(),
+                'attr'    => [
+                    'data-locale-options' => ''
+                ]
+            ])
+            ->add('changeLocale', 'submit', ['label' => 'profile.locale.choose_locale']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'return_url' => '',
-            'current_locale' => null,
+            'data_class' => '\OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand'
         ]);
 
         $resolver->setRequired('return_url');
-
-        $resolver->setAllowedTypes('current_locale', 'string');
         $resolver->setAllowedTypes('return_url', 'string');
     }
 
     public function getName()
     {
         return 'profile_switch_locale';
+    }
+
+    /**
+     * @param LocaleSet $availableLocales
+     * @return array
+     */
+    private function formatLocaleChoices(LocaleSet $availableLocales)
+    {
+        $localeChoices = [];
+
+        /** @var Locale $locale */
+        foreach ($availableLocales as $locale) {
+            $localeChoices[$locale->getLocale()] = strtoupper($locale->getLocale());
+        }
+
+        return $localeChoices;
     }
 }
