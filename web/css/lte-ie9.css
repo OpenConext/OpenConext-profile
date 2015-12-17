@@ -1,0 +1,46 @@
+/* Layout content (mdl) */
+.mdl-layout__content {
+    display: block;
+    width: 100%;
+}
+
+/* Header */
+.mdl-layout__header .mdl-layout-title {
+    float: left;
+}
+
+.mdl-layout__header .mdl-navigation {
+    float: right;
+}
+
+.mdl-layout__header .mdl-layout-title,
+.mdl-layout__header .mdl-navigation__link {
+    line-height: 1em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+/* Content container */
+.mdl-layout__content .content-container {
+    width: 1024px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+.footer,
+.footer .footer-content {
+    width: 1024px;
+    max-width: 100%;
+}
+
+.footer-left,
+.footer-mid {
+    float: left;
+}
+
+.footer-right {
+    float: right;
+    padding-right: 1.5em;
+}
