@@ -185,7 +185,7 @@ i.prepended {
 
 /* Services table */
 tr.service:hover {
-    background-color: #ffffff !important;
+    background: none !important;
 }
 .service-name {
     width: 100%;

@@ -9,6 +9,7 @@
     <link href="{{ asset('mdl/material.min.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('css/font-awesome.min.css') }}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('css/roboto.css') }}" rel='stylesheet' type='text/css'>
+    <!--[if lte IE 9]><link href="{{ asset('css/lte-ie9.css') }}" rel='stylesheet' type='text/css' /><![endif]-->
     <link href="{{ asset('css/main.css') }}" rel='stylesheet' type='text/css' />
 {% endblock %}
 
@@ -64,7 +65,7 @@
 
             <footer id="footer" class="footer mdl-grid">
                 <div class="mdl-cell mdl-cell--1-col"></div>
-                <div class="mdl-cell mdl-cell--10-col">
+                <div class="footer-content mdl-cell mdl-cell--10-col">
                     <div class="mdl-grid">
                         <div class="footer-left mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
                             <p>{{ 'profile.application.platform_connection_description'|trans }} <a href="{{ global_view_parameters.platformUrl }}">{{ 'profile.application.platform_connection_name'|trans }}</a></p>
