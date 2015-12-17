@@ -1,25 +1,27 @@
 /* Layout content (mdl) */
-.lte-ie9 .mdl-layout__content {
+.mdl-layout__content {
     display: block;
     width: 100%;
 }
 
 /* Header */
-.lte-ie9 .mdl-layout__header .mdl-layout-title {
+.mdl-layout__header .mdl-layout-title {
     float: left;
 }
-.lte-ie9 .mdl-layout__header .mdl-navigation {
+
+.mdl-layout__header .mdl-navigation {
     float: right;
 }
-.lte-ie9 .mdl-layout__header .mdl-layout-title,
-.lte-ie9 .mdl-layout__header .mdl-navigation__link {
+
+.mdl-layout__header .mdl-layout-title,
+.mdl-layout__header .mdl-navigation__link {
     line-height: 1em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
 }
 
 /* Content container */
-.lte-ie9 .mdl-layout__content .content-container {
+.mdl-layout__content .content-container {
     width: 1024px;
     max-width: 100%;
     margin-left: auto;
@@ -27,16 +29,18 @@
 }
 
 /* Footer */
-.lte-ie9 .footer,
-.lte-ie9 .footer .footer-content {
+.footer,
+.footer .footer-content {
     width: 1024px;
     max-width: 100%;
 }
-.lte-ie9 .footer-left,
-.lte-ie9 .footer-mid {
+
+.footer-left,
+.footer-mid {
     float: left;
 }
-.lte-ie9 .footer-right {
+
+.footer-right {
     float: right;
     padding-right: 1.5em;
 }
