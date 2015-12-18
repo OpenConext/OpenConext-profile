@@ -85,6 +85,7 @@ i.prepended {
 
 /* Header */
 .mdl-layout__header {
+    display: block;
     border-bottom: 2px solid #4db3cf;
     box-shadow: 1px 1px 4px rgba(0,0,0,.2);
 }
@@ -122,7 +123,7 @@ i.prepended {
     border-radius: 4px;
     margin-bottom: 32px;
 }
-.content-container ul {
+.mdl-layout__content .content-container ul {
     margin-bottom: 24px;
 }
 
@@ -184,7 +185,7 @@ i.prepended {
 
 /* Services table */
 tr.service:hover {
-    background-color: #ffffff !important;
+    background: none !important;
 }
 .service-name {
     width: 100%;

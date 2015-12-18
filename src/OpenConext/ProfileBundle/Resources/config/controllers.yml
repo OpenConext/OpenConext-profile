@@ -28,6 +28,7 @@ services:
             - @form.factory
             - @profile.service.user
             - @session.flash_bag
+            - @profile.security.guard
             - @logger
 
     profile.controller.removal:
