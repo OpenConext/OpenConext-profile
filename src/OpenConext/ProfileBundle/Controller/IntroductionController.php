@@ -59,7 +59,7 @@ class IntroductionController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->info('Showing Introduction page');
+        $this->logger->notice('Showing Introduction page');
 
         return new Response($this->templateEngine->render('OpenConextProfileBundle:Introduction:overview.html.twig'));
     }

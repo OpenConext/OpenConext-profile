@@ -59,7 +59,7 @@ class MyProfileController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->info('Showing My Profile page');
+        $this->logger->notice('Showing My Profile page');
 
         return new Response($this->templateEngine->render('OpenConextProfileBundle:MyProfile:overview.html.twig'));
     }

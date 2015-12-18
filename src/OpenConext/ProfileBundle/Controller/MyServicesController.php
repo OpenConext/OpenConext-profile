@@ -79,14 +79,12 @@ class MyServicesController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->info('Retrieving specified consent list for the current user');
+        $this->logger->notice('User requested My Services page');
 
         $user                 = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
-        $this->logger->info('Specified consent list retrieved for the current user');
-
-        $this->logger->info('Showing My Services page');
+        $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',
