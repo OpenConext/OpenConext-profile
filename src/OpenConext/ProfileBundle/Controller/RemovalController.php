@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Security\Guard;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,13 +36,20 @@ class RemovalController
     private $guard;
 
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
      * @param EngineInterface $templateEngine
      * @param Guard $guard
+     * @param LoggerInterface $logger
      */
-    public function __construct(EngineInterface $templateEngine, Guard $guard)
+    public function __construct(EngineInterface $templateEngine, Guard $guard, LoggerInterface $logger)
     {
         $this->templateEngine = $templateEngine;
-        $this->guard = $guard;
+        $this->guard          = $guard;
+        $this->logger         = $logger;
     }
 
     /**
@@ -50,6 +58,8 @@ class RemovalController
     public function overviewAction()
     {
         $this->guard->userIsLoggedIn();
+
+        $this->logger->notice('Showing Removal page');
 
         return new Response($this->templateEngine->render('OpenConextProfileBundle:Removal:overview.html.twig'));
     }

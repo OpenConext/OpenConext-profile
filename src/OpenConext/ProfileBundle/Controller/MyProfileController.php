@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Security\Guard;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -35,13 +36,20 @@ class MyProfileController
     private $guard;
 
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
      * @param EngineInterface $templateEngine
      * @param Guard $guard
+     * @param LoggerInterface $logger
      */
-    public function __construct(EngineInterface $templateEngine, Guard $guard)
+    public function __construct(EngineInterface $templateEngine, Guard $guard, LoggerInterface $logger)
     {
         $this->templateEngine = $templateEngine;
-        $this->guard = $guard;
+        $this->guard          = $guard;
+        $this->logger         = $logger;
     }
 
     /**
@@ -50,6 +58,8 @@ class MyProfileController
     public function overviewAction()
     {
         $this->guard->userIsLoggedIn();
+
+        $this->logger->notice('Showing My Profile page');
 
         return new Response($this->templateEngine->render('OpenConextProfileBundle:MyProfile:overview.html.twig'));
     }

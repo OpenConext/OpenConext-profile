@@ -61,7 +61,6 @@ monolog:
             action_level: ERROR
             passthru_level: NOTICE
             handler: syslog
-            bubble: false
         syslog:
             type:     syslog
             ident:    openconext-profile

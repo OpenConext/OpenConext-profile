@@ -4,12 +4,14 @@ services:
         arguments:
             - @templating
             - @profile.security.guard
+            - @logger
 
     profile.controller.my_profile:
         class: OpenConext\ProfileBundle\Controller\MyProfileController
         arguments:
             - @templating
             - @profile.security.guard
+            - @logger
 
     profile.controller.my_services:
         class: OpenConext\ProfileBundle\Controller\MyServicesController
@@ -18,6 +20,7 @@ services:
             - @profile.provider.authenticated_user
             - @profile.service.consent_listing
             - @profile.security.guard
+            - @logger
 
     profile.controller.locale:
         class: OpenConext\ProfileBundle\Controller\LocaleController
@@ -33,9 +36,10 @@ services:
         arguments:
             - @templating
             - @profile.security.guard
+            - @logger
 
     profile.controller.saml:
         class: OpenConext\ProfileBundle\Controller\SamlController
         arguments:
             - @surfnet_saml.metadata_factory
-
+            - @logger

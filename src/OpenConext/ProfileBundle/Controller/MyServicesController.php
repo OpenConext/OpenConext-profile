@@ -22,6 +22,7 @@ use OpenConext\Profile\Api\AuthenticatedUserProvider;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\User\UserProvider;
 use OpenConext\ProfileBundle\Security\Guard;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
@@ -49,29 +50,41 @@ class MyServicesController
     private $guard;
 
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
      * @param EngineInterface $templateEngine
      * @param AuthenticatedUserProvider $authenticatedUserProvider
      * @param SpecifiedConsentListService $specifiedConsentListService
      * @param Guard $guard
+     * @param LoggerInterface $logger
      */
     public function __construct(
         EngineInterface $templateEngine,
         AuthenticatedUserProvider $authenticatedUserProvider,
         SpecifiedConsentListService $specifiedConsentListService,
-        Guard $guard
+        Guard $guard,
+        LoggerInterface $logger
     ) {
         $this->templateEngine              = $templateEngine;
         $this->authenticatedUserProvider   = $authenticatedUserProvider;
         $this->specifiedConsentListService = $specifiedConsentListService;
         $this->guard                       = $guard;
+        $this->logger                      = $logger;
     }
 
     public function overviewAction()
     {
         $this->guard->userIsLoggedIn();
 
-        $user = $this->authenticatedUserProvider->getCurrentUser();
+        $this->logger->notice('User requested My Services page');
+
+        $user                 = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
+
+        $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',
