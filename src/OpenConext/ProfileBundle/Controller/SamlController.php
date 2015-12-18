@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use Psr\Log\LoggerInterface;
 use Surfnet\SamlBundle\Http\XMLResponse;
 use Surfnet\SamlBundle\Metadata\MetadataFactory;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -30,11 +31,18 @@ class SamlController
     private $metadataFactory;
 
     /**
-     * @param MetadataFactory $metadataFactory
+     * @var LoggerInterface
      */
-    public function __construct(MetadataFactory $metadataFactory)
+    private $logger;
+
+    /**
+     * @param MetadataFactory $metadataFactory
+     * @param LoggerInterface $logger
+     */
+    public function __construct(MetadataFactory $metadataFactory, LoggerInterface $logger)
     {
         $this->metadataFactory = $metadataFactory;
+        $this->logger = $logger;
     }
 
     public function consumeAssertionAction()
@@ -47,6 +55,8 @@ class SamlController
      */
     public function metadataAction()
     {
+        $this->logger->notice('Showing SAML metadata');
+
         return new XMLResponse($this->metadataFactory->generate());
     }
 }

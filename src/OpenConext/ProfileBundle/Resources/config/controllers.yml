@@ -36,9 +36,10 @@ services:
         arguments:
             - @templating
             - @profile.security.guard
+            - @logger
 
     profile.controller.saml:
         class: OpenConext\ProfileBundle\Controller\SamlController
         arguments:
             - @surfnet_saml.metadata_factory
-
+            - @logger
