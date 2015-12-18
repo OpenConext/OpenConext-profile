@@ -70,21 +70,24 @@ class LocaleController
         $domain = $request->getSchemeAndHttpHost() . '/';
 
         if (strpos($returnUrl, $domain) !== 0) {
-            $this->logger->error(sprintf(
-                'Illegal return-url for redirection after changing locale, aborting request'
-            ));
+            $this->logger->error('Illegal return-url for redirection after changing locale, aborting request');
             throw new BadRequestHttpException('Invalid return-url given');
         }
+
+        $this->logger->info('Switching locale');
 
         $command = new ChangeLocaleCommand();
 
         $form = $this->formFactory->create('profile_switch_locale', $command, [])->handleRequest($request);
         if ($form->isValid()) {
             $this->userService->changeLocale($command);
-
             $this->flashBag->add('success', 'profile.locale.locale_change_success');
+
+            $this->logger->info('Successfully switched locale');
         } else {
             $this->flashBag->add('error', 'profile.locale.locale_change_fail');
+
+            $this->logger->error('Locale not switched: the switch locale form contained invalid data');
         }
 
         return new RedirectResponse($returnUrl);
