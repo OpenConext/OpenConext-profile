@@ -46,7 +46,11 @@ final class AuthenticatedUser
      */
     public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
     {
-        return new self($assertionAdapter->getNameId(), $assertionAdapter->getAttributeSet(), $authenticatingAuthorities);
+        return new self(
+            $assertionAdapter->getNameId(),
+            $assertionAdapter->getAttributeSet(),
+            $authenticatingAuthorities
+        );
     }
 
     /**
