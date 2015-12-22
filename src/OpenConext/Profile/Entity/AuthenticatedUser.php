@@ -19,6 +19,7 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Value\EntityId;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
@@ -35,24 +36,37 @@ final class AuthenticatedUser
     private $attributes;
 
     /**
+     * @var EntityId[]
+     */
+    private $authenticatingAuthorities;
+
+    /**
      * @param AssertionAdapter $assertionAdapter
+     * @param EntityId[] $authenticatingAuthorities
      * @return AuthenticatedUser
      */
-    public static function createFrom(AssertionAdapter $assertionAdapter)
+    public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
     {
-        return new self($assertionAdapter->getNameId(), $assertionAdapter->getAttributeSet());
+        return new self(
+            $assertionAdapter->getNameId(),
+            $assertionAdapter->getAttributeSet(),
+            $authenticatingAuthorities
+        );
     }
 
     /**
      * @param string $nameId
      * @param AttributeSet $attributes
+     * @param EntityId[] $authenticatingAuthorities
      */
-    private function __construct($nameId, AttributeSet $attributes)
+    private function __construct($nameId, AttributeSet $attributes, array $authenticatingAuthorities)
     {
         Assert::string($nameId);
+        Assert::allIsInstanceOf($authenticatingAuthorities, '\OpenConext\Profile\Value\EntityId');
 
-        $this->nameId = $nameId;
-        $this->attributes = $attributes;
+        $this->nameId                    = $nameId;
+        $this->attributes                = $attributes;
+        $this->authenticatingAuthorities = $authenticatingAuthorities;
     }
 
     /**
@@ -69,6 +83,14 @@ final class AuthenticatedUser
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @return EntityId[]
+     */
+    public function getAuthenticatingAuthorities()
+    {
+        return $this->authenticatingAuthorities;
     }
 
     /**
