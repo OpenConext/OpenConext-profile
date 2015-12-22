@@ -35,24 +35,32 @@ final class AuthenticatedUser
     private $attributes;
 
     /**
+     * @var array
+     */
+    private $authenticatingAuthorities;
+
+    /**
      * @param AssertionAdapter $assertionAdapter
+     * @param array $authenticatingAuthorities
      * @return AuthenticatedUser
      */
-    public static function createFrom(AssertionAdapter $assertionAdapter)
+    public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
     {
-        return new self($assertionAdapter->getNameId(), $assertionAdapter->getAttributeSet());
+        return new self($assertionAdapter->getNameId(), $assertionAdapter->getAttributeSet(), $authenticatingAuthorities);
     }
 
     /**
      * @param string $nameId
      * @param AttributeSet $attributes
+     * @param array $authenticatingAuthorities
      */
-    private function __construct($nameId, AttributeSet $attributes)
+    private function __construct($nameId, AttributeSet $attributes, array $authenticatingAuthorities)
     {
         Assert::string($nameId);
 
-        $this->nameId = $nameId;
-        $this->attributes = $attributes;
+        $this->nameId                    = $nameId;
+        $this->attributes                = $attributes;
+        $this->authenticatingAuthorities = $authenticatingAuthorities;
     }
 
     /**
@@ -69,6 +77,14 @@ final class AuthenticatedUser
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAuthenticatingAuthorities()
+    {
+        return $this->authenticatingAuthorities;
     }
 
     /**
