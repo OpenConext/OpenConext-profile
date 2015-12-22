@@ -146,6 +146,7 @@ services:
     profile.service.user:
         class: OpenConext\ProfileBundle\Service\UserService
         arguments:
+            - @profile.service.support_contact_email
             - @profile.repository.user
             - @profile.provider.authenticated_user
             - @profile.service.locale
