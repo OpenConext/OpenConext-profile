@@ -30,6 +30,16 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('engine_block_entity_id')
+                    ->info('The EntityID of EngineBlock')
+                    ->isRequired()
+                    ->validate()
+                        ->ifTrue(function ($entityId) {
+                            return !is_string($entityId);
+                        })
+                        ->thenInvalid('EngineBlock EntityID should be a string')
+                    ->end()
+                ->end()
                 ->arrayNode('locales')
                     ->info('The available application locales')
                     ->isRequired()
