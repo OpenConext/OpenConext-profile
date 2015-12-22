@@ -19,6 +19,7 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Value\EntityId;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
@@ -35,13 +36,13 @@ final class AuthenticatedUser
     private $attributes;
 
     /**
-     * @var array
+     * @var EntityId[]
      */
     private $authenticatingAuthorities;
 
     /**
      * @param AssertionAdapter $assertionAdapter
-     * @param array $authenticatingAuthorities
+     * @param EntityId[] $authenticatingAuthorities
      * @return AuthenticatedUser
      */
     public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
@@ -56,11 +57,12 @@ final class AuthenticatedUser
     /**
      * @param string $nameId
      * @param AttributeSet $attributes
-     * @param array $authenticatingAuthorities
+     * @param EntityId[] $authenticatingAuthorities
      */
     private function __construct($nameId, AttributeSet $attributes, array $authenticatingAuthorities)
     {
         Assert::string($nameId);
+        Assert::allIsInstanceOf($authenticatingAuthorities, '\OpenConext\Profile\Value\EntityId');
 
         $this->nameId                    = $nameId;
         $this->attributes                = $attributes;
@@ -84,7 +86,7 @@ final class AuthenticatedUser
     }
 
     /**
-     * @return array
+     * @return EntityId[]
      */
     public function getAuthenticatingAuthorities()
     {
