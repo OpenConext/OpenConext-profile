@@ -164,5 +164,10 @@ services:
             - @profile.service.consent
             - @profile.consent.blacklist_filter
 
+    profile.service.support_contact_email:
+        class: OpenConext\ProfileBundle\Service\SupportContactEmailService
+        arguments:
+            - @openconext_eb_api.repository.support_contact_information
+
     profile.consent.blacklist_filter:
         class: OpenConext\ProfileBundle\Consent\BlacklistFilter
