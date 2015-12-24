@@ -9,6 +9,7 @@ services:
     profile.controller.my_profile:
         class: OpenConext\ProfileBundle\Controller\MyProfileController
         arguments:
+            - @profile.service.user
             - @templating
             - @profile.security.guard
             - @logger

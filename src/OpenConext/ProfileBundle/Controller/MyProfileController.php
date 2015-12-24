@@ -19,12 +19,19 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Security\Guard;
+use OpenConext\ProfileBundle\Service\SupportContactInformationService;
+use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
 class MyProfileController
 {
+    /**
+     * @var UserService
+     */
+    private $userService;
+
     /**
      * @var EngineInterface
      */
@@ -41,12 +48,18 @@ class MyProfileController
     private $logger;
 
     /**
+     * @param UserService $userService
      * @param EngineInterface $templateEngine
      * @param Guard $guard
      * @param LoggerInterface $logger
      */
-    public function __construct(EngineInterface $templateEngine, Guard $guard, LoggerInterface $logger)
-    {
+    public function __construct(
+        UserService $userService,
+        EngineInterface $templateEngine,
+        Guard $guard,
+        LoggerInterface $logger
+    ) {
+        $this->userService    = $userService;
         $this->templateEngine = $templateEngine;
         $this->guard          = $guard;
         $this->logger         = $logger;
@@ -61,6 +74,8 @@ class MyProfileController
 
         $this->logger->notice('Showing My Profile page');
 
-        return new Response($this->templateEngine->render('OpenConextProfileBundle:MyProfile:overview.html.twig'));
+        $user = $this->userService->getUser();
+
+        return new Response($this->templateEngine->render('OpenConextProfileBundle:MyProfile:overview.html.twig', ['user' => $user]));
     }
 }
