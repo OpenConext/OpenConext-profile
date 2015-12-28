@@ -35,13 +35,22 @@ class OpenConextProfileExtension extends Extension
         $loader->load('controllers.yml');
         $loader->load('services.yml');
 
+        $this->parseEngineBlockEntityIdConfiguration($config['engine_block_entity_id'], $container);
+
+        $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
+        $this->parseAvailableLocaleConfiguration($config['locales'], $container);
         $this->parseCookieStorageConfiguration(
             $config['locale_cookie_domain'],
             $config['locale_cookie_key'],
             $container
         );
-        $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
-        $this->parseAvailableLocaleConfiguration($config['locales'], $container);
+    }
+
+    private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container)
+    {
+        $container
+            ->getDefinition('profile.engine_block_entity_id')
+            ->replaceArgument(0, $engineBlockEntityId);
     }
 
     private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container)

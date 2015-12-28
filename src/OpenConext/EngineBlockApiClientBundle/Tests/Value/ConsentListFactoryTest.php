@@ -100,6 +100,6 @@ final class ConsentListFactoryTest extends TestCase
             ),
         ]);
 
-        $this->assertEquals($expectedConsentList, ConsentListFactory::create($given));
+        $this->assertEquals($expectedConsentList, ConsentListFactory::createListFromMetadata($given));
     }
 }

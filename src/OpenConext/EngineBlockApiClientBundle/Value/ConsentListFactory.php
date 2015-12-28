@@ -41,7 +41,7 @@ final class ConsentListFactory
      * @param mixed $data
      * @return ConsentList
      */
-    public static function create($data)
+    public static function createListFromMetadata($data)
     {
         Assert::isArray($data, 'Consent list JSON structure must be an associative array, got %s');
 

@@ -19,11 +19,12 @@
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
-use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
-use OpenConext\Profile\Assert;
-use OpenConext\Profile\Repository\ConsentRepository as ConsentRepositoryInterface;
+use OpenConext\Profile\Value\ContactPersonList;
+use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
+use OpenConext\Profile\Repository\ContactPersonRepository as ContactPersonRepositoryInterface;
+use OpenConext\Profile\Value\EntityId;
 
-final class ConsentRepository implements ConsentRepositoryInterface
+final class ContactPersonRepository implements ContactPersonRepositoryInterface
 {
     /**
      * @var JsonApiClient
@@ -35,13 +36,14 @@ final class ConsentRepository implements ConsentRepositoryInterface
         $this->apiClient = $apiClient;
     }
 
-    public function findAllFor($userId)
+    /**
+     * @param EntityId $entityId
+     * @return ContactPersonList
+     */
+    public function findAllForIdp(EntityId $entityId)
     {
-        Assert::string($userId, 'User ID "%s" expected to be string, type %s given.');
-        Assert::notEmpty($userId, 'User ID "%s" is empty, but non empty value was expected.');
+        $identityProviderJson = $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId->getEntityId()]);
 
-        $consentListJson = $this->apiClient->read('consent/%s', [$userId]);
-
-        return ConsentListFactory::createListFromMetadata($consentListJson);
+        return ContactPersonListFactory::createListFromMetadata($identityProviderJson);
     }
 }

@@ -18,11 +18,33 @@
 
 namespace OpenConext\Profile\Api;
 
+use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\Profile\Value\Locale;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 interface User
 {
+    /**
+     * @param Locale $locale
+     * @return void
+     */
+    public function switchLocaleTo(Locale $locale);
+
+    /**
+     * @return bool
+     */
+    public function hasSupportContactEmail();
+
+    /**
+     * @return null|EmailAddress
+     */
+    public function getSupportContactEmail();
+
+    /**
+     * @return Locale
+     */
+    public function getLocale();
+
     /**
      * @return AttributeSet
      */
@@ -32,15 +54,4 @@ interface User
      * @return string
      */
     public function getId();
-
-    /**
-     * @return Locale
-     */
-    public function getLocale();
-
-    /**
-     * @param Locale $locale
-     * @return void
-     */
-    public function switchLocaleTo(Locale $locale);
 }

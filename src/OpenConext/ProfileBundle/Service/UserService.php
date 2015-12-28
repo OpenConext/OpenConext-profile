@@ -21,11 +21,17 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\Profile\Entity\User;
 use OpenConext\Profile\Api\AuthenticatedUserProvider as AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Repository\UserRepository;
+use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 
 final class UserService
 {
+    /**
+     * @var SupportContactEmailService
+     */
+    private $supportContactEmailService;
+
     /**
      * @var UserRepository
      */
@@ -41,14 +47,23 @@ final class UserService
      */
     private $localeService;
 
+    /**
+     * @var EntityId
+     */
+    private $engineBlockEntityId;
+
     public function __construct(
+        SupportContactEmailService $supportContactEmailService,
         UserRepository $userRepository,
         AuthenticatedUserProviderInterface $authenticatedUserProvider,
-        LocaleService $localeService
+        LocaleService $localeService,
+        EntityId $engineBlockEntityId
     ) {
-        $this->userRepository            = $userRepository;
-        $this->authenticatedUserProvider = $authenticatedUserProvider;
-        $this->localeService             = $localeService;
+        $this->supportContactEmailService = $supportContactEmailService;
+        $this->userRepository             = $userRepository;
+        $this->authenticatedUserProvider  = $authenticatedUserProvider;
+        $this->localeService              = $localeService;
+        $this->engineBlockEntityId        = $engineBlockEntityId;
     }
 
     /**
@@ -57,11 +72,14 @@ final class UserService
     public function getUser()
     {
         $user = $this->userRepository->findUser();
+
         if ($user) {
             return $user;
         }
 
         $user = new User($this->authenticatedUserProvider->getCurrentUser(), $this->localeService->getLocale());
+        $user = $this->enrichUserWithSupportContactEmail($user);
+
         $this->userRepository->save($user);
 
         return $user;
@@ -76,5 +94,48 @@ final class UserService
         $user->switchLocaleTo(new Locale($changeLocaleCommand->newLocale));
 
         $this->localeService->saveLocaleOf($user);
+    }
+
+    /**
+     * @param User $user
+     * @return User
+     */
+    private function enrichUserWithSupportContactEmail(User $user)
+    {
+        $entityIds                 = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
+        $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
+
+        if ($authenticatingIdpEntityId === null) {
+            return $user;
+        }
+
+        $supportContactEmail = $this->supportContactEmailService->findSupportContactEmailForIdp(
+            new EntityId($authenticatingIdpEntityId)
+        );
+
+        if ($supportContactEmail === null) {
+            return $user;
+        }
+
+        return $user->withSupportContactEmail($supportContactEmail);
+    }
+
+    /**
+     * @param EntityId[] $entityIds
+     * @return null|EntityId
+     */
+    private function getNearestAuthenticatingAuthorityEntityId(array $entityIds)
+    {
+        $lastEntityId = array_pop($entityIds);
+
+        if ($lastEntityId === null) {
+            return null;
+        }
+
+        if (!$this->engineBlockEntityId->equals($lastEntityId)) {
+            return $lastEntityId;
+        }
+
+        return array_pop($entityIds);
     }
 }

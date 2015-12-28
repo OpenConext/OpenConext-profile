@@ -15,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for attribute in app.user.attributes %}
+            {% for attribute in user.attributes %}
                 {% if attribute.attributeDefinition.hasUrnMace %}
                     {% set attributeUrn = attribute.attributeDefinition.urnMace %}
                 {% else %}

@@ -19,12 +19,9 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Value\Consent;
-use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
-use OpenConext\ProfileBundle\Exception\RuntimeException;
 use OpenConext\Profile\Entity\AuthenticatedUser;
-use OpenConext\ProfileBundle\User\UserProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Filter\AttributeFilter;
 
 class SpecifiedConsentListService
