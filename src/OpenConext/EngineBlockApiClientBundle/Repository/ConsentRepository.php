@@ -42,6 +42,6 @@ final class ConsentRepository implements ConsentRepositoryInterface
 
         $consentListJson = $this->apiClient->read('consent/%s', [$userId]);
 
-        return ConsentListFactory::create($consentListJson);
+        return ConsentListFactory::createListFromMetadata($consentListJson);
     }
 }

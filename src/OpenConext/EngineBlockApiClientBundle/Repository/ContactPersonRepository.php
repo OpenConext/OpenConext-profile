@@ -44,6 +44,6 @@ final class ContactPersonRepository implements ContactPersonRepositoryInterface
     {
         $identityProviderJson = $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId->getEntityId()]);
 
-        return ContactPersonListFactory::create($identityProviderJson);
+        return ContactPersonListFactory::createListFromMetadata($identityProviderJson);
     }
 }

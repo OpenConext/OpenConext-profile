@@ -82,7 +82,7 @@ final class ContactPersonListFactoryTest extends TestCase
             ),
         ]);
 
-        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::create($given));
+        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::createListFromMetadata($given));
     }
 
     /**
@@ -114,7 +114,7 @@ final class ContactPersonListFactoryTest extends TestCase
             ),
         ]);
 
-        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::create($given));
+        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::createListFromMetadata($given));
     }
 
     /**
@@ -145,6 +145,6 @@ final class ContactPersonListFactoryTest extends TestCase
             ),
         ]);
 
-        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::create($given));
+        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::createListFromMetadata($given));
     }
 }
