@@ -76,6 +76,9 @@ class MyProfileController
 
         $user = $this->userService->getUser();
 
-        return new Response($this->templateEngine->render('OpenConextProfileBundle:MyProfile:overview.html.twig', ['user' => $user]));
+        return new Response($this->templateEngine->render(
+            'OpenConextProfileBundle:MyProfile:overview.html.twig',
+            ['user' => $user]
+        ));
     }
 }
