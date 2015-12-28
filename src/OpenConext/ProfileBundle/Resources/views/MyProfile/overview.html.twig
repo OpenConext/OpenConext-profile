@@ -16,18 +16,23 @@
             </thead>
             <tbody>
             {% for attribute in user.attributes %}
-            <tr>
-                <td>
-                    <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
-                </td>
-                <td>
-                    {% if attribute.value is iterable %}
-                        {{ attribute.value|join(', ') }}
-                    {% else %}
-                        {{ attribute.value }}
-                    {% endif %}
-                </td>
-            </tr>
+                {% if attribute.attributeDefinition.hasUrnMace %}
+                    {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+                {% else %}
+                    {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+                {% endif %}
+                <tr>
+                    <td title="{{ attributeUrn }}">
+                        <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                    </td>
+                    <td>
+                        {% if attribute.value is iterable %}
+                            {{ attribute.value|join(', ') }}
+                        {% else %}
+                            {{ attribute.value }}
+                        {% endif %}
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
