@@ -21,7 +21,6 @@ namespace OpenConext\Profile\Value;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
-use OpenConext\Profile\Exception\OutOfBoundsException;
 use OpenConext\Profile\Exception\OutOfRangeException;
 
 final class ContactPersonList implements IteratorAggregate, Countable
