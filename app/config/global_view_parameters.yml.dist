@@ -11,3 +11,6 @@ parameters:
     platform_url:
         en: "https://www.surfconext.nl"
         nl: "https://www.surfconext.nl"
+    profile_explanation_image_path:
+        en: "/images/profile_home_en.png"
+        nl: "/images/profile_home_nl.png"
