@@ -102,29 +102,35 @@ final class UserService
      */
     private function enrichUserWithSupportContactEmail(User $user)
     {
-        $entityIds = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
+        $entityIds                 = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
+        $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
 
-        if (!empty($entityIds)) {
-            $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
-            $supportContactEmail       = $this->supportContactEmailService->findSupportContactEmailForIdp(
-                new EntityId($authenticatingIdpEntityId)
-            );
-
-            if ($supportContactEmail !== null) {
-                $user = $user->withSupportContactEmail($supportContactEmail);
-            }
+        if ($authenticatingIdpEntityId === null) {
+            return $user;
         }
 
-        return $user;
+        $supportContactEmail = $this->supportContactEmailService->findSupportContactEmailForIdp(
+            new EntityId($authenticatingIdpEntityId)
+        );
+
+        if ($supportContactEmail === null) {
+            return $user;
+        }
+
+        return $user->withSupportContactEmail($supportContactEmail);
     }
 
     /**
      * @param EntityId[] $entityIds
-     * @return EntityId
+     * @return null|EntityId
      */
     private function getNearestAuthenticatingAuthorityEntityId(array $entityIds)
     {
         $lastEntityId = array_pop($entityIds);
+
+        if ($lastEntityId === null) {
+            return null;
+        }
 
         if (!$this->engineBlockEntityId->equals($lastEntityId)) {
             return $lastEntityId;
