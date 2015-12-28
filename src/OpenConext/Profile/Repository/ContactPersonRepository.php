@@ -27,5 +27,5 @@ interface ContactPersonRepository
      * @param EntityId $entityId
      * @return ContactPersonList
      */
-    public function findAll(EntityId $entityId);
+    public function findAllForIdp(EntityId $entityId);
 }

@@ -40,7 +40,7 @@ final class ContactPersonRepository implements ContactPersonRepositoryInterface
      * @param EntityId $entityId
      * @return ContactPersonList
      */
-    public function findAll(EntityId $entityId)
+    public function findAllForIdp(EntityId $entityId)
     {
         $identityProviderJson = $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId->getEntityId()]);
 

@@ -40,18 +40,12 @@ final class SupportContactEmailService
      * @param string EntityId $entityId
      * @return null|EmailAddress
      */
-    public function findSupportContactEmail(EntityId $entityId)
+    public function findSupportContactEmailForIdp(EntityId $entityId)
     {
-        $contactPersons = $this->contactPersonRepository->findAll($entityId);
-
-        if (count($contactPersons) === 0) {
-            return null;
-        }
-
-        $supportContactPersons = $contactPersons->filter(
+        $supportContactPersons = $this->contactPersonRepository->findAllForIdp($entityId)->filter(
             function (ContactPerson $contactPerson) {
                 return $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
-                && $contactPerson->hasEmailAddress();
+                    && $contactPerson->hasEmailAddress();
             }
         );
 

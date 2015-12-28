@@ -46,6 +46,7 @@ final class UserService
      * @var LocaleService
      */
     private $localeService;
+
     /**
      * @var EntityId
      */
@@ -105,8 +106,8 @@ final class UserService
 
         if (!empty($entityIds)) {
             $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
-            $supportContactEmail       = $this->supportContactEmailService->findSupportContactEmail(
-                $authenticatingIdpEntityId
+            $supportContactEmail       = $this->supportContactEmailService->findSupportContactEmailForIdp(
+                new EntityId($authenticatingIdpEntityId)
             );
 
             if ($supportContactEmail !== null) {
