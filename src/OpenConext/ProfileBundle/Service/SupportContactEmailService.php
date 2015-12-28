@@ -44,7 +44,7 @@ final class SupportContactEmailService
     {
         $contactPersons = $this->contactPersonRepository->findAll($entityId);
 
-        if ($contactPersons === null) {
+        if (count($contactPersons) === 0) {
             return null;
         }
 
@@ -55,7 +55,7 @@ final class SupportContactEmailService
             }
         );
 
-        if ($supportContactPersons === null) {
+        if (count($supportContactPersons) === 0) {
             return null;
         }
 

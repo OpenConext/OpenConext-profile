@@ -25,7 +25,7 @@ interface ContactPersonRepository
 {
     /**
      * @param EntityId $entityId
-     * @return null|ContactPersonList
+     * @return ContactPersonList
      */
     public function findAll(EntityId $entityId);
 }
