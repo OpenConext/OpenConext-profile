@@ -29,11 +29,11 @@ final class SupportContactEmailService
     /**
      * @var ContactPersonRepository
      */
-    private $contactInformationRepository;
+    private $contactPersonRepository;
 
-    public function __construct(ContactPersonRepository $contactInformationRepository)
+    public function __construct(ContactPersonRepository $contactPersonRepository)
     {
-        $this->contactInformationRepository = $contactInformationRepository;
+        $this->contactPersonRepository = $contactPersonRepository;
     }
 
     /**
@@ -42,7 +42,7 @@ final class SupportContactEmailService
      */
     public function findSupportContactEmail(EntityId $entityId)
     {
-        $contactPersons = $this->contactInformationRepository->findAll($entityId);
+        $contactPersons = $this->contactPersonRepository->findAll($entityId);
 
         if ($contactPersons === null) {
             return null;
