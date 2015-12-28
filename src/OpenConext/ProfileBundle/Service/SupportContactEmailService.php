@@ -59,6 +59,6 @@ final class SupportContactEmailService
             return null;
         }
 
-        return $supportContactPersons->getFirstContactPerson()->getEmailAddress();
+        return $supportContactPersons->first()->getEmailAddress();
     }
 }

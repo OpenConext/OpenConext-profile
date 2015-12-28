@@ -57,6 +57,18 @@ class ContactPersonListTest extends TestCase
     /**
      * @test
      * @group ContactPerson
+     *
+     * @expectedException \OpenConext\Profile\Exception\OutOfRangeException
+     */
+    public function first_contact_person_cannot_be_retrieved_from_empty_list()
+    {
+        $contactPersonList = new ContactPersonList([]);
+        $contactPersonList->first();
+    }
+
+    /**
+     * @test
+     * @group ContactPerson
      */
     public function first_contact_person_can_be_retrieved_from_list()
     {
@@ -70,7 +82,7 @@ class ContactPersonListTest extends TestCase
             new EmailAddress('first@invalid.email')
         );
 
-        $actualFirstContactPerson = $contactPersonList->getFirstContactPerson();
+        $actualFirstContactPerson = $contactPersonList->first();
 
         $this->assertEquals($expectedFirstContactPerson, $actualFirstContactPerson);
     }

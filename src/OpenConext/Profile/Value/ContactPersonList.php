@@ -21,6 +21,8 @@ namespace OpenConext\Profile\Value;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use OpenConext\Profile\Exception\OutOfBoundsException;
+use OpenConext\Profile\Exception\OutOfRangeException;
 
 final class ContactPersonList implements IteratorAggregate, Countable
 {
@@ -63,8 +65,12 @@ final class ContactPersonList implements IteratorAggregate, Countable
     /**
      * @return ContactPerson
      */
-    public function getFirstContactPerson()
+    public function first()
     {
+        if (!isset($this->contactPersons[0])) {
+            throw new OutOfRangeException('Cannot get the first Contact Person of an empty Contact Person List');
+        }
+
         return $this->contactPersons[0];
     }
 
