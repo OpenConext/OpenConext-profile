@@ -238,6 +238,20 @@ tr.service:hover {
     margin-top: 32px;
 }
 
+.service-attributes table,
+.service-attributes table thead tr:hover {
+    background-color: #f3f3f3;
+    border: none;
+}
+.service-attributes table td,
+.service-attributes table th {
+    font-size: 14px;
+}
+.service-attributes table td {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid #cccccc;
