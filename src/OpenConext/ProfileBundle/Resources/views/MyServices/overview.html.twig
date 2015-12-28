@@ -69,8 +69,13 @@
                                 </thead>
                                 <tbody>
                                 {% for attribute in specifiedConsent.releasedAttributes %}
+                                    {% if attribute.attributeDefinition.hasUrnMace %}
+                                        {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+                                    {% else %}
+                                        {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+                                    {% endif %}
                                     <tr>
-                                        <td>
+                                        <td title="{{ attributeUrn }}">
                                             <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
                                         </td>
                                         <td>
