@@ -33,16 +33,17 @@ final class ContactType
      */
     private $contactType;
 
+    /**
+     * @param string $contactType
+     */
     public function __construct($contactType)
     {
         Assert::string($contactType);
-        Assert::choice($contactType, [
-            self::TYPE_TECHNICAL,
-            self::TYPE_SUPPORT,
-            self::TYPE_ADMINISTRATIVE,
-            self::TYPE_BILLING,
-            self::TYPE_OTHER,
-        ], '"%s" is not one of the valid ContactTypes: %s');
+        Assert::choice(
+            $contactType,
+            [self::TYPE_TECHNICAL, self::TYPE_SUPPORT, self::TYPE_ADMINISTRATIVE, self::TYPE_BILLING, self::TYPE_OTHER],
+            '"%s" is not one of the valid ContactTypes: %s'
+        );
 
         $this->contactType = $contactType;
     }
