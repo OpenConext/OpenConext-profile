@@ -46,31 +46,40 @@ final class GlobalViewParameters
     private $termsOfServiceUrls;
 
     /**
+     * @var array
+     */
+    private $profileExplanationImageUrls;
+
+    /**
      * @param TranslatorInterface $translator
      * @param array $locales
      * @param array $helpUrls
      * @param array $platformUrls
      * @param array $termsOfServiceUrls
+     * @param array $profileExplanationImageUrls
      */
     public function __construct(
         TranslatorInterface $translator,
         array $locales,
         array $helpUrls,
         array $platformUrls,
-        array $termsOfServiceUrls
+        array $termsOfServiceUrls,
+        array $profileExplanationImageUrls
     ) {
         Assert::keysAre($helpUrls, $locales);
         Assert::keysAre($platformUrls, $locales);
         Assert::keysAre($termsOfServiceUrls, $locales);
+        Assert::keysAre($profileExplanationImageUrls, $locales);
 
-        $this->translator = $translator;
-        $this->helpUrls = $helpUrls;
-        $this->platformUrls = $platformUrls;
-        $this->termsOfServiceUrls = $termsOfServiceUrls;
+        $this->translator                  = $translator;
+        $this->helpUrls                    = $helpUrls;
+        $this->platformUrls                = $platformUrls;
+        $this->termsOfServiceUrls          = $termsOfServiceUrls;
+        $this->profileExplanationImageUrls = $profileExplanationImageUrls;
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getHelpUrl()
     {
@@ -78,7 +87,7 @@ final class GlobalViewParameters
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getPlatformUrl()
     {
@@ -86,10 +95,18 @@ final class GlobalViewParameters
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getTermsOfServiceUrl()
     {
         return $this->termsOfServiceUrls[$this->translator->getLocale()];
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfileExplanationImage()
+    {
+        return $this->profileExplanationImageUrls[$this->translator->getLocale()];
     }
 }

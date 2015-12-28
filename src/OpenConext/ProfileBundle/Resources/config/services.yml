@@ -41,6 +41,7 @@ services:
             - %help_url%
             - %platform_url%
             - %terms_of_service_url%
+            - %profile_explanation_image_path%
 
     profile.security.authentication.provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
