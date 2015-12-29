@@ -29,6 +29,7 @@ services:
         arguments:
             - @router
             - @profile.service.locale
+            - @translator
         tags:
             - { name: form.type, alias: profile_switch_locale }
 

@@ -26,6 +26,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class SwitchLocaleType extends AbstractType
 {
@@ -39,12 +40,19 @@ class SwitchLocaleType extends AbstractType
      */
     private $localeService;
 
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
-        LocaleService $localeService
+        LocaleService $localeService,
+        TranslatorInterface $translator
     ) {
         $this->urlGenerator  = $urlGenerator;
         $this->localeService = $localeService;
+        $this->translator    = $translator;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -59,30 +67,18 @@ class SwitchLocaleType extends AbstractType
                     ['return-url' => $options['return_url']]
                 )
             )
-            ->add('newLocale', 'choice', [
-                'choices' => $localeChoices,
-                'data'    => $this->localeService->getLocale()->getLocale(),
-                'attr'    => [
-                    'data-locale-options' => ''
+            ->add(
+                'newLocale',
+                'choice',
+                [
+                    'choices' => $localeChoices,
+                    'data'    => $this->localeService->getLocale()->getLocale(),
+                    'attr'    => [
+                        'data-locale-options' => ''
+                    ]
                 ]
-            ])
+            )
             ->add('changeLocale', 'submit', ['label' => 'profile.locale.choose_locale']);
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'return_url' => '',
-            'data_class' => '\OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand'
-        ]);
-
-        $resolver->setRequired('return_url');
-        $resolver->setAllowedTypes('return_url', 'string');
-    }
-
-    public function getName()
-    {
-        return 'profile_switch_locale';
     }
 
     /**
@@ -95,9 +91,29 @@ class SwitchLocaleType extends AbstractType
 
         /** @var Locale $locale */
         foreach ($availableLocales as $locale) {
-            $localeChoices[$locale->getLocale()] = strtoupper($locale->getLocale());
+            $localeChoices[$locale->getLocale()] = strtoupper(
+                $this->translator->trans('profile.locale.' . $locale->getLocale())
+            );
         }
 
         return $localeChoices;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            [
+                'return_url' => '',
+                'data_class' => '\OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand'
+            ]
+        );
+
+        $resolver->setRequired('return_url');
+        $resolver->setAllowedTypes('return_url', 'string');
+    }
+
+    public function getName()
+    {
+        return 'profile_switch_locale';
     }
 }
