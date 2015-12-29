@@ -23,3 +23,6 @@ parameters:
     mailer_host:       ~
     mailer_user:       ~
     mailer_password:   ~
+
+    attribute_support_email_from: noreply@domain.invalid
+    attribute_support_email_to: help@domain.invalid
