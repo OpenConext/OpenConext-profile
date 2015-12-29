@@ -13,7 +13,7 @@
     {% if user.hasSupportContactEmail %}
         {% set supportContactEmail = user.supportContactEmail|replace({'mailto:': ''}) %}
 
-    <p>{{ 'profile.my_profile.questions'|trans }} <a href="mailto: {{ supportContactEmail }}"><i class="prepended fa fa-envelope"></i>{{ supportContactEmail }}</a>.</p>
+    <p>{{ 'profile.my_profile.questions'|trans }} <a href="mailto:{{ supportContactEmail }}"><i class="prepended fa fa-envelope"></i>{{ supportContactEmail }}</a>.</p>
     {% endif %}
 
     <h2><i class="prepended fa fa-user"></i>{{ 'profile.my_profile.account_data'|trans }}</h2>
