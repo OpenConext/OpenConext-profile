@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             // Dependencies
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Surfnet\SamlBundle\SurfnetSamlBundle(),
 
             // Project
