@@ -26,7 +26,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class SwitchLocaleType extends AbstractType
 {
@@ -40,19 +39,12 @@ class SwitchLocaleType extends AbstractType
      */
     private $localeService;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
-        LocaleService $localeService,
-        TranslatorInterface $translator
+        LocaleService $localeService
     ) {
         $this->urlGenerator  = $urlGenerator;
         $this->localeService = $localeService;
-        $this->translator    = $translator;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -91,9 +83,7 @@ class SwitchLocaleType extends AbstractType
 
         /** @var Locale $locale */
         foreach ($availableLocales as $locale) {
-            $localeChoices[$locale->getLocale()] = strtoupper(
-                $this->translator->trans('profile.locale.' . $locale->getLocale())
-            );
+            $localeChoices[$locale->getLocale()] = 'profile.locale.' . $locale->getLocale();
         }
 
         return $localeChoices;
