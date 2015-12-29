@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-28T16:50:01Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-12-29T11:57:29Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -105,7 +105,7 @@
       <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
         <jms:reference-file line="25">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_retention_period</source>
-        <target>Until 3 years after first login. Removal is possible through:</target>
+        <target>Until 3 years after first login</target>
       </trans-unit>
       <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_profile.consent_data">
         <jms:reference-file line="74">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -115,7 +115,7 @@
       <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
         <jms:reference-file line="75">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_explanation</source>
-        <target>For some services, it is required that you consent to the sharing of your data with a service the first time you log in. SURFconext stores when and for what service consent is given. More information about which data is shared with which service can be found under:</target>
+        <target>Most services require you, prior to the first login, to explicitly give consent to your institution to share your personal data with the service you are logging in to. SURFconext stores at which moment and for which service you have given consent. To see which personal data is being shared with which service, please go to</target>
       </trans-unit>
       <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
         <jms:reference-file line="81">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -125,7 +125,7 @@
       <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
         <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_retention_period</source>
-        <target>Until 3 years after last login. Removal is possible through:</target>
+        <target>Until 3 years after last login</target>
       </trans-unit>
       <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
         <jms:reference-file line="20">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -139,7 +139,7 @@
         <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="84">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.data_retention_period</source>
-        <target>Data Retention Period</target>
+        <target>Retention Period</target>
       </trans-unit>
       <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
         <jms:reference-file line="10">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -159,7 +159,7 @@
       <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_profile.logging_data_explanation">
         <jms:reference-file line="58">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_explanation</source>
-        <target>SURFconext temporarily stores when and from what IP address you have used SURFconext and what services you logged into. This is necessary for the administration and security of SURFconext.</target>
+        <target>SURFconext logs when you use SURFconext, which service you are logging in to and from which IP address. This is necessary for administration and security purposes.</target>
       </trans-unit>
       <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_profile.logging_data_origin">
         <jms:reference-file line="64">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -179,12 +179,12 @@
       <trans-unit id="a889019ee05f5be48abcfacba0b63235275ce299" resname="profile.my_profile.pi_processing">
         <jms:reference-file line="11">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.pi_processing</source>
-        <target>Your institution is responsible for your personal information and that this information is processed carefully.</target>
+        <target>Your institution uses SURFconext and remains responsible for your personal data and that they are dealt with in a careful way.</target>
       </trans-unit>
       <trans-unit id="cc93ed7bab761ec4c240fa28983bc1f069328991" resname="profile.my_profile.questions">
         <jms:reference-file line="12">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.questions</source>
-        <target>Do you have any questions about your personal information? Contact your institution through:</target>
+        <target>If you have any questions about your personal data, please contact your institution through:</target>
       </trans-unit>
       <trans-unit id="f1e5e770356348259bcc4b16b55b4fbf30fdeed1" resname="profile.my_profile.short_title">
         <jms:reference-file line="4">views/MyProfile/overview.html.twig</jms:reference-file>
