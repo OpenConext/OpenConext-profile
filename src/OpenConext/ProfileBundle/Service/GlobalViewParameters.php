@@ -18,9 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
-use InvalidArgumentException;
 use OpenConext\Profile\Assert;
-use Symfony\Component\Translation\DataCollectorTranslator;
 use Symfony\Component\Translation\TranslatorInterface;
 
 final class GlobalViewParameters

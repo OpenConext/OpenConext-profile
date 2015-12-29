@@ -183,7 +183,30 @@ i.prepended {
     line-height: 1.35;
 }
 
-/* Services table */
+/* My Profile */
+.profile-metadata {
+    margin-bottom: 16px;
+    font-size: 15px;
+    font-weight: 300;
+}
+.profile-metadata td {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    vertical-align: top;
+}
+.account-data {
+    margin-bottom: 16px;
+}
+.account-data td,
+.account-data th {
+    text-align: left;
+    font-size: 15px;
+}
+.account-data td {
+    font-weight: 300;
+}
+
+/* My Services */
 tr.service:hover {
     background: none !important;
 }
