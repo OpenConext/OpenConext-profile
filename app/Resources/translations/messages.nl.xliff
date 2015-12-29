@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-29T11:57:04Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2015-12-29T13:21:06Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -102,7 +102,7 @@
       <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
         <jms:reference-file line="21">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_origin</source>
-        <target>Gegevens afkomstig van je instelling. Identifier en nummers gegenereerd door SURFconext</target>
+        <target>Gegevens afkomstig van je instelling. Identifier + nummers gegenereerd door SURFconext</target>
       </trans-unit>
       <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
         <jms:reference-file line="25">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -127,7 +127,7 @@
       <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
         <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_retention_period</source>
-        <target>Tot 3 jaar na laatste inlog</target>
+        <target>Tot 3 jaar na laatste inlog.</target>
       </trans-unit>
       <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
         <jms:reference-file line="20">views/MyProfile/overview.html.twig</jms:reference-file>
