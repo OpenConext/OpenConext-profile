@@ -103,6 +103,7 @@ class Configuration implements ConfigurationInterface
                                     return !is_string($email);
                                 })
                                 ->thenInvalid('Email address from which attributes are sent should be a string')
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
