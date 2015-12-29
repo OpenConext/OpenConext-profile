@@ -75,12 +75,36 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('locale_cookie_key')
                     ->info('The key for which the locale cookie value is set')
                     ->isRequired()
-                        ->validate()
-                            ->ifTrue(function ($key) {
-                                return !is_string($key);
-                            })
-                            ->thenInvalid('Locale cookie key should be a string')
+                    ->validate()
+                        ->ifTrue(function ($key) {
+                            return !is_string($key);
+                        })
+                        ->thenInvalid('Locale cookie key should be a string')
+                    ->end()
+                ->end()
+                ->arrayNode('attribute_support')
+                    ->isRequired()
+                    ->children()
+                        ->scalarNode('email_to')
+                            ->info('Email address to which attributes are sent')
+                            ->isRequired()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !is_string($email);
+                                })
+                                ->thenInvalid('Email address to which attributes are sent should be a string')
+                            ->end()
                         ->end()
+                        ->scalarNode('email_from')
+                            ->info('mail address from which attributes are sent')
+                            ->isRequired()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !is_string($email);
+                                })
+                                ->thenInvalid('Email address from which attributes are sent should be a string')
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
 

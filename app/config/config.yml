@@ -120,3 +120,6 @@ open_conext_profile:
     default_locale: %default_locale%
     locale_cookie_domain: %open_conext_locale_cookie_domain%
     locale_cookie_key: %open_conext_locale_cookie_key%
+    attribute_support:
+        email_from: %attribute_support_email_from%
+        email_to: %attribute_support_email_to%
