@@ -110,7 +110,7 @@ final class UserService
         }
 
         $supportContactEmail = $this->supportContactEmailService->findSupportContactEmailForIdp(
-            new EntityId($authenticatingIdpEntityId)
+            $authenticatingIdpEntityId
         );
 
         if ($supportContactEmail === null) {
