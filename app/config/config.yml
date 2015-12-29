@@ -72,6 +72,13 @@ twig:
     globals:
         global_view_parameters: "@profile.global_view_parameters"
 
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
 jms_translation:
     locales: %locales%
     configs:
@@ -113,3 +120,6 @@ open_conext_profile:
     default_locale: %default_locale%
     locale_cookie_domain: %open_conext_locale_cookie_domain%
     locale_cookie_key: %open_conext_locale_cookie_key%
+    attribute_support:
+        email_from: %attribute_support_email_from%
+        email_to: %attribute_support_email_to%
