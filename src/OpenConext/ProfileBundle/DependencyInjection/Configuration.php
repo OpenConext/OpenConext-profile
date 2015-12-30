@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -49,7 +49,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function setupLocaleConfiguration(NodeDefinition $rootNode)
+    private function setupLocaleConfiguration(ArrayNodeDefinition $rootNode)
     {
         $rootNode
             ->children()
@@ -98,7 +98,7 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupAttributeSupportConfiguration(NodeDefinition $rootNode)
+    private function setupAttributeSupportConfiguration(ArrayNodeDefinition $rootNode)
     {
         $rootNode
             ->children()
