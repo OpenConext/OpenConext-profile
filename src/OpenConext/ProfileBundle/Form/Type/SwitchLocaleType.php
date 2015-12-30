@@ -73,22 +73,6 @@ class SwitchLocaleType extends AbstractType
             ->add('changeLocale', 'submit', ['label' => 'profile.locale.choose_locale']);
     }
 
-    /**
-     * @param LocaleSet $availableLocales
-     * @return array
-     */
-    private function formatLocaleChoices(LocaleSet $availableLocales)
-    {
-        $localeChoices = [];
-
-        /** @var Locale $locale */
-        foreach ($availableLocales as $locale) {
-            $localeChoices[$locale->getLocale()] = 'profile.locale.' . $locale->getLocale();
-        }
-
-        return $localeChoices;
-    }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
@@ -105,5 +89,21 @@ class SwitchLocaleType extends AbstractType
     public function getName()
     {
         return 'profile_switch_locale';
+    }
+
+    /**
+     * @param LocaleSet $availableLocales
+     * @return array
+     */
+    private function formatLocaleChoices(LocaleSet $availableLocales)
+    {
+        $localeChoices = [];
+
+        /** @var Locale $locale */
+        foreach ($availableLocales as $locale) {
+            $localeChoices[$locale->getLocale()] = 'profile.locale.' . $locale->getLocale();
+        }
+
+        return $localeChoices;
     }
 }
