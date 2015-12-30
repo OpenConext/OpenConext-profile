@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -40,6 +41,18 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('EngineBlock EntityID should be a string')
                     ->end()
                 ->end()
+            ->end();
+
+        $this->setupLocaleConfiguration($rootNode);
+        $this->setupAttributeSupportConfiguration($rootNode);
+
+        return $treeBuilder;
+    }
+
+    private function setupLocaleConfiguration(NodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
                 ->arrayNode('locales')
                     ->info('The available application locales')
                     ->isRequired()
@@ -82,6 +95,13 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('Locale cookie key should be a string')
                     ->end()
                 ->end()
+            ->end();
+    }
+
+    private function setupAttributeSupportConfiguration(NodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
                 ->arrayNode('attribute_support')
                     ->isRequired()
                     ->children()
@@ -94,6 +114,12 @@ class Configuration implements ConfigurationInterface
                                 })
                                 ->thenInvalid('Email address to which attributes are sent should be a string')
                             ->end()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
+                                })
+                                ->thenInvalid('Email address to which attributes are sent should be valid')
+                            ->end()
                         ->end()
                         ->scalarNode('email_from')
                             ->info('mail address from which attributes are sent')
@@ -104,11 +130,15 @@ class Configuration implements ConfigurationInterface
                                 })
                                 ->thenInvalid('Email address from which attributes are sent should be a string')
                             ->end()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
+                                })
+                                ->thenInvalid('Email address from which attributes are sent should be valid')
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
             ->end();
-
-        return $treeBuilder;
     }
 }

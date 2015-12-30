@@ -12,6 +12,16 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    profile.attribute_support.email_from:
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # attribute support email from
+
+    profile.attribute_support.email_to:
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # attribute support email to
+
     profile.security.guard:
         class: OpenConext\ProfileBundle\Security\Guard
         arguments:
