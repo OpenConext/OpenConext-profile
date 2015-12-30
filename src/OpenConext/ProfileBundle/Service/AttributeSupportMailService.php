@@ -26,12 +26,12 @@ use Symfony\Component\Templating\EngineInterface;
 final class AttributeSupportMailService
 {
     /**
-     * @var string
+     * @var EmailAddress
      */
     private $mailFrom;
 
     /**
-     * @var string
+     * @var EmailAddress
      */
     private $mailTo;
 
