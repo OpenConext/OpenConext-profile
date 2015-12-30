@@ -20,7 +20,7 @@ namespace OpenConext\Profile\Tests\Value;
 
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use PHPUnit_Framework_TestCase as TestCase;
 
 class ContactPersonTest extends TestCase
@@ -65,7 +65,7 @@ class ContactPersonTest extends TestCase
     {
         $contactPerson = new ContactPerson(new ContactType(
             ContactType::TYPE_TECHNICAL),
-            new EmailAddress('invalid@email.address')
+            new ContactEmailAddress('invalid@email.address')
         );
 
         $hasEmailAddress = $contactPerson->hasEmailAddress();
@@ -92,7 +92,7 @@ class ContactPersonTest extends TestCase
      */
     public function given_email_address_can_be_retrieved()
     {
-        $givenEmailAddress = new EmailAddress('invalid@email.address');
+        $givenEmailAddress = new ContactEmailAddress('invalid@email.address');
 
         $contactPerson = new ContactPerson(new ContactType(ContactType::TYPE_TECHNICAL), $givenEmailAddress);
         $actualEmailAddress = $contactPerson->getEmailAddress();

@@ -19,10 +19,10 @@
 namespace OpenConext\Profile\Tests\Value;
 
 use OpenConext\Profile\Tests\DataProvider;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use PHPUnit_Framework_TestCase as TestCase;
 
-final class EmailAddressTest extends TestCase
+final class ContactEmailAddressTest extends TestCase
 {
     use DataProvider;
 
@@ -32,7 +32,7 @@ final class EmailAddressTest extends TestCase
      */
     public function it_accepts_emails()
     {
-        new EmailAddress('juliette.dupree+spam@that.invalid');
+        new ContactEmailAddress('juliette.dupree+spam@that.invalid');
     }
 
     /**
@@ -45,31 +45,20 @@ final class EmailAddressTest extends TestCase
      */
     public function it_doesnt_accept_non_strings_as_email($nonString)
     {
-        new EmailAddress($nonString);
+        new ContactEmailAddress($nonString);
     }
 
     /**
      * @test
      * @group Value
-     *
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      */
-    public function email_address_may_not_contain_mailto()
+    public function email_address_may_contain_mailto()
     {
         $emailAddressWithMailto = 'mailto:mail@domain.invalid';
-        new EmailAddress($emailAddressWithMailto);
-    }
 
-    /**
-     * @test
-     * @group Value
-     * @dataProvider invalidEmailAddressProvider
-     *
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     */
-    public function email_address_must_be_valid($invalidEmailAddress)
-    {
-        new EmailAddress($invalidEmailAddress);
+        $emailAddress = new ContactEmailAddress($emailAddressWithMailto);
+
+        $this->assertEquals($emailAddressWithMailto, (string) $emailAddress);
     }
 
     /**
@@ -78,8 +67,8 @@ final class EmailAddressTest extends TestCase
      */
     public function two_emails_can_equal_each_other()
     {
-        $url0 = new EmailAddress('renee.dupree@datrijmtook.invalid');
-        $url1 = new EmailAddress('renee.dupree@datrijmtook.invalid');
+        $url0 = new ContactEmailAddress('renee.dupree@datrijmtook.invalid');
+        $url1 = new ContactEmailAddress('renee.dupree@datrijmtook.invalid');
 
         $this->assertTrue($url0->equals($url1));
     }
@@ -90,19 +79,9 @@ final class EmailAddressTest extends TestCase
      */
     public function two_emails_can_differ()
     {
-        $url0 = new EmailAddress('renee.boulanger@vara.invalid');
-        $url1 = new EmailAddress('francois.boulanger@vara.invalid');
+        $url0 = new ContactEmailAddress('renee.boulanger@vara.invalid');
+        $url1 = new ContactEmailAddress('francois.boulanger@vara.invalid');
 
         $this->assertFalse($url0->equals($url1));
-    }
-
-    public function invalidEmailAddressProvider()
-    {
-        return [
-            ['empty'       => ''],
-            ['without @'   => 'no-at-mark.invalid'],
-            ['two @'       => 'two@marks@email.invalid'],
-            ['without tld' => 'invalid@email']
-        ];
     }
 }

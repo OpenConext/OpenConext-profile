@@ -31,6 +31,11 @@ i.prepended {
 }
 
 /* Components */
+.mdl-button--raised.mdl-button--colored,
+.mdl-button--raised.mdl-button--colored:hover{
+    background-color: #4db3cf;
+}
+
 .toast {
     padding: 1.5em;
     font-size: 10px;

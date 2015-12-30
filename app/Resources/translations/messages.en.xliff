@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-29T13:18:04Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2015-12-30T16:52:19Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -25,6 +25,42 @@
         <jms:reference-file line="6">Resources/views/base.html.twig</jms:reference-file>
         <source>profile.application.title</source>
         <target>SURFconext Profile</target>
+      </trans-unit>
+      <trans-unit id="ececc3f56e8ad293cd7ac9811787ef3bd0bc6041" resname="profile.attribute_support.explanation">
+        <jms:reference-file line="9">views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <source>profile.attribute_support.explanation</source>
+        <target>SURFconext support may ask you to share the abovementioned data. This information can help them to answer your support question.</target>
+      </trans-unit>
+      <trans-unit id="0c6975044e5b9e02815772e60105ae78a4743c22" resname="profile.attribute_support.long_title">
+        <jms:reference-file line="8">views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <source>profile.attribute_support.long_title</source>
+        <target>Send data to SURFconext support</target>
+      </trans-unit>
+      <trans-unit id="357ac936f886f677a14e8401fb48af23827d513d" resname="profile.attribute_support.send_mail">
+        <jms:reference-file line="45">Form/Type/AttributeSupportMailType.php</jms:reference-file>
+        <source>profile.attribute_support.send_mail</source>
+        <target>Send data</target>
+      </trans-unit>
+      <trans-unit id="a12580758185add38d70d00e359e0d4cb2463a0d" resname="profile.attribute_support.short_title">
+        <jms:reference-file line="4">views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <source>profile.attribute_support.short_title</source>
+        <target>Send data</target>
+      </trans-unit>
+      <trans-unit id="7155ef337fbeb3cf5d5066d4d35fc435a1f73394" resname="profile.attribute_support_confirmation.explanation">
+        <jms:reference-file line="9">views/AttributeSupport/confirmation.html.twig</jms:reference-file>
+        <source>profile.attribute_support_confirmation.explanation</source>
+        <target>The mail with your information has been successfully sent.
+</target>
+      </trans-unit>
+      <trans-unit id="73c60b3f75233586e48a1c7de310940633a523e0" resname="profile.attribute_support_confirmation.long_title">
+        <jms:reference-file line="8">views/AttributeSupport/confirmation.html.twig</jms:reference-file>
+        <source>profile.attribute_support_confirmation.long_title</source>
+        <target>Attribute data has been mailed</target>
+      </trans-unit>
+      <trans-unit id="53d04262f1ab47280551fae7076d7793629fa379" resname="profile.attribute_support_confirmation.short_title">
+        <jms:reference-file line="4">views/AttributeSupport/confirmation.html.twig</jms:reference-file>
+        <source>profile.attribute_support_confirmation.short_title</source>
+        <target>Attribute data mailed</target>
       </trans-unit>
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
         <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
@@ -63,7 +99,7 @@
         <target>Introduction</target>
       </trans-unit>
       <trans-unit id="f554f3775d3630e1d20047b07d2b2e7735f58970" resname="profile.locale.choose_locale">
-        <jms:reference-file line="69">Form/Type/SwitchLocaleType.php</jms:reference-file>
+        <jms:reference-file line="73">Form/Type/SwitchLocaleType.php</jms:reference-file>
         <source>profile.locale.choose_locale</source>
         <target>Choose language</target>
       </trans-unit>
@@ -88,56 +124,56 @@
         <target>NL</target>
       </trans-unit>
       <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_profile.account_data">
-        <jms:reference-file line="14">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="19">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data</source>
         <target>Account Data</target>
       </trans-unit>
       <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_profile.account_data_explanation">
-        <jms:reference-file line="15">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="20">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_explanation</source>
         <target>We received the following information from your institution:</target>
       </trans-unit>
       <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
-        <jms:reference-file line="21">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="26">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_origin</source>
         <target>Data from your institution. Identifier + numbers generated by SURFconext</target>
       </trans-unit>
       <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
-        <jms:reference-file line="25">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="30">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_retention_period</source>
         <target>Until 3 years after first login.</target>
       </trans-unit>
       <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_profile.consent_data">
-        <jms:reference-file line="74">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="84">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data</source>
         <target>Consent Data</target>
       </trans-unit>
       <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
-        <jms:reference-file line="75">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_explanation</source>
         <target>Most services require you, prior to the first login, to explicitly give consent to your institution to share your personal data with the service you are logging in to. SURFconext stores at which moment and for which service you have given consent. To see which personal data is being shared with which service, please go to</target>
       </trans-unit>
       <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
-        <jms:reference-file line="81">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="91">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_origin</source>
         <target>Generated by SURFconext</target>
       </trans-unit>
       <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
-        <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="95">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_retention_period</source>
         <target>Until 3 years after last login.</target>
       </trans-unit>
       <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
-        <jms:reference-file line="20">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="63">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="80">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="25">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="73">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="90">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.data_origin</source>
         <target>Origin</target>
       </trans-unit>
       <trans-unit id="4a5e93354a2914345d2944111430814f569181d8" resname="profile.my_profile.data_retention_period">
-        <jms:reference-file line="24">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="84">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="29">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="77">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="94">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.data_retention_period</source>
         <target>Retention Period</target>
       </trans-unit>
@@ -152,22 +188,22 @@
         <target>Here you can find what personal information about you is stored by SURFconext.</target>
       </trans-unit>
       <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
-        <jms:reference-file line="57">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data</source>
         <target>Logging Data</target>
       </trans-unit>
       <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_profile.logging_data_explanation">
-        <jms:reference-file line="58">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="68">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_explanation</source>
         <target>SURFconext logs when you use SURFconext, which service you are logging in to and from which IP address. This is necessary for administration and security purposes.</target>
       </trans-unit>
       <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_profile.logging_data_origin">
-        <jms:reference-file line="64">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="74">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_origin</source>
         <target>Generated by SURFconext</target>
       </trans-unit>
       <trans-unit id="022985074778367fd79099181eb0736479d72bc3" resname="profile.my_profile.logging_data_retention_period">
-        <jms:reference-file line="68">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="78">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_retention_period</source>
         <target>6 months. After 6 months the log files are anonymized.</target>
       </trans-unit>
@@ -182,7 +218,7 @@
         <target>Your institution uses SURFconext and remains responsible for your personal data and that they are dealt with in a careful way.</target>
       </trans-unit>
       <trans-unit id="cc93ed7bab761ec4c240fa28983bc1f069328991" resname="profile.my_profile.questions">
-        <jms:reference-file line="12">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="16">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.questions</source>
         <target>If you have any questions about your personal data, please contact your institution through:</target>
       </trans-unit>
@@ -282,13 +318,15 @@
         <target>Remove my Profile</target>
       </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
-        <jms:reference-file line="34">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="14">views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="39">views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="66">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.table.attribute_name</source>
         <target>Attribute</target>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
-        <jms:reference-file line="35">views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="15">views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="40">views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="67">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.table.attribute_value</source>
         <target>Value</target>

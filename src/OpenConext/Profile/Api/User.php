@@ -18,7 +18,7 @@
 
 namespace OpenConext\Profile\Api;
 
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Locale;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
@@ -36,7 +36,7 @@ interface User
     public function hasSupportContactEmail();
 
     /**
-     * @return null|EmailAddress
+     * @return null|ContactEmailAddress
      */
     public function getSupportContactEmail();
 

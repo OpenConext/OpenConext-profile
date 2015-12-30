@@ -20,7 +20,7 @@ namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
 
-final class EmailAddress
+final class ContactEmailAddress
 {
     /**
      * @var string
@@ -33,26 +33,17 @@ final class EmailAddress
     public function __construct($emailAddress)
     {
         Assert::string($emailAddress, 'E-mail address "%s" must be a string');
-        Assert::email($emailAddress);
 
         $this->emailAddress = $emailAddress;
     }
 
     /**
-     * @param EmailAddress $other
+     * @param ContactEmailAddress $other
      * @return bool
      */
-    public function equals(EmailAddress $other)
+    public function equals(ContactEmailAddress $other)
     {
         return $this->emailAddress === $other->emailAddress;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmailAddress()
-    {
-        return $this->emailAddress;
     }
 
     public function __toString()

@@ -19,7 +19,6 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Security\Guard;
-use OpenConext\ProfileBundle\Service\SupportContactInformationService;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;

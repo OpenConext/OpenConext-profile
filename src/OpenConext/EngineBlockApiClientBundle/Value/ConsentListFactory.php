@@ -26,7 +26,7 @@ use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\ConsentType;
 use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
@@ -130,7 +130,7 @@ final class ConsentListFactory
         }
 
         if ($data['support_email'] !== null) {
-            $supportEmail = new EmailAddress($data['support_email']);
+            $supportEmail = new ContactEmailAddress($data['support_email']);
         }
 
         return new ServiceProvider($entity, $displayName, $eulaUrl, $supportEmail);

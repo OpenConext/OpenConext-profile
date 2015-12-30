@@ -25,7 +25,7 @@ use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\ConsentType;
 use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
@@ -92,7 +92,7 @@ final class ConsentListFactoryTest extends TestCase
                     new Entity(new EntityId($secondEntityId), EntityType::SP()),
                     new DisplayName(['nl' => 'OpenConext ServiceRegistry', 'en' => 'OpenConext ServiceRegistry']),
                     null,
-                    new EmailAddress($secondSupportEmail)
+                    new ContactEmailAddress($secondSupportEmail)
                 ),
                 new DateTimeImmutable('2015-11-05T08:17:04+01:00'),
                 new DateTimeImmutable('2015-11-05T08:17:04+01:00'),

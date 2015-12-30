@@ -23,7 +23,7 @@ use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use PHPUnit_Framework_TestCase as TestCase;
 
 final class ContactPersonListFactoryTest extends TestCase
@@ -62,23 +62,23 @@ final class ContactPersonListFactoryTest extends TestCase
         $expectedContactPersonList = new ContactPersonList([
             new ContactPerson(
                 new ContactType(ContactType::TYPE_TECHNICAL),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
             new ContactPerson(
                 new ContactType(ContactType::TYPE_SUPPORT),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
             new ContactPerson(
                 new ContactType(ContactType::TYPE_ADMINISTRATIVE),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
             new ContactPerson(
                 new ContactType(ContactType::TYPE_BILLING),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
             new ContactPerson(
                 new ContactType(ContactType::TYPE_OTHER),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
         ]);
 
@@ -106,11 +106,11 @@ final class ContactPersonListFactoryTest extends TestCase
         $expectedContactPersonList = new ContactPersonList([
             new ContactPerson(
                 new ContactType(ContactType::TYPE_SUPPORT),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
             new ContactPerson(
                 new ContactType(ContactType::TYPE_SUPPORT),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
         ]);
 
@@ -137,7 +137,7 @@ final class ContactPersonListFactoryTest extends TestCase
         $expectedContactPersonList = new ContactPersonList([
             new ContactPerson(
                 new ContactType(ContactType::TYPE_TECHNICAL),
-                new EmailAddress('invalid@email.address')
+                new ContactEmailAddress('invalid@email.address')
             ),
             new ContactPerson(
                 new ContactType(ContactType::TYPE_SUPPORT),

@@ -18,22 +18,24 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
+use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\ContactType;
 use PHPUnit_Framework_TestCase as TestCase;
-use stdClass;
 
 class ContactTypeTest extends TestCase
 {
+    use DataProvider;
+
     /**
      * @test
      * @group ContactPerson
      *
-     * @dataProvider invalidContactTypeProvider
+     * @dataProvider nonStringProvider
      * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      */
     public function contact_type_can_be_invalid($contactTypeValue)
     {
-        $invalidContentType = new ContactType($contactTypeValue);
+        new ContactType($contactTypeValue);
     }
 
     /**
@@ -62,17 +64,5 @@ class ContactTypeTest extends TestCase
         $contactTypesAreEqual = $contactType->equals($differentContactType);
 
         $this->assertFalse($contactTypesAreEqual);
-    }
-
-    public function invalidContactTypeProvider()
-    {
-        return [
-            ['unknown contact type' => 'invalid-string'],
-            ['null' => null],
-            ['integer' => 1],
-            ['float' => 1.5],
-            ['array' => []],
-            ['class' => new stdClass()]
-        ];
     }
 }

@@ -22,7 +22,7 @@ use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 
 final class ContactPersonListFactory
 {
@@ -60,6 +60,9 @@ final class ContactPersonListFactory
             return new ContactPerson(new ContactType($data['contact_type']));
         }
 
-        return new ContactPerson(new ContactType($data['contact_type']), new EmailAddress($data['email_address']));
+        return new ContactPerson(
+            new ContactType($data['contact_type']),
+            new ContactEmailAddress($data['email_address'])
+        );
     }
 }

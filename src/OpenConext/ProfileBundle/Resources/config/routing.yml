@@ -40,6 +40,27 @@ profile.saml_metadata:
     defaults:
         _controller: profile.controller.saml:metadataAction
 
+profile.attribute_support_overview:
+    path:       /attribute-support
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.attribute_support:overviewAction
+
+profile.attribute_support_confirm_mail_sent:
+    path:       /attribute-support/confirmation
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.attribute_support:confirmMailSentAction
+
+profile.attribute_support_send_mail:
+    path:       /attribute-support/send-mail
+    methods:    [POST]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.attribute_support:sendMailAction
+
 profile.locale_switch_locale:
     path:       /switch-locale
     methods:    [POST]

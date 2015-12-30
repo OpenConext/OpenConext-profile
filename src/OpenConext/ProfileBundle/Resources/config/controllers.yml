@@ -32,6 +32,16 @@ services:
             - @profile.security.guard
             - @logger
 
+    profile.controller.attribute_support:
+        class: OpenConext\ProfileBundle\Controller\AttributeSupportController
+        arguments:
+            - @profile.security.guard
+            - @templating
+            - @form.factory
+            - @router
+            - @profile.service.user
+            - @profile.service.attribute_support_mail
+
     profile.controller.removal:
         class: OpenConext\ProfileBundle\Controller\RemovalController
         arguments:

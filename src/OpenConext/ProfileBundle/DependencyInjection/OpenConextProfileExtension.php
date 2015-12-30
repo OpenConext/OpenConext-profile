@@ -37,6 +37,8 @@ class OpenConextProfileExtension extends Extension
 
         $this->parseEngineBlockEntityIdConfiguration($config['engine_block_entity_id'], $container);
 
+        $this->parseAttributeSupportMailConfiguration($config['attribute_support'], $container);
+
         $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
         $this->parseAvailableLocaleConfiguration($config['locales'], $container);
         $this->parseCookieStorageConfiguration(
@@ -51,6 +53,16 @@ class OpenConextProfileExtension extends Extension
         $container
             ->getDefinition('profile.engine_block_entity_id')
             ->replaceArgument(0, $engineBlockEntityId);
+    }
+
+    private function parseAttributeSupportMailConfiguration(array $attributeSupportConfig, ContainerBuilder $container)
+    {
+        $container
+            ->getDefinition('profile.attribute_support.email_from')
+            ->replaceArgument(0, $attributeSupportConfig['email_from']);
+        $container
+            ->getDefinition('profile.attribute_support.email_to')
+            ->replaceArgument(0, $attributeSupportConfig['email_to']);
     }
 
     private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container)

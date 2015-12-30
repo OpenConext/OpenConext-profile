@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Tests\Value;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use PHPUnit_Framework_TestCase as TestCase;
 
 class ContactPersonListTest extends TestCase
@@ -35,9 +35,9 @@ class ContactPersonListTest extends TestCase
         $filterCriterium = new ContactType(ContactType::TYPE_SUPPORT);
 
         $contactPersonList = new ContactPersonList([
-            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new EmailAddress('first@invalid.email')),
+            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),
             new ContactPerson(new ContactType(ContactType::TYPE_ADMINISTRATIVE)),
-            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new EmailAddress('second@invalid.email')),
+            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('second@invalid.email')),
         ]);
 
         $filterPredicate = function (ContactPerson $contactPerson) use ($filterCriterium) {
@@ -45,8 +45,8 @@ class ContactPersonListTest extends TestCase
         };
 
         $expectedFilteredList = new ContactPersonList([
-            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new EmailAddress('first@invalid.email')),
-            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new EmailAddress('second@invalid.email'))
+            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),
+            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('second@invalid.email'))
         ]);
 
         $actualFilteredList = $contactPersonList->filter($filterPredicate);
@@ -73,13 +73,13 @@ class ContactPersonListTest extends TestCase
     public function first_contact_person_can_be_retrieved_from_list()
     {
         $contactPersonList = new ContactPersonList([
-            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new EmailAddress('first@invalid.email')),
-            new ContactPerson(new ContactType(ContactType::TYPE_OTHER), new EmailAddress('second@invalid.email')),
+            new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),
+            new ContactPerson(new ContactType(ContactType::TYPE_OTHER), new ContactEmailAddress('second@invalid.email')),
         ]);
 
         $expectedFirstContactPerson = new ContactPerson(
             new ContactType(ContactType::TYPE_SUPPORT),
-            new EmailAddress('first@invalid.email')
+            new ContactEmailAddress('first@invalid.email')
         );
 
         $actualFirstContactPerson = $contactPersonList->first();

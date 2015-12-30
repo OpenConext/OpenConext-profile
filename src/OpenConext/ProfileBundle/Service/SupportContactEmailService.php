@@ -21,7 +21,7 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Repository\ContactPersonRepository;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\EntityId;
 
 final class SupportContactEmailService
@@ -38,7 +38,7 @@ final class SupportContactEmailService
 
     /**
      * @param string EntityId $entityId
-     * @return null|EmailAddress
+     * @return null|ContactEmailAddress
      */
     public function findSupportContactEmailForIdp(EntityId $entityId)
     {
