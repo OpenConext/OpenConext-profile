@@ -98,6 +98,8 @@ class AttributeSupportController
 
     public function sendMailAction()
     {
+        $this->guard->userIsLoggedIn();
+
         $this->attributeSupportMailService->sendAttributeSupportMail();
 
         return new RedirectResponse($this->urlGenerator->generate('profile.attribute_support_confirm_mail_sent'));
@@ -105,6 +107,8 @@ class AttributeSupportController
 
     public function confirmMailSentAction()
     {
+        $this->guard->userIsLoggedIn();
+
         return new Response(
             $this->templateEngine->render('OpenConextProfileBundle:AttributeSupport:confirmation.html.twig')
         );
