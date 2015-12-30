@@ -123,6 +123,15 @@ services:
         calls:
             - [setName, ['profile']]
 
+    profile.service.attribute_support_mail:
+        class: OpenConext\ProfileBundle\Service\AttributeSupportMailService
+        arguments:
+            - @profile.attribute_support.email_from
+            - @profile.attribute_support.email_to
+            - @mailer
+            - @templating
+            - @profile.service.user
+
     profile.service.locale:
         class: OpenConext\ProfileBundle\Service\LocaleService
         arguments:
