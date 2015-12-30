@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Value\Consent;
 use OpenConext\EngineBlockApiClientBundle\Exception\LogicException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\Url;
 
@@ -43,7 +43,7 @@ final class ServiceProvider
     private $eulaUrl;
 
     /**
-     * @var EmailAddress|null
+     * @var ContactEmailAddress|null
      */
     private $supportEmail;
 
@@ -51,7 +51,7 @@ final class ServiceProvider
         Entity $entity,
         DisplayName $displayName,
         Url $eulaUrl = null,
-        EmailAddress $supportEmail = null
+        ContactEmailAddress $supportEmail = null
     ) {
         $this->entity       = $entity;
         $this->displayName  = $displayName;
@@ -119,7 +119,7 @@ final class ServiceProvider
     }
 
     /**
-     * @return EmailAddress
+     * @return ContactEmailAddress
      */
     public function getSupportEmail()
     {

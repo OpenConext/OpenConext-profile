@@ -16,42 +16,38 @@
  * limitations under the License.
  */
 
-namespace OpenConext\Profile\Api;
+namespace OpenConext\Profile\Value;
 
-use OpenConext\Profile\Value\ContactEmailAddress;
-use OpenConext\Profile\Value\Locale;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use OpenConext\Profile\Assert;
 
-interface User
+final class ContactEmailAddress
 {
     /**
-     * @param Locale $locale
-     * @return void
+     * @var string
      */
-    public function switchLocaleTo(Locale $locale);
+    private $emailAddress;
 
     /**
+     * @param string $emailAddress
+     */
+    public function __construct($emailAddress)
+    {
+        Assert::string($emailAddress, 'E-mail address "%s" must be a string');
+
+        $this->emailAddress = $emailAddress;
+    }
+
+    /**
+     * @param ContactEmailAddress $other
      * @return bool
      */
-    public function hasSupportContactEmail();
+    public function equals(ContactEmailAddress $other)
+    {
+        return $this->emailAddress === $other->emailAddress;
+    }
 
-    /**
-     * @return null|ContactEmailAddress
-     */
-    public function getSupportContactEmail();
-
-    /**
-     * @return Locale
-     */
-    public function getLocale();
-
-    /**
-     * @return AttributeSet
-     */
-    public function getAttributes();
-
-    /**
-     * @return string
-     */
-    public function getId();
+    public function __toString()
+    {
+        return $this->emailAddress;
+    }
 }

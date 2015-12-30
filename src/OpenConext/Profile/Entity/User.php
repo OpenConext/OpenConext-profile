@@ -19,9 +19,8 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Api\User as UserInterface;
-use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Locale;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 final class User implements UserInterface
 {
@@ -36,7 +35,7 @@ final class User implements UserInterface
     private $locale;
 
     /**
-     * @var EmailAddress|null
+     * @var ContactEmailAddress|null
      */
     private $supportContactEmail;
 
@@ -51,10 +50,10 @@ final class User implements UserInterface
     }
 
     /**
-     * @param EmailAddress $supportContactEmail
+     * @param ContactEmailAddress $supportContactEmail
      * @return User
      */
-    public function withSupportContactEmail(EmailAddress $supportContactEmail)
+    public function withSupportContactEmail(ContactEmailAddress $supportContactEmail)
     {
         $newUser = clone $this;
         $newUser->supportContactEmail = $supportContactEmail;

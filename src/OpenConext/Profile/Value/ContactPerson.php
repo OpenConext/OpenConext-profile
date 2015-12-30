@@ -26,11 +26,11 @@ final class ContactPerson
     private $contactType;
 
     /**
-     * @var EmailAddress|null
+     * @var ContactEmailAddress|null
      */
     private $emailAddress;
 
-    public function __construct(ContactType $contactType, EmailAddress $emailAddress = null)
+    public function __construct(ContactType $contactType, ContactEmailAddress $emailAddress = null)
     {
         $this->contactType  = $contactType;
         $this->emailAddress = $emailAddress;
@@ -54,7 +54,7 @@ final class ContactPerson
     }
 
     /**
-     * @return null|EmailAddress
+     * @return null|ContactEmailAddress
      */
     public function getEmailAddress()
     {
