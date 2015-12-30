@@ -60,6 +60,9 @@ final class ContactPersonListFactory
             return new ContactPerson(new ContactType($data['contact_type']));
         }
 
-        return new ContactPerson(new ContactType($data['contact_type']), new ContactEmailAddress($data['email_address']));
+        return new ContactPerson(
+            new ContactType($data['contact_type']),
+            new ContactEmailAddress($data['email_address'])
+        );
     }
 }
