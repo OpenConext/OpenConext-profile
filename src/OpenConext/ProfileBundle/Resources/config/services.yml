@@ -42,6 +42,13 @@ services:
         tags:
             - { name: form.type, alias: profile_switch_locale }
 
+    profile.form.attribute_support_mail:
+        class: OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_attribute_support_mail }
+
     profile.twig.locale_extension:
         class: OpenConext\ProfileBundle\Twig\LocaleExtension
         arguments: [ @form.factory ]
