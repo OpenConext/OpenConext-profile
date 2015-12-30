@@ -1,5 +1,6 @@
 services:
     profile.engine_block_entity_id:
+        public: false
         class: OpenConext\Profile\Value\EntityId
         arguments:
             - ~ # engine block entity id
@@ -13,16 +14,19 @@ services:
             - { name: kernel.event_subscriber }
 
     profile.attribute_support.email_from:
+        public: false
         class: OpenConext\Profile\Value\EmailAddress
         arguments:
             - ~ # attribute support email from
 
     profile.attribute_support.email_to:
+        public: false
         class: OpenConext\Profile\Value\EmailAddress
         arguments:
             - ~ # attribute support email to
 
     profile.security.guard:
+        public: false
         class: OpenConext\ProfileBundle\Security\Guard
         arguments:
             - @security.authorization_checker
@@ -50,12 +54,14 @@ services:
             - { name: form.type, alias: profile_attribute_support_mail }
 
     profile.twig.locale_extension:
+        public: false
         class: OpenConext\ProfileBundle\Twig\LocaleExtension
         arguments: [ @form.factory ]
         tags:
             - { name: twig.extension }
 
     profile.global_view_parameters:
+        public: false
         class: OpenConext\ProfileBundle\Service\GlobalViewParameters
         arguments:
             - @translator
@@ -66,11 +72,13 @@ services:
             - %profile_explanation_image_path%
 
     profile.security.authentication.provider:
+        public: false
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
         arguments:
             - @surfnet_saml.saml.attribute_dictionary
 
     profile.security.authentication.listener:
+        public: false
         class: OpenConext\ProfileBundle\Security\Firewall\SamlListener
         arguments:
             - @session
@@ -98,6 +106,7 @@ services:
             - @profile.session
 
     profile.saml_session:
+        public: false
         class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
         factory: ['@session', 'getBag']
         arguments: ['profile_saml']
@@ -111,6 +120,7 @@ services:
             - [setName, ['profile_saml']]
 
     profile.session:
+        public: false
         class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
         factory: ['@session', 'getBag']
         arguments: ['profile']
@@ -124,6 +134,7 @@ services:
             - [setName, ['profile']]
 
     profile.service.attribute_support_mail:
+        public: false
         class: OpenConext\ProfileBundle\Service\AttributeSupportMailService
         arguments:
             - @profile.attribute_support.email_from
@@ -133,6 +144,7 @@ services:
             - @profile.service.user
 
     profile.service.locale:
+        public: false
         class: OpenConext\ProfileBundle\Service\LocaleService
         arguments:
             - @profile.repository.locale
@@ -140,37 +152,44 @@ services:
             - @profile.default_locale
 
     profile.available_locales:
+        public: false
         class: OpenConext\Profile\Value\LocaleSet
         factory: [OpenConext\Profile\Value\LocaleSet, create]
         arguments:
             - [] # available locales
 
     profile.default_locale:
+        public: false
         class: OpenConext\Profile\Value\Locale
         arguments:
             - ~ # default locale
 
     profile.locale_storage_driver:
+        public: false
         class: OpenConext\ProfileBundle\Service\LocaleStorageDriver
         arguments:
             - @profile.storage.locale_cookie
 
     profile.repository.locale:
+        public: false
         class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
         arguments:
             - @profile.locale_storage_driver
 
     profile.repository.user:
+        public: false
         class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
         arguments:
             - @profile.session.namespaced_attribute_bag
 
     profile.provider.authenticated_user:
+        public: false
         class: OpenConext\ProfileBundle\Service\AuthenticatedUserProvider
         arguments:
             - @security.token_storage
 
     profile.service.user:
+        public: false
         class: OpenConext\ProfileBundle\Service\UserService
         arguments:
             - @profile.service.support_contact_email
@@ -180,6 +199,7 @@ services:
             - @profile.engine_block_entity_id
 
     profile.service.consent:
+        public: false
         class: OpenConext\ProfileBundle\Service\ConsentService
         arguments:
             - @logger
@@ -187,15 +207,18 @@ services:
             - @saml.attribute.surfconext.id
 
     profile.service.consent_listing:
+        public: false
         class: OpenConext\ProfileBundle\Service\SpecifiedConsentListService
         arguments:
             - @profile.service.consent
             - @profile.consent.blacklist_filter
 
     profile.service.support_contact_email:
+        public: false
         class: OpenConext\ProfileBundle\Service\SupportContactEmailService
         arguments:
             - @openconext_eb_api.repository.support_contact_information
 
     profile.consent.blacklist_filter:
+        public: false
         class: OpenConext\ProfileBundle\Consent\BlacklistFilter
