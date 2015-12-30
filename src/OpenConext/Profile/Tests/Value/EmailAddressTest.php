@@ -63,6 +63,18 @@ final class EmailAddressTest extends TestCase
     /**
      * @test
      * @group Value
+     * @dataProvider invalidEmailAddressProvider
+     *
+     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
+     */
+    public function email_address_must_be_valid($invalidEmailAddress)
+    {
+        new EmailAddress($invalidEmailAddress);
+    }
+
+    /**
+     * @test
+     * @group Value
      */
     public function two_emails_can_equal_each_other()
     {
@@ -82,5 +94,15 @@ final class EmailAddressTest extends TestCase
         $url1 = new EmailAddress('francois.boulanger@vara.invalid');
 
         $this->assertFalse($url0->equals($url1));
+    }
+
+    public function invalidEmailAddressProvider()
+    {
+        return [
+            ['empty'       => ''],
+            ['without @'   => 'no-at-mark.invalid'],
+            ['two @'       => 'two@marks@email.invalid'],
+            ['without tld' => 'invalid@email']
+        ];
     }
 }
