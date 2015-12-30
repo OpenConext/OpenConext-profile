@@ -79,14 +79,18 @@ class AttributeSupportController
     {
         $this->guard->userIsLoggedIn();
 
-        $attributeSupportMailFormView = $this->formFactory->create('profile_attribute_support_mail')->createView();
+        $attributeSupportMailForm = $this->formFactory->create(
+            'profile_attribute_support_mail',
+            null,
+            ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')]
+        );
 
         return new Response(
             $this->templateEngine->render(
                 'OpenConextProfileBundle:AttributeSupport:overview.html.twig',
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
-                    'attributeSupportMailForm' => $attributeSupportMailFormView
+                    'attributeSupportMailForm' => $attributeSupportMailForm->createView()
                 ]
             )
         );

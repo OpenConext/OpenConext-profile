@@ -24,30 +24,18 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AttributeSupportMailType extends AbstractType
 {
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator)
-    {
-        $this->urlGenerator = $urlGenerator;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->setAction($this->urlGenerator->generate('profile.attribute_support_send_mail'))
             ->add(
                 'sendMail',
                 'submit',
                 [
                     'label' => 'profile.attribute_support.send_mail',
-                    'attr'  =>
-                        [
-                            'class' =>
-                                'mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect'
-                        ]
+                    'attr'  => [
+                        'class' =>
+                            'mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect'
+                    ]
                 ]
             );
     }
