@@ -33,6 +33,7 @@ final class EmailAddress
     public function __construct($emailAddress)
     {
         Assert::string($emailAddress, 'E-mail address "%s" must be a string');
+        Assert::email($emailAddress);
 
         $this->emailAddress = $emailAddress;
     }
@@ -44,6 +45,14 @@ final class EmailAddress
     public function equals(EmailAddress $other)
     {
         return $this->emailAddress === $other->emailAddress;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailAddress()
+    {
+        return $this->emailAddress;
     }
 
     public function __toString()
