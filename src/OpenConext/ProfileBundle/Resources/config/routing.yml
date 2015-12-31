@@ -19,13 +19,6 @@ profile.my_services_overview:
     defaults:
         _controller: profile.controller.my_services:overviewAction
 
-profile.removal_overview:
-    path:       /removal
-    methods:    [GET]
-    schemes:    https
-    defaults:
-        _controller: profile.controller.removal:overviewAction
-
 profile.saml_consume_assertion:
     path:       /authentication/consume-assertion
     methods:    [POST]
