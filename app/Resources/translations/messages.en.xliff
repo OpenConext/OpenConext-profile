@@ -82,11 +82,6 @@
         <source>profile.introduction.purpose.profile_storage</source>
         <target>On behalf of your institution, SURFconext passes through a limited amount of personal data to the service you are logging in to. Sometimes this will be entirely automatic but usually you are required to give explicit consent for this information transfer. This profile page provides insight in how your personal data that your institution provided via SURFconext is being used. You can see here which personal data is being stored by SURFconext and which data has been passed on to services you have logged in to.</target>
       </trans-unit>
-      <trans-unit id="3b99c9d8e9e83236d4bbff4d3273ede3622649f3" resname="profile.introduction.purpose.removal">
-        <jms:reference-file line="17">views/Introduction/overview.html.twig</jms:reference-file>
-        <source>profile.introduction.purpose.removal</source>
-        <target>You can also remove your SURFconext profile on this page. By doing so, SURFconext will remove all personal data that it has stored about you. Please note that this has no effect on the personal data your institution and the services you have previously logged in to have stored about you.</target>
-      </trans-unit>
       <trans-unit id="2cd8741e2e784f6e2df5165585c332d6be98812c" resname="profile.introduction.purpose.title">
         <jms:reference-file line="15">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.title</source>
@@ -305,17 +300,6 @@
         <jms:reference-file line="82">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.navigation.terms_of_service</source>
         <target>Terms of Service</target>
-      </trans-unit>
-      <trans-unit id="f0d2e2921f8994e3a9b289e1e60567616a52ab98" resname="profile.removal.long_title">
-        <jms:reference-file line="8">views/Removal/overview.html.twig</jms:reference-file>
-        <source>profile.removal.long_title</source>
-        <target>Remove my SURFconext Profile</target>
-      </trans-unit>
-      <trans-unit id="60342740879fe51c8804dbbdcc6c4724e91e8441" resname="profile.removal.short_title">
-        <jms:reference-file line="20">Resources/views/navigation-tabs.html.twig</jms:reference-file>
-        <jms:reference-file line="4">views/Removal/overview.html.twig</jms:reference-file>
-        <source>profile.removal.short_title</source>
-        <target>Remove my Profile</target>
       </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
         <jms:reference-file line="14">views/AttributeSupport/overview.html.twig</jms:reference-file>

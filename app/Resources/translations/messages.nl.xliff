@@ -81,12 +81,6 @@
         <source>profile.introduction.purpose.profile_storage</source>
         <target>SURFconext geeft bij het inloggen, namens jouw instelling, een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen kun jij vooraf expliciet toestemming geven. Deze profielpagina geeft inzicht in hoe er wordt omgegaan met de persoonsgegevens die jouw instelling via SURFconext doorgeeft. Je kan zien welke gegevens bij SURFconext worden opgeslagen en welke gegevens worden doorgegeven aan de diensten waar je bent ingelogd.</target>
       </trans-unit>
-      <trans-unit id="3b99c9d8e9e83236d4bbff4d3273ede3622649f3" resname="profile.introduction.purpose.removal">
-        <jms:reference-file line="17">views/Introduction/overview.html.twig</jms:reference-file>
-        <source>profile.introduction.purpose.removal</source>
-        <target>Ook is het mogelijk om je account bij SURFconext te wissen. Daarmee wist SURFconext de gegevens die SURFconext van jou heeft opgeslagen. Dit heeft geen effect op de gegevens die de instelling van jou heeft opgeslagen of op de gegevens die de (cloud)dienst heeft opgeslagen.
-</target>
-      </trans-unit>
       <trans-unit id="2cd8741e2e784f6e2df5165585c332d6be98812c" resname="profile.introduction.purpose.title">
         <jms:reference-file line="15">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.title</source>
@@ -306,17 +300,6 @@
         <jms:reference-file line="82">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.navigation.terms_of_service</source>
         <target>Gebruiksvoorwaarden</target>
-      </trans-unit>
-      <trans-unit id="f0d2e2921f8994e3a9b289e1e60567616a52ab98" resname="profile.removal.long_title">
-        <jms:reference-file line="8">views/Removal/overview.html.twig</jms:reference-file>
-        <source>profile.removal.long_title</source>
-        <target>Wis mijn SURFconext profiel</target>
-      </trans-unit>
-      <trans-unit id="60342740879fe51c8804dbbdcc6c4724e91e8441" resname="profile.removal.short_title">
-        <jms:reference-file line="20">Resources/views/navigation-tabs.html.twig</jms:reference-file>
-        <jms:reference-file line="4">views/Removal/overview.html.twig</jms:reference-file>
-        <source>profile.removal.short_title</source>
-        <target>Wis mijn profiel</target>
       </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
         <jms:reference-file line="14">views/AttributeSupport/overview.html.twig</jms:reference-file>
