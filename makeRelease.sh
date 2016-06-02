@@ -54,13 +54,9 @@ echo "Commit: ${COMMITHASH}" >> ${PROJECT_DIR}/RELEASE &&
 echo "Cleaning build of dev files" &&
 rm -rf ${PROJECT_DIR}/ansible &&
 rm -rf ${PROJECT_DIR}/Vagrantfile &&
-rm -rf ${PROJECT_DIR}/.idea &&
 rm -rf ${PROJECT_DIR}/.git &&
 rm -f ${PROJECT_DIR}/.gitignore &&
 rm -f ${PROJECT_DIR}/makeRelease.sh &&
-rm -f ${PROJECT_DIR}/bin/composer.phar &&
-rm -rf ${PROJECT_DIR}/features &&
-rm -rf ${PROJECT_DIR}/behat.yml &&
 rm -rf ${PROJECT_DIR}/.rmt.yml &&
 rm -rf ${PROJECT_DIR}/RMT &&
 rm -rf ${PROJECT_DIR}/.scrutinizer.yml &&
@@ -80,8 +76,6 @@ echo "Removing application cache, logs, bootstrap and parameters" &&
 rm -f ${PROJECT_DIR}/app/bootstrap.php.cache &&
 rm -rf ${PROJECT_DIR}/app/cache/* &&
 rm -rf ${PROJECT_DIR}/app/logs/* &&
-rm -f ${PROJECT_DIR}/app/config/global_view_parameters.yml &&
-rm -f ${PROJECT_DIR}/app/config/parameters.yml &&
 
 echo "Create tarball" &&
 cd ${RELEASE_DIR} &&
