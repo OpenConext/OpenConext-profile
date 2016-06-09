@@ -19,5 +19,5 @@ php:
 ssl_cert_path: /etc/nginx/conf.d/ssl/star.vm.openconext.org.pem
 ssl_key_path: /etc/nginx/conf.d/ssl/star.vm.openconext.org.key
 engine_api:
-    address: 192.168.66.78
+    address: 192.168.66.98
     host: engine-api.vm.openconext.org
