@@ -20,6 +20,8 @@ namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\EntityId;
+use RuntimeException;
+use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
@@ -43,13 +45,47 @@ final class AuthenticatedUser
     /**
      * @param AssertionAdapter $assertionAdapter
      * @param EntityId[] $authenticatingAuthorities
+     *
      * @return AuthenticatedUser
+     * @throws RuntimeException
      */
     public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
     {
+        $attributes = [];
+
+        /** @var Attribute $attribute */
+        foreach ($assertionAdapter->getAttributeSet() as $attribute) {
+            $definition = $attribute->getAttributeDefinition();
+
+            // We need to replace the eduPersonTargetedID attribute value as that is a nested NameID attribute.
+            if ($definition->getName() === 'eduPersonTargetedID') {
+
+                /** @var \DOMNodeList[] $eptiValues */
+                $eptiValues = $attribute->getValue();
+                $eptiDomNodeList = $eptiValues[0];
+
+                if (!$eptiDomNodeList instanceof \DOMNodeList || $eptiDomNodeList->length !== 1) {
+                    throw new RuntimeException(
+                        sprintf(
+                            'EPTI attribute must contain exactly one NameID element as value, received: %s',
+                            print_r($eptiValues, true)
+                        )
+                    );
+                }
+
+                $eptiValue  = $eptiDomNodeList->item(0);
+                $eptiNameId = \SAML2_Utils::parseNameId($eptiValue);
+
+                $attributes[] = new Attribute($definition, [$eptiNameId['Value']]);
+                continue;
+            }
+
+            $attributes[] = $attribute;
+        }
+
         return new self(
             $assertionAdapter->getNameId(),
-            $assertionAdapter->getAttributeSet(),
+            AttributeSet::create($attributes),
             $authenticatingAuthorities
         );
     }
