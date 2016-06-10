@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Storage;
 
+use DateTime;
 use OpenConext\Profile\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -42,13 +43,43 @@ class SingleCookieStorage implements EventSubscriberInterface
      */
     private $cookieValue;
 
-    public function __construct($cookieDomain, $cookieKey)
-    {
+    /**
+     * @var DateTime|0
+     */
+    private $cookieExpirationDate;
+
+    /**
+     * @var boolean
+     */
+    private $cookieSecure;
+
+    /**
+     * @var boolean
+     */
+    private $cookieHttpOnly;
+
+    public function __construct(
+        $cookieDomain,
+        $cookieKey,
+        DateTime $cookieExpirationDate = null,
+        $cookieSecure = true,
+        $cookieHttpOnly = true
+    ) {
         Assert::string($cookieDomain);
         Assert::string($cookieKey);
+        Assert::boolean($cookieSecure);
+        Assert::boolean($cookieHttpOnly);
 
-        $this->cookieDomain = $cookieDomain;
-        $this->cookieKey    = $cookieKey;
+        // If no date is specified for cookie expiration, a session cookie should be created
+        if ($cookieExpirationDate === null) {
+            $cookieExpirationDate = 0;
+        }
+
+        $this->cookieDomain         = $cookieDomain;
+        $this->cookieKey            = $cookieKey;
+        $this->cookieExpirationDate = $cookieExpirationDate;
+        $this->cookieSecure         = $cookieSecure;
+        $this->cookieHttpOnly       = $cookieHttpOnly;
     }
 
     /**
@@ -85,10 +116,11 @@ class SingleCookieStorage implements EventSubscriberInterface
         $event->getResponse()->headers->setCookie(new Cookie(
             $this->cookieKey,
             $this->cookieValue,
-            0,
+            $this->cookieExpirationDate,
             null,
             $this->cookieDomain,
-            true
+            $this->cookieSecure,
+            $this->cookieHttpOnly
         ));
     }
 
