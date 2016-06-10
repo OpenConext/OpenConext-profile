@@ -3,6 +3,7 @@ parameters:
     default_locale: en
     open_conext_locale_cookie_key: lang
     open_conext_locale_cookie_domain: .vm.openconext.org
+    open_conext_locale_cookie_expires_in: "+2 months"
     open_conext_locale_cookie_http_only: false
     open_conext_locale_cookie_secure: false
 

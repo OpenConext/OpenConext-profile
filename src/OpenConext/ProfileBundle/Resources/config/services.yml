@@ -1,10 +1,4 @@
 services:
-    profile.locale.cookie_expiration_date:
-        public: false
-        class: DateTime
-        calls:
-            - [modify, ['+2 days']]
-
     profile.engine_block_entity_id:
         public: false
         class: OpenConext\Profile\Value\EntityId

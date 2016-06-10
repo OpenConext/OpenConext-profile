@@ -23,6 +23,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use \DateTime;
 
 class OpenConextProfileExtension extends Extension
 {
@@ -44,7 +45,7 @@ class OpenConextProfileExtension extends Extension
         $this->parseLocaleCookieStorageConfiguration(
             $config['locale_cookie_domain'],
             $config['locale_cookie_key'],
-            $container->getDefinition('profile.locale.cookie_expiration_date'),
+            $config['locale_cookie_expires_in'],
             $config['locale_cookie_secure'],
             $config['locale_cookie_http_only'],
             $container
@@ -89,16 +90,24 @@ class OpenConextProfileExtension extends Extension
     private function parseLocaleCookieStorageConfiguration(
         $localeCookieDomain,
         $localeCookieKey,
-        $localeCookieExpirationDate,
+        $localeCookieExpiresIn,
         $localeCookieSecure,
         $localeCookieHttpOnly,
         ContainerBuilder $container
     ) {
+
+        if ($localeCookieExpiresIn !== null) {
+            $localeCookieExpirationDateDefinition = new Definition(DateTime::class);
+            $localeCookieExpirationDateDefinition->addMethodCall('modify', [$localeCookieExpiresIn]);
+        } else {
+            $localeCookieExpirationDateDefinition = null;
+        }
+
         $container
             ->getDefinition('profile.storage.locale_cookie')
             ->replaceArgument(0, $localeCookieDomain)
             ->replaceArgument(1, $localeCookieKey)
-            ->replaceArgument(2, $localeCookieExpirationDate)
+            ->replaceArgument(2, $localeCookieExpirationDateDefinition)
             ->replaceArgument(3, $localeCookieSecure)
             ->replaceArgument(4, $localeCookieHttpOnly);
     }

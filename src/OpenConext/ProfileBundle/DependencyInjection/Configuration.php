@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\DependencyInjection;
 
+use DateTimeImmutable;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -93,6 +94,27 @@ class Configuration implements ConfigurationInterface
                             return !is_string($key);
                         })
                         ->thenInvalid('Locale cookie key should be a string')
+                    ->end()
+                ->end()
+                ->scalarNode('locale_cookie_expires_in')
+                    ->info('The time interval after which the locale cookie expires; null gives a session cookie')
+                    ->isRequired()
+                    ->validate()
+                        ->ifTrue(function ($expiresIn) {
+                            if ($expiresIn === null) {
+                                return false;
+                            }
+
+                            if (!is_string($expiresIn)) {
+                                return true;
+                            }
+
+                            $now = new DateTimeImmutable();
+                            $future = $now->modify($expiresIn);
+
+                            return $now >= $future;
+                        })
+                        ->thenInvalid('Locale cookie expiration should be null or a positive DateTime modifier string, for example "+2 months"')
                     ->end()
                 ->end()
                 ->booleanNode('locale_cookie_secure')
