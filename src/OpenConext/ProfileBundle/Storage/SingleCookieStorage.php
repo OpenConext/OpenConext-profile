@@ -44,7 +44,7 @@ class SingleCookieStorage implements EventSubscriberInterface
     private $cookieValue;
 
     /**
-     * @var DateTime|0
+     * @var DateTime|null
      */
     private $cookieExpirationDate;
 
@@ -62,18 +62,13 @@ class SingleCookieStorage implements EventSubscriberInterface
         $cookieDomain,
         $cookieKey,
         DateTime $cookieExpirationDate = null,
-        $cookieSecure = true,
+        $cookieSecure = false,
         $cookieHttpOnly = true
     ) {
-        Assert::string($cookieDomain);
-        Assert::string($cookieKey);
-        Assert::boolean($cookieSecure);
-        Assert::boolean($cookieHttpOnly);
-
-        // If no date is specified for cookie expiration, a session cookie should be created
-        if ($cookieExpirationDate === null) {
-            $cookieExpirationDate = 0;
-        }
+        Assert::string($cookieDomain, 'Cookie domain "%s" expected to be string, type %s given.');
+        Assert::string($cookieKey, 'Cookie key "%s" expected to be string, type %s given.');
+        Assert::boolean($cookieSecure, 'Cookie secure setting "%s" is expected to be boolean.');
+        Assert::boolean($cookieHttpOnly, 'Cookie HttpOnly setting "%s" expected to be boolean');
 
         $this->cookieDomain         = $cookieDomain;
         $this->cookieKey            = $cookieKey;
@@ -113,10 +108,13 @@ class SingleCookieStorage implements EventSubscriberInterface
      */
     public function storeValueInCookie(FilterResponseEvent $event)
     {
+        // If no date is specified for cookie expiration, a session cookie should be created
+        $cookieExpirationDate = $this->cookieExpirationDate ?: 0;
+
         $event->getResponse()->headers->setCookie(new Cookie(
             $this->cookieKey,
             $this->cookieValue,
-            $this->cookieExpirationDate,
+            $cookieExpirationDate,
             null,
             $this->cookieDomain,
             $this->cookieSecure,
