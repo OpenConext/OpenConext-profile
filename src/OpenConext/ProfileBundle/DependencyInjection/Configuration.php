@@ -95,6 +95,14 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('Locale cookie key should be a string')
                     ->end()
                 ->end()
+                ->booleanNode('locale_cookie_secure')
+                    ->isRequired()
+                    ->info('Whether or not the locale cookie should be secure')
+                ->end()
+                ->booleanNode('locale_cookie_http_only')
+                    ->isRequired()
+                    ->info('Whether or not the locale cookie should be HTTP only')
+                ->end()
             ->end();
     }
 

@@ -1,4 +1,10 @@
 services:
+    profile.locale.cookie_expiration_date:
+        public: false
+        class: DateTime
+        calls:
+            - [modify, ['+2 days']]
+
     profile.engine_block_entity_id:
         public: false
         class: OpenConext\Profile\Value\EntityId
@@ -10,6 +16,9 @@ services:
         arguments:
             - ~ # locale cookie domain
             - ~ # locale cookie key
+            - ~ # locale cookie expiration date
+            - ~ # locale cookie secure
+            - ~ # locale cookie http only
         tags:
             - { name: kernel.event_subscriber }
 
