@@ -57,30 +57,29 @@ final class AuthenticatedUser
         foreach ($assertionAdapter->getAttributeSet() as $attribute) {
             $definition = $attribute->getAttributeDefinition();
 
-            // We need to replace the eduPersonTargetedID attribute value as that is a nested NameID attribute.
-            if ($definition->getName() === 'eduPersonTargetedID') {
-
-                /** @var \DOMNodeList[] $eptiValues */
-                $eptiValues = $attribute->getValue();
-                $eptiDomNodeList = $eptiValues[0];
-
-                if (!$eptiDomNodeList instanceof \DOMNodeList || $eptiDomNodeList->length !== 1) {
-                    throw new RuntimeException(
-                        sprintf(
-                            'EPTI attribute must contain exactly one NameID element as value, received: %s',
-                            print_r($eptiValues, true)
-                        )
-                    );
-                }
-
-                $eptiValue  = $eptiDomNodeList->item(0);
-                $eptiNameId = \SAML2_Utils::parseNameId($eptiValue);
-
-                $attributes[] = new Attribute($definition, [$eptiNameId['Value']]);
+            // We only want to replace the eduPersonTargetedID attribute value as that is a nested NameID attribute
+            if ($definition->getName() !== 'eduPersonTargetedID') {
+                $attributes[] = $attribute;
                 continue;
             }
 
-            $attributes[] = $attribute;
+            /** @var \DOMNodeList[] $eptiValues */
+            $eptiValues = $attribute->getValue();
+            $eptiDomNodeList = $eptiValues[0];
+
+            if (!$eptiDomNodeList instanceof \DOMNodeList || $eptiDomNodeList->length !== 1) {
+                throw new RuntimeException(
+                    sprintf(
+                        'EPTI attribute must contain exactly one NameID element as value, received: %s',
+                        print_r($eptiValues, true)
+                    )
+                );
+            }
+
+            $eptiValue  = $eptiDomNodeList->item(0);
+            $eptiNameId = \SAML2_Utils::parseNameId($eptiValue);
+
+            $attributes[] = new Attribute($definition, [$eptiNameId['Value']]);
         }
 
         return new self(
