@@ -19,8 +19,8 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
-use RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
