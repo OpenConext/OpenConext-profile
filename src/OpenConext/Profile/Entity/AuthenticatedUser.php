@@ -19,8 +19,10 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Exception\InvalidEptiAttributeException;
 use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
+use SAML2_Utils;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
@@ -68,16 +70,11 @@ final class AuthenticatedUser
             $eptiDomNodeList = $eptiValues[0];
 
             if (!$eptiDomNodeList instanceof \DOMNodeList || $eptiDomNodeList->length !== 1) {
-                throw new RuntimeException(
-                    sprintf(
-                        'EPTI attribute must contain exactly one NameID element as value, received: %s',
-                        print_r($eptiValues, true)
-                    )
-                );
+                throw InvalidEptiAttributeException::invalidValue($eptiDomNodeList);
             }
 
             $eptiValue  = $eptiDomNodeList->item(0);
-            $eptiNameId = \SAML2_Utils::parseNameId($eptiValue);
+            $eptiNameId = SAML2_Utils::parseNameId($eptiValue);
 
             $attributes[] = new Attribute($definition, [$eptiNameId['Value']]);
         }
