@@ -19,7 +19,11 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Exception\InvalidEptiAttributeException;
+use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
+use SAML2_Utils;
+use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
@@ -43,13 +47,41 @@ final class AuthenticatedUser
     /**
      * @param AssertionAdapter $assertionAdapter
      * @param EntityId[] $authenticatingAuthorities
+     *
      * @return AuthenticatedUser
+     * @throws RuntimeException
      */
     public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
     {
+        $attributes = [];
+
+        /** @var Attribute $attribute */
+        foreach ($assertionAdapter->getAttributeSet() as $attribute) {
+            $definition = $attribute->getAttributeDefinition();
+
+            // We only want to replace the eduPersonTargetedID attribute value as that is a nested NameID attribute
+            if ($definition->getName() !== 'eduPersonTargetedID') {
+                $attributes[] = $attribute;
+                continue;
+            }
+
+            /** @var \DOMNodeList[] $eptiValues */
+            $eptiValues = $attribute->getValue();
+            $eptiDomNodeList = $eptiValues[0];
+
+            if (!$eptiDomNodeList instanceof \DOMNodeList || $eptiDomNodeList->length !== 1) {
+                throw InvalidEptiAttributeException::invalidValue($eptiDomNodeList);
+            }
+
+            $eptiValue  = $eptiDomNodeList->item(0);
+            $eptiNameId = SAML2_Utils::parseNameId($eptiValue);
+
+            $attributes[] = new Attribute($definition, [$eptiNameId['Value']]);
+        }
+
         return new self(
             $assertionAdapter->getNameId(),
-            $assertionAdapter->getAttributeSet(),
+            AttributeSet::create($attributes),
             $authenticatingAuthorities
         );
     }

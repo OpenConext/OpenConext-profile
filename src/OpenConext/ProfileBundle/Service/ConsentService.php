@@ -68,8 +68,9 @@ final class ConsentService
             return null;
         }
 
-        $userIdentifier   = $user->getAttributes()->getAttributeByDefinition($this->identifyingAttribute);
-        $identifyingValue = $userIdentifier->getValue();
+        $userIdentifier    = $user->getAttributes()->getAttributeByDefinition($this->identifyingAttribute);
+        $identifyingValues = $userIdentifier->getValue();
+        $identifyingValue  = array_shift($identifyingValues);
 
         if (!is_string($identifyingValue)) {
             $message = sprintf(
