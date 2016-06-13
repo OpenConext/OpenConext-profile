@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Storage;
 
+use DateTime;
 use OpenConext\Profile\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -42,13 +43,38 @@ class SingleCookieStorage implements EventSubscriberInterface
      */
     private $cookieValue;
 
-    public function __construct($cookieDomain, $cookieKey)
-    {
-        Assert::string($cookieDomain);
-        Assert::string($cookieKey);
+    /**
+     * @var DateTime|null
+     */
+    private $cookieExpirationDate;
 
-        $this->cookieDomain = $cookieDomain;
-        $this->cookieKey    = $cookieKey;
+    /**
+     * @var boolean
+     */
+    private $cookieSecure;
+
+    /**
+     * @var boolean
+     */
+    private $cookieHttpOnly;
+
+    public function __construct(
+        $cookieDomain,
+        $cookieKey,
+        DateTime $cookieExpirationDate = null,
+        $cookieSecure = false,
+        $cookieHttpOnly = true
+    ) {
+        Assert::string($cookieDomain, 'Cookie domain "%s" expected to be string, type %s given.');
+        Assert::string($cookieKey, 'Cookie key "%s" expected to be string, type %s given.');
+        Assert::boolean($cookieSecure, 'Cookie secure setting "%s" is expected to be boolean.');
+        Assert::boolean($cookieHttpOnly, 'Cookie HttpOnly setting "%s" expected to be boolean');
+
+        $this->cookieDomain         = $cookieDomain;
+        $this->cookieKey            = $cookieKey;
+        $this->cookieExpirationDate = $cookieExpirationDate;
+        $this->cookieSecure         = $cookieSecure;
+        $this->cookieHttpOnly       = $cookieHttpOnly;
     }
 
     /**
@@ -82,13 +108,17 @@ class SingleCookieStorage implements EventSubscriberInterface
      */
     public function storeValueInCookie(FilterResponseEvent $event)
     {
+        // If no date is specified for cookie expiration, a session cookie should be created
+        $cookieExpirationDate = $this->cookieExpirationDate ?: 0;
+
         $event->getResponse()->headers->setCookie(new Cookie(
             $this->cookieKey,
             $this->cookieValue,
-            0,
+            $cookieExpirationDate,
             null,
             $this->cookieDomain,
-            true
+            $this->cookieSecure,
+            $this->cookieHttpOnly
         ));
     }
 
