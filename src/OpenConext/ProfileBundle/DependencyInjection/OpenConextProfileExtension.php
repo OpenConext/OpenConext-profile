@@ -23,6 +23,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use \DateTime;
 
 class OpenConextProfileExtension extends Extension
 {
@@ -41,9 +42,12 @@ class OpenConextProfileExtension extends Extension
 
         $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
         $this->parseAvailableLocaleConfiguration($config['locales'], $container);
-        $this->parseCookieStorageConfiguration(
+        $this->parseLocaleCookieStorageConfiguration(
             $config['locale_cookie_domain'],
             $config['locale_cookie_key'],
+            $config['locale_cookie_expires_in'],
+            $config['locale_cookie_secure'],
+            $config['locale_cookie_http_only'],
             $container
         );
     }
@@ -83,11 +87,28 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(0, $availableLocales);
     }
 
-    private function parseCookieStorageConfiguration($localeCookieDomain, $localeCookieKey, ContainerBuilder $container)
-    {
+    private function parseLocaleCookieStorageConfiguration(
+        $localeCookieDomain,
+        $localeCookieKey,
+        $localeCookieExpiresIn,
+        $localeCookieSecure,
+        $localeCookieHttpOnly,
+        ContainerBuilder $container
+    ) {
+
+        if ($localeCookieExpiresIn !== null) {
+            $localeCookieExpirationDateDefinition = new Definition(DateTime::class);
+            $localeCookieExpirationDateDefinition->addMethodCall('modify', [$localeCookieExpiresIn]);
+        } else {
+            $localeCookieExpirationDateDefinition = null;
+        }
+
         $container
             ->getDefinition('profile.storage.locale_cookie')
             ->replaceArgument(0, $localeCookieDomain)
-            ->replaceArgument(1, $localeCookieKey);
+            ->replaceArgument(1, $localeCookieKey)
+            ->replaceArgument(2, $localeCookieExpirationDateDefinition)
+            ->replaceArgument(3, $localeCookieSecure)
+            ->replaceArgument(4, $localeCookieHttpOnly);
     }
 }

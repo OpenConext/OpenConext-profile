@@ -2,7 +2,7 @@
 
 RELEASE_DIR=${HOME}/Releases
 GITHUB_USER=OpenConext
-PROJECT_NAME=OpenConext-Profile
+PROJECT_NAME=OpenConext-profile
 
 if [ -z "$1" ]
 then

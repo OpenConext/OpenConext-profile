@@ -10,6 +10,9 @@ services:
         arguments:
             - ~ # locale cookie domain
             - ~ # locale cookie key
+            - ~ # locale cookie expiration date
+            - ~ # locale cookie secure
+            - ~ # locale cookie http only
         tags:
             - { name: kernel.event_subscriber }
 
