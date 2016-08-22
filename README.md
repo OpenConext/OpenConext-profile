@@ -38,6 +38,13 @@ deployment target.
 Make sure to set the correct Symfony environment by setting or exporting
 `SYMFONY_ENV`.
 
+## Texts and translations
+
+Updating the texts (and translations of those texts) in the web interface
+can be done on an installation that runs in `DEV` mode. Make sure you log
+into profile at `https://profile.<yourdomain>`. Then go to
+`https://profile.<yourdomain>/app_dev.php/_trans/` to update the strings.
+
 # License
 
 This project is licensed under version 2.0 of the Apache License, as described
