@@ -182,7 +182,7 @@ This profile page gives you insight in which personal data, provided by your ins
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <jms:reference-file line="9">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.introduction</source>
-        <target>This page contains an overview of all your personal data that is being stored by SURFconext. In SURFconext, your personal data is called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page: https://wiki.surfnet.nl/display/surfconextdev/Attributes+in+SURFconext.</target>
+        <target>This page contains an overview of all your personal data that are being stored by SURFconext. In SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page: https://wiki.surfnet.nl/display/surfconextdev/Attributes+in+SURFconext.</target>
       </trans-unit>
       <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
         <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>

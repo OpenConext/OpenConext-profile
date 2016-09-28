@@ -9,7 +9,7 @@
       <trans-unit id="4422839d75319cb038791289059a5c37b6464d3e" resname="profile.application.header">
         <jms:reference-file line="20">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.header</source>
-        <target>Overzicht van jouw SURFconext profiel</target>
+        <target>Overzicht van jouw SURFconext-profiel</target>
       </trans-unit>
       <trans-unit id="c01fb1e47571e92614557108db2ebb516dcdb7c0" resname="profile.application.platform_connection_description">
         <jms:reference-file line="71">Resources/views/layout.html.twig</jms:reference-file>
@@ -177,7 +177,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
         <jms:reference-file line="10">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.explanation</source>
-        <target>SURFconext slaat deze gegevens op om je eenvoudig in te kunnen laten loggen bij verschillende (cloud)diensten. Jouw instelling bepaalt welke diensten voor jou toegankelijk zijn via SURFconext. De meeste diensten die je via SURFconext benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij het 'Mijn Diensten' tabblad.</target>
+        <target>SURFconext slaat deze gegevens op om je eenvoudig in te kunnen laten loggen bij verschillende (cloud)diensten. Jouw instelling bepaalt welke diensten voor jou toegankelijk zijn via SURFconext. De meeste diensten die je via SURFconext benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij het 'Mijn Diensten'-tabblad.</target>
       </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <jms:reference-file line="9">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -207,7 +207,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
         <jms:reference-file line="8">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.long_title</source>
-        <target>Details van jouw SURFconext profiel</target>
+        <target>Details van jouw SURFconext-profiel</target>
       </trans-unit>
       <trans-unit id="a889019ee05f5be48abcfacba0b63235275ce299" resname="profile.my_profile.pi_processing">
         <jms:reference-file line="11">views/MyProfile/overview.html.twig</jms:reference-file>
