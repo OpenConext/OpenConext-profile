@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-30T16:52:19Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2016-09-23T16:30:08Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,7 +9,7 @@
       <trans-unit id="4422839d75319cb038791289059a5c37b6464d3e" resname="profile.application.header">
         <jms:reference-file line="20">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.header</source>
-        <target>Overview of your SURFconext profile.</target>
+        <target>Overview of your SURFconext profile</target>
       </trans-unit>
       <trans-unit id="c01fb1e47571e92614557108db2ebb516dcdb7c0" resname="profile.application.platform_connection_description">
         <jms:reference-file line="71">Resources/views/layout.html.twig</jms:reference-file>
@@ -65,7 +65,7 @@
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
         <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.explanation.introduction</source>
-        <target>Your institution uses SURFconext to allow you to login to several (cloud)services provided by your institution using your institutional account. This means you only need a single account to login instead of creating separate accounts for each service.</target>
+        <target>Your institution uses SURFconext to allow you to login to several online (cloud)services using your institutional account. Instead of registering separate accounts for each service, this means you only need a single account to login. The following picture gives a schematic overview of what SURFconext does:</target>
       </trans-unit>
       <trans-unit id="4949b24da6847ff0e5ab5ba5ec14a85eb5da703e" resname="profile.introduction.explanation.title">
         <jms:reference-file line="10">views/Introduction/overview.html.twig</jms:reference-file>
@@ -75,12 +75,14 @@
       <trans-unit id="4a58594e3e7d64ad7c5ee1852e90242f76476563" resname="profile.introduction.long_title">
         <jms:reference-file line="8">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.long_title</source>
-        <target>Welcome to the SURFconext profile page</target>
+        <target>The SURFconext Profile page</target>
       </trans-unit>
       <trans-unit id="b5046cf89bbccbd70597521e4f435425bb6745a5" resname="profile.introduction.purpose.profile_storage">
         <jms:reference-file line="16">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.profile_storage</source>
-        <target>On behalf of your institution, SURFconext passes through a limited amount of personal data to the service you are logging in to. Sometimes this will be entirely automatic but usually you are required to give explicit consent for this information transfer. This profile page provides insight in how your personal data that your institution provided via SURFconext is being used. You can see here which personal data is being stored by SURFconext and which data has been passed on to services you have logged in to.</target>
+        <target>On behalf of your institution, SURFconext forwards a limited amount of your personal data to the service you are logging in to. Most of the times you are required to give explicit consent for this information transfer. In some cases, however, this feature is disabled on request of your institution.
+
+This profile page gives you insight in which personal data, provided by your institution via SURFconext, has been forwarded to which service. You can also review which personal data is being stored by SURFconext and which services you have logged in to in the past.</target>
       </trans-unit>
       <trans-unit id="2cd8741e2e784f6e2df5165585c332d6be98812c" resname="profile.introduction.purpose.title">
         <jms:reference-file line="15">views/Introduction/overview.html.twig</jms:reference-file>
@@ -121,12 +123,12 @@
       <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_profile.account_data">
         <jms:reference-file line="19">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data</source>
-        <target>Account Data</target>
+        <target>Account data</target>
       </trans-unit>
       <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_profile.account_data_explanation">
         <jms:reference-file line="20">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_explanation</source>
-        <target>We received the following information from your institution:</target>
+        <target>Your SURFconext Profile consists of the following data:</target>
       </trans-unit>
       <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
         <jms:reference-file line="26">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -175,12 +177,12 @@
       <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
         <jms:reference-file line="10">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.explanation</source>
-        <target>SURFconext stores this information to enable you to easily login to several websites. It is also possible that a subset of this information is shared with services you use through SURFconext. This all happens by request of your institution.</target>
+        <target>SURFconext stores this information to allow you to easily login to several (cloud)services. Your institution is in control of which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to the 'My Services' tab.</target>
       </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <jms:reference-file line="9">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.introduction</source>
-        <target>Here you can find what personal information about you is stored by SURFconext.</target>
+        <target>This page contains an overview of all your personal data that are being stored by SURFconext. In SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page: https://wiki.surfnet.nl/display/surfconextdev/Attributes+in+SURFconext.</target>
       </trans-unit>
       <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
         <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -205,17 +207,17 @@
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
         <jms:reference-file line="8">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.long_title</source>
-        <target>My SURFconext Profile</target>
+        <target>Details of your SURFconext profile</target>
       </trans-unit>
       <trans-unit id="a889019ee05f5be48abcfacba0b63235275ce299" resname="profile.my_profile.pi_processing">
         <jms:reference-file line="11">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.pi_processing</source>
-        <target>Your institution uses SURFconext and remains responsible for your personal data and that they are dealt with in a careful way.</target>
+        <target>Please note: your institution is responsible for the personal data displayed here. SURFconext is simply showing the information received from your institution.</target>
       </trans-unit>
       <trans-unit id="cc93ed7bab761ec4c240fa28983bc1f069328991" resname="profile.my_profile.questions">
         <jms:reference-file line="16">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.questions</source>
-        <target>If you have any questions about your personal data, please contact your institution through:</target>
+        <target>If you have any questions about your personal data, please contact the help desk of your institution through:</target>
       </trans-unit>
       <trans-unit id="f1e5e770356348259bcc4b16b55b4fbf30fdeed1" resname="profile.my_profile.short_title">
         <jms:reference-file line="4">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -251,17 +253,17 @@
       <trans-unit id="e792a9988ccfee30143187c270b5e0dffc59020c" resname="profile.my_services.explanation">
         <jms:reference-file line="9">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation</source>
-        <target>Here you can see which services you are logged in to through SURFconext and which kind of personal information is shared by your institution. Services are subdivided in two groups: </target>
+        <target>This overview contains all services you have logged in to through SURFconext at least once. It also shows which subset of your personal data has been shared between your institution and the service. Services are subdivided in two groups:</target>
       </trans-unit>
       <trans-unit id="a92f83f99644130d2de961b6add4752a8ed6c3cc" resname="profile.my_services.explanation.explicit_consent">
         <jms:reference-file line="11">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation.explicit_consent</source>
-        <target>Consent by user: some services explicitly require you to consent to passing on personal information the first time you login.</target>
+        <target>Consent by you: some services explicitly require you to consent to forwarding personal data the first time you login.</target>
       </trans-unit>
       <trans-unit id="1903f16c642b35604024fbd11029cb099d14bb6e" resname="profile.my_services.explanation.implicit_consent">
         <jms:reference-file line="12">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation.implicit_consent</source>
-        <target>Consent by institution: some services do not explicitly require you to consent to sharing personal information. The information is shared automatically after logging in. In these cases, your institution has decided explicit consent is not required.</target>
+        <target>Consent by institution: some services do not explicitly require you to consent to forwarding personal data, because your institution already arranged for this. The information is shared automatically after logging in.</target>
       </trans-unit>
       <trans-unit id="286aef124b54c35d42540b3c44ef082c8b86b363" resname="profile.my_services.explicit_consent_given">
         <jms:reference-file line="48">views/MyServices/overview.html.twig</jms:reference-file>
@@ -276,7 +278,7 @@
       <trans-unit id="107928a44903768c109c65916394c80a60c49e1e" resname="profile.my_services.long_title">
         <jms:reference-file line="8">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.long_title</source>
-        <target>Services via SURFconext</target>
+        <target>Services accessed through SURFconext</target>
       </trans-unit>
       <trans-unit id="a56f9f031cd71cad0cbf03e1a523825720214a53" resname="profile.my_services.short_title">
         <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>

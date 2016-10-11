@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-12-30T16:53:04Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2016-09-23T16:50:26Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,7 +9,7 @@
       <trans-unit id="4422839d75319cb038791289059a5c37b6464d3e" resname="profile.application.header">
         <jms:reference-file line="20">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.header</source>
-        <target>Overzicht van jouw SURFconext profiel.</target>
+        <target>Overzicht van jouw SURFconext-profiel</target>
       </trans-unit>
       <trans-unit id="c01fb1e47571e92614557108db2ebb516dcdb7c0" resname="profile.application.platform_connection_description">
         <jms:reference-file line="71">Resources/views/layout.html.twig</jms:reference-file>
@@ -29,7 +29,7 @@
       <trans-unit id="ececc3f56e8ad293cd7ac9811787ef3bd0bc6041" resname="profile.attribute_support.explanation">
         <jms:reference-file line="9">views/AttributeSupport/overview.html.twig</jms:reference-file>
         <source>profile.attribute_support.explanation</source>
-        <target>SURFconext support kan je vragen om bovenstaande informatie te delen. Deze informatie kan hen helpen om de supportvraag te beantwoorden.</target>
+        <target>SURFconext support kan je vragen om bovenstaande informatie te delen. Deze informatie kan hen helpen om jouw supportvraag te beantwoorden.</target>
       </trans-unit>
       <trans-unit id="0c6975044e5b9e02815772e60105ae78a4743c22" resname="profile.attribute_support.long_title">
         <jms:reference-file line="8">views/AttributeSupport/overview.html.twig</jms:reference-file>
@@ -64,7 +64,7 @@
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
         <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.explanation.introduction</source>
-        <target>Jouw instelling gebruikt SURFconext zodat jij met jouw instellingsaccount kunt inloggen op verschillende (cloud)diensten die via jouw instelling beschikbaar zijn. Zo heb je maar één inlogaccount nodig en hoef je niet overal een apart account aan te maken.</target>
+        <target>Jouw instelling gebruikt SURFconext zodat je met jouw instellingsaccount kunt inloggen op verschillende (cloud)diensten. Zo heb je maar één inlogaccount nodig en hoef je niet overal een apart gebruikersaccount aan te maken. Het volgende plaatje toont een schematische weergave van wat SURFconext doet:</target>
       </trans-unit>
       <trans-unit id="4949b24da6847ff0e5ab5ba5ec14a85eb5da703e" resname="profile.introduction.explanation.title">
         <jms:reference-file line="10">views/Introduction/overview.html.twig</jms:reference-file>
@@ -74,12 +74,14 @@
       <trans-unit id="4a58594e3e7d64ad7c5ee1852e90242f76476563" resname="profile.introduction.long_title">
         <jms:reference-file line="8">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.long_title</source>
-        <target>Welkom op de profielpagina van SURFconext</target>
+        <target>De profielpagina van SURFconext</target>
       </trans-unit>
       <trans-unit id="b5046cf89bbccbd70597521e4f435425bb6745a5" resname="profile.introduction.purpose.profile_storage">
         <jms:reference-file line="16">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.profile_storage</source>
-        <target>SURFconext geeft bij het inloggen, namens jouw instelling, een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen kun jij vooraf expliciet toestemming geven. Deze profielpagina geeft inzicht in hoe er wordt omgegaan met de persoonsgegevens die jouw instelling via SURFconext doorgeeft. Je kan zien welke gegevens bij SURFconext worden opgeslagen en welke gegevens worden doorgegeven aan de diensten waar je bent ingelogd.</target>
+        <target>Op verzoek van jouw instelling geeft SURFconext een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgave van jouw gegevens.
+
+Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw instelling, via SURFconext aan welke dienst wordt doorgegeven. Ook kun je zien welke gegevens door SURFconext worden opgeslagen en bij welke diensten je in het verleden bent ingelogd via SURFconext.</target>
       </trans-unit>
       <trans-unit id="2cd8741e2e784f6e2df5165585c332d6be98812c" resname="profile.introduction.purpose.title">
         <jms:reference-file line="15">views/Introduction/overview.html.twig</jms:reference-file>
@@ -146,7 +148,7 @@
       <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
         <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_explanation</source>
-        <target>Bij een aantal diensten moet je voordat je voor de eerst keer inlogt, toestemming geven aan je instelling om jouw gegevens met deze dienst te delen. SURFconext slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder:</target>
+        <target>Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw persoonsgegevens met de dienst waar je wilt inloggen te delen. SURFconext slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder</target>
       </trans-unit>
       <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
         <jms:reference-file line="91">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -175,12 +177,12 @@
       <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
         <jms:reference-file line="10">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.explanation</source>
-        <target>SURFconext slaat deze gegevens op om je eenvoudig in te kunnen laten loggen bij verschillende websites. Tevens is het mogelijk dat een subset van deze gegevens worden verstrekt aan diensten die je via SURFconext benadert. Dit gebeurt allemaal op verzoek van jouw instelling.</target>
+        <target>SURFconext slaat deze gegevens op om je eenvoudig in te kunnen laten loggen bij verschillende (cloud)diensten. Jouw instelling bepaalt welke diensten voor jou toegankelijk zijn via SURFconext. De meeste diensten die je via SURFconext benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij het 'Mijn Diensten'-tabblad.</target>
       </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <jms:reference-file line="9">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.introduction</source>
-        <target>Bekijk hier welke persoonsgegevens SURFconext van jou heeft opgeslagen. </target>
+        <target>Bekijk hier welke persoonsgegevens SURFconext van jou heeft opgeslagen. Jouw persoonsgegevens worden in SURFconext 'attributen' genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor meer gedetailleerde informatie over deze attributen heeft SURFconext een technische informatiepagina ingericht: https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext.</target>
       </trans-unit>
       <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
         <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -205,17 +207,17 @@
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
         <jms:reference-file line="8">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.long_title</source>
-        <target>Mijn profiel op SURFconext</target>
+        <target>Details van jouw SURFconext-profiel</target>
       </trans-unit>
       <trans-unit id="a889019ee05f5be48abcfacba0b63235275ce299" resname="profile.my_profile.pi_processing">
         <jms:reference-file line="11">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.pi_processing</source>
-        <target>Jouw instelling is verantwoordelijk voor je persoonsgegevens en dat deze op een zorgvuldige manier worden verwerkt.</target>
+        <target>Let op: jouw instelling is verantwoordelijk voor de persoonsgegevens die je hier ziet. SURFconext laat slechts de informatie zien zoals ontvangen van jouw instelling.</target>
       </trans-unit>
       <trans-unit id="cc93ed7bab761ec4c240fa28983bc1f069328991" resname="profile.my_profile.questions">
         <jms:reference-file line="16">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.questions</source>
-        <target>Heb je nog vragen over je persoonsgegevens? Neem dan contact op met je instelling via:</target>
+        <target>Heb je vragen over je persoonsgegevens? Neem dan contact op met je instelling via:</target>
       </trans-unit>
       <trans-unit id="f1e5e770356348259bcc4b16b55b4fbf30fdeed1" resname="profile.my_profile.short_title">
         <jms:reference-file line="4">views/MyProfile/overview.html.twig</jms:reference-file>
@@ -251,17 +253,17 @@
       <trans-unit id="e792a9988ccfee30143187c270b5e0dffc59020c" resname="profile.my_services.explanation">
         <jms:reference-file line="9">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation</source>
-        <target>Bekijk hier bij welke websites  je via SURFconext bent ingelogd en welke persoonsgegevens door  jouw instelling zijn doorgegeven. De diensten zijn onderverdeeld in twee groepen:</target>
+        <target>Dit overzicht laat alle diensten zien waar je tenminste één keer op bent ingelogd via SURFconext. Ook kun je zien welk deel van jouw persoonsgegevens vanuit jouw instelling naar de dienst is doorgestuurd. De diensten zijn onderverdeeld in twee groepen:</target>
       </trans-unit>
       <trans-unit id="a92f83f99644130d2de961b6add4752a8ed6c3cc" resname="profile.my_services.explanation.explicit_consent">
         <jms:reference-file line="11">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation.explicit_consent</source>
-        <target>Toestemming door gebruiker: bij een aantal diensten wordt vooraf aan de eerste keer inloggen, expliciet gevraagd om toestemming voor het doorgeven van een aantal persoonsgegevens.</target>
+        <target>Toestemming door jou: bij een aantal diensten wordt vooraf aan de eerste keer inloggen, expliciet gevraagd om toestemming voor het doorgeven van een aantal persoonsgegevens.</target>
       </trans-unit>
       <trans-unit id="1903f16c642b35604024fbd11029cb099d14bb6e" resname="profile.my_services.explanation.implicit_consent">
         <jms:reference-file line="12">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation.implicit_consent</source>
-        <target>Toestemming door instelling: Bij een aantal diensten wordt niet expliciet toestemming gevraagd, maar worden de gegevens automatisch doorgegeven na inloggen. In deze gevallen heeft jouw instelling bepaald dat expliciete toestemming niet hoeft. </target>
+        <target>Toestemming door instelling: bij sommige diensten wordt niet expliciet toestemming aan jou gevraagd, maar worden de gegevens automatisch doorgegeven na inloggen. In deze gevallen heeft jouw instelling bepaald dat jouw expliciete toestemming niet nodig is. </target>
       </trans-unit>
       <trans-unit id="286aef124b54c35d42540b3c44ef082c8b86b363" resname="profile.my_services.explicit_consent_given">
         <jms:reference-file line="48">views/MyServices/overview.html.twig</jms:reference-file>
