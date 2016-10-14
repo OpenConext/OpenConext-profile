@@ -26,6 +26,7 @@ use Psr\Log\NullLogger;
 use SAML2_Assertion;
 use SAML2_Compat_ContainerSingleton;
 use SAML2_DOMDocumentFactory;
+use SAML2_Exception_RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -84,6 +85,48 @@ class AuthenticatedUserTest extends TestCase
         $actualAttributeSet = $authenticatedUser->getAttributes();
 
         $this->assertEquals($expectedAttributeSet, $actualAttributeSet);
+    }
+
+    /**
+     * @test
+     * @group Authentication
+     * @group Attributes
+     *
+     */
+    public function epti_attribute_cannot_be_set_if_its_value_has_multiple_name_ids_when_creating_an_authenticated_user()
+    {
+        $this->setExpectedException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
+
+        $assertionWithEpti   = $this->getAssertionWithEptiWithTooManyValues();
+        $attributeDictionary = $this->getAttributeDictionary();
+
+        $assertionAdapter  = $this->mockAssertionAdapterWith(
+            AttributeSet::createFrom($assertionWithEpti, $attributeDictionary),
+            'abcd-some-value-xyz'
+        );
+
+        AuthenticatedUser::createFrom($assertionAdapter, []);
+    }
+
+    /**
+     * @test
+     * @group Authentication
+     * @group Attributes
+     *
+     */
+    public function epti_attribute_cannot_be_set_if_its_value_has_no_name_id_when_creating_an_authenticated_user()
+    {
+        $this->setExpectedException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
+
+        $assertionWithEpti   = $this->getAssertionWithEptiWithoutValues();
+        $attributeDictionary = $this->getAttributeDictionary();
+
+        $assertionAdapter  = $this->mockAssertionAdapterWith(
+            AttributeSet::createFrom($assertionWithEpti, $attributeDictionary),
+            'abcd-some-value-xyz'
+        );
+
+        AuthenticatedUser::createFrom($assertionAdapter, []);
     }
 
     /**
@@ -161,6 +204,63 @@ class AuthenticatedUserTest extends TestCase
          <saml:Attribute Name="urn:mace:dir:attribute-def:eduPersonTargetedID"
             NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
             <saml:AttributeValue><saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">abcd-some-value-xyz</saml:NameID></saml:AttributeValue>
+        </saml:Attribute>
+        <saml:Attribute Name="urn:mace:dir:attribute-def:displayName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+            <saml:AttributeValue xsi:type="xs:string">Tester</saml:AttributeValue>
+         </saml:Attribute>
+      </saml:AttributeStatement>
+   </saml:Assertion>
+XML;
+
+        return new SAML2_Assertion(SAML2_DOMDocumentFactory::fromString($xml)->firstChild);
+    }
+
+    private function getAssertionWithEptiWithoutValues()
+    {
+        $xml = <<<XML
+<saml:Assertion
+        xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+        xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        Version="2.0"
+        ID="_93af655219464fb403b34436cfb0c5cb1d9a5502"
+        IssueInstant="1970-01-01T01:33:31Z">
+    <saml:Issuer>Provider</saml:Issuer>
+      <saml:AttributeStatement>
+         <saml:Attribute Name="urn:mace:dir:attribute-def:eduPersonTargetedID"
+            NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+            <saml:AttributeValue/>
+        </saml:Attribute>
+        <saml:Attribute Name="urn:mace:dir:attribute-def:displayName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+            <saml:AttributeValue xsi:type="xs:string">Tester</saml:AttributeValue>
+         </saml:Attribute>
+      </saml:AttributeStatement>
+   </saml:Assertion>
+XML;
+
+        return new SAML2_Assertion(SAML2_DOMDocumentFactory::fromString($xml)->firstChild);
+    }
+
+    private function getAssertionWithEptiWithTooManyValues()
+    {
+        $xml = <<<XML
+<saml:Assertion
+        xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+        xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        Version="2.0"
+        ID="_93af655219464fb403b34436cfb0c5cb1d9a5502"
+        IssueInstant="1970-01-01T01:33:31Z">
+    <saml:Issuer>Provider</saml:Issuer>
+      <saml:AttributeStatement>
+         <saml:Attribute Name="urn:mace:dir:attribute-def:eduPersonTargetedID"
+            NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+            <saml:AttributeValue>
+                <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">abcd-some-value-xyz</saml:NameID>
+                <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">an-extra-value</saml:NameID>
+            </saml:AttributeValue>
         </saml:Attribute>
         <saml:Attribute Name="urn:mace:dir:attribute-def:displayName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
             <saml:AttributeValue xsi:type="xs:string">Tester</saml:AttributeValue>
