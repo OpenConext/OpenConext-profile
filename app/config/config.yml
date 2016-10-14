@@ -50,9 +50,6 @@ nelmio_security:
     xss_protection:
         enabled: true
         mode_block: true
-    forced_ssl:
-        hsts_max_age: 2592000 # 30 days
-        hsts_subdomains: true
 
 monolog:
     handlers:
