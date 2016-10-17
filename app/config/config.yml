@@ -50,6 +50,8 @@ nelmio_security:
     xss_protection:
         enabled: true
         mode_block: true
+    forced_ssl:
+        enabled: true
 
 monolog:
     handlers:
