@@ -14,3 +14,6 @@ parameters:
     profile_explanation_image_path:
         en: "/images/profile_home_en.png"
         nl: "/images/profile_home_nl.png"
+    attribute_information_url:
+        en: 'https://wiki.surfnet.nl/display/surfconextdev/Attributes+in+SURFconext'
+        nl: 'https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext'

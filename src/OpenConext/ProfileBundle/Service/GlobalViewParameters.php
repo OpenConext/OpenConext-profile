@@ -49,12 +49,18 @@ final class GlobalViewParameters
     private $profileExplanationImageUrls;
 
     /**
+     * @var array
+     */
+    private $attributeInformationUrls;
+
+    /**
      * @param TranslatorInterface $translator
      * @param array $locales
      * @param array $helpUrls
      * @param array $platformUrls
      * @param array $termsOfServiceUrls
      * @param array $profileExplanationImageUrls
+     * @param array $attributeInformationUrls
      */
     public function __construct(
         TranslatorInterface $translator,
@@ -62,18 +68,21 @@ final class GlobalViewParameters
         array $helpUrls,
         array $platformUrls,
         array $termsOfServiceUrls,
-        array $profileExplanationImageUrls
+        array $profileExplanationImageUrls,
+        array $attributeInformationUrls
     ) {
         Assert::keysAre($helpUrls, $locales);
         Assert::keysAre($platformUrls, $locales);
         Assert::keysAre($termsOfServiceUrls, $locales);
         Assert::keysAre($profileExplanationImageUrls, $locales);
+        Assert::keysAre($attributeInformationUrls, $locales);
 
         $this->translator                  = $translator;
         $this->helpUrls                    = $helpUrls;
         $this->platformUrls                = $platformUrls;
         $this->termsOfServiceUrls          = $termsOfServiceUrls;
         $this->profileExplanationImageUrls = $profileExplanationImageUrls;
+        $this->attributeInformationUrls    = $attributeInformationUrls;
     }
 
     /**
@@ -106,5 +115,13 @@ final class GlobalViewParameters
     public function getProfileExplanationImage()
     {
         return $this->profileExplanationImageUrls[$this->translator->getLocale()];
+    }
+
+    /**
+     * @return string
+     */
+    public function getAttributeInformationUrl()
+    {
+        return $this->attributeInformationUrls[$this->translator->getLocale()];
     }
 }

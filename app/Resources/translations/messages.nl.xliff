@@ -1,321 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-09-23T16:50:26Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2016-10-18T16:31:45Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
       <trans-unit id="4422839d75319cb038791289059a5c37b6464d3e" resname="profile.application.header">
-        <jms:reference-file line="20">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.header</source>
         <target>Overzicht van jouw SURFconext-profiel</target>
+        <jms:reference-file line="20">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c01fb1e47571e92614557108db2ebb516dcdb7c0" resname="profile.application.platform_connection_description">
-        <jms:reference-file line="71">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.platform_connection_description</source>
         <target>Deze dienst is verbonden via</target>
+        <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="18e70a3e75cc5e9f61e4a379a265ae1bcdb71148" resname="profile.application.platform_connection_name">
-        <jms:reference-file line="71">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.application.platform_connection_name</source>
         <target>SURFconext</target>
+        <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d25aa7a2e9d40a5e7039dd3b93bd91eea40251c5" resname="profile.application.title">
-        <jms:reference-file line="6">Resources/views/base.html.twig</jms:reference-file>
         <source>profile.application.title</source>
         <target>SURFconext Profile</target>
+        <jms:reference-file line="6">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ececc3f56e8ad293cd7ac9811787ef3bd0bc6041" resname="profile.attribute_support.explanation">
-        <jms:reference-file line="9">views/AttributeSupport/overview.html.twig</jms:reference-file>
         <source>profile.attribute_support.explanation</source>
         <target>SURFconext support kan je vragen om bovenstaande informatie te delen. Deze informatie kan hen helpen om jouw supportvraag te beantwoorden.</target>
+        <jms:reference-file line="40">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0c6975044e5b9e02815772e60105ae78a4743c22" resname="profile.attribute_support.long_title">
-        <jms:reference-file line="8">views/AttributeSupport/overview.html.twig</jms:reference-file>
         <source>profile.attribute_support.long_title</source>
         <target>Mail data naar SURFconext support</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="357ac936f886f677a14e8401fb48af23827d513d" resname="profile.attribute_support.send_mail">
-        <jms:reference-file line="45">Form/Type/AttributeSupportMailType.php</jms:reference-file>
         <source>profile.attribute_support.send_mail</source>
         <target>Mail data</target>
+        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Form/Type/AttributeSupportMailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="a12580758185add38d70d00e359e0d4cb2463a0d" resname="profile.attribute_support.short_title">
-        <jms:reference-file line="4">views/AttributeSupport/overview.html.twig</jms:reference-file>
         <source>profile.attribute_support.short_title</source>
         <target>Mail data</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7155ef337fbeb3cf5d5066d4d35fc435a1f73394" resname="profile.attribute_support_confirmation.explanation">
-        <jms:reference-file line="9">views/AttributeSupport/confirmation.html.twig</jms:reference-file>
         <source>profile.attribute_support_confirmation.explanation</source>
         <target>De mail met informatie is succesvol verstuurd.</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/confirmation.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="73c60b3f75233586e48a1c7de310940633a523e0" resname="profile.attribute_support_confirmation.long_title">
-        <jms:reference-file line="8">views/AttributeSupport/confirmation.html.twig</jms:reference-file>
         <source>profile.attribute_support_confirmation.long_title</source>
         <target>De attribuutdata is gemaild</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/confirmation.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="53d04262f1ab47280551fae7076d7793629fa379" resname="profile.attribute_support_confirmation.short_title">
-        <jms:reference-file line="4">views/AttributeSupport/confirmation.html.twig</jms:reference-file>
         <source>profile.attribute_support_confirmation.short_title</source>
         <target>Attribuutdata gemaild</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/confirmation.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
-        <jms:reference-file line="11">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.explanation.introduction</source>
         <target>Jouw instelling gebruikt SURFconext zodat je met jouw instellingsaccount kunt inloggen op verschillende (cloud)diensten. Zo heb je maar één inlogaccount nodig en hoef je niet overal een apart gebruikersaccount aan te maken. Het volgende plaatje toont een schematische weergave van wat SURFconext doet:</target>
+        <jms:reference-file line="11">/../src/OpenConext/ProfileBundle/Resources/views/Introduction/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4949b24da6847ff0e5ab5ba5ec14a85eb5da703e" resname="profile.introduction.explanation.title">
-        <jms:reference-file line="10">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.explanation.title</source>
         <target>Wat is SURFconext?</target>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/Introduction/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4a58594e3e7d64ad7c5ee1852e90242f76476563" resname="profile.introduction.long_title">
-        <jms:reference-file line="8">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.long_title</source>
         <target>De profielpagina van SURFconext</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/Introduction/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b5046cf89bbccbd70597521e4f435425bb6745a5" resname="profile.introduction.purpose.profile_storage">
-        <jms:reference-file line="16">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.profile_storage</source>
-        <target>Op verzoek van jouw instelling geeft SURFconext een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgave van jouw gegevens.
+        <target xml:space="preserve">Op verzoek van jouw instelling geeft SURFconext een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgave van jouw gegevens.
 
 Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw instelling, via SURFconext aan welke dienst wordt doorgegeven. Ook kun je zien welke gegevens door SURFconext worden opgeslagen en bij welke diensten je in het verleden bent ingelogd via SURFconext.</target>
+        <jms:reference-file line="16">/../src/OpenConext/ProfileBundle/Resources/views/Introduction/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2cd8741e2e784f6e2df5165585c332d6be98812c" resname="profile.introduction.purpose.title">
-        <jms:reference-file line="15">views/Introduction/overview.html.twig</jms:reference-file>
         <source>profile.introduction.purpose.title</source>
-        <target>Wat kun je op deze profielpagina?
+        <target xml:space="preserve">Wat kun je op deze profielpagina?
 </target>
+        <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/Introduction/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3bc6272408dd954ac55ea238358d3603526cfefb" resname="profile.introduction.short_title">
-        <jms:reference-file line="4">views/Introduction/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="5">Resources/views/navigation-tabs.html.twig</jms:reference-file>
         <source>profile.introduction.short_title</source>
         <target>Introductie</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/Introduction/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f554f3775d3630e1d20047b07d2b2e7735f58970" resname="profile.locale.choose_locale">
-        <jms:reference-file line="73">Form/Type/SwitchLocaleType.php</jms:reference-file>
         <source>profile.locale.choose_locale</source>
         <target>Kies taal</target>
+        <jms:reference-file line="73">/../src/OpenConext/ProfileBundle/Form/Type/SwitchLocaleType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="0135c23e335a69b86430fa515b01d20cb65a21c4" resname="profile.locale.en">
-        <jms:reference-file line="168">Resources/views/translations.html.twig</jms:reference-file>
         <source>profile.locale.en</source>
         <target>EN</target>
+        <jms:reference-file line="168">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6f6d681a481879428f3cb1fedecc96d9774eecbb" resname="profile.locale.locale_change_fail">
-        <jms:reference-file line="172">Resources/views/translations.html.twig</jms:reference-file>
         <source>profile.locale.locale_change_fail</source>
         <target>Kon taal niet veranderen</target>
+        <jms:reference-file line="172">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7b6a058e52a45bcdc469105f7313e05eb39ad69b" resname="profile.locale.locale_change_success">
-        <jms:reference-file line="171">Resources/views/translations.html.twig</jms:reference-file>
         <source>profile.locale.locale_change_success</source>
         <target>Taal veranderd</target>
+        <jms:reference-file line="171">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e2fbaef81b77d24930074533408e4d9fd514dcd2" resname="profile.locale.nl">
-        <jms:reference-file line="169">Resources/views/translations.html.twig</jms:reference-file>
         <source>profile.locale.nl</source>
         <target>NL</target>
+        <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_profile.account_data">
-        <jms:reference-file line="19">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data</source>
         <target>Accountgegevens</target>
+        <jms:reference-file line="19">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_profile.account_data_explanation">
-        <jms:reference-file line="20">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_explanation</source>
         <target>Van jouw instelling hebben wij de volgende gegevens ontvangen:</target>
+        <jms:reference-file line="20">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
-        <jms:reference-file line="26">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_origin</source>
         <target>Gegevens afkomstig van je instelling. Identifier + nummers gegenereerd door SURFconext</target>
+        <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
-        <jms:reference-file line="30">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.account_data_retention_period</source>
         <target>Tot 3 jaar na laatste inlog.</target>
+        <jms:reference-file line="30">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b172b6b32cc00171f63b2834d2710be9a0e882fd" resname="profile.my_profile.attributes_information_link_title">
+        <source>profile.my_profile.attributes_information_link_title</source>
+        <target>Attributen in SURFconext</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_profile.consent_data">
-        <jms:reference-file line="84">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data</source>
         <target>Toestemmingsgegevens</target>
+        <jms:reference-file line="84">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
-        <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_explanation</source>
         <target>Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw persoonsgegevens met de dienst waar je wilt inloggen te delen. SURFconext slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder</target>
+        <jms:reference-file line="85">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
-        <jms:reference-file line="91">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_origin</source>
         <target>Gegenereerd door SURFconext</target>
+        <jms:reference-file line="91">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
-        <jms:reference-file line="95">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.consent_data_retention_period</source>
         <target>Tot 3 jaar na laatste inlog.</target>
+        <jms:reference-file line="95">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
-        <jms:reference-file line="25">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="73">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="90">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.data_origin</source>
         <target>Herkomst</target>
+        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="73">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="90">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4a5e93354a2914345d2944111430814f569181d8" resname="profile.my_profile.data_retention_period">
-        <jms:reference-file line="29">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="77">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="94">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.data_retention_period</source>
         <target>Bewaartermijn</target>
+        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="94">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
-        <jms:reference-file line="10">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.explanation</source>
-        <target>SURFconext slaat deze gegevens op om je eenvoudig in te kunnen laten loggen bij verschillende (cloud)diensten. Jouw instelling bepaalt welke diensten voor jou toegankelijk zijn via SURFconext. De meeste diensten die je via SURFconext benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij het 'Mijn Diensten'-tabblad.</target>
+        <target>SURFconext slaat deze gegevens op om je eenvoudig in te kunnen laten loggen bij verschillende (cloud)diensten. Jouw instelling bepaalt welke diensten voor jou toegankelijk zijn via SURFconext. De meeste diensten die je via SURFconext benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij %my_services_link%.</target>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
-        <jms:reference-file line="9">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.introduction</source>
-        <target>Bekijk hier welke persoonsgegevens SURFconext van jou heeft opgeslagen. Jouw persoonsgegevens worden in SURFconext 'attributen' genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor meer gedetailleerde informatie over deze attributen heeft SURFconext een technische informatiepagina ingericht: https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext.</target>
+        <target>Bekijk hier welke persoonsgegevens SURFconext van jou heeft opgeslagen. Jouw persoonsgegevens worden in SURFconext 'attributen' genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor meer gedetailleerde informatie over deze attributen heeft SURFconext een technische informatiepagina ingericht:</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
-        <jms:reference-file line="67">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data</source>
         <target>Loggegevens</target>
+        <jms:reference-file line="67">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_profile.logging_data_explanation">
-        <jms:reference-file line="68">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_explanation</source>
         <target>SURFconext onthoudt tijdelijk wanneer en vanaf welk IP adres je gebruik maakt van SURFconext en bij welke diensten je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van SURFconext.</target>
+        <jms:reference-file line="68">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_profile.logging_data_origin">
-        <jms:reference-file line="74">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_origin</source>
         <target>Gegenereerd door SURFconext</target>
+        <jms:reference-file line="74">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="022985074778367fd79099181eb0736479d72bc3" resname="profile.my_profile.logging_data_retention_period">
-        <jms:reference-file line="78">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.logging_data_retention_period</source>
         <target>6 maanden. Na 6 maanden worden de logbestanden geanonimiseerd.</target>
+        <jms:reference-file line="78">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
-        <jms:reference-file line="8">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.long_title</source>
         <target>Details van jouw SURFconext-profiel</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a889019ee05f5be48abcfacba0b63235275ce299" resname="profile.my_profile.pi_processing">
-        <jms:reference-file line="11">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.pi_processing</source>
         <target>Let op: jouw instelling is verantwoordelijk voor de persoonsgegevens die je hier ziet. SURFconext laat slechts de informatie zien zoals ontvangen van jouw instelling.</target>
+        <jms:reference-file line="11">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cc93ed7bab761ec4c240fa28983bc1f069328991" resname="profile.my_profile.questions">
-        <jms:reference-file line="16">views/MyProfile/overview.html.twig</jms:reference-file>
         <source>profile.my_profile.questions</source>
         <target>Heb je vragen over je persoonsgegevens? Neem dan contact op met je instelling via:</target>
+        <jms:reference-file line="16">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f1e5e770356348259bcc4b16b55b4fbf30fdeed1" resname="profile.my_profile.short_title">
-        <jms:reference-file line="4">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="10">Resources/views/navigation-tabs.html.twig</jms:reference-file>
         <source>profile.my_profile.short_title</source>
         <target>Mijn profiel</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="41aded5ca8217152487f685b47f640799d76e24f" resname="profile.my_services.attribute_release_description">
-        <jms:reference-file line="62">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.attribute_release_description</source>
         <target>Deze dienst ontvangt de volgende gegevens over jou:</target>
+        <jms:reference-file line="62">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3bafef555140350349fa9fdb0ffecad23694a736" resname="profile.my_services.consent_last_used_on">
-        <jms:reference-file line="55">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.consent_last_used_on</source>
         <target>Voor het laatst gebruikt op</target>
+        <jms:reference-file line="55">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="927d4519f4715517225aa5df22bf583e6421a0cf" resname="profile.my_services.consent_type">
-        <jms:reference-file line="45">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.consent_type</source>
         <target>Toestemming gegeven door</target>
+        <jms:reference-file line="45">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fc4ed9e167b467c2e26198429db9e75c2914cce6" resname="profile.my_services.error_loading_consent">
-        <jms:reference-file line="15">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.error_loading_consent</source>
         <target>De lijst met diensten waar je bent ingelogd kan niet opgehaald worden.</target>
+        <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4fe6e0fef0fda46518eed058ae7a8411633d205d" resname="profile.my_services.eula">
-        <jms:reference-file line="29">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.eula</source>
         <target>Gebruikersovereenkomst</target>
+        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e792a9988ccfee30143187c270b5e0dffc59020c" resname="profile.my_services.explanation">
-        <jms:reference-file line="9">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation</source>
         <target>Dit overzicht laat alle diensten zien waar je tenminste één keer op bent ingelogd via SURFconext. Ook kun je zien welk deel van jouw persoonsgegevens vanuit jouw instelling naar de dienst is doorgestuurd. De diensten zijn onderverdeeld in twee groepen:</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a92f83f99644130d2de961b6add4752a8ed6c3cc" resname="profile.my_services.explanation.explicit_consent">
-        <jms:reference-file line="11">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation.explicit_consent</source>
         <target>Toestemming door jou: bij een aantal diensten wordt vooraf aan de eerste keer inloggen, expliciet gevraagd om toestemming voor het doorgeven van een aantal persoonsgegevens.</target>
+        <jms:reference-file line="11">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1903f16c642b35604024fbd11029cb099d14bb6e" resname="profile.my_services.explanation.implicit_consent">
-        <jms:reference-file line="12">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explanation.implicit_consent</source>
         <target>Toestemming door instelling: bij sommige diensten wordt niet expliciet toestemming aan jou gevraagd, maar worden de gegevens automatisch doorgegeven na inloggen. In deze gevallen heeft jouw instelling bepaald dat jouw expliciete toestemming niet nodig is. </target>
+        <jms:reference-file line="12">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="286aef124b54c35d42540b3c44ef082c8b86b363" resname="profile.my_services.explicit_consent_given">
-        <jms:reference-file line="48">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.explicit_consent_given</source>
         <target>gebruiker</target>
+        <jms:reference-file line="48">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c815c74e5f7765a5d5e5c419a59bbff5f874a5be" resname="profile.my_services.implicit_consent_given">
-        <jms:reference-file line="50">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.implicit_consent_given</source>
         <target>instelling</target>
+        <jms:reference-file line="50">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="107928a44903768c109c65916394c80a60c49e1e" resname="profile.my_services.long_title">
-        <jms:reference-file line="8">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.long_title</source>
         <target>Diensten via SURFconext</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a56f9f031cd71cad0cbf03e1a523825720214a53" resname="profile.my_services.short_title">
-        <jms:reference-file line="85">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="4">views/MyServices/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="15">Resources/views/navigation-tabs.html.twig</jms:reference-file>
         <source>profile.my_services.short_title</source>
         <target>Mijn diensten</target>
+        <jms:reference-file line="85">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="22e22666c2969a24c385952a44da34ff2d808837" resname="profile.my_services.supportEmail">
-        <jms:reference-file line="37">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.my_services.supportEmail</source>
         <target>E-mailadres support</target>
+        <jms:reference-file line="37">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cc8455ffe1c5bde28802e8445e31e3d1f5c12a7a" resname="profile.navigation.help">
-        <jms:reference-file line="26">Resources/views/layout.html.twig</jms:reference-file>
-        <jms:reference-file line="79">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.navigation.help</source>
         <target>Help</target>
+        <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="79">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="73f3979adec1e8f8b69cd5b18c0bdad323cde224" resname="profile.navigation.terms_of_service">
-        <jms:reference-file line="82">Resources/views/layout.html.twig</jms:reference-file>
         <source>profile.navigation.terms_of_service</source>
         <target>Gebruiksvoorwaarden</target>
+        <jms:reference-file line="82">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
-        <jms:reference-file line="14">views/AttributeSupport/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="39">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="66">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.table.attribute_name</source>
         <target>Attribuut</target>
+        <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="39">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="66">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
-        <jms:reference-file line="15">views/AttributeSupport/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="40">views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="67">views/MyServices/overview.html.twig</jms:reference-file>
         <source>profile.table.attribute_value</source>
         <target>Waarde</target>
+        <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="40">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="67">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>
