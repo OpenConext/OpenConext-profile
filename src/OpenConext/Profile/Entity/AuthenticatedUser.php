@@ -19,11 +19,11 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Exception\InvalidEptiAttributeException;
 use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 
 final class AuthenticatedUser
@@ -34,7 +34,7 @@ final class AuthenticatedUser
     private $nameId;
 
     /**
-     * @var AttributeSet
+     * @var AttributeSetInterface
      */
     private $attributes;
 
