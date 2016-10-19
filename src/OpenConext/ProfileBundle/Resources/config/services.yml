@@ -73,6 +73,7 @@ services:
             - %platform_url%
             - %terms_of_service_url%
             - %profile_explanation_image_path%
+            - %attribute_information_url%
 
     profile.security.authentication.provider:
         public: false
