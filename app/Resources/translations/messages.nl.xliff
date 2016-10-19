@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-18T16:31:45Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2016-10-19T13:54:18Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -123,22 +123,22 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_profile.account_data">
         <source>profile.my_profile.account_data</source>
         <target>Accountgegevens</target>
-        <jms:reference-file line="19">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_profile.account_data_explanation">
         <source>profile.my_profile.account_data_explanation</source>
         <target>Van jouw instelling hebben wij de volgende gegevens ontvangen:</target>
-        <jms:reference-file line="20">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="22">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
         <source>profile.my_profile.account_data_origin</source>
         <target>Gegevens afkomstig van je instelling. Identifier + nummers gegenereerd door SURFconext</target>
-        <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="28">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
         <source>profile.my_profile.account_data_retention_period</source>
         <target>Tot 3 jaar na laatste inlog.</target>
-        <jms:reference-file line="30">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="32">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b172b6b32cc00171f63b2834d2710be9a0e882fd" resname="profile.my_profile.attributes_information_link_title">
         <source>profile.my_profile.attributes_information_link_title</source>
@@ -148,36 +148,36 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_profile.consent_data">
         <source>profile.my_profile.consent_data</source>
         <target>Toestemmingsgegevens</target>
-        <jms:reference-file line="84">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="86">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
         <source>profile.my_profile.consent_data_explanation</source>
         <target>Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw persoonsgegevens met de dienst waar je wilt inloggen te delen. SURFconext slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder</target>
-        <jms:reference-file line="85">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="87">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
         <source>profile.my_profile.consent_data_origin</source>
         <target>Gegenereerd door SURFconext</target>
-        <jms:reference-file line="91">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="93">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
         <source>profile.my_profile.consent_data_retention_period</source>
         <target>Tot 3 jaar na laatste inlog.</target>
-        <jms:reference-file line="95">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="97">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
         <source>profile.my_profile.data_origin</source>
         <target>Herkomst</target>
-        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="73">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="90">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="27">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="75">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="92">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4a5e93354a2914345d2944111430814f569181d8" resname="profile.my_profile.data_retention_period">
         <source>profile.my_profile.data_retention_period</source>
         <target>Bewaartermijn</target>
-        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="94">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="31">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="79">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="96">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
         <source>profile.my_profile.explanation</source>
@@ -192,22 +192,22 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
         <source>profile.my_profile.logging_data</source>
         <target>Loggegevens</target>
-        <jms:reference-file line="67">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="69">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_profile.logging_data_explanation">
         <source>profile.my_profile.logging_data_explanation</source>
         <target>SURFconext onthoudt tijdelijk wanneer en vanaf welk IP adres je gebruik maakt van SURFconext en bij welke diensten je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van SURFconext.</target>
-        <jms:reference-file line="68">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="70">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_profile.logging_data_origin">
         <source>profile.my_profile.logging_data_origin</source>
         <target>Gegenereerd door SURFconext</target>
-        <jms:reference-file line="74">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="76">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="022985074778367fd79099181eb0736479d72bc3" resname="profile.my_profile.logging_data_retention_period">
         <source>profile.my_profile.logging_data_retention_period</source>
         <target>6 maanden. Na 6 maanden worden de logbestanden geanonimiseerd.</target>
-        <jms:reference-file line="78">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="80">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
         <source>profile.my_profile.long_title</source>
@@ -223,6 +223,11 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <source>profile.my_profile.questions</source>
         <target>Heb je vragen over je persoonsgegevens? Neem dan contact op met je instelling via:</target>
         <jms:reference-file line="16">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c35bcd376a8ad4ea3b6e7c4a297f3f8622d6927e" resname="profile.my_profile.questions_no_support_contact_email">
+        <source>profile.my_profile.questions_no_support_contact_email</source>
+        <target>Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je instelling.</target>
+        <jms:reference-file line="18">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f1e5e770356348259bcc4b16b55b4fbf30fdeed1" resname="profile.my_profile.short_title">
         <source>profile.my_profile.short_title</source>
@@ -288,7 +293,8 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="a56f9f031cd71cad0cbf03e1a523825720214a53" resname="profile.my_services.short_title">
         <source>profile.my_services.short_title</source>
         <target>Mijn diensten</target>
-        <jms:reference-file line="85">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="87">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
         <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
@@ -312,14 +318,14 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <source>profile.table.attribute_name</source>
         <target>Attribuut</target>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="39">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="41">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="66">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
         <source>profile.table.attribute_value</source>
         <target>Waarde</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="40">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="42">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="67">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
     </body>
