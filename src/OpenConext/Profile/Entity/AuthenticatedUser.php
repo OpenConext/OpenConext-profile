@@ -19,7 +19,6 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Exception\InvalidEptiAttributeException;
 use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
