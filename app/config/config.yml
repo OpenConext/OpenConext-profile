@@ -104,7 +104,7 @@ surfnet_saml:
             enabled: true
             entity_id: %saml_remote_idp_entity_id%
             sso_url: %saml_remote_idp_sso_url%
-            certificate: %saml_remote_idp_certificate%
+            certificate_file: %saml_remote_idp_certificate_file%
 
 open_conext_engine_block_api_client:
     http_client:
