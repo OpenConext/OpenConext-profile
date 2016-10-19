@@ -7,7 +7,7 @@
 {% block content %}
     <h1>{{ 'profile.my_profile.long_title'|trans }}</h1>
     <p>{{ 'profile.my_profile.introduction'|trans }} <a href="{{ global_view_parameters.attributeInformationUrl }}">{{ 'profile.my_profile.attributes_information_link_title'|trans }}</a>.</p>
-    <p>{{ 'profile.my_profile.explanation'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans ~ '</a>'})|raw }}</p>
+    <p>{{ 'profile.my_profile.explanation'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}</p>
     <p>{{ 'profile.my_profile.pi_processing'|trans }}</p>
 
     {% if user.hasSupportContactEmail %}
