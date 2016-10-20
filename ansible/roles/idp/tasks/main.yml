@@ -1,0 +1,12 @@
+---
+- name: Create EngineBlock IdP certificate directory
+  file:
+    path: '{{ engine_idp_certificate_directory }}'
+    state: directory
+    recurse: true
+    mode: 0755
+
+- name: Copy EngineBlock IdP certificate
+  copy:
+    src: certs/engineblock.crt
+    dest: '{{ engine_idp_certificate_directory }}/engineblock.crt'
