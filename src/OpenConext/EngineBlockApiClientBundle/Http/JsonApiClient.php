@@ -83,6 +83,45 @@ class JsonApiClient
         return $data;
     }
 
+    public function post($resource, array $data)
+    {
+        $response = $this->httpClient->request(
+            'POST',
+            $resource,
+            [
+                'exceptions' => false,
+                'body' => json_encode($data)
+            ]
+        );
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode === 404) {
+            throw new ResourceNotFoundException(sprintf('Resource "%s" not found', $resource));
+        }
+
+        if ($statusCode !== 200) {
+            throw new InvalidResponseException(
+                sprintf(
+                    'Request to resource "%s" returned an invalid response with status code %s',
+                    $resource,
+                    $statusCode,
+                    $response->getBody()
+                )
+            );
+        }
+
+        try {
+            $data = $this->parseJson((string) $response->getBody());
+        } catch (InvalidArgumentException $e) {
+            throw new MalformedResponseException(
+                sprintf('Cannot read resource "%s": malformed JSON returned', $resource)
+            );
+        }
+
+        return $data;
+    }
+
     /**
      * @param       $path
      * @param array $parameters
