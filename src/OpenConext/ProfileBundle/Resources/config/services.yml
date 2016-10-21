@@ -216,6 +216,7 @@ services:
         arguments:
             - @profile.service.consent
             - @profile.consent.blacklist_filter
+            - @openconext_eb_api.service.attribute_release_policy
 
     profile.service.support_contact_email:
         public: false

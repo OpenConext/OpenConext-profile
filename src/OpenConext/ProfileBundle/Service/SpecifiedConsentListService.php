@@ -18,8 +18,8 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
 use OpenConext\Profile\Value\Consent;
-use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use Surfnet\SamlBundle\SAML2\Attribute\Filter\AttributeFilter;
@@ -37,15 +37,23 @@ class SpecifiedConsentListService
     private $attributeFilter;
 
     /**
+     * @var AttributeReleasePolicyService
+     */
+    private $attributeReleasePolicyService;
+
+    /**
      * @param ConsentService $consentService
      * @param AttributeFilter $attributeFilter
+     * @param AttributeReleasePolicyService $attributeReleasePolicyService
      */
     public function __construct(
         ConsentService $consentService,
-        AttributeFilter $attributeFilter
+        AttributeFilter $attributeFilter,
+        AttributeReleasePolicyService $attributeReleasePolicyService
     ) {
-        $this->consentService  = $consentService;
-        $this->attributeFilter = $attributeFilter;
+        $this->consentService                = $consentService;
+        $this->attributeFilter               = $attributeFilter;
+        $this->attributeReleasePolicyService = $attributeReleasePolicyService;
     }
 
     /**
@@ -54,13 +62,8 @@ class SpecifiedConsentListService
      */
     public function getListFor(AuthenticatedUser $user)
     {
-        $consentList        = $this->consentService->findAllFor($user);
-        $filteredAttributes = $user->getAttributes()->apply($this->attributeFilter);
+        $consentList = $this->consentService->findAllFor($user);
 
-        $specifiedConsents = $consentList->map(function (Consent $consent) use ($filteredAttributes) {
-            return SpecifiedConsent::specifies($consent, $filteredAttributes);
-        });
-
-        return SpecifiedConsentList::createWith($specifiedConsents);
+        return $this->attributeReleasePolicyService->applyAttributeReleasePolicies($consentList, $user->getAttributes());
     }
 }
