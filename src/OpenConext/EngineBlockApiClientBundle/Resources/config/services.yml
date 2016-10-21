@@ -22,3 +22,9 @@ services:
         class: OpenConext\EngineBlockApiClientBundle\Repository\ContactPersonRepository
         arguments:
             - @openconext_eb_api.service.api
+
+    openconext_eb_api.service.attribute_release_policy:
+        public: false
+        class: OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService
+        arguments:
+            - @openconext_eb_api.service.api
