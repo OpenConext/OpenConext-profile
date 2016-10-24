@@ -51,7 +51,13 @@
                 {% endif %}
                 <tr>
                     <td title="{{ attributeUrn }}">
-                        <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
+                        {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+
+                        {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+                            <strong>{{ attributeUrn }}</strong>
+                        {% else %}
+                            <strong>{{ translatedAttributeName }}</strong>
+                        {% endif %}
                     </td>
                     <td>
                         {% if attribute.value is iterable %}
