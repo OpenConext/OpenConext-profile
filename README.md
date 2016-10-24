@@ -17,9 +17,12 @@ Profile is basically a SAML SP which displays the attributes it receives
 from the IdP (OpenConext Engineblock) and requests and displays additional
 information via EngineBlock's internal API.
 
+## Requirements
+- PHP 5.6
+
 ## Development
-To setup your development environment, run `vagrant up` in the project
-directory.
+To setup your development environment, run `vagrant up` in the project directory.
+Make sure an IdP (OpenConext Engineblock) is configured and running correctly.
 
 ## Releases
 `RMT` is used for tagging releases. Run `./RMT release` to tag a release.  Make
@@ -38,7 +41,12 @@ deployment target.
 Make sure to set the correct Symfony environment by setting or exporting
 `SYMFONY_ENV`.
 
-# License
+## Texts and translations
+Updating the texts (and translations of those texts) in the web interface
+can be done on an installation that runs in `DEV` mode. Make sure you log
+into profile at `https://profile.<yourdomain>`. Then go to
+`https://profile.<yourdomain>/app_dev.php/_trans/` to update the strings.
 
+# License
 This project is licensed under version 2.0 of the Apache License, as described
 in the file [LICENSE](LICENSE).

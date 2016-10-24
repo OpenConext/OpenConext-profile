@@ -20,8 +20,12 @@ namespace OpenConext\ProfileBundle\Security\Authentication\Provider;
 
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
+use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetFactory;
+use Surfnet\SamlBundle\SAML2\Attribute\ConfigurableAttributeSetFactory;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
@@ -39,6 +43,7 @@ class SamlProvider implements AuthenticationProviderInterface
 
     public function authenticate(TokenInterface $token)
     {
+        ConfigurableAttributeSetFactory::configureWhichAttributeSetToCreate(AttributeSetWithFallbacks::class);
         $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
 
         $authenticatingAuthorities = array_map(

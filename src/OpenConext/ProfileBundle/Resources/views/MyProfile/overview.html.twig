@@ -6,14 +6,16 @@
 
 {% block content %}
     <h1>{{ 'profile.my_profile.long_title'|trans }}</h1>
-    <p>{{ 'profile.my_profile.introduction'|trans }}</p>
-    <p>{{ 'profile.my_profile.explanation'|trans }}</p>
+    <p>{{ 'profile.my_profile.introduction'|trans }} <a href="{{ global_view_parameters.attributeInformationUrl }}">{{ 'profile.my_profile.attributes_information_link_title'|trans }}</a>.</p>
+    <p>{{ 'profile.my_profile.explanation'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}</p>
     <p>{{ 'profile.my_profile.pi_processing'|trans }}</p>
 
     {% if user.hasSupportContactEmail %}
         {% set supportContactEmail = user.supportContactEmail|replace({'mailto:': ''}) %}
 
     <p>{{ 'profile.my_profile.questions'|trans }} <a href="mailto:{{ supportContactEmail }}"><i class="prepended fa fa-envelope"></i>{{ supportContactEmail }}</a>.</p>
+    {% else %}
+    <p>{{ 'profile.my_profile.questions_no_support_contact_email'|trans }}</p>
     {% endif %}
 
     <h2><i class="prepended fa fa-user"></i>{{ 'profile.my_profile.account_data'|trans }}</h2>

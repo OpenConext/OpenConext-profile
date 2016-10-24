@@ -26,6 +26,7 @@ use Psr\Log\NullLogger;
 use SAML2_Assertion;
 use SAML2_Compat_ContainerSingleton;
 use SAML2_DOMDocumentFactory;
+use SAML2_Exception_RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -94,7 +95,7 @@ class AuthenticatedUserTest extends TestCase
      */
     public function epti_attribute_cannot_be_set_if_its_value_has_multiple_name_ids_when_creating_an_authenticated_user()
     {
-        $this->setExpectedException(InvalidEptiAttributeException::class, 'exactly one NameID');
+        $this->setExpectedException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
 
         $assertionWithEpti   = $this->getAssertionWithEptiWithTooManyValues();
         $attributeDictionary = $this->getAttributeDictionary();
@@ -113,9 +114,9 @@ class AuthenticatedUserTest extends TestCase
      * @group Attributes
      *
      */
-    public function epti_attribute_cannot_be_set_if_its_value_has_is_a_dom_node_list_when_creating_an_authenticated_user()
+    public function epti_attribute_cannot_be_set_if_its_value_has_no_name_id_when_creating_an_authenticated_user()
     {
-        $this->setExpectedException(InvalidEptiAttributeException::class, 'contain a DOMNodeList');
+        $this->setExpectedException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
 
         $assertionWithEpti   = $this->getAssertionWithEptiWithoutValues();
         $attributeDictionary = $this->getAttributeDictionary();

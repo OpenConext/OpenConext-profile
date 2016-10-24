@@ -19,10 +19,8 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Exception\InvalidEptiAttributeException;
 use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
-use SAML2_Utils;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
@@ -65,25 +63,11 @@ final class AuthenticatedUser
                 continue;
             }
 
-            /** @var \DOMNodeList[] $eptiValues */
             $eptiValues = $attribute->getValue();
-            $eptiDomNodeList = $eptiValues[0];
-
-            if (!$eptiDomNodeList instanceof \DOMNodeList || $eptiDomNodeList->length !== 1) {
-                throw InvalidEptiAttributeException::invalidValue($eptiDomNodeList);
-            }
-
-            $eptiValue  = $eptiDomNodeList->item(0);
-            $eptiNameId = SAML2_Utils::parseNameId($eptiValue);
-
-            $attributes[] = new Attribute($definition, [$eptiNameId['Value']]);
+            $attributes[] = new Attribute($definition, [$eptiValues[0]['Value']]);
         }
 
-        return new self(
-            $assertionAdapter->getNameId(),
-            AttributeSet::create($attributes),
-            $authenticatingAuthorities
-        );
+        return new self($assertionAdapter->getNameId(), AttributeSet::create($attributes), $authenticatingAuthorities);
     }
 
     /**
