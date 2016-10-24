@@ -18,23 +18,6 @@
 
 namespace OpenConext\Profile\Exception;
 
-use DOMNodeList;
-
 class InvalidEptiAttributeException extends RuntimeException
 {
-    public static function invalidValue($value)
-    {
-        if (!$value instanceof DOMNodeList) {
-            return new self(
-                sprintf('Expected EPTI attribute to contain a DOMNodeList, received "%s" ', gettype($value))
-            );
-        }
-
-        return new self(
-            sprintf(
-                'Expected EPTI attribute to contain exactly one NameID as value, received: %s',
-                $value->length
-            )
-        );
-    }
 }

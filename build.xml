@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="ConextOperationsSupport-ci" default="build">
+<project name="Profile-ci" default="build">
     <target name="build"
-            depends="php-lint-ci,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit-ci"/>
+            depends="php-lint-ci,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit-ci,php-security-checker"/>
 
     <target name="get-changeset.php.raw"
             description="creates a list of changed php files separated by newline">
@@ -43,6 +43,14 @@
             <arg value="echo '${changeset.php.spacesep}' | xargs -n 1 -P 4 php -l 1>/dev/null"/>
         </exec>
         <echo message="OK"/>
+    </target>
+
+    <target name="php-security-checker" description="Check your composer dependencies for insecure components">
+        <exec executable="vendor/bin/security-checker" failonerror="true">
+            <arg value="security:check"/>
+            <arg value="--verbose"/>
+            <arg value="composer.lock"/>
+        </exec>
     </target>
 
     <target name="phpmd-ci"
