@@ -64,6 +64,9 @@ class SpecifiedConsentListService
     {
         $consentList = $this->consentService->findAllFor($user);
 
-        return $this->attributeReleasePolicyService->applyAttributeReleasePolicies($consentList, $user->getAttributes());
+        return $this->attributeReleasePolicyService->applyAttributeReleasePolicies(
+            $consentList,
+            $user->getAttributes()
+        );
     }
 }

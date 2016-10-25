@@ -60,6 +60,8 @@ final class AttributeReleasePolicyService
             }
 
             $mappedAttributes[$name] = $attribute->getValue();
+
+            // Remember the attribute definitions so we can more easily build the attributes again
             $definitions[$name] = $attribute->getAttributeDefinition();
         }
 
