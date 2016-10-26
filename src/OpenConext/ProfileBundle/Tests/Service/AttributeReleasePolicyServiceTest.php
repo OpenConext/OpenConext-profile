@@ -54,7 +54,6 @@ class AttributeReleasePolicyServiceTest extends TestCase
         $client->shouldReceive('post')
             ->withArgs(
                 [
-                    '/arp',
                     [
                         'entityIds'  => [
                             'some-entity-id',
@@ -65,6 +64,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
                             'urn:oid:0.0.0.0.0.2' => ['another-value'],
                         ],
                     ],
+                    '/arp',
                 ]
             )
             ->andReturn([

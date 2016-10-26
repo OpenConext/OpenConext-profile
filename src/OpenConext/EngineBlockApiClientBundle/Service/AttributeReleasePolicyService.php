@@ -65,10 +65,10 @@ final class AttributeReleasePolicyService
             $definitions[$name] = $attribute->getAttributeDefinition();
         }
 
-        $response = $this->jsonApiClient->post('/arp', [
+        $response = $this->jsonApiClient->post([
             'entityIds'  => $entityIds,
-            'attributes' => $mappedAttributes
-        ]);
+            'attributes' => !empty($mappedAttributes) ? $mappedAttributes : new stdClass()
+        ], '/arp');
 
         return SpecifiedConsentList::createWith(
             $consentList->map(

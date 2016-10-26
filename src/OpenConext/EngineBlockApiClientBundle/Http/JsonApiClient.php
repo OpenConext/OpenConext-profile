@@ -83,8 +83,16 @@ class JsonApiClient
         return $data;
     }
 
-    public function post($resource, array $data)
+    /**
+     * @param mixed $data
+     * @param string $path
+     * @param array $parameters
+     * @return mixed
+     */
+    public function post($data, $path, $parameters = [])
     {
+        $resource = $this->buildResourcePath($path, $parameters);
+
         $response = $this->httpClient->request(
             'POST',
             $resource,
@@ -123,7 +131,7 @@ class JsonApiClient
     }
 
     /**
-     * @param       $path
+     * @param string $path
      * @param array $parameters
      * @return string
      * @throws RuntimeException
