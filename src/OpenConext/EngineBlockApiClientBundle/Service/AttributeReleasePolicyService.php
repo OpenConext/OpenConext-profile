@@ -18,13 +18,17 @@
 
 namespace OpenConext\EngineBlockApiClientBundle\Service;
 
+use Assert\Assertion;
+use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
+use stdClass;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 
 final class AttributeReleasePolicyService
@@ -34,9 +38,15 @@ final class AttributeReleasePolicyService
      */
     private $jsonApiClient;
 
-    public function __construct(JsonApiClient $jsonApiClient)
+    /**
+     * @var AttributeDictionary
+     */
+    private $attributeDictionary;
+
+    public function __construct(JsonApiClient $jsonApiClient, AttributeDictionary $attributeDictionary)
     {
         $this->jsonApiClient = $jsonApiClient;
+        $this->attributeDictionary = $attributeDictionary;
     }
 
     /**
@@ -51,18 +61,17 @@ final class AttributeReleasePolicyService
         });
 
         $mappedAttributes = [];
-        $definitions = [];
         foreach ($attributeSet as $attribute) {
-            $name = $attribute->getAttributeDefinition()->getUrnMace();
+            $mace = $attribute->getAttributeDefinition()->getUrnMace();
+            $oid  = $attribute->getAttributeDefinition()->getUrnOid();
 
-            if ($name === null) {
-                $name = $attribute->getAttributeDefinition()->getUrnOid();
+            if ($mace !== null) {
+                $mappedAttributes[$mace] = $attribute->getValue();
             }
 
-            $mappedAttributes[$name] = $attribute->getValue();
-
-            // Remember the attribute definitions so we can more easily build the attributes again
-            $definitions[$name] = $attribute->getAttributeDefinition();
+            if ($oid !== null) {
+                $mappedAttributes[$oid] = $attribute->getValue();
+            }
         }
 
         $response = $this->jsonApiClient->post([
@@ -70,19 +79,34 @@ final class AttributeReleasePolicyService
             'attributes' => !empty($mappedAttributes) ? $mappedAttributes : new stdClass()
         ], '/arp');
 
-        return SpecifiedConsentList::createWith(
-            $consentList->map(
-                function (Consent $consent) use ($response, $definitions) {
-                    $entityId = $consent->getServiceProvider()->getEntity()->getEntityId()->getEntityId();
+        $specifiedConsents = $consentList->map(
+            function (Consent $consent) use ($response) {
+                $entityId = $consent->getServiceProvider()->getEntity()->getEntityId()->getEntityId();
 
-                    $attributes = [];
-                    foreach ($response[$entityId] as $attributeName => $attributeValue) {
-                        $attributes[] = new Attribute($definitions[$attributeName], $attributeValue);
-                    }
-
-                    return SpecifiedConsent::specifies($consent, AttributeSetWithFallbacks::create($attributes));
+                if (!isset($response[$entityId])) {
+                    throw new InvalidResponseException(
+                        sprintf(
+                            'EntityID "%s" was not found in the ARP response (entityIDs: %s)',
+                            $entityId,
+                            join(', ', array_keys($response))
+                        )
+                    );
                 }
-            )
+
+                $attributes = [];
+                foreach ($response[$entityId] as $attributeName => $attributeValue) {
+                    $attributeDefinition = $this->attributeDictionary->findAttributeDefinitionByUrn($attributeName);
+
+                    $attribute = new Attribute($attributeDefinition, $attributeValue);
+                    if (!in_array($attribute, $attributes)) {
+                        $attributes[] = $attribute;
+                    }
+                }
+
+                return SpecifiedConsent::specifies($consent, AttributeSetWithFallbacks::create($attributes));
+            }
         );
+
+        return SpecifiedConsentList::createWith($specifiedConsents);
     }
 }

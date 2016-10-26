@@ -38,6 +38,7 @@ use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use PHPUnit_Framework_TestCase as TestCase;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeReleasePolicyServiceTest extends TestCase
@@ -48,8 +49,19 @@ class AttributeReleasePolicyServiceTest extends TestCase
      */
     public function consent_list_and_attributes_are_correctly_converted_to_a_request_and_the_response_is_mapped_correctly_to_a_result()
     {
+        $someAttributeDefinition = new AttributeDefinition(
+            'someAttribute',
+            'urn:mace:some-attribute',
+            'urn:oid:0.0.0.0.0.1'
+        );
+        $anotherAttributeDefinition = new AttributeDefinition('anotherAttribute', null, 'urn:oid:0.0.0.0.0.2');
+
+        $attributeDictionary = new AttributeDictionary();
+        $attributeDictionary->addAttributeDefinition($someAttributeDefinition);
+        $attributeDictionary->addAttributeDefinition($anotherAttributeDefinition);
+
         $client = Mockery::mock(JsonApiClient::class);
-        $arpService = new AttributeReleasePolicyService($client);
+        $arpService = new AttributeReleasePolicyService($client, $attributeDictionary);
 
         $client->shouldReceive('post')
             ->withArgs(
@@ -61,6 +73,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
                         ],
                         'attributes' => [
                             'urn:mace:some-attribute' => ['some-value'],
+                            'urn:oid:0.0.0.0.0.1' => ['some-value'],
                             'urn:oid:0.0.0.0.0.2' => ['another-value'],
                         ],
                     ],
@@ -69,7 +82,9 @@ class AttributeReleasePolicyServiceTest extends TestCase
             )
             ->andReturn([
                 'some-entity-id' => [
-                    'urn:mace:some-attribute' => ['some-value']
+                    'urn:mace:some-attribute' => ['some-value'],
+                    'urn:oid:0.0.0.0.0.1' => ['some-value'],
+                    'urn:oid:0.0.0.0.0.2' => ['another-value']
                 ],
                 'another-entity-id' => [
                     'urn:oid:0.0.0.0.0.2' => ['another-value']
@@ -110,26 +125,15 @@ class AttributeReleasePolicyServiceTest extends TestCase
         );
         $consentList  = new ConsentList([$someConsent, $anotherConsent]);
 
-        $someAttribute = new Attribute(
-            new AttributeDefinition(
-                'someAttribute',
-                'urn:mace:some-attribute',
-                'urn:oid:0.0.0.0.0.1'
-            ),
-            ['some-value']
-        );
-        $anotherAttribute = new Attribute(
-            new AttributeDefinition(
-                'anotherAttribute',
-                null,
-                'urn:oid:0.0.0.0.0.2'
-            ),
-            ['another-value']
-        );
-        $attributeSet = AttributeSet::create([$someAttribute, $anotherAttribute,]);
+        $someAttribute    = new Attribute($someAttributeDefinition, ['some-value']);
+        $anotherAttribute = new Attribute($anotherAttributeDefinition, ['another-value']);
+        $attributeSet     = AttributeSet::create([$someAttribute, $anotherAttribute,]);
 
         $expectedResult = SpecifiedConsentList::createWith([
-            SpecifiedConsent::specifies($someConsent, AttributeSetWithFallbacks::create([$someAttribute])),
+            SpecifiedConsent::specifies(
+                $someConsent,
+                AttributeSetWithFallbacks::create([$someAttribute, $anotherAttribute])
+            ),
             SpecifiedConsent::specifies($anotherConsent, AttributeSetWithFallbacks::create([$anotherAttribute]))
         ]);
 
