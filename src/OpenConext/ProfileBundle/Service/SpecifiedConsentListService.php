@@ -19,10 +19,8 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
-use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\Profile\Entity\AuthenticatedUser;
-use Surfnet\SamlBundle\SAML2\Attribute\Filter\AttributeFilter;
 
 class SpecifiedConsentListService
 {
@@ -32,27 +30,19 @@ class SpecifiedConsentListService
     private $consentService;
 
     /**
-     * @var AttributeFilter
-     */
-    private $attributeFilter;
-
-    /**
      * @var AttributeReleasePolicyService
      */
     private $attributeReleasePolicyService;
 
     /**
      * @param ConsentService $consentService
-     * @param AttributeFilter $attributeFilter
      * @param AttributeReleasePolicyService $attributeReleasePolicyService
      */
     public function __construct(
         ConsentService $consentService,
-        AttributeFilter $attributeFilter,
         AttributeReleasePolicyService $attributeReleasePolicyService
     ) {
         $this->consentService                = $consentService;
-        $this->attributeFilter               = $attributeFilter;
         $this->attributeReleasePolicyService = $attributeReleasePolicyService;
     }
 
