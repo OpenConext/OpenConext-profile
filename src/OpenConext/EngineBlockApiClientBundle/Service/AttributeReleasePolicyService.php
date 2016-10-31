@@ -74,10 +74,11 @@ final class AttributeReleasePolicyService
             }
         }
 
-        $response = $this->jsonApiClient->post([
+        $data = [
             'entityIds'  => $entityIds,
             'attributes' => !empty($mappedAttributes) ? $mappedAttributes : new stdClass()
-        ], '/arp');
+        ];
+        $response = $this->jsonApiClient->post($data, '/arp');
 
         $specifiedConsents = $consentList->map(
             function (Consent $consent) use ($response) {
