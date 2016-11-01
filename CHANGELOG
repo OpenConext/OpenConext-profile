@@ -2,6 +2,9 @@
 VERSION 0  FIRST PRE-RELEASE OF PROFILE APPLICATION EXTRACTED FROM ENGINEBLOCK
 ==============================================================================
 
+   Version 0.5 - Apply ARP to attributes in My Services, requires EB >= 5.1
+      01/11/2016 13:16  0.5.0  initial release
+
    Version 0.4 - Update Profile with improvements
       24/10/2016 13:11  0.4.0  initial release
 
