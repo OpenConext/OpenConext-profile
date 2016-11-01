@@ -18,7 +18,6 @@
 
 namespace OpenConext\EngineBlockApiClientBundle\Service;
 
-use Assert\Assertion;
 use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Value\Consent;
@@ -27,7 +26,9 @@ use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use stdClass;
+use Surfnet\SamlBundle\Exception\UnknownUrnException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 
@@ -53,6 +54,7 @@ final class AttributeReleasePolicyService
      * @param ConsentList $consentList
      * @param AttributeSetInterface $attributeSet
      * @return SpecifiedConsentList
+     * @SuppressWarnings(PHPMD.NPathComplexity) Build and mapping logic causes complexity
      */
     public function applyAttributeReleasePolicies(ConsentList $consentList, AttributeSetInterface $attributeSet)
     {
@@ -96,7 +98,11 @@ final class AttributeReleasePolicyService
 
                 $attributes = [];
                 foreach ($response[$entityId] as $attributeName => $attributeValue) {
-                    $attributeDefinition = $this->attributeDictionary->findAttributeDefinitionByUrn($attributeName);
+                    try {
+                        $attributeDefinition = $this->attributeDictionary->getAttributeDefinitionByUrn($attributeName);
+                    } catch (UnknownUrnException $exception) {
+                        $attributeDefinition = new AttributeDefinition($attributeName, $attributeName, $attributeName);
+                    }
 
                     $attribute = new Attribute($attributeDefinition, $attributeValue);
                     if (!in_array($attribute, $attributes)) {
