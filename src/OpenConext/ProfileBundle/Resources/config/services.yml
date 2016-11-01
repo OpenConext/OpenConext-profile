@@ -215,7 +215,7 @@ services:
         class: OpenConext\ProfileBundle\Service\SpecifiedConsentListService
         arguments:
             - @profile.service.consent
-            - @profile.consent.blacklist_filter
+            - @openconext_eb_api.service.attribute_release_policy
 
     profile.service.support_contact_email:
         public: false
@@ -223,6 +223,3 @@ services:
         arguments:
             - @openconext_eb_api.repository.support_contact_information
 
-    profile.consent.blacklist_filter:
-        public: false
-        class: OpenConext\ProfileBundle\Consent\BlacklistFilter

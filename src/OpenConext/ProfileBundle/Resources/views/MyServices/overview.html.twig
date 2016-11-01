@@ -59,7 +59,11 @@
                             </tr>
                         </table>
                         <div class="service-attributes">
+                            {% if specifiedConsent.releasedAttributes is empty %}
+                            <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
+                            {% else %}
                             <p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
+
                             <table class="mdl-data-table">
                                 <thead>
                                 <tr>
@@ -95,6 +99,7 @@
                                 {% endfor %}
                                 </tbody>
                             </table>
+                            {% endif %}
                         </div>
                     </div>
                 </td>
