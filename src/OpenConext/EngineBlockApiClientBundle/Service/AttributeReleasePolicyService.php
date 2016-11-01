@@ -54,7 +54,7 @@ final class AttributeReleasePolicyService
      * @param ConsentList $consentList
      * @param AttributeSetInterface $attributeSet
      * @return SpecifiedConsentList
-     * @SuppressWarnings(PHPMD.NPathComplexity) Build and mapping logic causes complexity
+     * @SuppressWarnings(PHPMD.NPathComplexity, PHPMD.CouplingBetweenObjects) Build and mapping logic causes complexity
      */
     public function applyAttributeReleasePolicies(ConsentList $consentList, AttributeSetInterface $attributeSet)
     {
