@@ -64,7 +64,6 @@ final class ConsentListFactory
     {
         Assert::keyExists($data, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
         Assert::keyExists($data, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
-        Assert::keyExists($data, 'last_used_on', 'Consent JSON structure must contain key "last_used_on"');
         Assert::keyExists($data, 'consent_type', 'Consent JSON structure must contain key "consent_type"');
 
         Assert::choice(
@@ -74,7 +73,6 @@ final class ConsentListFactory
         );
 
         $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['consent_given_on']);
-        $lastUsedOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['last_used_on']);
 
         Assert::isInstanceOf(
             $consentGivenOn,
@@ -83,15 +81,6 @@ final class ConsentListFactory
             sprintf(
                 'Consent given on date must be formatted according to the ISO8601 standard, got "%s"',
                 $data['consent_given_on']
-            )
-        );
-        Assert::isInstanceOf(
-            $lastUsedOn,
-            // We cannot use DateTimeImmutable::class because translation extractions fails on that
-            '\DateTimeImmutable',
-            sprintf(
-                'Last used on date must be formatted according to the ISO8601 standard, got "%s"',
-                $data['last_used_on']
             )
         );
 
@@ -104,7 +93,6 @@ final class ConsentListFactory
         return new Consent(
             self::createServiceProvider($data['service_provider']),
             $consentGivenOn,
-            $lastUsedOn,
             $consentType
         );
     }

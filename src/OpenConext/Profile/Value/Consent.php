@@ -34,11 +34,6 @@ final class Consent
     private $consentGivenOn;
 
     /**
-     * @var DateTimeImmutable
-     */
-    private $lastUsedOn;
-
-    /**
      * @var ConsentType
      */
     private $consentType;
@@ -46,18 +41,15 @@ final class Consent
     /**
      * @param ServiceProvider $serviceProvider
      * @param DateTimeImmutable $consentGivenOn
-     * @param DateTimeImmutable $lastUsedOn
      * @param ConsentType $consentType
      */
     public function __construct(
         ServiceProvider $serviceProvider,
         DateTimeImmutable $consentGivenOn,
-        DateTimeImmutable $lastUsedOn,
         ConsentType $consentType
     ) {
         $this->serviceProvider = $serviceProvider;
         $this->consentGivenOn  = $consentGivenOn;
-        $this->lastUsedOn      = $lastUsedOn;
         $this->consentType     = $consentType;
     }
 
@@ -75,14 +67,6 @@ final class Consent
     public function getConsentGivenOn()
     {
         return $this->consentGivenOn;
-    }
-
-    /**
-     * @return DateTimeImmutable
-     */
-    public function getLastUsedOn()
-    {
-        return $this->lastUsedOn;
     }
 
     /**
