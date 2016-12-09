@@ -240,11 +240,6 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <target>Deze dienst ontvangt de volgende gegevens over jou:</target>
         <jms:reference-file line="65">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3bafef555140350349fa9fdb0ffecad23694a736" resname="profile.my_services.consent_last_used_on">
-        <source>profile.my_services.consent_last_used_on</source>
-        <target>Voor het laatst gebruikt op</target>
-        <jms:reference-file line="55">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="cbc567af195fed58513777f183eafe22542178b1" resname="profile.my_services.consent_first_used_on">
         <source>profile.my_services.consent_first_used_on</source>
         <target>Voor het eerst gebruikt op</target>

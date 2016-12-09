@@ -240,11 +240,6 @@ This profile page gives you insight in which personal data, provided by your ins
         <target>This service receives the following information about you:</target>
         <jms:reference-file line="65">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3bafef555140350349fa9fdb0ffecad23694a736" resname="profile.my_services.consent_last_used_on">
-        <source>profile.my_services.consent_last_used_on</source>
-        <target>Last used on</target>
-        <jms:reference-file line="55">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="cbc567af195fed58513777f183eafe22542178b1" resname="profile.my_services.consent_first_used_on">
         <source>profile.my_services.consent_first_used_on</source>
         <target>First used on</target>
