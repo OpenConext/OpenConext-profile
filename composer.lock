@@ -1506,16 +1506,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v1.10",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "6a4b1eece19b067b17fff718176689b82dc89fb9"
+                "reference": "3f268c25ca5e9748652834faad04525746227ef7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/6a4b1eece19b067b17fff718176689b82dc89fb9",
-                "reference": "6a4b1eece19b067b17fff718176689b82dc89fb9",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/3f268c25ca5e9748652834faad04525746227ef7",
+                "reference": "3f268c25ca5e9748652834faad04525746227ef7",
                 "shasum": ""
             },
             "require": {
@@ -1551,20 +1551,20 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2016-09-15 06:14:20"
+            "time": "2016-12-02 12:15:53"
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "2.6.1",
+            "version": "2.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SURFnet/Stepup-saml-bundle.git",
-                "reference": "cfc4cc7d13186f24d8ef332f59cc23514f654158"
+                "reference": "2c1e4c084d790f49e867a4c33463b2da872a4182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SURFnet/Stepup-saml-bundle/zipball/cfc4cc7d13186f24d8ef332f59cc23514f654158",
-                "reference": "cfc4cc7d13186f24d8ef332f59cc23514f654158",
+                "url": "https://api.github.com/repos/SURFnet/Stepup-saml-bundle/zipball/2c1e4c084d790f49e867a4c33463b2da872a4182",
+                "reference": "2c1e4c084d790f49e867a4c33463b2da872a4182",
                 "shasum": ""
             },
             "require": {
@@ -1599,7 +1599,7 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2016-10-19 14:30:38"
+            "time": "2016-12-12 12:31:10"
         },
         {
             "name": "swiftmailer/swiftmailer",
