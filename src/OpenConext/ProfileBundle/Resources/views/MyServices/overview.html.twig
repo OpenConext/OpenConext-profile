@@ -52,9 +52,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>{{ 'profile.my_services.consent_last_used_on'|trans }}:</td>
+                                <td>{{ 'profile.my_services.consent_first_used_on'|trans }}:</td>
                                 <td>
-                                    {{ specifiedConsent.consent.lastUsedOn.date|date('Y-m-d h:i')}}
+                                    {{ specifiedConsent.consent.consentGivenOn.date|date('Y-m-d h:i')}}
                                 </td>
                             </tr>
                         </table>

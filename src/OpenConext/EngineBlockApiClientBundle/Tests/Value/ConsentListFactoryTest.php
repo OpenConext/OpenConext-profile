@@ -59,7 +59,6 @@ final class ConsentListFactoryTest extends TestCase
                     'support_email' => null,
                 ],
                 'consent_given_on' => '2015-11-05T08:43:01+01:00',
-                'last_used_on'     => '2015-11-05T08:43:01+01:00',
                 'consent_type'     => $givenFirstConsentTypeValue
             ],
             [
@@ -70,7 +69,6 @@ final class ConsentListFactoryTest extends TestCase
                     'support_email' => $secondSupportEmail,
                 ],
                 'consent_given_on' => '2015-11-05T08:17:04+01:00',
-                'last_used_on'     => '2015-11-05T08:17:04+01:00',
                 'consent_type'     => $givenSecondConsentTypeValue
             ],
         ];
@@ -84,7 +82,6 @@ final class ConsentListFactoryTest extends TestCase
                     null
                 ),
                 new DateTimeImmutable('2015-11-05T08:43:01+01:00'),
-                new DateTimeImmutable('2015-11-05T08:43:01+01:00'),
                 $expectedFirstConsentType
             ),
             new Consent(
@@ -94,7 +91,6 @@ final class ConsentListFactoryTest extends TestCase
                     null,
                     new ContactEmailAddress($secondSupportEmail)
                 ),
-                new DateTimeImmutable('2015-11-05T08:17:04+01:00'),
                 new DateTimeImmutable('2015-11-05T08:17:04+01:00'),
                 $expectedSecondConsentType
             ),
