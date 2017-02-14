@@ -19,7 +19,7 @@ information via EngineBlock's internal API.
 
 ## Requirements
 - PHP 5.6
-- EngineBlock >= 5.1.0
+- EngineBlock >= 5.2.0
 
 ## Development
 To setup your development environment, run `vagrant up` in the project directory.

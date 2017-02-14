@@ -21,7 +21,7 @@
         "beberlei/assert": "^2.4",
         "guzzlehttp/guzzle": "^6.1",
         "nelmio/security-bundle": "^1.8",
-        "symfony/swiftmailer-bundle": "^2.3"
+        "symfony/swiftmailer-bundle": "^2.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

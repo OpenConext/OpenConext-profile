@@ -104,7 +104,6 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 new ContactEmailAddress('some@email.example')
             ),
             new DateTimeImmutable(),
-            new DateTimeImmutable(),
             ConsentType::explicit()
         );
         $anotherConsent = new Consent(
@@ -119,7 +118,6 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 new Url('http://another-eula-url.example'),
                 new ContactEmailAddress('another@email.example')
             ),
-            new DateTimeImmutable(),
             new DateTimeImmutable(),
             ConsentType::explicit()
         );
