@@ -45,6 +45,12 @@
         <echo message="OK"/>
     </target>
 
+    <target name="php-docheader-ci" description="Checks for missing license headers">
+        <exec executable="vendor/bin/docheader" failonerror="true">
+            <arg line="check src/" />
+        </exec>
+    </target>
+
     <target name="php-security-checker" description="Check your composer dependencies for insecure components">
         <exec executable="vendor/bin/security-checker" failonerror="true">
             <arg value="security:check"/>
