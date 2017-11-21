@@ -17,6 +17,7 @@
         "surfnet/stepup-saml-bundle": "^2.6.1",
         "jms/translation-bundle": "^1.1",
         "jms/di-extra-bundle": "^1.1",
+        "twig/twig": "^1.34.4",
         "twig/extensions": "^1.3",
         "beberlei/assert": "^2.4",
         "guzzlehttp/guzzle": "^6.1",
