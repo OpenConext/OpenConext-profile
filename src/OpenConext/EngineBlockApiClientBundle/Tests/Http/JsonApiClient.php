@@ -20,7 +20,7 @@ namespace OpenConext\EngineBlockApiClientBundle\Tests\Http;
 
 use Mockery as m;
 use OpenConext\EngineBlockApiClientBundle\Exception\MalformedResponseException;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class JsonApiClient extends TestCase
 {

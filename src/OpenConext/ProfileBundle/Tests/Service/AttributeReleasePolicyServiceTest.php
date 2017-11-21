@@ -35,7 +35,7 @@ use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\Profile\Value\Url;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;

@@ -20,7 +20,7 @@ namespace OpenConext\Profile\Tests;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\AssertionFailedException;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class AssertTest extends TestCase
 {

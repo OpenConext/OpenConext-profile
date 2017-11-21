@@ -20,8 +20,7 @@ namespace OpenConext\Profile\Tests\Entity;
 
 use Mockery as m;
 use OpenConext\Profile\Entity\AuthenticatedUser;
-use OpenConext\Profile\Exception\InvalidEptiAttributeException;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use SAML2_Assertion;
 use SAML2_Compat_ContainerSingleton;
@@ -95,7 +94,7 @@ class AuthenticatedUserTest extends TestCase
      */
     public function epti_attribute_cannot_be_set_if_its_value_has_multiple_name_ids_when_creating_an_authenticated_user()
     {
-        $this->setExpectedException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
+        $this->expectException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
 
         $assertionWithEpti   = $this->getAssertionWithEptiWithTooManyValues();
         $attributeDictionary = $this->getAttributeDictionary();
@@ -116,7 +115,7 @@ class AuthenticatedUserTest extends TestCase
      */
     public function epti_attribute_cannot_be_set_if_its_value_has_no_name_id_when_creating_an_authenticated_user()
     {
-        $this->setExpectedException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
+        $this->expectException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
 
         $assertionWithEpti   = $this->getAssertionWithEptiWithoutValues();
         $attributeDictionary = $this->getAttributeDictionary();

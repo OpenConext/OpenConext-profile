@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Tests\Value;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Value\ContactEmailAddress;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ContactPersonTest extends TestCase
 {
