@@ -30,7 +30,7 @@ use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
 use OpenConext\Profile\Value\Url;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 final class ConsentListFactoryTest extends TestCase
 {

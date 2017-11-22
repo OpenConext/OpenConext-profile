@@ -19,7 +19,7 @@
 namespace OpenConext\Profile\Tests\Value;
 
 use OpenConext\Profile\Value\ConsentType;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ConsentTypeTest extends TestCase
 {

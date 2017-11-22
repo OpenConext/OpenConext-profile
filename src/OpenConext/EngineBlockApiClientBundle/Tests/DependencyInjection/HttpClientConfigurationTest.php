@@ -21,7 +21,8 @@ namespace OpenConext\EngineBlockApiClientBundle\Tests\DependencyInjection;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use OpenConext\EngineBlockApiClientBundle\DependencyInjection\Configuration;
 use OpenConext\EngineBlockApiClientBundle\Tests\DataProvider;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
+
 
 final class ConfigurationTest extends TestCase
 {

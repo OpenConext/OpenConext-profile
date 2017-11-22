@@ -20,7 +20,7 @@ namespace OpenConext\ProfileBundle\Tests\Attribute;
 
 use Mockery;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use SAML2_Assertion;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;

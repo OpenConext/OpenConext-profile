@@ -20,9 +20,9 @@ namespace OpenConext\Profile\Tests\Value;
 
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\EntityId;
-use PHPUnit_Framework_TestCase as UnitTest;
+use PHPUnit\Framework\TestCase;
 
-class EntityIdTest extends UnitTest
+class EntityIdTest extends TestCase
 {
     use DataProvider;
 
