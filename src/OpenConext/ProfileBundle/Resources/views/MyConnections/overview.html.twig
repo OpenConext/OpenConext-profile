@@ -1,0 +1,13 @@
+{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ 'profile.my_connections.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ 'profile.my_connections.long_title'|trans }}</h1>
+    <p>{{ 'profile.my_connections.explanation'|trans }}</p>
+    <div class="table-overflow-container">
+        Hoi daar!
+    </div>
+{% endblock %}

@@ -31,6 +31,13 @@ services:
             - @profile.security.guard
             - @logger
 
+    profile.controller.my_connections:
+        class: OpenConext\ProfileBundle\Controller\MyConnectionsController
+        arguments:
+            - @templating
+            - @profile.security.guard
+            - @logger
+
     profile.controller.locale:
         class: OpenConext\ProfileBundle\Controller\LocaleController
         arguments:
