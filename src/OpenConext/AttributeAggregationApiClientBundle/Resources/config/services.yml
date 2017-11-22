@@ -10,3 +10,9 @@ services:
         class: OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient
         arguments:
             - @openconext_aa_api.guzzle
+
+    openconext_aa_api.repository.attribute_aggregation:
+        public: false
+        class: OpenConext\EngineBlockApiClientBundle\Repository\AttributeAggregationRepository
+        arguments:
+            - @openconext_aa_api.service.api
