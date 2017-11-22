@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2017 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,14 +19,14 @@
 namespace OpenConext\Profile\Repository;
 
 use OpenConext\Profile\Exception\InvalidArgumentException;
-use OpenConext\Profile\Value\ConsentList;
+use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 use OpenConext\Profile\Value\SurfConextId;
 
 interface AttributeAggregationRepository
 {
     /**
      * @param SurfConextId $userId
-     * @return ConsentList
+     * @return AttributeAggregationAttributesList
      * @throws InvalidArgumentException When $userId is not a non-empty string
      */
     public function findAllFor(SurfConextId $userId);

@@ -135,3 +135,13 @@ open_conext_profile:
     information_request:
         email_from: %information_request_email_from%
         email_to: %information_request_email_to%
+    # An array of attribute identifiers supported by attribute aggregation
+    attribute_aggregation_supported_attributes:
+        # The identifier of the attribute, should match the Attribute Aggregation API's definition
+        orcid:
+            # The relative path to an image. Starting from the /web folder
+            logo_path: %attribute_aggregation_orcid_logo_path%
+            # The Url where the attribute can be connected
+            connect_url: %attribute_aggregation_orcid_connect_url%
+            # The Url where the attribute can be disconnected
+            disconnect_url: %attribute_aggregation_orcid_disconnect_url%

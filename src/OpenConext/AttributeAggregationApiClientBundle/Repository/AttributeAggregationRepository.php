@@ -16,11 +16,12 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Repository;
+namespace OpenConext\AttributeAggregationApiClientBundle\Repository;
 
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepository as AttributeAggregationRepositoryInterface;
+use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 use OpenConext\Profile\Value\SurfConextId;
 
 final class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
@@ -39,10 +40,9 @@ final class AttributeAggregationRepository implements AttributeAggregationReposi
     {
         Assert::string($surfConextId->getSurfConextId(), 'SurfConext ID "%s" expected to be string, type %s given.');
 
-        $attributes = $this->apiClient->read('/%s', [$surfConextId->getSurfConextId()]);
+        $attributes = $this->apiClient->read('%s', [$surfConextId->getSurfConextId()]);
 
         // TODO: Hydrate the results before returning them.
-
-        return $attributes;
+        return new AttributeAggregationAttributesList($attributes);
     }
 }

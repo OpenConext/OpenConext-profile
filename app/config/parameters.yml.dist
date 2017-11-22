@@ -27,6 +27,11 @@ parameters:
     attribute_aggregation_api_password: secret
     attribute_aggregation_api_verify_ssl: true
 
+    # orcid aa attribute settings for orcid
+    attribute_aggregation_orcid_logo_path: '/images/orcid.png'
+    attribute_aggregation_orcid_connect_url: 'https://link.surfconext.nl/orcid?redirectUrl=https://profile.surfconext.nl/my-connections'
+    attribute_aggregation_orcid_disconnect_url: 'https://link.surfconext.nl/orcid?redirectUrl=https://profile.surfconext.nl/my-connections'
+
     mailer_transport:  sendmail
     mailer_host:       ~
     mailer_user:       ~
