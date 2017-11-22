@@ -113,6 +113,13 @@ open_conext_engine_block_api_client:
         password: %engineblock_api_password%
         verify_ssl: %engineblock_api_verify_ssl%
 
+open_conext_attribute_aggregation_api_client:
+    http_client:
+        base_url: %attribute_aggregation_api_base_url%
+        username: %attribute_aggregation_api_username%
+        password: %attribute_aggregation_api_password%
+        verify_ssl: %attribute_aggregation_api_verify_ssl%
+
 open_conext_profile:
     engine_block_entity_id: %saml_remote_idp_entity_id%
     locales: %locales%
