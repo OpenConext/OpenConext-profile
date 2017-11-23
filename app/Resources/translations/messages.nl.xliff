@@ -120,60 +120,60 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <target>NL</target>
         <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_profile.account_data">
-        <source>profile.my_profile.account_data</source>
+      <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_surf_conext.account_data">
+        <source>profile.my_surf_conext.account_data</source>
         <target>Accountgegevens</target>
         <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_profile.account_data_explanation">
-        <source>profile.my_profile.account_data_explanation</source>
+      <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_surf_conext.account_data_explanation">
+        <source>profile.my_surf_conext.account_data_explanation</source>
         <target>Van jouw instelling hebben wij de volgende gegevens ontvangen:</target>
         <jms:reference-file line="22">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
-        <source>profile.my_profile.account_data_origin</source>
+      <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_surf_conext.account_data_origin">
+        <source>profile.my_surf_conext.account_data_origin</source>
         <target>Gegevens afkomstig van je instelling. Identifier + nummers gegenereerd door SURFconext</target>
         <jms:reference-file line="28">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
-        <source>profile.my_profile.account_data_retention_period</source>
+      <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_surf_conext.account_data_retention_period">
+        <source>profile.my_surf_conext.account_data_retention_period</source>
         <target>Tot 3 jaar na laatste inlog.</target>
         <jms:reference-file line="32">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="b172b6b32cc00171f63b2834d2710be9a0e882fd" resname="profile.my_profile.attributes_information_link_title">
-        <source>profile.my_profile.attributes_information_link_title</source>
+      <trans-unit id="b172b6b32cc00171f63b2834d2710be9a0e882fd" resname="profile.my_surf_conext.attributes_information_link_title">
+        <source>profile.my_surf_conext.attributes_information_link_title</source>
         <target>Attributen in SURFconext</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_profile.consent_data">
-        <source>profile.my_profile.consent_data</source>
+      <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_surf_conext.consent_data">
+        <source>profile.my_surf_conext.consent_data</source>
         <target>Toestemmingsgegevens</target>
         <jms:reference-file line="86">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
-        <source>profile.my_profile.consent_data_explanation</source>
+      <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_surf_conext.consent_data_explanation">
+        <source>profile.my_surf_conext.consent_data_explanation</source>
         <target>Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw persoonsgegevens met de dienst waar je wilt inloggen te delen. SURFconext slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder</target>
         <jms:reference-file line="87">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
-        <source>profile.my_profile.consent_data_origin</source>
+      <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_surf_conext.consent_data_origin">
+        <source>profile.my_surf_conext.consent_data_origin</source>
         <target>Gegenereerd door SURFconext</target>
         <jms:reference-file line="93">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
-        <source>profile.my_profile.consent_data_retention_period</source>
+      <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_surf_conext.consent_data_retention_period">
+        <source>profile.my_surf_conext.consent_data_retention_period</source>
         <target>Tot 3 jaar na laatste inlog.</target>
         <jms:reference-file line="97">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
-        <source>profile.my_profile.data_origin</source>
+      <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_surf_conext.data_origin">
+        <source>profile.my_surf_conext.data_origin</source>
         <target>Herkomst</target>
         <jms:reference-file line="27">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="75">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="92">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="4a5e93354a2914345d2944111430814f569181d8" resname="profile.my_profile.data_retention_period">
-        <source>profile.my_profile.data_retention_period</source>
+      <trans-unit id="4a5e93354a2914345d2944111430814f569181d8" resname="profile.my_surf_conext.data_retention_period">
+        <source>profile.my_surf_conext.data_retention_period</source>
         <target>Bewaartermijn</target>
         <jms:reference-file line="31">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="79">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
@@ -189,23 +189,23 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <target>Bekijk hier welke persoonsgegevens SURFconext van jou heeft opgeslagen. Jouw persoonsgegevens worden in SURFconext 'attributen' genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor meer gedetailleerde informatie over deze attributen heeft SURFconext een technische informatiepagina ingericht:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
-        <source>profile.my_profile.logging_data</source>
+      <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_surf_conext.logging_data">
+        <source>profile.my_surf_conext.logging_data</source>
         <target>Loggegevens</target>
         <jms:reference-file line="69">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_profile.logging_data_explanation">
-        <source>profile.my_profile.logging_data_explanation</source>
+      <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_surf_conext.logging_data_explanation">
+        <source>profile.my_surf_conext.logging_data_explanation</source>
         <target>SURFconext onthoudt tijdelijk wanneer en vanaf welk IP adres je gebruik maakt van SURFconext en bij welke diensten je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van SURFconext.</target>
         <jms:reference-file line="70">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_profile.logging_data_origin">
-        <source>profile.my_profile.logging_data_origin</source>
+      <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_surf_conext.logging_data_origin">
+        <source>profile.my_surf_conext.logging_data_origin</source>
         <target>Gegenereerd door SURFconext</target>
         <jms:reference-file line="76">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="022985074778367fd79099181eb0736479d72bc3" resname="profile.my_profile.logging_data_retention_period">
-        <source>profile.my_profile.logging_data_retention_period</source>
+      <trans-unit id="022985074778367fd79099181eb0736479d72bc3" resname="profile.my_surf_conext.logging_data_retention_period">
+        <source>profile.my_surf_conext.logging_data_retention_period</source>
         <target>6 maanden. Na 6 maanden worden de logbestanden geanonimiseerd.</target>
         <jms:reference-file line="80">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
