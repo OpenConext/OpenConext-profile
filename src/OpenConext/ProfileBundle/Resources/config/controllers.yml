@@ -59,7 +59,7 @@ services:
             - @router
             - @profile.service.user
             - @profile.service.attribute_filter
-            - @profile.service.attribute_support_mail
+            - @profile.service.information_request_mail
 
     profile.controller.saml:
         class: OpenConext\ProfileBundle\Controller\SamlController

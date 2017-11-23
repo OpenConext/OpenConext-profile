@@ -166,6 +166,17 @@ services:
             - @templating
             - @profile.service.user
 
+    profile.service.information_request_mail:
+        public: false
+        class: OpenConext\ProfileBundle\Service\InformationRequestMailService
+        arguments:
+            - @profile.information_request.email_from
+            - @profile.information_request.email_to
+            - @mailer
+            - @templating
+            - @profile.service.user
+            - @profile.service.attribute_filter
+
     profile.service.locale:
         public: false
         class: OpenConext\ProfileBundle\Service\LocaleService

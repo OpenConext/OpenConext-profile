@@ -20,7 +20,7 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use OpenConext\ProfileBundle\Security\Guard;
-use OpenConext\ProfileBundle\Service\AttributeSupportMailService;
+use OpenConext\ProfileBundle\Service\InformationRequestMailService;
 use OpenConext\ProfileBundle\Service\UserService;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -56,9 +56,9 @@ class InformationRequestController
     private $userService;
 
     /**
-     * @var AttributeSupportMailService
+     * @var InformationRequestMailService
      */
-    private $attributeSupportMailService;
+    private $informationRequestMailService;
 
     /**
      * @var AttributeFilter
@@ -72,7 +72,7 @@ class InformationRequestController
         UrlGeneratorInterface $urlGenerator,
         UserService $userService,
         AttributeFilter $attributeFilter,
-        AttributeSupportMailService $attributeSupportMailService
+        InformationRequestMailService $informationRequestMailService
     ) {
         $this->guard = $guard;
         $this->templateEngine = $templateEngine;
@@ -80,7 +80,7 @@ class InformationRequestController
         $this->urlGenerator = $urlGenerator;
         $this->userService = $userService;
         $this->attributeFilter = $attributeFilter;
-        $this->attributeSupportMailService = $attributeSupportMailService;
+        $this->informationRequestMailService = $informationRequestMailService;
     }
 
     public function overviewAction()
@@ -110,7 +110,7 @@ class InformationRequestController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->attributeSupportMailService->sendAttributeSupportMail();
+        $this->informationRequestMailService->sendInformationRequestMail();
 
         return new RedirectResponse($this->urlGenerator->generate('profile.information_request_confirm_mail_sent'));
     }
