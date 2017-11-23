@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
+use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use OpenConext\ProfileBundle\Service\AuthenticatedUserProvider;
@@ -54,6 +55,11 @@ class MyConnectionsController
     private $userProvider;
 
     /**
+     * @var EmailAddress
+     */
+    private $mailTo;
+
+    /**
      * @param EngineInterface $templateEngine
      * @param Guard $guard
      * @param LoggerInterface $logger
@@ -65,13 +71,15 @@ class MyConnectionsController
         Guard $guard,
         LoggerInterface $logger,
         AttributeAggregationService $service,
-        AuthenticatedUserProvider $userProvider
+        AuthenticatedUserProvider $userProvider,
+        EmailAddress $mailTo
     ) {
         $this->templateEngine = $templateEngine;
         $this->guard = $guard;
         $this->logger = $logger;
         $this->service = $service;
         $this->userProvider = $userProvider;
+        $this->mailTo = $mailTo;
     }
 
     /**
@@ -88,7 +96,10 @@ class MyConnectionsController
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyConnections:overview.html.twig',
-            ['orcid' => $attributes->getAttributes()[0]]
+            [
+                'orcid' => $attributes->getAttributes()[0],
+                'mailTo' => $this->mailTo->getEmailAddress(),
+            ]
         ));
     }
 }

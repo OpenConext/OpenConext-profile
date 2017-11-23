@@ -39,6 +39,7 @@ services:
             - @logger
             - @profile.service.attribute_aggregation
             - @profile.provider.authenticated_user
+            - @profile.attribute_support.email_to
 
     profile.controller.locale:
         class: OpenConext\ProfileBundle\Controller\LocaleController
