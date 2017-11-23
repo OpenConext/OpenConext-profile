@@ -28,6 +28,18 @@ services:
         arguments:
             - ~ # attribute support email to
 
+    profile.information_request.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # information request email from
+
+    profile.information_request.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # information request email to
+
     profile.security.guard:
         public: false
         class: OpenConext\ProfileBundle\Security\Guard
