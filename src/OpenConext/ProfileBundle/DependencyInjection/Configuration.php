@@ -184,6 +184,7 @@ class Configuration implements ConfigurationInterface
                     ->info('A list of supported attributes by Attribute Aggregation')
                     ->requiresAtLeastOneElement()
                     ->useAttributeAsKey('type')
+                    ->normalizeKeys(false)
                     ->prototype('array');
 
         $protoType

@@ -42,7 +42,6 @@ final class AttributeAggregationRepository implements AttributeAggregationReposi
 
         $attributes = $this->apiClient->read('%s', [$surfConextId->getSurfConextId()]);
 
-        // TODO: Hydrate the results before returning them.
-        return new AttributeAggregationAttributesList($attributes);
+        return AttributeAggregationAttributesList::fromApiResponse($attributes);
     }
 }

@@ -18,12 +18,24 @@
 
 namespace OpenConext\Profile\Value\AttributeAggregation;
 
+use Assert\Assertion;
+
 final class AttributeAggregationAttribute
 {
     /**
      * @var string
      */
     private $identifier;
+
+    /**
+     * @var string
+     */
+    private $values;
+
+    /**
+     * @var string
+     */
+    private $source;
 
     /**
      * @var string
@@ -70,6 +82,27 @@ final class AttributeAggregationAttribute
             $enabledAttribute->getDisconnectUrl(),
             $isConnected
         );
+    }
+
+    public static function fromApiResponse(array $attributeData)
+    {
+        Assertion::keyExists($attributeData, 'name', 'The name should be set on the attribute');
+        Assertion::string($attributeData['name'], 'The name should be a string');
+        Assertion::keyExists($attributeData, 'values', 'The values should be set on the attribute');
+        Assertion::isArray($attributeData['values'], 'The values should be an array');
+        Assertion::keyExists($attributeData, 'source', 'The source should be set on the attribute');
+        Assertion::string($attributeData['source'], 'The source should be a string');
+
+        $attribute = new self(
+            $attributeData['name'],
+            '',
+            '',
+            '',
+            true
+        );
+        $attribute->values = $attributeData['values'];
+        $attribute->source = $attributeData['source'];
+        return $attribute;
     }
 
     /**

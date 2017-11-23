@@ -37,6 +37,8 @@ services:
             - @templating
             - @profile.security.guard
             - @logger
+            - @profile.service.attribute_aggregation
+            - @profile.provider.authenticated_user
 
     profile.controller.locale:
         class: OpenConext\ProfileBundle\Controller\LocaleController

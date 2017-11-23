@@ -13,6 +13,6 @@ services:
 
     openconext_aa_api.repository.attribute_aggregation:
         public: false
-        class: OpenConext\EngineBlockApiClientBundle\Repository\AttributeAggregationRepository
+        class: OpenConext\AttributeAggregationApiClientBundle\Repository\AttributeAggregationRepository
         arguments:
             - @openconext_aa_api.service.api

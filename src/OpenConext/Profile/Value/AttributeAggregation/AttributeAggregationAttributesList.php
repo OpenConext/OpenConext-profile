@@ -39,6 +39,19 @@ final class AttributeAggregationAttributesList
     }
 
     /**
+     * @param array $attributes
+     * @return AttributeAggregationAttributesList
+     */
+    public static function fromApiResponse(array $attributes)
+    {
+        $attributeCollection = [];
+        foreach ($attributes as $attributeData) {
+            $attributeCollection[] = AttributeAggregationAttribute::fromApiResponse($attributeData);
+        }
+        return new self($attributeCollection);
+    }
+
+    /**
      * @return AttributeAggregationAttribute[]
      */
     public function getAttributes()
