@@ -62,6 +62,41 @@
         <target>Attribute data mailed</target>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/confirmation.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="635d3df5bf4d25f2ba2aa31d49a7b66a18a78d59" resname="profile.information_request.explanation">
+        <source>profile.information_request.explanation</source>
+        <target state="new">profile.information_request.explanation</target>
+        <jms:reference-file line="40">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="89472af12a7436b02c77eeffe6e86a583c4536a0" resname="profile.information_request.long_title">
+        <source>profile.information_request.long_title</source>
+        <target state="new">profile.information_request.long_title</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f067c475cbd61e820226d34409c92ecf1d184765" resname="profile.information_request.send_mail">
+        <source>profile.information_request.send_mail</source>
+        <target>Confirm request</target>
+        <jms:reference-file line="33">/../src/OpenConext/ProfileBundle/Form/Type/InformationRequestMailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5e4e38a5280ad5872ca42364782d403241b69ebc" resname="profile.information_request.short_title">
+        <source>profile.information_request.short_title</source>
+        <target state="new">profile.information_request.short_title</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0b56f33c8b70e279ed12dcab82025850b1aa5cf4" resname="profile.information_request_confirmation.explanation">
+        <source>profile.information_request_confirmation.explanation</source>
+        <target state="new">profile.information_request_confirmation.explanation</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/confirmation.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="418a8fb888fab781f0a609bdfd4df923ecb2d6d0" resname="profile.information_request_confirmation.long_title">
+        <source>profile.information_request_confirmation.long_title</source>
+        <target state="new">profile.information_request_confirmation.long_title</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/confirmation.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77b1f830cef4a3d830b74360ea04e9689ff664b8" resname="profile.information_request_confirmation.short_title">
+        <source>profile.information_request_confirmation.short_title</source>
+        <target state="new">profile.information_request_confirmation.short_title</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/confirmation.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
         <source>profile.introduction.explanation.introduction</source>
         <target>Your institution uses SURFconext to allow you to login to several online (cloud)services using your institutional account. Instead of registering separate accounts for each service, this means you only need a single account to login. The following picture gives a schematic overview of what SURFconext does:</target>
@@ -125,10 +160,69 @@ This profile page gives you insight in which personal data, provided by your ins
         <target>Attributes in SURFconext</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="bf83011735369f91997081ce65a63d5b3e8b60ac" resname="profile.my_profile.consent_data">
+        <source>profile.my_profile.consent_data</source>
+        <target>Consent Data</target>
+        <jms:reference-file line="92">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="ede7f74488402115d08397a45dec3efbafc85fdb" resname="profile.my_profile.consent_data_explanation">
+        <source>profile.my_profile.consent_data_explanation</source>
+        <target>Most services require you, prior to the first login, to explicitly give consent to your institution to share your personal data with the service you are logging in to. SURFconext stores at which moment and for which service you have given consent. To see which personal data is being shared with which service, please go to</target>
+        <jms:reference-file line="93">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1ddad7f0cf0c3e8e670176a0f2b574b8d459d8be" resname="profile.my_profile.consent_data_origin">
+        <source>profile.my_profile.consent_data_origin</source>
+        <target>Generated by SURFconext</target>
+        <jms:reference-file line="99">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="00219ee09bb2e913b8b9908f8ccbdf2f61e9be88" resname="profile.my_profile.consent_data_retention_period">
+        <source>profile.my_profile.consent_data_retention_period</source>
+        <target>Until 3 years after last login.</target>
+        <jms:reference-file line="103">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d1fb411e3338eaf113eb7b7a154f12a9d2d5f8fa" resname="profile.my_profile.data_origin">
+        <source>profile.my_profile.data_origin</source>
+        <target>Origin</target>
+        <jms:reference-file line="27">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="81">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="98">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4a5e93354a2914345d2944111430814f569181d8" resname="profile.my_profile.data_retention_period">
+        <source>profile.my_profile.data_retention_period</source>
+        <target>Retention Period</target>
+        <jms:reference-file line="102">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="31">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="85">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="339cfce678933c05e880a40673ddcf902339c32b" resname="profile.my_profile.explanation">
+        <source>profile.my_profile.explanation</source>
+        <target>SURFconext stores this information to allow you to easily login to several (cloud)services. Your institution is in control of which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to %my_services_link%.</target>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <source>profile.my_profile.introduction</source>
         <target>The table below contains an overview of all your personal data that your institution can pass on to several services through SURFconext. Within SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9aaccb6c9ea9550e6b0900d2db16ba15c84d1181" resname="profile.my_profile.logging_data">
+        <source>profile.my_profile.logging_data</source>
+        <target>Logging Data</target>
+        <jms:reference-file line="75">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3e516078d80a93d28417b1636f9e449fe4bb8aca" resname="profile.my_profile.logging_data_explanation">
+        <source>profile.my_profile.logging_data_explanation</source>
+        <target>SURFconext logs when you use SURFconext, which service you are logging in to and from which IP address. This is necessary for administration and security purposes.</target>
+        <jms:reference-file line="76">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b2d487368bba2351c4f63dbab7d02e8743891033" resname="profile.my_profile.logging_data_origin">
+        <source>profile.my_profile.logging_data_origin</source>
+        <target>Generated by SURFconext</target>
+        <jms:reference-file line="82">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="022985074778367fd79099181eb0736479d72bc3" resname="profile.my_profile.logging_data_retention_period">
+        <source>profile.my_profile.logging_data_retention_period</source>
+        <target>6 months. After 6 months the log files are anonymized.</target>
+        <jms:reference-file line="86">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
         <source>profile.my_profile.long_title</source>
@@ -345,6 +439,8 @@ This profile page gives you insight in which personal data, provided by your ins
         <source>profile.table.attribute_value</source>
         <target>Value</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="42">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>

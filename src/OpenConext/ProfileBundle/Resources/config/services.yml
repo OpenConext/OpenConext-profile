@@ -56,6 +56,13 @@ services:
         tags:
             - { name: form.type, alias: profile_attribute_support_mail }
 
+    profile.form.information_request_mail:
+        class: OpenConext\ProfileBundle\Form\Type\InformationRequestMailType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_information_request_mail }
+
     profile.twig.locale_extension:
         public: false
         class: OpenConext\ProfileBundle\Twig\LocaleExtension
@@ -223,3 +230,6 @@ services:
         arguments:
             - @openconext_eb_api.repository.support_contact_information
 
+    profile.service.attribute_filter:
+        public: false
+        class: OpenConext\ProfileBundle\Attribute\AttributeFilter

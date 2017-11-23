@@ -61,6 +61,27 @@ profile.attribute_support_send_mail:
     defaults:
         _controller: profile.controller.attribute_support:sendMailAction
 
+profile.information_request_overview:
+    path:       /information-request
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.information_request:overviewAction
+
+profile.information_request_confirm_mail_sent:
+    path:       /information-request/confirmation
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.information_request:confirmMailSentAction
+
+profile.information_request_send_mail:
+    path:       /information-request/send-mail
+    methods:    [POST]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.information_request:sendMailAction
+
 profile.locale_switch_locale:
     path:       /switch-locale
     methods:    [POST]
