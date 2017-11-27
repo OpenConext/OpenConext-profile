@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-11-23T16:52:01Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2017-11-27T09:32:54Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -122,22 +122,27 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="b172b6b32cc00171f63b2834d2710be9a0e882fd" resname="profile.my_profile.attributes_information_link_title">
         <source>profile.my_profile.attributes_information_link_title</source>
-        <target state="new">profile.my_profile.attributes_information_link_title</target>
+        <target>Attributes in SURFconext</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
+        <source>profile.my_profile.introduction</source>
+        <target>The table below contains an overview of all your personal data that your institution can pass on to several services through SURFconext. Within SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
         <source>profile.my_profile.long_title</source>
-        <target>Details of your SURFconext profile</target>
+        <target>Information from your institution</target>
         <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a889019ee05f5be48abcfacba0b63235275ce299" resname="profile.my_profile.pi_processing">
         <source>profile.my_profile.pi_processing</source>
-        <target>Please note: your institution is responsible for the personal data displayed here. SURFconext is simply showing the information received from your institution.</target>
+        <target>On the tab "My SURFconext" you can see which attributes and data is being stored by SURFconext itself.</target>
         <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cc93ed7bab761ec4c240fa28983bc1f069328991" resname="profile.my_profile.questions">
         <source>profile.my_profile.questions</source>
-        <target>If you have any questions about your personal data, please contact the help desk of your institution through:</target>
+        <target>Please note: your institution is responsible for the personal data displayed here. SURFconext is simply showing the information received from your institution. If you have any questions about your attributes, please contact the help desk of your institution through:</target>
         <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c35bcd376a8ad4ea3b6e7c4a297f3f8622d6927e" resname="profile.my_profile.questions_no_support_contact_email">
@@ -215,6 +220,7 @@ This profile page gives you insight in which personal data, provided by your ins
         <source>profile.my_services.short_title</source>
         <target>My Services</target>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
         <jms:reference-file line="47">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
         <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
@@ -230,23 +236,18 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="88d5aa8d809e37e148138cabeb06a1f851d41ed0" resname="profile.my_surf_conext.account_data_explanation">
         <source>profile.my_surf_conext.account_data_explanation</source>
-        <target>Your SURFconext Profile consists of the following data:</target>
+        <target>SURFconext can provide (cloud) services a privacy-friendly identifier (number) with which you can be recognized when you return to the service.</target>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2cceeab9b6a5ca79fdd2d506853f5292e1afb872" resname="profile.my_surf_conext.account_data_origin">
         <source>profile.my_surf_conext.account_data_origin</source>
-        <target>Data from your institution. Identifier + numbers generated by SURFconext</target>
+        <target>User ID and institution name from your institution + number generated by SURFconext</target>
         <jms:reference-file line="19">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="85dde9b709fc5f0684d02cec3d797f669f3dd001" resname="profile.my_surf_conext.account_data_retention_period">
         <source>profile.my_surf_conext.account_data_retention_period</source>
         <target>Until 3 years after first login.</target>
         <jms:reference-file line="23">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="fa7b96a29d41219110484962a7c2d342e6a0bf0a" resname="profile.my_surf_conext.attributes_information_link_title">
-        <source>profile.my_surf_conext.attributes_information_link_title</source>
-        <target>Attributes in SURFconext</target>
-        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="be73e1bc34923830cbb8c48bfc1697af4b1a827a" resname="profile.my_surf_conext.consent_data">
         <source>profile.my_surf_conext.consent_data</source>
@@ -270,10 +271,8 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="602265c6c69cb0a3e3ba202914cb1efc16e95f1c" resname="profile.my_surf_conext.data_origin">
         <source>profile.my_surf_conext.data_origin</source>
-        <target>Origin</target>
+        <target>Information and origin:</target>
         <jms:reference-file line="18">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="52">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5169f77f250fabf4445380d02e986b37f9ad10d7" resname="profile.my_surf_conext.data_retention_period">
         <source>profile.my_surf_conext.data_retention_period</source>
@@ -283,8 +282,8 @@ This profile page gives you insight in which personal data, provided by your ins
         <jms:reference-file line="56">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="37d164bfb27988f8a5a5e4882401b8df2142740d" resname="profile.my_surf_conext.introduction">
-        <source>profile.my_profile.introduction</source>
-        <target>This page contains an overview of all your personal data that are being stored by SURFconext. In SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page:</target>
+        <source>profile.my_surf_conext.introduction</source>
+        <target>SURFconext stores certain data to allow you to log in easily and securely to various (cloud) services and to give you insight into which services you have logged in to through SURFconext. Your institution decides which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to %my_services_link%.</target>
         <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="198dce1e77b95dfaa8e56ec5ba8f44a46bf69215" resname="profile.my_surf_conext.logging_data">
@@ -309,8 +308,14 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="128b376e6b372c962506ec6b3bd7ba92a69f71f1" resname="profile.my_surf_conext.long_title">
         <source>profile.my_surf_conext.long_title</source>
-        <target>Mijn SURFconext</target>
+        <target>Details of your SURFconext profile</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="90932e1aff99c6f99c5807eec180c40db5a32485" resname="profile.my_surf_conext.origin">
+        <source>profile.my_surf_conext.origin</source>
+        <target>Origin</target>
+        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="52">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="010ed9d837beee859a1f028bf9748f9ab7b31a4e" resname="profile.my_surf_conext.short_title">
         <source>profile.my_surf_conext.short_title</source>
