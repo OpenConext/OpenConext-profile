@@ -14,6 +14,14 @@ services:
             - @profile.security.guard
             - @logger
 
+    profile.controller.my_surf_conext:
+        class: OpenConext\ProfileBundle\Controller\MySurfConextController
+        arguments:
+            - @profile.service.user
+            - @templating
+            - @profile.security.guard
+            - @logger
+
     profile.controller.my_services:
         class: OpenConext\ProfileBundle\Controller\MyServicesController
         arguments:
