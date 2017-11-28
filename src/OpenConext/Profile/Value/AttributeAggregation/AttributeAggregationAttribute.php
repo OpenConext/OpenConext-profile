@@ -63,24 +63,41 @@ final class AttributeAggregationAttribute
      * @param string $connectUrl
      * @param string $disconnectUrl
      * @param bool $isConnected
+     * @param array $values
+     * @param $source
      */
-    public function __construct($identifier, $logoPath, $connectUrl, $disconnectUrl, $isConnected)
-    {
+    public function __construct(
+        $identifier,
+        $logoPath,
+        $connectUrl,
+        $disconnectUrl,
+        $isConnected,
+        array $values = null,
+        $source = null
+    ) {
         $this->identifier = $identifier;
         $this->logoPath = $logoPath;
         $this->connectUrl = $connectUrl;
         $this->disconnectUrl = $disconnectUrl;
         $this->isConnected = $isConnected;
+        $this->values = $values;
+        $this->source = $source;
     }
 
-    public static function fromConfig(AttributeAggregationAttributeConfiguration $enabledAttribute, $isConnected)
-    {
+    public static function fromConfig(
+        AttributeAggregationAttributeConfiguration $enabledAttribute,
+        $isConnected,
+        array $values = null,
+        $source = null
+    ) {
         return new self(
             $enabledAttribute->getIdentifier(),
             $enabledAttribute->getLogoPath(),
             $enabledAttribute->getConnectUrl(),
             $enabledAttribute->getDisconnectUrl(),
-            $isConnected
+            $isConnected,
+            $values,
+            $source
         );
     }
 
@@ -98,10 +115,10 @@ final class AttributeAggregationAttribute
             '',
             '',
             '',
-            true
+            true,
+            $attributeData['values'],
+            $attributeData['source']
         );
-        $attribute->values = $attributeData['values'];
-        $attribute->source = $attributeData['source'];
         return $attribute;
     }
 
@@ -143,5 +160,21 @@ final class AttributeAggregationAttribute
     public function isConnected()
     {
         return $this->isConnected;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

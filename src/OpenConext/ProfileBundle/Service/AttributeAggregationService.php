@@ -85,7 +85,13 @@ final class AttributeAggregationService
                 foreach ($enabledAttributes->getAttributes() as $enabledAttribute) {
                     $identifier = $enabledAttribute->getIdentifier();
                     if ($attributeAggregationAttributes->hasAttribute($identifier)) {
-                        $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, true);
+                        $aaAttribute = $attributeAggregationAttributes->getAttribute($identifier);
+                        $collection[] = AttributeAggregationAttribute::fromConfig(
+                            $enabledAttribute,
+                            true,
+                            $aaAttribute->getValues(),
+                            $aaAttribute->getSource()
+                        );
                     } else {
                         $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false);
                     }

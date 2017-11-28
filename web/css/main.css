@@ -290,6 +290,12 @@ tr.service:hover {
     padding: 1em 0 0 0;
 }
 
+.attribute-container .mdl-grid .mdl-layout-title {
+    text-transform: uppercase;
+}.attribute-container .mdl-grid p.connected {
+    color: #00c35a;
+}
+
 .attribute-container .mdl-grid .mdl-cell img {
     border: 1px solid #cccccc;
     background: #ffffff;
@@ -307,6 +313,11 @@ tr.service:hover {
     width: 200px;
     margin: 40px auto;
     text-decoration: none;
+}
+
+.attribute-container .mdl-grid .mdl-cell a.mdl-button.disconnect {
+    background-color: #a9a9a9;
+    color: #ffffff;
 }
 
 /* Footer */
