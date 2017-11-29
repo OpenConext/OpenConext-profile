@@ -6,7 +6,9 @@
 
 {% block content %}
 
-    {% if orcid.isConnected %}
+    {% if orcid is null %}
+        <h1>{{ 'profile.my_connections.short_title'|trans }}</h1>
+    {% elseif orcid.isConnected %}
         <h1>{{ 'profile.my_connections.short_title'|trans }}</h1>
     {% else %}
         <h1>{{ 'profile.my_connections.long_title'|trans }}</h1>
@@ -14,7 +16,9 @@
     {% endif %}
 
     <div class="table-overflow-container">
-        {% if orcid.isConnected %}
+        {% if orcid is null %}
+            {{ 'profile.my_connections.no_connections_configured.description'|trans }}
+        {% elseif orcid.isConnected %}
             <div class="attribute-container">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--3-col">

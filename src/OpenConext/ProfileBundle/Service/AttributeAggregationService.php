@@ -109,6 +109,7 @@ final class AttributeAggregationService
             return null;
         }
 
+        $this->logger->notice('No enabled attribute aggregation attributes found.');
         return null;
     }
 }
