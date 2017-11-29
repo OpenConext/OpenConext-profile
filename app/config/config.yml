@@ -125,3 +125,6 @@ open_conext_profile:
     attribute_support:
         email_from: %attribute_support_email_from%
         email_to: %attribute_support_email_to%
+    information_request:
+        email_from: %information_request_email_from%
+        email_to: %information_request_email_to%

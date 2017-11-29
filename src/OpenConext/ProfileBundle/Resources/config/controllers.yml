@@ -50,6 +50,17 @@ services:
             - @profile.service.user
             - @profile.service.attribute_support_mail
 
+    profile.controller.information_request:
+        class: OpenConext\ProfileBundle\Controller\InformationRequestController
+        arguments:
+            - @profile.security.guard
+            - @templating
+            - @form.factory
+            - @router
+            - @profile.service.user
+            - @profile.service.attribute_filter
+            - @profile.service.information_request_mail
+
     profile.controller.saml:
         class: OpenConext\ProfileBundle\Controller\SamlController
         arguments:

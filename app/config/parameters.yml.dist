@@ -29,3 +29,7 @@ parameters:
 
     attribute_support_email_from: noreply@domain.invalid
     attribute_support_email_to: help@domain.invalid
+
+    # The email addresses used for sending the information request email message
+    information_request_email_from: noreply@domain.invalid
+    information_request_email_to: help@domain.invalid

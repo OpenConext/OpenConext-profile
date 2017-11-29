@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>The following information request was sent through the Profile application:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribute identifier</th>
+                    <th>Attribute name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for attribute in attributes %}
+                {% if attribute.attributeDefinition.hasUrnMace %}
+                    {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+                {% else %}
+                    {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+                {% endif %}
+                <tr>
+                    <td>
+                        {{ attributeUrn }}
+                    </td>
+                    <td>
+                        {{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml', 'en') }}
+                    </td>
+                    <td>
+                        {% if attribute.value is iterable %}
+                            {{ attribute.value|join(', ') }}
+                        {% else %}
+                            {{ attribute.value }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

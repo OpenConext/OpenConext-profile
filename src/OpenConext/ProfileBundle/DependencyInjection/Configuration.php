@@ -46,6 +46,7 @@ class Configuration implements ConfigurationInterface
 
         $this->setupLocaleConfiguration($rootNode);
         $this->setupAttributeSupportConfiguration($rootNode);
+        $this->setupInformationRequestConfiguration($rootNode);
 
         return $treeBuilder;
     }
@@ -165,6 +166,50 @@ class Configuration implements ConfigurationInterface
                                     return !filter_var($email, FILTER_VALIDATE_EMAIL);
                                 })
                                 ->thenInvalid('Email address from which attributes are sent should be valid')
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    private function setupInformationRequestConfiguration(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('information_request')
+                    ->isRequired()
+                    ->children()
+                        ->scalarNode('email_to')
+                            ->info('Email address to which the information request results are sent')
+                            ->isRequired()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !is_string($email);
+                                })
+                                ->thenInvalid('Email address to which information request results are sent should be a string')
+                            ->end()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
+                                })
+                                ->thenInvalid('Email address to which information request results are sent should be valid')
+                            ->end()
+                        ->end()
+                        ->scalarNode('email_from')
+                            ->info('mail address from which information requests are sent')
+                            ->isRequired()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !is_string($email);
+                                })
+                                ->thenInvalid('Email address from which information requests are sent should be a string')
+                            ->end()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
+                                })
+                                ->thenInvalid('Email address from which information requests are sent should be valid')
                             ->end()
                         ->end()
                     ->end()

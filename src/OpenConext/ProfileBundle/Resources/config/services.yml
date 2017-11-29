@@ -28,6 +28,18 @@ services:
         arguments:
             - ~ # attribute support email to
 
+    profile.information_request.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # information request email from
+
+    profile.information_request.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # information request email to
+
     profile.security.guard:
         public: false
         class: OpenConext\ProfileBundle\Security\Guard
@@ -55,6 +67,13 @@ services:
             - @router
         tags:
             - { name: form.type, alias: profile_attribute_support_mail }
+
+    profile.form.information_request_mail:
+        class: OpenConext\ProfileBundle\Form\Type\InformationRequestMailType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_information_request_mail }
 
     profile.twig.locale_extension:
         public: false
@@ -147,6 +166,17 @@ services:
             - @templating
             - @profile.service.user
 
+    profile.service.information_request_mail:
+        public: false
+        class: OpenConext\ProfileBundle\Service\InformationRequestMailService
+        arguments:
+            - @profile.information_request.email_from
+            - @profile.information_request.email_to
+            - @mailer
+            - @templating
+            - @profile.service.user
+            - @profile.service.attribute_filter
+
     profile.service.locale:
         public: false
         class: OpenConext\ProfileBundle\Service\LocaleService
@@ -223,3 +253,6 @@ services:
         arguments:
             - @openconext_eb_api.repository.support_contact_information
 
+    profile.service.attribute_filter:
+        public: false
+        class: OpenConext\ProfileBundle\Attribute\AttributeFilter

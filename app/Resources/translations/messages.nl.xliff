@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-11-27T09:32:55Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2017-11-28T16:32:57Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -60,6 +60,41 @@
         <source>profile.attribute_support_confirmation.short_title</source>
         <target>Attribuutdata gemaild</target>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/confirmation.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="635d3df5bf4d25f2ba2aa31d49a7b66a18a78d59" resname="profile.information_request.explanation">
+        <source>profile.information_request.explanation</source>
+        <target>Door op de verzend-knop te drukken, worden uw attributen naar de Privacy Officer van SURFnet gestuurd en kan uw verzoek rondom de verwerking van persoonsgegevens in behandeling worden genomen.</target>
+        <jms:reference-file line="40">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="89472af12a7436b02c77eeffe6e86a583c4536a0" resname="profile.information_request.long_title">
+        <source>profile.information_request.long_title</source>
+        <target>Identificatie n.a.v. verzoek betrokkene</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f067c475cbd61e820226d34409c92ecf1d184765" resname="profile.information_request.send_mail">
+        <source>profile.information_request.send_mail</source>
+        <target>Verzenden</target>
+        <jms:reference-file line="33">/../src/OpenConext/ProfileBundle/Form/Type/InformationRequestMailType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5e4e38a5280ad5872ca42364782d403241b69ebc" resname="profile.information_request.short_title">
+        <source>profile.information_request.short_title</source>
+        <target>Identificatieverzoek</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0b56f33c8b70e279ed12dcab82025850b1aa5cf4" resname="profile.information_request_confirmation.explanation">
+        <source>profile.information_request_confirmation.explanation</source>
+        <target>Uw verzoek rondom de verwerking van persoonsgegevens zal in behandeling worden genomen.</target>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/confirmation.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="418a8fb888fab781f0a609bdfd4df923ecb2d6d0" resname="profile.information_request_confirmation.long_title">
+        <source>profile.information_request_confirmation.long_title</source>
+        <target>Bedankt voor het verzenden van uw attributen</target>
+        <jms:reference-file line="8">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/confirmation.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77b1f830cef4a3d830b74360ea04e9689ff664b8" resname="profile.information_request_confirmation.short_title">
+        <source>profile.information_request_confirmation.short_title</source>
+        <target>Identificatieverzoek</target>
+        <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/confirmation.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7d8ab8fc21a0850ff35b514cb473d58cb46ff512" resname="profile.introduction.explanation.introduction">
         <source>profile.introduction.explanation.introduction</source>
@@ -338,6 +373,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <source>profile.table.attribute_name</source>
         <target>Attribuut</target>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
         <jms:reference-file line="24">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="70">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
@@ -345,6 +381,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <source>profile.table.attribute_value</source>
         <target>Waarde</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
         <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
