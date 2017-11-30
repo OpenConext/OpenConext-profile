@@ -110,7 +110,7 @@ final class AttributeAggregationAttribute
         Assertion::keyExists($attributeData, 'source', 'The source should be set on the attribute');
         Assertion::string($attributeData['source'], 'The source should be a string');
 
-        $attribute = new self(
+        return new self(
             $attributeData['name'],
             '',
             '',
@@ -119,7 +119,6 @@ final class AttributeAggregationAttribute
             $attributeData['values'],
             $attributeData['source']
         );
-        return $attribute;
     }
 
     /**
