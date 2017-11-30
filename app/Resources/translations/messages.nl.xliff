@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-11-29T13:33:02Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2017-11-30T11:48:01Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -192,7 +192,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
-        <target>ORCID is a nonproprietary alphanumeric code to uniquely identify scientific and other academic authors. This addresses the problem that a particular author's contributions to the scientific literature or publications in the humanities can be hard to recognize as most personal names are not unique, they can change (such as with marriage), have cultural differences in name order, contain inconsistent use of first-name abbreviations and employ different writing systems.</target>
+        <target>ORCID is een alpha-numerieke code die wordt gebruikt om auteurs van wetenschappelijke werken uniek te identificeren.</target>
         <jms:reference-file line="62">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4bc8f1ebcd9026ebbc6df9e128e3a1c0d4407ebd" resname="profile.my_connections.orcid.disconnect_title">
@@ -234,32 +234,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
         <jms:reference-file line="12">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="20">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="996e9bb8e5fd742f7e702ceea095c2e8843fe652" resname="profile.my_profile.account_data">
-        <source>profile.my_profile.account_data</source>
-        <target>Accountgegevens</target>
-        <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="a77a7d0fc2577872e3c902cb3f30be63c8a39991" resname="profile.my_profile.account_data_explanation">
-        <source>profile.my_profile.account_data_explanation</source>
-        <target>Van jouw instelling hebben wij de volgende gegevens ontvangen:</target>
-        <jms:reference-file line="22">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
-        <source>profile.my_connections.orcid.description</source>
-        <target>ORCID is een alpha-numerieke code die wordt gebruikt om auteurs van wetenschappelijke werken uniek te identificeren.</target>
-        <jms:reference-file line="62">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="b62232e12be0cd0564d040b66357ecf7f58248c1" resname="profile.my_profile.account_data_origin">
-        <source>profile.my_profile.account_data_origin</source>
-        <target>Gegevens afkomstig van je instelling. Identifier + nummers gegenereerd door SURFconext</target>
-        <jms:reference-file line="28">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="4c1ebfbdeec70b7505289e59fa88dc0a6fe0d59f" resname="profile.my_profile.account_data_retention_period">
-        <source>profile.my_profile.account_data_retention_period</source>
-        <target>Tot 3 jaar na laatste inlog.</target>
-        <jms:reference-file line="32">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b172b6b32cc00171f63b2834d2710be9a0e882fd" resname="profile.my_profile.attributes_information_link_title">
         <source>profile.my_profile.attributes_information_link_title</source>
