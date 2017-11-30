@@ -90,6 +90,52 @@ class AuthenticatedUserTest extends TestCase
      * @test
      * @group Authentication
      * @group Attributes
+     */
+    public function attributes_are_filtered_when_creating_an_authenticated_user()
+    {
+        $expectedAttributeSet = AttributeSet::create([
+            new Attribute(
+                new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
+                ['Chuck', 'Tester']
+            ),
+            new Attribute(
+                new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
+                ['Chuck Tester']
+            )
+        ]);
+
+        $attributeSet = AttributeSet::create([
+            new Attribute(
+                new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
+                ['Chuck', 'Tester']
+            ),
+            new Attribute(
+                new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
+                ['Chuck Tester']
+            ),
+            new Attribute(
+                new AttributeDefinition('Organization', '', 'urn:oid:1.3.6.1.4.1.1076.20.40.40.1'),
+                ['My Organization']
+            ),
+            new Attribute(
+                new AttributeDefinition('LDAP Directory string', '', 'urn:oid:1.3.6.1.4.1.1466.115.121.1.15'),
+                ['testers/chuck1']
+            )
+        ]);
+
+        $assertionAdapter = $this->mockAssertionAdapterWith($attributeSet, 'test NameID');
+
+        $authenticatedUser  = AuthenticatedUser::createFrom($assertionAdapter, []);
+        $actualAttributeSet = $authenticatedUser->getAttributes();
+
+        $this->assertCount(2, $actualAttributeSet);
+        $this->assertEquals($expectedAttributeSet, $actualAttributeSet);
+    }
+
+    /**
+     * @test
+     * @group Authentication
+     * @group Attributes
      *
      */
     public function epti_attribute_cannot_be_set_if_its_value_has_multiple_name_ids_when_creating_an_authenticated_user()
