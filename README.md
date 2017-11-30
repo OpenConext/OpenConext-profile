@@ -48,6 +48,25 @@ version available at: https://profile.vm.openconext.org.
  
 You should now be able to successfully login!
 
+## Attribute aggregation support
+Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
+the orcid as a configuration example.
+
+```yaml
+open_conext_profile:
+    # Other config values are ommitted
+    
+    attribute_aggregation_supported_attributes:
+        # The identifier of the attribute, should match the Attribute Aggregation API's definition
+        orcid:
+            # The relative path to an image. Starting from the /web folder
+            logo_path: %attribute_aggregation_orcid_logo_path%
+            # The Url where the attribute can be connected
+            connect_url: %attribute_aggregation_orcid_connect_url%
+            # The Url where the attribute can be disconnected
+            disconnect_url: %attribute_aggregation_orcid_disconnect_url%
+```
+
 ## Releases
 `RMT` is used for tagging releases. Run `./RMT release` to tag a release.  Make
 sure you are on the `master` branch and don't have any changes before tagging

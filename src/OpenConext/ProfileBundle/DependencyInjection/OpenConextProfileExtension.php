@@ -51,6 +51,11 @@ class OpenConextProfileExtension extends Extension
             $config['locale_cookie_http_only'],
             $container
         );
+
+        $this->parseEngineBlockAttributeAggregationConfiguration(
+            $config['attribute_aggregation_supported_attributes'],
+            $container
+        );
     }
 
     private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container)
@@ -121,5 +126,12 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(2, $localeCookieExpirationDateDefinition)
             ->replaceArgument(3, $localeCookieSecure)
             ->replaceArgument(4, $localeCookieHttpOnly);
+    }
+
+    private function parseEngineBlockAttributeAggregationConfiguration($aaConfig, ContainerBuilder $container)
+    {
+        $container
+            ->getDefinition('profile.available_aa_attributes')
+            ->replaceArgument(0, $aaConfig);
     }
 }

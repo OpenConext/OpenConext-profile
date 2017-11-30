@@ -26,6 +26,13 @@ profile.my_services_overview:
     defaults:
         _controller: profile.controller.my_services:overviewAction
 
+profile.my_connections_overview:
+    path:       /my-connections
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.my_connections:overviewAction
+
 profile.saml_consume_assertion:
     path:       /authentication/consume-assertion
     methods:    [POST]

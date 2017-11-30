@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             // Project
             new OpenConext\ProfileBundle\OpenConextProfileBundle(),
             new OpenConext\EngineBlockApiClientBundle\OpenConextEngineBlockApiClientBundle(),
+            new OpenConext\AttributeAggregationApiClientBundle\OpenConextAttributeAggregationApiClientBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'acc'])) {

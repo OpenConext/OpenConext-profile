@@ -40,6 +40,12 @@ services:
         arguments:
             - ~ # information request email to
 
+    profile.available_aa_attributes:
+        public: false
+        class: OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes
+        arguments:
+            - [] # available attribute aggregation attributes
+
     profile.security.guard:
         public: false
         class: OpenConext\ProfileBundle\Security\Guard
@@ -155,6 +161,15 @@ services:
             - '__profile__'
         calls:
             - [setName, ['profile']]
+
+    profile.service.attribute_aggregation:
+        public: false
+        class: OpenConext\ProfileBundle\Service\AttributeAggregationService
+        arguments:
+            - @openconext_aa_api.repository.attribute_aggregation
+            - @saml.attribute.surfconext.id
+            - @profile.available_aa_attributes
+            - @logger
 
     profile.service.attribute_support_mail:
         public: false
