@@ -90,7 +90,7 @@
                                         </td>
                                         <td>
                                             {% if attribute.value is iterable %}
-                                                {{ attribute.value|join(', ') }}
+                                                {{ attribute.value|join('\n')|nl2br }}
                                             {% else %}
                                                {{ attribute.value }}
                                             {% endif %}
