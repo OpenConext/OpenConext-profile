@@ -56,7 +56,7 @@ class SpecifiedConsentListService
 
         return $this->attributeReleasePolicyService->applyAttributeReleasePolicies(
             $consentList,
-            $user->getAttributes()
+            $user->getAttributesFiltered()
         );
     }
 }

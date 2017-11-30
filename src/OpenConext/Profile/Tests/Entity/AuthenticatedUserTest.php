@@ -114,7 +114,7 @@ class AuthenticatedUserTest extends TestCase
                 ['Chuck Tester']
             ),
             new Attribute(
-                new AttributeDefinition('Organization', '', 'urn:oid:1.3.6.1.4.1.1076.20.40.40.1'),
+                new AttributeDefinition('Organization', 'urn:mace:surfconextid', 'urn:oid:1.3.6.1.4.1.1076.20.40.40.1'),
                 ['My Organization']
             ),
             new Attribute(
@@ -126,7 +126,7 @@ class AuthenticatedUserTest extends TestCase
         $assertionAdapter = $this->mockAssertionAdapterWith($attributeSet, 'test NameID');
 
         $authenticatedUser  = AuthenticatedUser::createFrom($assertionAdapter, []);
-        $actualAttributeSet = $authenticatedUser->getAttributes();
+        $actualAttributeSet = $authenticatedUser->getAttributesFiltered();
 
         $this->assertCount(2, $actualAttributeSet);
         $this->assertEquals($expectedAttributeSet, $actualAttributeSet);
