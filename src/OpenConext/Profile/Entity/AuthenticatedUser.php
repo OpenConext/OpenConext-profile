@@ -134,4 +134,22 @@ final class AuthenticatedUser
     {
         return $this->nameId;
     }
+
+    /**
+     * @return AttributeSet
+     */
+    public function getAttributesFiltered()
+    {
+        $attributes = $this->getAttributes();
+        $filtered = [];
+        /** @var Attribute $attribute */
+        foreach ($attributes as $attribute) {
+            // Filter out blacklisted attributes
+            if (in_array($attribute->getAttributeDefinition()->getUrnOid(), self::$blacklistedAttributes)) {
+                continue;
+            }
+            $filtered[] = $attribute;
+        }
+        return AttributeSet::create($filtered);
+    }
 }
