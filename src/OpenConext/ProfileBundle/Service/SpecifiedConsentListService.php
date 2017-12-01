@@ -19,8 +19,8 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
-use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\Profile\Entity\AuthenticatedUser;
+use OpenConext\Profile\Value\SpecifiedConsentList;
 
 class SpecifiedConsentListService
 {
@@ -53,6 +53,13 @@ class SpecifiedConsentListService
     public function getListFor(AuthenticatedUser $user)
     {
         $consentList = $this->consentService->findAllFor($user);
+
+        // There is an off chance the user didn't give consent yet, in that case the consent list is null. It's not
+        // possible to apply ARP on empty consent list.
+        if (is_null($consentList)) {
+            // So return an empty SpecifiedConsentList
+            return SpecifiedConsentList::createWith([]);
+        }
 
         return $this->attributeReleasePolicyService->applyAttributeReleasePolicies(
             $consentList,
