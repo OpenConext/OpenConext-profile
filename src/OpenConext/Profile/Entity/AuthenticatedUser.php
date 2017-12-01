@@ -43,6 +43,15 @@ final class AuthenticatedUser
     private $authenticatingAuthorities;
 
     /**
+     * A list of blacklisted attributes defined by their Urn OID
+     * @var array
+     */
+    private static $blacklistedAttributes = [
+        'urn:oid:1.3.6.1.4.1.1076.20.40.40.1',
+        'urn:oid:1.3.6.1.4.1.1466.115.121.1.15',
+    ];
+
+    /**
      * @param AssertionAdapter $assertionAdapter
      * @param EntityId[] $authenticatingAuthorities
      *
@@ -56,6 +65,11 @@ final class AuthenticatedUser
         /** @var Attribute $attribute */
         foreach ($assertionAdapter->getAttributeSet() as $attribute) {
             $definition = $attribute->getAttributeDefinition();
+
+            // Filter out blacklisted attributes
+            if (in_array($definition->getUrnOid(), self::$blacklistedAttributes)) {
+                continue;
+            }
 
             // We only want to replace the eduPersonTargetedID attribute value as that is a nested NameID attribute
             if ($definition->getName() !== 'eduPersonTargetedID') {
