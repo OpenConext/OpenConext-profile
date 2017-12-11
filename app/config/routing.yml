@@ -2,6 +2,10 @@ open_conext_profile:
     resource:   "@OpenConextProfileBundle/Resources/config/routing.yml"
     prefix:     /
 
+openconext_monitor:
+    resource:   "@OpenConextMonitorBundle/Resources/config/routing.yml"
+    prefix:     /
+
 nelmio_security_report:
     path:       /csp/report
     methods:    [POST]
