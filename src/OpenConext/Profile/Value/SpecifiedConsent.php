@@ -18,6 +18,7 @@
 
 namespace OpenConext\Profile\Value;
 
+use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class SpecifiedConsent
@@ -66,5 +67,32 @@ class SpecifiedConsent
     public function getReleasedAttributes()
     {
         return $this->releasedAttributes;
+    }
+
+    public function hasMultipleSources()
+    {
+        $sources = [];
+        foreach ($this->getReleasedAttributes() as $attribute) {
+            $source = $attribute->getValue()[0]['source'];
+            $sources[$source] = $source;
+        }
+
+        return count($sources) > 1;
+    }
+
+    /**
+     * Groups the released attributes on the group they originate from. This can be used to show the attributes.
+     *
+     * @return Attribute[]
+     */
+    public function getReleasedAttributesGroupedBySource()
+    {
+        $grouped = [];
+        foreach ($this->getReleasedAttributes() as $attribute) {
+            // The source is the same for all possible attribute values, so use the first one.
+            $source = $attribute->getValue()[0]['source'];
+            $grouped[$source][] = $attribute;
+        }
+        return $grouped;
     }
 }

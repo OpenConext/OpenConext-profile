@@ -76,18 +76,39 @@ class AttributeReleasePolicyServiceTest extends TestCase
                             'urn:oid:0.0.0.0.0.1' => ['some-value'],
                             'urn:oid:0.0.0.0.0.2' => ['another-value'],
                         ],
+                        'showSources' => true
                     ],
                     '/arp',
                 ]
             )
             ->andReturn([
                 'some-entity-id' => [
-                    'urn:mace:some-attribute' => ['some-value'],
-                    'urn:oid:0.0.0.0.0.1' => ['some-value'],
-                    'urn:oid:0.0.0.0.0.2' => ['another-value']
+                    'urn:mace:some-attribute' => [
+                        [
+                            'value' => 'some-value',
+                            'source' => 'idp',
+                        ],
+                    ],
+                    'urn:oid:0.0.0.0.0.1' => [
+                        [
+                            'value' => 'some-value',
+                            'source' => 'idp',
+                        ],
+                    ],
+                    'urn:oid:0.0.0.0.0.2' => [
+                        [
+                            'value' => 'another-value',
+                            'source' => 'idp',
+                        ],
+                    ],
                 ],
                 'another-entity-id' => [
-                    'urn:oid:0.0.0.0.0.2' => ['another-value']
+                    'urn:oid:0.0.0.0.0.2' => [
+                        [
+                            'value' => 'another-value',
+                            'source' => 'idp',
+                        ],
+                    ]
                 ],
             ]);
 
@@ -125,14 +146,18 @@ class AttributeReleasePolicyServiceTest extends TestCase
 
         $someAttribute    = new Attribute($someAttributeDefinition, ['some-value']);
         $anotherAttribute = new Attribute($anotherAttributeDefinition, ['another-value']);
+
+        // The results as expected to have been returned from the API (sources have been added)
+        $expectedSomeAttribute    = new Attribute($someAttributeDefinition, [['value' => 'some-value', 'source' => 'idp']]);
+        $expectedAnotherAttribute = new Attribute($anotherAttributeDefinition, [['value' => 'another-value', 'source' => 'idp']]);
         $attributeSet     = AttributeSet::create([$someAttribute, $anotherAttribute,]);
 
         $expectedResult = SpecifiedConsentList::createWith([
             SpecifiedConsent::specifies(
                 $someConsent,
-                AttributeSetWithFallbacks::create([$someAttribute, $anotherAttribute])
+                AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute])
             ),
-            SpecifiedConsent::specifies($anotherConsent, AttributeSetWithFallbacks::create([$anotherAttribute]))
+            SpecifiedConsent::specifies($anotherConsent, AttributeSetWithFallbacks::create([$expectedAnotherAttribute]))
         ]);
 
         $result = $arpService->applyAttributeReleasePolicies($consentList, $attributeSet);

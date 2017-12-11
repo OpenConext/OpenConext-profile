@@ -81,7 +81,8 @@ final class AttributeReleasePolicyService
 
         $data = [
             'entityIds'  => $entityIds,
-            'attributes' => !empty($mappedAttributes) ? $mappedAttributes : new stdClass()
+            'attributes' => !empty($mappedAttributes) ? $mappedAttributes : new stdClass(),
+            'showSources' => true,
         ];
         $response = $this->jsonApiClient->post($data, '/arp');
 

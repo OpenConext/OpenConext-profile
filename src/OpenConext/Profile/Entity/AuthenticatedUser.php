@@ -66,11 +66,6 @@ final class AuthenticatedUser
         foreach ($assertionAdapter->getAttributeSet() as $attribute) {
             $definition = $attribute->getAttributeDefinition();
 
-            // Filter out blacklisted attributes
-            if (in_array($definition->getUrnOid(), self::$blacklistedAttributes)) {
-                continue;
-            }
-
             // We only want to replace the eduPersonTargetedID attribute value as that is a nested NameID attribute
             if ($definition->getName() !== 'eduPersonTargetedID') {
                 $attributes[] = $attribute;

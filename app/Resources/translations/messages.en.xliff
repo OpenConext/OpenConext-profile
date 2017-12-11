@@ -275,7 +275,12 @@ This profile page gives you insight in which personal data, provided by your ins
       <trans-unit id="41aded5ca8217152487f685b47f640799d76e24f" resname="profile.my_services.attribute_release_description">
         <source>profile.my_services.attribute_release_description</source>
         <target>This service receives the following information about you:</target>
-        <jms:reference-file line="65">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="1">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="069a217bbb82a2da6a0c01cb25256919a35b62af" resname="profile.my_services.attribute_release_description_with_source">
+        <source>profile.my_services.attribute_release_description_with_source</source>
+        <target>This service receives the following information about you from %source%:</target>
+        <jms:reference-file line="1">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/aa.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="cbc567af195fed58513777f183eafe22542178b1" resname="profile.my_services.consent_first_used_on">
         <source>profile.my_services.consent_first_used_on</source>
@@ -456,7 +461,8 @@ This profile page gives you insight in which personal data, provided by your ins
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
         <jms:reference-file line="24">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="70">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/aa.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
         <source>profile.table.attribute_value</source>
@@ -464,7 +470,22 @@ This profile page gives you insight in which personal data, provided by your ins
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
         <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="7">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0116d16056d9cd75bfe4bf170b5b504d8b939a38" resname="profile.table.source_description.orcid">
+        <source>profile.table.source_description.orcid</source>
+        <target>ORCID iD</target>
+        <jms:reference-file line="175">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e591d4c6d94037cb4aca3294d989e63eeb15663f" resname="profile.table.source_description.sab">
+        <source>profile.table.source_description.sab</source>
+        <target>SURFnet Autorisatie Beheer</target>
+        <jms:reference-file line="176">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4b1c5ddcfd432d3477264f068b21ff7996915e06" resname="profile.table.source_description.voot">
+        <source>profile.table.source_description.voot</source>
+        <target>Group membership</target>
+        <jms:reference-file line="174">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>
