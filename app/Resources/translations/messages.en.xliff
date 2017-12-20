@@ -392,7 +392,7 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="602265c6c69cb0a3e3ba202914cb1efc16e95f1c" resname="profile.my_surf_conext.data_origin">
         <source>profile.my_surf_conext.data_origin</source>
-        <target>Information and origin:</target>
+        <target>Information and origin</target>
         <jms:reference-file line="18">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5169f77f250fabf4445380d02e986b37f9ad10d7" resname="profile.my_surf_conext.data_retention_period">
