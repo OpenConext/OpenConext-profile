@@ -71,7 +71,7 @@ class MySurfConextController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->notice('Showing My Profile page');
+        $this->logger->notice('Showing My SURFconext page');
 
         $user = $this->userService->getUser();
 
