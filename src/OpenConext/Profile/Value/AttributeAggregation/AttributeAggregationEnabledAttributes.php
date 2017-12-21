@@ -30,9 +30,9 @@ final class AttributeAggregationEnabledAttributes
      */
     public function __construct(array $attributes)
     {
-        foreach ($attributes as $attributeIdentifier => $attribute) {
-            $this->attributes[$attributeIdentifier] = AttributeAggregationAttributeConfiguration::fromConfig(
-                $attributeIdentifier,
+        foreach ($attributes as $accountType => $attribute) {
+            $this->attributes[$accountType] = AttributeAggregationAttributeConfiguration::fromConfig(
+                $accountType,
                 $attribute
             );
         }
@@ -46,8 +46,8 @@ final class AttributeAggregationEnabledAttributes
         return $this->attributes;
     }
 
-    public function isEnabled($identifier)
+    public function isEnabled($accountType)
     {
-        return array_key_exists($identifier, $this->attributes);
+        return array_key_exists($accountType, $this->attributes);
     }
 }

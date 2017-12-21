@@ -23,7 +23,7 @@ final class AttributeAggregationAttributeConfiguration
     /**
      * @var string
      */
-    private $identifier;
+    private $accountType;
 
     /**
      * @var string
@@ -41,23 +41,23 @@ final class AttributeAggregationAttributeConfiguration
     private $disconnectUrl;
 
     /**
-     * @param string $identifier
+     * @param string $accountType
      * @param string $logoPath
      * @param string $connectUrl
      * @param string $disconnectUrl
      */
-    public function __construct($identifier, $logoPath, $connectUrl, $disconnectUrl)
+    public function __construct($accountType, $logoPath, $connectUrl, $disconnectUrl)
     {
-        $this->identifier = $identifier;
+        $this->accountType = $accountType;
         $this->logoPath = $logoPath;
         $this->connectUrl = $connectUrl;
         $this->disconnectUrl = $disconnectUrl;
     }
 
-    public static function fromConfig($identifier, $attributeConfigParameters)
+    public static function fromConfig($accountType, $attributeConfigParameters)
     {
         return new self(
-            $identifier,
+            $accountType,
             $attributeConfigParameters['logo_path'],
             $attributeConfigParameters['connect_url'],
             $attributeConfigParameters['disconnect_url']
@@ -67,9 +67,9 @@ final class AttributeAggregationAttributeConfiguration
     /**
      * @return string
      */
-    public function getIdentifier()
+    public function getAccountType()
     {
-        return $this->identifier;
+        return $this->accountType;
     }
 
     /**
