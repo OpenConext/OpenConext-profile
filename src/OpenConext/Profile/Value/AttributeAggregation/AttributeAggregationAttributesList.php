@@ -60,13 +60,13 @@ final class AttributeAggregationAttributesList
     }
 
     /**
-     * @param $identifier
+     * @param string $accountType
      * @return bool
      */
-    public function hasAttribute($identifier)
+    public function hasAttribute($accountType)
     {
         foreach ($this->attributes as $attribute) {
-            if ($attribute->getIdentifier() === $identifier) {
+            if ($attribute->getAccountType() === $accountType) {
                 return true;
             }
         }
@@ -78,28 +78,28 @@ final class AttributeAggregationAttributesList
         $this->attributes = array_filter(
             $this->attributes,
             function (AttributeAggregationAttribute $attribute) use ($enabledAttributes) {
-                return $enabledAttributes->isEnabled($attribute->getIdentifier());
+                return $enabledAttributes->isEnabled($attribute->getAccountType());
             }
         );
     }
 
     /**
-     * @param $identifier
+     * @param string $accountType
      * @return AttributeAggregationAttribute
      * @throws InvalidArgumentException
      */
-    public function getAttribute($identifier)
+    public function getAttribute($accountType)
     {
         foreach ($this->attributes as $attribute) {
-            if ($attribute->getIdentifier() === $identifier) {
+            if ($attribute->getAccountType() === $accountType) {
                 return $attribute;
             }
         }
 
         throw new InvalidArgumentException(
             sprintf(
-                'The requested attribute with identifier "%s" could not be found',
-                $identifier
+                'The requested attribute for account type "%s" could not be found',
+                $accountType
             )
         );
     }

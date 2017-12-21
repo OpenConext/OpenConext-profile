@@ -83,14 +83,13 @@ final class AttributeAggregationService
                 $attributeAggregationAttributes = $this->repository->findAllFor($surfConextId);
 
                 foreach ($enabledAttributes->getAttributes() as $enabledAttribute) {
-                    $identifier = $enabledAttribute->getIdentifier();
-                    if ($attributeAggregationAttributes->hasAttribute($identifier)) {
-                        $aaAttribute = $attributeAggregationAttributes->getAttribute($identifier);
+                    $accountType = $enabledAttribute->getAccountType();
+                    if ($attributeAggregationAttributes->hasAttribute($accountType)) {
+                        $aaAttribute = $attributeAggregationAttributes->getAttribute($accountType);
                         $collection[] = AttributeAggregationAttribute::fromConfig(
                             $enabledAttribute,
                             true,
-                            $aaAttribute->getValues(),
-                            $aaAttribute->getSource()
+                            $aaAttribute->getLinkedId()
                         );
                     } else {
                         $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false);

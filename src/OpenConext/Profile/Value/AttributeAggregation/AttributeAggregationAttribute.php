@@ -25,17 +25,12 @@ final class AttributeAggregationAttribute
     /**
      * @var string
      */
-    private $identifier;
+    private $accountType;
 
     /**
      * @var string
      */
-    private $values;
-
-    /**
-     * @var string
-     */
-    private $source;
+    private $linkedId;
 
     /**
      * @var string
@@ -58,75 +53,76 @@ final class AttributeAggregationAttribute
     private $isConnected = false;
 
     /**
-     * @param string $identifier
+     * @param string $accountType
+     * @param string $linkedId
      * @param string $logoPath
      * @param string $connectUrl
      * @param string $disconnectUrl
      * @param bool $isConnected
-     * @param array $values
-     * @param $source
      */
     public function __construct(
-        $identifier,
+        $accountType,
+        $linkedId,
         $logoPath,
         $connectUrl,
         $disconnectUrl,
-        $isConnected,
-        array $values = null,
-        $source = null
+        $isConnected
     ) {
-        $this->identifier = $identifier;
+        $this->accountType = $accountType;
+        $this->linkedId = $linkedId;
         $this->logoPath = $logoPath;
         $this->connectUrl = $connectUrl;
         $this->disconnectUrl = $disconnectUrl;
         $this->isConnected = $isConnected;
-        $this->values = $values;
-        $this->source = $source;
     }
 
     public static function fromConfig(
         AttributeAggregationAttributeConfiguration $enabledAttribute,
         $isConnected,
-        array $values = null,
-        $source = null
+        $linkedId = null
     ) {
         return new self(
-            $enabledAttribute->getIdentifier(),
+            $enabledAttribute->getAccountType(),
+            $linkedId,
             $enabledAttribute->getLogoPath(),
             $enabledAttribute->getConnectUrl(),
             $enabledAttribute->getDisconnectUrl(),
-            $isConnected,
-            $values,
-            $source
+            $isConnected
         );
     }
 
     public static function fromApiResponse(array $attributeData)
     {
-        Assertion::keyExists($attributeData, 'name', 'The name should be set on the attribute');
-        Assertion::string($attributeData['name'], 'The name should be a string');
-        Assertion::keyExists($attributeData, 'values', 'The values should be set on the attribute');
-        Assertion::isArray($attributeData['values'], 'The values should be an array');
-        Assertion::keyExists($attributeData, 'source', 'The source should be set on the attribute');
-        Assertion::string($attributeData['source'], 'The source should be a string');
+        Assertion::keyExists($attributeData, 'accountType', 'No account type found on attribute');
+        Assertion::string($attributeData['accountType'], 'Account type should be a string');
+
+        Assertion::keyExists($attributeData, 'linkedId', 'No linked id found on attribute');
+        Assertion::string($attributeData['linkedId'], 'Linked id should be a string');
 
         return new self(
-            $attributeData['name'],
+            $attributeData['accountType'],
+            $attributeData['linkedId'],
             '',
             '',
             '',
-            true,
-            $attributeData['values'],
-            $attributeData['source']
+            true
         );
     }
 
     /**
      * @return string
      */
-    public function getIdentifier()
+    public function getAccountType()
     {
-        return $this->identifier;
+        return $this->accountType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLinkedId()
+    {
+        return $this->linkedId;
     }
 
     /**
@@ -159,21 +155,5 @@ final class AttributeAggregationAttribute
     public function isConnected()
     {
         return $this->isConnected;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValues()
-    {
-        return $this->values;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSource()
-    {
-        return $this->source;
     }
 }

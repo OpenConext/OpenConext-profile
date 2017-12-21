@@ -137,10 +137,10 @@ open_conext_profile:
         email_to: %information_request_email_to%
     # An array of attribute identifiers supported by attribute aggregation
     attribute_aggregation_supported_attributes:
-        # The identifier of the attribute. Should match the value of the name attribute from the Attribute Aggregation
-        # API response. For a list of supported attributes see:
+        # The accountType of the attribute. Should match the value of the name attribute from the Attribute Aggregation
+        # API account list response. For a list of supported attributes see:
         # https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext
-        'urn:mace:dir:attribute-def:eduPersonOrcid':
+        'ORCID':
             # The relative path to an image. Starting from the /web folder
             logo_path: %attribute_aggregation_orcid_logo_path%
             # The Url where the attribute can be connected
