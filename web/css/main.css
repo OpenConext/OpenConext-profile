@@ -169,6 +169,9 @@ i.prepended {
     text-align: left;
     padding: 16px 12px;
 }
+.mdl-layout__content .content-container .overview-table td table p.attribute-value {
+    margin: 0;
+}
 .mdl-layout__content .content-container .overview-table th:first-child {
     min-width: 200px;
 }
