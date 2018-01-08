@@ -167,12 +167,12 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       </trans-unit>
       <trans-unit id="dabc34079097e6ea7a29934f274e65a91e95f82a" resname="profile.my_connections.explanation">
         <source>profile.my_connections.explanation</source>
-        <target>Omdat wanneer je dit doet, OpenConext deze gegevens kan gebruiken om je bestaande attributen te verrijken met de waarden uit de koppeling. Services die verbonden zijn met OpenConext kunnen je koppelingen gebruiken.</target>
+        <target>Je kunt externe bronnen koppelen aan je SURFconext-profiel. SURFconext kan deze gegevens gebruiken om je bestaande attributen afkomstig van je instellingsaccount te verrijken met de waarden uit het gekoppelde account. Diensten die verbonden zijn met SURFconext kunnen vervolgens deze informatie ontvangen.</target>
         <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="287927bbc9031325f1d5a3efeb26577352fe68f9" resname="profile.my_connections.long_title">
         <source>profile.my_connections.long_title</source>
-        <target>Je hebt nog geen koppelingen, waarom zou je deze willen maken?</target>
+        <target>Accounts gelinkt aan je profiel</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="34ce48e722c206f299190088acea1e55ba420e99" resname="profile.my_connections.missing_connections">
