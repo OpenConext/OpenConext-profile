@@ -20,6 +20,7 @@ namespace OpenConext\EngineBlockApiClientBundle\Service;
 
 use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
+use OpenConext\Profile\Value\Arp;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\SpecifiedConsent;
@@ -58,6 +59,7 @@ final class AttributeReleasePolicyService
      * @param AttributeSetInterface $attributeSet
      * @return SpecifiedConsentList
      * @SuppressWarnings(PHPMD.NPathComplexity) Build and mapping logic causes complexity
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity) Build and mapping logic causes complexity
      */
     public function applyAttributeReleasePolicies(ConsentList $consentList, AttributeSetInterface $attributeSet)
     {
@@ -84,10 +86,17 @@ final class AttributeReleasePolicyService
             'attributes' => !empty($mappedAttributes) ? $mappedAttributes : new stdClass(),
             'showSources' => true,
         ];
+        // Arp is applied for all entities
         $response = $this->jsonApiClient->post($data, '/arp');
 
+        $data = [
+            'entityIds'  => $entityIds,
+        ];
+        // Arp information is retrieved for all entities with arp enabled.
+        $arpResponse = $this->jsonApiClient->post($data, '/read-arp');
+
         $specifiedConsents = $consentList->map(
-            function (Consent $consent) use ($response) {
+            function (Consent $consent) use ($response, $arpResponse) {
                 $entityId = $consent->getServiceProvider()->getEntity()->getEntityId()->getEntityId();
 
                 if (!isset($response[$entityId])) {
@@ -113,8 +122,12 @@ final class AttributeReleasePolicyService
                         $attributes[] = $attribute;
                     }
                 }
+                $arp = Arp::createWith([], null);
+                if (isset($arpResponse[$entityId])) {
+                    $arp = Arp::createWith($arpResponse[$entityId], $this->attributeDictionary);
+                }
 
-                return SpecifiedConsent::specifies($consent, AttributeSetWithFallbacks::create($attributes));
+                return SpecifiedConsent::specifies($consent, AttributeSetWithFallbacks::create($attributes), $arp);
             }
         );
 
