@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2017-11-30T11:47:58Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2018-01-09T16:45:26Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -155,84 +155,92 @@ This profile page gives you insight in which personal data, provided by your ins
         <target>NL</target>
         <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="9efb18562f68975294c34a9d578af71915151cc5" resname="profile.my_connections.active_connections">
+        <source>profile.my_connections.active_connections</source>
+        <target>Active connections</target>
+        <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="b45e0cbe033a9a0c1c9ca4f86be6bfe4c30f7681" resname="profile.my_connections.available_connections">
         <source>profile.my_connections.available_connections</source>
         <target>Available Connections</target>
-        <jms:reference-file line="53">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="50">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5786ea6a363e616a432c6c437314c328dbdca83c" resname="profile.my_connections.description_label">
         <source>profile.my_connections.description_label</source>
         <target>Description</target>
-        <jms:reference-file line="61">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="64">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dabc34079097e6ea7a29934f274e65a91e95f82a" resname="profile.my_connections.explanation">
         <source>profile.my_connections.explanation</source>
         <target>It's possible to connect external sources to your SURFconext profile. SURFconext can use this information to enrich the existing attributes of your institutional account with the values from this external account. Services connected to SURFconext can receive and use this information.</target>
-        <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="287927bbc9031325f1d5a3efeb26577352fe68f9" resname="profile.my_connections.long_title">
         <source>profile.my_connections.long_title</source>
         <target>Accounts linked to your profile</target>
-        <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="34ce48e722c206f299190088acea1e55ba420e99" resname="profile.my_connections.missing_connections">
         <source>profile.my_connections.missing_connections</source>
         <target>Missing Connections?</target>
-        <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="80">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d8030c905e3901505ffa45585843d95d71cedb7a" resname="profile.my_connections.no_active_connections.description">
+        <source>profile.my_connections.no_active_connections.description</source>
+        <target>You don't have any active connections yet.</target>
+        <jms:reference-file line="15">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ec33c82bf179989652928e2df38fcf975c378d95" resname="profile.my_connections.no_connections_configured.description">
         <source>profile.my_connections.no_connections_configured.description</source>
         <target>At the moment there are no connections that are available for configuration.</target>
-        <jms:reference-file line="20">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="52">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d1a92495d8e08cf89bf517af5ffe5461407d2921" resname="profile.my_connections.orcid.connect_title">
         <source>profile.my_connections.orcid.connect_title</source>
         <target>Connect</target>
-        <jms:reference-file line="69">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="72">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
         <target>ORCID is a nonproprietary alphanumeric code to uniquely identify scientific and other academic authors. This addresses the problem that a particular author's contributions to the scientific literature or publications in the humanities can be hard to recognize as most personal names are not unique, they can change (such as with marriage), have cultural differences in name order, contain inconsistent use of first-name abbreviations and employ different writing systems.</target>
-        <jms:reference-file line="62">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="65">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4bc8f1ebcd9026ebbc6df9e128e3a1c0d4407ebd" resname="profile.my_connections.orcid.disconnect_title">
         <source>profile.my_connections.orcid.disconnect_title</source>
         <target>Disconnect</target>
-        <jms:reference-file line="42">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="38">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bd50bc94d1957cd597c43c9a1eb6284461d48482" resname="profile.my_connections.orcid.status">
         <source>profile.my_connections.orcid.status</source>
         <target>Status</target>
-        <jms:reference-file line="33">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4f36591d6cd52fa2b3b097b9cd4ca900700fe22e" resname="profile.my_connections.orcid.status_connected">
         <source>profile.my_connections.orcid.status_connected</source>
         <target>Connected</target>
-        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="30">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fb0b77c5fd95698ab75dbd35962d63c0e76e9f2c" resname="profile.my_connections.orcid.title">
         <source>profile.my_connections.orcid.title</source>
         <target>ORCID</target>
-        <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="58">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="22">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="61">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7d8ba5b858f788ea3b20782b6d6a2653ab34581c" resname="profile.my_connections.send_request">
         <source>profile.my_connections.send_request</source>
         <target>Send us a request</target>
-        <jms:reference-file line="78">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="81">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d19d7e654594f5a24af2d7ccd23a3678082a0db4" resname="profile.my_connections.service_label">
         <source>profile.my_connections.service_label</source>
         <target>Service</target>
-        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="57">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="60">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f61fad44caa0beb389084eb69cd3663855a1a3ac" resname="profile.my_connections.short_title">
         <source>profile.my_connections.short_title</source>
         <target>My Connections</target>
-        <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="12">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
         <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>

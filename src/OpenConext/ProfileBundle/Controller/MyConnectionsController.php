@@ -94,16 +94,19 @@ class MyConnectionsController
         $user = $this->userProvider->getCurrentUser();
         $attributes = $this->service->findByUser($user);
 
-        $orcid = null;
-        if (!is_null($attributes) && !empty($attributes->getAttributes())) {
-            // For now only orcid can be configured, so it's always the first attribute in the collection.
-            $orcid = $attributes->getAttributes()[0];
+        $activeConnections = [];
+        $availableConnections = [];
+
+        if ($attributes) {
+            $activeConnections = $attributes->getActiveAttributes();
+            $availableConnections = $attributes->getAvailableAttributes();
         }
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyConnections:overview.html.twig',
             [
-                'orcid' => $orcid,
+                'activeConnections' => $activeConnections,
+                'availableConnections' => $availableConnections,
                 'mailTo' => $this->mailTo->getEmailAddress(),
             ]
         ));
