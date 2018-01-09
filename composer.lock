@@ -1661,16 +1661,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "2.6.3",
+            "version": "2.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "2c1e4c084d790f49e867a4c33463b2da872a4182"
+                "reference": "dbc2685f1aac66697d2c867d529608ff036cb28b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/2c1e4c084d790f49e867a4c33463b2da872a4182",
-                "reference": "2c1e4c084d790f49e867a4c33463b2da872a4182",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/dbc2685f1aac66697d2c867d529608ff036cb28b",
+                "reference": "dbc2685f1aac66697d2c867d529608ff036cb28b",
                 "shasum": ""
             },
             "require": {
@@ -1678,8 +1678,8 @@
                 "php": ">=5.4,<8.0-dev",
                 "robrichards/xmlseclibs": "^1.4.0",
                 "simplesamlphp/saml2": "^1.8",
-                "symfony/dependency-injection": "^2.7",
-                "symfony/framework-bundle": "^2.7"
+                "symfony/dependency-injection": ">=2.7,<4",
+                "symfony/framework-bundle": ">=2.7,<4"
             },
             "require-dev": {
                 "ibuildings/qa-tools": "~1.1",
@@ -1705,7 +1705,7 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2016-12-12T12:31:10+00:00"
+            "time": "2018-01-09T14:13:18+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
