@@ -90,6 +90,29 @@ can be done on an installation that runs in `DEV` mode. Make sure you log
 into profile at `https://profile-dev.vm.openconext.org`. Then go to
 `https://profile.vm.openconext.org/app_dev.php/_trans/` to update the strings.
 
+## Common tasks
+
+### Add support for new Attribute Aggregation source
+In EngineBlock ARP, attributes can be derived from a source other than the IdP. Whenever a source other than
+the IdP is configured. Profile will not (yet) attempt to retrieve the value for that attribute. But will show only a
+summation of the attribute names for each given source. 
+
+When a new source is added in the Service Registry (or Manage) it must also be added to Profile.  
+1. Add translation entry in `translations.html.twig`. At the bottom of the file:
+    ```twig
+    {{ 'profile.table.source_description.voot'|trans }}
+    {{ 'profile.table.source_description.orcid'|trans }}
+    {{ 'profile.table.source_description.sab'|trans }}
+    
+    {# Add your new source here, make sure the source name complies with the sourcename specified in the service registry. #}
+    ```
+2. Extract the new translation and translate them in the available `messages.LANG.xliff` translation files.
+3. Done.
+
+To test your change. Modify one of the SP's already present in the 'My Services' overview with the newly added source. 
+Do this by changing the source of one of the attributes to the newly added source. You might need to add the source to 
+the SR/Manage configuration first. 
+
 # License
 This project is licensed under version 2.0 of the Apache License, as described
 in the file [LICENSE](LICENSE).
