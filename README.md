@@ -63,8 +63,6 @@ open_conext_profile:
             logo_path: %attribute_aggregation_orcid_logo_path%
             # The Url where the attribute can be connected
             connect_url: %attribute_aggregation_orcid_connect_url%
-            # The Url where the attribute can be disconnected
-            disconnect_url: %attribute_aggregation_orcid_disconnect_url%
 ```
 
 ## Releases

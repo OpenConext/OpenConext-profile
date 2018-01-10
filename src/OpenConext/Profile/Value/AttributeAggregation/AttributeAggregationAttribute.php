@@ -57,7 +57,6 @@ final class AttributeAggregationAttribute
      * @param string $linkedId
      * @param string $logoPath
      * @param string $connectUrl
-     * @param string $disconnectUrl
      * @param bool $isConnected
      */
     public function __construct(
@@ -65,14 +64,12 @@ final class AttributeAggregationAttribute
         $linkedId,
         $logoPath,
         $connectUrl,
-        $disconnectUrl,
         $isConnected
     ) {
         $this->accountType = $accountType;
         $this->linkedId = $linkedId;
         $this->logoPath = $logoPath;
         $this->connectUrl = $connectUrl;
-        $this->disconnectUrl = $disconnectUrl;
         $this->isConnected = $isConnected;
     }
 
@@ -86,7 +83,6 @@ final class AttributeAggregationAttribute
             $linkedId,
             $enabledAttribute->getLogoPath(),
             $enabledAttribute->getConnectUrl(),
-            $enabledAttribute->getDisconnectUrl(),
             $isConnected
         );
     }
