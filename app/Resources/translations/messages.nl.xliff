@@ -490,6 +490,11 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <target>SURFnet Autorisatie Beheer</target>
         <jms:reference-file line="176">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="0fcd10ec6755193c6f51f1c0377f950eca8b02d3" resname="profile.table.source_description.surfmarket-entitlements">
+        <source>profile.table.source_description.surfmarket-entitlements</source>
+        <target>SURFmarket Entitlements</target>
+        <jms:reference-file line="177">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="4b1c5ddcfd432d3477264f068b21ff7996915e06" resname="profile.table.source_description.voot">
         <source>profile.table.source_description.voot</source>
         <target>Groepslidmaatschap</target>
