@@ -34,23 +34,31 @@ class SpecifiedConsent
     private $releasedAttributes;
 
     /**
+     * @var Arp
+     */
+    private $arp;
+
+    /**
      * @param Consent $consent
      * @param AttributeSet $releasedAttributes
+     * @param Arp $arp
      * @return SpecifiedConsent
      */
-    public static function specifies(Consent $consent, AttributeSet $releasedAttributes)
+    public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
     {
-        return new self($consent, $releasedAttributes);
+        return new self($consent, $releasedAttributes, $arp);
     }
 
     /**
      * @param Consent $consent
      * @param AttributeSet $releasedAttributes
+     * @param Arp $arp
      */
-    private function __construct(Consent $consent, AttributeSet $releasedAttributes)
+    private function __construct(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
     {
-        $this->consent            = $consent;
+        $this->consent = $consent;
         $this->releasedAttributes = $releasedAttributes;
+        $this->arp = $arp;
     }
 
     /**
@@ -77,11 +85,14 @@ class SpecifiedConsent
             $sources[$source] = $source;
         }
 
+        $sources = array_merge($sources, $this->arp->getNonIdpAttributes());
+
         return count($sources) > 1;
     }
 
     /**
-     * Groups the released attributes on the group they originate from. This can be used to show the attributes.
+     * Groups the released attributes on the group they originate from. This can be used to show the AA attributes.
+     * Note that the attributes from the IdP source are omitted in the results.
      *
      * @return Attribute[]
      */
@@ -91,8 +102,14 @@ class SpecifiedConsent
         foreach ($this->getReleasedAttributes() as $attribute) {
             // The source is the same for all possible attribute values, so use the first one.
             $source = $attribute->getValue()[0]['source'];
+            if ($source !== 'idp') {
+                continue;
+            }
+
             $grouped[$source][] = $attribute;
         }
+        $grouped = array_merge($grouped, $this->arp->getNonIdpAttributes());
+
         return $grouped;
     }
 }

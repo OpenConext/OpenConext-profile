@@ -19,6 +19,7 @@
 namespace OpenConext\Profile\Tests\Value;
 
 use DateTimeImmutable;
+use OpenConext\Profile\Value\Arp;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentType;
@@ -67,14 +68,14 @@ class SpecifiedConsentTest extends TestCase
 
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
-            AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute])
+            AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
+            Arp::createWith([])
         );
 
         $this->assertTrue($specifiedConsent->hasMultipleSources());
-        $this->assertCount(2, $specifiedConsent->getReleasedAttributesGroupedBySource());
     }
 
-    public function test_it_is_aware_of_a_single_attribute_sources()
+    public function test_it_is_aware_of_a_single_attribute_source()
     {
         $someAttributeDefinition = new AttributeDefinition(
             'someAttribute',
@@ -105,11 +106,11 @@ class SpecifiedConsentTest extends TestCase
 
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
-            AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute])
+            AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
+            Arp::createWith([])
         );
 
         $this->assertFalse($specifiedConsent->hasMultipleSources());
-        $this->assertCount(1, $specifiedConsent->getReleasedAttributesGroupedBySource());
     }
     public function test_it_is_aware_of_zero_attribute_sources()
     {
@@ -131,10 +132,45 @@ class SpecifiedConsentTest extends TestCase
 
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
-            AttributeSetWithFallbacks::create([])
+            AttributeSetWithFallbacks::create([]),
+            Arp::createWith([])
         );
 
         $this->assertFalse($specifiedConsent->hasMultipleSources());
-        $this->assertEmpty($specifiedConsent->getReleasedAttributesGroupedBySource());
+    }
+
+    public function test_it_handles_arp_sources()
+    {
+        $someConsent = new Consent(
+            new ServiceProvider(
+                new Entity(
+                    new EntityId('some-entity-id'),
+                    EntityType::SP()
+                ),
+                new DisplayName([
+                    'en' => 'Some display name'
+                ]),
+                new Url('http://some-eula-url.example'),
+                new ContactEmailAddress('some@email.example')
+            ),
+            new DateTimeImmutable(),
+            ConsentType::explicit()
+        );
+
+        $arpData = json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true);
+
+        $specifiedConsent = SpecifiedConsent::specifies(
+            $someConsent,
+            AttributeSetWithFallbacks::create([]),
+            Arp::createWith($arpData)
+        );
+
+        $groupedBySources = $specifiedConsent->getReleasedAttributesGroupedBySource();
+
+        $this->assertTrue($specifiedConsent->hasMultipleSources());
+        $this->assertCount(3, $groupedBySources);
+        $this->assertArrayHasKey('sab', $groupedBySources);
+        $this->assertArrayHasKey('voot', $groupedBySources);
+        $this->assertArrayHasKey('orcid', $groupedBySources);
     }
 }

@@ -22,6 +22,7 @@ use DateTimeImmutable;
 use Mockery;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
+use OpenConext\Profile\Value\Arp;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
@@ -112,6 +113,46 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 ],
             ]);
 
+        $arpData = [
+            'some-entity-id' => [
+                'urn:mace:some-attribute' => [
+                    [
+                        'value' => 'some-value',
+                        'source' => 'idp',
+                    ],
+                ],
+                'urn:oid:0.0.0.0.0.1' => [
+                    [
+                        'value' => 'some-value',
+                        'source' => 'idp',
+                    ],
+                ],
+                'urn:oid:0.0.0.0.0.2' => [
+                    [
+                        'value' => 'another-value',
+                        'source' => 'sab',
+                    ],
+                ],
+            ],
+            'another-entity-id' => [
+                'urn:oid:0.0.0.0.0.2' => [
+                    [
+                        'value' => 'another-value',
+                        'source' => 'voot',
+                    ],
+                ]
+            ],
+        ];
+
+        $client->shouldReceive('read')
+            ->withArgs(
+                [
+                    '/read-arp?entityIds=%s',
+                    ['some-entity-id,another-entity-id'],
+                ]
+            )
+            ->andReturn($arpData);
+
         $someConsent = new Consent(
             new ServiceProvider(
                 new Entity(
@@ -155,9 +196,14 @@ class AttributeReleasePolicyServiceTest extends TestCase
         $expectedResult = SpecifiedConsentList::createWith([
             SpecifiedConsent::specifies(
                 $someConsent,
-                AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute])
+                AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
+                Arp::createWith($arpData['some-entity-id'], $attributeDictionary)
             ),
-            SpecifiedConsent::specifies($anotherConsent, AttributeSetWithFallbacks::create([$expectedAnotherAttribute]))
+            SpecifiedConsent::specifies(
+                $anotherConsent,
+                AttributeSetWithFallbacks::create([$expectedAnotherAttribute]),
+                Arp::createWith($arpData['another-entity-id'], $attributeDictionary)
+            )
         ]);
 
         $result = $arpService->applyAttributeReleasePolicies($consentList, $attributeSet);

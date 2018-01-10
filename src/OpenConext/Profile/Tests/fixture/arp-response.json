@@ -1,0 +1,70 @@
+{
+  "urn:mace:dir:attribute-def:eduPersonTargetedID": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:eduPersonPrincipalName": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:displayName": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:cn": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:givenName": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:sn": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:mail": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:terena.org:attribute-def:schacHomeOrganization": [
+    {
+      "value": ""
+    }
+  ],
+  "urn:mace:dir:attribute-def:eduPersonAffiliation": [
+    {
+      "value": "filter-value",
+      "source": "voot"
+    }
+  ],
+  "urn:mace:dir:attribute-def:eduPersonOrcid": [
+    {
+      "value": "*",
+      "source": "orcid"
+    }
+  ],
+  "urn:mace:dir:attribute-def:isMemberOf": [
+    {
+      "value": "-",
+      "source": "sab"
+    }
+  ],
+  "urn:mace:dir:attribute-def:uid": [
+    {
+      "value": "*"
+    }
+  ],
+  "urn:mace:dir:attribute-def:preferredLanguage": [
+    {
+      "value": "*"
+    }
+  ]
+}
