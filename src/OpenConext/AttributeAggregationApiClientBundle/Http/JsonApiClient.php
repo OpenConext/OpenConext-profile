@@ -52,9 +52,29 @@ class JsonApiClient
      */
     public function read($path, array $parameters = [])
     {
+        return $this->handle('GET', $path, $parameters);
+    }
+
+    /**
+     * @param string $path A URL path, optionally containing printf parameters. The parameters
+     *               will be URL encoded and formatted into the path string.
+     *               Example: "connections/%d.json"
+     * @param array  $parameters
+     * @return mixed $data
+     * @throws InvalidResponseException
+     * @throws MalformedResponseException
+     * @throws ResourceNotFoundException
+     */
+    public function delete($path, array $parameters = [])
+    {
+        return $this->handle('DELETE', $path, $parameters);
+    }
+
+    private function handle($method, $path, array $parameters = [])
+    {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->httpClient->request('GET', $resource, ['exceptions' => false]);
+        $response = $this->httpClient->request($method, $resource, ['exceptions' => false]);
 
         $statusCode = $response->getStatusCode();
 

@@ -30,4 +30,13 @@ interface AttributeAggregationRepository
      * @throws InvalidArgumentException When $userId is not a non-empty string
      */
     public function findAllFor(SurfConextId $userId);
+
+    /**
+     * Removes an account by providing the account id. The method returns a boolean value reflecting the
+     * result of the API call.
+     *
+     * @param $accountId
+     * @return bool
+     */
+    public function unsubscribeAccount($accountId);
 }

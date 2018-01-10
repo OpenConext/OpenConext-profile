@@ -40,8 +40,17 @@ final class AttributeAggregationRepository implements AttributeAggregationReposi
     {
         Assert::string($surfConextId->getSurfConextId(), 'SurfConext ID "%s" expected to be string, type %s given.');
 
-        $attributes = $this->apiClient->read('%s', [$surfConextId->getSurfConextId()]);
+        $attributes = $this->apiClient->read('accounts/%s', [$surfConextId->getSurfConextId()]);
 
         return AttributeAggregationAttributesList::fromApiResponse($attributes);
+    }
+
+    public function unsubscribeAccount($accountId)
+    {
+        Assert::integer($accountId, 'Account id "%s" expected to be string, type %s given.');
+
+        $result = $this->apiClient->delete('disconnect/%d', [$accountId]);
+
+        return isset($result->status) && $result->status === 'OK';
     }
 }
