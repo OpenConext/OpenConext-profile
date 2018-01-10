@@ -89,11 +89,8 @@ final class AttributeReleasePolicyService
         // Arp is applied for all entities
         $response = $this->jsonApiClient->post($data, '/arp');
 
-        $data = [
-            'entityIds'  => $entityIds,
-        ];
         // Arp information is retrieved for all entities with arp enabled.
-        $arpResponse = $this->jsonApiClient->post($data, '/read-arp');
+        $arpResponse = $this->jsonApiClient->read('/read-arp?entityIds=%s', [implode(',', $entityIds)]);
 
         $specifiedConsents = $consentList->map(
             function (Consent $consent) use ($response, $arpResponse) {

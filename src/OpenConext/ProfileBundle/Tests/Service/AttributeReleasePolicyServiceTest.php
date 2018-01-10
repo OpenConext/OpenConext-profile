@@ -144,16 +144,11 @@ class AttributeReleasePolicyServiceTest extends TestCase
             ],
         ];
 
-        $client->shouldReceive('post')
+        $client->shouldReceive('read')
             ->withArgs(
                 [
-                    [
-                        'entityIds'  => [
-                            'some-entity-id',
-                            'another-entity-id'
-                        ]
-                    ],
-                    '/read-arp',
+                    '/read-arp?entityIds=%s',
+                    ['some-entity-id,another-entity-id'],
                 ]
             )
             ->andReturn($arpData);

@@ -134,9 +134,7 @@ final class Arp
     public function getNonIdpAttributes()
     {
         $attributes = $this->getAttributesGroupedBySource();
-        if (isset($attributes['idp'])) {
-            unset($attributes['idp']);
-        }
+        unset($attributes['idp']);
         return $attributes;
     }
 
