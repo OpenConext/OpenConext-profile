@@ -51,12 +51,26 @@ final class AttributeAggregationAttributesList
         return new self($attributeCollection);
     }
 
-    /**
-     * @return AttributeAggregationAttribute[]
-     */
-    public function getAttributes()
+    public function getActiveAttributes()
     {
-        return $this->attributes;
+        $output = [];
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->isConnected()) {
+                $output[] = $attribute;
+            }
+        }
+        return $output;
+    }
+
+    public function getAvailableAttributes()
+    {
+        $output = [];
+        foreach ($this->attributes as $attribute) {
+            if (!$attribute->isConnected()) {
+                $output[] = $attribute;
+            }
+        }
+        return $output;
     }
 
     /**

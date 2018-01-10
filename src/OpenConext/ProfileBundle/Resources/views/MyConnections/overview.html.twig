@@ -6,28 +6,24 @@
 
 {% block content %}
 
-    {% if orcid is null %}
-        <h1>{{ 'profile.my_connections.short_title'|trans }}</h1>
-    {% elseif orcid.isConnected %}
-        <h1>{{ 'profile.my_connections.short_title'|trans }}</h1>
-    {% else %}
-        <h1>{{ 'profile.my_connections.long_title'|trans }}</h1>
-        <p>{{ 'profile.my_connections.explanation'|trans }}</p>
-    {% endif %}
+    <h1>{{ 'profile.my_connections.long_title'|trans }}</h1>
+    <p>{{ 'profile.my_connections.explanation'|trans }}</p>
 
     <div class="table-overflow-container">
-        {% if orcid is null %}
-            {{ 'profile.my_connections.no_connections_configured.description'|trans }}
-        {% elseif orcid.isConnected %}
+    <h2>{{ 'profile.my_connections.active_connections'|trans }}</h2>
+    {% if activeConnections is empty %}
+        {{ 'profile.my_connections.no_active_connections.description'|trans }}
+    {% else %}
+        {% for connection in activeConnections %}
             <div class="attribute-container">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                        <img src="{{ orcid.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                        <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.title'|trans }}</div>
-                        <p>{{ orcid.linkedId }}</p>
+                        <p>{{ connection.linkedId }}</p>
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.status'|trans }}</div>
@@ -36,44 +32,51 @@
                     <div class="mdl-cell mdl-cell--3-col">
 
                         <a
-                                class="mdl-button mdl-js-button mdl-button--raised disconnect"
-                                target="_blank"
-                                href="{{ orcid.disconnectUrl }}">
+                            class="mdl-button mdl-js-button mdl-button--raised disconnect"
+                            target="_blank"
+                            href="{{ connection.disconnectUrl }}">
                             {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
                         </a>
 
                     </div>
                 </div>
             </div>
+        {% endfor %}
+    {% endif %}
+    </div>
 
+    <div class="table-overflow-container">
+
+        <h2>{{ 'profile.my_connections.available_connections'|trans }}</h2>
+        {% if availableConnections is empty %}
+            {{ 'profile.my_connections.no_connections_configured.description'|trans }}
         {% else %}
 
-            <hr>
+            {% for connection in availableConnections %}
 
-            <h2>{{ 'profile.my_connections.available_connections'|trans }}</h2>
-            <div class="attribute-container">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--3-col">
-                        <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                        <img src="{{ orcid.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
-                        <p>{{ 'profile.my_connections.orcid.description'|trans }}</p>
-                    </div>
-                    <div class="mdl-cell mdl-cell--3-col">
-                        <a
-                                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                target="_blank"
-                                href="{{ orcid.connectUrl }}">
-                            {{ 'profile.my_connections.orcid.connect_title'|trans }}
-                        </a>
+                <div class="attribute-container">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
+                            <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
+                            <p>{{ 'profile.my_connections.orcid.description'|trans }}</p>
+                        </div>
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <a
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                    target="_blank"
+                                    href="{{ connection.connectUrl }}">
+                                {{ 'profile.my_connections.orcid.connect_title'|trans }}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            {% endfor %}
         {% endif %}
-
         <h2>{{ 'profile.my_connections.missing_connections'|trans }}</h2>
         <p><a href="mailto:{{ mailTo }}">{{ 'profile.my_connections.send_request'|trans }}</a></p>
     </div>
