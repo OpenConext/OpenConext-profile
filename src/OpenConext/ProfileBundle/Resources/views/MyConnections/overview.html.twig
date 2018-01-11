@@ -1,5 +1,10 @@
 {% extends 'OpenConextProfileBundle::layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/my-connections.js') }}"></script>
+{% endblock %}
+
 {% block title %}
     {{ 'profile.my_connections.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
@@ -31,12 +36,13 @@
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
 
-                        <a
-                            class="mdl-button mdl-js-button mdl-button--raised disconnect"
-                            target="_blank"
-                            href="{{ connection.disconnectUrl }}">
+                        <button class="mdl-button mdl-js-button mdl-button--raised disconnect">
                             {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
-                        </a>
+                        </button>
+
+                        {{ form_start(confirmForm, {attr: {'class': 'confirmation-container', 'novalidate': 'novalidate'} }) }}
+                            {{ form_widget(confirmForm) }}
+                        {{ form_end(confirmForm) }}
 
                     </div>
                 </div>

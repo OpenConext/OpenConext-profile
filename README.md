@@ -58,7 +58,7 @@ open_conext_profile:
     
     attribute_aggregation_supported_attributes:
         # The identifier of the attribute, should match the Attribute Aggregation API's definition
-        orcid:
+        ORCID:
             # The relative path to an image. Starting from the /web folder
             logo_path: %attribute_aggregation_orcid_logo_path%
             # The Url where the attribute can be connected

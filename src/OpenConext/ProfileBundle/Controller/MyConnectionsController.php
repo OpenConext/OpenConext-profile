@@ -18,13 +18,16 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
 use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use OpenConext\ProfileBundle\Service\AuthenticatedUserProvider;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Templating\EngineInterface;
 
 class MyConnectionsController
@@ -60,11 +63,24 @@ class MyConnectionsController
     private $mailTo;
 
     /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
      * @param EngineInterface $templateEngine
      * @param Guard $guard
      * @param LoggerInterface $logger
      * @param AttributeAggregationService $service
      * @param AuthenticatedUserProvider $userProvider
+     * @param EmailAddress $mailTo
+     * @param FormFactoryInterface $formFactory
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         EngineInterface $templateEngine,
@@ -72,7 +88,9 @@ class MyConnectionsController
         LoggerInterface $logger,
         AttributeAggregationService $service,
         AuthenticatedUserProvider $userProvider,
-        EmailAddress $mailTo
+        EmailAddress $mailTo,
+        FormFactoryInterface $formFactory,
+        UrlGeneratorInterface $urlGenerator
     ) {
         $this->templateEngine = $templateEngine;
         $this->guard = $guard;
@@ -80,16 +98,19 @@ class MyConnectionsController
         $this->service = $service;
         $this->userProvider = $userProvider;
         $this->mailTo = $mailTo;
+        $this->formFactory = $formFactory;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
+     * @param Request $request
+     *
      * @return Response
      */
-    public function overviewAction()
+    public function overviewAction(Request $request)
     {
         $this->guard->userIsLoggedIn();
         $this->logger->notice('Showing My Connections page');
-
 
         $user = $this->userProvider->getCurrentUser();
         $attributes = $this->service->findByUser($user);
@@ -102,12 +123,23 @@ class MyConnectionsController
             $availableConnections = $attributes->getAvailableAttributes();
         }
 
+        // For now only the ORCiD connection form is created and added to the form.
+        $confirmationForm = $this->formFactory->create('profile_confirm_connection_delete');
+
+        $confirmationForm->handleRequest($request);
+        if ($confirmationForm->isSubmitted() && $confirmationForm->isValid()) {
+            $this->logger->notice('The authenticated user is disconnecting ORCiD ID.');
+            $this->service->disconnectAttributeFor($user, $attributes->getAttribute('ORCID'));
+            return new RedirectResponse($this->urlGenerator->generate('profile.my_connections_overview'));
+        }
+
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyConnections:overview.html.twig',
             [
                 'activeConnections' => $activeConnections,
                 'availableConnections' => $availableConnections,
                 'mailTo' => $this->mailTo->getEmailAddress(),
+                'confirmForm' => $confirmationForm->createView(),
             ]
         ));
     }

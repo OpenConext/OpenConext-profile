@@ -40,6 +40,8 @@ services:
             - @profile.service.attribute_aggregation
             - @profile.provider.authenticated_user
             - @profile.attribute_support.email_to
+            - @form.factory
+            - @router
 
     profile.controller.locale:
         class: OpenConext\ProfileBundle\Controller\LocaleController

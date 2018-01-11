@@ -28,7 +28,7 @@ profile.my_services_overview:
 
 profile.my_connections_overview:
     path:       /my-connections
-    methods:    [GET]
+    methods:    [GET,POST]
     schemes:    https
     defaults:
         _controller: profile.controller.my_connections:overviewAction
