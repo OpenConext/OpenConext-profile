@@ -34,6 +34,12 @@ below.
 version: https://profile-dev.vm.openconext.org and the OpenConext-deploy pre-installed
 version available at: https://profile.vm.openconext.org.
 
+In order for the profile VM to be able to access the OpenConext-deploy
+VM, you need to modify the hosts file of the profile VM and point the
+EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
+
+    192.168.66.98 engine-api.vm.openconext.org aa.vm.openconext.org
+
 ### Configure Profile as SP in service registry
 
  1. Visit https://serviceregistry.vm.openconext.org/
