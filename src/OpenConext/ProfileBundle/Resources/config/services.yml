@@ -81,6 +81,13 @@ services:
         tags:
             - { name: form.type, alias: profile_information_request_mail }
 
+    profile.form.confirm_connection_delete:
+        class: OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_confirm_connection_delete }
+
     profile.twig.locale_extension:
         public: false
         class: OpenConext\ProfileBundle\Twig\LocaleExtension

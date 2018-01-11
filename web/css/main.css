@@ -325,9 +325,28 @@ tr.service:hover {
     text-decoration: none;
 }
 
-.attribute-container .mdl-grid .mdl-cell a.mdl-button.disconnect {
+.attribute-container .mdl-grid .mdl-cell button.mdl-button.disconnect {
     background-color: #a9a9a9;
     color: #ffffff;
+}
+
+.confirmation-container {
+    display: none;
+}
+
+.confirmation-container div {
+    clear: both;
+}
+
+.confirmation-container input.confirmation {
+    float: left;
+}
+.confirmation-container label.confirmation-label {
+    margin-left: 5px;
+    font-weight: 500;
+}
+.confirmation-container button.mdl-button {
+    margin-top: 10px;
 }
 
 /* Footer */

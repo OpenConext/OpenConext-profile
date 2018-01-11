@@ -34,6 +34,12 @@ below.
 version: https://profile-dev.vm.openconext.org and the OpenConext-deploy pre-installed
 version available at: https://profile.vm.openconext.org.
 
+In order for the profile VM to be able to access the OpenConext-deploy
+VM, you need to modify the hosts file of the profile VM and point the
+EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
+
+    192.168.66.98 engine-api.vm.openconext.org aa.vm.openconext.org
+
 ### Configure Profile as SP in service registry
 
  1. Visit https://serviceregistry.vm.openconext.org/
@@ -58,13 +64,11 @@ open_conext_profile:
     
     attribute_aggregation_supported_attributes:
         # The identifier of the attribute, should match the Attribute Aggregation API's definition
-        orcid:
+        ORCID:
             # The relative path to an image. Starting from the /web folder
             logo_path: %attribute_aggregation_orcid_logo_path%
             # The Url where the attribute can be connected
             connect_url: %attribute_aggregation_orcid_connect_url%
-            # The Url where the attribute can be disconnected
-            disconnect_url: %attribute_aggregation_orcid_disconnect_url%
 ```
 
 ## Releases

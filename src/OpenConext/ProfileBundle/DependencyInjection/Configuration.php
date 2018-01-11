@@ -209,16 +209,6 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('The connect url of the AA attribute should be a string')
                     ->end()
                 ->end()
-                ->scalarNode('disconnect_url')
-                    ->info('The disconnect url of the AA attribute')
-                    ->isRequired()
-                    ->validate()
-                        ->ifTrue(function ($disconnectUrl) {
-                            return !is_string($disconnectUrl);
-                        })
-                        ->thenInvalid('The disconnect url of the AA attribute should be a string')
-                    ->end()
-                ->end()
             ->end();
     }
 
