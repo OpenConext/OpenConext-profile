@@ -26,6 +26,7 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributes
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
 use OpenConext\Profile\Value\SurfConextId;
 use Psr\Log\LoggerInterface;
+use Surfnet\SamlBundle\Exception\RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
 final class AttributeAggregationService
@@ -89,10 +90,12 @@ final class AttributeAggregationService
                         $collection[] = AttributeAggregationAttribute::fromConfig(
                             $enabledAttribute,
                             true,
+                            $aaAttribute->getId(),
+                            $aaAttribute->getSurfconextId(),
                             $aaAttribute->getLinkedId()
                         );
                     } else {
-                        $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false);
+                        $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false, -1, '');
                     }
                 }
 
@@ -110,5 +113,52 @@ final class AttributeAggregationService
 
         $this->logger->notice('No enabled attribute aggregation attributes found.');
         return null;
+    }
+
+    /**
+     * @param AuthenticatedUser $user
+     * @param AttributeAggregationAttribute $orcidAttribute
+     *
+     * @return bool returns false when deletion failed
+     */
+    public function disconnectAttributeFor(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
+    {
+        if ($this->isValidRequest($user, $orcidAttribute)) {
+            $result = $this->repository->unsubscribeAccount($orcidAttribute->getId());
+            if (!$result) {
+                $this->logger->error('Error while unsubscribing the AA attribute for the authenticating user.');
+            }
+            return $result;
+        }
+        return false;
+    }
+
+    /**
+     * Validate the users identity matches that of the identity set on the ORCiD attribute retrieved from AA.
+     *
+     * @param AttributeAggregationAttribute $orcidAttribute
+     *
+     * @return bool
+     */
+    private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
+    {
+        try {
+            $surfConextId = $user->getAttributes()->getAttributeByDefinition(
+                new AttributeDefinition('surfconextId', null, 'urn:oid:1.3.6.1.4.1.1076.20.40.40.1')
+            );
+        } catch (RuntimeException $e) {
+            $this->logger->error('Attempted to find authenticated users surfconextId but was unable to find it.');
+            return false;
+        }
+
+        if ($surfConextId->getValue()[0] !== $orcidAttribute->getSurfconextId()) {
+            $this->logger->error(
+                'The surfconextId associated with ORCiD ID account does not match the surfconextId of the 
+                authenticated user.'
+            );
+            return false;
+        }
+
+        return true;
     }
 }
