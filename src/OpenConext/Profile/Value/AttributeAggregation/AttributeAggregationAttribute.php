@@ -23,6 +23,16 @@ use Assert\Assertion;
 final class AttributeAggregationAttribute
 {
     /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $surfconextId;
+
+    /**
      * @var string
      */
     private $accountType;
@@ -43,16 +53,13 @@ final class AttributeAggregationAttribute
     private $connectUrl;
 
     /**
-     * @var string
-     */
-    private $disconnectUrl;
-
-    /**
      * @var bool
      */
     private $isConnected = false;
 
     /**
+     * @param int $id
+     * @param $surfconextId
      * @param string $accountType
      * @param string $linkedId
      * @param string $logoPath
@@ -60,12 +67,16 @@ final class AttributeAggregationAttribute
      * @param bool $isConnected
      */
     public function __construct(
+        $id,
+        $surfconextId,
         $accountType,
         $linkedId,
         $logoPath,
         $connectUrl,
         $isConnected
     ) {
+        $this->id = $id;
+        $this->surfconextId = $surfconextId;
         $this->accountType = $accountType;
         $this->linkedId = $linkedId;
         $this->logoPath = $logoPath;
@@ -76,9 +87,13 @@ final class AttributeAggregationAttribute
     public static function fromConfig(
         AttributeAggregationAttributeConfiguration $enabledAttribute,
         $isConnected,
+        $id,
+        $surfconextId,
         $linkedId = null
     ) {
         return new self(
+            $id,
+            $surfconextId,
             $enabledAttribute->getAccountType(),
             $linkedId,
             $enabledAttribute->getLogoPath(),
@@ -89,6 +104,12 @@ final class AttributeAggregationAttribute
 
     public static function fromApiResponse(array $attributeData)
     {
+        Assertion::keyExists($attributeData, 'id', 'No id found on attribute');
+        Assertion::integer($attributeData['id'], 'Id should be integer');
+
+        Assertion::keyExists($attributeData, 'urn', 'No SURFconext Id found on attribute');
+        Assertion::string($attributeData['urn'], 'SURFconext Id should be a string');
+
         Assertion::keyExists($attributeData, 'accountType', 'No account type found on attribute');
         Assertion::string($attributeData['accountType'], 'Account type should be a string');
 
@@ -96,6 +117,8 @@ final class AttributeAggregationAttribute
         Assertion::string($attributeData['linkedId'], 'Linked id should be a string');
 
         return new self(
+            $attributeData['id'],
+            $attributeData['urn'],
             $attributeData['accountType'],
             $attributeData['linkedId'],
             '',
@@ -138,18 +161,23 @@ final class AttributeAggregationAttribute
     }
 
     /**
-     * @return string
-     */
-    public function getDisconnectUrl()
-    {
-        return $this->disconnectUrl;
-    }
-
-    /**
      * @return bool
      */
     public function isConnected()
     {
         return $this->isConnected;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getSurfconextId()
+    {
+        return $this->surfconextId;
     }
 }
