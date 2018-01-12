@@ -261,7 +261,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <source>profile.my_profile.introduction</source>
-        <target>De tabel hieronder geeft een overzicht van de persoonsgegevens die door jouw instelling via SURFconext kunnen worden doorgegeven aan diensten. In SURFconext worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor meer gedetailleerde informatie over deze attributen heeft SURFconext een technische informatiepagina ingericht:</target>
+        <target>De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw instelling via SURFconext kunnen worden doorgegeven aan diensten. In SURFconext worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor technische informatie over deze attributen heeft SURFconext een aparte informatiepagina ingericht:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
@@ -322,7 +322,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       </trans-unit>
       <trans-unit id="e792a9988ccfee30143187c270b5e0dffc59020c" resname="profile.my_services.explanation">
         <source>profile.my_services.explanation</source>
-        <target>Dit overzicht laat alle diensten zien waar je tenminste één keer op bent ingelogd via SURFconext. Ook kun je zien welk deel van jouw persoonsgegevens vanuit jouw instelling naar de dienst is doorgestuurd. De diensten zijn onderverdeeld in twee groepen:</target>
+        <target>Dit overzicht toont alle diensten waar je tenminste één keer op bent ingelogd via SURFconext. Ook kun je zien welk deel van jouw persoonsgegevens (attributen) vanuit jouw instelling naar de dienst is doorgestuurd. Daarnaast zie je of jij zelf of jouw instelling toestemming heeft gegeven voor het doorsturen van jouw attributen:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a92f83f99644130d2de961b6add4752a8ed6c3cc" resname="profile.my_services.explanation.explicit_consent">

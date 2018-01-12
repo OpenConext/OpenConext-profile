@@ -261,7 +261,7 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="802fbec3f5be7a9a00873faea70d1513155e09c2" resname="profile.my_profile.introduction">
         <source>profile.my_profile.introduction</source>
-        <target>The table below contains an overview of all your personal data that your institution can pass on to several services through SURFconext. Within SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. If you want to know more about attributes, SURFconext provides the following technical information page:</target>
+        <target>The table below contains an overview of all your personal data that your institution can pass on to several services through SURFconext. Within SURFconext, your personal data are called 'attributes'. An attribute can for instance be your name, your e-mail address or the name of your institution. For more technical information about these attributes, SURFconext provides the following extra information page:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="009b61d8df294d85f3271d872de139c7188473e2" resname="profile.my_profile.long_title">
@@ -322,7 +322,7 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="e792a9988ccfee30143187c270b5e0dffc59020c" resname="profile.my_services.explanation">
         <source>profile.my_services.explanation</source>
-        <target>This overview contains all services you have logged in to through SURFconext at least once. It also shows which subset of your personal data has been shared between your institution and the service. Services are subdivided in two groups:</target>
+        <target>This overview contains all services you have logged in to through SURFconext at least once. It also shows which subset of your personal data (attributes) has been shared between your institution and the service. Additionally, you can see whether you or your institutiton has agreed to sharing your attributes with the service:</target>
         <jms:reference-file line="9">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a92f83f99644130d2de961b6add4752a8ed6c3cc" resname="profile.my_services.explanation.explicit_consent">
