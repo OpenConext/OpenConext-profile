@@ -123,12 +123,12 @@ class MyConnectionsController
             $availableConnections = $attributes->getAvailableAttributes();
         }
 
-        // For now only the ORCiD connection form is created and added to the form.
+        // For now only the ORCID connection form is created and added to the form.
         $confirmationForm = $this->formFactory->create('profile_confirm_connection_delete');
 
         $confirmationForm->handleRequest($request);
         if ($confirmationForm->isSubmitted() && $confirmationForm->isValid()) {
-            $this->logger->notice('The authenticated user is disconnecting ORCiD ID.');
+            $this->logger->notice('The authenticated user is disconnecting ORCID iD.');
             $this->service->disconnectAttributeFor($user, $attributes->getAttribute('ORCID'));
             return new RedirectResponse($this->urlGenerator->generate('profile.my_connections_overview'));
         }

@@ -134,7 +134,7 @@ final class AttributeAggregationService
     }
 
     /**
-     * Validate the users identity matches that of the identity set on the ORCiD attribute retrieved from AA.
+     * Validate the users identity matches that of the identity set on the ORCID attribute retrieved from AA.
      *
      * @param AttributeAggregationAttribute $orcidAttribute
      *
@@ -153,7 +153,7 @@ final class AttributeAggregationService
 
         if ($surfConextId->getValue()[0] !== $orcidAttribute->getSurfconextId()) {
             $this->logger->error(
-                'The surfconextId associated with ORCiD ID account does not match the surfconextId of the 
+                'The surfconextId associated with ORCID iD account does not match the surfconextId of the 
                 authenticated user.'
             );
             return false;
