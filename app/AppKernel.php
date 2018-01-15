@@ -36,10 +36,12 @@ class AppKernel extends Kernel
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Surfnet\SamlBundle\SurfnetSamlBundle(),
+            new OpenConext\MonitorBundle\OpenConextMonitorBundle(),
 
             // Project
             new OpenConext\ProfileBundle\OpenConextProfileBundle(),
             new OpenConext\EngineBlockApiClientBundle\OpenConextEngineBlockApiClientBundle(),
+            new OpenConext\AttributeAggregationApiClientBundle\OpenConextAttributeAggregationApiClientBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'acc'])) {

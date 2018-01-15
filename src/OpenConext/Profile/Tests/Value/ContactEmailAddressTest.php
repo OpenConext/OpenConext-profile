@@ -20,7 +20,7 @@ namespace OpenConext\Profile\Tests\Value;
 
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\ContactEmailAddress;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 final class ContactEmailAddressTest extends TestCase
 {

@@ -11,7 +11,7 @@
         <li>{{ 'profile.my_services.explanation.explicit_consent'|trans }}</li>
         <li>{{ 'profile.my_services.explanation.implicit_consent'|trans }}</li>
     </ul>
-    {% if specifiedConsentList == null %}
+    {% if specifiedConsentList == null or specifiedConsentList is empty %}
     <p><i class="prepended fa fa-warning"></i>{{ 'profile.my_services.error_loading_consent'|trans }}</p>
     {% else %}
     <div class="table-overflow-container">
@@ -62,43 +62,13 @@
                             {% if specifiedConsent.releasedAttributes is empty %}
                             <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
                             {% else %}
-                            <p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
-
-                            <table class="mdl-data-table">
-                                <thead>
-                                <tr>
-                                    <th>{{ 'profile.table.attribute_name'|trans }}</th>
-                                    <th>{{ 'profile.table.attribute_value'|trans }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for attribute in specifiedConsent.releasedAttributes %}
-                                    {% if attribute.attributeDefinition.hasUrnMace %}
-                                        {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+                                {% for sourceName, releasedAttributes in specifiedConsent.releasedAttributesGroupedBySource  %}
+                                    {% if sourceName == 'idp' %}
+                                        {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
                                     {% else %}
-                                        {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+                                        {% include '@OpenConextProfile/MyServices/AttributeList/aa.html.twig' %}
                                     {% endif %}
-                                    <tr>
-                                        <td title="{{ attributeUrn }}">
-                                            {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
-
-                                            {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                                                <strong>{{ attributeUrn }}</strong>
-                                            {% else %}
-                                                <strong>{{ translatedAttributeName }}</strong>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if attribute.value is iterable %}
-                                                {{ attribute.value|join(', ') }}
-                                            {% else %}
-                                               {{ attribute.value }}
-                                            {% endif %}
-                                        </td>
-                                    </tr>
                                 {% endfor %}
-                                </tbody>
-                            </table>
                             {% endif %}
                         </div>
                     </div>

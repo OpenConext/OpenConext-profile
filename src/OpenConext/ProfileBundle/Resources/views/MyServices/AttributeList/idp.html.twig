@@ -1,0 +1,35 @@
+<p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
+
+<table class="mdl-data-table">
+    <thead>
+    <tr>
+        <th>{{ 'profile.table.attribute_name'|trans }}</th>
+        <th>{{ 'profile.table.attribute_value'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for attribute in releasedAttributes %}
+        {% if attribute.attributeDefinition.hasUrnMace %}
+            {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+        {% else %}
+            {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+        {% endif %}
+        <tr>
+            <td title="{{ attributeUrn }}">
+                {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+
+                {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+                    <strong>{{ attributeUrn }}</strong>
+                {% else %}
+                    <strong>{{ translatedAttributeName }}</strong>
+                {% endif %}
+            </td>
+            <td>
+                {% for attributeValue in attribute.value  %}
+                    <p class="attribute-value">{{ attributeValue.value }}</p>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -23,7 +23,53 @@ information via EngineBlock's internal API.
 
 ## Development
 To setup your development environment, run `vagrant up` in the project directory.
-Make sure an IdP (OpenConext Engineblock) is configured and running correctly.
+Make sure an IdP (OpenConext Engineblock) is configured and running correctly. Do 
+so by using the installation instructions found in the [Openconext-Deploy repository](https://github.com/OpenConext/OpenConext-deploy/blob/master/README.md).
+
+After installing OpenConext-deploy, make sure your Profile installation is 
+registered in the Service registry or Manage. To do so follow the instructions 
+below.
+
+! Note that there now are two active OpenConext-profile installations, one development
+version: https://profile-dev.vm.openconext.org and the OpenConext-deploy pre-installed
+version available at: https://profile.vm.openconext.org.
+
+In order for the profile VM to be able to access the OpenConext-deploy
+VM, you need to modify the hosts file of the profile VM and point the
+EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
+
+    192.168.66.98 engine-api.vm.openconext.org aa.vm.openconext.org
+
+### Configure Profile as SP in service registry
+
+ 1. Visit https://serviceregistry.vm.openconext.org/
+ 2. Enter username 'admin' on the mujina IDP login form (empty password)
+ 3. Click 'Create connection'
+ 4. Enter connection ID: `https://profile-dev.vm.openconext.org/authentication/metadata`
+ 5. Enter the following value in the 'Create entity from URL' field: `https://profile-dev.vm.openconext.org/authentication/metadata`
+ 6. Set the type to 'SAML 2.0 SP'
+ 7. Click 'Create'
+ 8. Then set the state to 'Production'
+ 9. Repeat steps 4 to 8 with Connection ID and entity url: `https://profile-dev.vm.openconext.org/app_dev.php/authentication/metadata`
+ 
+You should now be able to successfully login!
+
+## Attribute aggregation support
+Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
+the orcid as a configuration example.
+
+```yaml
+open_conext_profile:
+    # Other config values are ommitted
+    
+    attribute_aggregation_supported_attributes:
+        # The identifier of the attribute, should match the Attribute Aggregation API's definition
+        ORCID:
+            # The relative path to an image. Starting from the /web folder
+            logo_path: %attribute_aggregation_orcid_logo_path%
+            # The Url where the attribute can be connected
+            connect_url: %attribute_aggregation_orcid_connect_url%
+```
 
 ## Releases
 `RMT` is used for tagging releases. Run `./RMT release` to tag a release.  Make
@@ -45,8 +91,31 @@ Make sure to set the correct Symfony environment by setting or exporting
 ## Texts and translations
 Updating the texts (and translations of those texts) in the web interface
 can be done on an installation that runs in `DEV` mode. Make sure you log
-into profile at `https://profile.<yourdomain>`. Then go to
-`https://profile.<yourdomain>/app_dev.php/_trans/` to update the strings.
+into profile at `https://profile-dev.vm.openconext.org`. Then go to
+`https://profile.vm.openconext.org/app_dev.php/_trans/` to update the strings.
+
+## Common tasks
+
+### Add support for new Attribute Aggregation source
+In EngineBlock ARP, attributes can be derived from a source other than the IdP. Whenever a source other than
+the IdP is configured. Profile will not (yet) attempt to retrieve the value for that attribute. But will show only a
+summation of the attribute names for each given source. 
+
+When a new source is added in the Service Registry (or Manage) it must also be added to Profile.  
+1. Add translation entry in `translations.html.twig`. At the bottom of the file:
+    ```twig
+    {{ 'profile.table.source_description.voot'|trans }}
+    {{ 'profile.table.source_description.orcid'|trans }}
+    {{ 'profile.table.source_description.sab'|trans }}
+    
+    {# Add your new source here, make sure the source name complies with the sourcename specified in the service registry. #}
+    ```
+2. Extract the new translation and translate them in the available `messages.LANG.xliff` translation files.
+3. Done.
+
+To test your change. Modify one of the SP's already present in the 'My Services' overview with the newly added source. 
+Do this by changing the source of one of the attributes to the newly added source. You might need to add the source to 
+the SR/Manage configuration first. 
 
 # License
 This project is licensed under version 2.0 of the Apache License, as described

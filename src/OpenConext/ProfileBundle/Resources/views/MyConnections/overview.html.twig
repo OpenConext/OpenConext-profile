@@ -1,0 +1,88 @@
+{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/my-connections.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+    {{ 'profile.my_connections.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ 'profile.my_connections.long_title'|trans }}</h1>
+    <p>{{ 'profile.my_connections.explanation'|trans }}</p>
+
+    <div class="table-overflow-container">
+    <h2>{{ 'profile.my_connections.active_connections'|trans }}</h2>
+    {% if activeConnections is empty %}
+        {{ 'profile.my_connections.no_active_connections.description'|trans }}
+    {% else %}
+        {% for connection in activeConnections %}
+            <div class="attribute-container">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
+                        <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.title'|trans }}</div>
+                        <p>{{ connection.linkedId }}</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.status'|trans }}</div>
+                        <p class="connected">{{ 'profile.my_connections.orcid.status_connected'|trans }}</p>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col">
+
+                        <button class="mdl-button mdl-js-button mdl-button--raised disconnect">
+                            {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
+                        </button>
+
+                        {{ form_start(confirmForm, {attr: {'class': 'confirmation-container', 'novalidate': 'novalidate'} }) }}
+                            {{ form_widget(confirmForm) }}
+                        {{ form_end(confirmForm) }}
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    <div class="table-overflow-container">
+
+        <h2>{{ 'profile.my_connections.available_connections'|trans }}</h2>
+        {% if availableConnections is empty %}
+            {{ 'profile.my_connections.no_connections_configured.description'|trans }}
+        {% else %}
+
+            {% for connection in availableConnections %}
+
+                <div class="attribute-container">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
+                            <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                        </div>
+                        <div class="mdl-cell mdl-cell--6-col">
+                            <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
+                            <p>{{ 'profile.my_connections.orcid.description'|trans }}</p>
+                        </div>
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <a
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                    href="{{ connection.connectUrl }}">
+                                {{ 'profile.my_connections.orcid.connect_title'|trans }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+        <h2>{{ 'profile.my_connections.missing_connections'|trans }}</h2>
+        <p><a href="mailto:{{ mailTo }}">{{ 'profile.my_connections.send_request'|trans }}</a></p>
+    </div>
+{% endblock %}

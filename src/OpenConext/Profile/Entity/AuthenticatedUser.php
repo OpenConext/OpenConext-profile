@@ -43,6 +43,15 @@ final class AuthenticatedUser
     private $authenticatingAuthorities;
 
     /**
+     * A list of blacklisted attributes defined by their Urn OID
+     * @var array
+     */
+    private static $blacklistedAttributes = [
+        'urn:oid:1.3.6.1.4.1.1076.20.40.40.1',
+        'urn:oid:1.3.6.1.4.1.1466.115.121.1.15',
+    ];
+
+    /**
      * @param AssertionAdapter $assertionAdapter
      * @param EntityId[] $authenticatingAuthorities
      *
@@ -119,5 +128,23 @@ final class AuthenticatedUser
     public function __toString()
     {
         return $this->nameId;
+    }
+
+    /**
+     * @return AttributeSet
+     */
+    public function getAttributesFiltered()
+    {
+        $attributes = $this->getAttributes();
+        $filtered = [];
+        /** @var Attribute $attribute */
+        foreach ($attributes as $attribute) {
+            // Filter out blacklisted attributes
+            if (in_array($attribute->getAttributeDefinition()->getUrnOid(), self::$blacklistedAttributes)) {
+                continue;
+            }
+            $filtered[] = $attribute;
+        }
+        return AttributeSet::create($filtered);
     }
 }

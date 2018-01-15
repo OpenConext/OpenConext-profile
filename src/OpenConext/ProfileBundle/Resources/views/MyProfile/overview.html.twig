@@ -7,7 +7,6 @@
 {% block content %}
     <h1>{{ 'profile.my_profile.long_title'|trans }}</h1>
     <p>{{ 'profile.my_profile.introduction'|trans }} <a href="{{ global_view_parameters.attributeInformationUrl }}">{{ 'profile.my_profile.attributes_information_link_title'|trans }}</a>.</p>
-    <p>{{ 'profile.my_profile.explanation'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}</p>
     <p>{{ 'profile.my_profile.pi_processing'|trans }}</p>
 
     {% if user.hasSupportContactEmail %}
@@ -18,22 +17,6 @@
     <p>{{ 'profile.my_profile.questions_no_support_contact_email'|trans }}</p>
     {% endif %}
 
-    <h2><i class="prepended fa fa-user"></i>{{ 'profile.my_profile.account_data'|trans }}</h2>
-    <p>{{ 'profile.my_profile.account_data_explanation'|trans }}</p>
-    <div class="table-overflow-container">
-        <table class="profile-metadata">
-            <tbody>
-                <tr>
-                    <td>{{ 'profile.my_profile.data_origin'|trans }}:</td>
-                    <td>{{ 'profile.my_profile.account_data_origin'|trans }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'profile.my_profile.data_retention_period'|trans }}:</td>
-                    <td>{{ 'profile.my_profile.account_data_retention_period'|trans }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
     <div class="table-overflow-container">
         <table class="account-data mdl-data-table">
             <thead>
@@ -61,7 +44,7 @@
                     </td>
                     <td>
                         {% if attribute.value is iterable %}
-                            {{ attribute.value|join(', ') }}
+                            {{ attribute.value|join('\n')|nl2br }}
                         {% else %}
                             {{ attribute.value }}
                         {% endif %}
@@ -72,37 +55,4 @@
         </table>
     </div>
 
-    <h2><i class="prepended fa fa-file-text-o"></i>{{ 'profile.my_profile.logging_data'|trans }}</h2>
-    <p>{{ 'profile.my_profile.logging_data_explanation'|trans }}</p>
-    <div class="table-overflow-container">
-        <table class="profile-metadata">
-            <tbody>
-            <tr>
-                <td>{{ 'profile.my_profile.data_origin'|trans }}:</td>
-                <td>{{ 'profile.my_profile.logging_data_origin'|trans }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'profile.my_profile.data_retention_period'|trans }}:</td>
-                <td>{{ 'profile.my_profile.logging_data_retention_period'|trans }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h2><i class="prepended fa fa-check-square-o"></i>{{ 'profile.my_profile.consent_data'|trans }}</h2>
-    <p>{{ 'profile.my_profile.consent_data_explanation'|trans }} <a href="{{ path('profile.my_services_overview') }}"> {{ 'profile.my_services.short_title'|trans }}</a>.</p>
-    <div class="table-overflow-container">
-        <table class="profile-metadata">
-            <tbody>
-            <tr>
-                <td>{{ 'profile.my_profile.data_origin'|trans }}:</td>
-                <td>{{ 'profile.my_profile.consent_data_origin'|trans }}</td>
-            </tr>
-            <tr>
-                <td>{{ 'profile.my_profile.data_retention_period'|trans }}:</td>
-                <td>{{ 'profile.my_profile.consent_data_retention_period'|trans }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 {% endblock %}

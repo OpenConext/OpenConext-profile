@@ -169,9 +169,19 @@ i.prepended {
     text-align: left;
     padding: 16px 12px;
 }
+.mdl-layout__content .content-container .overview-table td table p.attribute-value {
+    margin: 0;
+}
+.mdl-layout__content .content-container .overview-table th:first-child {
+    min-width: 200px;
+}
 .mdl-layout__content .content-container .overview-table th {
     font-weight: 300;
     color: #a2a2a2;
+}
+
+.mdl-layout__content .content-container .overview-table p.aa-description {
+    margin: 1em 0;
 }
 
 .mdl-layout__content .content-container img {
@@ -278,6 +288,65 @@ tr.service:hover {
 .service-attributes table td {
     border-top-color: #ffffff;
     border-bottom-color: #ffffff;
+}
+
+.attribute-container .mdl-grid {
+    padding: 0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+.attribute-container .mdl-grid .mdl-cell {
+    padding: 1em 0 0 0;
+}
+
+.attribute-container .mdl-grid .mdl-layout-title {
+    text-transform: uppercase;
+}.attribute-container .mdl-grid p.connected {
+    color: #00c35a;
+}
+
+.attribute-container .mdl-grid .mdl-cell img {
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    width: 200px;
+    float: left;
+    padding: 10px;
+    margin: 10px 0 10px 0;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.attribute-container .mdl-grid .mdl-cell a.mdl-button {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+    text-decoration: none;
+}
+
+.attribute-container .mdl-grid .mdl-cell button.mdl-button.disconnect {
+    background-color: #a9a9a9;
+    color: #ffffff;
+}
+
+.confirmation-container {
+    display: none;
+}
+
+.confirmation-container div {
+    clear: both;
+}
+
+.confirmation-container input.confirmation {
+    float: left;
+}
+.confirmation-container label.confirmation-label {
+    margin-left: 5px;
+    font-weight: 500;
+}
+.confirmation-container button.mdl-button {
+    margin-top: 10px;
 }
 
 /* Footer */

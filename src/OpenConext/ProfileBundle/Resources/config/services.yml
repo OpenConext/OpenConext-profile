@@ -28,6 +28,24 @@ services:
         arguments:
             - ~ # attribute support email to
 
+    profile.information_request.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # information request email from
+
+    profile.information_request.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - ~ # information request email to
+
+    profile.available_aa_attributes:
+        public: false
+        class: OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes
+        arguments:
+            - [] # available attribute aggregation attributes
+
     profile.security.guard:
         public: false
         class: OpenConext\ProfileBundle\Security\Guard
@@ -55,6 +73,20 @@ services:
             - @router
         tags:
             - { name: form.type, alias: profile_attribute_support_mail }
+
+    profile.form.information_request_mail:
+        class: OpenConext\ProfileBundle\Form\Type\InformationRequestMailType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_information_request_mail }
+
+    profile.form.confirm_connection_delete:
+        class: OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType
+        arguments:
+            - @router
+        tags:
+            - { name: form.type, alias: profile_confirm_connection_delete }
 
     profile.twig.locale_extension:
         public: false
@@ -137,6 +169,15 @@ services:
         calls:
             - [setName, ['profile']]
 
+    profile.service.attribute_aggregation:
+        public: false
+        class: OpenConext\ProfileBundle\Service\AttributeAggregationService
+        arguments:
+            - @openconext_aa_api.repository.attribute_aggregation
+            - @saml.attribute.surfconext.id
+            - @profile.available_aa_attributes
+            - @logger
+
     profile.service.attribute_support_mail:
         public: false
         class: OpenConext\ProfileBundle\Service\AttributeSupportMailService
@@ -146,6 +187,17 @@ services:
             - @mailer
             - @templating
             - @profile.service.user
+
+    profile.service.information_request_mail:
+        public: false
+        class: OpenConext\ProfileBundle\Service\InformationRequestMailService
+        arguments:
+            - @profile.information_request.email_from
+            - @profile.information_request.email_to
+            - @mailer
+            - @templating
+            - @profile.service.user
+            - @profile.service.attribute_filter
 
     profile.service.locale:
         public: false
@@ -223,3 +275,6 @@ services:
         arguments:
             - @openconext_eb_api.repository.support_contact_information
 
+    profile.service.attribute_filter:
+        public: false
+        class: OpenConext\ProfileBundle\Attribute\AttributeFilter

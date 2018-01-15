@@ -1,0 +1,62 @@
+{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ 'profile.my_surf_conext.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>{{ 'profile.my_surf_conext.long_title'|trans }}</h1>
+    <p>{{ 'profile.my_surf_conext.introduction'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}</p>
+
+    <h2><i class="prepended fa fa-user"></i>{{ 'profile.my_surf_conext.account_data'|trans }}</h2>
+    <p>{{ 'profile.my_surf_conext.account_data_explanation'|trans }}</p>
+    <div class="table-overflow-container">
+        <table class="profile-metadata">
+            <tbody>
+            <tr>
+                <td>{{ 'profile.my_surf_conext.data_origin'|trans }}:</td>
+                <td>{{ 'profile.my_surf_conext.account_data_origin'|trans }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'profile.my_surf_conext.data_retention_period'|trans }}:</td>
+                <td>{{ 'profile.my_surf_conext.account_data_retention_period'|trans }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2><i class="prepended fa fa-file-text-o"></i>{{ 'profile.my_surf_conext.logging_data'|trans }}</h2>
+    <p>{{ 'profile.my_surf_conext.logging_data_explanation'|trans }}</p>
+    <div class="table-overflow-container">
+        <table class="profile-metadata">
+            <tbody>
+            <tr>
+                <td>{{ 'profile.my_surf_conext.origin'|trans }}:</td>
+                <td>{{ 'profile.my_surf_conext.logging_data_origin'|trans }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'profile.my_surf_conext.data_retention_period'|trans }}:</td>
+                <td>{{ 'profile.my_surf_conext.logging_data_retention_period'|trans }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2><i class="prepended fa fa-check-square-o"></i>{{ 'profile.my_surf_conext.consent_data'|trans }}</h2>
+    <p>{{ 'profile.my_surf_conext.consent_data_explanation'|trans }} <a href="{{ path('profile.my_services_overview') }}"> {{ 'profile.my_services.short_title'|trans }}</a>.</p>
+    <div class="table-overflow-container">
+        <table class="profile-metadata">
+            <tbody>
+            <tr>
+                <td>{{ 'profile.my_surf_conext.origin'|trans }}:</td>
+                <td>{{ 'profile.my_surf_conext.consent_data_origin'|trans }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'profile.my_surf_conext.data_retention_period'|trans }}:</td>
+                <td>{{ 'profile.my_surf_conext.consent_data_retention_period'|trans }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

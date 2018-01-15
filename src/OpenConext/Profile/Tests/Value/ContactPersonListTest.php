@@ -22,7 +22,7 @@ use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Value\ContactEmailAddress;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ContactPersonListTest extends TestCase
 {

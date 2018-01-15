@@ -22,6 +22,7 @@ use DateTimeImmutable;
 use Mockery;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
+use OpenConext\Profile\Value\Arp;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
@@ -35,7 +36,7 @@ use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\Profile\Value\Url;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -76,20 +77,81 @@ class AttributeReleasePolicyServiceTest extends TestCase
                             'urn:oid:0.0.0.0.0.1' => ['some-value'],
                             'urn:oid:0.0.0.0.0.2' => ['another-value'],
                         ],
+                        'showSources' => true
                     ],
                     '/arp',
                 ]
             )
             ->andReturn([
                 'some-entity-id' => [
-                    'urn:mace:some-attribute' => ['some-value'],
-                    'urn:oid:0.0.0.0.0.1' => ['some-value'],
-                    'urn:oid:0.0.0.0.0.2' => ['another-value']
+                    'urn:mace:some-attribute' => [
+                        [
+                            'value' => 'some-value',
+                            'source' => 'idp',
+                        ],
+                    ],
+                    'urn:oid:0.0.0.0.0.1' => [
+                        [
+                            'value' => 'some-value',
+                            'source' => 'idp',
+                        ],
+                    ],
+                    'urn:oid:0.0.0.0.0.2' => [
+                        [
+                            'value' => 'another-value',
+                            'source' => 'idp',
+                        ],
+                    ],
                 ],
                 'another-entity-id' => [
-                    'urn:oid:0.0.0.0.0.2' => ['another-value']
+                    'urn:oid:0.0.0.0.0.2' => [
+                        [
+                            'value' => 'another-value',
+                            'source' => 'idp',
+                        ],
+                    ]
                 ],
             ]);
+
+        $arpData = [
+            'some-entity-id' => [
+                'urn:mace:some-attribute' => [
+                    [
+                        'value' => 'some-value',
+                        'source' => 'idp',
+                    ],
+                ],
+                'urn:oid:0.0.0.0.0.1' => [
+                    [
+                        'value' => 'some-value',
+                        'source' => 'idp',
+                    ],
+                ],
+                'urn:oid:0.0.0.0.0.2' => [
+                    [
+                        'value' => 'another-value',
+                        'source' => 'sab',
+                    ],
+                ],
+            ],
+            'another-entity-id' => [
+                'urn:oid:0.0.0.0.0.2' => [
+                    [
+                        'value' => 'another-value',
+                        'source' => 'voot',
+                    ],
+                ]
+            ],
+        ];
+
+        $client->shouldReceive('read')
+            ->withArgs(
+                [
+                    '/read-arp?entityIds=%s',
+                    ['some-entity-id,another-entity-id'],
+                ]
+            )
+            ->andReturn($arpData);
 
         $someConsent = new Consent(
             new ServiceProvider(
@@ -125,14 +187,23 @@ class AttributeReleasePolicyServiceTest extends TestCase
 
         $someAttribute    = new Attribute($someAttributeDefinition, ['some-value']);
         $anotherAttribute = new Attribute($anotherAttributeDefinition, ['another-value']);
+
+        // The results as expected to have been returned from the API (sources have been added)
+        $expectedSomeAttribute    = new Attribute($someAttributeDefinition, [['value' => 'some-value', 'source' => 'idp']]);
+        $expectedAnotherAttribute = new Attribute($anotherAttributeDefinition, [['value' => 'another-value', 'source' => 'idp']]);
         $attributeSet     = AttributeSet::create([$someAttribute, $anotherAttribute,]);
 
         $expectedResult = SpecifiedConsentList::createWith([
             SpecifiedConsent::specifies(
                 $someConsent,
-                AttributeSetWithFallbacks::create([$someAttribute, $anotherAttribute])
+                AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
+                Arp::createWith($arpData['some-entity-id'], $attributeDictionary)
             ),
-            SpecifiedConsent::specifies($anotherConsent, AttributeSetWithFallbacks::create([$anotherAttribute]))
+            SpecifiedConsent::specifies(
+                $anotherConsent,
+                AttributeSetWithFallbacks::create([$expectedAnotherAttribute]),
+                Arp::createWith($arpData['another-entity-id'], $attributeDictionary)
+            )
         ]);
 
         $result = $arpService->applyAttributeReleasePolicies($consentList, $attributeSet);

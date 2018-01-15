@@ -83,7 +83,7 @@ final class User implements UserInterface
 
     public function getAttributes()
     {
-        return $this->authenticatedUser->getAttributes();
+        return $this->authenticatedUser->getAttributesFiltered();
     }
 
     public function getId()

@@ -18,12 +18,12 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use PHPUnit_Framework_TestCase as UnitTest;
+use PHPUnit\Framework\TestCase;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
 
-class EntityTest extends UnitTest
+class EntityTest extends TestCase
 {
     /**
      * @test

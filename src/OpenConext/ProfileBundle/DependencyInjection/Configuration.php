@@ -46,6 +46,8 @@ class Configuration implements ConfigurationInterface
 
         $this->setupLocaleConfiguration($rootNode);
         $this->setupAttributeSupportConfiguration($rootNode);
+        $this->setupAttributeAggregationAttributeConfiguration($rootNode);
+        $this->setupInformationRequestConfiguration($rootNode);
 
         return $treeBuilder;
     }
@@ -165,6 +167,88 @@ class Configuration implements ConfigurationInterface
                                     return !filter_var($email, FILTER_VALIDATE_EMAIL);
                                 })
                                 ->thenInvalid('Email address from which attributes are sent should be valid')
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    private function setupAttributeAggregationAttributeConfiguration(ArrayNodeDefinition $rootNode)
+    {
+
+        $protoType = $rootNode
+            ->children()
+                ->arrayNode('attribute_aggregation_supported_attributes')
+                    ->isRequired()
+                    ->info('A list of supported attributes by Attribute Aggregation')
+                    ->requiresAtLeastOneElement()
+                    ->useAttributeAsKey('type')
+                    ->normalizeKeys(false)
+                    ->prototype('array');
+
+        $protoType
+            ->children()
+                ->scalarNode('logo_path')
+                    ->info('The logo path of the AA attribute')
+                    ->isRequired()
+                    ->validate()
+                        ->ifTrue(function ($logoPath) {
+                            return !is_string($logoPath);
+                        })
+                        ->thenInvalid('The logo path of the AA attribute should be a string')
+                    ->end()
+                ->end()
+                ->scalarNode('connect_url')
+                    ->info('The connect url of the AA attribute')
+                    ->isRequired()
+                    ->validate()
+                        ->ifTrue(function ($connectUrl) {
+                            return !is_string($connectUrl);
+                        })
+                        ->thenInvalid('The connect url of the AA attribute should be a string')
+                    ->end()
+                ->end()
+            ->end();
+    }
+
+    private function setupInformationRequestConfiguration(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->children()
+                ->arrayNode('information_request')
+                    ->isRequired()
+                    ->children()
+                        ->scalarNode('email_to')
+                            ->info('Email address to which the information request results are sent')
+                            ->isRequired()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !is_string($email);
+                                })
+                                ->thenInvalid('Email address to which information request results are sent should be a string')
+                            ->end()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
+                                })
+                                ->thenInvalid('Email address to which information request results are sent should be valid')
+                            ->end()
+                        ->end()
+                        ->scalarNode('email_from')
+                            ->info('mail address from which information requests are sent')
+                            ->isRequired()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !is_string($email);
+                                })
+                                ->thenInvalid('Email address from which information requests are sent should be a string')
+                            ->end()
+                            ->validate()
+                                ->ifTrue(function ($email) {
+                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
+                                })
+                                ->thenInvalid('Email address from which information requests are sent should be valid')
                             ->end()
                         ->end()
                     ->end()

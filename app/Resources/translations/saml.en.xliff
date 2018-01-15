@@ -836,6 +836,11 @@
         <target state="new">profile.saml.attributes.x500UniqueIdentifier</target>
         <jms:reference-file line="166">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="4515e8389ffe28d89df023a830d6f579fd43a6c1" resname="profile.saml.attributes.eduPersonOrcid">
+        <source>profile.saml.attributes.eduPersonOrcid</source>
+        <target state="new">ORCID iD</target>
+        <jms:reference-file line="166">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
     </body>
   </file>
 </xliff>

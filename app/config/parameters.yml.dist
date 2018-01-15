@@ -22,6 +22,15 @@ parameters:
     engineblock_api_password: secret
     engineblock_api_verify_ssl: true
 
+    attribute_aggregation_api_base_url: 'https://aa.vm.openconext.org/aa/api/internal/'
+    attribute_aggregation_api_username: eb
+    attribute_aggregation_api_password: secret
+    attribute_aggregation_api_verify_ssl: true
+
+    # orcid aa attribute settings for orcid
+    attribute_aggregation_orcid_logo_path: '/images/orcid.png'
+    attribute_aggregation_orcid_connect_url: 'https://link.surfconext.nl/orcid?redirectUrl=https://profile.surfconext.nl/my-connections'
+
     mailer_transport:  sendmail
     mailer_host:       ~
     mailer_user:       ~
@@ -29,3 +38,7 @@ parameters:
 
     attribute_support_email_from: noreply@domain.invalid
     attribute_support_email_to: help@domain.invalid
+
+    # The email addresses used for sending the information request email message
+    information_request_email_from: noreply@domain.invalid
+    information_request_email_to: help@domain.invalid
