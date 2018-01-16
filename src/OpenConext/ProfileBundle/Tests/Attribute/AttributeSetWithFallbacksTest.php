@@ -21,7 +21,7 @@ namespace OpenConext\ProfileBundle\Tests\Attribute;
 use Mockery;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use PHPUnit\Framework\TestCase;
-use SAML2_Assertion;
+use SAML2\Assertion;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -39,7 +39,7 @@ class AttributeSetWithFallbacksTest extends TestCase
      */
     public function attribute_set_with_fallbacks_can_be_configured_when_creating_an_assertion_adapter()
     {
-        $assertion = Mockery::mock(SAML2_Assertion::class);
+        $assertion = Mockery::mock(Assertion::class);
         $assertion
             ->shouldReceive('getAttributes')
             ->andReturn([]);
@@ -68,7 +68,7 @@ class AttributeSetWithFallbacksTest extends TestCase
 
         $attributeDefinition = new AttributeDefinition('some-attribute', $attributeMaceUrn);
 
-        $assertion = Mockery::mock(SAML2_Assertion::class);
+        $assertion = Mockery::mock(Assertion::class);
         $assertion
             ->shouldReceive('getAttributes')
             ->andReturn([
@@ -97,7 +97,7 @@ class AttributeSetWithFallbacksTest extends TestCase
         $undefinedAttributeUrn = 'urn:mace:not-defined';
         $attributeValue        = ['some-value'];
 
-        $assertion = Mockery::mock(SAML2_Assertion::class);
+        $assertion = Mockery::mock(Assertion::class);
         $assertion
             ->shouldReceive('getAttributes')
             ->andReturn([
