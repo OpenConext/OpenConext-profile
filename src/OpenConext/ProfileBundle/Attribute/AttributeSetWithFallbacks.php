@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Attribute;
 
-use SAML2_Assertion;
+use SAML2\Assertion;
 use Surfnet\SamlBundle\Exception\UnknownUrnException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
@@ -29,7 +29,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 
 final class AttributeSetWithFallbacks extends AttributeSet implements AttributeSetFactory, AttributeSetInterface
 {
-    public static function createFrom(SAML2_Assertion $assertion, AttributeDictionary $attributeDictionary)
+    public static function createFrom(Assertion $assertion, AttributeDictionary $attributeDictionary)
     {
         $attributeSet = new AttributeSetWithFallbacks();
 

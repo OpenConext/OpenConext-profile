@@ -22,7 +22,7 @@ use Exception;
 use OpenConext\ProfileBundle\Saml\StateHandler;
 use OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
-use SAML2_Response_Exception_PreconditionNotMetException as PreconditionNotMetException;
+use SAML2\Response\Exception\PreconditionNotMetException;
 use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
 use Symfony\Component\HttpFoundation\RedirectResponse;

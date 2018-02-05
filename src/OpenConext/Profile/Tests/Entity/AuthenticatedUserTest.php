@@ -22,10 +22,10 @@ use Mockery as m;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
-use SAML2_Assertion;
-use SAML2_Compat_ContainerSingleton;
-use SAML2_DOMDocumentFactory;
-use SAML2_Exception_RuntimeException;
+use SAML2\Assertion;
+use SAML2\Compat\ContainerSingleton;
+use SAML2\DOMDocumentFactory;
+use SAML2\Exception\RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -40,7 +40,7 @@ class AuthenticatedUserTest extends TestCase
      */
     public function setUp()
     {
-        SAML2_Compat_ContainerSingleton::setContainer(new BridgeContainer(new NullLogger()));
+        ContainerSingleton::setContainer(new BridgeContainer(new NullLogger()));
     }
 
     /**
@@ -140,7 +140,7 @@ class AuthenticatedUserTest extends TestCase
      */
     public function epti_attribute_cannot_be_set_if_its_value_has_multiple_name_ids_when_creating_an_authenticated_user()
     {
-        $this->expectException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
+        $this->expectException(RuntimeException::class, 'must be a NameID');
 
         $assertionWithEpti   = $this->getAssertionWithEptiWithTooManyValues();
         $attributeDictionary = $this->getAttributeDictionary();
@@ -161,7 +161,7 @@ class AuthenticatedUserTest extends TestCase
      */
     public function epti_attribute_cannot_be_set_if_its_value_has_no_name_id_when_creating_an_authenticated_user()
     {
-        $this->expectException(SAML2_Exception_RuntimeException::class, 'must be a NameID');
+        $this->expectException(RuntimeException::class, 'must be a NameID');
 
         $assertionWithEpti   = $this->getAssertionWithEptiWithoutValues();
         $attributeDictionary = $this->getAttributeDictionary();
@@ -257,7 +257,7 @@ class AuthenticatedUserTest extends TestCase
    </saml:Assertion>
 XML;
 
-        return new SAML2_Assertion(SAML2_DOMDocumentFactory::fromString($xml)->firstChild);
+        return new Assertion(DOMDocumentFactory::fromString($xml)->firstChild);
     }
 
     private function getAssertionWithEptiWithoutValues()
@@ -284,7 +284,7 @@ XML;
    </saml:Assertion>
 XML;
 
-        return new SAML2_Assertion(SAML2_DOMDocumentFactory::fromString($xml)->firstChild);
+        return new Assertion(DOMDocumentFactory::fromString($xml)->firstChild);
     }
 
     private function getAssertionWithEptiWithTooManyValues()
@@ -314,6 +314,6 @@ XML;
    </saml:Assertion>
 XML;
 
-        return new SAML2_Assertion(SAML2_DOMDocumentFactory::fromString($xml)->firstChild);
+        return new Assertion(DOMDocumentFactory::fromString($xml)->firstChild);
     }
 }
