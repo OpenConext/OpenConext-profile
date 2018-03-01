@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "819e106888dec4b69712ef17121bf102",
+    "content-hash": "118067939b6229c9fe9f9271fe756c26",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1260,16 +1260,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.4.1",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
-                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/5da4d3c796c275c55f057af5a643ae297d96b4d8",
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8",
                 "shasum": ""
             },
             "require": {
@@ -1287,7 +1287,6 @@
                     "lib/random.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1304,7 +1303,12 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-18T20:34:03+00:00"
+            "support": {
+                "issues": "https://github.com/paragonie/random_compat/issues",
+                "email": "info@paragonie.com",
+                "source": "https://github.com/paragonie/random_compat"
+            },
+            "time": "2017-09-27T21:40:39+00:00"
         },
         {
             "name": "psr/http-message",
@@ -1611,16 +1615,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "e9786e2e47971b9e3684391778d2c489e4725f26"
+                "reference": "b2ecfbaf10bee0a0a64bfb444aad23467fcbd4c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/e9786e2e47971b9e3684391778d2c489e4725f26",
-                "reference": "e9786e2e47971b9e3684391778d2c489e4725f26",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/b2ecfbaf10bee0a0a64bfb444aad23467fcbd4c9",
+                "reference": "b2ecfbaf10bee0a0a64bfb444aad23467fcbd4c9",
                 "shasum": ""
             },
             "require": {
@@ -1664,7 +1668,7 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2018-01-26T07:55:28+00:00"
+            "time": "2018-02-26T15:22:03+00:00"
         },
         {
             "name": "surfnet/stepup-saml-bundle",
@@ -2001,16 +2005,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.38",
+            "version": "v2.7.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "b95964ae888c9e25ad7c3eee22730c68b33b1a8b"
+                "reference": "1cb920ef3b151d4daff40e9c4ab99d317996d661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/b95964ae888c9e25ad7c3eee22730c68b33b1a8b",
-                "reference": "b95964ae888c9e25ad7c3eee22730c68b33b1a8b",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/1cb920ef3b151d4daff40e9c4ab99d317996d661",
+                "reference": "1cb920ef3b151d4daff40e9c4ab99d317996d661",
                 "shasum": ""
             },
             "require": {
@@ -2083,7 +2087,7 @@
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "sensio/framework-extra-bundle": "^3.0.2",
-                "symfony/phpunit-bridge": "~3.2"
+                "symfony/phpunit-bridge": "~3.4|~4.0"
             },
             "type": "library",
             "extra": {
@@ -2131,7 +2135,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-11-16T16:26:07+00:00"
+            "time": "2018-02-28T22:57:23+00:00"
         },
         {
             "name": "twig/extensions",
@@ -4161,7 +4165,14 @@
             "time": "2015-05-02T19:28:54+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.4.2",
+            "alias_normalized": "1.4.2.0",
+            "version": "2.0.11.0",
+            "package": "paragonie/random_compat"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
