@@ -2,6 +2,7 @@ VERSION 1  OPENCONEXT PROFILE
 =============================
 
    Version 1.0 - Various improvements to the 'My services' and 'My connections' pages
+      05/02/2018 12:23  1.0.2  Security patches for simplesamlphp/saml2 and paragonie/random_compat
       05/02/2018 12:23  1.0.1  SAML2 library upgrade and EB 5.5 compatibility changes
       15/01/2018 10:00  1.0.0  initial release
 
