@@ -32,9 +32,9 @@ final class ContactPersonListFactory
      */
     public static function createListFromMetadata($data)
     {
-        Assert::isArray($data, 'Contact list JSON structure must be an associative array, got %s');
+        Assert::isArray($data, 'Metadata JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_persons', 'Entity JSON structure must contain key "contact_persons"');
-        Assert::isArray($data, 'Contact persons JSON structure must be an associative array, got %s');
+        Assert::isArray($data['contact_persons'], 'Contact persons JSON structure must be an associative array, got %s');
 
         // We cannot use self::class because translation extractions fails on that
         $contactPersons = array_map(
