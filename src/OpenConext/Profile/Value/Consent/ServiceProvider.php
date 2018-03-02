@@ -53,18 +53,32 @@ final class ServiceProvider
      */
     private $supportEmail;
 
+    /**
+     * @var Url|null
+     */
+    private $supportUrlEn;
+
+    /**
+     * @var Url|null
+     */
+    private $supportUrlNl;
+
     public function __construct(
         Entity $entity,
         DisplayName $displayName,
         NameIdFormat $nameIdFormat,
         Url $eulaUrl = null,
-        ContactEmailAddress $supportEmail = null
+        ContactEmailAddress $supportEmail = null,
+        Url $supportUrlEn = null,
+        Url $supportUrlNl = null
     ) {
         $this->entity       = $entity;
         $this->displayName  = $displayName;
         $this->nameIdFormat = $nameIdFormat;
         $this->eulaUrl      = $eulaUrl;
         $this->supportEmail = $supportEmail;
+        $this->supportUrlEn = $supportUrlEn;
+        $this->supportUrlNl = $supportUrlNl;
     }
 
     /**
@@ -144,5 +158,31 @@ final class ServiceProvider
         }
 
         return $this->supportEmail;
+    }
+
+    /**
+     * @param string $locale
+     * @return null|Url
+     */
+    public function getSupportUrl($locale)
+    {
+        if ($locale === 'nl') {
+            return $this->supportUrlNl;
+        } else {
+            return $this->supportUrlEn;
+        }
+    }
+
+    /**
+     * @param $locale
+     * @return bool
+     */
+    public function hasSupportUrl($locale)
+    {
+        if ($locale === 'nl') {
+            return $this->supportUrlNl !== null;
+        } else {
+            return $this->supportUrlEn !== null;
+        }
     }
 }
