@@ -28,6 +28,7 @@ use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\Url;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
@@ -55,6 +56,7 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
             ),
@@ -93,6 +95,7 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
             ),
@@ -123,6 +126,7 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
             ),
@@ -150,6 +154,7 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
             ),

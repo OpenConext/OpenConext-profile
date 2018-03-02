@@ -26,6 +26,7 @@ use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\ConsentType;
 use OpenConext\Profile\Value\DisplayName;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
@@ -107,9 +108,11 @@ final class ConsentListFactory
         Assert::keyExists($data, 'display_name', 'Consent JSON structure must contain key "display_name"');
         Assert::keyExists($data, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
         Assert::keyExists($data, 'support_email', 'Consent JSON structure must contain key "support_email"');
+        Assert::keyExists($data, 'name_id_format', 'Consent JSON structure must contain key "name_id_format"');
 
         $entity       = new Entity(new EntityId($data['entity_id']), EntityType::SP());
         $displayName  = new DisplayName($data['display_name']);
+        $nameIdFormat = new NameIdFormat($data['name_id_format']);
         $eulaUrl      = null;
         $supportEmail = null;
 
@@ -121,6 +124,6 @@ final class ConsentListFactory
             $supportEmail = new ContactEmailAddress($data['support_email']);
         }
 
-        return new ServiceProvider($entity, $displayName, $eulaUrl, $supportEmail);
+        return new ServiceProvider($entity, $displayName, $nameIdFormat, $eulaUrl, $supportEmail);
     }
 }
