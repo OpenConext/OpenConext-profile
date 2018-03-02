@@ -26,10 +26,13 @@ use SAML2\Response\Exception\PreconditionNotMetException;
 use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -45,6 +48,11 @@ class SamlListener implements ListenerInterface
      * @var \Symfony\Component\HttpFoundation\Session\Session
      */
     private $session;
+
+    /**
+     * @var \Symfony\Component\Routing\Matcher\UrlMatcherInterface
+     */
+    private $urlMatcher;
 
     /**
      * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface
@@ -78,6 +86,7 @@ class SamlListener implements ListenerInterface
 
     public function __construct(
         Session $session,
+        UrlMatcherInterface $urlMatcher,
         TokenStorageInterface $tokenStorage,
         AuthenticationManagerInterface $authenticationManager,
         SamlInteractionProvider $samlInteractionProvider,
@@ -86,6 +95,7 @@ class SamlListener implements ListenerInterface
         Twig $twig
     ) {
         $this->session                  = $session;
+        $this->urlMatcher               = $urlMatcher;
         $this->tokenStorage             = $tokenStorage;
         $this->authenticationManager    = $authenticationManager;
         $this->samlInteractionProvider  = $samlInteractionProvider;
@@ -113,7 +123,8 @@ class SamlListener implements ListenerInterface
             return;
         }
 
-        if (!$this->samlInteractionProvider->isSamlAuthenticationInitiated()) {
+        if (!$this->isAcsRequest($event->getRequest()) ||
+            !$this->samlInteractionProvider->isSamlAuthenticationInitiated()) {
             $this->sendAuthnRequest($event);
 
             return;
@@ -160,6 +171,22 @@ class SamlListener implements ListenerInterface
 
         $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
         $logger->notice('Authentication succeeded, redirecting to original location');
+    }
+
+    /**
+     * Check if this is a request to the ACS location.
+     *
+     * @return bool
+     */
+    private function isAcsRequest(Request $request)
+    {
+        try {
+            $params = $this->urlMatcher->match($request->getPathInfo());
+        } catch (ResourceNotFoundException $e) {
+            return false;
+        }
+
+        return $params['_route'] === 'profile.saml_consume_assertion';
     }
 
     /**
