@@ -109,12 +109,16 @@ final class ConsentListFactory
         Assert::keyExists($data, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
         Assert::keyExists($data, 'support_email', 'Consent JSON structure must contain key "support_email"');
         Assert::keyExists($data, 'name_id_format', 'Consent JSON structure must contain key "name_id_format"');
+        Assert::keyExists($data, 'support_url_en', 'Consent JSON structure must contain key "support_url_en"');
+        Assert::keyExists($data, 'support_url_nl', 'Consent JSON structure must contain key "support_url_nl"');
 
         $entity       = new Entity(new EntityId($data['entity_id']), EntityType::SP());
         $displayName  = new DisplayName($data['display_name']);
         $nameIdFormat = new NameIdFormat($data['name_id_format']);
         $eulaUrl      = null;
         $supportEmail = null;
+        $supportUrlEn = null;
+        $supportUrlNl = null;
 
         if ($data['eula_url'] !== null) {
             $eulaUrl = new Url($data['eula_url']);
@@ -124,6 +128,22 @@ final class ConsentListFactory
             $supportEmail = new ContactEmailAddress($data['support_email']);
         }
 
-        return new ServiceProvider($entity, $displayName, $nameIdFormat, $eulaUrl, $supportEmail);
+        if ($data['support_url_en'] !== null) {
+            $supportUrlEn = new Url($data['support_url_en']);
+        }
+
+        if ($data['support_url_nl'] !== null) {
+            $supportUrlNl = new Url($data['support_url_nl']);
+        }
+
+        return new ServiceProvider(
+            $entity,
+            $displayName,
+            $nameIdFormat,
+            $eulaUrl,
+            $supportEmail,
+            $supportUrlEn,
+            $supportUrlNl
+        );
     }
 }
