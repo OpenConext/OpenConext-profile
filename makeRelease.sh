@@ -51,6 +51,9 @@ COMMITHASH=`git rev-parse HEAD` &&
 echo "Tag: ${TAG}" > ${PROJECT_DIR}/RELEASE &&
 echo "Commit: ${COMMITHASH}" >> ${PROJECT_DIR}/RELEASE &&
 
+echo "Updating asset_version in config"
+sed -i s,#ASSETS_VERSION#,${TAG},g ${PROJECT_DIR}/app/config/config.yml
+
 echo "Cleaning build of dev files" &&
 rm -rf ${PROJECT_DIR}/ansible &&
 rm -rf ${PROJECT_DIR}/Vagrantfile &&
