@@ -21,6 +21,7 @@ namespace OpenConext\Profile\Value\Consent;
 use OpenConext\EngineBlockApiClientBundle\Exception\LogicException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\DisplayName;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\Url;
@@ -38,6 +39,11 @@ final class ServiceProvider
     private $displayName;
 
     /**
+     * @var NameIdFormat
+     */
+    private $nameIdFormat;
+
+    /**
      * @var Url|null
      */
     private $eulaUrl;
@@ -50,11 +56,13 @@ final class ServiceProvider
     public function __construct(
         Entity $entity,
         DisplayName $displayName,
+        NameIdFormat $nameIdFormat,
         Url $eulaUrl = null,
         ContactEmailAddress $supportEmail = null
     ) {
         $this->entity       = $entity;
         $this->displayName  = $displayName;
+        $this->nameIdFormat = $nameIdFormat;
         $this->eulaUrl      = $eulaUrl;
         $this->supportEmail = $supportEmail;
     }
@@ -73,6 +81,14 @@ final class ServiceProvider
     public function getDisplayName()
     {
         return $this->displayName;
+    }
+
+    /**
+     * @return NameIdFormat
+     */
+    public function getNameIdFormat()
+    {
+        return $this->nameIdFormat;
     }
 
     /**
