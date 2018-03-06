@@ -118,6 +118,7 @@ services:
         class: OpenConext\ProfileBundle\Security\Firewall\SamlListener
         arguments:
             - @session
+            - @router
             - @security.token_storage
             - @security.authentication.manager
             - @profile.security.authentication.saml
