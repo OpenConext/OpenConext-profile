@@ -94,6 +94,10 @@ can be done on an installation that runs in `DEV` mode. Make sure you log
 into profile at `https://profile-dev.vm.openconext.org`. Then go to
 `https://profile.vm.openconext.org/app_dev.php/_trans/` to update the strings.
 
+The following command can be used to scan for translations:
+
+     ./bin/extract-translations.sh
+
 ## Common tasks
 
 ### Add support for new Attribute Aggregation source
