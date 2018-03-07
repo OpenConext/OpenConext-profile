@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2018-01-11T10:01:28Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2018-03-06T16:24:26Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -69,7 +69,37 @@
       <trans-unit id="757f129ed6459928baf538b9c6947626808aee49" resname="profile.confirm_connection_delete.confirm_label">
         <source>profile.confirm_connection_delete.confirm_label</source>
         <target>Ja, verwijder deze koppeling</target>
-        <jms:reference-file line="42">/../src/OpenConext/ProfileBundle/Form/Type/ConfirmConnectionDeleteType.php</jms:reference-file>
+        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Form/Type/ConfirmConnectionDeleteType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="efb49a4a4007574c18d8065000f28c859063942b" resname="profile.error.403.description">
+        <source>profile.error.403.description</source>
+        <target>U heeft geen toegang tot deze pagina.</target>
+        <jms:reference-file line="7">/Resources/TwigBundle/views/Exception/error403.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="51d3b4517bac23d0fc8a2926f54955a16cb36ebb" resname="profile.error.403.title">
+        <source>profile.error.403.title</source>
+        <target>Geen toegang</target>
+        <jms:reference-file line="6">/Resources/TwigBundle/views/Exception/error403.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a4d9d841e81d6a83318a32b9e9ce4ee435fd40be" resname="profile.error.404.description">
+        <source>profile.error.404.description</source>
+        <target>De opgevraagde pagina bestaat niet.</target>
+        <jms:reference-file line="7">/Resources/TwigBundle/views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="296a40652c7556fd4787ac596cc7cc84af6e1020" resname="profile.error.404.title">
+        <source>profile.error.404.title</source>
+        <target>Pagina niet gevonden</target>
+        <jms:reference-file line="6">/Resources/TwigBundle/views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c3e97e62c28a4f3c76a70ad5ebb06d5307407565" resname="profile.error.500.description">
+        <source>profile.error.500.description</source>
+        <target>Er is iets fout gegaan, probeer het later nog eens of neem contact op met de SURFconext helpdesk.</target>
+        <jms:reference-file line="7">/Resources/TwigBundle/views/Exception/error.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="99faf445dd2319837eca358b6298847f70a57e62" resname="profile.error.500.title">
+        <source>profile.error.500.title</source>
+        <target>Serverfout</target>
+        <jms:reference-file line="6">/Resources/TwigBundle/views/Exception/error.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="635d3df5bf4d25f2ba2aa31d49a7b66a18a78d59" resname="profile.information_request.explanation">
         <source>profile.information_request.explanation</source>
@@ -148,22 +178,22 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="0135c23e335a69b86430fa515b01d20cb65a21c4" resname="profile.locale.en">
         <source>profile.locale.en</source>
         <target>EN</target>
-        <jms:reference-file line="168">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6f6d681a481879428f3cb1fedecc96d9774eecbb" resname="profile.locale.locale_change_fail">
         <source>profile.locale.locale_change_fail</source>
         <target>Kon taal niet veranderen</target>
-        <jms:reference-file line="172">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="173">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7b6a058e52a45bcdc469105f7313e05eb39ad69b" resname="profile.locale.locale_change_success">
         <source>profile.locale.locale_change_success</source>
         <target>Taal veranderd</target>
-        <jms:reference-file line="171">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="172">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e2fbaef81b77d24930074533408e4d9fd514dcd2" resname="profile.locale.nl">
         <source>profile.locale.nl</source>
         <target>NL</target>
-        <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="170">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9efb18562f68975294c34a9d578af71915151cc5" resname="profile.my_connections.active_connections">
         <source>profile.my_connections.active_connections</source>
@@ -193,7 +223,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="34ce48e722c206f299190088acea1e55ba420e99" resname="profile.my_connections.missing_connections">
         <source>profile.my_connections.missing_connections</source>
         <target>Missende koppelingen?</target>
-        <jms:reference-file line="86">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="85">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d8030c905e3901505ffa45585843d95d71cedb7a" resname="profile.my_connections.no_active_connections.description">
         <source>profile.my_connections.no_active_connections.description</source>
@@ -208,7 +238,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="d1a92495d8e08cf89bf517af5ffe5461407d2921" resname="profile.my_connections.orcid.connect_title">
         <source>profile.my_connections.orcid.connect_title</source>
         <target>Koppelen</target>
-        <jms:reference-file line="78">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
@@ -240,7 +270,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="7d8ba5b858f788ea3b20782b6d6a2653ab34581c" resname="profile.my_connections.send_request">
         <source>profile.my_connections.send_request</source>
         <target>Stuur ons een verzoek</target>
-        <jms:reference-file line="87">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="86">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d19d7e654594f5a24af2d7ccd23a3678082a0db4" resname="profile.my_connections.service_label">
         <source>profile.my_connections.service_label</source>
@@ -303,12 +333,12 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="cbc567af195fed58513777f183eafe22542178b1" resname="profile.my_services.consent_first_used_on">
         <source>profile.my_services.consent_first_used_on</source>
         <target>Voor het eerst gebruikt op</target>
-        <jms:reference-file line="55">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="65">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="927d4519f4715517225aa5df22bf583e6421a0cf" resname="profile.my_services.consent_type">
         <source>profile.my_services.consent_type</source>
         <target>Toestemming gegeven door</target>
-        <jms:reference-file line="45">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="55">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fc4ed9e167b467c2e26198429db9e75c2914cce6" resname="profile.my_services.error_loading_consent">
         <source>profile.my_services.error_loading_consent</source>
@@ -338,12 +368,12 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="286aef124b54c35d42540b3c44ef082c8b86b363" resname="profile.my_services.explicit_consent_given">
         <source>profile.my_services.explicit_consent_given</source>
         <target>gebruiker</target>
-        <jms:reference-file line="48">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="58">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c815c74e5f7765a5d5e5c419a59bbff5f874a5be" resname="profile.my_services.implicit_consent_given">
         <source>profile.my_services.implicit_consent_given</source>
         <target>instelling</target>
-        <jms:reference-file line="50">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="60">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="107928a44903768c109c65916394c80a60c49e1e" resname="profile.my_services.long_title">
         <source>profile.my_services.long_title</source>
@@ -353,7 +383,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="f33a1baf8657a48868fa5624e490ca95134c5b96" resname="profile.my_services.no_attribute_released">
         <source>profile.my_services.no_attribute_released</source>
         <target>Deze dienst ontvangt geen gegevens over jou.</target>
-        <jms:reference-file line="63">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="73">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a56f9f031cd71cad0cbf03e1a523825720214a53" resname="profile.my_services.short_title">
         <source>profile.my_services.short_title</source>
@@ -366,6 +396,11 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="22e22666c2969a24c385952a44da34ff2d808837" resname="profile.my_services.supportEmail">
         <source>profile.my_services.supportEmail</source>
         <target>E-mailadres support</target>
+        <jms:reference-file line="47">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1912664fc31e1686c116060dca4dac2019a2d47b" resname="profile.my_services.support_url">
+        <source>profile.my_services.support_url</source>
+        <target>Support</target>
         <jms:reference-file line="37">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="313af0cef887cdef1a6b4d5911515250d3010a25" resname="profile.my_surf_conext.account_data">
@@ -473,6 +508,16 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <target>Gebruiksvoorwaarden</target>
         <jms:reference-file line="82">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="f5d0957a4421ee6ecaf81e9c8a568650a015770a" resname="profile.saml.attributes.eduPersonTargetedId.persistent">
+        <source>profile.saml.attributes.eduPersonTargetedId.persistent</source>
+        <target>Pseudoniem dat per dienst verschilt</target>
+        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="6dfc05705bd5f8f27a26d62e7826aebaeecd4d15" resname="profile.saml.attributes.eduPersonTargetedId.transient">
+        <source>profile.saml.attributes.eduPersonTargetedId.transient</source>
+        <target>Pseudoniem dat per login verschilt</target>
+        <jms:reference-file line="32">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
         <source>profile.table.attribute_name</source>
         <target>Attribuut</target>
@@ -493,22 +538,22 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="0116d16056d9cd75bfe4bf170b5b504d8b939a38" resname="profile.table.source_description.orcid">
         <source>profile.table.source_description.orcid</source>
         <target>ORCID iD</target>
-        <jms:reference-file line="175">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="176">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e591d4c6d94037cb4aca3294d989e63eeb15663f" resname="profile.table.source_description.sab">
         <source>profile.table.source_description.sab</source>
         <target>SURFnet Autorisatie Beheer</target>
-        <jms:reference-file line="176">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="177">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="7eaa211c78eb7290993519c729e4e05c49269da3" resname="profile.table.source_description.surfmarket_entitlements">
+      <trans-unit id="98a7e142496864319f0b2c6b931da715b4e000db" resname="profile.table.source_description.surfmarket_entitlements">
         <source>profile.table.source_description.surfmarket_entitlements</source>
         <target>SURFmarket Entitlements</target>
-        <jms:reference-file line="177">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="178">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b1c5ddcfd432d3477264f068b21ff7996915e06" resname="profile.table.source_description.voot">
         <source>profile.table.source_description.voot</source>
         <target>Groepslidmaatschap</target>
-        <jms:reference-file line="174">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="175">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

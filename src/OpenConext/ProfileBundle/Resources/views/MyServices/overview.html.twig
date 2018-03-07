@@ -32,6 +32,16 @@
                                 </td>
                             </tr>
                             {% endif %}
+                            {% if specifiedConsent.consent.serviceProvider.hasSupportUrl(app.request.locale) %}
+                                <tr>
+                                    <td>{{ 'profile.my_services.support_url'|trans }}:</td>
+                                    <td>
+                                        <a href="{{ specifiedConsent.consent.serviceProvider.getSupportUrl(app.request.locale) }}">
+                                            {{ specifiedConsent.consent.serviceProvider.getSupportUrl(app.request.locale) }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
                             {% if specifiedConsent.consent.serviceProvider.hasSupportEmail %}
                             <tr>
                                 <td>{{ 'profile.my_services.supportEmail'|trans }}:</td>

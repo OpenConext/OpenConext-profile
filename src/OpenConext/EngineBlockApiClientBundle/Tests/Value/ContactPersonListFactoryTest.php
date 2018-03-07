@@ -147,4 +147,45 @@ final class ContactPersonListFactoryTest extends TestCase
 
         $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::createListFromMetadata($given));
     }
+
+    /**
+     * @test
+     * @group ContactPerson
+     */
+    public function contact_person_list_without_contact_persons_can_be_deserialized()
+    {
+        $given = [
+            'contact_persons' => []
+        ];
+
+        $expectedContactPersonList = new ContactPersonList([]);
+
+        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::createListFromMetadata($given));
+    }
+
+
+    /**
+     * @test
+     * @group ContactPerson
+     */
+    public function contact_person_list_with_one_contact_person_can_be_deserialized()
+    {
+        $given = [
+            'contact_persons' => [
+                [
+                    'contact_type'  => 'other',
+                    'email_address' => 'valid@email.address.example.org',
+                ]
+            ]
+        ];
+
+        $expectedContactPersonList = new ContactPersonList([
+            new ContactPerson(
+                new ContactType(ContactType::TYPE_OTHER),
+                new ContactEmailAddress('valid@email.address.example.org')
+            ),
+        ]);
+
+        $this->assertEquals($expectedContactPersonList, ContactPersonListFactory::createListFromMetadata($given));
+    }
 }

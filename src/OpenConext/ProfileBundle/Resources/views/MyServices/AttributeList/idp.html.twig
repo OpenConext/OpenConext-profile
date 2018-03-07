@@ -25,9 +25,19 @@
                 {% endif %}
             </td>
             <td>
-                {% for attributeValue in attribute.value  %}
-                    <p class="attribute-value">{{ attributeValue.value }}</p>
-                {% endfor %}
+                {% if attribute.attributeDefinition.name == 'eduPersonTargetedID' and (
+                        specifiedConsent.consent.serviceProvider.nameIdFormat.isTransient or
+                        specifiedConsent.consent.serviceProvider.nameIdFormat.isPersistent) %}
+                    {% if specifiedConsent.consent.serviceProvider.nameIdFormat.isTransient %}
+                        <em>{{ 'profile.saml.attributes.eduPersonTargetedId.transient'|trans }}</em>
+                    {%  else %}
+                        <em>{{ 'profile.saml.attributes.eduPersonTargetedId.persistent'|trans }}</em>
+                    {%  endif %}
+                {% else %}
+                    {% for attributeValue in attribute.value  %}
+                        <p class="attribute-value">{{ attributeValue.value }}</p>
+                    {% endfor %}
+                {% endif %}
             </td>
         </tr>
     {% endfor %}

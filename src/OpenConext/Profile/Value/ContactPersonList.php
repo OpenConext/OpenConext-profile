@@ -28,7 +28,7 @@ final class ContactPersonList implements IteratorAggregate, Countable
     /**
      * @var ContactPerson[]
      */
-    private $contactPersons;
+    private $contactPersons = [];
 
     public function __construct(array $contactPersons)
     {

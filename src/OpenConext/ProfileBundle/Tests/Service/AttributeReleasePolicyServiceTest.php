@@ -32,6 +32,7 @@ use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\Profile\Value\Url;
@@ -144,11 +145,16 @@ class AttributeReleasePolicyServiceTest extends TestCase
             ],
         ];
 
-        $client->shouldReceive('read')
+        $client->shouldReceive('post')
             ->withArgs(
                 [
-                    '/read-arp?entityIds=%s',
-                    ['some-entity-id,another-entity-id'],
+                    [
+                        'entityIds' => [
+                            'some-entity-id',
+                            'another-entity-id',
+                        ]
+                    ],
+                    '/read-arp',
                 ]
             )
             ->andReturn($arpData);
@@ -162,6 +168,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
             ),
@@ -177,6 +184,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 new DisplayName([
                     'en' =>'Another display name'
                 ]),
+                new NameIdFormat(''),
                 new Url('http://another-eula-url.example'),
                 new ContactEmailAddress('another@email.example')
             ),

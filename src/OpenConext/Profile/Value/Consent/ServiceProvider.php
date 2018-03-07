@@ -21,6 +21,7 @@ namespace OpenConext\Profile\Value\Consent;
 use OpenConext\EngineBlockApiClientBundle\Exception\LogicException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\DisplayName;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\Url;
@@ -38,6 +39,11 @@ final class ServiceProvider
     private $displayName;
 
     /**
+     * @var NameIdFormat
+     */
+    private $nameIdFormat;
+
+    /**
      * @var Url|null
      */
     private $eulaUrl;
@@ -47,16 +53,32 @@ final class ServiceProvider
      */
     private $supportEmail;
 
+    /**
+     * @var Url|null
+     */
+    private $supportUrlEn;
+
+    /**
+     * @var Url|null
+     */
+    private $supportUrlNl;
+
     public function __construct(
         Entity $entity,
         DisplayName $displayName,
+        NameIdFormat $nameIdFormat,
         Url $eulaUrl = null,
-        ContactEmailAddress $supportEmail = null
+        ContactEmailAddress $supportEmail = null,
+        Url $supportUrlEn = null,
+        Url $supportUrlNl = null
     ) {
         $this->entity       = $entity;
         $this->displayName  = $displayName;
+        $this->nameIdFormat = $nameIdFormat;
         $this->eulaUrl      = $eulaUrl;
         $this->supportEmail = $supportEmail;
+        $this->supportUrlEn = $supportUrlEn;
+        $this->supportUrlNl = $supportUrlNl;
     }
 
     /**
@@ -73,6 +95,14 @@ final class ServiceProvider
     public function getDisplayName()
     {
         return $this->displayName;
+    }
+
+    /**
+     * @return NameIdFormat
+     */
+    public function getNameIdFormat()
+    {
+        return $this->nameIdFormat;
     }
 
     /**
@@ -128,5 +158,31 @@ final class ServiceProvider
         }
 
         return $this->supportEmail;
+    }
+
+    /**
+     * @param string $locale
+     * @return null|Url
+     */
+    public function getSupportUrl($locale)
+    {
+        if ($locale === 'nl') {
+            return $this->supportUrlNl;
+        } else {
+            return $this->supportUrlEn;
+        }
+    }
+
+    /**
+     * @param $locale
+     * @return bool
+     */
+    public function hasSupportUrl($locale)
+    {
+        if ($locale === 'nl') {
+            return $this->supportUrlNl !== null;
+        } else {
+            return $this->supportUrlEn !== null;
+        }
     }
 }

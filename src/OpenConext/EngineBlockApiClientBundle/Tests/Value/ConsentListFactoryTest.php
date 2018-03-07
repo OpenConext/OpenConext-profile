@@ -29,6 +29,7 @@ use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\Url;
 use PHPUnit\Framework\TestCase;
 
@@ -57,6 +58,9 @@ final class ConsentListFactoryTest extends TestCase
                     'display_name'  => ['en' => '', 'nl' => '',],
                     'eula_url'      => $firstEula,
                     'support_email' => null,
+                    'name_id_format' => 'test',
+                    'support_url_en' => 'https://example.org/support-en',
+                    'support_url_nl' => 'https://example.org/support-nl',
                 ],
                 'consent_given_on' => '2015-11-05T08:43:01+01:00',
                 'consent_type'     => $givenFirstConsentTypeValue
@@ -67,6 +71,9 @@ final class ConsentListFactoryTest extends TestCase
                     'display_name'  => ['en' => 'OpenConext ServiceRegistry', 'nl' => 'OpenConext ServiceRegistry'],
                     'eula_url'      => null,
                     'support_email' => $secondSupportEmail,
+                    'name_id_format' => 'test',
+                    'support_url_en' => 'https://example.org/support-en',
+                    'support_url_nl' => 'https://example.org/support-nl',
                 ],
                 'consent_given_on' => '2015-11-05T08:17:04+01:00',
                 'consent_type'     => $givenSecondConsentTypeValue
@@ -78,8 +85,11 @@ final class ConsentListFactoryTest extends TestCase
                 new ServiceProvider(
                     new Entity(new EntityId($firstEntityId), EntityType::SP()),
                     new DisplayName(['nl' => '', 'en' => '']),
+                    new NameIdFormat('test'),
                     new Url($firstEula),
-                    null
+                    null,
+                    new Url('https://example.org/support-en'),
+                    new Url('https://example.org/support-nl')
                 ),
                 new DateTimeImmutable('2015-11-05T08:43:01+01:00'),
                 $expectedFirstConsentType
@@ -88,8 +98,11 @@ final class ConsentListFactoryTest extends TestCase
                 new ServiceProvider(
                     new Entity(new EntityId($secondEntityId), EntityType::SP()),
                     new DisplayName(['nl' => 'OpenConext ServiceRegistry', 'en' => 'OpenConext ServiceRegistry']),
+                    new NameIdFormat('test'),
                     null,
-                    new ContactEmailAddress($secondSupportEmail)
+                    new ContactEmailAddress($secondSupportEmail),
+                    new Url('https://example.org/support-en'),
+                    new Url('https://example.org/support-nl')
                 ),
                 new DateTimeImmutable('2015-11-05T08:17:04+01:00'),
                 $expectedSecondConsentType
