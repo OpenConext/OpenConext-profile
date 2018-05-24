@@ -35,6 +35,16 @@ final class NameIdFormat
      */
     public function __construct($value)
     {
+        // A service provider usually always has a NameIDFormat, because it's
+        // required by the manage web interface.
+        //
+        // In practice, programmatically created entities can be saved
+        // without NameIDFormat. In those cases, we fall back to most likely
+        // used value by EngineBlock: persistent.
+        if ($value === null) {
+            $value = self::PERSISTENT_IDENTIFIER;
+        }
+
         Assert::string($value, 'NameIDFormat "%s" must be a string');
 
         $this->value = $value;
