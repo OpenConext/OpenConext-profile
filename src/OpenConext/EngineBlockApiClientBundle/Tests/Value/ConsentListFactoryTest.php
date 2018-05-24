@@ -56,11 +56,10 @@ final class ConsentListFactoryTest extends TestCase
                 'service_provider' => [
                     'entity_id'     => $firstEntityId,
                     'display_name'  => ['en' => '', 'nl' => '',],
+                    'support_url'  => ['en' => 'https://example.org/support-en', 'nl' => 'https://example.org/support-nl'],
                     'eula_url'      => $firstEula,
                     'support_email' => null,
                     'name_id_format' => 'test',
-                    'support_url_en' => 'https://example.org/support-en',
-                    'support_url_nl' => 'https://example.org/support-nl',
                 ],
                 'consent_given_on' => '2015-11-05T08:43:01+01:00',
                 'consent_type'     => $givenFirstConsentTypeValue
@@ -69,11 +68,10 @@ final class ConsentListFactoryTest extends TestCase
                 'service_provider' => [
                     'entity_id'     => $secondEntityId,
                     'display_name'  => ['en' => 'OpenConext ServiceRegistry', 'nl' => 'OpenConext ServiceRegistry'],
+                    'support_url'  => ['en' => 'https://example.org/support-en', 'nl' => 'https://example.org/support-nl'],
                     'eula_url'      => null,
                     'support_email' => $secondSupportEmail,
                     'name_id_format' => 'test',
-                    'support_url_en' => 'https://example.org/support-en',
-                    'support_url_nl' => 'https://example.org/support-nl',
                 ],
                 'consent_given_on' => '2015-11-05T08:17:04+01:00',
                 'consent_type'     => $givenSecondConsentTypeValue
