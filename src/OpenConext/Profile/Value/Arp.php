@@ -122,16 +122,15 @@ final class Arp
     private static function isValidAttribute(array $attributeInformation)
     {
         foreach ($attributeInformation as $attributeInformationEntry) {
-            if (!array_key_exists('value', $attributeInformationEntry)) {
+            if (!isset($attributeInformationEntry['value'])) {
                 return false;
             }
 
-            foreach ($attributeInformationEntry as $key => $value) {
+            foreach ($attributeInformationEntry as $value) {
                 if (!is_string($value)) {
                     return false;
                 }
             }
-
         }
         return true;
     }
@@ -149,5 +148,38 @@ final class Arp
     public function getAttributesGroupedBySource()
     {
         return $this->arp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasMotivations()
+    {
+        foreach ($this->arp as $arpSource) {
+            foreach ($arpSource as $arpEntry) {
+                $values = $arpEntry->getValue();
+                $attributeValue = reset($values);
+                if (isset($attributeValue['motivation'])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function getMotivationFor(Attribute $attribute)
+    {
+        foreach ($this->arp as $arpSource) {
+            foreach ($arpSource as $arpEntry) {
+                if ($attribute->getAttributeDefinition()->getUrnMace() == $arpEntry->getAttributeDefinition()->getUrnMace()) {
+                    $values = $arpEntry->getValue();
+                    $attributeValue = reset($values);
+                    if (isset($attributeValue['motivation'])) {
+                        return $attributeValue['motivation'];
+                    }
+                }
+            }
+        }
+        return '';
     }
 }

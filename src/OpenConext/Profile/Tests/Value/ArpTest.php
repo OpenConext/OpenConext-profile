@@ -121,7 +121,6 @@ class ArpTest extends TestCase
             [['urn.mace.foobar' => [['invalid-key' => null]]]],
             [['urn.mace.foobar' => [['source' => new StdClass()]]]],
             [['urn.mace.foobar' => [['value' => new StdClass()]]]],
-            [['urn.mace.foobar' => [['value' => '*', 'sourcy' => 'fff']]]],
             [['urn.mace.foobar' => [['value' => '*', 'source' => []]]]],
             [['urn.mace.foobar' => [['value' => '*'], ['value' => '*', 'source' => []]]]],
         ];

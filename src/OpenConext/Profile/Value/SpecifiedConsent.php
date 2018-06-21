@@ -112,4 +112,17 @@ class SpecifiedConsent
 
         return $grouped;
     }
+
+    /**
+     * @return bool
+     */
+    public function hasMotivations()
+    {
+        return $this->arp->hasMotivations();
+    }
+
+    public function getMotivation(Attribute $attribute)
+    {
+        return $this->arp->getMotivationFor($attribute);
+    }
 }
