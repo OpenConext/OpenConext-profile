@@ -82,7 +82,8 @@ final class Arp
      * Tests the structure of the Arp attribute information.
      *
      * This information should be an array, should have the attribute names as its keys and have array values.
-     * These array values can have two keys (value & source) the values aof these entries should be string.
+     * These array values can have three keys (value, source and motivation) the values of these entries should
+     * be of type string.
      *
      * Example of a valid attribute information array:
      *
@@ -106,6 +107,13 @@ final class Arp
      *       'source' => 'orcid',
      *     ],
      *   ],
+     *   'urn.mace.eduPersonAffiliation' => [
+     *     [
+     *       'value' => '*',
+     *       'source' => 'sab',
+     *       'motivation' => 'A motivation provided by the SP.'
+     *     ]
+     *   ],
      * ]
      *
      * @param array $attributeInformation
@@ -113,17 +121,17 @@ final class Arp
      */
     private static function isValidAttribute(array $attributeInformation)
     {
-        $validKeys = ['value', 'source'];
-
         foreach ($attributeInformation as $attributeInformationEntry) {
-            foreach ($attributeInformationEntry as $key => $attributeConfigValue) {
-                if (!in_array($key, $validKeys)) {
-                    return false;
-                }
-                if (!is_string($attributeConfigValue)) {
+            if (!array_key_exists('value', $attributeInformationEntry)) {
+                return false;
+            }
+
+            foreach ($attributeInformationEntry as $key => $value) {
+                if (!is_string($value)) {
                     return false;
                 }
             }
+
         }
         return true;
     }
