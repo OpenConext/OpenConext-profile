@@ -1886,6 +1886,61 @@
             "time": "2016-05-18T14:26:46+00:00"
         },
         {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
+        },
+        {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.2.0",
             "source": {
@@ -2005,16 +2060,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.42",
+            "version": "v2.7.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "1cb920ef3b151d4daff40e9c4ab99d317996d661"
+                "reference": "34d6116e2b80351c5a6f591285a4e9381b0dd127"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/1cb920ef3b151d4daff40e9c4ab99d317996d661",
-                "reference": "1cb920ef3b151d4daff40e9c4ab99d317996d661",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/34d6116e2b80351c5a6f591285a4e9381b0dd127",
+                "reference": "34d6116e2b80351c5a6f591285a4e9381b0dd127",
                 "shasum": ""
             },
             "require": {
@@ -2024,6 +2079,7 @@
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
                 "symfony/polyfill-apcu": "~1.1",
+                "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-mbstring": "~1.1",
                 "twig/twig": "~1.34|~2.4"
             },
@@ -2135,7 +2191,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2018-02-28T22:57:23+00:00"
+            "time": "2018-05-25T11:46:22+00:00"
         },
         {
             "name": "twig/extensions",
