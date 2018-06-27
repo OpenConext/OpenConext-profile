@@ -82,7 +82,8 @@ final class Arp
      * Tests the structure of the Arp attribute information.
      *
      * This information should be an array, should have the attribute names as its keys and have array values.
-     * These array values can have two keys (value & source) the values aof these entries should be string.
+     * These array values can have three keys (value, source and motivation) the values of these entries should
+     * be of type string.
      *
      * Example of a valid attribute information array:
      *
@@ -106,6 +107,13 @@ final class Arp
      *       'source' => 'orcid',
      *     ],
      *   ],
+     *   'urn.mace.eduPersonAffiliation' => [
+     *     [
+     *       'value' => '*',
+     *       'source' => 'sab',
+     *       'motivation' => 'A motivation provided by the SP.'
+     *     ]
+     *   ],
      * ]
      *
      * @param array $attributeInformation
@@ -113,14 +121,13 @@ final class Arp
      */
     private static function isValidAttribute(array $attributeInformation)
     {
-        $validKeys = ['value', 'source'];
-
         foreach ($attributeInformation as $attributeInformationEntry) {
-            foreach ($attributeInformationEntry as $key => $attributeConfigValue) {
-                if (!in_array($key, $validKeys)) {
-                    return false;
-                }
-                if (!is_string($attributeConfigValue)) {
+            if (!isset($attributeInformationEntry['value'])) {
+                return false;
+            }
+
+            foreach ($attributeInformationEntry as $value) {
+                if (!is_string($value)) {
                     return false;
                 }
             }
@@ -141,5 +148,38 @@ final class Arp
     public function getAttributesGroupedBySource()
     {
         return $this->arp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasMotivations()
+    {
+        foreach ($this->arp as $arpSource) {
+            foreach ($arpSource as $arpEntry) {
+                $values = $arpEntry->getValue();
+                $attributeValue = reset($values);
+                if (isset($attributeValue['motivation'])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function getMotivationFor(Attribute $attribute)
+    {
+        foreach ($this->arp as $arpSource) {
+            foreach ($arpSource as $arpEntry) {
+                if ($attribute->getAttributeDefinition()->getUrnMace() == $arpEntry->getAttributeDefinition()->getUrnMace()) {
+                    $values = $arpEntry->getValue();
+                    $attributeValue = reset($values);
+                    if (isset($attributeValue['motivation'])) {
+                        return $attributeValue['motivation'];
+                    }
+                }
+            }
+        }
+        return '';
     }
 }

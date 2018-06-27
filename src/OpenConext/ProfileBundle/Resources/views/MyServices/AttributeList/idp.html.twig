@@ -1,10 +1,12 @@
 <p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
-
 <table class="mdl-data-table">
     <thead>
     <tr>
         <th>{{ 'profile.table.attribute_name'|trans }}</th>
         <th>{{ 'profile.table.attribute_value'|trans }}</th>
+        {% if specifiedConsent.hasMotivations %}
+            <th>{{ 'profile.table.motivation'|trans }}</th>
+        {% endif %}
     </tr>
     </thead>
     <tbody>
@@ -39,6 +41,11 @@
                     {% endfor %}
                 {% endif %}
             </td>
+            {% if specifiedConsent.hasMotivations %}
+            <td>
+                <p class="attribute-value">{{ specifiedConsent.motivation(attribute) }}</p>
+            </td>
+            {% endif %}
         </tr>
     {% endfor %}
     </tbody>
