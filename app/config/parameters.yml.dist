@@ -22,6 +22,12 @@ parameters:
     engineblock_api_password: secret
     engineblock_api_verify_ssl: true
 
+    user_lifecycle_enabled: true
+    user_lifecycle_api_base_url: 'https://userlifecycle.vm.openconext.org/'
+    user_lifecycle_api_username: userlifecycle
+    user_lifecycle_api_password: secret
+    user_lifecycle_api_verify_ssl: true
+
     attribute_aggregation_api_base_url: 'https://aa.vm.openconext.org/aa/api/internal/'
     attribute_aggregation_api_username: eb
     attribute_aggregation_api_password: secret

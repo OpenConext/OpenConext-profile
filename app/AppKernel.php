@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             // Project
             new OpenConext\ProfileBundle\OpenConextProfileBundle(),
             new OpenConext\EngineBlockApiClientBundle\OpenConextEngineBlockApiClientBundle(),
+            new OpenConext\UserLifecycleApiClientBundle\OpenConextUserLifecycleApiClientBundle(),
             new OpenConext\AttributeAggregationApiClientBundle\OpenConextAttributeAggregationApiClientBundle(),
         ];
 

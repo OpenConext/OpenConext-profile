@@ -21,7 +21,9 @@ namespace OpenConext\ProfileBundle\Controller;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Templating\EngineInterface;
 
 class MySurfConextController
@@ -77,7 +79,32 @@ class MySurfConextController
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MySurfConext:overview.html.twig',
-            ['user' => $user]
+            [
+                'user' => $user,
+                'userLifecycleIsEnabled' => $this->userService->userLifecycleApiIsEnabled(),
+            ]
         ));
+    }
+
+    /**
+     * @return Response
+     */
+    public function userDataDownloadAction()
+    {
+        $this->guard->userIsLoggedIn();
+
+        if (!$this->userService->userLifecycleApiIsEnabled()) {
+            throw new ResourceNotFoundException('User lifecycle API is disabled');
+        }
+
+        $this->logger->notice('Exporting user data from user lifecycle API');
+
+        return new JsonResponse(
+            $this->userService->getUserLifecycleData(),
+            200,
+            [
+                'Content-Disposition' => 'attachment; filename="profile-user-data.json"'
+            ]
+        );
     }
 }

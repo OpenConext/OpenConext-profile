@@ -254,6 +254,8 @@ services:
             - @profile.provider.authenticated_user
             - @profile.service.locale
             - @profile.engine_block_entity_id
+        calls:
+            - [ setUserLifecycleApiClient, [ '@?openconext_user_lifecycle_api.service.api' ] ]
 
     profile.service.consent:
         public: false

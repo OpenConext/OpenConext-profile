@@ -1,0 +1,12 @@
+services:
+    openconext_user_lifecycle_api.guzzle:
+        public: false
+        class: GuzzleHttp\Client
+        arguments:
+            - [] # Client options
+
+    openconext_user_lifecycle_api.service.api:
+        public: false
+        class: OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient
+        arguments:
+            - @openconext_user_lifecycle_api.guzzle

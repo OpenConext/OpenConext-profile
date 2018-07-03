@@ -24,6 +24,7 @@ use OpenConext\Profile\Repository\UserRepository;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
+use OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient as UserLifecycleApiClient;
 
 final class UserService
 {
@@ -52,6 +53,11 @@ final class UserService
      */
     private $engineBlockEntityId;
 
+    /**
+     * @var UserLifecycleApiClient
+     */
+    private $userLifecycleApiClient;
+
     public function __construct(
         SupportContactEmailService $supportContactEmailService,
         UserRepository $userRepository,
@@ -64,6 +70,16 @@ final class UserService
         $this->authenticatedUserProvider  = $authenticatedUserProvider;
         $this->localeService              = $localeService;
         $this->engineBlockEntityId        = $engineBlockEntityId;
+    }
+
+    /**
+     * The user lifecycle client is optional.
+     *
+     * @param UserLifecycleApiClient $client
+     */
+    public function setUserLifecycleApiClient(UserLifecycleApiClient $client = null)
+    {
+        $this->userLifecycleApiClient = $client;
     }
 
     /**
@@ -94,6 +110,30 @@ final class UserService
         $user->switchLocaleTo(new Locale($changeLocaleCommand->newLocale));
 
         $this->localeService->saveLocaleOf($user);
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserLifecycleData()
+    {
+        if (!$this->userLifecycleApiIsEnabled()) {
+            return;
+        }
+
+        $user = $this->getUser();
+
+        return $this->userLifecycleApiClient->read(
+            sprintf('/api/deprovision/%s', $user->getId())
+        );
+    }
+
+    /**
+     * @return bool
+     */
+    public function userLifecycleApiIsEnabled()
+    {
+        return $this->userLifecycleApiClient !== null;
     }
 
     /**

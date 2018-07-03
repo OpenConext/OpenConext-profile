@@ -59,4 +59,8 @@
             </tbody>
         </table>
     </div>
+
+    {% if userLifecycleIsEnabled %}
+        <p>{{ 'profile.my_profile.user_data_download'|trans|raw }}</p>
+    {% endif %}
 {% endblock %}

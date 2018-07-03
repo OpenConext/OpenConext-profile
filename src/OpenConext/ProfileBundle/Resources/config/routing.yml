@@ -19,6 +19,13 @@ profile.my_surf_conext_overview:
     defaults:
         _controller: profile.controller.my_surf_conext:overviewAction
 
+profile.my_surf_conext_user_data_download:
+    path:       /my-surfconext/download
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: profile.controller.my_surf_conext:userDataDownloadAction
+
 profile.my_services_overview:
     path:       /my-services
     methods:    [GET]
