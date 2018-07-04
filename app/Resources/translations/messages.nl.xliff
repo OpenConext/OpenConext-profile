@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2018-06-21T16:11:46Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
+  <file date="2018-07-03T09:59:55Z" source-language="en" target-language="nl" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -320,6 +320,11 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="289fa3a9e3353ac8d7bac3a78bcc8661384d0703" resname="profile.my_profile.user_data_download">
+        <source>profile.my_profile.user_data_download</source>
+        <target>Je kan een overzicht met door SURFconext opgeslagen persoonlijke gegevens downloaden in json-formaat.&lt;br&gt; &lt;a class="download" href="/my-surfconext/download"&gt;Download overzicht&lt;/a&gt;</target>
+        <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="41aded5ca8217152487f685b47f640799d76e24f" resname="profile.my_services.attribute_release_description">
         <source>profile.my_services.attribute_release_description</source>
         <target>Deze dienst ontvangt de volgende gegevens over jou:</target>
@@ -511,29 +516,29 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       <trans-unit id="f5d0957a4421ee6ecaf81e9c8a568650a015770a" resname="profile.saml.attributes.eduPersonTargetedId.persistent">
         <source>profile.saml.attributes.eduPersonTargetedId.persistent</source>
         <target>Pseudoniem dat per dienst verschilt</target>
-        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="36">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6dfc05705bd5f8f27a26d62e7826aebaeecd4d15" resname="profile.saml.attributes.eduPersonTargetedId.transient">
         <source>profile.saml.attributes.eduPersonTargetedId.transient</source>
         <target>Pseudoniem dat per login verschilt</target>
-        <jms:reference-file line="33">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
         <source>profile.table.attribute_name</source>
         <target>Attribuut</target>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="24">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="28">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/aa.html.twig</jms:reference-file>
-        <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
         <source>profile.table.attribute_value</source>
         <target>Waarde</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="7">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3dfefde5aa8265c36d1a1d339595faa14c89eaa7" resname="profile.table.motivation">
         <source>profile.table.motivation</source>
