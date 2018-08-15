@@ -9,7 +9,7 @@ parameters:
         en: "https://wiki.surfnet.nl/display/conextsupport/Terms+of+Service+%%28EN%%29"
         nl: "https://wiki.surfnet.nl/display/conextsupport/Terms+of+Service+%%28NL%%29"
     platform_url:
-        en: "https://www.surfconext.nl"
+        en: "https://www.surfconext.nl/en"
         nl: "https://www.surfconext.nl"
     profile_explanation_image_path:
         en: "/images/profile_home_en.png"
