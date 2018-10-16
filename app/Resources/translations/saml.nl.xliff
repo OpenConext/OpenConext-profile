@@ -223,7 +223,7 @@
       </trans-unit>
       <trans-unit id="4f44e157eb496c79b8497aa58febe1ca644f8143" resname="profile.saml.attributes.eduPersonAssurance">
         <source>profile.saml.attributes.eduPersonAssurance</source>
-        <target state="new">profile.saml.attributes.eduPersonAssurance</target>
+        <target>Zekerheid</target>
         <jms:reference-file line="32">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fd5a725589cd991e34d0efd3fdce702c24ee74af" resname="profile.saml.attributes.eduPersonEntitlement">
@@ -233,12 +233,12 @@
       </trans-unit>
       <trans-unit id="a573d67beb6d37146ff3481af0fdf13c466a3207" resname="profile.saml.attributes.eduPersonNickname">
         <source>profile.saml.attributes.eduPersonNickname</source>
-        <target state="new">profile.saml.attributes.eduPersonNickname</target>
+        <target>Bijnaam</target>
         <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c73907182240766d97e1ac9b9223fd0f6a04c159" resname="profile.saml.attributes.eduPersonOrcid">
         <source>profile.saml.attributes.eduPersonOrcid</source>
-        <target state="new">profile.saml.attributes.eduPersonOrcid</target>
+        <target>ORCID iD</target>
         <jms:reference-file line="27">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b0d1115af99dddfa379a960e0c8e5eefcf3f7029" resname="profile.saml.attributes.eduPersonOrgDN">
@@ -253,7 +253,7 @@
       </trans-unit>
       <trans-unit id="10fdfc9923eb5c4c3519e148125624ff90ab2fd1" resname="profile.saml.attributes.eduPersonPrimaryAffiliation">
         <source>profile.saml.attributes.eduPersonPrimaryAffiliation</source>
-        <target state="new">profile.saml.attributes.eduPersonPrimaryAffiliation</target>
+        <target>Primaire betrekking</target>
         <jms:reference-file line="30">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dc6612154d6237592ae56b67d057a57cabf21ad1" resname="profile.saml.attributes.eduPersonPrincipalName">
@@ -263,7 +263,7 @@
       </trans-unit>
       <trans-unit id="fa5f749f6bb40a413654427ea7ab33f4582b786c" resname="profile.saml.attributes.eduPersonScopedAffiliation">
         <source>profile.saml.attributes.eduPersonScopedAffiliation</source>
-        <target state="new">profile.saml.attributes.eduPersonScopedAffiliation</target>
+        <target>Betrekking (scoped)</target>
         <jms:reference-file line="31">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b42105ff1c9d47c8e6db4c7a12f26d83c6030ab3" resname="profile.saml.attributes.eduPersonTargetedID">
