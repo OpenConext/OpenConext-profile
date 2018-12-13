@@ -37,6 +37,16 @@ class UrlTest extends TestCase
 
     /**
      * @test
+     * @group Value
+     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
+     */
+    public function one_without_scheme_fails_validation()
+    {
+        new Url('www.exampe.org');
+    }
+
+    /**
+     * @test
      * @group value
      * @dataProvider nonStringProvider
      * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
