@@ -33,7 +33,7 @@ final class Url
     public function __construct($url)
     {
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-            throw new InvalidArgumentException('URL must be valid');
+            throw new InvalidArgumentException('URL must be valid: "' . $url . '"');
         }
 
         $this->url = $url;
