@@ -349,6 +349,19 @@ tr.service:hover {
     margin-top: 10px;
 }
 
+a.download {
+    position: relative;
+    padding-left: 20px;
+}
+a.download:before {
+    /* download icon */
+    content: "\f019";
+    font-family: "FontAwesome";
+    position:absolute;
+    top:0;
+    left:0;
+}
+
 /* Footer */
 .footer {
     border-top: 1px solid #cccccc;

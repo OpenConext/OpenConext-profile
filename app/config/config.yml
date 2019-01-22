@@ -114,6 +114,14 @@ open_conext_engine_block_api_client:
         password: %engineblock_api_password%
         verify_ssl: %engineblock_api_verify_ssl%
 
+open_conext_user_lifecycle_api_client:
+    enabled: '%user_lifecycle_enabled%'
+    http_client:
+        base_url: %user_lifecycle_api_base_url%
+        username: %user_lifecycle_api_username%
+        password: %user_lifecycle_api_password%
+        verify_ssl: %user_lifecycle_api_verify_ssl%
+
 open_conext_attribute_aggregation_api_client:
     http_client:
         base_url: %attribute_aggregation_api_base_url%

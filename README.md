@@ -72,6 +72,22 @@ open_conext_profile:
             connect_url: %attribute_aggregation_orcid_connect_url%
 ```
 
+## User Lifecycle support
+By enabling the User Lifecyle API integration, you enable users of the platform to download an overview of their 
+personal data stored by SURFconext. To enable the API add the following configuration to the `parameters.yml`
+
+```yaml
+    user_lifecycle_enabled: true
+    user_lifecycle_api_base_url: 'https://user-lifecycle.example.com/' # the application knows the location of the endpoint
+    user_lifecycle_api_username: userlifecycle
+    user_lifecycle_api_password: secret
+    user_lifecycle_api_verify_ssl: false
+``` 
+
+Make sure to fill all parameters, also when the `user_lifecycle_enabled` toggle is disabled.
+
+See the User Lifecycle project on [GitHub](https://github.com/OpenConext/OpenConext-user-lifecycle) for more information.
+
 ## Releases
 `RMT` is used for tagging releases. Run `./RMT release` to tag a release.  Make
 sure you are on the `master` branch and don't have any changes before tagging

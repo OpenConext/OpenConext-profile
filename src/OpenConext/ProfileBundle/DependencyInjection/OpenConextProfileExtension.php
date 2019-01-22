@@ -56,6 +56,12 @@ class OpenConextProfileExtension extends Extension
             $config['attribute_aggregation_supported_attributes'],
             $container
         );
+
+        // The user lifecycle can be disabled
+        if (!$container->getParameter('user_lifecycle_enabled')) {
+            $container->getDefinition('profile.service.user')
+                ->removeMethodCall('setUserLifecycleApiClient');
+        }
     }
 
     private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container)

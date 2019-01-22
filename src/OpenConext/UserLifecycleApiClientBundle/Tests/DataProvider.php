@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2018 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,39 +16,16 @@
  * limitations under the License.
  */
 
-namespace OpenConext\Profile\Value;
+namespace OpenConext\UserLifecycleApiClientBundle\Tests;
 
-use OpenConext\Profile\Assert;
-
-final class Url
+trait DataProvider
 {
-    /**
-     * @var string
-     */
-    private $url;
-
-    /**
-     * @param string $url
-     */
-    public function __construct($url)
+    public function nonStringScalarProvider()
     {
-        Assert::string($url, 'URL "%s" must be a string');
-        Assert::url($url);
-
-        $this->url = $url;
-    }
-
-    /**
-     * @param Url $other
-     * @return bool
-     */
-    public function equals(Url $other)
-    {
-        return $this == $other;
-    }
-
-    public function __toString()
-    {
-        return $this->url;
+        return [
+            'boolean'      => [true],
+            'integer'      => [1],
+            'float'        => [1.2],
+        ];
     }
 }
