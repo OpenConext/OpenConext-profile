@@ -1,6 +1,9 @@
 VERSION 1  OPENCONEXT PROFILE
 =============================
 
+   Version 1.2 - Provide User Lifecycle support
+      22/01.2019 15:38  1.2.0  initial release
+
    Version 1.1 - Various improvements to the 'My services' and 'My connections' pages
       24/05/2018 10:00  1.1.1  Allow service providers without NameIDFormat
       07/03/2018 10:00  1.1.0  SSO improvements, allow IDPs without contacts and better error templates
