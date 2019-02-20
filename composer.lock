@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "118067939b6229c9fe9f9271fe756c26",
+    "content-hash": "a0c88fd341b31d4d43245b3b3feced8d",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1734,16 +1734,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.3.8",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "43753d180f12f7159188995916dc2bbf6ae191b6"
+                "reference": "a56e46ef8e0c5245a4ca7facc3d308b493215751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/43753d180f12f7159188995916dc2bbf6ae191b6",
-                "reference": "43753d180f12f7159188995916dc2bbf6ae191b6",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/a56e46ef8e0c5245a4ca7facc3d308b493215751",
+                "reference": "a56e46ef8e0c5245a4ca7facc3d308b493215751",
                 "shasum": ""
             },
             "require": {
@@ -1756,11 +1756,11 @@
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
-                "phpmd/phpmd": "~2.6",
+                "phpmd/phpmd": "~1.5",
                 "phpunit/phpunit": "~4",
-                "sebastian/phpcpd": "~2.0",
-                "sensiolabs/security-checker": "~4.1",
-                "squizlabs/php_codesniffer": "~3.2"
+                "sebastian/phpcpd": "~1.4",
+                "sensiolabs/security-checker": "~1.1",
+                "squizlabs/php_codesniffer": "~1.4"
             },
             "type": "library",
             "extra": {
@@ -1787,7 +1787,7 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2019-02-12T09:21:48+00:00"
+            "time": "2018-11-20T11:11:28+00:00"
         },
         {
             "name": "surfnet/stepup-saml-bundle",
@@ -3563,6 +3563,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
