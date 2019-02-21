@@ -261,9 +261,7 @@ services:
         public: false
         class: OpenConext\ProfileBundle\Service\ConsentService
         arguments:
-            - @logger
             - @openconext_eb_api.repository.consent
-            - @saml.attribute.surfconext.id
 
     profile.service.consent_listing:
         public: false

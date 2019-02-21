@@ -27,28 +27,13 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 final class ConsentService
 {
     /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
      * @var ConsentRepository
      */
     private $consentRepository;
 
-    /**
-     * @var AttributeDefinition
-     */
-    private $identifyingAttribute;
-
-    public function __construct(
-        LoggerInterface $logger,
-        ConsentRepository $consentRepository,
-        AttributeDefinition $identifyingAttribute
-    ) {
-        $this->logger               = $logger;
-        $this->consentRepository    = $consentRepository;
-        $this->identifyingAttribute = $identifyingAttribute;
+    public function __construct(ConsentRepository $consentRepository)
+    {
+        $this->consentRepository = $consentRepository;
     }
 
     /**
@@ -57,34 +42,6 @@ final class ConsentService
      */
     public function findAllFor(AuthenticatedUser $user)
     {
-        if (!$user->getAttributes()->containsAttributeDefinedBy($this->identifyingAttribute)) {
-            $message = sprintf(
-                'Cannot get consent list for user: user does not have identifying attribute "%s"',
-                $this->identifyingAttribute->getName()
-            );
-
-            $this->logger->error($message);
-
-            return null;
-        }
-
-        $userIdentifier    = $user->getAttributes()->getAttributeByDefinition($this->identifyingAttribute);
-        $identifyingValues = $userIdentifier->getValue();
-        $identifyingValue  = array_shift($identifyingValues);
-
-        if (!is_string($identifyingValue)) {
-            $message = sprintf(
-                'In order to get the consent list for a user, the identifying attribute must have a string value. "%s"'
-                . 'given for identifying attribute "%s"',
-                gettype($identifyingValue),
-                $this->identifyingAttribute->getName()
-            );
-
-            $this->logger->error($message);
-
-            return null;
-        }
-
-        return $this->consentRepository->findAllFor($identifyingValue);
+        return $this->consentRepository->findAllFor($user->getNameId());
     }
 }
