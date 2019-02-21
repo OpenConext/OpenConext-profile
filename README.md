@@ -21,6 +21,7 @@ information via EngineBlock's internal API.
 - PHP 5.6
 - EngineBlock 5.6 >= 5.6.7 
 - EngineBlock 5.7 >= 5.7.1
+- EngineBlock must be configured to release an unspecified NameID to Profile
 
 ## Development
 To setup your development environment, run `vagrant up` in the project directory.
