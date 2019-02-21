@@ -43,12 +43,11 @@ EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
 
 ### Configure Profile as SP in service registry
 
- 1. Visit https://serviceregistry.vm.openconext.org/
- 2. Enter username 'admin' on the mujina IDP login form (empty password)
- 3. Click 'Create connection'
- 4. Enter connection ID: `https://profile-dev.vm.openconext.org/authentication/metadata`
- 5. Enter the following value in the 'Create entity from URL' field: `https://profile-dev.vm.openconext.org/authentication/metadata`
- 6. Set the type to 'SAML 2.0 SP'
+ 1. Visit https://manage.vm.openconext.org/
+ 2. Enter username 'admin' on the mujina IDP login form (password also 'admin')
+ 3. Click 'Import from XML'
+ 4. Enter Entity ID: `https://profile-dev.vm.openconext.org/authentication/metadata`
+ 5. Use the following URL: `https://profile-dev.vm.openconext.org/authentication/metadata`
  7. Click 'Create'
  8. Then set the state to 'Production'
  9. Repeat steps 4 to 8 with Connection ID and entity url: `https://profile-dev.vm.openconext.org/app_dev.php/authentication/metadata`
