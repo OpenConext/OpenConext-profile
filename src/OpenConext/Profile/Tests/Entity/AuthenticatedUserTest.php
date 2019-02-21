@@ -114,10 +114,6 @@ class AuthenticatedUserTest extends TestCase
                 ['Chuck Tester']
             ),
             new Attribute(
-                new AttributeDefinition('Organization', 'urn:mace:surfconextid', 'urn:oid:1.3.6.1.4.1.1076.20.40.40.1'),
-                ['My Organization']
-            ),
-            new Attribute(
                 new AttributeDefinition('LDAP Directory string', '', 'urn:oid:1.3.6.1.4.1.1466.115.121.1.15'),
                 ['testers/chuck1']
             )
