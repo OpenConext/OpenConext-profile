@@ -31,8 +31,7 @@
         "nelmio/security-bundle": "^1.8",
         "symfony/swiftmailer-bundle": "^2.4",
         "openconext/monitor-bundle": "^1.0",
-        "paragonie/random_compat": "2.0.11 as 1.4.2",
-        "simplesamlphp/saml2": "3.2.*"
+        "paragonie/random_compat": "2.0.11 as 1.4.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

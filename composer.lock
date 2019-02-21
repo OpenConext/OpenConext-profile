@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0c88fd341b31d4d43245b3b3feced8d",
+    "content-hash": "118067939b6229c9fe9f9271fe756c26",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1734,16 +1734,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.2.6",
+            "version": "v3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "a56e46ef8e0c5245a4ca7facc3d308b493215751"
+                "reference": "43753d180f12f7159188995916dc2bbf6ae191b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/a56e46ef8e0c5245a4ca7facc3d308b493215751",
-                "reference": "a56e46ef8e0c5245a4ca7facc3d308b493215751",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/43753d180f12f7159188995916dc2bbf6ae191b6",
+                "reference": "43753d180f12f7159188995916dc2bbf6ae191b6",
                 "shasum": ""
             },
             "require": {
@@ -1756,11 +1756,11 @@
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
-                "phpmd/phpmd": "~1.5",
+                "phpmd/phpmd": "~2.6",
                 "phpunit/phpunit": "~4",
-                "sebastian/phpcpd": "~1.4",
-                "sensiolabs/security-checker": "~1.1",
-                "squizlabs/php_codesniffer": "~1.4"
+                "sebastian/phpcpd": "~2.0",
+                "sensiolabs/security-checker": "~4.1",
+                "squizlabs/php_codesniffer": "~3.2"
             },
             "type": "library",
             "extra": {
@@ -1787,7 +1787,7 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2018-11-20T11:11:28+00:00"
+            "time": "2019-02-12T09:21:48+00:00"
         },
         {
             "name": "surfnet/stepup-saml-bundle",
@@ -2586,16 +2586,16 @@
         },
         {
             "name": "liip/rmt",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/RMT.git",
-                "reference": "c9d064c01c8df013b88e41be887dcb77036df5f8"
+                "reference": "9195156634985f22eafaeccdb8aed274ce14c3df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/RMT/zipball/c9d064c01c8df013b88e41be887dcb77036df5f8",
-                "reference": "c9d064c01c8df013b88e41be887dcb77036df5f8",
+                "url": "https://api.github.com/repos/liip/RMT/zipball/9195156634985f22eafaeccdb8aed274ce14c3df",
+                "reference": "9195156634985f22eafaeccdb8aed274ce14c3df",
                 "shasum": ""
             },
             "require": {
@@ -2649,7 +2649,7 @@
                 "vcs tag",
                 "version"
             ],
-            "time": "2019-01-02T21:16:18+00:00"
+            "time": "2019-02-20T20:58:37+00:00"
         },
         {
             "name": "malukenho/docheader",
