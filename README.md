@@ -88,10 +88,8 @@ Make sure to fill all parameters, also when the `user_lifecycle_enabled` toggle 
 
 See the User Lifecycle project on [GitHub](https://github.com/OpenConext/OpenConext-user-lifecycle) for more information.
 
-## Releases
-`RMT` is used for tagging releases. Run `./RMT release` to tag a release.  Make
-sure you are on the `master` branch and don't have any changes before tagging
-a release.
+## Release strategy
+Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management for more information on the release strategy used in Openconext projects.
 
 ## Deployment
 Run `./makeRelease.sh` with the version number of the relevant release to create a deployable tar-ball.
