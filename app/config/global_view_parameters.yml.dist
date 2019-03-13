@@ -3,11 +3,11 @@
 # Strings containing '%' should be escaped by prepending '%'
 parameters:
     help_url:
-        en: "https://wiki.surfnet.nl/display/conextsupport/Profile+page"
-        nl: "https://wiki.surfnet.nl/display/conextsupport/De+Profiel-pagina"
+        en: "https://support.surfconext.nl/help-profile-en"
+        nl: "https://support.surfconext.nl/help-profile-nl"
     terms_of_service_url:
-        en: "https://wiki.surfnet.nl/display/conextsupport/Terms+of+Service+%%28EN%%29"
-        nl: "https://wiki.surfnet.nl/display/conextsupport/Terms+of+Service+%%28NL%%29"
+        en: "https://support.surfconext.nl/terms-en"
+        nl: "https://support.surfconext.nl/terms-nl"
     platform_url:
         en: "https://www.surfconext.nl/en"
         nl: "https://www.surfconext.nl"
@@ -15,5 +15,5 @@ parameters:
         en: "/images/profile_home_en.png"
         nl: "/images/profile_home_nl.png"
     attribute_information_url:
-        en: 'https://wiki.surfnet.nl/display/surfconextdev/Attributes+in+SURFconext'
-        nl: 'https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext'
+        en: 'https://support.surfconext.nl/attributes-en'
+        nl: 'https://support.surfconext.nl/attributes-nl'
