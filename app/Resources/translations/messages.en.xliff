@@ -179,6 +179,11 @@ This profile page gives you insight in which personal data, provided by your ins
         <target>EN</target>
         <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="0135c23e335a69b86430fa515b01d20cb65a21c5" resname="profile.locale.pt">
+        <source>profile.locale.pt</source>
+        <target>PT</target>
+        <jms:reference-file line="180">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="6f6d681a481879428f3cb1fedecc96d9774eecbb" resname="profile.locale.locale_change_fail">
         <source>profile.locale.locale_change_fail</source>
         <target>Could not change language</target>
