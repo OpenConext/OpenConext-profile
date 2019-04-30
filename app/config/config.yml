@@ -5,7 +5,7 @@ imports:
     - { resource: global_view_parameters.yml }
 
 parameters:
-    locales: [en, nl]
+    locales: [en, nl, pt]
 
 framework:
     translator:      { fallback: [en] }
