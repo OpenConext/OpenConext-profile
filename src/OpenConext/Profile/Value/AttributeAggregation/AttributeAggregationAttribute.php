@@ -30,7 +30,7 @@ final class AttributeAggregationAttribute
     /**
      * @var string
      */
-    private $surfconextId;
+    private $userId;
 
     /**
      * @var string
@@ -59,7 +59,7 @@ final class AttributeAggregationAttribute
 
     /**
      * @param int $id
-     * @param $surfconextId
+     * @param string $userId
      * @param string $accountType
      * @param string $linkedId
      * @param string $logoPath
@@ -68,7 +68,7 @@ final class AttributeAggregationAttribute
      */
     public function __construct(
         $id,
-        $surfconextId,
+        $userId,
         $accountType,
         $linkedId,
         $logoPath,
@@ -76,7 +76,7 @@ final class AttributeAggregationAttribute
         $isConnected
     ) {
         $this->id = $id;
-        $this->surfconextId = $surfconextId;
+        $this->userId = $userId;
         $this->accountType = $accountType;
         $this->linkedId = $linkedId;
         $this->logoPath = $logoPath;
@@ -88,12 +88,12 @@ final class AttributeAggregationAttribute
         AttributeAggregationAttributeConfiguration $enabledAttribute,
         $isConnected,
         $id,
-        $surfconextId,
+        $userId,
         $linkedId = null
     ) {
         return new self(
             $id,
-            $surfconextId,
+            $userId,
             $enabledAttribute->getAccountType(),
             $linkedId,
             $enabledAttribute->getLogoPath(),
@@ -107,8 +107,8 @@ final class AttributeAggregationAttribute
         Assertion::keyExists($attributeData, 'id', 'No id found on attribute');
         Assertion::integer($attributeData['id'], 'Id should be integer');
 
-        Assertion::keyExists($attributeData, 'urn', 'No SURFconext Id found on attribute');
-        Assertion::string($attributeData['urn'], 'SURFconext Id should be a string');
+        Assertion::keyExists($attributeData, 'urn', 'No userId name id found on attribute');
+        Assertion::string($attributeData['urn'], 'userId name id Id should be a string');
 
         Assertion::keyExists($attributeData, 'accountType', 'No account type found on attribute');
         Assertion::string($attributeData['accountType'], 'Account type should be a string');
@@ -176,8 +176,8 @@ final class AttributeAggregationAttribute
         return $this->id;
     }
 
-    public function getSurfconextId()
+    public function getUserNameId()
     {
-        return $this->surfconextId;
+        return $this->userId;
     }
 }

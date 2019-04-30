@@ -20,16 +20,15 @@ namespace OpenConext\Profile\Repository;
 
 use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
-use OpenConext\Profile\Value\SurfConextId;
 
 interface AttributeAggregationRepository
 {
     /**
-     * @param SurfConextId $userId
+     * @param string $userId
      * @return AttributeAggregationAttributesList
      * @throws InvalidArgumentException When $userId is not a non-empty string
      */
-    public function findAllFor(SurfConextId $userId);
+    public function findAllFor($userId);
 
     /**
      * Removes an account by providing the account id. The method returns a boolean value reflecting the
