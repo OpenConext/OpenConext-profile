@@ -1,5 +1,14 @@
 # Next release
+
+# 1.2.2
+
+Further removes the SURFconextId usages in the project. The AA Api client still used the attribute, causing issues on the My connections page. Thanks @domgon for raising the issue!
+
+**Bugfix**
+* Stop using SurfConextId in the AA client #118 
+
 **Maintenance**
+ * Install Symfony and Twig security updates #119
  * Removed RMT from the project
  * Updated documentation links
  * Upgraded Security Checker to version 5

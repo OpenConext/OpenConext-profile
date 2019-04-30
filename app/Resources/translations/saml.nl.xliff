@@ -746,11 +746,6 @@
         <target>SURFconext-status</target>
         <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="b12e6860c2e33646308e0e7fb2a677fe1e277494" resname="profile.saml.attributes.surfconextId">
-        <source>profile.saml.attributes.surfconextId</source>
-        <target>Identifier</target>
-        <jms:reference-file line="23">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="5de0577a1042122c38a9c0e95051daeb744eef5f" resname="profile.saml.attributes.surfconextLicenseInfo">
         <source>profile.saml.attributes.surfconextLicenseInfo</source>
         <target>Licentieinformatie</target>
