@@ -24,18 +24,11 @@ use OpenConext\Profile\Repository\AttributeAggregationRepository;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttribute;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
-use OpenConext\Profile\Value\SurfConextId;
 use Psr\Log\LoggerInterface;
-use Surfnet\SamlBundle\Exception\RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
 final class AttributeAggregationService
 {
-    /**
-     * @var AttributeDefinition
-     */
-    private $surfConextUserIdAttributeDefinition;
-
     /**
      * @var AttributeAggregationRepository
      */
@@ -53,12 +46,10 @@ final class AttributeAggregationService
 
     public function __construct(
         AttributeAggregationRepository $repository,
-        AttributeDefinition $surfConextUserIdAttributeDefinition,
         AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
         LoggerInterface $logger
     ) {
         $this->repository = $repository;
-        $this->surfConextUserIdAttributeDefinition = $surfConextUserIdAttributeDefinition;
         $this->attributeAggregationEnabledAttributes = $attributeAggregationEnabledAttributes;
         $this->logger = $logger;
     }
@@ -72,35 +63,27 @@ final class AttributeAggregationService
         $enabledAttributes = $this->attributeAggregationEnabledAttributes;
 
         try {
-            $definition = $this->surfConextUserIdAttributeDefinition;
-            $userAttributes = $user->getAttributes();
-            // Does the logged in user have the SurfConextUserId attribute?
-            if ($userAttributes->containsAttributeDefinedBy($definition)) {
-                $collection = [];
+            $collection = [];
 
-                $samlAttribute = $userAttributes->getAttributeByDefinition($definition);
-                $surfConextIdValue = $samlAttribute->getValue()[0];
-                $surfConextId = new SurfConextId($surfConextIdValue);
-                $attributeAggregationAttributes = $this->repository->findAllFor($surfConextId);
+            $attributeAggregationAttributes = $this->repository->findAllFor($user->getNameId());
 
-                foreach ($enabledAttributes->getAttributes() as $enabledAttribute) {
-                    $accountType = $enabledAttribute->getAccountType();
-                    if ($attributeAggregationAttributes->hasAttribute($accountType)) {
-                        $aaAttribute = $attributeAggregationAttributes->getAttribute($accountType);
-                        $collection[] = AttributeAggregationAttribute::fromConfig(
-                            $enabledAttribute,
-                            true,
-                            $aaAttribute->getId(),
-                            $aaAttribute->getSurfconextId(),
-                            $aaAttribute->getLinkedId()
-                        );
-                    } else {
-                        $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false, -1, '');
-                    }
+            foreach ($enabledAttributes->getAttributes() as $enabledAttribute) {
+                $accountType = $enabledAttribute->getAccountType();
+                if ($attributeAggregationAttributes->hasAttribute($accountType)) {
+                    $aaAttribute = $attributeAggregationAttributes->getAttribute($accountType);
+                    $collection[] = AttributeAggregationAttribute::fromConfig(
+                        $enabledAttribute,
+                        true,
+                        $aaAttribute->getId(),
+                        $aaAttribute->getUserNameId(),
+                        $aaAttribute->getLinkedId()
+                    );
+                } else {
+                    $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false, -1, '');
                 }
-
-                return new AttributeAggregationAttributesList($collection);
             }
+
+            return new AttributeAggregationAttributesList($collection);
         } catch (Exception $e) {
             $this->logger->error(
                 sprintf(
@@ -142,18 +125,11 @@ final class AttributeAggregationService
      */
     private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
     {
-        try {
-            $surfConextId = $user->getAttributes()->getAttributeByDefinition(
-                new AttributeDefinition('surfconextId', null, 'urn:oid:1.3.6.1.4.1.1076.20.40.40.1')
-            );
-        } catch (RuntimeException $e) {
-            $this->logger->error('Attempted to find authenticated users surfconextId but was unable to find it.');
-            return false;
-        }
+        $nameId = $user->getNameId();
 
-        if ($surfConextId->getValue()[0] !== $orcidAttribute->getSurfconextId()) {
+        if ($nameId !== $orcidAttribute->getUserNameId()) {
             $this->logger->error(
-                'The surfconextId associated with ORCID iD account does not match the surfconextId of the 
+                'The users NameId associated with ORCID iD account does not match the NameId of the 
                 authenticated user.'
             );
             return false;

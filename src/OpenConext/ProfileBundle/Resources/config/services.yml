@@ -175,7 +175,6 @@ services:
         class: OpenConext\ProfileBundle\Service\AttributeAggregationService
         arguments:
             - @openconext_aa_api.repository.attribute_aggregation
-            - @saml.attribute.surfconext.id
             - @profile.available_aa_attributes
             - @logger
 

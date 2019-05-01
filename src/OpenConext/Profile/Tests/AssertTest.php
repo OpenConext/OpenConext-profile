@@ -30,11 +30,11 @@ class AssertTest extends TestCase
      * @dataProvider missingKeysProvider
      *
      * @expectedException \OpenConext\Profile\Exception\AssertionFailedException
-     * @expectedExceptionMessage Required keys
+     * @expectedExceptionMessage Required key
      */
     public function missing_required_keys_trigger_an_exception($givenArray, $expectedKeys)
     {
-        Assert::keysAre($givenArray, $expectedKeys);
+        Assert::keysArePresent($givenArray, $expectedKeys);
     }
 
     public function missingKeysProvider()
@@ -43,47 +43,6 @@ class AssertTest extends TestCase
             'empty given array' => [[], ['MissingOne', 'MissingTwo']],
             'single missing key' => [['A' => 'a'], ['A', 'Missing']],
             'multiple missing keys' => [['A' => 'a'], ['A', 'MissingOne', 'MissingTwo']],
-        ];
-    }
-
-    /**
-     * @test
-     * @group Assert
-     * @dataProvider additionalKeysProvider
-     *
-     * @expectedException \OpenConext\Profile\Exception\AssertionFailedException
-     * @expectedExceptionMessage Additional keys
-     */
-    public function additional_keys_trigger_an_exception($givenArray, $expectedKeys)
-    {
-        Assert::keysAre($givenArray, $expectedKeys);
-    }
-
-    public function additionalKeysProvider()
-    {
-        return [
-            'empty expected keys' => [['AdditionalOne' => 'a', 'AdditionalTwo'=> 'b'], []],
-            'single additional key' => [['A' => 'a', 'Additional' => 'b'], ['A']],
-            'multiple additional keys' => [['A' => 'a', 'AdditionalOne' => 'b', 'AdditionalTwo' => 'c'], ['A']],
-        ];
-    }
-
-    /**
-     * @test
-     * @group Assert
-     * @dataProvider notMatchingKeysProvider
-     *
-     * @expectedException \OpenConext\Profile\Exception\AssertionFailedException
-     * @expectedExceptionMessage Keys do not match requirements
-     */
-    public function not_matching_keys_trigger_an_exception($givenArray, $expectedKeys)
-    {
-        Assert::keysAre($givenArray, $expectedKeys);
-    }
-
-    public function notMatchingKeysProvider()
-    {
-        return [
             'one key differs' => [['A' => 'a', 'B' => 'b'], ['A', 'C']],
             'two keys differ' => [['A' => 'a', 'B' => 'b'], ['C', 'D']]
         ];
@@ -94,12 +53,12 @@ class AssertTest extends TestCase
      * @group Assert
      * @dataProvider matchingKeysProvider
      */
-    public function matching_keys_do_not_trigger_an_exception($givenArray, $expectedKeys)
+    public function present_keys_do_not_trigger_an_exception($givenArray, $expectedKeys)
     {
         $exceptionIsThrown = false;
 
         try {
-            Assert::keysAre($givenArray, $expectedKeys);
+            Assert::keysArePresent($givenArray, $expectedKeys);
         } catch (AssertionFailedException $e) {
             $exceptionIsThrown = true;
         }
@@ -113,6 +72,9 @@ class AssertTest extends TestCase
             'empty array and no keys' => [[], []],
             'single key present in array' => [['A' => 'a'], ['A']],
             'multiple keys present in array' => [['A' => 'a', 'B' => 'b'], ['A', 'B']],
+            'empty expected keys' => [['AdditionalOne' => 'a', 'AdditionalTwo'=> 'b'], []],
+            'single additional key' => [['A' => 'a', 'Additional' => 'b'], ['A']],
+            'multiple additional keys' => [['A' => 'a', 'AdditionalOne' => 'b', 'AdditionalTwo' => 'c'], ['A']],
         ];
     }
 }
