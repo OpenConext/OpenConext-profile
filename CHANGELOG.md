@@ -6,6 +6,7 @@ Further removes the SURFconextId usages in the project. The AA Api client still 
 
 **Bugfix**
 * Stop using SurfConextId in the AA client #118 
+* Add Portuguese language support #119 (Thanks @domgon!) #120
 
 **Maintenance**
  * Install Symfony and Twig security updates #119
