@@ -22,7 +22,6 @@ use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepository as AttributeAggregationRepositoryInterface;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
-use OpenConext\Profile\Value\SurfConextId;
 
 final class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
 {
@@ -36,11 +35,12 @@ final class AttributeAggregationRepository implements AttributeAggregationReposi
         $this->apiClient = $apiClient;
     }
 
-    public function findAllFor(SurfConextId $surfConextId)
+    public function findAllFor($userId)
     {
-        Assert::string($surfConextId->getSurfConextId(), 'SurfConext ID "%s" expected to be string, type %s given.');
+        Assert::string($userId, '$userId "%s" (NameID) expected to be string, type %s given.');
+        Assert::notEmpty($userId, '$userId "%s" (NameID) can not be empty');
 
-        $attributes = $this->apiClient->read('accounts/%s', [$surfConextId->getSurfConextId()]);
+        $attributes = $this->apiClient->read('accounts/%s', [$userId]);
 
         return AttributeAggregationAttributesList::fromApiResponse($attributes);
     }
