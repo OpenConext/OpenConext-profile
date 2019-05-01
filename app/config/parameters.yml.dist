@@ -1,5 +1,7 @@
 parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
+    # Available translation languages: en, nl, pt
+    locales: [en, nl]
     default_locale: en
     open_conext_locale_cookie_key: lang
     open_conext_locale_cookie_domain: .vm.openconext.org
