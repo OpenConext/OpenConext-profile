@@ -25,7 +25,16 @@ class Assert extends BaseAssertion
 {
     protected static $exceptionClass = 'OpenConext\Profile\Exception\AssertionFailedException';
 
-    public static function keysAre(array $array, array $expectedKeys, $propertyPath = null)
+    /**
+     * Verifies if the expected keys are in the array
+     *
+     * An exact match is not required.
+     *
+     * @param array $array
+     * @param array $expectedKeys
+     * @param null $propertyPath
+     */
+    public static function keysArePresent(array $array, array $expectedKeys, $propertyPath = null)
     {
         $givenKeys = array_keys($array);
 
@@ -36,39 +45,12 @@ class Assert extends BaseAssertion
             return;
         }
 
-        $givenCount = count($givenKeys);
-        $expectedCount = count($expectedKeys);
-
-        if ($givenCount < $expectedCount) {
-            $message = sprintf(
-                'Required keys "%s" are missing',
-                implode('", "', array_diff($expectedKeys, $givenKeys))
-            );
-        } elseif ($givenCount > $expectedCount) {
-            $message = sprintf(
-                'Additional keys "%s" found',
-                implode('", "', array_diff($givenKeys, $expectedKeys))
-            );
-        } else {
-            $additional = array_diff($givenKeys, $expectedKeys);
-            $required = array_diff($expectedKeys, $givenKeys);
-
-            $message = 'Keys do not match requirements';
-            if (!empty($additional)) {
-                $message .= sprintf(
-                    ', additional keys "%s" found',
-                    implode('", "', array_diff($givenKeys, $expectedKeys))
-                );
-            }
-
-            if (!empty($required)) {
-                $message .= sprintf(
-                    ', required keys "%s" are missing',
-                    implode('", "', array_diff($expectedKeys, $givenKeys))
-                );
+        foreach ($expectedKeys as $expectedKey) {
+            if (!in_array($expectedKey, $givenKeys)) {
+                $message = sprintf('Required key "%s" is missing', $expectedKey);
+                throw new AssertionFailedException($message, 0, $propertyPath, $array);
             }
         }
-
-        throw new AssertionFailedException($message, 0, $propertyPath, $array);
+        return;
     }
 }

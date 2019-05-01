@@ -71,11 +71,11 @@ final class GlobalViewParameters
         array $profileExplanationImageUrls,
         array $attributeInformationUrls
     ) {
-        Assert::keysAre($helpUrls, $locales);
-        Assert::keysAre($platformUrls, $locales);
-        Assert::keysAre($termsOfServiceUrls, $locales);
-        Assert::keysAre($profileExplanationImageUrls, $locales);
-        Assert::keysAre($attributeInformationUrls, $locales);
+        Assert::keysArePresent($helpUrls, $locales);
+        Assert::keysArePresent($platformUrls, $locales);
+        Assert::keysArePresent($termsOfServiceUrls, $locales);
+        Assert::keysArePresent($profileExplanationImageUrls, $locales);
+        Assert::keysArePresent($attributeInformationUrls, $locales);
 
         $this->translator                  = $translator;
         $this->helpUrls                    = $helpUrls;
