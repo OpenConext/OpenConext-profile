@@ -6,18 +6,18 @@ enabled=0
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
 
-[remi-php56]
-name=Les RPM de remi de PHP 5.6 pour Enterprise Linux 7 - $basearch
-#baseurl=http://rpms.famillecollet.com/enterprise/7/php56/$basearch/
-mirrorlist=http://rpms.famillecollet.com/enterprise/7/php56/mirror
+[remi-php72]
+name=Les RPM de remi de PHP 7.2 pour Enterprise Linux 7 - $basearch
+#baseurl=http://rpms.famillecollet.com/enterprise/7/php72/$basearch/
+mirrorlist=http://rpms.famillecollet.com/enterprise/7/php72/mirror
 # WARNING: If you enable this repository, you must also enable "remi"
 enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
 
-[remi-php56-debuginfo]
-name=Les RPM de remi de PHP 5.6 pour Enterprise Linux 7 - $basearch - debuginfo
-baseurl=http://rpms.famillecollet.com/enterprise/7/debug-php56/$basearch/
+[remi-php72-debuginfo]
+name=Les RPM de remi de PHP 7.2 pour Enterprise Linux 7 - $basearch - debuginfo
+baseurl=http://rpms.famillecollet.com/enterprise/7/debug-php72/$basearch/
 enabled=0
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
