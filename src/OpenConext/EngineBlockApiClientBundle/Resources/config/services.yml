@@ -9,30 +9,30 @@ services:
         public: false
         class: OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient
         arguments:
-            - @openconext_eb_api.guzzle
+            - '@openconext_eb_api.guzzle'
 
     openconext_eb_api.repository.consent:
         public: false
         class: OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository
         arguments:
-            - @openconext_eb_api.service.api
+            - '@openconext_eb_api.service.api'
 
     openconext_eb_api.repository.support_contact_information:
         public: false
         class: OpenConext\EngineBlockApiClientBundle\Repository\ContactPersonRepository
         arguments:
-            - @openconext_eb_api.service.api
+            - '@openconext_eb_api.service.api'
 
     openconext_eb_api.service.attribute_release_policy:
         public: false
         class: OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService
         arguments:
-            - @openconext_eb_api.service.api
-            - @surfnet_saml.saml.attribute_dictionary
+            - '@openconext_eb_api.service.api'
+            - '@surfnet_saml.saml.attribute_dictionary'
 
     openconext_eb_api.monitor.api_health_check:
         class: OpenConext\EngineBlockApiClientBundle\HealthCheck\ApiHealthCheck
         arguments:
-            - @openconext_eb_api.repository.consent
+            - '@openconext_eb_api.repository.consent'
         tags:
             - { name: surfnet.monitor.health_check }

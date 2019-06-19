@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeSupportMailService;
 use OpenConext\ProfileBundle\Service\UserService;
@@ -80,7 +81,7 @@ class AttributeSupportController
         $this->guard->userIsLoggedIn();
 
         $attributeSupportMailForm = $this->formFactory->create(
-            'profile_attribute_support_mail',
+            AttributeSupportMailType::class,
             null,
             ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')]
         );

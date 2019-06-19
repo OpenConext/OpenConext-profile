@@ -101,6 +101,7 @@ class SingleCookieStorage implements EventSubscriberInterface
     public function loadValueFromCookie(GetResponseEvent $event)
     {
         $this->cookieValue = $event->getRequest()->cookies->get($this->cookieKey, null);
+
     }
 
     /**

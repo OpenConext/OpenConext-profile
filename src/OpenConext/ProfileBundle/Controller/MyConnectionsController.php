@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use OpenConext\ProfileBundle\Service\AuthenticatedUserProvider;
@@ -124,7 +125,7 @@ class MyConnectionsController
         }
 
         // For now only the ORCID connection form is created and added to the form.
-        $confirmationForm = $this->formFactory->create('profile_confirm_connection_delete');
+        $confirmationForm = $this->formFactory->create(ConfirmConnectionDeleteType::class);
 
         $confirmationForm->handleRequest($request);
         if ($confirmationForm->isSubmitted() && $confirmationForm->isValid()) {

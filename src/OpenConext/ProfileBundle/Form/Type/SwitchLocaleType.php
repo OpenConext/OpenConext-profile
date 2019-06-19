@@ -23,6 +23,8 @@ use OpenConext\Profile\Value\LocaleSet;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 use OpenConext\ProfileBundle\Service\LocaleService;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -61,7 +63,7 @@ class SwitchLocaleType extends AbstractType
             )
             ->add(
                 'newLocale',
-                'choice',
+                ChoiceType::class,
                 [
                     'choices' => $localeChoices,
                     'data'    => $this->localeService->getLocale()->getLocale(),
@@ -70,7 +72,7 @@ class SwitchLocaleType extends AbstractType
                     ]
                 ]
             )
-            ->add('changeLocale', 'submit', ['label' => 'profile.locale.choose_locale']);
+            ->add('changeLocale', SubmitType::class, ['label' => 'profile.locale.choose_locale']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -78,7 +80,7 @@ class SwitchLocaleType extends AbstractType
         $resolver->setDefaults(
             [
                 'return_url' => '',
-                'data_class' => '\OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand'
+                'data_class' => ChangeLocaleCommand::class
             ]
         );
 
@@ -86,7 +88,7 @@ class SwitchLocaleType extends AbstractType
         $resolver->setAllowedTypes('return_url', 'string');
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'profile_switch_locale';
     }
@@ -101,7 +103,7 @@ class SwitchLocaleType extends AbstractType
 
         /** @var Locale $locale */
         foreach ($availableLocales as $locale) {
-            $localeChoices[$locale->getLocale()] = 'profile.locale.' . $locale->getLocale();
+            $localeChoices['profile.locale.' . $locale->getLocale()] = $locale->getLocale();
         }
 
         return $localeChoices;

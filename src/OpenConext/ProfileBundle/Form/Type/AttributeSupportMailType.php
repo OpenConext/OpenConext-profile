@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -29,7 +30,7 @@ class AttributeSupportMailType extends AbstractType
         $builder
             ->add(
                 'sendMail',
-                'submit',
+                SubmitType::class,
                 [
                     'label' => 'profile.attribute_support.send_mail',
                     'attr'  => [
@@ -40,7 +41,7 @@ class AttributeSupportMailType extends AbstractType
             );
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'profile_attribute_support_mail';
     }

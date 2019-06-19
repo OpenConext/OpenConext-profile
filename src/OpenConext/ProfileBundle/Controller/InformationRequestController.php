@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
+use OpenConext\ProfileBundle\Form\Type\InformationRequestMailType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\InformationRequestMailService;
 use OpenConext\ProfileBundle\Service\UserService;
@@ -88,7 +89,7 @@ class InformationRequestController
         $this->guard->userIsLoggedIn();
 
         $informationRequestMailForm = $this->formFactory->create(
-            'profile_information_request_mail',
+            InformationRequestMailType::class,
             null,
             ['action' => $this->urlGenerator->generate('profile.information_request_send_mail')]
         );

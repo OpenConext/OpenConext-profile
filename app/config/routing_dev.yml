@@ -5,10 +5,10 @@ _wdt:
 _profiler:
     resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
     prefix:   /_profiler
-
-_configurator:
-    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
-    prefix:   /_configurator
+#
+#_configurator:
+#    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
+#    prefix:   /_configurator
 
 _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
@@ -18,6 +18,6 @@ _main:
     resource: routing.yml
 
 JMSTranslationBundle_ui:
-    resource: @JMSTranslationBundle/Controller/
+    resource: '@JMSTranslationBundle/Controller/'
     type:     annotation
     prefix:   /_trans
