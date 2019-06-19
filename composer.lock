@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "64466e62daf84fe90d527403b8b572ba",
+    "content-hash": "85560175e8391c17bff3a588d56b8f38",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1792,16 +1792,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "3.0.1",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "ea514e7f8f400883dd7be38cca2b97c5382c833c"
+                "reference": "1ce8e74a7e35963e60378da8c8647656e382cef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/ea514e7f8f400883dd7be38cca2b97c5382c833c",
-                "reference": "ea514e7f8f400883dd7be38cca2b97c5382c833c",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/1ce8e74a7e35963e60378da8c8647656e382cef9",
+                "reference": "1ce8e74a7e35963e60378da8c8647656e382cef9",
                 "shasum": ""
             },
             "require": {
@@ -1814,7 +1814,6 @@
             },
             "require-dev": {
                 "ibuildings/qa-tools": "~1.1",
-                "liip/rmt": "~1.1",
                 "mockery/mockery": "~0.9",
                 "psr/log": "~1.0"
             },
@@ -1836,7 +1835,7 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2018-03-08T13:56:17+00:00"
+            "time": "2018-09-04T10:06:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4255,7 +4254,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6,<7"
+        "php": "^5.6|^7.0"
     },
     "platform-dev": []
 }
