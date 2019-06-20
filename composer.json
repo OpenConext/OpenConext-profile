@@ -58,6 +58,7 @@
         ]
     },
     "config": {
+        "optimize-autoloader": true,
         "sort-packages": true
     },
     "extra": {
