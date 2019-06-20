@@ -22,7 +22,7 @@ use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Locale;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
-interface User
+interface ApiUserInterface
 {
     /**
      * @param Locale $locale

@@ -3,104 +3,104 @@ profile.introduction_overview:
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.introduction:overviewAction
+        _controller: OpenConextProfileBundle:Introduction:overview
 
 profile.my_profile_overview:
     path:       /my-profile
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.my_profile:overviewAction
+        _controller: OpenConextProfileBundle:MyProfile:overview
 
 profile.my_surf_conext_overview:
     path:       /my-surfconext
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.my_surf_conext:overviewAction
+        _controller: OpenConextProfileBundle:MySurfConext:overview
 
 profile.my_surf_conext_user_data_download:
     path:       /my-surfconext/download
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.my_surf_conext:userDataDownloadAction
+        _controller: OpenConextProfileBundle:MySurfConext:userDataDownload
 
 profile.my_services_overview:
     path:       /my-services
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.my_services:overviewAction
+        _controller: OpenConextProfileBundle:MyServices:overview
 
 profile.my_connections_overview:
     path:       /my-connections
     methods:    [GET,POST]
     schemes:    https
     defaults:
-        _controller: profile.controller.my_connections:overviewAction
+        _controller: OpenConextProfileBundle:MyConnections:overview
 
 profile.saml_consume_assertion:
     path:       /authentication/consume-assertion
     methods:    [POST]
     schemes:    https
     defaults:
-        _controller: profile.controller.saml:consumeAssertionAction
+        _controller: OpenConextProfileBundle:Saml:consumeAssertion
 
 profile.saml_metadata:
     path:       /authentication/metadata
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.saml:metadataAction
+        _controller: OpenConextProfileBundle:Saml:metadata
 
 profile.attribute_support_overview:
     path:       /attribute-support
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.attribute_support:overviewAction
+        _controller: OpenConextProfileBundle:AttributeSupport:overview
 
 profile.attribute_support_confirm_mail_sent:
     path:       /attribute-support/confirmation
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.attribute_support:confirmMailSentAction
+        _controller: OpenConextProfileBundle:AttributeSupport:confirmMailSent
 
 profile.attribute_support_send_mail:
     path:       /attribute-support/send-mail
     methods:    [POST]
     schemes:    https
     defaults:
-        _controller: profile.controller.attribute_support:sendMailAction
+        _controller: OpenConextProfileBundle:AttributeSupport:sendMail
 
 profile.information_request_overview:
     path:       /information-request
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.information_request:overviewAction
+        _controller: OpenConextProfileBundle:InformationRequest:overview
 
 profile.information_request_confirm_mail_sent:
     path:       /information-request/confirmation
     methods:    [GET]
     schemes:    https
     defaults:
-        _controller: profile.controller.information_request:confirmMailSentAction
+        _controller: OpenConextProfileBundle:InformationRequest:confirmMailSent
 
 profile.information_request_send_mail:
     path:       /information-request/send-mail
     methods:    [POST]
     schemes:    https
     defaults:
-        _controller: profile.controller.information_request:sendMailAction
+        _controller: OpenConextProfileBundle:InformationRequest:sendMail
 
 profile.locale_switch_locale:
     path:       /switch-locale
     methods:    [POST]
     schemes:    https
     defaults:
-        _controller: profile.controller.locale:switchLocaleAction
+        _controller: OpenConextProfileBundle:Locale:switchLocale
     requirements:
         'return-url': '.+'

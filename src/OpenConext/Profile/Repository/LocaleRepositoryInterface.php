@@ -16,14 +16,20 @@
  * limitations under the License.
  */
 
-namespace OpenConext\Profile\Api;
+namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Entity\AuthenticatedUser;
+use OpenConext\Profile\Value\Locale;
 
-interface AuthenticatedUserProvider
+interface LocaleRepositoryInterface
 {
     /**
-     * @return AuthenticatedUser
+     * @return Locale|null
      */
-    public function getCurrentUser();
+    public function findLocale();
+
+    /**
+     * @param Locale $locale
+     * @return void
+     */
+    public function save(Locale $locale);
 }

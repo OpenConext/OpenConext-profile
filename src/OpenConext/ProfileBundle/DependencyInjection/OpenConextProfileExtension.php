@@ -18,6 +18,8 @@
 
 namespace OpenConext\ProfileBundle\DependencyInjection;
 
+use OpenConext\Profile\Value\Locale;
+use OpenConext\Profile\Value\LocaleSet;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
@@ -33,7 +35,6 @@ class OpenConextProfileExtension extends Extension
         $config        = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('controllers.yml');
         $loader->load('services.yml');
 
         $this->parseEngineBlockEntityIdConfiguration($config['engine_block_entity_id'], $container);
@@ -59,7 +60,7 @@ class OpenConextProfileExtension extends Extension
 
         // The user lifecycle can be disabled
         if (!$container->getParameter('user_lifecycle_enabled')) {
-            $container->getDefinition('profile.service.user')
+            $container->getDefinition('OpenConext\ProfileBundle\Service\UserService')
                 ->removeMethodCall('setUserLifecycleApiClient');
         }
     }
@@ -67,7 +68,7 @@ class OpenConextProfileExtension extends Extension
     private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container)
     {
         $container
-            ->getDefinition('profile.engine_block_entity_id')
+            ->getDefinition('OpenConext\Profile\Value\EntityId')
             ->replaceArgument(0, $engineBlockEntityId);
     }
 
@@ -94,18 +95,18 @@ class OpenConextProfileExtension extends Extension
     private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container)
     {
         $container
-            ->getDefinition('profile.default_locale')
+            ->getDefinition(Locale::class)
             ->replaceArgument(0, $defaultLocaleConfig);
     }
 
     private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container)
     {
         $availableLocales = array_map(function ($availableLocale) {
-            return new Definition('OpenConext\Profile\Value\Locale', [$availableLocale]);
+            return new Definition(Locale::class, [$availableLocale]);
         }, $availableLocaleConfig);
 
         $container
-            ->getDefinition('profile.available_locales')
+            ->getDefinition(LocaleSet::class)
             ->replaceArgument(0, $availableLocales);
     }
 
@@ -126,7 +127,7 @@ class OpenConextProfileExtension extends Extension
         }
 
         $container
-            ->getDefinition('profile.storage.locale_cookie')
+            ->getDefinition('OpenConext\ProfileBundle\Storage\SingleCookieStorage')
             ->replaceArgument(0, $localeCookieDomain)
             ->replaceArgument(1, $localeCookieKey)
             ->replaceArgument(2, $localeCookieExpirationDateDefinition)
@@ -137,7 +138,7 @@ class OpenConextProfileExtension extends Extension
     private function parseEngineBlockAttributeAggregationConfiguration($aaConfig, ContainerBuilder $container)
     {
         $container
-            ->getDefinition('profile.available_aa_attributes')
+            ->getDefinition('OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes')
             ->replaceArgument(0, $aaConfig);
     }
 }

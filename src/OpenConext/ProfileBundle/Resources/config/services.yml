@@ -1,12 +1,23 @@
 services:
-    profile.engine_block_entity_id:
+    _defaults:
+        autowire: true
         public: false
-        class: OpenConext\Profile\Value\EntityId
+
+    OpenConext\ProfileBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    OpenConext\ProfileBundle\Security\:
+        resource: '../../Security'
+
+    OpenConext\ProfileBundle\Service\:
+        resource: '../../Service'
+
+    OpenConext\Profile\Value\EntityId:
         arguments:
             - ~ # engine block entity id
 
-    profile.storage.locale_cookie:
-        class: OpenConext\ProfileBundle\Storage\SingleCookieStorage
+    OpenConext\ProfileBundle\Storage\SingleCookieStorage:
         arguments:
             - ~ # locale cookie domain
             - ~ # locale cookie key
@@ -21,6 +32,9 @@ services:
         class: OpenConext\Profile\Value\EmailAddress
         arguments:
             - ~ # attribute support email from
+
+    OpenConext\Profile\Value\EmailAddressSupport: '@profile.attribute_support.email_to'
+    OpenConext\Profile\Value\EmailAddressInformationRequest: '@profile.information_request.email_to'
 
     profile.attribute_support.email_to:
         public: false
@@ -40,64 +54,55 @@ services:
         arguments:
             - ~ # information request email to
 
-    profile.available_aa_attributes:
-        public: false
-        class: OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes
+    OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes:
         arguments:
             - [] # available attribute aggregation attributes
 
-    profile.security.guard:
-        public: false
-        class: OpenConext\ProfileBundle\Security\Guard
+    OpenConext\Profile\Repository\UserRepositoryInterface:
+        class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
         arguments:
-            - '@security.authorization_checker'
+            - '@profile.session.namespaced_attribute_bag'
 
-    profile.locale_listener:
-        class: OpenConext\ProfileBundle\EventListener\LocaleListener
-        arguments:
-            - '@profile.service.locale'
+    OpenConext\Profile\Repository\LocaleRepositoryInterface:
+        class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
+
+    OpenConext\Profile\Repository\ContactPersonRepositoryInterface:
+        class: OpenConext\EngineBlockApiClientBundle\Repository\ContactPersonRepository
+
+    OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface:
+        class: OpenConext\AttributeAggregationApiClientBundle\Repository\AttributeAggregationRepository
+
+    OpenConext\Profile\Repository\ConsentRepositoryInterface:
+        class: OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository
+
+    OpenConext\Profile\Api\AuthenticatedUserProviderInterface:
+        class: OpenConext\ProfileBundle\Service\AuthenticatedUserProvider
+
+    OpenConext\ProfileBundle\EventListener\LocaleListener:
         tags:
             - { name: kernel.event_subscriber }
 
-    profile.form.switch_locale:
-        class: OpenConext\ProfileBundle\Form\Type\SwitchLocaleType
-        arguments:
-            - '@router'
-            - '@profile.service.locale'
+    OpenConext\ProfileBundle\Form\Type\SwitchLocaleType:
         tags:
             - { name: form.type, alias: profile_switch_locale }
 
-    profile.form.attribute_support_mail:
-        class: OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType
-        arguments:
-            - '@router'
+    OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType:
         tags:
             - { name: form.type, alias: profile_attribute_support_mail }
 
-    profile.form.information_request_mail:
-        class: OpenConext\ProfileBundle\Form\Type\InformationRequestMailType
-        arguments:
-            - '@router'
+    OpenConext\ProfileBundle\Form\Type\InformationRequestMailType:
         tags:
             - { name: form.type, alias: profile_information_request_mail }
 
-    profile.form.confirm_connection_delete:
-        class: OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType
-        arguments:
-            - '@router'
+    OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType:
         tags:
             - { name: form.type, alias: profile_confirm_connection_delete }
 
-    profile.twig.locale_extension:
-        public: false
-        class: OpenConext\ProfileBundle\Twig\LocaleExtension
-        arguments: [ '@form.factory' ]
+    OpenConext\ProfileBundle\Twig\LocaleExtension:
         tags:
             - { name: twig.extension }
 
-    profile.global_view_parameters:
-        public: false
-        class: OpenConext\ProfileBundle\Service\GlobalViewParameters
+    OpenConext\ProfileBundle\Service\GlobalViewParameters:
         arguments:
             - '@translator'
             - '%locales%'
@@ -107,38 +112,17 @@ services:
             - '%profile_explanation_image_path%'
             - '%attribute_information_url%'
 
-    profile.security.authentication.provider:
-        public: false
-        class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
-        arguments:
-            - '@surfnet_saml.saml.attribute_dictionary'
+    OpenConext\ProfileBundle\Attribute\AttributeFilter:
 
-    profile.security.authentication.listener:
-        public: false
-        class: OpenConext\ProfileBundle\Security\Firewall\SamlListener
-        arguments:
-            - '@session'
-            - '@router'
-            - '@security.token_storage'
-            - '@security.authentication.manager'
-            - '@profile.security.authentication.saml'
-            - '@profile.saml.state_handler'
-            - '@logger'
-            - '@twig'
-
-    profile.security.authentication.saml:
-        public: false
-        class: OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider
+    OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider:
         arguments:
             - '@surfnet_saml.hosted.service_provider'
             - '@surfnet_saml.remote.idp'
             - '@surfnet_saml.http.redirect_binding'
             - '@surfnet_saml.http.post_binding'
-            - '@profile.saml.state_handler'
+            - '@OpenConext\ProfileBundle\Saml\StateHandler'
 
-    profile.saml.state_handler:
-        public: false
-        class: OpenConext\ProfileBundle\Saml\StateHandler
+    OpenConext\ProfileBundle\Saml\StateHandler:
         arguments:
             - '@profile.session'
 
@@ -170,111 +154,25 @@ services:
         calls:
             - [setName, ['profile']]
 
-    profile.service.attribute_aggregation:
-        public: false
-        class: OpenConext\ProfileBundle\Service\AttributeAggregationService
-        arguments:
-            - '@openconext_aa_api.repository.attribute_aggregation'
-            - '@profile.available_aa_attributes'
-            - '@logger'
-
-    profile.service.attribute_support_mail:
-        public: false
-        class: OpenConext\ProfileBundle\Service\AttributeSupportMailService
+    OpenConext\ProfileBundle\Service\AttributeSupportMailService:
         arguments:
             - '@profile.attribute_support.email_from'
             - '@profile.attribute_support.email_to'
-            - '@mailer'
-            - '@templating'
-            - '@profile.service.user'
 
-    profile.service.information_request_mail:
-        public: false
-        class: OpenConext\ProfileBundle\Service\InformationRequestMailService
+    OpenConext\ProfileBundle\Service\InformationRequestMailService:
         arguments:
             - '@profile.information_request.email_from'
             - '@profile.information_request.email_to'
-            - '@mailer'
-            - '@templating'
-            - '@profile.service.user'
-            - '@profile.service.attribute_filter'
 
-    profile.service.locale:
-        public: false
-        class: OpenConext\ProfileBundle\Service\LocaleService
-        arguments:
-            - '@profile.repository.locale'
-            - '@profile.available_locales'
-            - '@profile.default_locale'
-
-    profile.available_locales:
-        public: false
-        class: OpenConext\Profile\Value\LocaleSet
+    OpenConext\Profile\Value\LocaleSet:
         factory: [OpenConext\Profile\Value\LocaleSet, create]
         arguments:
             - [] # available locales
 
-    profile.default_locale:
-        public: false
-        class: OpenConext\Profile\Value\Locale
+    OpenConext\Profile\Value\Locale:
         arguments:
             - ~ # default locale
 
-    profile.locale_storage_driver:
-        public: false
-        class: OpenConext\ProfileBundle\Service\LocaleStorageDriver
-        arguments:
-            - '@profile.storage.locale_cookie'
-
-    profile.repository.locale:
-        public: false
-        class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
-        arguments:
-            - '@profile.locale_storage_driver'
-
-    profile.repository.user:
-        public: false
-        class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
-        arguments:
-            - '@profile.session.namespaced_attribute_bag'
-
-    profile.provider.authenticated_user:
-        public: false
-        class: OpenConext\ProfileBundle\Service\AuthenticatedUserProvider
-        arguments:
-            - '@security.token_storage'
-
-    profile.service.user:
-        public: false
-        class: OpenConext\ProfileBundle\Service\UserService
-        arguments:
-            - '@profile.service.support_contact_email'
-            - '@profile.repository.user'
-            - '@profile.provider.authenticated_user'
-            - '@profile.service.locale'
-            - '@profile.engine_block_entity_id'
+    OpenConext\ProfileBundle\Service\UserService:
         calls:
             - [ setUserLifecycleApiClient, [ '@?openconext_user_lifecycle_api.service.api' ] ]
-
-    profile.service.consent:
-        public: false
-        class: OpenConext\ProfileBundle\Service\ConsentService
-        arguments:
-            - '@openconext_eb_api.repository.consent'
-
-    profile.service.consent_listing:
-        public: false
-        class: OpenConext\ProfileBundle\Service\SpecifiedConsentListService
-        arguments:
-            - '@profile.service.consent'
-            - '@openconext_eb_api.service.attribute_release_policy'
-
-    profile.service.support_contact_email:
-        public: false
-        class: OpenConext\ProfileBundle\Service\SupportContactEmailService
-        arguments:
-            - '@openconext_eb_api.repository.support_contact_information'
-
-    profile.service.attribute_filter:
-        public: false
-        class: OpenConext\ProfileBundle\Attribute\AttributeFilter

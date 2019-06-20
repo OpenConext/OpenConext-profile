@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Repository;
 use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 
-interface AttributeAggregationRepository
+interface AttributeAggregationRepositoryInterface
 {
     /**
      * @param string $userId

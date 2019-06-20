@@ -16,29 +16,14 @@
  * limitations under the License.
  */
 
-namespace OpenConext\ProfileBundle\Service;
+namespace OpenConext\Profile\Api;
 
-use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Entity\AuthenticatedUser;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
+interface AuthenticatedUserProviderInterface
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
-
-    public function __construct(TokenStorageInterface $tokenStorage)
-    {
-        $this->tokenStorage = $tokenStorage;
-    }
-
     /**
      * @return AuthenticatedUser
      */
-    public function getCurrentUser()
-    {
-        return $this->tokenStorage->getToken()->getUser();
-    }
+    public function getCurrentUser();
 }

@@ -18,18 +18,14 @@
 
 namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Value\Locale;
+use OpenConext\Profile\Value\ContactPersonList;
+use OpenConext\Profile\Value\EntityId;
 
-interface LocaleRepository
+interface ContactPersonRepositoryInterface
 {
     /**
-     * @return Locale|null
+     * @param EntityId $entityId
+     * @return ContactPersonList
      */
-    public function findLocale();
-
-    /**
-     * @param Locale $locale
-     * @return void
-     */
-    public function save(Locale $locale);
+    public function findAllForIdp(EntityId $entityId);
 }

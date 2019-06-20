@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
@@ -29,7 +29,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             // Dependencies
             new JMS\TranslationBundle\JMSTranslationBundle(),
@@ -44,11 +43,6 @@ class AppKernel extends Kernel
             new OpenConext\UserLifecycleApiClientBundle\OpenConextUserLifecycleApiClientBundle(),
             new OpenConext\AttributeAggregationApiClientBundle\OpenConextAttributeAggregationApiClientBundle(),
         ];
-
-        if (in_array($this->getEnvironment(), ['dev', 'test', 'acc'])) {
-            $bundles[] = new JMS\DiExtraBundle\JMSDiExtraBundle();
-            $bundles[] = new JMS\AopBundle\JMSAopBundle();
-        }
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

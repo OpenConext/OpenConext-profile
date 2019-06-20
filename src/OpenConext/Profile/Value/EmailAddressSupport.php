@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2019 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,9 @@
  * limitations under the License.
  */
 
-namespace OpenConext\Profile\Repository;
+namespace OpenConext\Profile\Value;
 
-use OpenConext\Profile\Api\User;
 
-interface UserRepository
+interface EmailAddressSupport
 {
-    /**
-     * @return User|null
-     */
-    public function findUser();
-
-    /**
-     * @param User $user
-     * @return void
-     */
-    public function save(User $user);
 }

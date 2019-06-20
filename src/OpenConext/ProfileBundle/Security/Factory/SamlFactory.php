@@ -18,10 +18,12 @@
 
 namespace OpenConext\ProfileBundle\Security\Factory;
 
+use OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider;
+use OpenConext\ProfileBundle\Security\Firewall\SamlListener;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use \Symfony\Component\DependencyInjection\ChildDefinition;
 
 class SamlFactory implements SecurityFactoryInterface
 {
@@ -30,12 +32,12 @@ class SamlFactory implements SecurityFactoryInterface
         $providerId = 'security.authentication.provider.saml.' . $id;
         $container->setDefinition(
             $providerId,
-            new \Symfony\Component\DependencyInjection\ChildDefinition('profile.security.authentication.provider')
+            new ChildDefinition(SamlProvider::class)
         );
         $listenerId = 'security.authentication.listener.saml.' . $id;
         $container->setDefinition(
             $listenerId,
-            new \Symfony\Component\DependencyInjection\ChildDefinition('profile.security.authentication.listener')
+            new ChildDefinition(SamlListener::class)
         );
 
         return array($providerId, $listenerId, $defaultEntryPoint);

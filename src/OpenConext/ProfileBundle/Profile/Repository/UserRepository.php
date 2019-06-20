@@ -18,8 +18,8 @@
 
 namespace OpenConext\ProfileBundle\Profile\Repository;
 
-use OpenConext\Profile\Api\User;
-use OpenConext\Profile\Repository\UserRepository as UserRepositoryInterface;
+use OpenConext\Profile\Api\ApiUserInterface;
+use OpenConext\Profile\Repository\UserRepositoryInterface;
 use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
 
 class UserRepository implements UserRepositoryInterface
@@ -43,7 +43,7 @@ class UserRepository implements UserRepositoryInterface
         return $this->namespacedAttributeBag->get('user');
     }
 
-    public function save(User $user)
+    public function save(ApiUserInterface $user)
     {
         $this->namespacedAttributeBag->set('user', $user);
     }

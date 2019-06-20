@@ -28,7 +28,7 @@ use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use \Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
@@ -45,7 +45,7 @@ use Twig_Environment as Twig;
 class SamlListener implements ListenerInterface
 {
     /**
-     * @var \Symfony\Component\HttpFoundation\Session\Session
+     * @var SessionInterface
      */
     private $session;
 
@@ -85,7 +85,7 @@ class SamlListener implements ListenerInterface
     private $twig;
 
     public function __construct(
-        Session $session,
+        SessionInterface $session,
         UrlMatcherInterface $urlMatcher,
         TokenStorageInterface $tokenStorage,
         AuthenticationManagerInterface $authenticationManager,

@@ -11,6 +11,7 @@ security:
         default:
             pattern: ^/authentication/metadata$
             anonymous: ~
+            logout_on_user_change: true
 
         monitor:
             pattern: ^/(info|health)$
@@ -18,6 +19,7 @@ security:
 
         saml_based:
             saml: true
+            logout_on_user_change: true
 
     access_control:
         - { path: ^/authentication, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

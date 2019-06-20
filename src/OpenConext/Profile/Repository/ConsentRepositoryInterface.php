@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Repository;
 use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\ConsentList;
 
-interface ConsentRepository
+interface ConsentRepositoryInterface
 {
     /**
      * @param string $userId
