@@ -241,12 +241,14 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="d1a92495d8e08cf89bf517af5ffe5461407d2921" resname="profile.my_connections.orcid.connect_title">
         <source>profile.my_connections.orcid.connect_title</source>
-        <target>Connect</target>
+        <target>Register or Connect your ORCiD ID</target>
         <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
-        <target>ORCID is a nonproprietary alphanumeric code to uniquely identify scientific and other academic authors. This addresses the problem that a particular author's contributions to the scientific literature or publications in the humanities can be hard to recognize as most personal names are not unique, they can change (such as with marriage), have cultural differences in name order, contain inconsistent use of first-name abbreviations and employ different writing systems.</target>
+        <target>Connect your existing or newly created ORCID iD to SURFconext once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.
+
+After you have been redirected to ORCID, you can link your ORCID iD by logging in and clicking on 'Authorize'. In the future, your ORCID iD can then be passed on via SURFconext to services that want to use it.</target>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4bc8f1ebcd9026ebbc6df9e128e3a1c0d4407ebd" resname="profile.my_connections.orcid.disconnect_title">

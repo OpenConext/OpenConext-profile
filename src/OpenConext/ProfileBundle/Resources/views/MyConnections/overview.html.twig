@@ -24,11 +24,11 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                        <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                        <img src="{{ connection.logoPath }}" class="logo" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.title'|trans }}</div>
-                        <p>{{ connection.linkedId }}</p>
+                        <p class="orcid"><img src="{{ asset('images/orcid_small.png') }}"> <a href="{{ connection.linkedId }}">{{ connection.linkedId }}</a></p>
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.status'|trans }}</div>
@@ -64,15 +64,15 @@
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--3-col">
                             <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                            <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                            <img src="{{ connection.logoPath }}" class="logo" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
                             <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
-                            <p>{{ 'profile.my_connections.orcid.description'|trans }}</p>
+                            <p>{{ 'profile.my_connections.orcid.description'|trans|nl2br }}</p>
                         </div>
                         <div class="mdl-cell mdl-cell--3-col">
                             <a
-                                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored orcid"
                                     href="{{ connection.connectUrl }}">
                                 {{ 'profile.my_connections.orcid.connect_title'|trans }}
                             </a>
