@@ -18,4 +18,5 @@ cache.properties
 !var/SymfonyRequirements.php
 /build/
 /vendor/
+/node_modules/
 /composer.phar
