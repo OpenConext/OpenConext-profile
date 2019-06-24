@@ -18,7 +18,6 @@
 
 namespace OpenConext\Profile\Value;
 
-
 interface EmailAddressInformationRequest
 {
 }
