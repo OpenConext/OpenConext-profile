@@ -242,7 +242,7 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       </trans-unit>
       <trans-unit id="d1a92495d8e08cf89bf517af5ffe5461407d2921" resname="profile.my_connections.orcid.connect_title">
         <source>profile.my_connections.orcid.connect_title</source>
-        <target>Koppelen</target>
+        <target>Registreer of koppel je ORCiD ID</target>
         <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">

@@ -320,14 +320,21 @@ tr.service:hover {
 
 .attribute-container .mdl-grid .mdl-cell a.mdl-button {
     display: block;
-    width: 200px;
+    width: 260px;
     margin: 40px auto;
+    text-align: right;
     text-decoration: none;
 }
 
 .attribute-container .mdl-grid .mdl-cell button.mdl-button.disconnect {
     background-color: #a9a9a9;
     color: #ffffff;
+}
+
+.attribute-container .mdl-grid .mdl-cell .mdl-button.orcid {
+    background: white url('../images/orcid_small.png') 12px 6px no-repeat;
+    color: darkgrey;
+    text-transform: initial;
 }
 
 .confirmation-container {
