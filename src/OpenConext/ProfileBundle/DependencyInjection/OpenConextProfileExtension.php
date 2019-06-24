@@ -18,8 +18,11 @@
 
 namespace OpenConext\ProfileBundle\DependencyInjection;
 
+use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\Profile\Value\LocaleSet;
+use OpenConext\ProfileBundle\Service\UserService;
+use OpenConext\ProfileBundle\Storage\SingleCookieStorage;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
@@ -60,7 +63,7 @@ class OpenConextProfileExtension extends Extension
 
         // The user lifecycle can be disabled
         if (!$container->getParameter('user_lifecycle_enabled')) {
-            $container->getDefinition('OpenConext\ProfileBundle\Service\UserService')
+            $container->getDefinition(UserService::class)
                 ->removeMethodCall('setUserLifecycleApiClient');
         }
     }
@@ -127,7 +130,7 @@ class OpenConextProfileExtension extends Extension
         }
 
         $container
-            ->getDefinition('OpenConext\ProfileBundle\Storage\SingleCookieStorage')
+            ->getDefinition(SingleCookieStorage::class)
             ->replaceArgument(0, $localeCookieDomain)
             ->replaceArgument(1, $localeCookieKey)
             ->replaceArgument(2, $localeCookieExpirationDateDefinition)
@@ -138,7 +141,7 @@ class OpenConextProfileExtension extends Extension
     private function parseEngineBlockAttributeAggregationConfiguration($aaConfig, ContainerBuilder $container)
     {
         $container
-            ->getDefinition('OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes')
+            ->getDefinition(AttributeAggregationEnabledAttributes::class)
             ->replaceArgument(0, $aaConfig);
     }
 }
