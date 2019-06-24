@@ -32,16 +32,17 @@ nelmio_security:
         log: true
         whitelist:
             - '%saml_remote_idp_host%'
-#    csp:
-#        report_logger_service: monolog.logger.security
-#        hosts: []
-#        content_types: []
-#        enforce:
-#            report-uri: [/csp/report]
-#            default-src:
-#                - 'self'
-#            object-src:
-#                - 'none'
+    csp:
+        report_logger_service: monolog.logger.security
+        hosts: []
+        content_types: []
+        enforce:
+            report-uri: [/csp/report]
+            default-src:
+                - 'self'
+                - 'data:'
+            object-src:
+                - 'none'
     content_type:
         nosniff: true
     xss_protection:
