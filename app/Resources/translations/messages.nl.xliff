@@ -247,7 +247,9 @@ Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jo
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
-        <target>ORCID is een alpha-numerieke code die wordt gebruikt om auteurs van wetenschappelijke werken uniek te identificeren.</target>
+        <target>Koppel je bestaande of nieuw aangemaakte ORCID iD eenmalig aan SURFconext. Het ORCID iD is een code die wordt gebruikt om auteurs van wetenschappelijke werken uniek te identificeren.
+
+Nadat je bent doorgestuurd naar ORCID, kan je jouw ORCID iD koppelen door in te loggen en op 'Authorize' te klikken. In het vervolg kan jouw ORCID iD dan via SURFconext doorgeven worden aan diensten die daar gebruik van willen maken.</target>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4bc8f1ebcd9026ebbc6df9e128e3a1c0d4407ebd" resname="profile.my_connections.orcid.disconnect_title">
