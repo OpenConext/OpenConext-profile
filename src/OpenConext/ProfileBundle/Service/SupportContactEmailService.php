@@ -20,18 +20,18 @@ namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Repository\ContactPersonRepository;
+use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\EntityId;
 
 final class SupportContactEmailService
 {
     /**
-     * @var ContactPersonRepository
+     * @var ContactPersonRepositoryInterface
      */
     private $contactPersonRepository;
 
-    public function __construct(ContactPersonRepository $contactPersonRepository)
+    public function __construct(ContactPersonRepositoryInterface $contactPersonRepository)
     {
         $this->contactPersonRepository = $contactPersonRepository;
     }

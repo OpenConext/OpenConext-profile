@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\Profile\Api\AuthenticatedUserProvider;
+use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\Security\Guard;
 use Psr\Log\LoggerInterface;
@@ -38,7 +38,7 @@ class MyServicesController
     private $specifiedConsentListService;
 
     /**
-     * @var AuthenticatedUserProvider
+     * @var AuthenticatedUserProviderInterface
      */
     private $authenticatedUserProvider;
 
@@ -54,14 +54,14 @@ class MyServicesController
 
     /**
      * @param EngineInterface $templateEngine
-     * @param AuthenticatedUserProvider $authenticatedUserProvider
+     * @param AuthenticatedUserProviderInterface $authenticatedUserProvider
      * @param SpecifiedConsentListService $specifiedConsentListService
      * @param Guard $guard
      * @param LoggerInterface $logger
      */
     public function __construct(
         EngineInterface $templateEngine,
-        AuthenticatedUserProvider $authenticatedUserProvider,
+        AuthenticatedUserProviderInterface $authenticatedUserProvider,
         SpecifiedConsentListService $specifiedConsentListService,
         Guard $guard,
         LoggerInterface $logger

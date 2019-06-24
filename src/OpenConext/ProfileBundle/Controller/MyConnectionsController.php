@@ -18,10 +18,12 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Value\EmailAddress;
+use OpenConext\Profile\Value\EmailAddressSupport;
+use OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
-use OpenConext\ProfileBundle\Service\AuthenticatedUserProvider;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,6 +32,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Templating\EngineInterface;
 
+/**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 class MyConnectionsController
 {
     /**
@@ -53,7 +58,7 @@ class MyConnectionsController
     private $service;
 
     /**
-     * @var AuthenticatedUserProvider
+     * @var AuthenticatedUserProviderInterface
      */
     private $userProvider;
 
@@ -77,8 +82,8 @@ class MyConnectionsController
      * @param Guard $guard
      * @param LoggerInterface $logger
      * @param AttributeAggregationService $service
-     * @param AuthenticatedUserProvider $userProvider
-     * @param EmailAddress $mailTo
+     * @param AuthenticatedUserProviderInterface $userProvider
+     * @param EmailAddressSupport $mailTo
      * @param FormFactoryInterface $formFactory
      * @param UrlGeneratorInterface $urlGenerator
      */
@@ -87,8 +92,8 @@ class MyConnectionsController
         Guard $guard,
         LoggerInterface $logger,
         AttributeAggregationService $service,
-        AuthenticatedUserProvider $userProvider,
-        EmailAddress $mailTo,
+        AuthenticatedUserProviderInterface $userProvider,
+        EmailAddressSupport $mailTo,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator
     ) {
@@ -124,7 +129,7 @@ class MyConnectionsController
         }
 
         // For now only the ORCID connection form is created and added to the form.
-        $confirmationForm = $this->formFactory->create('profile_confirm_connection_delete');
+        $confirmationForm = $this->formFactory->create(ConfirmConnectionDeleteType::class);
 
         $confirmationForm->handleRequest($request);
         if ($confirmationForm->isSubmitted() && $confirmationForm->isValid()) {

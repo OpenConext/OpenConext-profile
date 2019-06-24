@@ -21,7 +21,7 @@ namespace OpenConext\EngineBlockApiClientBundle\Repository;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
-use OpenConext\Profile\Repository\ContactPersonRepository as ContactPersonRepositoryInterface;
+use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
 
 final class ContactPersonRepository implements ContactPersonRepositoryInterface

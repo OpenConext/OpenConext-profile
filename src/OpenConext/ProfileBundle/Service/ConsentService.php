@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
-use OpenConext\Profile\Repository\ConsentRepository;
+use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use Psr\Log\LoggerInterface;
@@ -27,11 +27,11 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 final class ConsentService
 {
     /**
-     * @var ConsentRepository
+     * @var ConsentRepositoryInterface
      */
     private $consentRepository;
 
-    public function __construct(ConsentRepository $consentRepository)
+    public function __construct(ConsentRepositoryInterface $consentRepository)
     {
         $this->consentRepository = $consentRepository;
     }

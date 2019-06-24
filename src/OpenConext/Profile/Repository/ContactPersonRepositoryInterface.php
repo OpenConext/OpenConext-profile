@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Repository;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\EntityId;
 
-interface ContactPersonRepository
+interface ContactPersonRepositoryInterface
 {
     /**
      * @param EntityId $entityId

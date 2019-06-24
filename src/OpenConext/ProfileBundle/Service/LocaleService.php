@@ -18,16 +18,15 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
-use OpenConext\Profile\Assert;
-use OpenConext\Profile\Repository\LocaleRepository;
+use OpenConext\Profile\Repository\LocaleRepositoryInterface;
 use OpenConext\Profile\Value\Locale;
-use OpenConext\Profile\Api\User;
+use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\LocaleSet;
 
 final class LocaleService
 {
     /**
-     * @var LocaleRepository
+     * @var LocaleRepositoryInterface
      */
     private $localeRepository;
 
@@ -42,11 +41,11 @@ final class LocaleService
     private $defaultLocale;
 
     /**
-     * @param LocaleRepository $localeRepository
+     * @param LocaleRepositoryInterface $localeRepository
      * @param LocaleSet $availableLocales
      * @param Locale $defaultLocale
      */
-    public function __construct(LocaleRepository $localeRepository, LocaleSet $availableLocales, Locale $defaultLocale)
+    public function __construct(LocaleRepositoryInterface $localeRepository, LocaleSet $availableLocales, Locale $defaultLocale)
     {
         $this->localeRepository = $localeRepository;
         $this->availableLocales = $availableLocales;
@@ -77,9 +76,9 @@ final class LocaleService
     }
 
     /**
-     * @param User $user
+     * @param ApiUserInterface $user
      */
-    public function saveLocaleOf(User $user)
+    public function saveLocaleOf(ApiUserInterface $user)
     {
         $this->localeRepository->save($user->getLocale());
     }

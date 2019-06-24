@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Twig;
 
 use OpenConext\Profile\Assert;
+use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Twig_Extension as Extension;
 use Twig_SimpleFunction as SimpleFunction;
@@ -51,7 +52,7 @@ final class LocaleExtension extends Extension
         Assert::string($returnUrl);
 
         $form = $this->formFactory->create(
-            'profile_switch_locale',
+            SwitchLocaleType::class,
             null,
             ['return_url' => $returnUrl]
         );

@@ -60,8 +60,6 @@ rm -rf ${PROJECT_DIR}/Vagrantfile &&
 rm -rf ${PROJECT_DIR}/.git &&
 rm -f ${PROJECT_DIR}/.gitignore &&
 rm -f ${PROJECT_DIR}/makeRelease.sh &&
-rm -rf ${PROJECT_DIR}/.rmt.yml &&
-rm -rf ${PROJECT_DIR}/RMT &&
 rm -rf ${PROJECT_DIR}/.scrutinizer.yml &&
 rm -rf ${PROJECT_DIR}/phpcs.xml &&
 rm -rf ${PROJECT_DIR}/app/phpunit.xml &&

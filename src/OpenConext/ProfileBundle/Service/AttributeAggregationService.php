@@ -20,17 +20,16 @@ namespace OpenConext\ProfileBundle\Service;
 
 use Exception;
 use OpenConext\Profile\Entity\AuthenticatedUser;
-use OpenConext\Profile\Repository\AttributeAggregationRepository;
+use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttribute;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
 use Psr\Log\LoggerInterface;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
 final class AttributeAggregationService
 {
     /**
-     * @var AttributeAggregationRepository
+     * @var AttributeAggregationRepositoryInterface
      */
     private $repository;
 
@@ -45,7 +44,7 @@ final class AttributeAggregationService
     private $logger;
 
     public function __construct(
-        AttributeAggregationRepository $repository,
+        AttributeAggregationRepositoryInterface $repository,
         AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
         LoggerInterface $logger
     ) {

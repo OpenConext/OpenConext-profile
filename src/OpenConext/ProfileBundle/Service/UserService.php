@@ -18,9 +18,10 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Entity\User;
-use OpenConext\Profile\Api\AuthenticatedUserProvider as AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Repository\UserRepository;
+use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
+use OpenConext\Profile\Repository\UserRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
@@ -34,7 +35,7 @@ final class UserService
     private $supportContactEmailService;
 
     /**
-     * @var UserRepository
+     * @var UserRepositoryInterface
      */
     private $userRepository;
 
@@ -60,7 +61,7 @@ final class UserService
 
     public function __construct(
         SupportContactEmailService $supportContactEmailService,
-        UserRepository $userRepository,
+        UserRepositoryInterface $userRepository,
         AuthenticatedUserProviderInterface $authenticatedUserProvider,
         LocaleService $localeService,
         EntityId $engineBlockEntityId
@@ -83,7 +84,7 @@ final class UserService
     }
 
     /**
-     * @return User
+     * @return ApiUserInterface
      */
     public function getUser()
     {
@@ -137,10 +138,10 @@ final class UserService
     }
 
     /**
-     * @param User $user
-     * @return User
+     * @param ApiUserInterface $user
+     * @return ApiUserInterface
      */
-    private function enrichUserWithSupportContactEmail(User $user)
+    private function enrichUserWithSupportContactEmail(ApiUserInterface $user)
     {
         $entityIds                 = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);

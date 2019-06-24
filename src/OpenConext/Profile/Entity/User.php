@@ -18,11 +18,11 @@
 
 namespace OpenConext\Profile\Entity;
 
-use OpenConext\Profile\Api\User as UserInterface;
+use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Locale;
 
-final class User implements UserInterface
+final class User implements ApiUserInterface
 {
     /**
      * @var AuthenticatedUser
@@ -51,7 +51,7 @@ final class User implements UserInterface
 
     /**
      * @param ContactEmailAddress $supportContactEmail
-     * @return User
+     * @return UserInterface
      */
     public function withSupportContactEmail(ContactEmailAddress $supportContactEmail)
     {

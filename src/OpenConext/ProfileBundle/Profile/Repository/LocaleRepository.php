@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Profile\Repository;
 
-use OpenConext\Profile\Repository\LocaleRepository as LocaleRepositoryInterface;
+use OpenConext\Profile\Repository\LocaleRepositoryInterface;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\ProfileBundle\Service\LocaleStorageDriver;
 

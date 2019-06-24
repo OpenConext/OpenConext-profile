@@ -20,7 +20,7 @@ namespace OpenConext\AttributeAggregationApiClientBundle\Repository;
 
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Repository\AttributeAggregationRepository as AttributeAggregationRepositoryInterface;
+use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 
 final class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface

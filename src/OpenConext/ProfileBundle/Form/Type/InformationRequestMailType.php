@@ -19,6 +19,7 @@
 namespace OpenConext\ProfileBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class InformationRequestMailType extends AbstractType
@@ -28,7 +29,7 @@ class InformationRequestMailType extends AbstractType
         $builder
             ->add(
                 'sendMail',
-                'submit',
+                SubmitType::class,
                 [
                     'label' => 'profile.information_request.send_mail',
                     'attr'  => [
@@ -39,7 +40,7 @@ class InformationRequestMailType extends AbstractType
             );
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'profile_information_request_mail';
     }

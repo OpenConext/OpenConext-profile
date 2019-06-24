@@ -18,6 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
@@ -90,7 +91,7 @@ class LocaleController
         }
 
         $command = new ChangeLocaleCommand();
-        $form = $this->formFactory->create('profile_switch_locale', $command, [])->handleRequest($request);
+        $form = $this->formFactory->create(SwitchLocaleType::class, $command, [])->handleRequest($request);
 
         $this->logger->notice(sprintf(
             'Switching locale from "%s" to "%s"',

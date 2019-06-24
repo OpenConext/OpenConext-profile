@@ -16,14 +16,17 @@
  * limitations under the License.
  */
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use Composer\Autoload\ClassLoader;
+namespace OpenConext\Profile\Repository;
 
-/**
- * @var ClassLoader $loader
- */
-$loader = require __DIR__.'/../vendor/autoload.php';
+use OpenConext\Profile\Exception\InvalidArgumentException;
+use OpenConext\Profile\Value\ConsentList;
 
-AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
-
-return $loader;
+interface ConsentRepositoryInterface
+{
+    /**
+     * @param string $userId
+     * @return ConsentList
+     * @throws InvalidArgumentException When $userId is not a non-empty string
+     */
+    public function findAllFor($userId);
+}

@@ -18,7 +18,7 @@ from the IdP (OpenConext Engineblock) and requests and displays additional
 information via EngineBlock's internal API.
 
 ## Requirements
-- PHP 5.6
+- PHP 7.0
 - EngineBlock 5.6 >= 5.6.7 
 - EngineBlock 5.7 >= 5.7.1
 - EngineBlock must be configured to release an unspecified NameID to Profile

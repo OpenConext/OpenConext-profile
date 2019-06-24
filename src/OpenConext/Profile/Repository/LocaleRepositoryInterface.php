@@ -18,15 +18,18 @@
 
 namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Exception\InvalidArgumentException;
-use OpenConext\Profile\Value\ConsentList;
+use OpenConext\Profile\Value\Locale;
 
-interface ConsentRepository
+interface LocaleRepositoryInterface
 {
     /**
-     * @param string $userId
-     * @return ConsentList
-     * @throws InvalidArgumentException When $userId is not a non-empty string
+     * @return Locale|null
      */
-    public function findAllFor($userId);
+    public function findLocale();
+
+    /**
+     * @param Locale $locale
+     * @return void
+     */
+    public function save(Locale $locale);
 }

@@ -15,10 +15,9 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        assets_version: "#ASSETS_VERSION#"
+
     default_locale:  "%default_locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
     session:
         handler_id:  ~
     fragments:       ~
@@ -32,7 +31,7 @@ nelmio_security:
         abort: true
         log: true
         whitelist:
-            - %saml_remote_idp_host%
+            - '%saml_remote_idp_host%'
     csp:
         report_logger_service: monolog.logger.security
         hosts: []
@@ -67,7 +66,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
-        global_view_parameters: "@profile.global_view_parameters"
+        global_view_parameters: "@OpenConext\\ProfileBundle\\Service\\GlobalViewParameters"
 
 swiftmailer:
     transport: "%mailer_transport%"
@@ -77,11 +76,11 @@ swiftmailer:
     spool:     { type: memory }
 
 jms_translation:
-    locales: %locales%
+    locales: '%locales%'
     configs:
         app:
-            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
-            output_dir: %kernel.root_dir%/Resources/translations
+            dirs: ['%kernel.root_dir%', '%kernel.root_dir%/../src']
+            output_dir: '%kernel.root_dir%/Resources/translations'
             ignored_domains:
             excluded_names: ['*TestCase.php', '*Test.php']
             excluded_dirs: [cache, data, logs, Tests]
@@ -91,56 +90,56 @@ surfnet_saml:
         service_provider:
             enabled: true
             assertion_consumer_route: profile.saml_consume_assertion
-            public_key: %saml_sp_publickey%
-            private_key: %saml_sp_privatekey%
+            public_key: '%saml_sp_publickey%'
+            private_key: '%saml_sp_privatekey%'
         metadata:
             entity_id_route: profile.saml_metadata
-            public_key: %saml_metadata_publickey%
-            private_key: %saml_metadata_privatekey%
+            public_key: '%saml_metadata_publickey%'
+            private_key: '%saml_metadata_privatekey%'
     remote:
         identity_provider:
             enabled: true
-            entity_id: %saml_remote_idp_entity_id%
-            sso_url: %saml_remote_idp_sso_url%
-            certificate_file: %saml_remote_idp_certificate_file%
+            entity_id: '%saml_remote_idp_entity_id%'
+            sso_url: '%saml_remote_idp_sso_url%'
+            certificate_file: '%saml_remote_idp_certificate_file%'
 
 open_conext_engine_block_api_client:
     http_client:
-        base_url: %engineblock_api_base_url%
-        username: %engineblock_api_username%
-        password: %engineblock_api_password%
-        verify_ssl: %engineblock_api_verify_ssl%
+        base_url: '%engineblock_api_base_url%'
+        username: '%engineblock_api_username%'
+        password: '%engineblock_api_password%'
+        verify_ssl: '%engineblock_api_verify_ssl%'
 
 open_conext_user_lifecycle_api_client:
     enabled: '%user_lifecycle_enabled%'
     http_client:
-        base_url: %user_lifecycle_api_base_url%
-        username: %user_lifecycle_api_username%
-        password: %user_lifecycle_api_password%
-        verify_ssl: %user_lifecycle_api_verify_ssl%
+        base_url: '%user_lifecycle_api_base_url%'
+        username: '%user_lifecycle_api_username%'
+        password: '%user_lifecycle_api_password%'
+        verify_ssl: '%user_lifecycle_api_verify_ssl%'
 
 open_conext_attribute_aggregation_api_client:
     http_client:
-        base_url: %attribute_aggregation_api_base_url%
-        username: %attribute_aggregation_api_username%
-        password: %attribute_aggregation_api_password%
-        verify_ssl: %attribute_aggregation_api_verify_ssl%
+        base_url: '%attribute_aggregation_api_base_url%'
+        username: '%attribute_aggregation_api_username%'
+        password: '%attribute_aggregation_api_password%'
+        verify_ssl: '%attribute_aggregation_api_verify_ssl%'
 
 open_conext_profile:
-    engine_block_entity_id: %saml_remote_idp_entity_id%
-    locales: %locales%
-    default_locale: %default_locale%
-    locale_cookie_domain: %open_conext_locale_cookie_domain%
-    locale_cookie_key: %open_conext_locale_cookie_key%
-    locale_cookie_expires_in: %open_conext_locale_cookie_expires_in%
-    locale_cookie_secure: %open_conext_locale_cookie_secure%
-    locale_cookie_http_only: %open_conext_locale_cookie_http_only%
+    engine_block_entity_id: '%saml_remote_idp_entity_id%'
+    locales: '%locales%'
+    default_locale: '%default_locale%'
+    locale_cookie_domain: '%open_conext_locale_cookie_domain%'
+    locale_cookie_key: '%open_conext_locale_cookie_key%'
+    locale_cookie_expires_in: '%open_conext_locale_cookie_expires_in%'
+    locale_cookie_secure: '%open_conext_locale_cookie_secure%'
+    locale_cookie_http_only: '%open_conext_locale_cookie_http_only%'
     attribute_support:
-        email_from: %attribute_support_email_from%
-        email_to: %attribute_support_email_to%
+        email_from: '%attribute_support_email_from%'
+        email_to: '%attribute_support_email_to%'
     information_request:
-        email_from: %information_request_email_from%
-        email_to: %information_request_email_to%
+        email_from: '%information_request_email_from%'
+        email_to: '%information_request_email_to%'
     # An array of attribute identifiers supported by attribute aggregation
     attribute_aggregation_supported_attributes:
         # The accountType of the attribute. Should match the value of the name attribute from the Attribute Aggregation
@@ -148,6 +147,6 @@ open_conext_profile:
         # https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext
         'ORCID':
             # The relative path to an image. Starting from the /web folder
-            logo_path: %attribute_aggregation_orcid_logo_path%
+            logo_path: '%attribute_aggregation_orcid_logo_path%'
             # The Url where the attribute can be connected
-            connect_url: %attribute_aggregation_orcid_connect_url%
+            connect_url: '%attribute_aggregation_orcid_connect_url%'

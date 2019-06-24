@@ -21,7 +21,7 @@ namespace OpenConext\EngineBlockApiClientBundle\Repository;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Repository\ConsentRepository as ConsentRepositoryInterface;
+use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 
 final class ConsentRepository implements ConsentRepositoryInterface
 {
