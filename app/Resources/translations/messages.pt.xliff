@@ -241,12 +241,12 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
       </trans-unit>
       <trans-unit id="d1a92495d8e08cf89bf517af5ffe5461407d2921" resname="profile.my_connections.orcid.connect_title">
         <source>profile.my_connections.orcid.connect_title</source>
-        <target>Registre-se ou conecte seu ORCiD</target>
+        <target>Registre-se ou conecte seu ORCID iD</target>
         <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
-        <target>O ORCID é um código alfanumérico não proprietário para identificação exclusiva de cada autor científico e/ou académico. A atribuição deste código resolve o problema de reconhecimento do autor e respetivas contribuições científicas, o que de outra forma poderia ser difícil de identificar, uma vez que é comum a mudança de nomes (por exemplo com o casamento) e em situações de diferenças culturais na ordem em que o nome é apresentado, ou possibilidade de inconsistências no uso de abreviaturas no nome próprio em diferentes sistemas de escrita.</target>
+        <target>O ORCID iD é um código alfanumérico não proprietário para identificação exclusiva de cada autor científico e/ou académico. A atribuição deste código resolve o problema de reconhecimento do autor e respetivas contribuições científicas, o que de outra forma poderia ser difícil de identificar, uma vez que é comum a mudança de nomes (por exemplo com o casamento) e em situações de diferenças culturais na ordem em que o nome é apresentado, ou possibilidade de inconsistências no uso de abreviaturas no nome próprio em diferentes sistemas de escrita.</target>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4bc8f1ebcd9026ebbc6df9e128e3a1c0d4407ebd" resname="profile.my_connections.orcid.disconnect_title">
