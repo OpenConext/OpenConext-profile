@@ -306,7 +306,7 @@ tr.service:hover {
     color: #00c35a;
 }
 
-.attribute-container .mdl-grid .mdl-cell img {
+.attribute-container .mdl-grid .mdl-cell img.logo {
     border: 1px solid #cccccc;
     background: #ffffff;
     width: 200px;
@@ -316,6 +316,21 @@ tr.service:hover {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+.attribute-container .mdl-grid .mdl-cell p.orcid {
+    vertical-align: top;
+}
+
+.attribute-container .mdl-grid .mdl-cell p.orcid a{
+    text-decoration: none;
+}
+
+.attribute-container .mdl-grid .mdl-cell p.orcid img {
+    float: left;
+    height: 16px;
+    margin: 4px 4px 0 0;
+    width: 16px;
 }
 
 .attribute-container .mdl-grid .mdl-cell a.mdl-button {

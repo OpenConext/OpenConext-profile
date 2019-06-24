@@ -24,11 +24,11 @@
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                        <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                        <img src="{{ connection.logoPath }}" class="logo" title="{{ 'profile.my_connections.orcid.title'|trans }}" alt="ORCID iD logo" />
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.title'|trans }}</div>
-                        <p>{{ connection.linkedId }}</p>
+                        <p class="orcid"><img src="{{ asset('images/orcid_small.png') }}"> <a href="{{ connection.linkedId }}">{{ connection.linkedId }}</a></p>
                     </div>
                     <div class="mdl-cell mdl-cell--3-col">
                         <div class="mdl-layout-title">{{ 'profile.my_connections.orcid.status'|trans }}</div>
@@ -64,7 +64,7 @@
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--3-col">
                             <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                            <img src="{{ connection.logoPath }}" title="{{ 'profile.my_connections.orcid.title'|trans }}"/>
+                            <img src="{{ connection.logoPath }}" class="logo" title="{{ 'profile.my_connections.orcid.title'|trans }}" alt="ORCID iD logo" />
                         </div>
                         <div class="mdl-cell mdl-cell--6-col">
                             <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
