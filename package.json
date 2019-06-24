@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "OpenConext-profile",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "material-design-lite": "1.0.5"
+  },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.27.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "encore": "encore",
+    "build": "encore production",
+    "watch": "encore dev --watch",
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

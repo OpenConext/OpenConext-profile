@@ -16,7 +16,7 @@ cache.properties
 !var/sessions/.gitkeep
 /var/bootstrap.php.cache
 !var/SymfonyRequirements.php
-/build/
+/web/build
 /vendor/
 /node_modules/
 /composer.phar
