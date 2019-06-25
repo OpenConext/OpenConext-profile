@@ -12,16 +12,12 @@ Encore
     .addEntry('app', './web/js/app.js')
     .addEntry('my-connections', './web/js/my-connections.js')
 
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
     .disableSingleRuntimeChunk()
 
     .cleanupOutputBeforeBuild()
-
     .autoProvidejQuery()
 
     .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
 ;
