@@ -4,6 +4,7 @@
   "description": "OpenConext-profile",
   "main": "index.js",
   "dependencies": {
+    "jquery": "^3.4.1",
     "material-design-lite": "1.0.5"
   },
   "devDependencies": {
