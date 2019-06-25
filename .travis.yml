@@ -20,8 +20,8 @@ before_script:
   - sudo apt-get install ant
   - phpenv config-add travis.php.ini
   - composer self-update
-  - if [[ ${TRAVIS_PHP_VERSION:0:3} == "5.6" ]]; then composer install --prefer-dist -n -o; fi
-  - if [[ ${TRAVIS_PHP_VERSION:0:3} != "5.6" ]]; then composer install --prefer-dist --ignore-platform-reqs -n -o; fi
+  - composer install --prefer-dist -n -o
+  - npm i && npm run build
 
 script:
   - ant

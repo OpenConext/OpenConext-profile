@@ -115,6 +115,16 @@ The following command can be used to scan for translations:
 
 ## Common tasks
 
+### Working on the front-end
+
+* We use the Twig template engine. See the excellent Twig documentation to get started with Twig.
+* Symfony Webpack Encore is used to build/pack/minify/optimize the front-end resources.
+   * After installation of Profile, please run `npm install` to pull all the build tooling and front-end dependencies.
+   * Building the front-end can be done by running: `npm run encore dev` (for development, includes debug friendly features like sourcemaps)and `npm run build` for a production build.
+   * Watch mode can be used, by using `npm run watch`, your mileage may vary as we are developing on a remote machine and fs changes might be noticed with a noticeable delay.
+* Front-end dependencies are tracked using NPM. Enabling us to keep track of known vulnerabilities and making updating packages easier. Feel free to use Yarn as an alternative, but please do not commit the Yarn lockfile as we chose to use the NPM solution.
+* Dialects: we use vanilla CSS and JavaScript for now.
+
 ### Add support for new Attribute Aggregation source
 In EngineBlock ARP, attributes can be derived from a source other than the IdP. Whenever a source other than
 the IdP is configured. Profile will not (yet) attempt to retrieve the value for that attribute. But will show only a

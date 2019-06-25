@@ -1,16 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <!--[if IE]>
-    <script src="{{ asset('js/es5-shim.min.js') }}"></script>
-    <script src="{{ asset('js/classList.min.js') }}"></script>
-    <script src="{{ asset('js/selectivizr.min.js') }}"></script>
-    <![endif]-->
-    <link href="{{ asset('css/material.min.css') }}" rel='stylesheet' type='text/css' />
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset('css/roboto.css') }}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset('css/main.css') }}" rel='stylesheet' type='text/css' />
-    <!--[if lte IE 9]><link href="{{ asset('css/lte-ie9.css') }}" rel='stylesheet' type='text/css' /><![endif]-->
+    <link href="{{ asset('build/app.css') }}" rel='stylesheet' type='text/css' />
 {% endblock %}
 
 {% block body %}
@@ -91,7 +82,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/material.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('build/app.js') }}"></script>
 {% endblock %}

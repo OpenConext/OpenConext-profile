@@ -1,0 +1,28 @@
+{
+  "name": "openconext-profile",
+  "version": "1.0.0",
+  "description": "OpenConext-profile provides an overview of your OpenConext profile",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "material-design-lite": "1.0.5"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.27.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "encore": "encore",
+    "build": "encore production",
+    "watch": "encore dev --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenConext/OpenConext-profile.git"
+  },
+  "author": "SURFnet B.V.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/OpenConext/OpenConext-profile/issues"
+  },
+  "homepage": "https://github.com/OpenConext/OpenConext-profile#readme"
+}
