@@ -12,6 +12,7 @@ php:
       - php-mbstring
       - php-mcrypt
       - php-pdo
+      - php-pecl-apcu-bc
       - php-pecl-xdebug
       - php-mysql
       - php-gmp

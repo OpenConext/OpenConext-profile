@@ -5,7 +5,16 @@
 - name: Enable REMI repo
   copy: src=remi.repo dest=/etc/yum.repos.d/remi.repo
 
-- name: Install php5-cli
+# Enable php72 as the default php version.
+- name: Install Yum utils
+  yum:
+    name:
+      - yum-utils
+
+- name: enable remi-php72
+  shell: yum-config-manager --enable remi-php72
+
+- name: Install php7-cli
   sudo: yes
   yum: pkg=php-cli state=present enablerepo=remi
 

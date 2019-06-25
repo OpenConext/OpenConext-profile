@@ -91,7 +91,7 @@
 
     <target name="phpunit-ci" description="Run unit tests with PHPUnit">
         <exec executable="vendor/bin/phpunit" failonerror="true">
-            <arg line="--configuration=${basedir}/app/phpunit.xml"/>
+            <arg line="--configuration=${basedir}/phpunit.xml"/>
             <arg line="--coverage-text"/>
         </exec>
     </target>

@@ -6,7 +6,7 @@
          beStrictAboutTestsThatDoNotTestAnything="false"
          backupGlobals="false"
          colors="true"
-         bootstrap="bootstrap.php.cache"
+         bootstrap="vendor/autoload.php"
 >
     <testsuites>
         <testsuite name="Project Test Suite">

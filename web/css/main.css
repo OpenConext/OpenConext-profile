@@ -306,7 +306,7 @@ tr.service:hover {
     color: #00c35a;
 }
 
-.attribute-container .mdl-grid .mdl-cell img {
+.attribute-container .mdl-grid .mdl-cell img.logo {
     border: 1px solid #cccccc;
     background: #ffffff;
     width: 200px;
@@ -318,16 +318,38 @@ tr.service:hover {
     display: block;
 }
 
+.attribute-container .mdl-grid .mdl-cell p.orcid {
+    vertical-align: top;
+}
+
+.attribute-container .mdl-grid .mdl-cell p.orcid a{
+    text-decoration: none;
+}
+
+.attribute-container .mdl-grid .mdl-cell p.orcid img {
+    float: left;
+    height: 16px;
+    margin: 4px 4px 0 0;
+    width: 16px;
+}
+
 .attribute-container .mdl-grid .mdl-cell a.mdl-button {
     display: block;
-    width: 200px;
+    width: 260px;
     margin: 40px auto;
+    text-align: right;
     text-decoration: none;
 }
 
 .attribute-container .mdl-grid .mdl-cell button.mdl-button.disconnect {
     background-color: #a9a9a9;
     color: #ffffff;
+}
+
+.attribute-container .mdl-grid .mdl-cell .mdl-button.orcid {
+    background: white url('../images/orcid_small.png') 12px 6px no-repeat;
+    color: darkgrey;
+    text-transform: initial;
 }
 
 .confirmation-container {

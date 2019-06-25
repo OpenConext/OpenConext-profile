@@ -46,6 +46,10 @@ git checkout ${TAG} &&
 echo "Running Composer Install";
 SYMFONY_ENV=${SYMFONY_ENV} composer install --no-dev --prefer-dist -o --no-scripts &&
 
+echo "Running NPM install";
+npm i &&
+npm run build &&
+
 echo "Tagging the release in RELEASE file" &&
 COMMITHASH=`git rev-parse HEAD` &&
 echo "Tag: ${TAG}" > ${PROJECT_DIR}/RELEASE &&
@@ -60,19 +64,24 @@ rm -rf ${PROJECT_DIR}/Vagrantfile &&
 rm -rf ${PROJECT_DIR}/.git &&
 rm -f ${PROJECT_DIR}/.gitignore &&
 rm -f ${PROJECT_DIR}/makeRelease.sh &&
-rm -rf ${PROJECT_DIR}/.rmt.yml &&
-rm -rf ${PROJECT_DIR}/RMT &&
 rm -rf ${PROJECT_DIR}/.scrutinizer.yml &&
 rm -rf ${PROJECT_DIR}/phpcs.xml &&
-rm -rf ${PROJECT_DIR}/app/phpunit.xml &&
+rm -f ${PROJECT_DIR}/phpunit.xml &&
 rm -rf ${PROJECT_DIR}/phpmd.xml &&
 rm -rf ${PROJECT_DIR}/phpmd-pre-commit.xml &&
 rm -rf ${PROJECT_DIR}/build.xml &&
 rm -rf ${PROJECT_DIR}/build-pre-commit.xml &&
 rm -rf ${PROJECT_DIR}/tests &&
 rm -rf ${PROJECT_DIR}/ci &&
+rm -rf ${PROJECT_DIR}/node_modules &&
+rm -f ${PROJECT_DIR}/package.json &&
+rm -f ${PROJECT_DIR}/package.lock &&
+rm -rf ${PROJECT_DIR}/web/css
+rm -rf ${PROJECT_DIR}/web/fonts
+rm -rf ${PROJECT_DIR}/web/images
+rm -rf ${PROJECT_DIR}/web/js
 rm -rf ${PROJECT_DIR}/.travis.yml &&
-rm -rf ${PROJECT_DIR}/.travis.php.ini &&
+rm -rf ${PROJECT_DIR}/travis.php.ini &&
 rm -f ${PROJECT_DIR}/web/app_dev.php &&
 
 echo "Removing application cache, logs, bootstrap and parameters" &&

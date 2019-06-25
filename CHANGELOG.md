@@ -1,5 +1,22 @@
 # Next release
 
+# 2.0.0
+
+Version 2.0 drops PHP 5.6 support. And more important Symfony was updated to version 3.4
+
+The major changes of this version:
+
+**Improvements**
+* Upgrade to Symfony 3.4 and fix deprecation issues while at it #126
+* Added Portuguese translations #121 
+* Update ORCiD ID styling on the my connections page #128
+* Install and configure Webpack Encore #130
+
+**Maintenance**
+* Bump Stepup SAML bundle to version 4.1.4 #125
+* Install PHP 7.2 and update Composer dependencies #124
+* Address security issues #127
+
 # 1.2.2
 
 Further removes the SURFconextId usages in the project. The AA Api client still used the attribute, causing issues on the My connections page. Thanks @domgon for raising the issue!

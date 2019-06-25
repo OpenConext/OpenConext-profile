@@ -35,7 +35,6 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
         $this->constraints  = $constraints;
     }
     // @codingStandardsIgnoreEnd
-
     /**
      * User controlled way to define a sub-property causing
      * the failure of a currently asserted objects.

@@ -7,8 +7,6 @@ framework:
         storage_id: session.storage.mock_file
     profiler:
         collect: false
-    templating:
-        assets_version: "test"
 
 web_profiler:
     toolbar: false

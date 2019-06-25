@@ -9,4 +9,4 @@ services:
         public: false
         class: OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient
         arguments:
-            - @openconext_user_lifecycle_api.guzzle
+            - '@openconext_user_lifecycle_api.guzzle'

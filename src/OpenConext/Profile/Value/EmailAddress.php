@@ -20,7 +20,7 @@ namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
 
-final class EmailAddress
+final class EmailAddress implements EmailAddressSupport, EmailAddressInformationRequest
 {
     /**
      * @var string

@@ -22,16 +22,16 @@ use Exception;
 use OpenConext\MonitorBundle\HealthCheck\HealthCheckInterface;
 use OpenConext\MonitorBundle\HealthCheck\HealthReportInterface;
 use OpenConext\MonitorBundle\Value\HealthReport;
-use OpenConext\Profile\Repository\ConsentRepository;
+use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 
 class ApiHealthCheck implements HealthCheckInterface
 {
     /**
-     * @var ConsentRepository
+     * @var ConsentRepositoryInterface
      */
     private $repository;
 
-    public function __construct(ConsentRepository $repository)
+    public function __construct(ConsentRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }

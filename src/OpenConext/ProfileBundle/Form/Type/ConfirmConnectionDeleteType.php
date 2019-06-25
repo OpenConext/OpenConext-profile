@@ -19,6 +19,8 @@
 namespace OpenConext\ProfileBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ConfirmConnectionDeleteType extends AbstractType
@@ -29,7 +31,7 @@ class ConfirmConnectionDeleteType extends AbstractType
         $builder
             ->add(
                 'confirmed',
-                'checkbox',
+                CheckboxType::class,
                 [
                     'attr' => ['class' => 'mdl-checkbox__input confirmation'],
                     'label' => 'profile.confirm_connection_delete.confirm_label',
@@ -40,7 +42,7 @@ class ConfirmConnectionDeleteType extends AbstractType
             )
             ->add(
                 'confirm-button',
-                'submit',
+                SubmitType::class,
                 [
                     'attr' => [
                         'class' => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ' .
@@ -52,7 +54,7 @@ class ConfirmConnectionDeleteType extends AbstractType
             );
     }
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'profile_confirm_connection_delete';
     }

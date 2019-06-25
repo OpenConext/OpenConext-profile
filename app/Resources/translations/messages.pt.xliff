@@ -179,11 +179,6 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
         <target>EN</target>
         <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="e2fbaef81b77d24930074533408e4d9fd514dcd2" resname="profile.locale.nl">
-        <source>profile.locale.nl</source>
-        <target>NL</target>
-        <jms:reference-file line="170">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
-      </trans-unit>
       <trans-unit id="0135c23e335a69b86430fa515b01d20cb65a21c5" resname="profile.locale.pt">
         <source>profile.locale.pt</source>
         <target>PT</target>
@@ -192,12 +187,17 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
       <trans-unit id="6f6d681a481879428f3cb1fedecc96d9774eecbb" resname="profile.locale.locale_change_fail">
         <source>profile.locale.locale_change_fail</source>
         <target>Idioma não pode ser alterado</target>
-        <jms:reference-file line="174">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="173">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7b6a058e52a45bcdc469105f7313e05eb39ad69b" resname="profile.locale.locale_change_success">
         <source>profile.locale.locale_change_success</source>
         <target>Idioma alterado</target>
-        <jms:reference-file line="173">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="172">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e2fbaef81b77d24930074533408e4d9fd514dcd2" resname="profile.locale.nl">
+        <source>profile.locale.nl</source>
+        <target>NL</target>
+        <jms:reference-file line="170">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9efb18562f68975294c34a9d578af71915151cc5" resname="profile.my_connections.active_connections">
         <source>profile.my_connections.active_connections</source>
@@ -241,17 +241,17 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
       </trans-unit>
       <trans-unit id="d1a92495d8e08cf89bf517af5ffe5461407d2921" resname="profile.my_connections.orcid.connect_title">
         <source>profile.my_connections.orcid.connect_title</source>
-        <target>Ligar</target>
+        <target>Registre-se ou conecte seu ORCID iD</target>
         <jms:reference-file line="77">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
-        <target>O ORCID é um código alfanumérico não proprietário para identificação exclusiva de cada autor científico e/ou académico. A atribuição deste código resolve o problema de reconhecimento do autor e respetivas contribuições científicas, o que de outra forma poderia ser difícil de identificar, uma vez que é comum a mudança de nomes (por exemplo com o casamento) e em situações de diferenças culturais na ordem em que o nome é apresentado, ou possibilidade de inconsistências no uso de abreviaturas no nome próprio em diferentes sistemas de escrita.</target>
+        <target>O ORCID iD é um código alfanumérico não proprietário para identificação exclusiva de cada autor científico e/ou académico. A atribuição deste código resolve o problema de reconhecimento do autor e respetivas contribuições científicas, o que de outra forma poderia ser difícil de identificar, uma vez que é comum a mudança de nomes (por exemplo com o casamento) e em situações de diferenças culturais na ordem em que o nome é apresentado, ou possibilidade de inconsistências no uso de abreviaturas no nome próprio em diferentes sistemas de escrita.</target>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4bc8f1ebcd9026ebbc6df9e128e3a1c0d4407ebd" resname="profile.my_connections.orcid.disconnect_title">
         <source>profile.my_connections.orcid.disconnect_title</source>
-        <target>Desligado</target>
+        <target>Desligar</target>
         <jms:reference-file line="40">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bd50bc94d1957cd597c43c9a1eb6284461d48482" resname="profile.my_connections.orcid.status">
@@ -323,6 +323,11 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
         <target>O Meu Perfil</target>
         <jms:reference-file line="4">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="10">/../src/OpenConext/ProfileBundle/Resources/views/navigation-tabs.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="289fa3a9e3353ac8d7bac3a78bcc8661384d0703" resname="profile.my_profile.user_data_download">
+        <source>profile.my_profile.user_data_download</source>
+        <target>Você pode efetuar o download da visão geral dos seus dados pessoais que estão armazenados na SURFconext no formato json.&lt;br&gt; &lt;a class="download" href="/my-surfconext/download"&gt;Download visão geral&lt;/a&gt;</target>
+        <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="41aded5ca8217152487f685b47f640799d76e24f" resname="profile.my_services.attribute_release_description">
         <source>profile.my_services.attribute_release_description</source>
@@ -515,29 +520,29 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
       <trans-unit id="f5d0957a4421ee6ecaf81e9c8a568650a015770a" resname="profile.saml.attributes.eduPersonTargetedId.persistent">
         <source>profile.saml.attributes.eduPersonTargetedId.persistent</source>
         <target>Pseudônimo que difere para cada serviço</target>
-        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="36">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6dfc05705bd5f8f27a26d62e7826aebaeecd4d15" resname="profile.saml.attributes.eduPersonTargetedId.transient">
         <source>profile.saml.attributes.eduPersonTargetedId.transient</source>
         <target>Pseudônimo que muda a cada login</target>
-        <jms:reference-file line="33">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3c4f154ed62c838e29dc22974f574af5cb2b2f8e" resname="profile.table.attribute_name">
         <source>profile.table.attribute_name</source>
         <target>Atributo</target>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="24">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="28">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/aa.html.twig</jms:reference-file>
-        <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="547ea301afc0bae2bdbdedec6915fa51c654ff52" resname="profile.table.attribute_value">
         <source>profile.table.attribute_value</source>
         <target>Valor</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="7">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
+        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3dfefde5aa8265c36d1a1d339595faa14c89eaa7" resname="profile.table.motivation">
         <source>profile.table.motivation</source>
@@ -547,22 +552,22 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
       <trans-unit id="0116d16056d9cd75bfe4bf170b5b504d8b939a38" resname="profile.table.source_description.orcid">
         <source>profile.table.source_description.orcid</source>
         <target>ORCID iD</target>
-        <jms:reference-file line="177">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="176">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e591d4c6d94037cb4aca3294d989e63eeb15663f" resname="profile.table.source_description.sab">
         <source>profile.table.source_description.sab</source>
         <target>Gestão de Autorização SURFconext</target>
-        <jms:reference-file line="178">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="177">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="98a7e142496864319f0b2c6b931da715b4e000db" resname="profile.table.source_description.surfmarket_entitlements">
         <source>profile.table.source_description.surfmarket_entitlements</source>
         <target>Direitos SURFconext</target>
-        <jms:reference-file line="179">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="178">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b1c5ddcfd432d3477264f068b21ff7996915e06" resname="profile.table.source_description.voot">
         <source>profile.table.source_description.voot</source>
         <target>Membros do Grupo</target>
-        <jms:reference-file line="176">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+        <jms:reference-file line="175">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

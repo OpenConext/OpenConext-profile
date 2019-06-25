@@ -18,18 +18,18 @@
 
 namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Value\Locale;
+use OpenConext\Profile\Api\ApiUserInterface;
 
-interface LocaleRepository
+interface UserRepositoryInterface
 {
     /**
-     * @return Locale|null
+     * @return ApiUserInterface|null
      */
-    public function findLocale();
+    public function findUser();
 
     /**
-     * @param Locale $locale
+     * @param ApiUserInterface $user
      * @return void
      */
-    public function save(Locale $locale);
+    public function save(ApiUserInterface $user);
 }
