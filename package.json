@@ -1,8 +1,7 @@
 {
   "name": "openconext-profile",
   "version": "1.0.0",
-  "description": "OpenConext-profile",
-  "main": "index.js",
+  "description": "OpenConext-profile provides an overview of your OpenConext profile",
   "dependencies": {
     "jquery": "^3.4.1",
     "material-design-lite": "1.0.5"
