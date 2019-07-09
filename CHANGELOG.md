@@ -1,5 +1,11 @@
 # Next release
 
+# 2.0.1
+**Changes**
+
+* Add /build to asset paths #131
+* Bump Stepup SAML bundle to 4.1.5 #132
+
 # 2.0.0
 
 Version 2.0 drops PHP 5.6 support. And more important Symfony was updated to version 3.4

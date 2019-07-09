@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "329241d243d58e7c699df5dee35d7695",
+    "content-hash": "f8bf4b9dfeeab72b911754725b203d98",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1930,16 +1930,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "4.1.4",
+            "version": "4.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "bcac100da97865c30e8e079bf824b5e4452a268d"
+                "reference": "6b56f5ba41db8bf31d4278a75c2cc04e7782bcbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/bcac100da97865c30e8e079bf824b5e4452a268d",
-                "reference": "bcac100da97865c30e8e079bf824b5e4452a268d",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/6b56f5ba41db8bf31d4278a75c2cc04e7782bcbf",
+                "reference": "6b56f5ba41db8bf31d4278a75c2cc04e7782bcbf",
                 "shasum": ""
             },
             "require": {
@@ -1978,7 +1978,7 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2019-05-28T08:15:22+00:00"
+            "time": "2019-07-09T12:45:12+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5127,7 +5127,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.6|^7.0"
+        "php": "^7.0"
     },
     "platform-dev": []
 }
