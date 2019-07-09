@@ -15,9 +15,9 @@ parameters:
         nl: "https://www.surfconext.nl"
         pt: "https://www.surfconext.nl/en"
     profile_explanation_image_path:
-        en: "/images/profile_home_en.png"
-        nl: "/images/profile_home_nl.png"
-        pt: "/images/profile_home_pt.png"
+        en: "build/images/profile_home_en.png"
+        nl: "build/images/profile_home_nl.png"
+        pt: "build/images/profile_home_pt.png"
     attribute_information_url:
         en: 'https://support.surfconext.nl/attributes-en'
         nl: 'https://support.surfconext.nl/attributes-nl'
