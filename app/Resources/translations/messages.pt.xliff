@@ -429,7 +429,7 @@ Esta página de perfil fornece informações que podem vir a ser dados pessoais.
       </trans-unit>
       <trans-unit id="85dde9b709fc5f0684d02cec3d797f669f3dd001" resname="profile.my_surf_conext.account_data_retention_period">
         <source>profile.my_surf_conext.account_data_retention_period</source>
-        <target>Até 3 anos após o primeiro login.</target>
+        <target>Até 3 anos após o último login.</target>
         <jms:reference-file line="23">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="be73e1bc34923830cbb8c48bfc1697af4b1a827a" resname="profile.my_surf_conext.consent_data">
