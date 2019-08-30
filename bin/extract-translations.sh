@@ -1,2 +1,2 @@
 #!/bin/bash
-app/console translation:extract --config=app --env=dev
+bin/console translation:extract --config=app --env=dev nl en pt
