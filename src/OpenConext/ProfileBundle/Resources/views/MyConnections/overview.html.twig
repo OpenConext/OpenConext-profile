@@ -62,20 +62,21 @@
 
                 <div class="attribute-container">
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--3-col">
-                            <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
-                            <img src="{{ asset(connection.logoPath) }}" class="logo" title="{{ 'profile.my_connections.orcid.title'|trans }}" alt="ORCID iD logo" />
-                        </div>
-                        <div class="mdl-cell mdl-cell--6-col">
-                            <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
-                            <p>{{ 'profile.my_connections.orcid.description'|trans|nl2br }}</p>
-                        </div>
-                        <div class="mdl-cell mdl-cell--3-col">
+                        <div class="mdl-cell mdl-cell--12-col">
                             <a
                                     class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored orcid"
                                     href="{{ connection.connectUrl }}">
                                 {{ 'profile.my_connections.orcid.connect_title'|trans }}
                             </a>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--3-col">
+                            <div class="mdl-layout-title">{{ 'profile.my_connections.service_label'|trans }}</div>
+                            <img src="{{ asset(connection.logoPath) }}" class="logo" title="{{ 'profile.my_connections.orcid.title'|trans }}" alt="ORCID iD logo" />
+                        </div>
+                        <div class="mdl-cell mdl-cell--9-col">
+                            <div class="mdl-layout-title">{{ 'profile.my_connections.description_label'|trans }}</div>
+                            <p>{{ 'profile.my_connections.orcid.description'|trans|nl2br }}</p>
                         </div>
                     </div>
                 </div>
