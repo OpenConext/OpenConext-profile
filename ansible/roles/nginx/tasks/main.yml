@@ -32,18 +32,28 @@
   notify:
     - Restart nginx
 
-- name: Add firewall rule for HTTP
-  sudo: yes
-  firewalld: service=http permanent=true state=enabled
-  notify: Reload firewall
+- name: Set firewall rules
+  become: yes
+  firewalld:
+    service: "{{ item.service }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - { service: "https" }
+    - { service: "http" }
 
-- name: Add firewall rule for HTTPS
-  sudo: yes
-  firewalld: service=https permanent=true state=enabled
-  notify: Reload firewall
+- name: Reload firewall
+  shell: systemctl stop firewalld && sleep 5 && systemctl start firewalld
 
-- name: Add eth1 interface to firewall
-  command: firewall-cmd --zone=public --add-interface=eth1
+- name: Initialize firewall
+  become: yes
+  firewalld:
+    zone: public
+    interface: eth1
+    state: enabled
+
+- name: Reload firewall
+  shell: systemctl stop firewalld && sleep 5 && systemctl start firewalld
 
 - name: Start nginx
   service: name=nginx state=started

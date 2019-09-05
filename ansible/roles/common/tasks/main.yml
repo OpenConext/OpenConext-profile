@@ -2,8 +2,14 @@
 - name: Set SELinux policy to targeted & permissive
   selinux: policy=targeted state=disabled
 
+- name: Update ca-certificates
+  yum: name=ca-certificates state=latest
+
 - name: Enable EPEL repo
-  yum: name=epel-release.noarch state=present
+  yum: name=epel-release state=present
+
+- name: Install Remi repo
+  yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
 - name: "Configure the timezone #1"
   template: src=timezone.j2 dest=/etc/timezone
@@ -12,5 +18,5 @@
   file: src=/usr/share/zoneinfo/{{timezone}} dest=/etc/localtime state=link force=yes backup=yes
 
 - name: Install ntp
-  yum: name=ntp state=present
+  yum: name=ntp enablerepo=epel state=present
   notify: Start ntp

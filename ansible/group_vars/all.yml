@@ -17,6 +17,7 @@ php:
       - php-mysql
       - php-gmp
       - php-xml
+      - php-zip
 ssl_cert_path: /etc/nginx/conf.d/ssl/star.vm.openconext.org.pem
 ssl_key_path: /etc/nginx/conf.d/ssl/star.vm.openconext.org.key
 engine_idp_certificate_directory: /etc/openconext
