@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2018-07-03T09:59:52Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2019-08-30T09:34:30Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,17 +9,17 @@
       <trans-unit id="4422839d75319cb038791289059a5c37b6464d3e" resname="profile.application.header">
         <source>profile.application.header</source>
         <target>Overview of your SURFconext profile</target>
-        <jms:reference-file line="20">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="11">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c01fb1e47571e92614557108db2ebb516dcdb7c0" resname="profile.application.platform_connection_description">
         <source>profile.application.platform_connection_description</source>
         <target>This is a service connected through</target>
-        <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="62">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="18e70a3e75cc5e9f61e4a379a265ae1bcdb71148" resname="profile.application.platform_connection_name">
         <source>profile.application.platform_connection_name</source>
         <target>SURFconext</target>
-        <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="62">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d25aa7a2e9d40a5e7039dd3b93bd91eea40251c5" resname="profile.application.title">
         <source>profile.application.title</source>
@@ -39,7 +39,7 @@
       <trans-unit id="357ac936f886f677a14e8401fb48af23827d513d" resname="profile.attribute_support.send_mail">
         <source>profile.attribute_support.send_mail</source>
         <target>Send data</target>
-        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Form/Type/AttributeSupportMailType.php</jms:reference-file>
+        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Form/Type/AttributeSupportMailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="a12580758185add38d70d00e359e0d4cb2463a0d" resname="profile.attribute_support.short_title">
         <source>profile.attribute_support.short_title</source>
@@ -64,12 +64,12 @@
       <trans-unit id="2e799f3107a8bb43962025dfc3883e9b7ac96d41" resname="profile.confirm_connection_delete.confirm">
         <source>profile.confirm_connection_delete.confirm</source>
         <target>Confirm</target>
-        <jms:reference-file line="50">/../src/OpenConext/ProfileBundle/Form/Type/ConfirmConnectionDeleteType.php</jms:reference-file>
+        <jms:reference-file line="52">/../src/OpenConext/ProfileBundle/Form/Type/ConfirmConnectionDeleteType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="757f129ed6459928baf538b9c6947626808aee49" resname="profile.confirm_connection_delete.confirm_label">
         <source>profile.confirm_connection_delete.confirm_label</source>
         <target>I agree to disconnect this connection.</target>
-        <jms:reference-file line="35">/../src/OpenConext/ProfileBundle/Form/Type/ConfirmConnectionDeleteType.php</jms:reference-file>
+        <jms:reference-file line="37">/../src/OpenConext/ProfileBundle/Form/Type/ConfirmConnectionDeleteType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="efb49a4a4007574c18d8065000f28c859063942b" resname="profile.error.403.description">
         <source>profile.error.403.description</source>
@@ -114,7 +114,7 @@
       <trans-unit id="f067c475cbd61e820226d34409c92ecf1d184765" resname="profile.information_request.send_mail">
         <source>profile.information_request.send_mail</source>
         <target>Confirm request</target>
-        <jms:reference-file line="33">/../src/OpenConext/ProfileBundle/Form/Type/InformationRequestMailType.php</jms:reference-file>
+        <jms:reference-file line="34">/../src/OpenConext/ProfileBundle/Form/Type/InformationRequestMailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="5e4e38a5280ad5872ca42364782d403241b69ebc" resname="profile.information_request.short_title">
         <source>profile.information_request.short_title</source>
@@ -172,17 +172,12 @@ This profile page gives you insight in which personal data, provided by your ins
       <trans-unit id="f554f3775d3630e1d20047b07d2b2e7735f58970" resname="profile.locale.choose_locale">
         <source>profile.locale.choose_locale</source>
         <target>Choose language</target>
-        <jms:reference-file line="73">/../src/OpenConext/ProfileBundle/Form/Type/SwitchLocaleType.php</jms:reference-file>
+        <jms:reference-file line="75">/../src/OpenConext/ProfileBundle/Form/Type/SwitchLocaleType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="0135c23e335a69b86430fa515b01d20cb65a21c4" resname="profile.locale.en">
         <source>profile.locale.en</source>
         <target>EN</target>
         <jms:reference-file line="169">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="0135c23e335a69b86430fa515b01d20cb65a21c5" resname="profile.locale.pt">
-        <source>profile.locale.pt</source>
-        <target>PT</target>
-        <jms:reference-file line="180">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6f6d681a481879428f3cb1fedecc96d9774eecbb" resname="profile.locale.locale_change_fail">
         <source>profile.locale.locale_change_fail</source>
@@ -198,6 +193,11 @@ This profile page gives you insight in which personal data, provided by your ins
         <source>profile.locale.nl</source>
         <target>NL</target>
         <jms:reference-file line="170">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b39bb83bf0ec745065662b5074148678171141b7" resname="profile.locale.pt">
+        <source>profile.locale.pt</source>
+        <target>PT</target>
+        <jms:reference-file line="180">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9efb18562f68975294c34a9d578af71915151cc5" resname="profile.my_connections.active_connections">
         <source>profile.my_connections.active_connections</source>
@@ -246,7 +246,7 @@ This profile page gives you insight in which personal data, provided by your ins
       </trans-unit>
       <trans-unit id="c4b69512880a8532d9740e870ed8a60b8791b3bc" resname="profile.my_connections.orcid.description">
         <source>profile.my_connections.orcid.description</source>
-        <target>Connect your existing or newly created ORCID iD to SURFconext once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.
+        <target xml:space="preserve">Connect your existing or newly created ORCID iD to SURFconext once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.
 
 After you have been redirected to ORCID, you can link your ORCID iD by logging in and clicking on 'Authorize'. In the future, your ORCID iD can then be passed on via SURFconext to services that want to use it.</target>
         <jms:reference-file line="71">/../src/OpenConext/ProfileBundle/Resources/views/MyConnections/overview.html.twig</jms:reference-file>
@@ -328,8 +328,8 @@ After you have been redirected to ORCID, you can link your ORCID iD by logging i
       </trans-unit>
       <trans-unit id="289fa3a9e3353ac8d7bac3a78bcc8661384d0703" resname="profile.my_profile.user_data_download">
         <source>profile.my_profile.user_data_download</source>
-        <target>You can download an overview with personal data stored by SURFconext in json format.&lt;br&gt; &lt;a class="download" href="/my-surfconext/download"&gt;Download overview&lt;/a&gt;</target>
-        <jms:reference-file line="21">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <target><![CDATA[You can download an overview with personal data stored by SURFconext in json format.<br> <a class="download" href="/my-surfconext/download">Download overview</a>]]></target>
+        <jms:reference-file line="64">/../src/OpenConext/ProfileBundle/Resources/views/MySurfConext/overview.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="41aded5ca8217152487f685b47f640799d76e24f" resname="profile.my_services.attribute_release_description">
         <source>profile.my_services.attribute_release_description</source>
@@ -511,13 +511,13 @@ After you have been redirected to ORCID, you can link your ORCID iD by logging i
       <trans-unit id="cc8455ffe1c5bde28802e8445e31e3d1f5c12a7a" resname="profile.navigation.help">
         <source>profile.navigation.help</source>
         <target>Help</target>
-        <jms:reference-file line="26">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
-        <jms:reference-file line="79">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="17">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="70">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="73f3979adec1e8f8b69cd5b18c0bdad323cde224" resname="profile.navigation.terms_of_service">
         <source>profile.navigation.terms_of_service</source>
         <target>Terms of Service</target>
-        <jms:reference-file line="82">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
+        <jms:reference-file line="73">/../src/OpenConext/ProfileBundle/Resources/views/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f5d0957a4421ee6ecaf81e9c8a568650a015770a" resname="profile.saml.attributes.eduPersonTargetedId.persistent">
         <source>profile.saml.attributes.eduPersonTargetedId.persistent</source>
@@ -534,7 +534,7 @@ After you have been redirected to ORCID, you can link your ORCID iD by logging i
         <target>Attribute</target>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="13">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="28">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="24">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/aa.html.twig</jms:reference-file>
         <jms:reference-file line="5">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
@@ -543,7 +543,7 @@ After you have been redirected to ORCID, you can link your ORCID iD by logging i
         <target>Value</target>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/AttributeSupport/overview.html.twig</jms:reference-file>
         <jms:reference-file line="14">/../src/OpenConext/ProfileBundle/Resources/views/InformationRequest/overview.html.twig</jms:reference-file>
-        <jms:reference-file line="29">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
+        <jms:reference-file line="25">/../src/OpenConext/ProfileBundle/Resources/views/MyProfile/overview.html.twig</jms:reference-file>
         <jms:reference-file line="6">/../src/OpenConext/ProfileBundle/Resources/views/MyServices/AttributeList/idp.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3dfefde5aa8265c36d1a1d339595faa14c89eaa7" resname="profile.table.motivation">
