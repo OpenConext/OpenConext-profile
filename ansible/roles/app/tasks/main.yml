@@ -9,12 +9,16 @@
     name: php-fpm
     state: restarted
 
+- name: Install nodejs repository
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+
 - name: Install tools
   yum:
     name:
       - unzip
       - composer
       - nodejs
+      - ant
     state: present
     enablerepo: remi-php72
 

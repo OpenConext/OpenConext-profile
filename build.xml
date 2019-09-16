@@ -2,7 +2,7 @@
 
 <project name="Profile-ci" default="build">
     <target name="build"
-            depends="php-lint-ci,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit-ci,php-security-checker"/>
+            depends="php-lint-ci,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit-ci,php-security-checker,npm-audit"/>
 
     <target name="get-changeset.php.raw"
             description="creates a list of changed php files separated by newline">
@@ -93,6 +93,12 @@
         <exec executable="vendor/bin/phpunit" failonerror="true">
             <arg line="--configuration=${basedir}/phpunit.xml"/>
             <arg line="--coverage-text"/>
+        </exec>
+    </target>
+
+    <target name="npm-audit" description="Run npm audit">
+        <exec executable="npm" failonerror="true">
+            <arg line="audit"/>
         </exec>
     </target>
 
