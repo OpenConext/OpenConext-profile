@@ -309,13 +309,10 @@ tr.service:hover {
 .attribute-container .mdl-grid .mdl-cell img.logo {
     border: 1px solid #cccccc;
     background: #ffffff;
-    width: 200px;
     float: left;
-    padding: 10px;
-    margin: 10px 0 10px 0;
-    max-width: 100%;
-    height: auto;
-    display: block;
+    margin: 0;
+    width: auto;
+    display: inline-block;
 }
 
 .attribute-container .mdl-grid .mdl-cell p.orcid {
@@ -334,9 +331,11 @@ tr.service:hover {
 }
 
 .attribute-container .mdl-grid .mdl-cell a.mdl-button {
+    box-sizing: border-box;
     display: block;
-    width: 260px;
-    margin: 40px auto;
+    max-width: 260px;
+    margin-top: 20px;
+    padding-left: 40px;
     text-align: right;
     text-decoration: none;
 }
@@ -465,5 +464,13 @@ a.download:before {
     /* Content container */
     .mdl-layout__content .content-container .introduction-explanation-image {
         max-width: 704px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    /* orcid button */
+    .mdl-button.orcid {
+        font-size: 9px;
     }
 }
