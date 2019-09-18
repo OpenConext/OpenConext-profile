@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
         vm.memory = 1024
     end
 
-    config.vm.box = "jayunit100/centos7"
+    config.vm.box = "centos/7"
 
     config.vm.hostname = "profile-dev.vm.openconext.org"
     config.vm.network :private_network, ip: "192.168.67.10"

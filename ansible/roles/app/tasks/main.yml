@@ -3,3 +3,42 @@
 
 - name: Add engineblock api to hosts
   lineinfile: dest=/etc/hosts state=present line="{{ engine_api.address }}  {{ engine_api.host }}"
+
+- name: Restart php-fpm
+  service:
+    name: php-fpm
+    state: restarted
+
+- name: Install nodejs repository
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+
+- name: Install tools
+  yum:
+    name:
+      - unzip
+      - composer
+      - nodejs
+      - ant
+    state: present
+    enablerepo: remi-php72
+
+- name: Install composer dependencies
+  shell: composer install
+  args:
+    chdir: /var/www/{{ server.name }}
+  become: yes
+  become_user: vagrant
+
+- name: Install npm dependencies
+  shell: npm install
+  args:
+    chdir: /var/www/{{ server.name }}
+  become: yes
+  become_user: vagrant
+
+- name: Generate npm assets
+  shell: npm run encore dev
+  args:
+    chdir: /var/www/{{ server.name }}
+  become: yes
+  become_user: vagrant

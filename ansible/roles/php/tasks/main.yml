@@ -1,33 +1,14 @@
 ---
-- name: Install REMI repo
-  yum: name=http://rpms.famillecollet.com/enterprise/remi-release-7.rpm state=present
-
-- name: Enable REMI repo
-  copy: src=remi.repo dest=/etc/yum.repos.d/remi.repo
-
-# Enable php72 as the default php version.
-- name: Install Yum utils
-  yum:
-    name:
-      - yum-utils
-
-- name: enable remi-php72
-  shell: yum-config-manager --enable remi-php72
-
-- name: Install php7-cli
-  sudo: yes
-  yum: pkg=php-cli state=present enablerepo=remi
+- name: Install php-fpm
+  become: yes
+  yum: pkg=php-fpm state=present enablerepo=remi-php72
 
 - name: Ensure timezone is set in cli php.ini
   lineinfile: dest=/etc/php.ini regexp='date.timezone =' line='date.timezone = {{ timezone }}'
 
-- name: Install php-fpm
-  sudo: yes
-  yum: pkg=php-fpm state=present enablerepo=remi
-
 - name: Install PHP Packages
-  sudo: yes
-  yum: pkg={{ item }} state=present enablerepo=remi
+  become: yes
+  yum: pkg={{ item }} state=present enablerepo=remi-php72
   with_items: "{{ php.packages }}"
 
 - name: Create PHP session directory
