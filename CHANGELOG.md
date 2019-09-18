@@ -1,5 +1,13 @@
 # Next release
 
+# 2.0.2
+
+**Changes**
+
+ * Optimize ORCiD button placement for all devices #136
+ * Add ECK ID saml attribute translation #133
+ * Fix the data retention translation #134
+
 # 2.0.1
 **Changes**
 
