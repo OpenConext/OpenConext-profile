@@ -15,6 +15,7 @@
 - name: Install tools
   yum:
     name:
+      - git
       - unzip
       - composer
       - nodejs
