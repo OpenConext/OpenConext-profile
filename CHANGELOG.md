@@ -1,5 +1,8 @@
 # Next release
 
+#Next
+ * Upgrade Stepup-saml-bundle to version 4.1.8 #139
+
 # 2.0.2
 
 **Changes**
