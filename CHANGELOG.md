@@ -1,5 +1,10 @@
 # Next release
 
+# 1.2.3
+This is a security release that will harden the application against CVE 2019-3465
+* Upgrade xmlseclibs to version 3.0.4 #138
+
+
 # 1.2.2
 
 Further removes the SURFconextId usages in the project. The AA Api client still used the attribute, causing issues on the My connections page. Thanks @domgon for raising the issue!

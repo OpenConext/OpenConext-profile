@@ -33,3 +33,9 @@ branches:
   only:
     - master
     - develop
+    - /^hotfix\/(.*)$/
+
+addons:
+  apt:
+    packages:
+      - ant
