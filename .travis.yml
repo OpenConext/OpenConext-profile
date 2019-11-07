@@ -17,14 +17,13 @@ cache:
     - ~/.composer
 
 before_script:
-  - sudo apt-get install ant
   - phpenv config-add travis.php.ini
   - composer self-update
   - composer install --prefer-dist -n -o
   - npm i && npm run build
 
 script:
-  - ant
+  - vendor/bin/phing
 
 notifications:
   slack:
