@@ -1,5 +1,10 @@
 # Next release
 
+# 2.0.3
+This is a security release that will harden the application against CVE 2019-3465
+
+ * Upgrade xmlseclibs to version 3.0.4 #141
+
 # 2.0.2
 
 **Changes**
