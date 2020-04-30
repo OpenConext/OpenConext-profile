@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "OpenConext-profile provides an overview of your OpenConext profile",
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "material-design-lite": "1.0.5"
   },
   "devDependencies": {
