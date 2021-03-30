@@ -553,7 +553,7 @@
       </trans-unit>
       <trans-unit id="6b774eef2985418848d13469b4787066e180cdf2" resname="profile.saml.attributes.ou">
         <source>profile.saml.attributes.ou</source>
-        <target state="new">profile.saml.attributes.ou</target>
+        <target>Organisatieonderdeel</target>
         <jms:reference-file line="45">/../src/OpenConext/ProfileBundle/Resources/views/translations.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fd57f4100bbb857e85b7cf363cc0b9aa71b28cb1" resname="profile.saml.attributes.owner">
