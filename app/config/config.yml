@@ -129,7 +129,6 @@ open_conext_attribute_aggregation_api_client:
         verify_ssl: '%attribute_aggregation_api_verify_ssl%'
 
 open_conext_profile:
-    engine_block_entity_id: '%saml_remote_idp_entity_id%'
     locales: '%locales%'
     default_locale: '%default_locale%'
     locale_cookie_domain: '%open_conext_locale_cookie_domain%'
