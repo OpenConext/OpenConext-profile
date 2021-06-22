@@ -7,7 +7,7 @@ parameters:
     open_conext_locale_cookie_domain: .vm.openconext.org
     open_conext_locale_cookie_expires_in: "+2 months"
     open_conext_locale_cookie_http_only: false
-    open_conext_locale_cookie_secure: false
+    open_conext_locale_cookie_secure: true
 
     saml_sp_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
     saml_sp_privatekey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_privatekey.pem
