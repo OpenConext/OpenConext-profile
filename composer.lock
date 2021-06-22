@@ -1930,16 +1930,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "4.1.8",
+            "version": "4.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "cf88eb328a31d30a3b94deea7931a759bd362aab"
+                "reference": "2fa2d44e5a005c2044b7898d9624648a4850b129"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/cf88eb328a31d30a3b94deea7931a759bd362aab",
-                "reference": "cf88eb328a31d30a3b94deea7931a759bd362aab",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/2fa2d44e5a005c2044b7898d9624648a4850b129",
+                "reference": "2fa2d44e5a005c2044b7898d9624648a4850b129",
                 "shasum": ""
             },
             "require": {
@@ -1947,8 +1947,9 @@
                 "php": ">=5.6,<8.0-dev",
                 "robrichards/xmlseclibs": "^3.0.4",
                 "simplesamlphp/saml2": "3.2.*",
-                "symfony/dependency-injection": ">=2.7,<4",
-                "symfony/framework-bundle": ">=2.7,<4"
+                "symfony/dependency-injection": "^3.4.26 || ^4.3",
+                "symfony/framework-bundle": "^3.4.26 || ^4.3",
+                "symfony/templating": "^3.4 || ^4.3"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
@@ -1958,7 +1959,8 @@
                 "sebastian/exporter": "~2.0",
                 "sebastian/phpcpd": "^2.0",
                 "sensiolabs/security-checker": "^5.0",
-                "squizlabs/php_codesniffer": "^3.0"
+                "squizlabs/php_codesniffer": "^3.0",
+                "symfony/phpunit-bridge": "^4.3"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1970,7 +1972,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A Symfony2 bundle that integrates the simplesamlphp\\saml2 library with Symfony",
+            "description": "A Symfony 3 (with SF 4 support) bundle that integrates the simplesamlphp\\saml2 library with Symfony.",
             "keywords": [
                 "SAML2",
                 "saml",
@@ -1978,7 +1980,11 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2019-11-06T13:09:53+00:00"
+            "support": {
+                "issues": "https://github.com/OpenConext/Stepup-saml-bundle/issues",
+                "source": "https://github.com/OpenConext/Stepup-saml-bundle/tree/master"
+            },
+            "time": "2020-03-17T13:59:34+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5132,5 +5138,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2"
-    }
+    },
+    "plugin-api-version": "2.1.0"
 }
