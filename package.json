@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "description": "OpenConext-profile provides an overview of your OpenConext profile",
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.6.0",
     "material-design-lite": "1.0.5"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.27.0"
+    "@symfony/webpack-encore": "^1.5.0",
+    "file-loader": "^6.2.0"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1",
     "encore": "encore",
     "build": "encore production",
     "watch": "encore dev --watch"
+  },
+  "resolutions": {
+    "css-what": "^5.0.1"
   },
   "repository": {
     "type": "git",
