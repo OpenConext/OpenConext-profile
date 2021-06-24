@@ -1,0 +1,64 @@
+---
+
+version: "3.8"
+
+services:
+  openconext:
+    build:
+      context: 'docker/'
+      dockerfile: Dockerfiledev
+      target: openconext
+    extra_hosts:
+      engine-api.vm.openconext.org: 127.0.0.2
+      engine.vm.openconext.org: 127.0.0.1
+      manage.vm.openconext.org: 127.0.0.1
+    privileged: true
+    networks:
+      profile:
+        aliases:
+          - db.vm.openconext.org
+          - manage.vm.openconext.org
+          - engine-api.vm.openconext.org
+    volumes:
+      - profile_mysql:/var/lib/mysql
+      - profile_mongo:/var/lib/mongo
+    ports:
+      - "443:443"
+    expose: 
+      - 3306
+  php-fpm:
+    build:
+      context: 'docker/'
+      dockerfile: Dockerfiledev
+      target: spdphpfpm
+    volumes:
+      - .:/var/www/html/
+      - type: bind
+        source: /dev/log
+        target: /dev/log
+    networks:
+      profile:
+        aliases: 
+          - profile_php-fpm
+  web:
+    build:
+      context: 'docker/'
+      dockerfile: Dockerfiledev
+      target: spdhttpd
+    depends_on:
+      - php-fpm
+    volumes:
+      - .:/var/www/html/
+    ports: 
+      - "8080:80"
+    networks:
+      profile:
+        aliases: 
+          - profile_web
+
+networks:
+  profile:
+
+volumes:
+  profile_mysql:
+  profile_mongo:
