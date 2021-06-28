@@ -24,6 +24,24 @@ information via EngineBlock's internal API.
 - EngineBlock must be configured to release an unspecified NameID to Profile
 
 ## Development
+
+You can use both vagrant and docker to start a development environment.
+
+### Docker
+
+The docker container comes with EB and profile already installed & configured.  Follow the below steps to get it up and running.
+
+1. Clone the repo
+2. Copy parameters file: `cp app/config/parameters.yml.dist app/config/parameters.yml`
+3. Copy global_view_parameters file: `cp app/config/global_view_parameters.yml.dist app/config/global_view_parameters.yml`
+4. Install composer dependencies: `SYMFONY_ENV=dev composer install --prefer-dist`
+5. Install npm dependencies: `npm i`
+6. Run a build: `npm run build`
+7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
+8. Copy the app_dev file: `cp ./ansible/roles/app/files/app_dev.php.dist web/app_dev.php`
+9. Start developing on docker: `docker-compose up -d`
+
+### Vagrant
 To setup your development environment, run `vagrant up` in the project directory.
 Make sure an IdP (OpenConext Engineblock) is configured and running correctly. Do 
 so by using the installation instructions found in the [Openconext-Deploy repository](https://github.com/OpenConext/OpenConext-deploy/blob/master/README.md).
@@ -42,7 +60,7 @@ EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
 
     192.168.66.98 engine-api.vm.openconext.org aa.vm.openconext.org
 
-### Configure Profile as SP in service registry
+#### Configure Profile as SP in service registry
 
  1. Visit https://manage.vm.openconext.org/
  2. Enter username 'admin' on the mujina IDP login form (password also 'admin')
