@@ -5,26 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
-        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--white mdl-color-text--grey-800">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">{{ 'profile.application.header'|trans }}</span>
-
-                <div class="mdl-layout-spacer"></div>
-
-                <nav class="mdl-navigation hide-mobile">
-                    {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
-                    <a class="mdl-navigation__link" href="{{ global_view_parameters.helpUrl }}" target="_blank">{{ 'profile.navigation.help'|trans }}<i class="fa fa-question-circle"></i></a>
-                </nav>
-
-                <nav class="mdl-navigation show-mobile">
-                    <a class="mdl-navigation__link" href="#footer">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </nav>
-            </div>
-        </header>
-        <main class="mdl-layout__content">
+    <header class="">
+        {# todo: insert surf logo & text surfconext profile #}
+    </header>
+    <main class="mdl-layout__content">
         {% if app.session.flashbag is not empty %}
             {% for type, messages in app.session.flashBag %}
                 {% for message in messages %}
@@ -41,44 +25,30 @@
                 {% endfor %}
             {% endfor %}
         {% endif %}
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--1-col"></div>
-                <div class="content-container mdl-color--white mdl-shadow--2dp mdl-color-text--grey-800 mdl-cell mdl-cell--10-col">
-                    <div class="navigation-tabs">
-                        {% include 'OpenConextProfileBundle::navigation-tabs.html.twig' %}
-                    </div>
-                    <div class="content">
-                        {% block content %}
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
-
-            <footer id="footer" class="footer mdl-grid">
-                <div class="mdl-cell mdl-cell--1-col"></div>
-                <div class="footer-content mdl-cell mdl-cell--10-col">
-                    <div class="mdl-grid">
-                        <div class="footer-left mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
-                            <p>{{ 'profile.application.platform_connection_description'|trans }} <a href="{{ global_view_parameters.platformUrl }}" target="_blank">{{ 'profile.application.platform_connection_name'|trans }}</a></p>
-                        </div>
-                        <div class="footer-mid mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
-                            {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
-                        </div>
-                        <div class="footer-right mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
-                            <ul class="footer-navigation">
-                                <li>
-                                    <a href="{{ global_view_parameters.helpUrl }}" target="_blank">{{ 'profile.navigation.help'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ global_view_parameters.termsOfServiceUrl }}" target="_blank">{{ 'profile.navigation.terms_of_service'|trans }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </main>
-    </div>
+        {# todo: remove this div once styling is adjusted #}
+        <div class="navigation-tabs">
+            {% include 'OpenConextProfileBundle::navigation-tabs.html.twig' %}
+        </div>
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <footer id="footer" class="footer">
+        <p>{{ 'profile.application.platform_connection_description'|trans }} <a href="{{ global_view_parameters.platformUrl }}" target="_blank">{{ 'profile.application.platform_connection_name'|trans }}</a></p>
+        {# todo: most likely remove or hide this div after styling is adjusted #}
+        <div class="">
+            {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
+        </div>
+        <ul class="footer-navigation">
+            <li>
+                <a href="{{ global_view_parameters.helpUrl }}" target="_blank">{{ 'profile.navigation.help'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ global_view_parameters.termsOfServiceUrl }}" target="_blank">{{ 'profile.navigation.terms_of_service'|trans }}</a>
+            </li>
+        </ul>
+    </footer>
 {% endblock %}
 
 {% block javascripts %}
