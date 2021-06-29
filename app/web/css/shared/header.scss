@@ -1,0 +1,7 @@
+@import '../helpers/variables';
+
+.header {
+  background-color: $brownGray;
+  box-shadow: 0 0 0 2px $darkishBlueTwo;
+  padding: 1rem;
+}

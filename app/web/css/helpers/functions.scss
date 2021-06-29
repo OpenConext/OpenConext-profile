@@ -1,0 +1,10 @@
+/*******************************************************************
+    Generic sass-functions
+ ******************************************************************/
+@use "sass:math";
+
+// usage: calculateRem(18px)
+@function calculateRem($size) {
+    $remSize: math.div($size, 16px);
+    @return #{$remSize}rem;
+}

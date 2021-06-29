@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <h1>{{ 'profile.my_surf_conext.long_title'|trans }}</h1>
+    <h1 class="content__title">{{ 'profile.my_surf_conext.long_title'|trans }}</h1>
     <p>{{ 'profile.my_surf_conext.introduction'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}</p>
 
     <h2><i class="prepended fa fa-user"></i>{{ 'profile.my_surf_conext.account_data'|trans }}</h2>

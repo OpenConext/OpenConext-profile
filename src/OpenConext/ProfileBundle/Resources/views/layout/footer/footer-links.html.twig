@@ -1,0 +1,14 @@
+<ul class="footer__navigation">
+    <li>
+        {% include "@OpenConextProfile/helpers/external-link.html.twig" with {
+            href: global_view_parameters.termsOfServiceUrl,
+            text: 'profile.navigation.terms_of_service'|trans
+        } %}
+    </li>
+    <li>
+        {% include "@OpenConextProfile/helpers/external-link.html.twig" with {
+            href: global_view_parameters.helpUrl,
+            text: 'profile.navigation.help'|trans
+        } %}
+    </li>
+</ul>

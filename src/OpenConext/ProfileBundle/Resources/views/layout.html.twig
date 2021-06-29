@@ -5,50 +5,22 @@
 {% endblock %}
 
 {% block body %}
-    <header class="">
-        {# todo: insert surf logo & text surfconext profile #}
-    </header>
-    <main class="mdl-layout__content">
-        {% if app.session.flashbag is not empty %}
-            {% for type, messages in app.session.flashBag %}
-                {% for message in messages %}
-                    <div class="toast">
-                        <p>
-                            {% if type == 'success' %}
-                                <i class="fa fa-check"></i>
-                            {% elseif type == 'error' %}
-                                <i class="fa fa-exclamation-triangle"></i>
-                            {% endif %}
-                            {{ message|trans }}
-                        </p>
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        {% endif %}
-        {# todo: remove this div once styling is adjusted #}
-        <div class="navigation-tabs">
-            {% include 'OpenConextProfileBundle::navigation-tabs.html.twig' %}
-        </div>
-        <div class="content">
-            {% block content %}
+    <div class="container">
+        {% block header %}
+            {% include "@OpenConextProfile/layout/header.html.twig" %}
+        {% endblock %}
+        <main id="main" class="main">
+            {% include '@OpenConextProfile/layout/main/navigation.html.twig' %}
+            <div class="content">
+                {% include '@OpenConextProfile/layout/main/flashMessages.html.twig' %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+        {% block footer %}
+                {% include "@OpenConextProfile/layout/footer/footer.html.twig" %}
             {% endblock %}
-        </div>
-    </main>
-    <footer id="footer" class="footer">
-        <p>{{ 'profile.application.platform_connection_description'|trans }} <a href="{{ global_view_parameters.platformUrl }}" target="_blank">{{ 'profile.application.platform_connection_name'|trans }}</a></p>
-        {# todo: most likely remove or hide this div after styling is adjusted #}
-        <div class="">
-            {% include 'OpenConextProfileBundle::locale-switch.html.twig' %}
-        </div>
-        <ul class="footer-navigation">
-            <li>
-                <a href="{{ global_view_parameters.helpUrl }}" target="_blank">{{ 'profile.navigation.help'|trans }}</a>
-            </li>
-            <li>
-                <a href="{{ global_view_parameters.termsOfServiceUrl }}" target="_blank">{{ 'profile.navigation.terms_of_service'|trans }}</a>
-            </li>
-        </ul>
-    </footer>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

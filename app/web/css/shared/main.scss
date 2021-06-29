@@ -1,0 +1,22 @@
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.main {
+  @include border-bottom-radius(8px);
+  background-color: $white;
+  box-shadow: 0 3px 0 2px $darkishBlueTwo;
+  @include display-grid;
+  @include grid-template-columns(15% 1% 84%);
+}
+
+.content {
+  @include grid-position(1, 2, 3, 4);
+  background-color: $white;
+  padding: 1rem;
+  vertical-align: top;
+}
+
+h1.content__title {
+  margin: .3rem 0 .67rem;
+}
+
