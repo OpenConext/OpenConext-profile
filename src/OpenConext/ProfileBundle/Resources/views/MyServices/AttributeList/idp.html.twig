@@ -1,52 +1,70 @@
-<p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
-<table class="mdl-data-table">
-    <thead>
-    <tr>
-        <th>{{ 'profile.table.attribute_name'|trans }}</th>
-        <th>{{ 'profile.table.attribute_value'|trans }}</th>
-        {% if specifiedConsent.hasMotivations %}
-            <th>{{ 'profile.table.motivation'|trans }}</th>
-        {% endif %}
-    </tr>
-    </thead>
-    <tbody>
+<p class="attributeList__description">{{ 'profile.my_services.attribute_release_description'|trans }}</p>
+<ul class="attributeList">
     {% for attribute in releasedAttributes %}
         {% if attribute.attributeDefinition.hasUrnMace %}
             {% set attributeUrn = attribute.attributeDefinition.urnMace %}
         {% else %}
             {% set attributeUrn = attribute.attributeDefinition.urnOid %}
         {% endif %}
-        <tr>
-            <td title="{{ attributeUrn }}">
-                {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
-
-                {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                    <strong>{{ attributeUrn }}</strong>
-                {% else %}
-                    <strong>{{ translatedAttributeName }}</strong>
+{#        {% set hasMotivation = specifiedConsent.hasMotivations %}#}
+        {% set hasMotivation = true %}
+        {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+        {% set nameFormat = sp.nameIdFormat %}
+        {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+            {% set attributeName = attributeUrn %}
+        {% else %}
+            {% set attributeName = translatedAttributeName %}
+        {% endif %}
+        {% set tooltipId = '%id%%index%'|replace({ '%id%': id, '%index%': loop.index })|trim %}
+        <li class="attribute__row{% if not hasMotivation %} attribute__noTooltip{% endif %}">
+            <div class="attribute__name">
+                {{ attributeName }}
+                {% if hasMotivation %}
+                    {% include '@OpenConextProfile/helpers/label.html.twig' with
+                        {
+                            class: 'tooltip',
+                            hideText: true,
+                            ariaExpandable: true,
+                            id: tooltipId,
+                            text: 'consent_tooltip_screenreader'|trans({ '%attr_name%': attributeName|lower }),
+                        }
+                    %}
                 {% endif %}
-            </td>
-            <td>
+            </div>
+            <div class="attribute__value">
                 {% if attribute.attributeDefinition.name == 'eduPersonTargetedID' and (
-                        specifiedConsent.consent.serviceProvider.nameIdFormat.isTransient or
-                        specifiedConsent.consent.serviceProvider.nameIdFormat.isPersistent) %}
-                    {% if specifiedConsent.consent.serviceProvider.nameIdFormat.isTransient %}
-                        <em>{{ 'profile.saml.attributes.eduPersonTargetedId.transient'|trans }}</em>
+                    nameFormat.isTransient or
+                    nameFormat.isPersistent)
+                %}
+                    {% if nameFormat.isTransient %}
+                        {{ 'profile.saml.attributes.eduPersonTargetedId.transient'|trans }}
                     {%  else %}
-                        <em>{{ 'profile.saml.attributes.eduPersonTargetedId.persistent'|trans }}</em>
+                        {{ 'profile.saml.attributes.eduPersonTargetedId.persistent'|trans }}
                     {%  endif %}
-                {% else %}
-                    {% for attributeValue in attribute.value  %}
-                        <p class="attribute-value">{{ attributeValue.value }}</p>
-                    {% endfor %}
+                {% else %} {# todo: see if this is ok for layout #}
+                    {% if attribute.value|length > 1 %}
+                        <ul class="attribute__values">
+                            {% for attributeValue in attribute.value  %}
+                                <li class="attribute__value-multiple">{{ attributeValue.value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ attribute.value[0].value }}
+                    {% endif %}
                 {% endif %}
-            </td>
-            {% if specifiedConsent.hasMotivations %}
-            <td>
-                <p class="attribute-value">{{ specifiedConsent.motivation(attribute) }}</p>
-            </td>
+            </div>
+            {% if hasMotivation %}
+{#                {% set tooltipValue = specifiedConsent.motivation(attribute) %}#}
+                {% set tooltipValue = 'dit is een tooltip' %}
+                <input type="checkbox" tabindex="-1" class="tooltip visually-hidden" aria-expanded="false" role="button" aria-pressed="false" id="{{ tooltipId }}" name="{{ tooltipId }}" />
+                {% include '@OpenConextProfile/helpers/tooltip.html.twig' with { tooltipValue: tooltipValue } %}
             {% endif %}
-        </tr>
+        </li>
     {% endfor %}
-    </tbody>
-</table>
+    {# todo: add provided by row #}
+</ul>
+{# todo: see if following translations are used elsewhere, if not remove them:
+    - profile.table.attribute_name
+    - profile.table.attribute_value
+    - profile.table.motivation
+#}

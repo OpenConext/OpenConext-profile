@@ -1,0 +1,32 @@
+<ul class="service__list">
+    {% for specifiedConsent in consentList %}
+        {% set consent = specifiedConsent.consent %}
+        {% set sp = consent.serviceProvider %}
+        {% set orgId = sp.entity.entityId.entityId|trim|split(' ')|join %}
+        {% set id = 'tooltip%index%%orgId%'|replace({ '%index%': loop.index, '%orgId%': orgId })|trim %}
+
+        <li class="service__listItem">
+            <details class="service__details" open> {# todo: remove default open #}
+                <summary class="service__name">
+                    <h2 class="service__title">
+                        {{ sp.getLocaleAwareEntityName(app.request.locale) }}
+                    </h2>
+                    {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'service__statusArrow' } %}
+                </summary> {# todo: figure out where the logo should come from #}
+                {# todo: remove this after testing #}
+{#                <div>{{ dump() }}</div>#}
+{#                <div>{{ dump(sp) }}</div>#}
+{#                <div>{{ dump(specifiedConsent.releasedAttributesGroupedBySource) }}</div>#}
+                <div class="service__info">
+                    {% include "@OpenConextProfile/MyServices/ConsentList/login-details.html.twig" with {
+                        consentList: specifiedConsentList
+                    } %}
+                    {% include "@OpenConextProfile/MyServices/ConsentList/support.html.twig" with { sp: sp } %}
+                    {% include "@OpenConextProfile/MyServices/ConsentList/service-information.html.twig" with {
+                        consentList: specifiedConsentList
+                    } %}
+                </div>
+            </details>
+        </li>
+    {% endfor %}
+</ul>

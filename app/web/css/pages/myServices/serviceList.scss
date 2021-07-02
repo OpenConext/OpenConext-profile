@@ -1,0 +1,52 @@
+@import '../../helpers/variables';
+
+.service__list {
+  list-style: none;
+  margin-top: 2.5rem;
+  padding: 0;
+}
+
+.service__listItem {
+  &:last-of-type {
+    .service__details {
+      border-bottom: none;
+    }
+  }
+}
+
+.service__details {
+  border-top: 1px solid $idpSeparatorGray;
+  border-bottom: 1px solid $idpSeparatorGray;
+  padding: 1rem 3rem;
+
+  &:hover {
+    .service__title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.service__name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.service__title {
+  margin-top: 0;
+}
+
+.service__statusArrow {
+  fill: $buttonBlue;
+  height: 100%;
+  transform: rotate(-180deg);
+}
+
+.service__details[open] {
+  background-color: $gray;
+  border-top: 2px solid $oceanBlue;
+
+  .service__statusArrow {
+    fill: $arrowGray;
+    transform: none;
+  }
+}

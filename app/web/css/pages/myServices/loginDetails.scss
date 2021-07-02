@@ -1,0 +1,24 @@
+@import '../../helpers/variables';
+
+.service__loginDetails {
+  dt {
+    font-weight: 700;
+    width: 25%;
+  }
+
+  dd {
+    margin: 0;
+    padding-left: 1rem;
+    width: 75%;
+  }
+}
+
+.loginDetails__row {
+  border-bottom: 1px solid $hardBorderGray;
+  display: flex;
+  padding: .5rem 0;
+
+  &:first-of-type {
+    border-top: 1px solid $hardBorderGray;
+  }
+}

@@ -6,86 +6,12 @@
 
 {% block content %}
     <h1 class="content__title">{{ 'profile.my_services.long_title'|trans }}</h1>
-    <p>{{ 'profile.my_services.explanation'|trans }}</p>
-    <ul>
-        <li>{{ 'profile.my_services.explanation.explicit_consent'|trans }}</li>
-        <li>{{ 'profile.my_services.explanation.implicit_consent'|trans }}</li>
-    </ul>
+    {% include "@OpenConextProfile/MyServices/service-explanation.html.twig" %}
     {% if specifiedConsentList == null or specifiedConsentList is empty %}
-    <p><i class="prepended fa fa-warning"></i>{{ 'profile.my_services.error_loading_consent'|trans }}</p>
+        {% include "@OpenConextProfile/MyServices/service-error.html.twig" %}
     {% else %}
-    <div class="table-overflow-container">
-        <table class="mdl-data-table overview-table">
-        {% for specifiedConsent in specifiedConsentList %}
-            <tr class="service">
-                <td data-service-details-state="initial">
-                    <span class="service-name service-details-state-toggle">
-                        <i class="prepended caret fa"></i>{{ specifiedConsent.consent.serviceProvider.getLocaleAwareEntityName(app.request.locale) }}
-                    </span>
-                    <div class="service-details">
-                        <table class="service-info">
-                            {% if specifiedConsent.consent.serviceProvider.hasEulaUrl %}
-                            <tr>
-                                <td>{{ 'profile.my_services.eula'|trans }}:</td>
-                                <td>
-                                    <a href="{{ specifiedConsent.consent.serviceProvider.eulaUrl }}">{{ specifiedConsent.consent.serviceProvider.eulaUrl }}</a>
-                                </td>
-                            </tr>
-                            {% endif %}
-                            {% if specifiedConsent.consent.serviceProvider.hasSupportUrl(app.request.locale) %}
-                                <tr>
-                                    <td>{{ 'profile.my_services.support_url'|trans }}:</td>
-                                    <td>
-                                        <a href="{{ specifiedConsent.consent.serviceProvider.getSupportUrl(app.request.locale) }}">
-                                            {{ specifiedConsent.consent.serviceProvider.getSupportUrl(app.request.locale) }}
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endif %}
-                            {% if specifiedConsent.consent.serviceProvider.hasSupportEmail %}
-                            <tr>
-                                <td>{{ 'profile.my_services.supportEmail'|trans }}:</td>
-                                <td>
-                                    {% set supportEmail = specifiedConsent.consent.serviceProvider.supportEmail|replace({'mailto:': ''}) %}
-                                    <a href="mailto:{{ supportEmail }}"><i class="prepended fa fa-envelope"></i>{{ supportEmail }}</a>
-                                </td>
-                            </tr>
-                            {% endif %}
-                            <tr>
-                                <td>{{ 'profile.my_services.consent_type'|trans }}:</td>
-                                <td>
-                                {% if specifiedConsent.consent.consentType.isExplicit %}
-                                    {{ 'profile.my_services.explicit_consent_given'|trans }}
-                                {% else %}
-                                    {{ 'profile.my_services.implicit_consent_given'|trans }}
-                                {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ 'profile.my_services.consent_first_used_on'|trans }}:</td>
-                                <td>
-                                    {{ specifiedConsent.consent.consentGivenOn.date|date('Y-m-d h:i')}}
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="service-attributes">
-                            {% if specifiedConsent.releasedAttributes is empty %}
-                            <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
-                            {% else %}
-                                {% for sourceName, releasedAttributes in specifiedConsent.releasedAttributesGroupedBySource  %}
-                                    {% if sourceName == 'idp' %}
-                                        {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
-                                    {% else %}
-                                        {% include '@OpenConextProfile/MyServices/AttributeList/aa.html.twig' %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </table>
-    </div>
+        {% include "@OpenConextProfile/MyServices/ConsentList/consent-list.html.twig" with {
+            consentList: specifiedConsentList
+        } %}
     {% endif %}
 {% endblock %}
