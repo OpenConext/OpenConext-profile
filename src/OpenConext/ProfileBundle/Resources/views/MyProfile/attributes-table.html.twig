@@ -1,0 +1,35 @@
+<table class="attributesTable">
+    <thead>
+        <tr class="attributesTable__headerRow">
+            <th scope="col" class="attributesTable__headerCell">{{ 'profile.table.attribute_name'|trans }}</th>
+            <th scope="col" class="attributesTable__headerCell">{{ 'profile.table.attribute_value'|trans }}<sup>*</sup></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attribute in user.attributes %}
+            {% if attribute.attributeDefinition.hasUrnMace %}
+                {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+            {% else %}
+                {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+            {% endif %}
+            <tr class="attributesTable__row">
+                <td class="attributesTable__cell attributesTable__attribute">
+                    {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+
+                    {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+                        {{ attributeUrn }}
+                    {% else %}
+                        {{ translatedAttributeName }}
+                    {% endif %}
+                </td>
+                <td class="attributesTable__cell attributesTable__value">
+                    {% if attribute.value is iterable %}
+                        {{ attribute.value|join('\n')|nl2br }}
+                    {% else %}
+                        {{ attribute.value }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

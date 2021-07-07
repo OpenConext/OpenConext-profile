@@ -11,7 +11,7 @@
         {% endblock %}
         <main id="main" class="main">
             {% include '@OpenConextProfile/layout/main/navigation.html.twig' %}
-            <div class="content">
+            <div class="content {% block contentClasses %}{% endblock %}">
                 {% include '@OpenConextProfile/layout/main/flashMessages.html.twig' %}
                 {% block content %}
                 {% endblock %}

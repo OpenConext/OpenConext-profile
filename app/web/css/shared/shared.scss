@@ -19,7 +19,7 @@
 
 body {
     align-items: center;
-    //background: $darkishBlue;
+    background: $mainBackgroundGray;
     display: flex;
     font-family: 'SourceSansPro', sans-serif;
     font-size: 100%;
@@ -42,6 +42,10 @@ body {
 }
 
 a {
+    color: $buttonBlue;
+    font-weight: $bolder;
+    text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }
@@ -51,20 +55,31 @@ button {
     cursor: pointer;
 }
 
-h2 {
+.content__title {
     color: $green;
-    font-family: 'Nunito', sans-serif;
-    font-size: $f-h2;
+    font-family: 'Nunito', sans-serif; // todo: proximanovasoft?
+    font-size: $f-h1;
     font-weight: $bolder;
-    line-height: 1.15;
+    letter-spacing: -0.14px;
+    line-height: 1.5;
+    margin-top: 0;
+}
+
+h2 {
+    color: $titleBlack;
+    font-family: 'SourceSansPro', sans-serif;
+    font-size: $f-large;
+    font-weight: $bolder;
+    line-height: calculateRem(35px);
 }
 
 h3 {
-    color: $brownishGray;
+    color: $black;
     font-family: 'Nunito', sans-serif;
-    font-size: $f-h3;
+    font-size: $f-large;
     font-weight: $bolder;
-    line-height: 1.5;
+    line-height: calculateRem(31px);
+    margin: 1rem 0;
 }
 
 h4 {

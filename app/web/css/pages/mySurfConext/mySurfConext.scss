@@ -1,0 +1,29 @@
+@import '../../helpers/variables';
+
+.content__mySurfConext {
+  padding-bottom: calculateRem(80px);
+  padding-right: calculateRem(70px);
+}
+
+.mySurfConext__section {
+  margin: 2.5rem 0;
+}
+
+.mySurfConext__downloadExplanation {
+  color: $titleBlack;
+  display: flex;
+  font-size: $f-normal;
+}
+
+.mySurfConext__downloadButton {
+  flex: 0 0 max-content;
+  height: max-content;
+}
+
+.mySurfConext__downloadText {
+  margin-top: 0;
+}
+
+.mySurfConext__download {
+  margin-bottom: 1rem;
+}

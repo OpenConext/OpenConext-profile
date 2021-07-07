@@ -1,0 +1,11 @@
+@import '../helpers/variables';
+
+.button {
+  background-color: $buttonBlue;
+  border: none;
+  border-radius: 8px;
+  color: $white;
+  font-size: $f-large;
+  line-height: .89;
+  padding: calculateRem(11px) calculateRem(42px);
+}

@@ -1,5 +1,5 @@
 {% if sp.hasEulaUrl or sp.hasSupportUrl(app.request.locale) or sp.hasSupportEmail %}
-    <h3>Support</h3>{# todo: make this a translation #}
+    <h3 class="title__support">Support</h3>{# todo: make this a translation #}
     <ul class="service__supportList">
         {% if sp.hasEulaUrl %}
             <li class="support__item">

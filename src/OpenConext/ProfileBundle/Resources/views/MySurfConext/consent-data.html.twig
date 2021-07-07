@@ -1,0 +1,16 @@
+{% set list = {
+    'row1': {
+        'name': 'profile.my_surf_conext.origin'|trans,
+        'value': 'profile.my_surf_conext.consent_data_origin'|trans
+    },
+    'row2': {
+        'name': 'profile.my_surf_conext.data_retention_period'|trans,
+        'value': 'profile.my_surf_conext.consent_data_retention_period'|trans
+    }
+} %}
+
+<section class="mySurfConext__section">
+    <h2 class="title__emphasis">{{ 'profile.my_surf_conext.consent_data'|trans }}</h2>
+    <p>{{ 'profile.my_surf_conext.consent_data_explanation'|trans }} <a href="{{ path('profile.my_services_overview') }}"> {{ 'profile.my_services.short_title'|trans }}</a>.</p>
+    {% include '@OpenConextProfile/helpers/info-list.html.twig' with { list: list } %}
+</section>

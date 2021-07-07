@@ -4,6 +4,10 @@
     {{ 'profile.my_services.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
+{% block contentClasses %}
+    content__myServices
+{% endblock %}
+
 {% block content %}
     <h1 class="content__title">{{ 'profile.my_services.long_title'|trans }}</h1>
     {% include "@OpenConextProfile/MyServices/service-explanation.html.twig" %}

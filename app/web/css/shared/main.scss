@@ -2,21 +2,19 @@
 @import '../helpers/variables';
 
 .main {
-  @include border-bottom-radius(8px);
-  background-color: $white;
-  box-shadow: 0 3px 0 2px $darkishBlueTwo;
   @include display-grid;
-  @include grid-template-columns(15% 1% 84%);
+  @include grid-template-columns(calculateRem(229px) 1.5rem calculateRem(771px));
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  margin: 0 0 .75rem;
 }
 
 .content {
   @include grid-position(1, 2, 3, 4);
   background-color: $white;
-  padding: 1rem;
+  border-bottom-right-radius: 6px;
+  padding: 1.5rem 1rem 1rem;
   vertical-align: top;
-}
-
-h1.content__title {
-  margin: .3rem 0 .67rem;
 }
 

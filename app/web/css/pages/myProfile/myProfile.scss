@@ -1,0 +1,14 @@
+@import 'attributesTable';
+@import '../../helpers/functions';
+
+.content__myProfile {
+  padding-right: calculateRem(70px);
+}
+
+.myProfile__intro {
+  color: $black;
+}
+
+.myProfile__note {
+  margin-bottom: calculateRem(80px);
+}

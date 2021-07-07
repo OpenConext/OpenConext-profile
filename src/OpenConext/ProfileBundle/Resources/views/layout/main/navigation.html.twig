@@ -1,31 +1,35 @@
 {% set route = app.request.attributes.get('_route') %}
-<nav class="navigation" aria-describedby="main-nav-label">
+<nav class="navigation" aria-labelledby="main-nav-label">
     <h2 class="visually-hidden" id="main-nav-label">Main navigation</h2> {# todo: make this a translation #}
 
     <ul class="navigation__list">
-        <li class="navigation__item">
-            <a {% if route == 'profile.introduction_overview' %}class="active"{% endif %} href="{{ path('profile.introduction_overview') }}">
+        {% set isActive = route == 'profile.introduction_overview' %}
+        <li class="navigation__item navigation__home{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.introduction_overview') }}">
                 {{ 'profile.introduction.short_title'|trans }}
             </a>
         </li>
-        <li class="navigation__item">
-            <a {% if route == 'profile.my_profile_overview' %}class="active"{% endif %} href="{{ path('profile.my_profile_overview') }}">
+        {% set isActive = route == 'profile.my_profile_overview' %}
+        <li class="navigation__item navigation__myProfile{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_profile_overview') }}">
                 {{ 'profile.my_profile.short_title'|trans }}
             </a>
         </li>
-        <li class="navigation__item">
-            <a {% if route == 'profile.my_services_overview' %}class="active"{% endif %} href="{{ path('profile.my_services_overview') }}">
-            {{ 'profile.my_services.short_title'|trans }}
-            </a>
-
-        </li>
-        <li class="navigation__item">
-            <a {% if route == 'profile.my_surf_conext_overview' %}class="active"{% endif %} href="{{ path('profile.my_surf_conext_overview') }}">
+        {% set isActive = route == 'profile.my_surf_conext_overview' %}
+        <li class="navigation__item navigation__mySurf{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_surf_conext_overview') }}">
                 {{ 'profile.my_surf_conext.short_title'|trans }}
             </a>
         </li>
-        <li class="navigation__item">
-            <a {% if route == 'profile.my_connections_overview' %}class="active"{% endif %} href="{{ path('profile.my_connections_overview') }}">
+        {% set isActive = route == 'profile.my_services_overview' %}
+        <li class="navigation__item navigation__myServices{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_services_overview') }}">
+            {{ 'profile.my_services.short_title'|trans }}
+            </a>
+        </li>
+        {% set isActive = route == 'profile.my_connections_overview' %}
+        <li class="navigation__item  navigation__myConnections{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_connections_overview') }}">
                 {{ 'profile.my_connections.short_title'|trans }}
             </a>
         </li>

@@ -1,2 +1,11 @@
 @import 'loginDetails';
 @import 'serviceList';
+
+.content__myServices {
+  padding-right: calculateRem(31px);
+}
+
+.title__information {
+  margin: 2rem 0 1.5rem;
+}
+

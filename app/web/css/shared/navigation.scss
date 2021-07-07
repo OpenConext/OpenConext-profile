@@ -4,7 +4,8 @@
 .navigation {
   @include grid-position(1, 2, 1, 2);
   background-color: $gray;
-  padding: 1rem 0 1rem 1rem;
+  border-bottom-left-radius: 6px;
+  padding: 1.5rem 0 1.5rem .75rem;
   vertical-align: top;
 }
 
@@ -15,11 +16,84 @@
 }
 
 .navigation__item {
-  padding: 1rem .5rem;
+  background-position: 1rem calculateRem(10px);
+  background-repeat: no-repeat;
+  padding: calculateRem(14px) calculateRem(7px) calculateRem(15px);
 
   &:hover,
-  &:focus-within,
-  &[aria-current] {
+  &:focus-within {
     background-color: $white;
+    text-decoration: underline;
+  }
+
+  &.active {
+    background-color: $white;
+    position: relative;
+
+    ::after {
+      border-right: 7px solid $borderGreen;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      right: -3px;
+      top: 0;
+    }
+
+  }
+}
+
+.navigation__link {
+  color: $black;
+  font-size: $f-normal;
+  font-weight: $bolder;
+  letter-spacing: .3px;
+  margin-left: calculateRem(51px);
+  text-decoration: none;
+
+  &[aria-current="page"] {
+    color: $green;
+  }
+}
+
+.navigation__home {
+  background-image: url($home);
+  background-position-x: .7rem;
+
+  &.active {
+    background-image: url($home_active);
+  }
+}
+
+.navigation__myProfile {
+  background-image: url($myProfile);
+
+  &.active {
+    background-image: url($myProfile_active);
+  }
+}
+
+.navigation__mySurf {
+  background-image: url($mySurf);
+
+  &.active {
+    background-image: url($mySurf_active);
+  }
+}
+
+.navigation__myServices {
+  background-image: url($myServices);
+  background-position-y: 1rem;
+
+  &.active {
+    background-image: url($myServices_active);
+  }
+}
+
+.navigation__myConnections {
+  background-image: url($connections);
+
+  &.active {
+    background-image: url($connections_active);
   }
 }

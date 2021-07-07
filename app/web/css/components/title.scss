@@ -1,0 +1,19 @@
+@import '../helpers/variables';
+
+.buttonedTitle {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 calculateRem(39px);
+}
+
+.buttonedTitle__title {
+  margin: 0;
+}
+
+.title__emphasis {
+  color: $brownishGray;
+  font-family: 'Nunito', sans-serif;
+  font-size: $f-xxl;
+  letter-spacing: -.13px;
+  line-height: 1.17;
+}

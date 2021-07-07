@@ -1,27 +1,23 @@
-<p class="attributeList__description">{{ 'profile.my_services.attribute_release_description_with_source'|trans({'%source%': ('profile.table.source_description.' ~ sourceName)|trans}) }}</p>
-
-<ul class="attributeList">
-    {% for attribute in releasedAttributes %}
-        {% if attribute.attributeDefinition.hasUrnMace %}
-            {% set attributeUrn = attribute.attributeDefinition.urnMace %}
-        {% else %}
-            {% set attributeUrn = attribute.attributeDefinition.urnOid %}
-        {% endif %}
-        {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
-        <li class="attribute__row attribute__noTooltip">
-            <div class="attribute__name">
-                {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                   {{ attributeUrn }}
-                {% else %}
-                    {{ translatedAttributeName }}
-                {% endif %}
-            </div>
-            {% if not translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                <div class="attribute__value">
-                    <strong>{{ attributeUrn }}</strong>
-                </div>
+{% for attribute in releasedAttributes %}
+    {% if attribute.attributeDefinition.hasUrnMace %}
+        {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+    {% else %}
+        {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+    {% endif %}
+    {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+    <li class="attribute__row attribute__noTooltip">
+        <div class="attribute__name">
+            {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+               {{ attributeUrn }}
+            {% else %}
+                {{ translatedAttributeName }}
             {% endif %}
-        </li>
-    {% endfor %}
-    {# todo: add provided by row #}
-</ul>
+        </div>
+        {% if not translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+            <div class="attribute__value">
+                <strong>{{ attributeUrn }}</strong>
+            </div>
+        {% endif %}
+    </li>
+{% endfor %}
+{# todo: add provided by row #}

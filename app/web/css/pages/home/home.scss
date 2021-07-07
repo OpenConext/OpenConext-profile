@@ -1,0 +1,13 @@
+@import '../../helpers/functions';
+
+.content__home {
+  padding-right: calculateRem(42px);
+}
+
+.home__howTitle {
+  margin: 2.5rem 0 calculateRem(13px);
+}
+
+.home__imgHow {
+  margin: calculateRem(13px) 0 calculateRem(21px);
+}

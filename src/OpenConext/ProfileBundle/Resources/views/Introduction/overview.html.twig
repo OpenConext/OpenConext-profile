@@ -4,14 +4,20 @@
     {{ 'profile.introduction.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
+{% block contentClasses %}
+    content__home
+{% endblock %}
+
 {% block content %}
-    <h1 class="content__title">{{ 'profile.introduction.long_title'|trans }}</h1>
+    <h1 class="content__title">{{ 'profile.introduction.long_title'|trans }}</h1>{# todo: adjust translation #}
+    {#
+        todo: see if following translations are used anywhere, if not delete them:
+        - profile.introduction.explanation.title
+    #}
 
-    <h2>{{ 'profile.introduction.explanation.title'|trans }}</h2>
-    <p>{{ 'profile.introduction.explanation.introduction'|trans }}</p>
+    <p>{{ 'profile.introduction.explanation.introduction'|trans }}</p> {# todo: adjust translation #}
 
-    <img class="introduction-explanation-image" src="{{ asset(global_view_parameters.profileExplanationImage) }}" alt="" />
 
-    <h2>{{ 'profile.introduction.purpose.title'|trans }}</h2>
-    <p>{{ 'profile.introduction.purpose.profile_storage'|trans }}</p>
+    {% include "@OpenConextProfile/Introduction/navigation-cards.html.twig" %}
+    {% include "@OpenConextProfile/Introduction/how-it-works.html.twig" %}
 {% endblock %}

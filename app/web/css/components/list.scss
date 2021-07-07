@@ -1,0 +1,32 @@
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.list__info {
+  background-color: $white;
+  border: 1px solid $softBorderGray;
+  border-radius: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+.info__item {
+  @include display-grid;
+  @include grid-template-columns(calculateRem(211px) calculateRem(9px) calculateRem(396px));
+  border-bottom: 1px solid $softBorderGray;
+  font-size: $f-normal;
+  line-height: 1.63;
+  padding: calculateRem(11px) calculateRem(27px) calculateRem(14px);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.info__name {
+  @include grid-column(1, 2);
+}
+
+.info__value {
+  @include grid-column(3, 4);
+  font-weight: $bolder;
+}
