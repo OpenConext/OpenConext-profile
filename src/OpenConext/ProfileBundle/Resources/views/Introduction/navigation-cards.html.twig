@@ -3,18 +3,21 @@
         btnText: 'View',
         description: 'Which personal data can be passed on to the services your using.',
         href: path('profile.my_profile_overview'),
-        title: 'Your personal data'
+        title: 'Your personal data',
+        screenReaderSensitive: true
     } %} {# todo: add translation #}
     {% include "@OpenConextProfile/helpers/card.html.twig" with {
         btnText: 'View',
         description: 'Which data SURFconext stores from you.',
         href: path('profile.my_surf_conext_overview'),
-        title: 'What we store'
+        title: 'What we store',
+        screenReaderSensitive: true
     } %} {# todo: add translation #}
     {% include "@OpenConextProfile/helpers/card.html.twig" with {
         btnText: 'View',
         description: 'Which services you logged in to in the past using SURFconext.',
         href: path('profile.my_services_overview'),
-        title: 'Accessed services'
+        title: 'Accessed services',
+        screenReaderSensitive: true
     } %} {# todo: add translation #}
 </div>

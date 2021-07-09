@@ -9,80 +9,7 @@
     margin: 0;
 }
 
-.locale-switch {
-    display: inline-block;
-    cursor: pointer;
-}
-.locale-switch select, .locale-switch button[type=submit] {
-    display: none;
-}
-.no-js .locale-switch button[type=submit], .no-js .locale-switch select {
-    display: block;
-}
-.no-js .locale-switch select {
-    float: left;
-    margin-right: 8px;
-    margin-top: 8px;
-}
-
-.locale-switch button {
-    float: left;
-    cursor: pointer;
-    display: inline;
-    border: 0;
-    font-size: 12px;
-    text-decoration: none;
-    background-color: #edf8fb;
-    padding: 8px;
-    font-weight:200;
-    color: #4db3cf;
-    vertical-align: baseline;
-}
-.locale-switch button[data-locale]:first-of-type {
-    border-radius: 4px 0 0 4px;
-}
-.locale-switch button[data-locale]:last-of-type {
-    border-radius: 0 4px 4px 0;
-}
-.locale-switch .active,
-.locale-switch button:hover,
-.locale-switch button:focus {
-    color: #ffffff;
-    background-color: #4db3cf;
-}
-
-/* My Profile */
-.profile-metadata {
-    margin-bottom: 16px;
-    font-size: 15px;
-    font-weight: 300;
-}
-.profile-metadata td {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    vertical-align: top;
-}
-.account-data {
-    margin-bottom: 16px;
-}
-.account-data td,
-.account-data th {
-    text-align: left;
-    font-size: 15px;
-}
-.account-data td {
-    font-weight: 300;
-}
-
 /* My Services */
-tr.service:hover {
-    background: none !important;
-}
-.service-name {
-    width: 100%;
-    color: #4db3cf;
-    display: block;
-}
 .no-js .service-details-state-toggle {
     cursor: default;
 }
@@ -106,102 +33,6 @@ tr.service:hover {
 [data-service-details-state="initial"] .service-details,
 [data-service-details-state="closed"] .service-details {
     display: none;
-}
-
-.service-info tr {
-    background-color: #ffffff !important;
-    height: auto !important;
-}
-.service-info td {
-    border: none;
-    height: auto !important;
-    padding: 4px !important;
-}
-.service-info tr td:first-child {
-    padding-left: 0 !important;
-}
-
-.service-details {
-    padding: 14px;
-}
-
-.service-attributes {
-    margin-top: 32px;
-}
-
-.service-attributes table,
-.service-attributes table thead tr:hover {
-    background-color: #f3f3f3;
-    border: none;
-}
-.service-attributes table td,
-.service-attributes table th {
-    font-size: 14px;
-}
-.service-attributes table td {
-    border-top-color: #ffffff;
-    border-bottom-color: #ffffff;
-}
-
-.attribute-container .mdl-grid {
-    padding: 0;
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
-}
-
-.attribute-container .mdl-grid .mdl-cell {
-    padding: 1em 0 0 0;
-}
-
-.attribute-container .mdl-grid .mdl-layout-title {
-    text-transform: uppercase;
-}.attribute-container .mdl-grid p.connected {
-    color: #00c35a;
-}
-
-.attribute-container .mdl-grid .mdl-cell img.logo {
-    border: 1px solid #cccccc;
-    background: #ffffff;
-    float: left;
-    margin: 0;
-    width: auto;
-    display: inline-block;
-}
-
-.attribute-container .mdl-grid .mdl-cell p.orcid {
-    vertical-align: top;
-}
-
-.attribute-container .mdl-grid .mdl-cell p.orcid a{
-    text-decoration: none;
-}
-
-.attribute-container .mdl-grid .mdl-cell p.orcid img {
-    float: left;
-    height: 16px;
-    margin: 4px 4px 0 0;
-    width: 16px;
-}
-
-.attribute-container .mdl-grid .mdl-cell a.mdl-button {
-    box-sizing: border-box;
-    display: block;
-    max-width: 260px;
-    margin-top: 20px;
-    padding-left: 40px;
-    text-align: right;
-    text-decoration: none;
-}
-
-.attribute-container .mdl-grid .mdl-cell button.mdl-button.disconnect {
-    background-color: #a9a9a9;
-    color: #ffffff;
-}
-
-.attribute-container .mdl-grid .mdl-cell .mdl-button.orcid {
-    background: white url('../images/orcid_small.png') 12px 6px no-repeat;
-    color: darkgrey;
-    text-transform: initial;
 }
 
 .confirmation-container {
@@ -234,11 +65,4 @@ a.download:before {
     position:absolute;
     top:0;
     left:0;
-}
-
-@media (max-width: 400px) {
-    /* orcid button */
-    .mdl-button.orcid {
-        font-size: 9px;
-    }
 }

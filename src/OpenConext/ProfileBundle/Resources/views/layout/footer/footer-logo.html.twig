@@ -1,0 +1,16 @@
+{% set poweredByText %} {# todo change translation  #}
+    <img class="footer__logo" src="{{ asset('build/images/surf.svg') }}" alt="{{ 'profile.application.platform_connection_name'|trans }}" />
+{% endset %}
+
+<div class="footer__logoWrapper">
+    <span class="footer__logoText">
+        {{ 'profile.application.platform_connection_name'|trans }}
+    </span>&nbsp;
+    {% include "@OpenConextProfile/helpers/external-link.html.twig"
+        with {
+            className: 'footer__logoLink',
+            href: global_view_parameters.platformUrl,
+            text: poweredByText
+        }
+    %}
+</div>

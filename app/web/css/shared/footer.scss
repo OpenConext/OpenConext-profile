@@ -1,3 +1,5 @@
+@import '../helpers/variables';
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -5,6 +7,22 @@
 }
 
 .footer__navigation {
+  color: $contrastBlue;
+  font-weight: $normal;
   list-style: none;
   margin: 0;
+  padding: 0;
+}
+
+.footer__navigationLink {
+  color: $contrastBlue;
+  font-weight: $normal;
+}
+
+.footer__logoWrapper {
+  display: flex;
+}
+
+.footer__logoText {
+  line-height: 1.25rem;
 }
