@@ -1,4 +1,5 @@
 @import 'attributesTable';
+@import 'connection';
 @import '../../helpers/functions';
 
 .content__myProfile {
@@ -7,6 +8,10 @@
 
 .myProfile__intro {
   color: $black;
+}
+
+.myProfile__section {
+  margin-top: 2.5rem;
 }
 
 .myProfile__note {

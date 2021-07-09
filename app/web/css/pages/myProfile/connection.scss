@@ -1,12 +1,12 @@
 @import '../../helpers/variables';
 
-.service__list {
+.connection__list {
   list-style: none;
   margin-top: 2.5rem;
   padding: 0;
 }
 
-.service__listItem {
+.connection__listItem {
   &:last-of-type {
     .service__details {
       border-bottom: none;
@@ -14,39 +14,49 @@
   }
 }
 
-.service__details {
+.connection__details {
   border-top: 1px solid $idpSeparatorGray;
   border-bottom: 1px solid $idpSeparatorGray;
   padding: 1rem 3rem;
 
   &:hover {
-    .service__title {
+    .connection__title {
       text-decoration: underline;
     }
   }
 }
 
-.service__name {
+.connection__name {
   display: flex;
   justify-content: space-between;
 }
 
-.service__title {
+.connection__title {
   margin-top: 0;
 }
 
-.service__statusArrow {
+.connection__statusArrow {
   fill: $buttonBlue;
   height: 100%;
   transform: rotate(-180deg);
 }
 
-.service__details[open] {
+.connection__details[open] {
   background-color: $gray;
   border-top: 2px solid $oceanBlue;
 
-  .service__statusArrow {
+  .connection__statusArrow {
     fill: $arrowGray;
     transform: none;
   }
+}
+
+.connection__logo {
+  max-height: calculateRem(150px);
+  max-width: 100%;
+  width: auto;
+}
+
+.connection__buttonWrapper {
+  margin-top: 2rem;
 }

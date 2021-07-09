@@ -1,0 +1,45 @@
+{% set activeConnections = {
+    "orcid": {
+        "linkedId": "https://orcid.org/0000-0002-9588-5133",
+        "logoPath": "build/images/orcid.png",
+    }
+} %}
+
+<section class="myProfile__section">
+    <h2 class="title__emphasis">{{ 'profile.my_connections.active_connections'|trans }}</h2>
+    {% if activeConnections is empty %}
+        {{ 'profile.my_connections.no_active_connections.description'|trans }}
+    {% else %}
+        <ul class="connection__list">
+            {% for connection in activeConnections %}
+                <li class="connection__listItem">
+                    <details class="connection__details"{% if loop.first %} open{% endif %}>
+                        <summary class="connection__name">
+                            <h3 class="connection__title">
+                                {{ 'profile.my_connections.orcid.title'|trans }}
+                            </h3>
+                            {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow' } %}
+                        </summary>
+                        <div class="connection__info">
+                            <img src="{{ asset(connection.logoPath) }}" class="connection__logo" alt="" /> {# todo: find out why the alt / title aren't service-specific #}
+                            <p class="connection__orcidLinkWrapper">
+                                <img class="connection__orcidLogoSmall" src="{{ asset('build/images/orcid_small.png') }}" alt=""> <a class="connection__orcidLink" href="{{ connection.linkedId }}">
+                                    {{ connection.linkedId }}
+                                </a>
+                            </p>
+                            <div class="connection__buttonWrapper">
+                                <button class="button card__button disconnect">
+                                    {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
+                                </button>
+
+                                {{ form_start(confirmForm, {attr: {'class': 'confirmation-container', 'novalidate': 'novalidate'} }) }}
+                                {{ form_widget(confirmForm) }}
+                                {{ form_end(confirmForm) }}
+                            </div>
+                        </div>
+                    </details>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
