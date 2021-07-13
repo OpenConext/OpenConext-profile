@@ -1,3 +1,4 @@
+@import '../helpers/breakpoints';
 @import '../helpers/variables';
 
 .button {
@@ -8,4 +9,8 @@
   font-size: $f-large;
   line-height: .89;
   padding: calculateRem(11px) calculateRem(42px);
+
+  @include screen('mobile') {
+    padding: calculateRem(11px);
+  }
 }

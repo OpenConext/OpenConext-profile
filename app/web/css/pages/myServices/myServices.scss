@@ -1,8 +1,13 @@
 @import 'loginDetails';
 @import 'serviceList';
+@import '../../helpers/breakpoints';
 
 .content__myServices {
   padding-right: calculateRem(31px);
+
+  @include screen('mobile') {
+    padding-right: .5rem;
+  }
 }
 
 .title__information {

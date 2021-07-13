@@ -1,11 +1,23 @@
 {% set route = app.request.attributes.get('_route') %}
 <nav class="navigation" aria-labelledby="main-nav-label">
     <h2 class="visually-hidden" id="main-nav-label">Main navigation</h2> {# todo: make this a translation #}
-
-    <ul class="navigation__list">
+    <button
+        class="navigation__mobileButton"
+        aria-haspopup="menu"
+        aria-pressed="false"
+    >
+        <span class="visually-hidden">
+            Expand main navigation
+        </span>
+        {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'navigation__mobileIcon' } %}
+    </button>{# todo: make this a translation #}
+    <ul
+        class="navigation__list"
+        role="menu"
+    >
         {% set isActive = route == 'profile.introduction_overview' %}
         <li class="navigation__item navigation__home{% if isActive %} active{% endif %}">
-            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.introduction_overview') }}">
+            <a{% if isActive %} aria-current="page"{% endif %}  role="menuitem" class="navigation__link navigation__link-first{% if isActive %} active{% endif %}" href="{{ path('profile.introduction_overview') }}">
                 {{ 'profile.introduction.short_title'|trans }}
             </a>
         </li>
@@ -29,7 +41,7 @@
         </li>
         {% set isActive = route == 'profile.my_connections_overview' %}
         <li class="navigation__item  navigation__myConnections{% if isActive %} active{% endif %}">
-            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_connections_overview') }}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link navigation__link-last{% if isActive %} active{% endif %}" href="{{ path('profile.my_connections_overview') }}">
                 {{ 'profile.my_connections.short_title'|trans }}
             </a>
         </li>

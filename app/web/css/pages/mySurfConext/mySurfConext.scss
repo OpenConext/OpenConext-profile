@@ -1,8 +1,13 @@
+@import '../../helpers/breakpoints';
 @import '../../helpers/variables';
 
 .content__mySurfConext {
   padding-bottom: calculateRem(80px);
   padding-right: calculateRem(70px);
+
+  @include screen('mobile') {
+    padding-right: .5rem;
+  }
 }
 
 .mySurfConext__section {

@@ -1,7 +1,12 @@
+@import '../../helpers/breakpoints';
 @import '../../helpers/functions';
 
 .content__home {
   padding-right: calculateRem(42px);
+
+  @include screen('mobile') {
+    padding-right: .5rem;
+  }
 }
 
 .home__howTitle {

@@ -4,6 +4,10 @@
   list-style: none;
   margin-top: 2.5rem;
   padding: 0;
+
+  @include screen('mobile') {
+    margin-top: 1rem;
+  }
 }
 
 .service__listItem {
@@ -23,6 +27,10 @@
     .service__title {
       text-decoration: underline;
     }
+  }
+
+  @include screen('mobile') {
+    padding: 1rem;
   }
 }
 

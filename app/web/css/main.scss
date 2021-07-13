@@ -53,16 +53,3 @@
 .confirmation-container button.mdl-button {
     margin-top: 10px;
 }
-
-a.download {
-    position: relative;
-    padding-left: 20px;
-}
-a.download:before {
-    /* download icon */
-    content: "\f019";
-    font-family: "FontAwesome", "sans-serif";
-    position:absolute;
-    top:0;
-    left:0;
-}

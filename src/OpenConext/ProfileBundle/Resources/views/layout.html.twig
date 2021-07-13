@@ -9,14 +9,14 @@
         {% block header %}
             {% include "@OpenConextProfile/layout/header.html.twig" %}
         {% endblock %}
-        <main id="main" class="main">
+        <div class="content">
             {% include '@OpenConextProfile/layout/main/navigation.html.twig' %}
-            <div class="content {% block contentClasses %}{% endblock %}">
+            <main id="main" class="main {% block contentClasses %}{% endblock %}">
                 {% include '@OpenConextProfile/layout/main/flashMessages.html.twig' %}
                 {% block content %}
                 {% endblock %}
-            </div>
-        </main>
+            </main>
+        </div>
         {% block footer %}
                 {% include "@OpenConextProfile/layout/footer/footer.html.twig" %}
             {% endblock %}

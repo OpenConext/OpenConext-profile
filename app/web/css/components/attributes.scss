@@ -18,6 +18,7 @@
   @include grid-template-columns(33% 1% 57% 1% 8%);
   border-bottom: 1px solid $softBorderGray;
   line-height: 1.63;
+  padding: 6px 0;
 
   &.attribute__noTooltip {
     @include grid-template-columns(33% 1% 65% 1%);

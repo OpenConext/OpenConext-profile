@@ -1,3 +1,4 @@
+@import '../helpers/breakpoints';
 @import '../helpers/mixins';
 @import '../helpers/variables';
 
@@ -7,12 +8,68 @@
   border-bottom-left-radius: 6px;
   padding: 1.5rem 0 1.5rem .75rem;
   vertical-align: top;
+
+  @include screen('mobile') {
+    display: inline-block;
+    padding: 0;
+    @include absolute(top 0 bottom 0 left 0);
+    width: 50px;
+  }
+
+  &.openMenu {
+    width: max-content;
+    z-index: $navMobileZ;
+  }
+}
+
+.navigation__mobileButton {
+  @include button-reset(inherit);
+  display: none;
+
+  &:focus,
+  &:hover {
+    box-shadow: none;
+
+    .navigation__mobileIcon {
+      @include focus-style;
+    }
+  }
+
+  @include screen('mobile') {
+    display: flex;
+    flex: 0 0 max-content;
+    height: 100%;
+    justify-content: center;
+    padding-top: .5rem;
+    width: 50px;
+
+    &[aria-pressed="true"] {
+      height: initial;
+
+      .navigation__mobileIcon {
+        transform: rotate(-90deg);
+        display: block;
+      }
+    }
+
+    &[aria-pressed="false"] + .navigation__list {
+      display: none;
+    }
+  }
+}
+
+.navigation__mobileIcon {
+  transform: rotate(90deg);
 }
 
 .navigation__list {
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @include screen('mobile') {
+    margin: 1.5rem 0 1.5rem .75rem;
+  }
 }
 
 .navigation__item {

@@ -10,6 +10,17 @@
     @include visually-hidden;
 }
 
+.skip-main {
+    @include absolute(top 0 right 0);
+    color: $oceanBlue;
+
+    &:focus,
+    &:active {
+        color: $white;
+        margin: 10px;
+    }
+}
+
 .container {
     width: calculateRem(1024px);
 

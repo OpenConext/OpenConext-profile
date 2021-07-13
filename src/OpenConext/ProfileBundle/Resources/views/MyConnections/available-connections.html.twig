@@ -10,17 +10,17 @@
     {% if availableConnections is empty %}
         {{ 'profile.my_connections.no_connections_configured.description'|trans }}
     {% else %}
-        <ul class="connection__list">
+        <ul class="connection__list list__details">
             {% for connection in availableConnections %}
-                <li class="connection__listItem">
-                    <details class="connection__details"{% if loop.first %} open{% endif %}>
-                        <summary class="connection__name">
-                            <h3 class="connection__title">
+                <li class="connection__listItem listDetails__item">
+                    <details class="connection__details listDetails__details"{% if loop.first %} open{% endif %}>
+                        <summary class="connection__name listDetails__name">
+                            <h3 class="connection__title listDetails__title">
                                 {{ 'profile.my_connections.orcid.title'|trans }}
                             </h3>
-                            {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow' } %}
+                            {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow listDetails__statusArrow' } %}
                         </summary>
-                        <div class="connection__info">
+                        <div class="connection__info listDetails__info">
                             <img src="{{ asset(connection.logoPath) }}" class="connection__logo" alt="" /> {# todo: find out why the alt / title aren't service-specific #}
                             <p>{{ 'profile.my_connections.orcid.description'|trans|nl2br }}</p> {# todo: split in two paragraphs or use a div #}
                             <p class="connection__buttonWrapper">
