@@ -6,7 +6,7 @@
         {% set id = 'tooltip%index%%orgId%'|replace({ '%index%': loop.index, '%orgId%': orgId })|trim %}
 
         <li class="service__listItem listDetails__item">
-            <details class="service__details listDetails__details">
+            <details class="service__details listDetails__details" open>
                 <summary class="service__name listDetails__name">
                     <h2 class="service__title">
                         {{ sp.getLocaleAwareEntityName(app.request.locale) }}

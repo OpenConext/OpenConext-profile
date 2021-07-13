@@ -46,6 +46,9 @@
 }
 
 .card__button {
+  text-align: center;
+  width: 100%;
+
   &:focus {
     text-decoration: underline;
   }

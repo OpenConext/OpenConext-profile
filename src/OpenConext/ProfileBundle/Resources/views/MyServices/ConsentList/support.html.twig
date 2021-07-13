@@ -2,26 +2,25 @@
     <h3 class="title__support">Support</h3>{# todo: make this a translation #}
     <ul class="service__supportList">
         {% if sp.hasEulaUrl %}
-            <li class="support__item">
-                {# todo: add icon #}
-                <a href="{{ sp.eulaUrl }}">{{ 'profile.my_services.eula'|trans }}</a>
-            </li>
+            <li class="support__item support__eula">{% spaceless %}
+                {% include "@OpenConextProfile/svgs/network-information.svg" with { className: 'support__icon' } %}
+                <a href="{{ eulaUrl }}">{{ 'profile.my_services.eula'|trans }}</a>
+            {% endspaceless %}</li>
         {% endif %}
         {% if sp.hasSupportUrl(app.request.locale) %}
-            <li class="support__item">
-                {# todo: add icon #}
+            <li class="support__item support__url">{% spaceless %}
+                {% include "@OpenConextProfile/svgs/network-information.svg" with { className: 'support__icon' } %}
                 <a href="{{ sp.getSupportUrl(app.request.locale) }}">
                     {{ 'profile.my_services.support_url'|trans }}
                 </a>
-            </li>
+            {% endspaceless %}</li>
         {% endif %}
         {% if sp.hasSupportEmail %}
-            {% set supportEmail = sp.supportEmail|replace({'mailto:': ''}) %}
-            <li class="support__item">
-                {# todo: add icon #}
-                <i class="prepended fa fa-envelope"></i>
+            {% set supportEmail = supportEmail|replace({'mailto:': ''}) %}
+            <li class="support__item support__email">{% spaceless %}
+                {% include "@OpenConextProfile/svgs/email-action-unread.svg" with { className: 'support__icon' } %}
                 <a href="mailto:{{ supportEmail }}">{{ 'profile.my_services.supportEmail'|trans }}</a>
-            </li>
+            {% endspaceless %}</li>
         {% endif %}
     </ul>
 {% endif %}
