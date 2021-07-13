@@ -8,7 +8,7 @@
         <li class="service__listItem listDetails__item">
             <details class="service__details listDetails__details" open>
                 <summary class="service__name listDetails__name">
-                    <h2 class="service__title">
+                    <h2 class="service__title listDetails__title">
                         {{ sp.getLocaleAwareEntityName(app.request.locale) }}
                     </h2>
                     {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'service__statusArrow listDetails__statusArrow' } %}

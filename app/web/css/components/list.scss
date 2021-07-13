@@ -30,3 +30,67 @@
   @include grid-column(3, 4);
   font-weight: $bolder;
 }
+
+.list__details {
+  list-style: none;
+  margin-top: 2.5rem;
+  padding: 0;
+
+  @include screen('mobile') {
+    margin-top: 1rem;
+  }
+}
+
+.listDetails__item {
+  &:last-of-type {
+    .listDetails__details {
+      border-bottom: none;
+    }
+  }
+}
+
+.listDetails__details {
+  border-top: 1px solid $idpSeparatorGray;
+  border-bottom: 1px solid $idpSeparatorGray;
+  padding: 1rem 3rem;
+
+  &:hover {
+    .listDetails__title {
+      text-decoration: underline;
+    }
+  }
+
+  @include screen('mobile') {
+    padding: 1rem;
+  }
+}
+
+.listDetails__statusArrow {
+  fill: $buttonBlue;
+  height: 100%;
+  transform: rotate(-180deg);
+}
+
+.listDetails__details[open] {
+  background-color: $gray;
+  border-top: 2px solid $oceanBlue;
+
+  .listDetails__title {
+    color: $titleBlack;
+  }
+
+  .listDetails__statusArrow {
+    fill: $arrowGray;
+    transform: none;
+  }
+}
+
+.listDetails__name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listDetails__title {
+  color: $oceanBlue;
+  margin-top: 0;
+}
