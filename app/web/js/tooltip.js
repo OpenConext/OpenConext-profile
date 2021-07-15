@@ -11,6 +11,7 @@ $(function () {
         // By using an object we can use array notation to access the right value based on what we get back from the attribute.
         element.setAttribute('aria-expanded', newValue[ariaExpanded]);
     };
+
     const changeAriaPressed = (element) => {
         const ariaPressed = element.getAttribute('aria-pressed');
         const newValue = {
@@ -23,6 +24,7 @@ $(function () {
         // By using an object we can use array notation to access the right value based on what we get back from the attribute.
         element.setAttribute('aria-pressed', newValue[ariaPressed]);
     };
+
     const tooltips = $('label.tooltip');
 
     tooltips.on('click', function (e) {
@@ -30,12 +32,14 @@ $(function () {
         const checkbox = document.getElementById(id);
         const expanded = checkbox.getAttribute('aria-expanded');
 
-        changeAriaExpanded(checkbox);
-        changeAriaPressed(checkbox);
+        if (!!checkbox) {
+            changeAriaExpanded(checkbox);
+            changeAriaPressed(checkbox);
+        }
 
         setTimeout(function () {
-            if (expanded === 'false') {
-                const tooltipValue = document.querySelector(`[data-for="${id}"]`);
+            const tooltipValue = document.querySelector(`[data-for="${id}"]`);
+            if (expanded === 'false' && !!tooltipValue) {
                 tooltipValue.focus();
             } else {
                 $(e.target).focus();

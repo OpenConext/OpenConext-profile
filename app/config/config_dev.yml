@@ -19,7 +19,6 @@ nelmio_security:
         enforce:
             img-src:
                 - self
-                - 'https://generative-placeholders.glitch.me'
                 - 'data:'
             script-src:
                 - self
