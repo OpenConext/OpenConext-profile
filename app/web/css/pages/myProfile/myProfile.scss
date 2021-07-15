@@ -1,0 +1,23 @@
+@import 'attributesTable';
+@import '../../helpers/breakpoints';
+@import '../../helpers/functions';
+
+.content__myProfile {
+  padding-right: calculateRem(70px);
+
+  @include screen('mobile') {
+    padding-right: .5rem;
+  }
+}
+
+.myProfile__intro {
+  color: $black;
+}
+
+.myProfile__section {
+  margin-top: 2.5rem;
+}
+
+.myProfile__note {
+  margin-bottom: calculateRem(80px);
+}

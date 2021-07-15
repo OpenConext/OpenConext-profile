@@ -1,0 +1,8 @@
+<ul class="list__info{% if className is defined %} {{ className }}{% endif %}">
+    {% for item in list %}
+        <li class="info__item">
+            <div class="info__name">{{ item.name }}</div>
+            <div class="info__value">{{ item.value }}</div>
+        </li>
+    {% endfor %}
+</ul>

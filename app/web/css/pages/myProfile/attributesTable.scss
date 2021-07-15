@@ -1,0 +1,51 @@
+@import '../../helpers/variables';
+
+.attributesTable {
+  border-collapse: collapse;
+  color: $black;
+  font-size: $f-normal;
+  margin: 2.5rem 0 1.5rem;
+  width: 100%;
+}
+
+.attributesTable__headerRow {
+  border-bottom: 1px solid $black;
+  font-family: 'SourceSansPro', sans-serif;
+  font-size: $f-small;
+  font-weight: $bolder;
+  line-height: 1.71;
+  text-align: left;
+}
+
+.attributesTable__headerCell {
+  border-bottom: 1px solid $black;
+  padding: 0 0 calculateRem(11px) 0;
+
+  &:first-of-type {
+    padding-left:calculateRem(9px);
+    width: 37%;
+  }
+}
+
+.attributesTable__attribute {
+  font-weight: $normal;
+}
+
+.attributesTable__value {
+  font-weight: $bolder;
+}
+
+.attributesTable__row {
+  border-bottom: 1px solid $providerGray;
+  line-height: calculateRem(70px);
+}
+
+.attributesTable__cell {
+  border-bottom: 1px solid $providerGray;
+  padding: 0;
+
+  &:first-of-type {
+    padding-left:calculateRem(9px);
+    width: 37%;
+  }
+}

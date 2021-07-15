@@ -1,0 +1,16 @@
+{% set list = {
+    'row1': {
+        'name': 'profile.my_surf_conext.origin'|trans,
+        'value': 'profile.my_surf_conext.logging_data_origin'|trans
+    },
+    'row2': {
+        'name': 'profile.my_surf_conext.data_retention_period'|trans,
+        'value': 'profile.my_surf_conext.logging_data_retention_period'|trans
+    }
+} %}
+
+<section class="mySurfConext__section">
+    <h2 class="title__emphasis">{{ 'profile.my_surf_conext.logging_data'|trans }}</h2>
+    <p>{{ 'profile.my_surf_conext.logging_data_explanation'|trans }}</p>
+    {% include '@OpenConextProfile/helpers/info-list.html.twig' with { list: list } %}
+</section>

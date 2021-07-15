@@ -1,0 +1,41 @@
+@import '../helpers/breakpoints';
+@import '../helpers/variables';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.footer__navigation {
+  color: $contrastBlue;
+  font-weight: $normal;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__navigationItem {
+  @include screen('mobile') {
+    &:first-of-type {
+      display: none;
+    }
+  }
+}
+
+.footer__navigationLink {
+  color: $contrastBlue;
+  font-weight: $normal;
+}
+
+.footer__logoWrapper {
+  display: flex;
+}
+
+.footer__logoText {
+  line-height: 1.25rem;
+
+  @include screen('tabletAndSmaller') {
+    display: none;
+  }
+}

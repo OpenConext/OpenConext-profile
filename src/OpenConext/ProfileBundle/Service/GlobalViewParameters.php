@@ -36,6 +36,11 @@ final class GlobalViewParameters
     /**
      * @var array
      */
+    private $privacyUrls;
+
+    /**
+     * @var array
+     */
     private $platformUrls;
 
     /**
@@ -57,6 +62,7 @@ final class GlobalViewParameters
      * @param TranslatorInterface $translator
      * @param array $locales
      * @param array $helpUrls
+     * @param array $privacyUrls
      * @param array $platformUrls
      * @param array $termsOfServiceUrls
      * @param array $profileExplanationImageUrls
@@ -66,12 +72,14 @@ final class GlobalViewParameters
         TranslatorInterface $translator,
         array $locales,
         array $helpUrls,
+        array $privacyUrls,
         array $platformUrls,
         array $termsOfServiceUrls,
         array $profileExplanationImageUrls,
         array $attributeInformationUrls
     ) {
         Assert::keysArePresent($helpUrls, $locales);
+        Assert::keysArePresent($privacyUrls, $locales);
         Assert::keysArePresent($platformUrls, $locales);
         Assert::keysArePresent($termsOfServiceUrls, $locales);
         Assert::keysArePresent($profileExplanationImageUrls, $locales);
@@ -79,6 +87,7 @@ final class GlobalViewParameters
 
         $this->translator                  = $translator;
         $this->helpUrls                    = $helpUrls;
+        $this->privacyUrls                 = $privacyUrls;
         $this->platformUrls                = $platformUrls;
         $this->termsOfServiceUrls          = $termsOfServiceUrls;
         $this->profileExplanationImageUrls = $profileExplanationImageUrls;
@@ -91,6 +100,14 @@ final class GlobalViewParameters
     public function getHelpUrl()
     {
         return $this->helpUrls[$this->translator->getLocale()];
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrivacyUrl()
+    {
+        return $this->privacyUrls[$this->translator->getLocale()];
     }
 
     /**

@@ -1,4 +1,4 @@
-var Encore = require('@symfony/webpack-encore');
+const Encore = require('@symfony/webpack-encore');
 
 Encore
     .setOutputPath('web/build/')
@@ -8,7 +8,7 @@ Encore
         from: './app/web/images/',
         to: 'images/[path][name].[hash:8].[ext]',
     })
-
+    .enableSassLoader()
     .addEntry('app', './app/web/js/app.js')
     .addEntry('my-connections', './app/web/js/my-connections.js')
 

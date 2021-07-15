@@ -1,0 +1,12 @@
+@import '../helpers/variables';
+
+.note__paragraph {
+  background-color: $noteBlue;
+  border-radius: 4px;
+  color: $black;
+  font-size: $f-small;
+  font-weight: $f-normal;
+  line-height: 1.43;
+  margin: 0;
+  padding: 1rem;
+}
