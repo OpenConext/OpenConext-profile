@@ -5,12 +5,12 @@ Encore
     .setPublicPath('/build')
 
     .copyFiles({
-        from: './app/web/images/',
+        from: './assets/static/images/',
         to: 'images/[path][name].[hash:8].[ext]',
     })
 
-    .addEntry('app', './app/web/js/app.js')
-    .addEntry('my-connections', './app/web/js/my-connections.js')
+    .addEntry('app', './assets/js/app.js')
+    .addEntry('my-connections', './assets/js/my-connections.js')
 
     .disableSingleRuntimeChunk()
 

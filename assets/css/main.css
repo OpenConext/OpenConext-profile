@@ -346,7 +346,7 @@ tr.service:hover {
 }
 
 .attribute-container .mdl-grid .mdl-cell .mdl-button.orcid {
-    background: white url('../images/orcid_small.png') 12px 6px no-repeat;
+    background: white url('../static/images/orcid_small.png') 12px 6px no-repeat;
     color: darkgrey;
     text-transform: initial;
 }
@@ -377,7 +377,7 @@ a.download {
 a.download:before {
     /* download icon */
     content: "\f019";
-    font-family: "FontAwesome";
+    font-family: "FontAwesome", sans-serif;
     position:absolute;
     top:0;
     left:0;
