@@ -39,9 +39,7 @@ class OpenConextProfileExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
-
-        $this->parseEngineBlockEntityIdConfiguration($config['engine_block_entity_id'], $container);
-
+        
         $this->parseAttributeSupportMailConfiguration($config['attribute_support'], $container);
         $this->parseInformationRequestMailConfiguration($config['information_request'], $container);
 
@@ -66,13 +64,6 @@ class OpenConextProfileExtension extends Extension
             $container->getDefinition(UserService::class)
                 ->removeMethodCall('setUserLifecycleApiClient');
         }
-    }
-
-    private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container)
-    {
-        $container
-            ->getDefinition('OpenConext\Profile\Value\EntityId')
-            ->replaceArgument(0, $engineBlockEntityId);
     }
 
     private function parseAttributeSupportMailConfiguration(array $attributeSupportConfig, ContainerBuilder $container)
