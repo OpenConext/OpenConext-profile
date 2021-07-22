@@ -13,6 +13,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 33%;
 }
 
 .footer__navigationItem {
@@ -26,10 +27,16 @@
 .footer__navigationLink {
   color: $contrastBlue;
   font-weight: $normal;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .footer__logoWrapper {
   display: flex;
+  justify-content: flex-end;
+  width: 33%;
 }
 
 .footer__logoText {

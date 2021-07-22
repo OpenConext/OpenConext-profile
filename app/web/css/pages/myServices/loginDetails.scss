@@ -21,6 +21,15 @@
     padding-left: 1rem;
     width: 75%;
   }
+
+  @include screen('mobile') {
+    flex-direction: column;
+
+    dt,
+    dd {
+      width: unset;
+    }
+  }
 }
 
 .service__deleteDescription {

@@ -19,3 +19,12 @@
   position: absolute;
   top: 13px;
 }
+
+.header__homeLink {
+  display: inline-block;
+  padding-right: 4rem;
+
+  &:focus {
+    @include focus-style($oceanBlue);
+  }
+}

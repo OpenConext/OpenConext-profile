@@ -6,12 +6,12 @@
         <ul class="connection__list list__details">
             {% for connection in activeConnections %}
                 <li class="connection__listItem listDetails__item">
-                    <details class="connection__details listDetails__details"{% if loop.first %} open{% endif %}>
+                    <details class="connection__details listDetails__details">
                         <summary class="connection__name listDetails__name">
                             <h3 class="connection__title listDetails__title">
-                                {{ 'profile.my_connections.orcid.title'|trans }}
+                                <span>{{ 'profile.my_connections.orcid.title'|trans }}</span>
+                                {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow listDetails__statusArrow' } %}
                             </h3>
-                            {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow listDetails__statusArrow' } %}
                         </summary>
                         <div class="connection__info listDetails__info">
                             <img src="{{ asset(connection.logoPath) }}" class="connection__logo" alt="" /> {# todo: find out why the alt / title aren't service-specific #}
@@ -21,7 +21,7 @@
                                 </a>
                             </p>
                             <div class="connection__buttonWrapper">
-                                <button class="button card__button disconnect">
+                                <button class="button__secondary--white disconnect">
                                     {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
                                 </button>
 

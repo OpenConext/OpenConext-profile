@@ -37,15 +37,19 @@
 
 .attributesTable__row {
   border-bottom: 1px solid $providerGray;
-  line-height: calculateRem(70px);
+  line-height: 1.25;
 }
 
 .attributesTable__cell {
   border-bottom: 1px solid $providerGray;
-  padding: 0;
+  padding: calculateRem(24.5px) 0;
 
   &:first-of-type {
     padding-left:calculateRem(9px);
     width: 37%;
+
+    @include screen('mobile') {
+      width: 48%;
+    }
   }
 }

@@ -20,6 +20,11 @@
   &:last-of-type {
     border-bottom: none;
   }
+
+  @include screen('mobile') {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .info__name {
@@ -52,16 +57,11 @@
 .listDetails__details {
   border-top: 1px solid $idpSeparatorGray;
   border-bottom: 1px solid $idpSeparatorGray;
-  padding: 1rem 3rem;
 
   &:hover {
     .listDetails__title {
       text-decoration: underline;
     }
-  }
-
-  @include screen('mobile') {
-    padding: 1rem;
   }
 }
 
@@ -86,11 +86,32 @@
 }
 
 .listDetails__name {
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  padding: 1rem 3rem;
+
+  &:hover {
+    background-color: $gray;
+    @include focus-style;
+  }
+
+  @include screen('mobile') {
+    padding: 1rem;
+  }
+}
+
+.listDetails__info {
+  padding: 1rem 3rem;
+
+  @include screen('mobile') {
+    padding: 1rem;
+  }
 }
 
 .listDetails__title {
   color: $oceanBlue;
-  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: calculateRem(2.5px) 0;
+  width: 100%;
 }

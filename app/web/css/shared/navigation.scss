@@ -7,6 +7,7 @@
   background-color: $gray;
   border-bottom-left-radius: 6px;
   padding: 1.5rem 0 1.5rem .75rem;
+  position: relative;
   vertical-align: top;
 
   @include screen('mobile') {
@@ -19,6 +20,17 @@
   &.openMenu {
     width: max-content;
     z-index: $navMobileZ;
+  }
+
+
+  &::after {
+    border-right: 2px solid $idpSeparatorGray;
+    content: "";
+    display: block;
+    height: clamp(calc(100% - 3rem), 697px, calc(100% - 3rem));
+    position: absolute;
+    right: -1px;
+    top: 1.5rem;
   }
 }
 
@@ -75,12 +87,16 @@
 .navigation__item {
   background-position: 1rem calculateRem(10px);
   background-repeat: no-repeat;
-  padding: calculateRem(14px) calculateRem(7px) calculateRem(15px);
 
   &:hover,
   &:focus-within {
     background-color: $white;
     text-decoration: underline;
+  }
+
+  &:focus-within {
+    position: relative;
+    z-index: 1;
   }
 
   &.active {
@@ -95,18 +111,21 @@
       position: absolute;
       right: -3px;
       top: 0;
+      z-index: $navMobileZ;
     }
-
   }
 }
 
 .navigation__link {
   color: $black;
+  display: inline-block;
   font-size: $f-normal;
   font-weight: $bolder;
   letter-spacing: .3px;
-  margin-left: calculateRem(51px);
+  line-height: 1.25;
+  padding: calculateRem(14px) calculateRem(7px) calculateRem(15px) calculateRem(58px);
   text-decoration: none;
+  width: 100%;
 
   &[aria-current="page"] {
     color: $green;

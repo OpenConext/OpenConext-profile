@@ -18,11 +18,16 @@
   color: $titleBlack;
   display: flex;
   font-size: $f-normal;
+
+  @include screen('mobile') {
+    flex-direction: column;
+  }
 }
 
 .mySurfConext__downloadButton {
   flex: 0 0 max-content;
   height: max-content;
+  text-align: center;
 }
 
 .mySurfConext__downloadText {

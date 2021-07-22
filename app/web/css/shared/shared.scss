@@ -37,7 +37,7 @@ body {
     box-sizing: border-box
 }
 
-* {
+*:not(button) {
     @include focus;
 }
 
@@ -45,10 +45,6 @@ a {
     color: $buttonBlue;
     font-weight: $bolder;
     text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
 }
 
 button {

@@ -1,6 +1,11 @@
 @import '../helpers/mixins';
 @import '../helpers/variables.scss';
 
+.locale-switch {
+  text-align: center;
+  width: 33%;
+}
+
 select[name="profile_switch_locale[newLocale]"],
 button[type="submit"][name="profile_switch_locale[changeLocale]"] {
   display: none;

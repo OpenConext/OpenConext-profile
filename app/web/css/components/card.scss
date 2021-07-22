@@ -6,6 +6,10 @@
   column-gap: 1.25rem;
   justify-content: space-between;
   margin: 1.5rem 0 2.5rem;
+
+  @include screen('mobile') {
+    flex-direction: column;
+  }
 }
 
 .card {
@@ -15,6 +19,14 @@
   display: flex;
   flex-direction: column;
   max-width: calc((100% - 40px) / 3);
+
+  @include screen('mobile') {
+    max-width: unset;
+
+    &:not(:first-of-type) {
+      margin-top: 1rem;
+    }
+  }
 }
 
 .card__top {
@@ -48,8 +60,4 @@
 .card__button {
   text-align: center;
   width: 100%;
-
-  &:focus {
-    text-decoration: underline;
-  }
 }
