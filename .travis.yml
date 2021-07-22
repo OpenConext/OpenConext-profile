@@ -21,6 +21,8 @@ before_script:
   - phpenv config-add travis.php.ini
   - composer self-update
   - composer install --prefer-dist -n -o
+  - node -v
+  - nvm install 14.17.3 && nvm use 14.17.3
   - npm i && npm run build
 
 script:
