@@ -1,16 +1,16 @@
 {% set route = app.request.attributes.get('_route') %}
 <nav class="navigation" aria-labelledby="main-nav-label">
-    <h2 class="visually-hidden" id="main-nav-label">Main navigation</h2> {# todo: make this a translation #}
+    <h2 class="visually-hidden" id="main-nav-label">{{ 'accessibility.nav.title'|trans }}</h2>
     <button
         class="navigation__mobileButton"
         aria-haspopup="menu"
         aria-pressed="false"
     >
         <span class="visually-hidden">
-            Expand main navigation
+            {{ 'accessibility.nav.mobile_expand'|trans }}
         </span>
         {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'navigation__mobileIcon' } %}
-    </button>{# todo: make this a translation #}
+    </button>
     <ul
         class="navigation__list"
         role="menu"

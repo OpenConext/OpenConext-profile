@@ -9,11 +9,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="content__title">{{ 'profile.my_profile.long_title'|trans }}</h1> {# todo: change translation #}
+    <h1 class="content__title">{{ 'profile.my_profile.short_title'|trans }}</h1>
     <p class="myProfile__intro">{{ 'profile.my_profile.introduction'|trans }} <a href="{{ global_view_parameters.attributeInformationUrl }}">{{ 'profile.my_profile.attributes_information_link_title'|trans }}</a>.</p>
-    {# todo: check if these translations are used anywhere, if not delete them:
-        - profile.my_profile.pi_processing
-    #}
 
     {% include "@OpenConextProfile/MyProfile/attributes-table.html.twig" %}
 

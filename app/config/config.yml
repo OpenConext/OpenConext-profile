@@ -88,6 +88,7 @@ jms_translation:
             excluded_names: ['*TestCase.php', '*Test.php']
             excluded_dirs: [cache, data, logs, Tests]
             extractors: []
+            output_format: yml
 surfnet_saml:
     hosted:
         service_provider:

@@ -1,23 +1,23 @@
 <div class="card__container">
     {% include "@OpenConextProfile/helpers/card.html.twig" with {
-        btnText: 'View',
-        description: 'Which personal data can be passed on to the services your using.',
+        btnText: 'profile.my_profile.cards.button'|trans,
+        description: 'profile.my_profile.cards.data.description'|trans,
         href: path('profile.my_profile_overview'),
-        title: 'Your personal data',
+        title: 'profile.my_profile.cards.data.title'|trans,
         screenReaderSensitive: true
-    } %} {# todo: add translation #}
+    } %}
     {% include "@OpenConextProfile/helpers/card.html.twig" with {
-        btnText: 'View',
-        description: 'Which data SURFconext stores from you.',
+        btnText: 'profile.my_profile.cards.button'|trans,
+        description: 'profile.my_profile.cards.store.description'|trans,
         href: path('profile.my_surf_conext_overview'),
-        title: 'What we store',
+        title: 'profile.my_profile.cards.store.title'|trans,
         screenReaderSensitive: true
-    } %} {# todo: add translation #}
+    } %}
     {% include "@OpenConextProfile/helpers/card.html.twig" with {
-        btnText: 'View',
-        description: 'Which services you logged in to in the past using SURFconext.',
+        btnText: 'profile.my_profile.cards.button'|trans,
+        description: 'profile.my_profile.cards.services.description'|trans,
         href: path('profile.my_services_overview'),
-        title: 'Accessed services',
+        title: 'profile.my_profile.cards.services.title'|trans,
         screenReaderSensitive: true
-    } %} {# todo: add translation #}
+    } %}
 </div>

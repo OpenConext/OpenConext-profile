@@ -122,14 +122,16 @@ Make sure to set the correct Symfony environment by setting or exporting
 `SYMFONY_ENV`.
 
 ## Texts and translations
-Updating the texts (and translations of those texts) in the web interface
-can be done on an installation that runs in `DEV` mode. Make sure you log
-into profile at `https://profile-dev.vm.openconext.org`. Then go to
-`https://profile.vm.openconext.org/app_dev.php/_trans/` to update the strings.
+
+When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then use the command line to scan for translations.
 
 The following command can be used to scan for translations:
 
      ./bin/extract-translations.sh
+
+All new keys will be shown in the yml files with as text the key again followed by `# FIXME`.
+
+While the used bundle (JMS/Translation bundle) supports a web interface, it was removed in 2019 from this project and is no longer supported for Profile.
 
 ## Common tasks
 
@@ -141,7 +143,7 @@ The following command can be used to scan for translations:
    * Building the front-end can be done by running: `npm run encore dev` (for development, includes debug friendly features like sourcemaps)and `npm run build` for a production build.
    * Watch mode can be used, by using `npm run watch`, your mileage may vary as we are developing on a remote machine and fs changes might be noticed with a noticeable delay.
 * Front-end dependencies are tracked using NPM. Enabling us to keep track of known vulnerabilities and making updating packages easier. Feel free to use Yarn as an alternative, but please do not commit the Yarn lockfile as we chose to use the NPM solution.
-* Dialects: we use vanilla CSS and JavaScript for now.
+* Dialects: we use vanilla CSS, and JavaScript for now, as well as JQuery.
 
 ### Add support for new Attribute Aggregation source
 In EngineBlock ARP, attributes can be derived from a source other than the IdP. Whenever a source other than
@@ -157,7 +159,7 @@ When a new source is added in the Service Registry (or Manage) it must also be a
     
     {# Add your new source here, make sure the source name complies with the sourcename specified in the service registry. #}
     ```
-2. Extract the new translation and translate them in the available `messages.LANG.xliff` translation files.
+2. Extract the new translation and translate them in the available `messages.LANG.yml` translation files.
 3. Done.
 
 To test your change. Modify one of the SP's already present in the 'My Services' overview with the newly added source. 

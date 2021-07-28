@@ -1,7 +1,7 @@
 <section class="mySurfConext__section mySurfConext__download">
-    <h2 class="title__emphasis">Download</h2> {# todo: add translation #}
+    <h2 class="title__emphasis">{{ 'profile.my_profile.user_data_download.title'|trans }}</h2>
     <div class="mySurfConext__downloadExplanation">
-        <p class="mySurfConext__downloadText">{{ 'profile.my_profile.user_data_download'|trans|raw }}</p> {# todo: adjust translations by splitting it up between paragraph, the link below and the link itself #}
-        <a href="/my-surfconext/download" class="button mySurfConext__downloadButton">Download overview</a>
+        <p class="mySurfConext__downloadText">{{ 'profile.my_profile.user_data_download.explanation'|trans }}</p>
+        <a href="{{ 'profile.my_profile.user_data_download.link|trans' }}" class="button mySurfConext__downloadButton">{{ 'profile.my_profile.user_data_download.link_text'|trans }}</a>
     </div>
 </section>
