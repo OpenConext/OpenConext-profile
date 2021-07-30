@@ -1,13 +1,13 @@
 accessibility:
-    button_expandable_screenreader: ', button, expandable' # FIXME
-    button_screenreader: ', button, expanded' # FIXME
-    consent_tooltip_screenreader: 'Why do we need your %attr_name%?' # FIXME
+    button_expandable_screenreader: ', botao, expansível'
+    button_screenreader: ', botao, expandido'
+    consent_tooltip_screenreader: 'Porque precisamos do seu %attr_name%?'
 
     nav:
-        mobile_expand: 'Expand main navigation' # FIXME
-        title: 'Main navigation' # FIXME
+        mobile_expand: 'Expandir navegação principal Expand main navigation'
+        title: 'Navegação principal'
 
-    skip_link: 'To main content' # FIXME
+    skip_link: 'Para o conteúdo principal'
 
 profile:
     application:
@@ -56,9 +56,9 @@ profile:
     introduction:
         explanation:
             introduction:
-                end: 'you login with your instituteaccount on different (cloud)services. You can find more info here.' # FIXME
-                serviceName: SURFconext # FIXME
-                start: With # FIXME
+                end: 'você faz o login com sua conta do instituto em diferentes serviços (cloud). Pode encontrar mais informação aqui.'
+                serviceName: SURFconext
+                start: Com
 
         long_title: 'Página do perfil da SURFconext'
 
@@ -93,8 +93,8 @@ profile:
             connect_title: 'Registre-se ou conecte seu ORCID iD'
 
             description:
-                end: 'After you have been redirected to ORCID, you can link your ORCID iD by logging in and clicking on ''Authorize''. In the future, your ORCID iD can then be passed on via SURFconext to services that want to use it.' # FIXME
-                start: 'Connect your existing or newly created ORCID iD to SURFconext once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.' # FIXME
+                end: 'Depois de ser redirecionado para o ORCID, você pode vincular o seu ID do ORCID fazendo login e clicando em '' Autorizar ''. No futuro, o seu ID de ORCID pode ser passado via SURFconext para os serviços que desejam usá-lo.'
+                start: 'Ligue o seu ORCID iD existente ou recém-criado na SURFconext uma vez. O ORCID iD é um código que é usado para identificar exclusivamente autores científicos e outros acadêmicos.'
 
             disconnect_title: Desligar
             title: ORCID
@@ -106,46 +106,46 @@ profile:
         attributes_information_link_title: 'Atributos na SURFconext'
 
         cards:
-            button: View # FIXME
+            button: Ver
 
             data:
-                description: 'Which personal data can be passed on to the services your using.' # FIXME
-                title: 'Your personal data' # FIXME
+                description: 'Que dados pessoais podem ser fornecidos aos serviços que você usa.'
+                title: 'Your personal data'
 
             services:
-                description: 'Which services you logged in to in the past using SURFconext.' # FIXME
-                title: 'Accessed services' # FIXME
+                description: 'Em que serviços se ligou anteriormente usando SURFconext.'
+                title: 'Serviços acedidos'
 
             store:
-                description: 'Which data SURFconext stores from you.' # FIXME
-                title: 'What we store' # FIXME
+                description: 'Que dados seus são armazenados pela SURFconext.'
+                title: 'O que armazenamos'
 
         introduction: 'A tabela apresentada em baixo contém uma visão geral de todos os seus dados pessoais que a sua instituição de origem poderá passar para os vários serviços, através da SURFconext. Dentro da SURFconext, os seus dados pessoais são chamados de ''atributos''. Um atributo pode ser, por exemplo, o seu nome, o seu endereço de e-mail ou o nome da sua instituição. Para obter mais informações técnicas sobre esses atributos, a SURFconext disponibiliza a seguinte página de informações extras:'
         questions: 'Nota importante: A sua instituição é responsável pelos dados pessoais aqui exibidos. A SURFconext está simplesmente a mostrar as informações facultadas pela sua instituição de origem. Se tiver alguma questão sobre os seus atributos, por favor contate o suporte da sua instituição através de:'
         questions_no_support_contact_email: 'Se tiver alguma dúvida sobre seus dados pessoais, entre em contato com o suporte técnico da sua instituição.'
         short_title: 'O Meu Perfil'
-        sup_text: 'Your institution decides which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to' # FIXME
+        sup_text: 'Sua instituição decide que serviços tem acesso na SURFconext. A maioria dos serviços que você usa por meio do SURFconext solicita um subconjunto desses dados. Alguns serviços não requerem dados pessoais. Se pretender ver que serviços receberam e que dados, consulte em'
 
         user_data_download:
-            explanation: 'You can download an overview with personal data stored by SURFconext in json format.' # FIXME
-            link_text: 'Download overview' # FIXME
-            title: Download # FIXME
+            explanation: 'Pode efetuar o download da visão geral com dados pessoais armazenados pela SURFconext em formato json.'
+            link_text: 'Download visão geral'
+            title: Download
 
     my_services:
         consent_first_used_on: 'Utilizado pela primeira vez em'
         consent_type: 'O consentimento foi dado por'
-        delete_button: 'Delete login details' # FIXME
-        delete_explanation: 'deleting these login details means SURFconext removes this information from your SURFconext account.  You still have an account at the service itself.  If you want that removed, please do so at the service.' # FIXME
+        delete_button: 'Apagar detalhes do login'
+        delete_explanation: 'excluir esses detalhes de login significa que a SURFconext remove essas informações da sua conta SURFconext. Você ainda continua a ter conta no serviço em si. Mas se pretender que seja removido, faça-o no serviço.'
         error_loading_consent: 'A lista dos serviços nos quais está autenticado não pode ser apresentada.'
         eula: EULA
 
         explanation:
-            end: 'It shows which subset of your personal data (attributes) has been shared between your institution and the service. Additionally it shows whether you or your institutiton has agreed to sharing your attributes with the service.' # FIXME
-            start: 'This overview contains all services you have logged in to through SURFconext at least once.' # FIXME
+            end: 'Mostra qual o subconjunto dos dados pessoais (atributos) foi partilhado entre sua instituição e o serviço. Além disso, mostra se você ou a sua instituição concordou em compartilhar os seus atributos com o serviço.'
+            start: 'Esta visão geral contém todos os serviços nos quais você se ligou através da SURFconext pelo menos uma vez.'
 
         explicit_consent_given: utilizador
         implicit_consent_given: instituição
-        login_details: 'Login details' # FIXME
+        login_details: 'Detalhes do Login'
         no_attribute_released: 'Este serviço não recebe informações sobre si.'
         short_title: 'Os Meus Serviços'
         supportEmail: 'Email de Suporte'
