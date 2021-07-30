@@ -4,8 +4,7 @@
     {% else %}
         {% set attributeUrn = attribute.attributeDefinition.urnOid %}
     {% endif %}
-{#        {% set hasMotivation = specifiedConsent.hasMotivations %}#}
-    {% set hasMotivation = true %}
+    {% set hasMotivation = specifiedConsent.hasMotivations %}
     {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
     {% set nameFormat = sp.nameIdFormat %}
     {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
@@ -24,7 +23,7 @@
                         hideText: true,
                         ariaExpandable: true,
                         id: tooltipId,
-                        text: 'consent_tooltip_screenreader'|trans({ '%attr_name%': attributeName|lower }),
+                        text: 'accessibility.consent_tooltip_screenreader'|trans({ '%attr_name%': attributeName|lower }),
                     }
                 %}
             {% endif %}
@@ -52,16 +51,10 @@
             {% endif %}
         </div>
         {% if hasMotivation %}
-{#                {% set tooltipValue = specifiedConsent.motivation(attribute) %}#}
-            {% set tooltipValue = 'dit is een tooltip' %}
+            {% set tooltipValue = specifiedConsent.motivation(attribute) %}
             <input type="checkbox" tabindex="-1" class="tooltip visually-hidden" aria-expanded="false" role="button" aria-pressed="false" id="{{ tooltipId }}" name="{{ tooltipId }}" />
             {% include '@OpenConextProfile/helpers/tooltip.html.twig' with { tooltipValue: tooltipValue } %}
         {% endif %}
     </li>
 {% endfor %}
 {# todo: add provided by row #}
-{# todo: see if following translations are used elsewhere, if not remove them:
-    - profile.table.attribute_name
-    - profile.table.attribute_value
-    - profile.table.motivation
-#}

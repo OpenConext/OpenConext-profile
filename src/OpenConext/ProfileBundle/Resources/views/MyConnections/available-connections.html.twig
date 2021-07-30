@@ -15,11 +15,12 @@
                         </summary>
                         <div class="connection__info listDetails__info">
                             <img src="{{ asset(connection.logoPath) }}" class="connection__logo" alt="" /> {# todo: find out why the alt / title aren't service-specific #}
-                            <p>{{ 'profile.my_connections.orcid.description'|trans|nl2br }}</p> {# todo: split in two paragraphs or use a div #}
+                            <p>{{ 'profile.my_connections.orcid.description.start'|trans }}</p>
+                            <p>{{ 'profile.my_connections.orcid.description.end'|trans }}</p>
                             <p class="connection__buttonWrapper">
                                 <a
-                                        class="button"
-                                        href="{{ connection.connectUrl }}">
+                                    class="button"
+                                    href="{{ connection.connectUrl }}">
                                     {{ 'profile.my_connections.orcid.connect_title'|trans }}
                                 </a>
                             </p>

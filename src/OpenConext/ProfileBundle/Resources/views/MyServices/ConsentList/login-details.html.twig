@@ -1,6 +1,6 @@
 <div class="buttonedTitle">
-    <h3 class="buttonedTitle__title title__details">Login details</h3>{# todo: make this a translation #}
-    <button class="buttonedTitle__button button__secondary--white" aria-describedby="service__deleteDescription">Delete login details<sup>*</sup></button>
+    <h3 class="buttonedTitle__title title__details">{{ 'profile.my_services.login_details'|trans }}</h3>
+    <button class="buttonedTitle__button button__secondary--white" aria-describedby="service__deleteDescription">{{ 'profile.my_services.delete_button'|trans }}<sup>*</sup></button>
 </div>
 <dl class="service__loginDetails">
     <div class="loginDetails__row">
@@ -21,5 +21,5 @@
     </div>
 </dl>
 <p id="service__deleteDescription" class="service__deleteDescription">
-    <sup>*</sup> deleting these login details means eduID removes this information from your eduId account.  You still have an account at the service itself.  If you want that removed, please do so at the service.
-</p> {# todo: replace with final text & inject variables #}
+    <sup>*</sup> {{ 'profile.my_services.delete_explanation'|trans }}
+</p>

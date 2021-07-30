@@ -9,14 +9,9 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="content__title">{{ 'profile.introduction.long_title'|trans }}</h1>{# todo: adjust translation #}
-    {#
-        todo: see if following translations are used anywhere, if not delete them:
-        - profile.introduction.explanation.title
-    #}
+    <h1 class="content__title">{{ 'profile.introduction.long_title'|trans({ '%userName%': userName }) }}</h1>
 
-    <p>{{ 'profile.introduction.explanation.introduction'|trans }}</p> {# todo: adjust translation #}
-
+    <p>{{ 'profile.introduction.explanation.introduction.start'|trans }} <strong>{{ 'profile.introduction.explanation.introduction.serviceName'|trans }}</strong> {{ 'profile.introduction.explanation.introduction.end'|trans }}</p>
 
     {% include "@OpenConextProfile/Introduction/navigation-cards.html.twig" %}
     {% include "@OpenConextProfile/Introduction/how-it-works.html.twig" %}

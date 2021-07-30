@@ -1,0 +1,193 @@
+accessibility:
+    button_expandable_screenreader: ', button, expandable' # FIXME
+    button_screenreader: ', button, expanded' # FIXME
+    consent_tooltip_screenreader: 'Why do we need your %attr_name%?' # FIXME
+
+    nav:
+        mobile_expand: 'Expand main navigation' # FIXME
+        title: 'Main navigation' # FIXME
+
+    skip_link: 'To main content' # FIXME
+
+profile:
+    application:
+        platform_connection_name: SURFconext
+        title: 'Perfil SURFconext'
+
+    attribute_support:
+        explanation: 'O suporte da SURFconext poderá pedir-lhe para partilhar os dados mencionados em cima. Estes dados podem ajudar o suporte a resolver as suas questões.'
+        long_title: 'Enviar os dados ao suporte da SURFconext'
+        send_mail: 'Enviar dados'
+        short_title: 'Enviar dados'
+
+    attribute_support_confirmation:
+        explanation: 'O email com os seus dados foi enviado com sucesso.'
+        long_title: 'Os atributos foram enviados por email'
+        short_title: 'Atributo enviado por email'
+
+    confirm_connection_delete:
+        confirm: Confirmar
+        confirm_label: 'Concordo com o desligar desta ligação.'
+
+    error:
+        403:
+            description: 'Se você não tiver acesso a esta página.'
+            title: 'Acesso recusado'
+
+        404:
+            description: 'The page you are looking for does not exist.'
+            title: 'Page not found'
+
+        500:
+            description: 'Something went wrong, please try again later or contact the SURFconext helpdesk.'
+            title: 'Server error'
+
+    information_request:
+        explanation: 'If you press ''confirm request'', your attributes will be sent to the Privacy Officer of SURFnet, and your request about the processing of personal data will be taken care of.'
+        long_title: 'Identification because of request data subject'
+        send_mail: 'Confirm request'
+        short_title: 'Identification request'
+
+    information_request_confirmation:
+        explanation: 'Your request about the processing of personal data will be taken care of.'
+        long_title: 'Thanks for sending your attributes'
+        short_title: 'Identification request'
+
+    introduction:
+        explanation:
+            introduction:
+                end: 'you login with your instituteaccount on different (cloud)services. You can find more info here.' # FIXME
+                serviceName: SURFconext # FIXME
+                start: With # FIXME
+
+        long_title: 'Página do perfil da SURFconext'
+
+        purpose:
+            profile_storage: "Em nome da sua instituição, a SURFconext envia uma quantidade limitada de seus dados pessoais para o serviço no qual você está a realizar a sua autenticação. Na maioria das vezes, você é obrigado a dar consentimento explícito para a transferência de informações. No entanto, em alguns casos, esse recurso é desativado a pedido de sua instituição.\n\nEsta página de perfil fornece informações que podem vir a ser dados pessoais. Estes dados são fornecidos pela sua instituição por meio da SURFconext que são encaminhados para cada serviço. Você também pode validar que dados pessoais estão a ser armazenados pela SURFconext e quais os serviços utilizou no passado."
+            title: 'Qual é o propósito desta página de perfil?'
+
+        short_title: Introdução
+
+    locale:
+        choose_locale: 'Escolher idioma'
+        en: EN
+        locale_change_fail: 'Idioma não pode ser alterado'
+        locale_change_success: 'Idioma alterado'
+        nl: NL
+        pt: PT
+
+    my_connections:
+        active_connections: 'Ligações activas'
+        available_connections: 'Ligações disponíveis'
+        explanation: 'É possível ligar fontes externas ao seu Perfil SURFconext. A SURFconext consegue usar esta informação para enriquecer os atributos existentes da sua conta institucional com os valores desta conta externa. Os serviços ligados à SURFconext podem receber e usar esta informação.'
+        long_title: 'Contas ligadas ao seu perfil'
+        missing_connections: 'Ligações em falta?'
+
+        no_active_connections:
+            description: 'Não tem ligações activas.'
+
+        no_connections_configured:
+            description: 'De momento não existem ligações disponíveis para configuração.'
+
+        orcid:
+            connect_title: 'Registre-se ou conecte seu ORCID iD'
+
+            description:
+                end: 'After you have been redirected to ORCID, you can link your ORCID iD by logging in and clicking on ''Authorize''. In the future, your ORCID iD can then be passed on via SURFconext to services that want to use it.' # FIXME
+                start: 'Connect your existing or newly created ORCID iD to SURFconext once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.' # FIXME
+
+            disconnect_title: Desligar
+            title: ORCID
+
+        send_request: 'Envie-nos um pedido'
+        short_title: 'As Minhas Ligações'
+
+    my_profile:
+        attributes_information_link_title: 'Atributos na SURFconext'
+
+        cards:
+            button: View # FIXME
+
+            data:
+                description: 'Which personal data can be passed on to the services your using.' # FIXME
+                title: 'Your personal data' # FIXME
+
+            services:
+                description: 'Which services you logged in to in the past using SURFconext.' # FIXME
+                title: 'Accessed services' # FIXME
+
+            store:
+                description: 'Which data SURFconext stores from you.' # FIXME
+                title: 'What we store' # FIXME
+
+        introduction: 'A tabela apresentada em baixo contém uma visão geral de todos os seus dados pessoais que a sua instituição de origem poderá passar para os vários serviços, através da SURFconext. Dentro da SURFconext, os seus dados pessoais são chamados de ''atributos''. Um atributo pode ser, por exemplo, o seu nome, o seu endereço de e-mail ou o nome da sua instituição. Para obter mais informações técnicas sobre esses atributos, a SURFconext disponibiliza a seguinte página de informações extras:'
+        questions: 'Nota importante: A sua instituição é responsável pelos dados pessoais aqui exibidos. A SURFconext está simplesmente a mostrar as informações facultadas pela sua instituição de origem. Se tiver alguma questão sobre os seus atributos, por favor contate o suporte da sua instituição através de:'
+        questions_no_support_contact_email: 'Se tiver alguma dúvida sobre seus dados pessoais, entre em contato com o suporte técnico da sua instituição.'
+        short_title: 'O Meu Perfil'
+        sup_text: 'Your institution decides which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to' # FIXME
+
+        user_data_download:
+            explanation: 'You can download an overview with personal data stored by SURFconext in json format.' # FIXME
+            link_text: 'Download overview' # FIXME
+            title: Download # FIXME
+
+    my_services:
+        consent_first_used_on: 'Utilizado pela primeira vez em'
+        consent_type: 'O consentimento foi dado por'
+        delete_button: 'Delete login details' # FIXME
+        delete_explanation: 'deleting these login details means SURFconext removes this information from your SURFconext account.  You still have an account at the service itself.  If you want that removed, please do so at the service.' # FIXME
+        error_loading_consent: 'A lista dos serviços nos quais está autenticado não pode ser apresentada.'
+        eula: EULA
+
+        explanation:
+            end: 'It shows which subset of your personal data (attributes) has been shared between your institution and the service. Additionally it shows whether you or your institutiton has agreed to sharing your attributes with the service.' # FIXME
+            start: 'This overview contains all services you have logged in to through SURFconext at least once.' # FIXME
+
+        explicit_consent_given: utilizador
+        implicit_consent_given: instituição
+        login_details: 'Login details' # FIXME
+        no_attribute_released: 'Este serviço não recebe informações sobre si.'
+        short_title: 'Os Meus Serviços'
+        supportEmail: 'Email de Suporte'
+        support_title: Suporte
+        support_url: Suporte
+
+    my_surf_conext:
+        account_data: 'Dados da conta'
+        account_data_explanation: 'A SURFconext pode fornecer a cada serviço (cloud) um identificador de privacidade (código), através do qual o utilizador pode ser reconhecido quando voltar a usar o serviço.'
+        account_data_origin: 'O ID de utilizador e nome da sua instituição através da sua instituição + número gerado pela SURFconext'
+        account_data_retention_period: 'Até 3 anos após o último login.'
+        consent_data: 'Dados de Consentimento'
+        consent_data_explanation: 'A maioria dos serviços exigem que o utilizador, antes do primeiro login, dê o seu consentimento explícito à sua instituição para partilha de dados pessoais com o serviço no qual pretende efetuar login. A SURFconext armazena em que momento e para que serviço foi dado consentimento. Para ver que dados pessoais estão a ser partilhados com o serviço, aceda a'
+        consent_data_origin: 'Gerado pela SURFconext'
+        consent_data_retention_period: 'Até 3 anos após o último login.'
+        data_origin: 'Informação e origem'
+        data_retention_period: 'Período de Retenção'
+        introduction: 'A SURFconext armazena um conjunto de dados para permitir login fácil e seguro em diversos serviços (na Cloud) e também para fornecer informações sobre os serviços nos quais efetuou login através da SURFconext. A instituição de origem é quem decide que serviços estão acessíveis para o utilizador através da SURFconext. A maioria dos serviços usados através da SURFconext solicita um subconjunto desses dados. Alguns serviços não requerem dados pessoais; caso o utilizador queira ver que dados foram partilhados e por que serviços, deverá consultar o separador %my_services_link%.'
+        logging_data: 'Registo de Dados'
+        logging_data_explanation: 'A SURFconext faz um registo de acesso de cada utilizador, do serviço em que este efetua login e do endereço IP através do qual acede. Este registo é apenas para fins administrativos e de segurança.'
+        logging_data_origin: 'Gerado pela SURFconext'
+        logging_data_retention_period: '6 meses. Ao fim de 6 meses os registos são tornados anónimos.'
+        origin: Origem
+        short_title: 'O Meu SURFconext'
+
+    navigation:
+        help: Ajuda
+        privacy: profile.navigation.privacy
+        terms_of_service: 'Termos do Serviço'
+
+    saml:
+        attributes:
+            eduPersonTargetedId:
+                persistent: 'Pseudônimo que difere para cada serviço'
+                transient: 'Pseudônimo que muda a cada login'
+
+    table:
+        attribute_name: Atributo
+        attribute_value: Valor
+
+        source_description:
+            orcid: 'ORCID iD'
+            sab: 'Gestão de Autorização SURFconext'
+            surfmarket_entitlements: 'Direitos SURFconext'
+            voot: 'Membros do Grupo'

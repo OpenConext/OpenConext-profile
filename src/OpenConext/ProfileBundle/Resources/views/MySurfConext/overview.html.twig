@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="content__title">{{ 'profile.my_surf_conext.long_title'|trans }}</h1> {# todo adjust translation #}
-    <p>{{ 'profile.my_surf_conext.introduction'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}<sup>*</sup></p> {# todo: adjust translation #}
+    <h1 class="content__title">{{ 'profile.my_surf_conext.short_title'|trans }}</h1>
+    <p>{{ 'profile.my_surf_conext.introduction'|trans|escape|replace({'%my_services_link%': '<a href="' ~ path('profile.my_services_overview') ~ '">' ~ 'profile.my_services.short_title'|trans|escape ~ '</a>'})|raw }}<sup>*</sup></p>
 
     {% include '@OpenConextProfile/MySurfConext/account-data.html.twig' %}
     {% include '@OpenConextProfile/MySurfConext/logging-data.html.twig' %}
@@ -20,8 +20,8 @@
         {% include '@OpenConextProfile/MySurfConext/data-download.html.twig' %}
     {% endif %}
 
-    {% set text %} {# todo: add translation, but without sup element #}
-        <sup>*</sup> Your institution decides which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to Services you accessed.
+    {% set text %}
+        <sup>*</sup> {{ 'profile.my_profile.sup_text'|trans }} <a href="{{ path('profile.my_services_overview') }}"> {{ 'profile.my_services.short_title'|trans }}</a>.
     {% endset %}
     {% include '@OpenConextProfile/helpers/paragraph-note.html.twig' with { text: text } %}
 {% endblock %}

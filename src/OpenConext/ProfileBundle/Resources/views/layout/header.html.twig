@@ -1,10 +1,10 @@
 <header class="header">
-    <a href="#main" class="skip-main">To main content</a>{# todo: make into translation #}
+    <a href="#main" class="skip-main">{{ 'accessibility.skip_link'|trans }}</a>
     <a
         class="header__homeLink"
         href="{{ path('profile.introduction_overview') }}"
     >
         <img src="{{ asset('build/images/logo_SURFconext.svg') }}" alt="" width="114px" height="38px">
     </a>
-    <p class="header__profile">Profile</p> {# todo: make into translation #}
+    <p class="header__profile">Profile</p>
 </header>
