@@ -20,15 +20,37 @@
                                     {{ connection.linkedId }}
                                 </a>
                             </p>
-                            <div class="connection__buttonWrapper">
-                                <button class="button__secondary--white disconnect">
-                                    {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
-                                </button>
+                            {% set linkId = 'delete_active_' ~ loop.index %}
+                            <a class="button__secondary--white disconnect" data-id={{ linkId }} href="#{{ linkId }}">
+                                {{ 'profile.my_connections.orcid.disconnect_title'|trans }}
+                            </a>
 
-                                {{ form_start(confirmForm, {attr: {'class': 'confirmation-container', 'novalidate': 'novalidate'} }) }}
-                                {{ form_widget(confirmForm) }}
-                                {{ form_end(confirmForm) }}
-                            </div>
+                            {% set headerId = 'dialog-header-' ~ loop.index %}
+                            <div
+                                class="modalWindow"
+                                id="{{ linkId }}"
+                                role="alertdialog"
+                                aria-modal="true"
+                                aria-labelledby="{{ headerId }}"
+                                aria-describedby="description-part-1-{{ loop.index }} description-part-2-{{ loop.index }}"
+                            >
+                                    <div class="modalWindow__content">
+                                        <h4
+                                            class="modalWindow__header"
+                                            id={{ headerId }}
+                                        >{{ 'profile.my_connections.delete_connection.title'|trans }}</h4>
+                                        <div class="modalWindow__main">
+                                            <p id="description-part-1-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.explanation'|trans }}</p>
+                                            <p id="description-part-2-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.warning'|trans }}</p>
+                                            <div class="modalWindow__buttonRow">
+                                                <a href="#ok" class="button button__secondary--white modalWindow__button modalWindow__cancel"  data-to={{ linkId }}>{{ 'general.cancel'|trans }}</a>
+                                                {{ form_start(confirmForm, {attr: { class: "connection__deleteForm", 'novalidate': 'novalidate'} }) }}
+                                                {{ form_widget(confirmForm) }}
+                                                {{ form_end(confirmForm) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </details>
                 </li>

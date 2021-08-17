@@ -9,6 +9,10 @@ accessibility:
 
     skip_link: 'To main content'
 
+general:
+    cancel: Cancel
+    confirm: Confirm
+
 profile:
     application:
         platform_connection_name: SURFconext
@@ -24,10 +28,6 @@ profile:
         explanation: 'The mail with your information has been successfully sent.'
         long_title: 'Attribute data has been mailed'
         short_title: 'Attribute data mailed'
-
-    confirm_connection_delete:
-        confirm: Confirm
-        confirm_label: 'I agree to disconnect this connection.'
 
     error:
         403:
@@ -79,6 +79,12 @@ profile:
     my_connections:
         active_connections: 'Active connections'
         available_connections: 'Available Connections'
+
+        delete_connection:
+            explanation: 'Are you sure you want to delete your unique pseudonymised eduId for ORCID and revoke access to your linked accounts?'
+            title: 'Delete Service'
+            warning: 'This service might not recognize you the next time you login and all your personal data within this service might be lost.'
+
         explanation: 'It''s possible to connect external sources to your SURFconext profile. SURFconext can use this information to enrich the existing attributes of your institutional account with the values from this external account. Services connected to SURFconext can receive and use this information.'
         long_title: 'Accounts linked to your profile'
         missing_connections: 'Missing Connections?'
