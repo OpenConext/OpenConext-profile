@@ -9,6 +9,10 @@ accessibility:
 
     skip_link: 'Para o conteúdo principal'
 
+general:
+    cancel: Cancel # FIXME
+    confirm: Confirm # FIXME
+
 profile:
     application:
         platform_connection_name: SURFconext
@@ -24,10 +28,6 @@ profile:
         explanation: 'O email com os seus dados foi enviado com sucesso.'
         long_title: 'Os atributos foram enviados por email'
         short_title: 'Atributo enviado por email'
-
-    confirm_connection_delete:
-        confirm: Confirmar
-        confirm_label: 'Concordo com o desligar desta ligação.'
 
     error:
         403:
@@ -79,6 +79,12 @@ profile:
     my_connections:
         active_connections: 'Ligações activas'
         available_connections: 'Ligações disponíveis'
+
+        delete_connection:
+            explanation: 'Are you sure you want to delete your unique pseudonymised eduId for ORCID and revoke access to your linked accounts?' # FIXME
+            title: 'Delete Service' # FIXME
+            warning: 'This service might not recognize you the next time you login and all your personal data within this service might be lost.' # FIXME
+
         explanation: 'É possível ligar fontes externas ao seu Perfil SURFconext. A SURFconext consegue usar esta informação para enriquecer os atributos existentes da sua conta institucional com os valores desta conta externa. Os serviços ligados à SURFconext podem receber e usar esta informação.'
         long_title: 'Contas ligadas ao seu perfil'
         missing_connections: 'Ligações em falta?'

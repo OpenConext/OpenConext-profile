@@ -5,9 +5,13 @@ accessibility:
 
     nav:
         mobile_expand: 'Hoofdnavigatie openen'
-        title: 'Hoofdnavigatie'
+        title: Hoofdnavigatie
 
     skip_link: 'Naar de hoofdinhoud'
+
+general:
+    cancel: 'Annuleren'
+    confirm: 'Bevestigen'
 
 profile:
     application:
@@ -24,10 +28,6 @@ profile:
         explanation: 'De mail met informatie is succesvol verstuurd.'
         long_title: 'De attribuutdata is gemaild'
         short_title: 'Attribuutdata gemaild'
-
-    confirm_connection_delete:
-        confirm: Toepassen
-        confirm_label: 'Ja, verwijder deze koppeling'
 
     error:
         403:
@@ -79,6 +79,12 @@ profile:
     my_connections:
         active_connections: 'Actieve koppelingen'
         available_connections: 'Beschikbare koppelingen'
+
+        delete_connection:
+            explanation: 'Ben je zeker dat je jouw unieke gepseudonimiseerde eduId voor ORCID wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?'
+            title: 'Dienst verwijderen'
+            warning: 'Deze dienst zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor al je persoonlijke data kan verloren zijn.'
+
         explanation: 'Je kunt externe bronnen koppelen aan je SURFconext-profiel. SURFconext kan deze gegevens gebruiken om je bestaande attributen afkomstig van je instellingsaccount te verrijken met de waarden uit het gekoppelde account. Diensten die verbonden zijn met SURFconext kunnen vervolgens deze informatie ontvangen.'
         long_title: 'Accounts gelinkt aan je profiel'
         missing_connections: 'Missende koppelingen?'
@@ -150,7 +156,7 @@ profile:
         short_title: 'Mijn diensten'
         supportEmail: 'E-mailadres support'
         support_title: Support
-        support_url: "Support pagina's"
+        support_url: 'Support pagina''s'
 
     my_surf_conext:
         account_data: Accountgegevens

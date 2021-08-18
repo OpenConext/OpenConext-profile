@@ -131,6 +131,11 @@
     border-bottom-left-radius: $value;
 }
 
+@mixin border-top-radius($value) {
+    border-top-right-radius: $value;
+    border-top-left-radius: $value;
+}
+
 @mixin font-style-large {
     font-size: $f-large;
     font-weight: $bolder;

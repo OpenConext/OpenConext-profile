@@ -34,22 +34,3 @@
 [data-service-details-state="closed"] .service-details {
     display: none;
 }
-
-.confirmation-container {
-    display: none;
-}
-
-.confirmation-container div {
-    clear: both;
-}
-
-.confirmation-container input.confirmation {
-    float: left;
-}
-.confirmation-container label.confirmation-label {
-    margin-left: 5px;
-    font-weight: 500;
-}
-.confirmation-container button.mdl-button {
-    margin-top: 10px;
-}
