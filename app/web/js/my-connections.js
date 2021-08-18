@@ -1,19 +1,10 @@
-// $(document).on('click', '.disconnect', function (e) {
-//     var button = $(e.target),
-//         form = $('form.confirmation-container');
-//
-//     button.hide(200, function(){
-//         form.show(200);
-//     });
-// });
-
-$(document).on('change', 'input.confirmation', function(e) {
-    var checkbox = $(e.target),
+$(document).on('change', 'input.confirmation', function (e) {
+    const checkbox = $(e.target),
        button = $('button.confirm-button');
 
     if (checkbox.is(':checked') === true) {
-       button.attr('disabled', false);
+        button.attr('disabled', false);
     } else {
-       button.attr('disabled', true);
+        button.attr('disabled', true);
     }
 });
