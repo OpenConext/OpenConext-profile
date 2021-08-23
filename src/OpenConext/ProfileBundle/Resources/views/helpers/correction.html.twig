@@ -1,0 +1,9 @@
+<section class="modal__value" role="alert" aria-hidden="true" data-for="{{ id|trim }}">
+    <div class="modal__content">
+        <h3>{{ 'profile.my_services.idpRow.correction_title'|trans }}</h3>
+        <p>{{ 'profile.my_services.idpRow.correction_text'|trans({
+                '%suiteName%': 'general.suite_name'|trans,
+                '%organisationNoun%': 'general.organisation_noun'|trans
+            }) }}</p>
+    </div>
+</section>

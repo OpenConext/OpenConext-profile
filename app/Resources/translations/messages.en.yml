@@ -1,3 +1,6 @@
+provided_by_attribute_source_idp: 'Ibuildings University'
+provided_by_attribute_source_url: 'https://test.me'
+
 accessibility:
     button_expandable_screenreader: ', button, expandable'
     button_screenreader: ', button, expanded'
@@ -12,6 +15,8 @@ accessibility:
 general:
     cancel: Cancel
     confirm: Confirm
+    organisation_noun: organisation
+    suite_name: OpenConext
 
 profile:
     application:
@@ -150,6 +155,15 @@ profile:
             start: 'This overview contains all services you have logged in to through SURFconext at least once.'
 
         explicit_consent_given: user
+
+        idpRow:
+            attributes_correction_text: 'Something incorrect?'
+            consent_provided_by: 'provided by'
+            correction_text: '%suiteName% receives the information directly from your %organisationNoun% and does not store the information itself. If your information is incorrect, please contact the service desk of your %organisationNoun% to change it.'
+            correction_title: 'Is the data shown incorrect?'
+            support_link: 'Explanation'
+            support_url: 'https://example.org'
+
         implicit_consent_given: institution
         login_details: 'Login details'
         no_attribute_released: 'This service does not receive information about you.'

@@ -1,3 +1,6 @@
+provided_by_attribute_source_idp: 'Ibuildings University'
+provided_by_attribute_source_url: 'https://test.me'
+
 accessibility:
     button_expandable_screenreader: ', botao, expansível'
     button_screenreader: ', botao, expandido'
@@ -10,8 +13,10 @@ accessibility:
     skip_link: 'Para o conteúdo principal'
 
 general:
-    cancel: Cancel # FIXME
-    confirm: Confirm # FIXME
+    cancel: Cancel
+    confirm: Confirm
+    organisation_noun: organização
+    suite_name: OpenConext
 
 profile:
     application:
@@ -81,9 +86,9 @@ profile:
         available_connections: 'Ligações disponíveis'
 
         delete_connection:
-            explanation: 'Are you sure you want to delete your unique pseudonymised eduId for ORCID and revoke access to your linked accounts?' # FIXME
-            title: 'Delete Service' # FIXME
-            warning: 'This service might not recognize you the next time you login and all your personal data within this service might be lost.' # FIXME
+            explanation: 'Are you sure you want to delete your unique pseudonymised eduId for ORCID and revoke access to your linked accounts?'
+            title: 'Delete Service'
+            warning: 'This service might not recognize you the next time you login and all your personal data within this service might be lost.'
 
         explanation: 'É possível ligar fontes externas ao seu Perfil SURFconext. A SURFconext consegue usar esta informação para enriquecer os atributos existentes da sua conta institucional com os valores desta conta externa. Os serviços ligados à SURFconext podem receber e usar esta informação.'
         long_title: 'Contas ligadas ao seu perfil'
@@ -150,6 +155,15 @@ profile:
             start: 'Esta visão geral contém todos os serviços nos quais você se ligou através da SURFconext pelo menos uma vez.'
 
         explicit_consent_given: utilizador
+
+        idpRow:
+            attributes_correction_text: 'Something incorrect?' # FIXME
+            consent_provided_by: 'provided by' # FIXME
+            correction_text: '%suiteName% receives the information directly from your %organisationNoun% and does not store the information itself. If your information is incorrect, please contact the service desk of your %organisationNoun% to change it.' # FIXME
+            correction_title: 'Is the data shown incorrect?' # FIXME
+            support_link: 'Explanation' # FIXME
+            support_url: 'https://example.org' # FIXME
+
         implicit_consent_given: instituição
         login_details: 'Detalhes do Login'
         no_attribute_released: 'Este serviço não recebe informações sobre si.'

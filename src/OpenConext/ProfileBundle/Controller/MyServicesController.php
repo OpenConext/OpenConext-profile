@@ -79,7 +79,7 @@ class MyServicesController
 
         $this->logger->notice('User requested My Services page');
 
-        $user                 = $this->authenticatedUserProvider->getCurrentUser();
+        $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
