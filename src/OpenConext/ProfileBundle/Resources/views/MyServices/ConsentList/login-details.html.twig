@@ -1,4 +1,4 @@
-{% set deleteId = specifiedConsent.getEduPersonTargetedID() %}
+{% set deleteId = consent.serviceProvider.entity.entityId %}
 
 <div class="buttonedTitle">
     <h3 class="buttonedTitle__title title__details">{{ 'profile.my_services.login_details'|trans }}</h3>

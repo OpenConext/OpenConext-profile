@@ -40,6 +40,13 @@ profile.my_services_delete:
     defaults:
         _controller: OpenConext\ProfileBundle\Controller\MyServicesController::deleteAction
 
+profile.my_services_delete:
+    path:       /my-services/delete/{id}
+    methods:    [GET]
+    schemes:    https
+    defaults:
+        _controller: OpenConextProfileBundle:MyServices:delete
+
 profile.my_connections_overview:
     path:       /my-connections
     methods:    [GET,POST]

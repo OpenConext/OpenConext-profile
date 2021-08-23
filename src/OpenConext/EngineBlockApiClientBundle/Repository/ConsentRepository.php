@@ -47,10 +47,10 @@ final class ConsentRepository implements ConsentRepositoryInterface
         return ConsentListFactory::createListFromMetadata($consentListJson);
     }
 
-    public function deleteServiceFor(string $userId): bool
+    public function deleteServiceWith(string $entityId): bool
     {
         try {
-            $this->apiClient->delete('deprovision/%s', [$userId]);
+            $this->apiClient->delete('deprovision/%s', [$entityId]);
             return true;
         } catch (Exception $e) {
             return false;

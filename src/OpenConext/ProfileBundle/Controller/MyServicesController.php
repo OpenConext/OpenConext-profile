@@ -94,12 +94,12 @@ class MyServicesController
         ));
     }
 
-    public function deleteAction(string $id)
+    public function deleteAction(string $serviceEntityId)
     {
         $this->guard->userIsLoggedIn();
-        $this->logger->notice('User wants to delete his info from a service with id: ' . $id);
+        $this->logger->notice('User wants to delete his info from a service with id: ' . $serviceEntityId);
 
-        $this->specifiedConsentListService->deleteServiceFor($id);
+        $isDeleted = $this->specifiedConsentListService->deleteServiceWith($serviceEntityId);
 
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
