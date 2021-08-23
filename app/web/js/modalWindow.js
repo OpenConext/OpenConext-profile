@@ -1,5 +1,5 @@
 $(function () {
-    $('.disconnect').on('click', function (e) {
+    $('.modalWindowButton').on('click', function (e) {
         const id = $(e.target).data('id');
         const modal = document.getElementById(id);
         addModalTrap(modal);

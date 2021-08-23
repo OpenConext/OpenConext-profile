@@ -79,10 +79,26 @@ class MyServicesController
 
         $this->logger->notice('User requested My Services page');
 
-        $user                 = $this->authenticatedUserProvider->getCurrentUser();
+        $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
+
+        return new Response($this->templateEngine->render(
+            'OpenConextProfileBundle:MyServices:overview.html.twig',
+            ['specifiedConsentList' => $specifiedConsentList]
+        ));
+    }
+
+    public function deleteAction(string $id)
+    {
+        $this->guard->userIsLoggedIn();
+        $this->logger->notice('User wants to delete his info from a service with id: ' . $id);
+
+        $this->specifiedConsentListService->deleteServiceFor($id);
+
+        $user = $this->authenticatedUserProvider->getCurrentUser();
+        $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',

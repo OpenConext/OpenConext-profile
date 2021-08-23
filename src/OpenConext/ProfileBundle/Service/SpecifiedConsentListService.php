@@ -46,11 +46,7 @@ class SpecifiedConsentListService
         $this->attributeReleasePolicyService = $attributeReleasePolicyService;
     }
 
-    /**
-     * @param AuthenticatedUser $user
-     * @return SpecifiedConsentList
-     */
-    public function getListFor(AuthenticatedUser $user)
+    public function getListFor(AuthenticatedUser $user): SpecifiedConsentList
     {
         $consentList = $this->consentService->findAllFor($user);
 
@@ -65,5 +61,10 @@ class SpecifiedConsentListService
             $consentList,
             $user->getAttributesFiltered()
         );
+    }
+
+    public function deleteServiceFor(string $userId): bool
+    {
+        return $this->consentService->deleteServiceFor($userId);
     }
 }

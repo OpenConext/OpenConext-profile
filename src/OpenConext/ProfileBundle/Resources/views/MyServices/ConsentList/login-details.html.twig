@@ -1,7 +1,13 @@
+{% set deleteId = specifiedConsent.getEduPersonTargetedID() %}
+
 <div class="buttonedTitle">
     <h3 class="buttonedTitle__title title__details">{{ 'profile.my_services.login_details'|trans }}</h3>
-    <button class="buttonedTitle__button button__secondary--white" aria-describedby="service__deleteDescription">{{ 'profile.my_services.delete_button'|trans }}<sup>*</sup></button>
+
+    {% if deleteId is not empty %}
+        {% include '@OpenConextProfile/MyServices/ConsentList/delete-button-and-modal.html.twig' %}
+    {% endif %}
 </div>
+
 <dl class="service__loginDetails">
     <div class="loginDetails__row">
         {# when was it first used #}
@@ -20,6 +26,8 @@
         </dd>
     </div>
 </dl>
-<p id="service__deleteDescription" class="service__deleteDescription">
-    <sup>*</sup> {{ 'profile.my_services.delete_explanation'|trans }}
-</p>
+{% if deleteId is not empty %}
+    <p id="service__deleteDescription{{ loop.index }}" class="service__deleteDescription">
+        <sup>*</sup> {{ 'profile.my_services.delete_explanation'|trans }}
+    </p>
+{% endif %}

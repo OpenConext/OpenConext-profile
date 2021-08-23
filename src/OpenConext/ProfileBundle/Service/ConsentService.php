@@ -44,4 +44,9 @@ final class ConsentService
     {
         return $this->consentRepository->findAllFor($user->getNameId());
     }
+
+    public function deleteServiceFor(string $userId): bool
+    {
+        return $this->consentRepository->deleteServiceFor($userId);
+    }
 }
