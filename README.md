@@ -143,7 +143,7 @@ While the used bundle (JMS/Translation bundle) supports a web interface, it was 
    * Building the front-end can be done by running: `npm run encore dev` (for development, includes debug friendly features like sourcemaps)and `npm run build` for a production build.
    * Watch mode can be used, by using `npm run watch`, your mileage may vary as we are developing on a remote machine and fs changes might be noticed with a noticeable delay.
 * Front-end dependencies are tracked using NPM. Enabling us to keep track of known vulnerabilities and making updating packages easier. Feel free to use Yarn as an alternative, but please do not commit the Yarn lockfile as we chose to use the NPM solution.
-* Dialects: we use vanilla CSS, and JavaScript for now, as well as JQuery.
+* Dialects: we use [SASS](https://sass-lang.com/) and [vanilla JavaScript](https://vanilla.js.org/).
 
 ### Add support for new Attribute Aggregation source
 In EngineBlock ARP, attributes can be derived from a source other than the IdP. Whenever a source other than

@@ -1,5 +1,5 @@
-$(function () {
-    $('.list__details').on('keydown', function (e) {
+window.addEventListener('load', () => {
+    document.querySelector('.list__details').addEventListener('keydown', function (e) {
         const SPACE      = 32;
         const classList = e.target.classList;
 
@@ -11,7 +11,8 @@ $(function () {
                         case 'listDetails__title':
                         case 'listDetails__statusArrow':
                             e.preventDefault();
-                            $(e.target).trigger('click');
+                            const clickEvent = new MouseEvent('click');
+                            e.target.dispatchEvent(clickEvent);
                             break;
                     }
                 });

@@ -1,10 +1,5 @@
 {% extends 'OpenConextProfileBundle::layout.html.twig' %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('build/my-connections.js') }}"></script>
-{% endblock %}
-
 {% block title %}
     {{ 'profile.my_connections.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
