@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('load', function () {
     document.querySelector('.navigation__mobileButton').addEventListener('click', function (e) {
         const self = e.target;
         const currentValue = self.getAttribute('aria-pressed');
@@ -33,17 +33,19 @@ window.addEventListener('load', () => {
         const classList = e.target.classList;
         switch (e.keyCode) {
             case ENTER:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case '':
                             e.preventDefault();
                             break;
                     }
-                });
+                }
                 break;
 
             case SPACE:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__mobileButton':
                         case 'navigation__link':
@@ -51,12 +53,13 @@ window.addEventListener('load', () => {
                             fireClickEvent(e.target);
                             break;
                     }
-                });
+                }
                 break;
 
             case ARROWRIGHT:
             case ARROWDOWN:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
@@ -67,12 +70,13 @@ window.addEventListener('load', () => {
                             e.target.parentElement.nextElementSibling.firstElementChild.focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case ARROWLEFT:
             case ARROWUP:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
@@ -83,11 +87,12 @@ window.addEventListener('load', () => {
                             e.target.parentElement.previousElementSibling.firstElementChild.focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case HOME:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
@@ -97,11 +102,12 @@ window.addEventListener('load', () => {
                             document.querySelector('.navigation__link-first').focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case END:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
@@ -111,11 +117,12 @@ window.addEventListener('load', () => {
                             document.querySelector('.navigation__link-last').focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case ESCAPE:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                         case 'navigation__mobileButton':
@@ -132,7 +139,7 @@ window.addEventListener('load', () => {
                             }
                             break;
                     }
-                });
+                }
                 break;
         }
     });

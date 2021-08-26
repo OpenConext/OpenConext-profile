@@ -8,6 +8,7 @@ Encore
         to: 'images/[path][name].[hash:8].[ext]',
     })
     .enableSassLoader()
+    .enablePostCssLoader()
     .addEntry('app', './app/web/js/app.js')
     .disableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()

@@ -1,29 +1,37 @@
-window.addEventListener('load', () => {
-    document.querySelectorAll('.disconnect').forEach(function (button) {
-        button.addEventListener('click', function (e) {
-            const id = e.target.getAttribute('data-id');
-            const modal = document.getElementById(id);
-            addModalTrap(modal);
+window.addEventListener('load', function () {
+    const disconnectElements = document.querySelectorAll('.disconnect');
+    if (!!disconnectElements) {
+        for (let i = 0; i < disconnectElements.length; i++) {
+            const button = disconnectElements[i];
+            button.addEventListener('click', function (e) {
+                const id = e.target.getAttribute('data-id');
+                const modal = document.getElementById(id);
+                addModalTrap(modal);
 
-            setTimeout(() => {
-                const cancel = modal.querySelector('.modalWindow__cancel');
-                cancel.focus({preventScroll: true});
-            }, 200);
-        });
-    });
+                setTimeout(function () {
+                    const cancel = modal.querySelector('.modalWindow__cancel');
+                    cancel.focus({preventScroll: true});
+                }, 200);
+            });
+        }
+    }
 
-    document.querySelectorAll('.modalWindow__cancel').forEach(function (cancelButton) {
-        cancelButton.addEventListener('click', function (e) {
-            const id = e.target.getAttribute('data-to');
-            const modal = document.getElementById(id);
+    const cancelButtons = document.querySelectorAll('.modalWindow__cancel');
+    if (!!cancelButtons) {
+        for (let i = 0; i < cancelButtons.length; i++) {
+            const cancelButton = cancelButtons[i];
+            cancelButton.addEventListener('click', function (e) {
+                const id = e.target.getAttribute('data-to');
+                const modal = document.getElementById(id);
 
-            setTimeout(() => {
-                const button = document.querySelector(`a[data-id="${id}"]`);
-                button.focus({preventScroll: true});
-                modal.removeEventListener('keydown', modalTrap);
-            }, 200);
-        });
-    });
+                setTimeout(function () {
+                    const button = document.querySelector(`a[data-id="${id}"]`);
+                    button.focus({preventScroll: true});
+                    modal.removeEventListener('keydown', modalTrap);
+                }, 200);
+            });
+        }
+    }
 });
 
 function addModalTrap(modal)

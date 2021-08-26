@@ -1,5 +1,5 @@
-window.addEventListener('load', () => {
-    const changeAriaExpanded = (element) => {
+window.addEventListener('load', function () {
+    const changeAriaExpanded = function (element) {
         const ariaExpanded = element.getAttribute('aria-expanded');
         const newValue = {
             false: true,
@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
         element.setAttribute('aria-expanded', newValue[ariaExpanded]);
     };
 
-    const changeAriaPressed = (element) => {
+    const changeAriaPressed = function (element) {
         const ariaPressed = element.getAttribute('aria-pressed');
         const newValue = {
             false: true,
@@ -25,7 +25,9 @@ window.addEventListener('load', () => {
         element.setAttribute('aria-pressed', newValue[ariaPressed]);
     };
 
-    document.querySelectorAll('label.tooltip').forEach(function (tooltip) {
+    const tooltips = document.querySelectorAll('label.tooltip');
+    for (let i = 0; i < tooltips.length; i++) {
+        const tooltip = tooltips[i];
         tooltip.addEventListener('click', function (e) {
             const id = e.target.getAttribute('for');
             const checkbox = document.getElementById(id);
@@ -58,6 +60,6 @@ window.addEventListener('load', () => {
                     break;
             }
         });
-    })
+    }
 });
 
