@@ -6,9 +6,14 @@
   width: 33%;
 }
 
+label.locale-switch-label,
 select[name="profile_switch_locale[newLocale]"],
 button[type="submit"][name="profile_switch_locale[changeLocale]"] {
   display: none;
+}
+
+.no-js label.locale-switch-label {
+  display: inline-block;
 }
 
 .no-js select[name="profile_switch_locale[newLocale]"],

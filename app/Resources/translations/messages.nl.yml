@@ -7,7 +7,6 @@ accessibility:
     consent_tooltip_screenreader: 'Waarom hebben we jouw %attr_name% nodig?'
 
     nav:
-        mobile_expand: 'Hoofdnavigatie openen'
         title: Hoofdnavigatie
 
     skip_link: 'Naar de hoofdinhoud'
@@ -17,6 +16,7 @@ general:
     confirm: Bevestigen
     organisation_noun: organisatie
     suite_name: OpenConext
+    home: Naar de homepagina
 
 profile:
     application:
@@ -75,6 +75,7 @@ profile:
 
     locale:
         choose_locale: 'Kies taal'
+        choose_locale_label: 'Kies uw taal'
         en: EN
         locale_change_fail: 'Kon taal niet veranderen'
         locale_change_success: 'Taal veranderd'
@@ -193,7 +194,7 @@ profile:
 
     navigation:
         help: Help
-        privacy: profile.navigation.privacy
+        privacy: Privacy
         terms_of_service: Gebruiksvoorwaarden
 
     saml:

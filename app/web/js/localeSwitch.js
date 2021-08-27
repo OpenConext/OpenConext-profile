@@ -9,7 +9,6 @@ window.addEventListener('load', function () {
             /**
              * Dynamically add all buttons for the locale switch
              */
-
             const optionElements = localeSwitch.querySelectorAll('option');
             if (!!optionElements) {
                 for (let j = 0; j < optionElements.length; j++) {
@@ -18,6 +17,7 @@ window.addEventListener('load', function () {
                     const text = optionElement.textContent;
                     const button = document.createElement('button');
                     button.setAttribute('data-locale', value);
+                    button.setAttribute('type', 'button');
                     button.textContent = text;
 
                     if (optionElement.matches("[selected='selected']")) {
@@ -26,6 +26,21 @@ window.addEventListener('load', function () {
 
                     localeSwitch.appendChild(button);
                 }
+            }
+
+            /**
+             * Add a label for accessibility & because the choicetype rendering sucks
+             */
+            const select = localeSwitch.querySelector('select');
+            if (!!select) {
+                const id = select.getAttribute('id');
+                const text = localeSwitch.getAttribute('data-label');
+                const label = document.createElement('label');
+                label.setAttribute('for', id);
+                label.textContent = text;
+                label.classList.add('locale-switch-label');
+
+                localeSwitch.firstElementChild.prepend(label);
             }
 
         /**
@@ -41,7 +56,7 @@ window.addEventListener('load', function () {
                             const optionElement = optionElements[k];
                             if (optionElement.value === choice) {
                                 optionElement.setAttribute('selected', 'selected');
-                                return true;
+                                continue;
                             }
 
                             optionElement.removeAttribute('selected');

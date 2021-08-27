@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-    const listDetailsElements = document.querySelector('.list__details');
+    const listDetailsElements = document.querySelectorAll('.listDetails__details');
 
     if (!!listDetailsElements) {
         for (let i = 0; i < listDetailsElements.length; i++) {
@@ -7,7 +7,6 @@ window.addEventListener('load', function () {
             listDetailsElement.addEventListener('keydown', function (e) {
                 const SPACE      = 32;
                 const classList = e.target.classList;
-
                 switch (e.keyCode) {
                     case SPACE:
                         for (let i = 0; i < classList.length; i++) {

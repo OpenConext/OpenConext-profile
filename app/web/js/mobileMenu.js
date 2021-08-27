@@ -1,6 +1,11 @@
 window.addEventListener('load', function () {
     document.querySelector('.navigation__mobileButton').addEventListener('click', function (e) {
-        const self = e.target;
+        let self = e.target;
+
+        while (!self.matches('.navigation__mobileButton')) {
+            self = self.parentElement;
+        }
+
         const currentValue = self.getAttribute('aria-pressed');
 
         if (currentValue === 'false') {

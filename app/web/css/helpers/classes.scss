@@ -11,11 +11,12 @@
 }
 
 .skip-main {
-    @include absolute(top 0 right 0);
-    color: $oceanBlue;
+    @include visually-hidden;
 
     &:focus,
     &:active {
+        @include visually-shown;
+        @include absolute(top 0 right 0);
         color: $white;
         margin: 10px;
     }

@@ -7,7 +7,6 @@ accessibility:
     consent_tooltip_screenreader: 'Why do we need your %attr_name%?'
 
     nav:
-        mobile_expand: 'Expand main navigation'
         title: 'Main navigation'
 
     skip_link: 'To main content'
@@ -17,6 +16,7 @@ general:
     confirm: Confirm
     organisation_noun: organisation
     suite_name: OpenConext
+    home: Home
 
 profile:
     application:
@@ -75,6 +75,7 @@ profile:
 
     locale:
         choose_locale: 'Choose language'
+        choose_locale_label: 'Choose your language'
         en: EN
         locale_change_fail: 'Could not change language'
         locale_change_success: 'Language changed'
