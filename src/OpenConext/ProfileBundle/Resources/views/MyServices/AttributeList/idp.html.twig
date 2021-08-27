@@ -57,4 +57,36 @@
         {% endif %}
     </li>
 {% endfor %}
-{# todo: add provided by row #}
+<li class="idpRow">
+    {% set logoUrl = ('provided_by_attribute_source_logo_url_' ~ sourceName)|trans %}
+    {% set organisationName = ('provided_by_attribute_source_' ~ sourceName)|trans %}
+    {% set consentProvidedBy %}
+        <span class="idpRow__providedBy-content">{{ 'profile.my_services.idpRow.consent_provided_by'|trans }} <strong>{{ organisationName }}</strong></span>
+    {% endset %}
+
+    <img class="logo-small" src="{{ logoUrl }}"
+         alt="" />
+    {% if sourceName != 'idp' %}
+        {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
+        <p>{{ consentProvidedBy|raw }}</p>
+        <div class="ie11__link">
+            <a class="idpRow__supportUrl" href="{{ 'profile.my_services.idpRow.support_url'|trans }}" target="_blank" rel="noreferrer noopener">{{ 'profile.my_services.idpRow.support_link'|trans }}</a>
+        </div>
+    {% else %}
+        {% set id %}
+            incorrect_{{ sourceName }}{{ loop.index }}
+        {% endset %}
+        <input type="checkbox" tabindex="-1" aria-hidden="true" class="modal visually-hidden" id="{{ id|trim }}" name="{{ id|trim }}" />
+        {# note: the empty label is for display on mobile #}
+        <p>{{ consentProvidedBy|raw }}<label tabindex="0" for="{{ id|trim }}" class="modal"></label>
+        </p>
+        {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
+        <div class="ie11__label">
+            <label tabindex="0" for="{{ id|trim }}" class="modal">
+                <span class="label-text">{{ 'profile.my_services.idpRow.attributes_correction_text'|trans }}</span>
+            </label>
+            <span class="visually-hidden">{{ 'accessibility.button_screenreader'|trans }}</span>
+        </div>
+        {% include '@OpenConextProfile/helpers/correction.html.twig' %}
+    {% endif %}
+</li>
