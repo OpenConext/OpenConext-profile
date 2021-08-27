@@ -1,8 +1,8 @@
 window.addEventListener('load', function () {
-    const disconnectElements = document.querySelectorAll('.disconnect');
-    if (!!disconnectElements) {
-        for (let i = 0; i < disconnectElements.length; i++) {
-            const button = disconnectElements[i];
+    const modalWindowButtons = document.querySelectorAll('.modalWindowButton');
+    if (!!modalWindowButtons) {
+        for (let i = 0; i < modalWindowButtons.length; i++) {
+            const button = modalWindowButtons[i];
             button.addEventListener('click', function (e) {
                 const id = e.target.getAttribute('data-id');
                 const modal = document.getElementById(id);
