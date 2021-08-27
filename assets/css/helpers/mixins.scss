@@ -146,6 +146,12 @@
     font-weight: $bolder;
 }
 
+@mixin visually-shown {
+    clip: initial;
+    height: initial;
+    width: initial;
+}
+
 @mixin visually-hidden {
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;

@@ -21,7 +21,7 @@
     {% endif %}
 
     {% set text %}
-        <sup>*</sup> {{ 'profile.my_profile.sup_text'|trans }} <a href="{{ path('profile.my_services_overview') }}"> {{ 'profile.my_services.short_title'|trans }}</a>.
+        <sup>*</sup> {{ 'profile.my_profile.sup_text'|trans }} <a href="{{ path('profile.my_services_overview') }}" class="note__link"> {{ 'profile.my_services.short_title'|trans }}</a>.
     {% endset %}
     {% include '@OpenConextProfile/helpers/paragraph-note.html.twig' with { text: text } %}
 {% endblock %}

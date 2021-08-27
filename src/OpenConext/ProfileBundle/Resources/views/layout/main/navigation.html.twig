@@ -2,22 +2,22 @@
 <nav class="navigation" aria-labelledby="main-nav-label">
     <h2 class="visually-hidden" id="main-nav-label">{{ 'accessibility.nav.title'|trans }}</h2>
     <button
-        class="navigation__mobileButton"
         aria-haspopup="menu"
         aria-pressed="false"
+        class="navigation__mobileButton"
+        type="button"
     >
         <span class="visually-hidden">
-            {{ 'accessibility.nav.mobile_expand'|trans }}
+            {{ 'accessibility.nav.title'|trans }}
         </span>
         {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'navigation__mobileIcon' } %}
     </button>
     <ul
         class="navigation__list"
-        role="menu"
     >
         {% set isActive = route == 'profile.introduction_overview' %}
         <li class="navigation__item navigation__home{% if isActive %} active{% endif %}">
-            <a{% if isActive %} aria-current="page"{% endif %}  role="menuitem" class="navigation__link navigation__link-first{% if isActive %} active{% endif %}" href="{{ path('profile.introduction_overview') }}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link navigation__link-first{% if isActive %} active{% endif %}" href="{{ path('profile.introduction_overview') }}">
                 {{ 'profile.introduction.short_title'|trans }}
             </a>
         </li>

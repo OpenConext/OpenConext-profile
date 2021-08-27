@@ -25,10 +25,10 @@ window.addEventListener('load', function () {
         element.setAttribute('aria-pressed', newValue[ariaPressed]);
     };
 
-    const tooltips = document.querySelectorAll('label.tooltip');
-    for (let i = 0; i < tooltips.length; i++) {
-        const tooltip = tooltips[i];
-        tooltip.addEventListener('click', function (e) {
+    const tooltipsAndModals = document.querySelectorAll('label.tooltip, label.modal');
+    for (let i = 0; i < tooltipsAndModals.length; i++) {
+        const tooltipOrModal = tooltipsAndModals[i];
+        tooltipOrModal.addEventListener('click', function (e) {
             const id = e.target.getAttribute('for');
             const checkbox = document.getElementById(id);
             const expanded = checkbox.getAttribute('aria-expanded');
@@ -39,16 +39,16 @@ window.addEventListener('load', function () {
             }
 
             setTimeout(function () {
-                const tooltipValue = document.querySelector(`[data-for ="${id}"]`);
-                if (expanded === 'false' && !!tooltipValue) {
-                    tooltipValue.focus();
+                const value = document.querySelector(`[data-for ="${id}"]`);
+                if (expanded === 'false' && !!value) {
+                    value.focus();
                 } else {
                     e.target.focus();
                 }
             }, 200);
         });
 
-        tooltip.addEventListener('keydown', function (e) {
+        tooltipOrModal.addEventListener('keydown', function (e) {
             const ENTER      = 13;
             const SPACE      = 32;
 
