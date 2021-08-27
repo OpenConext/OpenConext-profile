@@ -24,10 +24,20 @@
   }
 }
 
-.mySurfConext__downloadButton {
+.mySurfConext__downloadButtonWrapper {
   flex: 0 0 max-content;
   height: max-content;
+  min-width: max-content;
   text-align: center;
+
+  @include screen('mobile') {
+    text-align: left;
+  }
+}
+
+.mySurfConext__downloadButton {
+  height: 100%;
+  width: 100%;
 }
 
 .mySurfConext__downloadText {

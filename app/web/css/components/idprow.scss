@@ -38,12 +38,16 @@
   }
 
   label.modal {
-    @include focus-style($providerGray);
     color: $brownishGray;
     padding: 10px 25px 10px 5px;
     text-align: right;
     text-decoration: underline;
     background-image: unset;
+
+    &:focus,
+    &:hover {
+      @include focus-style($providerGray);
+    }
 
     @include screen('mobile') {
       text-align: left;
