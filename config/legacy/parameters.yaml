@@ -1,0 +1,43 @@
+# This file is auto-generated during the composer install
+parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+    locales:
+        - en
+        - nl
+    default_locale: en
+    open_conext_locale_cookie_key: lang
+    open_conext_locale_cookie_domain: .vm.openconext.org
+    open_conext_locale_cookie_expires_in: '+2 months'
+    open_conext_locale_cookie_http_only: false
+    open_conext_locale_cookie_secure: true
+    saml_sp_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
+    saml_sp_privatekey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_privatekey.pem
+    saml_metadata_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
+    saml_metadata_privatekey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_privatekey.pem
+    saml_remote_idp_entity_id: 'https://engine.vm.openconext.org/authentication/idp/metadata'
+    saml_remote_idp_sso_url: 'https://engine.vm.openconext.org/authentication/idp/single-sign-on'
+    saml_remote_idp_host: engine.vm.openconext.org
+    saml_remote_idp_certificate_file: /etc/openconext/engineblock.crt
+    engineblock_api_base_url: 'https://engine-api.vm.openconext.org/'
+    engineblock_api_username: profile
+    engineblock_api_password: secret
+    engineblock_api_verify_ssl: true
+    user_lifecycle_enabled: true
+    user_lifecycle_api_base_url: 'https://userlifecycle.vm.openconext.org/'
+    user_lifecycle_api_username: userlifecycle
+    user_lifecycle_api_password: secret
+    user_lifecycle_api_verify_ssl: true
+    attribute_aggregation_api_base_url: 'https://aa.vm.openconext.org/aa/api/internal/'
+    attribute_aggregation_api_username: eb
+    attribute_aggregation_api_password: secret
+    attribute_aggregation_api_verify_ssl: true
+    attribute_aggregation_orcid_logo_path: build/images/orcid.png
+    attribute_aggregation_orcid_connect_url: 'https://link.surfconext.nl/orcid?redirectUrl=https://profile.surfconext.nl/my-connections'
+    mailer_transport: sendmail
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    attribute_support_email_from: noreply@domain.invalid
+    attribute_support_email_to: help@domain.invalid
+    information_request_email_from: noreply@domain.invalid
+    information_request_email_to: help@domain.invalid

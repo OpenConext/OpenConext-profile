@@ -1,0 +1,10 @@
+monolog:
+  handlers:
+    dev:
+      type:   stream
+      path:   "%kernel.logs_dir%/%kernel.environment%.log"
+      level:  debug
+    syslog:
+      type:     syslog
+      ident:    openconext-profile
+      facility: user

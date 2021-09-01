@@ -1,0 +1,7 @@
+twig:
+  debug:            "%kernel.debug%"
+  strict_variables: "%kernel.debug%"
+  globals:
+    global_view_parameters: "@open_conext.profile_bundle.service.global_view_parameters"
+    root_path: "%kernel.root_dir%"
+
