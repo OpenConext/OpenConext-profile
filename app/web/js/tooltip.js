@@ -1,5 +1,5 @@
-$(function () {
-    const changeAriaExpanded = (element) => {
+window.addEventListener('load', function () {
+    const changeAriaExpanded = function (element) {
         const ariaExpanded = element.getAttribute('aria-expanded');
         const newValue = {
             false: true,
@@ -12,7 +12,7 @@ $(function () {
         element.setAttribute('aria-expanded', newValue[ariaExpanded]);
     };
 
-    const changeAriaPressed = (element) => {
+    const changeAriaPressed = function (element) {
         const ariaPressed = element.getAttribute('aria-pressed');
         const newValue = {
             false: true,
@@ -25,38 +25,41 @@ $(function () {
         element.setAttribute('aria-pressed', newValue[ariaPressed]);
     };
 
-    const tooltips = $('label.tooltip');
+    const tooltips = document.querySelectorAll('label.tooltip');
+    for (let i = 0; i < tooltips.length; i++) {
+        const tooltip = tooltips[i];
+        tooltip.addEventListener('click', function (e) {
+            const id = e.target.getAttribute('for');
+            const checkbox = document.getElementById(id);
+            const expanded = checkbox.getAttribute('aria-expanded');
 
-    tooltips.on('click', function (e) {
-        const id = $(e.target).attr('for');
-        const checkbox = document.getElementById(id);
-        const expanded = checkbox.getAttribute('aria-expanded');
-
-        if (!!checkbox) {
-            changeAriaExpanded(checkbox);
-            changeAriaPressed(checkbox);
-        }
-
-        setTimeout(function () {
-            const tooltipValue = document.querySelector(`[data-for="${id}"]`);
-            if (expanded === 'false' && !!tooltipValue) {
-                tooltipValue.focus();
-            } else {
-                $(e.target).focus();
+            if (!!checkbox) {
+                changeAriaExpanded(checkbox);
+                changeAriaPressed(checkbox);
             }
-        }, 200);
-    })
 
-    tooltips.on('keydown', function (e) {
-        const ENTER      = 13;
-        const SPACE      = 32;
+            setTimeout(function () {
+                const tooltipValue = document.querySelector(`[data-for ="${id}"]`);
+                if (expanded === 'false' && !!tooltipValue) {
+                    tooltipValue.focus();
+                } else {
+                    e.target.focus();
+                }
+            }, 200);
+        });
 
-        switch (e.keyCode) {
-            case ENTER:
-            case SPACE:
-                $(this).trigger('click');
-                break;
-        }
-    });
+        tooltip.addEventListener('keydown', function (e) {
+            const ENTER      = 13;
+            const SPACE      = 32;
+
+            switch (e.keyCode) {
+                case ENTER:
+                case SPACE:
+                    const clickEvent = new MouseEvent('click');
+                    e.target.dispatchEvent(clickEvent);
+                    break;
+            }
+        });
+    }
 });
 

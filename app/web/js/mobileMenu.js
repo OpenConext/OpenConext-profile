@@ -1,19 +1,26 @@
-$(function () {
-    $('.navigation__mobileButton').on('click', function (e) {
-        const currentValue = $(this).attr('aria-pressed');
+window.addEventListener('load', function () {
+    document.querySelector('.navigation__mobileButton').addEventListener('click', function (e) {
+        const self = e.target;
+        const currentValue = self.getAttribute('aria-pressed');
 
         if (currentValue === 'false') {
-            $(this).attr('aria-pressed', 'true')
-                   .attr('aria-expanded', 'true');
-            $('.navigation').addClass('openMenu');
-            $('.navigation__item:first-of-type .navigation__link').focus();
+            self.setAttribute('aria-pressed', 'true');
+            self.setAttribute('aria-expanded', 'true');
+            document.querySelector('.navigation').classList.add('openMenu');
+            document.querySelector('.navigation__item:first-of-type .navigation__link').focus();
         } else {
-            $(this).attr('aria-pressed', 'false');
-            $('.navigation').removeClass('openMenu');
+            self.setAttribute('aria-pressed', 'false');
+            document.querySelector('.navigation').classList.remove('openMenu');
         }
     });
 
-    $('.navigation').on('keydown', function (e) {
+    function fireClickEvent(element)
+    {
+        const clickEvent = new MouseEvent('click');
+        element.dispatchEvent(clickEvent);
+    }
+
+    document.querySelector('.navigation').addEventListener('keydown', function (e) {
         const ENTER      = 13;
         const SPACE      = 32;
         const ARROWDOWN  = 40;
@@ -26,89 +33,96 @@ $(function () {
         const classList = e.target.classList;
         switch (e.keyCode) {
             case ENTER:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case '':
                             e.preventDefault();
                             break;
                     }
-                });
+                }
                 break;
 
             case SPACE:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__mobileButton':
                         case 'navigation__link':
                             e.preventDefault();
-                            $(e.target).trigger('click');
+                            fireClickEvent(e.target);
                             break;
                     }
-                });
+                }
                 break;
 
             case ARROWRIGHT:
             case ARROWDOWN:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
                             if (classList.contains('navigation__link-last')) {
-                                $('.navigation__link-first').focus();
+                                document.querySelector('.navigation__link-first').focus();
                                 return;
                             }
-                            $(e.target).parent().next().children().first().focus();
+                            e.target.parentElement.nextElementSibling.firstElementChild.focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case ARROWLEFT:
             case ARROWUP:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
                             if (classList.contains('navigation__link-first')) {
-                                $('.navigation__link-last').focus();
+                                document.querySelector('.navigation__link-last').focus();
                                 return;
                             }
-                            $(e.target).parent().prev().children().first().focus();
+                            e.target.parentElement.previousElementSibling.firstElementChild.focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case HOME:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
                             if (classList.contains('navigation__link-first')) {
                                 return;
                             }
-                            $('.navigation__link-first').focus();
+                            document.querySelector('.navigation__link-first').focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case END:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                             e.preventDefault();
                             if (classList.contains('navigation__link-last')) {
                                 return;
                             }
-                            $('.navigation__link-last').focus();
+                            document.querySelector('.navigation__link-last').focus();
                             break;
                     }
-                });
+                }
                 break;
 
             case ESCAPE:
-                classList.forEach(className => {
+                for (let i = 0; i < classList.length; i++) {
+                    const className = classList[i];
                     switch (className) {
                         case 'navigation__link':
                         case 'navigation__mobileButton':
@@ -117,15 +131,16 @@ $(function () {
                         case 'navigation__list':
                         case 'navigation__item':
                             e.preventDefault();
-                            const mobileButton = $('.navigation__mobileButton');
+                            const mobileButton = document.querySelector('.navigation__mobileButton');
 
                             if (mobileButton.attr('aria-pressed') === 'true') {
-                                mobileButton.trigger('click').focus();
+                                fireClickEvent(mobileButton);
+                                mobileButton.focus();
                             }
                             break;
                     }
-                });
+                }
                 break;
         }
-    })
+    });
 });

@@ -1,6 +1,7 @@
-require('jquery');
+require('./polyfills.js');
+require('./nojs.js');
 require('./dialog.js');
-require('./main.js');
+require('./localeSwitch.js');
 require('./mobileMenu.js');
 require('./modalWindow.js');
 require('./tooltip.js');
