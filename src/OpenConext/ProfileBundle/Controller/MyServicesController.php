@@ -89,4 +89,20 @@ class MyServicesController
             ['specifiedConsentList' => $specifiedConsentList]
         ));
     }
+
+    public function deleteAction(string $id)
+    {
+        $this->guard->userIsLoggedIn();
+        $this->logger->notice('User wants to delete his info from a service with id: ' . $id);
+
+        $this->specifiedConsentListService->deleteServiceFor($id);
+
+        $user = $this->authenticatedUserProvider->getCurrentUser();
+        $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
+
+        return new Response($this->templateEngine->render(
+            'OpenConextProfileBundle:MyServices:overview.html.twig',
+            ['specifiedConsentList' => $specifiedConsentList]
+        ));
+    }
 }

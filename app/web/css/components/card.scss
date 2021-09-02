@@ -17,7 +17,7 @@
   border-radius: 6px;
   border: 1px solid $idpSeparatorGray;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   max-width: calc((100% - 40px) / 3);
 
   @include screen('mobile') {
@@ -42,6 +42,7 @@
   justify-content: center;
   margin-top: auto;
   padding: 1rem;
+  width: 100%;
 }
 
 .card__title {

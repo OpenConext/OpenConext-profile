@@ -125,4 +125,17 @@ class SpecifiedConsent
     {
         return $this->arp->getMotivationFor($attribute);
     }
+
+    public function getEduPersonTargetedID(): string
+    {
+        foreach ($this->getReleasedAttributes() as $attribute) {
+            $attributeName = $attribute->getAttributeDefinition()->getName();
+
+            if ($attributeName === 'eduPersonTargetedID') {
+                return $attribute->getValue()[0]['value'];
+            }
+        }
+
+        return '';
+    }
 }

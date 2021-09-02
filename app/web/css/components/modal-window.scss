@@ -43,11 +43,19 @@
   letter-spacing: -0.11px;
   line-height: 1.3;
   margin: 0;
-  padding: calculateRem(18px) calculateRem(32px) 1rem;
+  padding: calculateRem(18px) 2rem 1rem;
+
+  @include screen('mobile') {
+    padding: calculateRem(18px) 1rem 1rem;
+  }
 }
 
 .modalWindow__main {
-  padding: calculateRem(18px) calculateRem(32px) 1rem;
+  padding: calculateRem(18px) 2rem 1rem;
+
+  @include screen('mobile') {
+    padding: calculateRem(18px) 1rem 1rem;
+  }
 }
 
 .modalWindow__buttonRow {
@@ -60,7 +68,12 @@
   height: 3rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
-  width: calc((100% - 1.5rem) / 2);
+  width: calc(50% - 0.75rem);
+
+  @include screen('mobile') {
+    min-width: calc(50% - 0.75rem);
+    width: unset;
+  }
 
   &--form {
     width: 100%;
