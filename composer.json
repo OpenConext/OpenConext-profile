@@ -7,26 +7,33 @@
             "": "src/"
         },
         "classmap": [
-            "app/AppKernel.php"
+            "src/Kernel.php"
         ]
     },
     "require": {
-        "php": "^7.0",
+        "php": "^7.2",
         "beberlei/assert": "^2.4",
+        "doctrine/annotations": "^1.13",
         "doctrine/instantiator": "1.0.*",
         "guzzlehttp/guzzle": "^6.1",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/translation-bundle": "^1.1",
-        "nelmio/security-bundle": "^1.8",
-        "openconext/monitor-bundle": "^1.0",
-        "sensio/distribution-bundle": "^5.0",
-        "surfnet/stepup-saml-bundle": "^4.1",
-        "symfony/monolog-bundle": "^3.3",
-        "symfony/swiftmailer-bundle": "^2.4",
-        "symfony/symfony": "3.4.*",
-        "symfony/webpack-encore-bundle": "^1.6",
-        "twig/extensions": "^1.3",
-        "twig/twig": "^1.34.4"
+        "nelmio/security-bundle": "^2.10",
+        "openconext/monitor-bundle": "^2.0",
+        "sensio/framework-extra-bundle": "^5.5",
+        "surfnet/stepup-saml-bundle": "^4.2.1",
+        "symfony/expression-language": "4.4.*",
+        "symfony/flex": "^1.15",
+        "symfony/form": "4.4.*",
+        "symfony/monolog-bundle": "^3.7",
+        "symfony/security-bundle": "4.4.*",
+        "symfony/swiftmailer-bundle": "^3.5",
+        "symfony/translation": "4.4.*",
+        "symfony/twig-bundle": "4.4.*",
+        "symfony/web-profiler-bundle": "4.4.*",
+        "symfony/webpack-encore-bundle": "^1.5",
+        "twig/extensions": "^1.5",
+        "twig/twig": "^2"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^0.9.2",
@@ -38,23 +45,25 @@
         "phpunit/php-token-stream": "1.4.*",
         "phpunit/phpunit": "^5.7",
         "sebastian/phpcpd": "^3.0",
-        "sensio/generator-bundle": "^3.1",
         "squizlabs/php_codesniffer": "^3.1"
+    },
+    "conflict": {
+         "symfony/symfony": "*"
     },
     "scripts": {
         "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
-        ]
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     },
     "config": {
         "optimize-autoloader": true,
@@ -64,17 +73,17 @@
         "sort-packages": true
     },
     "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
+        "symfony": {
+            "allow-contrib": false,
+            "require": "4.4.*"
+        },
         "symfony-assets-install": "relative",
         "incenteev-parameters": [
             {
-                "file": "app/config/parameters.yml"
+                "file": "config/legacy/parameters.yaml"
             },
             {
-                "file": "app/config/global_view_parameters.yml"
+                "file": "config/legacy/global_view_parameters.yaml"
             }
         ]
     }

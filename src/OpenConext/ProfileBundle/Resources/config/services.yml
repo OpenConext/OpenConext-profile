@@ -102,17 +102,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    OpenConext\ProfileBundle\Service\GlobalViewParameters:
-        arguments:
-            - '@translator'
-            - '%locales%'
-            - '%help_url%'
-            - '%privacy_url%'
-            - '%platform_url%'
-            - '%terms_of_service_url%'
-            - '%profile_explanation_image_path%'
-            - '%attribute_information_url%'
-
     OpenConext\ProfileBundle\Attribute\AttributeFilter:
 
     OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider:

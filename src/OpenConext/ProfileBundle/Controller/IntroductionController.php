@@ -84,7 +84,7 @@ class IntroductionController
                      ->getAttributeByDefinition($attributeDefinition)
                      ->getValue()[0];
 
-        return new Response($this->templateEngine->render('OpenConextProfileBundle:Introduction:overview.html.twig', [
+        return new Response($this->templateEngine->render('@OpenConextProfile/Introduction/overview.html.twig', [
             'userName' => $userName,
         ]));
     }
