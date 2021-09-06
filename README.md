@@ -32,13 +32,13 @@ You can use both vagrant and docker to start a development environment.
 The docker container comes with EB and profile already installed & configured.  Follow the below steps to get it up and running.
 
 1. Clone the repo
-2. Copy parameters file: `cp app/config/parameters.yml.dist app/config/parameters.yml`
-3. Copy global_view_parameters file: `cp app/config/global_view_parameters.yml.dist app/config/global_view_parameters.yml`
+2. Copy .env file: `cp ./.env.dist ./.env` and fill it with sensible settings (for instance use the dev env)
+2. Copy parameters file: `cp config/legacy/parameters.yaml.dist config/legacy/parameters/parameters.yaml`
+3. Copy global_view_parameters file: `cp config/legacy/parameters/global_view_parameters.yaml.dist config/legacy/parameters/global_view_parameters.yaml`
 4. Install composer dependencies: `SYMFONY_ENV=dev composer install --prefer-dist`
 5. Install npm dependencies: `npm i`
 6. Run a build: `npm run build`
 7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
-8. Copy the app_dev file: `cp ./ansible/roles/app/files/app_dev.php.dist web/app_dev.php`
 9. Start developing on docker: `docker-compose up -d`
 
 ### Vagrant
@@ -113,8 +113,8 @@ Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management
 Run `./makeRelease.sh` with the version number of the relevant release to create a deployable tar-ball.
 
 During deployment, unpack the tar on the deployment target and configure the
-application by placing the required `parameters.yml` and
-`global_view_parameters.yml` files in the `app/config` directory.
+application by placing the required `parameters.yaml` and
+`global_view_parameters.yaml` files in the `config/legacy` directory.
 To prepare the application environment, run `composer prepare-env` on the
 deployment target.
 
