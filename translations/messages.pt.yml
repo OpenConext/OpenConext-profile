@@ -7,7 +7,6 @@ accessibility:
     consent_tooltip_screenreader: 'Porque precisamos do seu %attr_name%?'
 
     nav:
-        mobile_expand: 'Expandir navegação principal Expand main navigation'
         title: 'Navegação principal'
 
     skip_link: 'Para o conteúdo principal'
@@ -17,6 +16,7 @@ general:
     confirm: Confirm
     organisation_noun: organização
     suite_name: OpenConext
+    home: Home # FIXME (used for a link directing to the homepage, in dutch we use "to the homepage")
 
 profile:
     application:
@@ -75,6 +75,7 @@ profile:
 
     locale:
         choose_locale: 'Escolher idioma'
+        choose_locale_label: 'Choose your language' # FIXME
         en: EN
         locale_change_fail: 'Idioma não pode ser alterado'
         locale_change_success: 'Idioma alterado'

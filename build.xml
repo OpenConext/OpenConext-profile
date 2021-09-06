@@ -102,4 +102,9 @@
         </exec>
     </target>
 
+    <target name="cypress tests" description="Run cypress tests">
+        <exec executable="npm" failonerror="true">
+            <arg line="cy:run"/>
+        </exec>
+    </target>
 </project>

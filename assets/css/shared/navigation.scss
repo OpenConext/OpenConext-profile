@@ -34,6 +34,19 @@
   }
 }
 
+.no-js .navigation__mobileButton {
+  display: none;
+
+  @include screen('mobile') {
+    display: none;
+
+    &[aria-pressed="false"] + .navigation__list {
+      display: initial;
+      height: initial;
+    }
+  };
+}
+
 .navigation__mobileButton {
   @include button-reset(inherit);
   display: none;
@@ -128,7 +141,7 @@
   width: 100%;
 
   &[aria-current="page"] {
-    color: $green;
+    color: $borderGreen;
   }
 }
 
