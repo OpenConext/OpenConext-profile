@@ -23,6 +23,7 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use function dirname;
 
 class Kernel extends BaseKernel
 {
@@ -43,6 +44,15 @@ class Kernel extends BaseKernel
     public function getProjectDir(): string
     {
         return \dirname(__DIR__);
+    }
+
+    public function getCacheDir()
+    {
+        // The dev cache lives in the tmp folder of the Docker container
+        if ($this->getEnvironment() === 'dev') {
+            return '/tmp/'.$this->environment.'/cache';
+        }
+        return dirname(__DIR__).'/var/'.$this->environment.'/cache';
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
