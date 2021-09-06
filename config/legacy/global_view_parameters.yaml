@@ -12,6 +12,10 @@ parameters:
         en: 'https://www.surfconext.nl/en'
         nl: 'https://www.surfconext.nl'
         pt: 'https://www.surfconext.nl/en'
+    privacy_url:
+        en: 'https://support.surfconext.nl/privacy-en'
+        nl: 'https://support.surfconext.nl/privacy-nl'
+        pt: 'https://support.surfconext.nl/privacy-en'
     profile_explanation_image_path:
         en: build/images/profile_home_en.png
         nl: build/images/profile_home_nl.png
