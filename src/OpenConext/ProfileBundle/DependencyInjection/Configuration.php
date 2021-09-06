@@ -27,8 +27,8 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('open_conext_profile');
+        $treeBuilder = new TreeBuilder('open_conext_profile');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
