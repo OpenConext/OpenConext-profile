@@ -21,8 +21,8 @@ namespace OpenConext\ProfileBundle\Twig;
 use OpenConext\Profile\Assert;
 use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use Symfony\Component\Form\FormFactoryInterface;
-use Twig_Extension as Extension;
-use Twig_SimpleFunction as SimpleFunction;
+use Twig\Extension\AbstractExtension as Extension;
+use Twig\TwigFunction as SimpleFunction;
 
 final class LocaleExtension extends Extension
 {
