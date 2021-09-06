@@ -1,3 +1,7 @@
+# IDE files #
+#############
+.idea
+
 /config/legacy/parameters.yaml
 /config/legacy/samlstepupproviders.yaml
 /config/legacy/samlstepupproviders_parameters.yaml
@@ -9,7 +13,6 @@
 /bin/*
 !/bin/extract-translations.sh
 !/bin/console
-.idea
 node_modules
 public/build
 npm-debug.log
@@ -21,7 +24,12 @@ yarn-error.log
 .phpunit.result.cache
 config/preload.php
 local-php-security-checker
-.env.*
+/.env
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
 
 ###> symfony/framework-bundle ###
 /.env.local
