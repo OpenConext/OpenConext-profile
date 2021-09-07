@@ -2,112 +2,98 @@ profile.introduction_overview:
     path:       /
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\IntroductionController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\IntroductionController::overviewAction
 
 profile.my_profile_overview:
     path:       /my-profile
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\MyProfileController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\MyProfileController::overviewAction
 
 profile.my_surf_conext_overview:
     path:       /my-surfconext
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\MySurfConextController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\MySurfConextController::overviewAction
 
 profile.my_surf_conext_user_data_download:
     path:       /my-surfconext/download
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\MySurfConextController::userDataDownloadAction
+    controller: OpenConext\ProfileBundle\Controller\MySurfConextController::userDataDownloadAction
 
 profile.my_services_overview:
     path:       /my-services
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\MyServicesController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\MyServicesController::overviewAction
 
 profile.my_services_delete:
-    path:       /my-services/delete/{id}
+    path:       /my-services/delete/{serviceEntityId}
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\MyServicesController::deleteAction
+    controller: OpenConext\ProfileBundle\Controller\MyServicesController::deleteAction
+    requirements:
+        serviceEntityId: .+
 
 profile.my_connections_overview:
     path:       /my-connections
     methods:    [GET,POST]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\MyConnectionsController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\MyConnectionsController::overviewAction
 
 profile.saml_consume_assertion:
     path:       /authentication/consume-assertion
     methods:    [POST]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\SamlController::consumeAssertionAction
+    controller: OpenConext\ProfileBundle\Controller\SamlController::consumeAssertionAction
 
 profile.saml_metadata:
     path:       /authentication/metadata
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\SamlController::metadataAction
+    controller: OpenConext\ProfileBundle\Controller\SamlController::metadataAction
 
 profile.attribute_support_overview:
     path:       /attribute-support
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\AttributeSupportController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\AttributeSupportController::overviewAction
 
 profile.attribute_support_confirm_mail_sent:
     path:       /attribute-support/confirmation
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\AttributeSupportController::confirmMailSentAction
+    controller: OpenConext\ProfileBundle\Controller\AttributeSupportController::confirmMailSentAction
 
 profile.attribute_support_send_mail:
     path:       /attribute-support/send-mail
     methods:    [POST]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\AttributeSupportController::sendMailAction
+    controller: OpenConext\ProfileBundle\Controller\AttributeSupportController::sendMailAction
 
 profile.information_request_overview:
     path:       /information-request
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\InformationRequestController::overviewAction
+    controller: OpenConext\ProfileBundle\Controller\InformationRequestController::overviewAction
 
 profile.information_request_confirm_mail_sent:
     path:       /information-request/confirmation
     methods:    [GET]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\InformationRequestController::confirmMailSentAction
+    controller: OpenConext\ProfileBundle\Controller\InformationRequestController::confirmMailSentAction
 
 profile.information_request_send_mail:
     path:       /information-request/send-mail
     methods:    [POST]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\InformationRequestController::sendMailAction
+    controller: OpenConext\ProfileBundle\Controller\InformationRequestController::sendMailAction
 
 profile.locale_switch_locale:
     path:       /switch-locale
     methods:    [POST]
     schemes:    https
-    defaults:
-        _controller: OpenConext\ProfileBundle\Controller\LocaleController::switchLocaleAction
+    controller: OpenConext\ProfileBundle\Controller\LocaleController::switchLocaleAction
     requirements:
-        'return-url': '.+'
+        return-url: .+
