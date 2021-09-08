@@ -21,9 +21,8 @@ jobs:
     - name: Build the php-fpm container and push to GitHub Container Registry
       uses: docker/build-push-action@v2
       with:
-        dockerfile: docker/Dockerfile
-        repository: openconext/openconext-profile/profile_php-fpm
+        file: docker/Dockerfile
         tag_with_ref: true
         push: true
         target: phpfpm-build
-        tags: ghcr.io/openconext/openconext-ptofile/profile_php-fpm:latest
+        tags: ghcr.io/openconext/openconext-profile/profile_php-fpm:latest
