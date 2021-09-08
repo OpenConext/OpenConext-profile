@@ -26,3 +26,4 @@ jobs:
         tag_with_ref: true
         push: true
         target: phpfpm-build
+        tags: ghcr.io/openconext/openconext-ptofile/profile_php-fpm:latest
