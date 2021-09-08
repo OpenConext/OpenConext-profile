@@ -41,5 +41,8 @@
     "> 0.5%",
     "IE 10",
     "IE 11"
-  ]
+  ],
+  "dependencies": {
+    "details-element-polyfill": "^2.4.0"
+  }
 }

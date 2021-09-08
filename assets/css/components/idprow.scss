@@ -199,7 +199,7 @@
 }
 
 @include ie11Only('li.idpRow') {
-  -ms-grid-columns: 85.68px 6.12px 246.6px 6.12px 160.36px 6.12px;
+  -ms-grid-columns: 85.68px 6.12px 246.6px 6.12px 180.36px 6.12px;
 }
 
 @include ie11Only('li.idpRow label.modal') {

@@ -71,6 +71,10 @@
   transform: rotate(-180deg);
 }
 
+@include ie11Only('.listDetails__statusArrow') {
+  max-height: 2rem;
+}
+
 .listDetails__details[open] {
   background-color: $gray;
   border-top: 2px solid $oceanBlue;
@@ -98,6 +102,10 @@
   @include screen('mobile') {
     padding: 1rem;
   }
+}
+
+@include ie11Only('summary::before') {
+  content: '' !important;
 }
 
 .listDetails__info {
