@@ -24,7 +24,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class MySurfConextController
 {
@@ -34,7 +34,7 @@ class MySurfConextController
     private $userService;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -48,15 +48,9 @@ class MySurfConextController
      */
     private $logger;
 
-    /**
-     * @param UserService $userService
-     * @param EngineInterface $templateEngine
-     * @param Guard $guard
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         UserService $userService,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         Guard $guard,
         LoggerInterface $logger
     ) {
@@ -78,7 +72,7 @@ class MySurfConextController
         $user = $this->userService->getUser();
 
         return new Response($this->templateEngine->render(
-            'OpenConextProfileBundle:MySurfConext:overview.html.twig',
+            '@OpenConextProfile/MySurfConext/overview.html.twig',
             [
                 'user' => $user,
                 'userLifecycleIsEnabled' => $this->userService->userLifecycleApiIsEnabled(),

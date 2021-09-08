@@ -22,7 +22,7 @@ use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class MyProfileController
 {
@@ -32,7 +32,7 @@ class MyProfileController
     private $userService;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -46,15 +46,9 @@ class MyProfileController
      */
     private $logger;
 
-    /**
-     * @param UserService $userService
-     * @param EngineInterface $templateEngine
-     * @param Guard $guard
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         UserService $userService,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         Guard $guard,
         LoggerInterface $logger
     ) {
@@ -76,7 +70,7 @@ class MyProfileController
         $user = $this->userService->getUser();
 
         return new Response($this->templateEngine->render(
-            'OpenConextProfileBundle:MyProfile:overview.html.twig',
+            '@OpenConextProfile/MyProfile/overview.html.twig',
             ['user' => $user]
         ));
     }

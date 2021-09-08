@@ -21,10 +21,9 @@ namespace OpenConext\ProfileBundle\Controller;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
-use SAML2\XML\saml\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class IntroductionController
 {
@@ -34,7 +33,7 @@ class IntroductionController
     private $userService;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -50,13 +49,13 @@ class IntroductionController
 
     /**
      * @param UserService $userService
-     * @param EngineInterface $templateEngine
+     * @param Environment $templateEngine
      * @param Guard $guard
      * @param LoggerInterface $logger
      */
     public function __construct(
         UserService $userService,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         Guard $guard,
         LoggerInterface $logger
     ) {

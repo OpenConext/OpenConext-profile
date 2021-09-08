@@ -26,12 +26,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class MyServicesController
 {
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -61,7 +61,7 @@ class MyServicesController
     private $logger;
 
     public function __construct(
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         AuthenticatedUserProviderInterface $authenticatedUserProvider,
         SpecifiedConsentListService $specifiedConsentListService,
         Guard $guard,
@@ -88,7 +88,7 @@ class MyServicesController
         $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
 
         return new Response($this->templateEngine->render(
-            'OpenConextProfileBundle:MyServices:overview.html.twig',
+            '@OpenConextProfile/MyServices/overview.html.twig',
             [
                 'specifiedConsentList' => $specifiedConsentList,
                 'locale' => $request->getLocale(),
