@@ -4,6 +4,9 @@ on:
   release:
     types: [ published ]
   workflow_dispatch:
+  push:
+    branches: [ feature/github_actions_build_docker ]
+
 
 jobs:
   build:
@@ -15,26 +18,18 @@ jobs:
     - name: Check out the repo
       uses: actions/checkout@v2
 
+    - name: Log into GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GH_CONTAINER_REGISTRY_PAT }}
+
     - name: Build the php-fpm container and push to GitHub Container Registry
-      uses: docker/build-push-action@v1
+      uses: docker/build-push-action@v2
       with:
         dockerfile: docker/Dockerfile
-        username: ${{ github.actor }}
-        password: ${{ secrets.GH_CONTAINER_REGISTRY_PAT }}
-        registry: ghcr.io
         repository: openconext/openconext-profile/profile_php-fpm
         tag_with_ref: true
         push: true
         target: phpfpm-build
-
-    - name: Build the Apache container and push to GitHub Container Registry
-      uses: docker/build-push-action@v1
-      with:
-        dockerfile: docker/Dockerfile
-        username: ${{ github.actor }}
-        password: ${{ secrets.GH_CONTAINER_REGISTRY_PAT }}
-        registry: ghcr.io
-        repository: surfnet/sp-dashboard/spdashboard_web
-        tag_with_ref: true
-        push: true
-        target: httpd-build
