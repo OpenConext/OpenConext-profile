@@ -1,5 +1,6 @@
 provided_by_attribute_source_idp: 'Ibuildings University'
 provided_by_attribute_source_url: 'https://test.me'
+provided_by_attribute_source_logo_url_idp: 'build/images/surf.svg'
 
 accessibility:
     button_expandable_screenreader: ', button, expandable'
