@@ -4,7 +4,13 @@
 {% endif %}
 {% set headerId = 'dialog-header-' ~ loop.index %}
 
-<a class="button__secondary--white {{ buttonClass }}" data-id={{ linkId }} href="#{{ linkId }}"{% if buttonDescription is defined %} aria-describedBy="{{ buttonDescription }}"{% endif %}>
+<a
+    class="button__secondary--white {{ buttonClass }}"
+    data-id="{{ linkId }}"
+    href="#{{ linkId }}"
+    role="button"
+    {% if buttonDescription is defined %} aria-describedBy="{{ buttonDescription }}"{% endif %}
+>
     {{ buttonText }}
 </a>
 
