@@ -110,16 +110,17 @@ class SingleCookieStorage implements EventSubscriberInterface
     {
         // If no date is specified for cookie expiration, a session cookie should be created
         $cookieExpirationDate = $this->cookieExpirationDate ?: 0;
-
-        $event->getResponse()->headers->setCookie(new Cookie(
-            $this->cookieKey,
-            $this->cookieValue,
-            $cookieExpirationDate,
-            null,
-            $this->cookieDomain,
-            $this->cookieSecure,
-            $this->cookieHttpOnly
-        ));
+        $event->getResponse()->headers->setCookie(
+            Cookie::create(
+                $this->cookieKey,
+                $this->cookieValue,
+                $cookieExpirationDate,
+                null,
+                $this->cookieDomain,
+                $this->cookieSecure,
+                $this->cookieHttpOnly
+            )
+        );
     }
 
     public static function getSubscribedEvents()
