@@ -64,7 +64,7 @@
         <span class="idpRow__providedBy-content">{{ 'profile.my_services.idpRow.consent_provided_by'|trans }} <strong>{{ organisationName }}</strong></span>
     {% endset %}
 
-    <img class="logo-small" src="{{ logoUrl }}"
+    <img class="logo-small" src="{{ asset(logoUrl) }}"
          alt="" />
     {% if sourceName != 'idp' %}
         {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
