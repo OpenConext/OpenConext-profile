@@ -1,12 +1,13 @@
-name: Build docker container for the SP Dashboard
+name: Build docker container for OpenConext Profile
 
 on:
   release:
     types: [ published ]
   workflow_dispatch:
   push:
-    branches: [ feature/github_actions_build_docker ]
-
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
   build:
