@@ -37,6 +37,7 @@ RUN apk add --no-cache libxml2-dev \
     docker-php-ext-install soap gd pdo_mysql opcache && \
     chown -R www-data /var/www/html/var/cache && \
     chown -R www-data /var/www/html/var/logs && \
+    mv /var/www/html/app/config/global_view_parameters.yml.dist /var/www/html/app/config/global_view_parameters.yml && \
     rm -rf /var/www/html/var/cache/prod/
 
 COPY ./docker/conf/zz-docker.conf /usr/local/etc/php-fpm.d
