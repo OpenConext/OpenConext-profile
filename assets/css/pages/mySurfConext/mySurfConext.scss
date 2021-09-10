@@ -40,10 +40,27 @@
   width: 100%;
 }
 
+@include ie11Only('.mySurfConext__downloadButtonWrapper, .mySurfConext__downloadButton, .mySurfConext__downloadText') {
+  display: inline-block;
+}
+
+@include ie11Only('.mySurfConext__downloadButton') {
+  height: auto;
+  min-width: 14rem;
+}
+
 .mySurfConext__downloadText {
   margin-top: 0;
 }
 
 .mySurfConext__download {
   margin-bottom: 1rem;
+}
+
+.surfIcon .a {
+  fill: none;
+  stroke: #000;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5px;
 }

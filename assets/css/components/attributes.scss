@@ -15,13 +15,13 @@
 
 .attribute__row {
   @include display-grid;
-  @include grid-template-columns(33% 1% 57% 1% 8%);
+  @include grid-template-columns(35% 1% 55% 1% 8%);
   border-bottom: 1px solid $softBorderGray;
   line-height: 1.63;
   padding: 6px 0;
 
   &.attribute__noTooltip {
-    @include grid-template-columns(33% 1% 65% 1%);
+    @include grid-template-columns(35% 1% 63% 1%);
 
     @include screen('mobile') {
       @include grid-template-columns(100%);

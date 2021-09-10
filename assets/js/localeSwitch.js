@@ -40,7 +40,7 @@ window.addEventListener('load', function () {
                 label.textContent = text;
                 label.classList.add('locale-switch-label');
 
-                localeSwitch.firstElementChild.prepend(label);
+                localeSwitch.firstElementChild.insertBefore(label, select);
             }
 
         /**

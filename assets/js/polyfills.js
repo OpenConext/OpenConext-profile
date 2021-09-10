@@ -1,5 +1,7 @@
 'use strict';
 
+require('details-element-polyfill/dist/details-element-polyfill.js');
+
 /**
  * Element.matches polyfill taken from MDN https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
  */
