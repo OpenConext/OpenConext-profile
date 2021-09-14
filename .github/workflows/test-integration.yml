@@ -33,6 +33,7 @@ jobs:
       - name: Build Docker environmnent
         if: always()
         run: |
+          cd docker &&
           ${DOCKER_COMPOSE} up -d --build --force-recreate &&
           docker-compose exec -T php-fpm sh -c '
               SYMFONY_ENV=test composer install --prefer-dist -n -o && \
