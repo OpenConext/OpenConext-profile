@@ -30,12 +30,14 @@ services:
     build:
       context: 'docker/'
       dockerfile: Dockerfiledev
-      target: spdphpfpm
+      target: profilephpfpm
     volumes:
       - .:/var/www/html/
       - type: bind
         source: /dev/log
         target: /dev/log
+    environment:
+      - PHPFPM_PORT=9000
     networks:
       profile:
         aliases: 
@@ -44,7 +46,7 @@ services:
     build:
       context: 'docker/'
       dockerfile: Dockerfiledev
-      target: spdhttpd
+      target: profilehttpd
     depends_on:
       - php-fpm
     volumes:
