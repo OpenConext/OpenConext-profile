@@ -4,9 +4,7 @@ WORKDIR /var/www/html/
 ENV SYMFONY_ENV=prod
 RUN composer install -n --prefer-dist -o --ignore-platform-reqs --no-dev && \
     composer run-script symfony-scripts && \
-    bin/console assets:install && \
-    npm i && \
-    npm run build
+    bin/console assets:install \
 
 FROM ghcr.io/openconext/openconext-containers/openconext-httpd:latest AS httpd-build
 MAINTAINER Bart Geesink (bart.geesink@surf.nl)
