@@ -50,6 +50,15 @@
          "symfony/symfony": "*"
     },
     "scripts": {
+        "tests" : [
+            "./ci/docheader.sh",
+            "./ci/phpmd.sh",
+            "./ci/phpcs.sh",
+            "./ci/phplint.sh",
+            "./ci/phpunit.sh",
+            "./ci/security-checker.sh",
+            "./ci/npm-audit.sh"
+        ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
         ],

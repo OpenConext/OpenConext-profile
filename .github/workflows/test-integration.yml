@@ -59,9 +59,15 @@ jobs:
         run: |
           docker-compose exec -T php-fpm sh -c '
               echo -e "\nPHP Mess Detector\n" && \
-              ./vendor/bin/phpmd src text phpmd.xml --exclude */Tests/* && \
+              ./ci/phpmd.sh && \
               echo -e "\nPHP CodeSniffer\n" && \
-              ./vendor/bin/phpcs --report=full --standard=phpcs.xml --warning-severity=0 --extensions=php --ignore=*/Tests/* src
+              ./ci/phpcs.sh && \
+              echo -e "\nPHP Lint\n" && \
+              ./ci/phplint.sh && \
+              echo -e "\nDocheader checker\n" && \
+              ./ci/docheader.sh && \
+              echo -e "\nPHP Copy Paste Detector\n" && \
+              ./ci/phpmd.sh
           '
         env:
           SYMFONY_ENV: test
@@ -70,7 +76,18 @@ jobs:
         run: |
           APP_ENV=test docker-compose exec -T php-fpm sh -c '
               echo -e "\nPHPUnit unit tests\n" && \
-              ./vendor/bin/phpunit --configuration=phpunit.xml --coverage-text
+              ./ci/phpunit.sh
+          '
+        env:
+          SYMFONY_ENV: test
+      - name: Run security tests
+        if: always()
+        run: |
+          APP_ENV=test docker-compose exec -T php-fpm sh -c '
+              echo -e "\nSymfony security checker\n" && \
+              ./ci/security-checker.sh && \
+              echo -e "\nNPM Audit\n" && \
+              ./ci/npm-audit.sh
           '
         env:
           SYMFONY_ENV: test
