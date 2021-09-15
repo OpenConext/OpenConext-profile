@@ -1,2 +1,2 @@
 #!/bin/sh
-./vendor/bin/phpunit --configuration=./phpunit.xml --coverage-text src
+./vendor/bin/phpmd src github phpmd.xml --exclude */Tests/*
