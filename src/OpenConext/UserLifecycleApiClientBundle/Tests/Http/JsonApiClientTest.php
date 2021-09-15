@@ -31,7 +31,7 @@ class JsonApiClientTest extends TestCase
      */
     public function throw_exception_when_json_cannot_be_parsed()
     {
-        $this->setExpectedException(MalformedResponseException::class);
+        $this->expectException(MalformedResponseException::class);
 
         $response = m::mock('GuzzleHttp\Message\ResponseInterface')
             ->shouldReceive('getStatusCode')
@@ -59,7 +59,7 @@ class JsonApiClientTest extends TestCase
      */
     public function throw_exception_when_resource_cannot_be_found()
     {
-        $this->setExpectedException('\OpenConext\UserLifecycleApiClientBundle\Exception\ResourceNotFoundException');
+        $this->expectException('\OpenConext\UserLifecycleApiClientBundle\Exception\ResourceNotFoundException');
 
         $response = m::mock('GuzzleHttp\Message\ResponseInterface')
             ->shouldReceive('getStatusCode')
@@ -83,7 +83,7 @@ class JsonApiClientTest extends TestCase
      */
     public function throw_exception_when_status_code_is_not_200($statusCode)
     {
-        $this->setExpectedException('\OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException');
+        $this->expectException('\OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException');
 
         $response = m::mock('GuzzleHttp\Message\ResponseInterface')
             ->shouldReceive('getStatusCode')
@@ -107,7 +107,7 @@ class JsonApiClientTest extends TestCase
      */
     public function throw_exception_when_empty_resource()
     {
-        $this->setExpectedException('\RuntimeException');
+        $this->expectException('\RuntimeException');
 
         $response = m::mock('GuzzleHttp\Message\ResponseInterface')
             ->shouldReceive('getStatusCode')
