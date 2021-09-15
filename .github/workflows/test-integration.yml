@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - feature/redesign
   pull_request:
   # run at 6 hour UTC
   schedule:
@@ -39,7 +40,7 @@ jobs:
         if: always()
         run: |
           docker-compose exec -T php-fpm sh -c '
-              SYMFONY_ENV=test composer install --prefer-dist -n -o
+              SYMFONY_ENV=test COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -n -o
           '
       - name: Clear Symfony caches
         if: always()
