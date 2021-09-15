@@ -232,6 +232,9 @@
     "symfony/cache": {
         "version": "v4.4.30"
     },
+    "symfony/cache-contracts": {
+        "version": "v1.1.10"
+    },
     "symfony/config": {
         "version": "v4.4.30"
     },
@@ -262,6 +265,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v4.4.30"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.9"
     },
     "symfony/expression-language": {
         "version": "v4.4.30"
@@ -307,6 +313,9 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.10"
     },
     "symfony/http-foundation": {
         "version": "v4.4.30"
@@ -415,6 +424,9 @@
     "symfony/security-http": {
         "version": "v4.4.30"
     },
+    "symfony/service-contracts": {
+        "version": "v1.1.9"
+    },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
         "recipe": {
@@ -444,6 +456,9 @@
             "config/packages/translation.yaml",
             "translations/.gitignore"
         ]
+    },
+    "symfony/translation-contracts": {
+        "version": "v1.1.10"
     },
     "symfony/twig-bridge": {
         "version": "v4.4.27"
