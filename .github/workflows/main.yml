@@ -39,7 +39,6 @@ jobs:
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
           type=semver,pattern={{major}}
-          type=sha
     
     - name: Docker meta_phpfpm
       id: metaweb
@@ -54,7 +53,6 @@ jobs:
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
           type=semver,pattern={{major}}
-          type=sha
 
     - name: Build the php-fpm container and push to GitHub Container Registry
       uses: docker/build-push-action@v2
