@@ -92,7 +92,7 @@ open_conext_profile:
 
 ## User Lifecycle support
 By enabling the User Lifecyle API integration, you enable users of the platform to download an overview of their 
-personal data stored by SURFconext. To enable the API add the following configuration to the `parameters.yml`
+personal data stored by SURFconext. To enable the API add the following configuration to the `parameters.yaml`
 
 ```yaml
     user_lifecycle_enabled: true
@@ -105,6 +105,14 @@ personal data stored by SURFconext. To enable the API add the following configur
 Make sure to fill all parameters, also when the `user_lifecycle_enabled` toggle is disabled.
 
 See the User Lifecycle project on [GitHub](https://github.com/OpenConext/OpenConext-user-lifecycle) for more information.
+
+## EngineBlock consent removal support
+In order to allow user to retract consent for a given service. You can enable the remove consent feature in the 
+`parameters.yaml`. By setting `remove_consent_enabled` to `true`, every service in the 'my services' page will have a 
+delete button. Clicking this button will retract consent for only that service.
+
+In order for this feature to work, you need to have an EngineBlock instance that supports this feature. See the
+EngineBlock docs for more information on enabling the feature on the EngineBlock Api.
 
 ## Release strategy
 Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management for more information on the release strategy used in Openconext projects.

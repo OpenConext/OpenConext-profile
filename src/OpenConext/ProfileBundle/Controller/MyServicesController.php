@@ -25,6 +25,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
@@ -60,13 +61,17 @@ class MyServicesController
      */
     private $logger;
 
+    /** @var bool */
+    private $removeConsentEnabled;
+
     public function __construct(
         Environment $templateEngine,
         AuthenticatedUserProviderInterface $authenticatedUserProvider,
         SpecifiedConsentListService $specifiedConsentListService,
         Guard $guard,
         UrlGeneratorInterface $urlGenerator,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        bool $removeConsentEnabled
     ) {
         $this->templateEngine = $templateEngine;
         $this->authenticatedUserProvider = $authenticatedUserProvider;
@@ -74,6 +79,7 @@ class MyServicesController
         $this->guard = $guard;
         $this->urlGenerator = $urlGenerator;
         $this->logger = $logger;
+        $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
     public function overviewAction(Request $request)
@@ -99,8 +105,13 @@ class MyServicesController
     public function deleteAction(string $serviceEntityId): Response
     {
         $this->guard->userIsLoggedIn();
+        if (!$this->removeConsentEnabled) {
+            throw new ResourceNotFoundException('The remove consent action is disabled');
+        }
+
         $this->logger->notice('User wants to delete his info from a service with id: ' . $serviceEntityId);
-        $this->specifiedConsentListService->deleteServiceWith($serviceEntityId);
+        $user = $this->authenticatedUserProvider->getCurrentUser();
+        $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);
         return new RedirectResponse($this->urlGenerator->generate('profile.my_services_overview'));
     }
 }
