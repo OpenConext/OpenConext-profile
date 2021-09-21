@@ -109,9 +109,10 @@ class MyServicesController
             throw new ResourceNotFoundException('The remove consent action is disabled');
         }
 
-        $this->logger->notice('User wants to delete his info from a service with id: ' . $serviceEntityId);
+        $this->logger->notice(sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId));
         $user = $this->authenticatedUserProvider->getCurrentUser();
-        $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);
+        $result = $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);
+        $this->logger->notice(sprintf('Removing consent %s', ($result ? 'succeeded' : 'failed')));
         return new RedirectResponse($this->urlGenerator->generate('profile.my_services_overview'));
     }
 }

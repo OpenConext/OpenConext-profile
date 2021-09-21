@@ -24,6 +24,7 @@ use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;
+use Psr\Log\LoggerInterface;
 
 final class ConsentRepository implements ConsentRepositoryInterface
 {
@@ -32,9 +33,13 @@ final class ConsentRepository implements ConsentRepositoryInterface
      */
     private $apiClient;
 
-    public function __construct(JsonApiClient $apiClient)
+    /** @var LoggerInterface */
+    private $logger;
+
+    public function __construct(JsonApiClient $apiClient, LoggerInterface $logger)
     {
         $this->apiClient = $apiClient;
+        $this->logger = $logger;
     }
 
     public function findAllFor(string $userId): ConsentList
@@ -47,12 +52,17 @@ final class ConsentRepository implements ConsentRepositoryInterface
         return ConsentListFactory::createListFromMetadata($consentListJson);
     }
 
-    public function deleteServiceWith(string $entityId): bool
+    public function deleteServiceWith(string $collabPersonId, string $entityId): bool
     {
         try {
-            $this->apiClient->delete('deprovision/%s', [$entityId]);
+            $this->logger->notice('Calling EngineBlock API remove-consent endpoint');
+            $this->apiClient->post(
+                ['collabPersonId' => $collabPersonId, 'serviceProviderEntityId' => $entityId],
+                'remove-consent'
+            );
             return true;
         } catch (Exception $e) {
+            $this->logger->notice(sprintf('EngineBlock API returned a non 200 response with error message (%s)', $e->getMessage()));
             return false;
         }
     }

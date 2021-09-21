@@ -63,8 +63,8 @@ class SpecifiedConsentListService
         );
     }
 
-    public function deleteServiceWith(string $serviceEntityId): bool
+    public function deleteServiceWith(AuthenticatedUser $user, string $serviceEntityId): bool
     {
-        return $this->consentService->deleteServiceWith($serviceEntityId);
+        return $this->consentService->deleteServiceWith($user, $serviceEntityId);
     }
 }
