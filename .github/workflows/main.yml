@@ -1,0 +1,71 @@
+name: Build docker container for OpenConext Profile
+
+on:
+  release:
+    types: [ published ]
+  workflow_dispatch:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Check out the repo
+      uses: actions/checkout@v2
+
+    - name: Log into GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Docker meta_phpfpm
+      id: metafpm
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/openconext/openconext-profile/profile_php-fpm
+        tags: |
+          type=schedule
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=semver,pattern={{major}}
+    
+    - name: Docker meta_phpfpm
+      id: metaweb
+      uses: docker/metadata-action@v3
+      with:
+        images: |
+          ghcr.io/openconext/openconext-profile/profile_web
+        tags: |
+          type=schedule
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=semver,pattern={{major}}
+
+    - name: Build the php-fpm container and push to GitHub Container Registry
+      uses: docker/build-push-action@v2
+      with:
+        file: docker/Dockerfile
+        push: true
+        target: phpfpm-build
+        tags:  ${{ steps.metafpm.outputs.tags }}
+    
+    - name: Build the Apache container and push to GitHub Container Registry
+      uses: docker/build-push-action@v2
+      with:
+        file: docker/Dockerfile
+        push: true
+        target: httpd-build
+        tags:  ${{ steps.metaweb.outputs.tags }}

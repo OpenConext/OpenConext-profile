@@ -135,6 +135,15 @@ While the used bundle (JMS/Translation bundle) supports a web interface, it was 
 
 ## Common tasks
 
+### Running tests
+QA tooling is installed for this project. A collection of code quality checks can be performed using the
+
+`composer run tests` 
+
+command. These tests will also be run when GitHub Actions runs the test-integration workflow.
+
+Individual tests can be run using the shell scripts that are found in the `ci` folder.
+
 ### Working on the front-end
 
 * We use the Twig template engine. See the excellent Twig documentation to get started with Twig.

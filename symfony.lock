@@ -65,6 +65,9 @@
     "myclabs/deep-copy": {
         "version": "1.10.2"
     },
+    "n98/junit-xml": {
+        "version": "1.1.0"
+    },
     "nelmio/security-bundle": {
         "version": "2.4",
         "recipe": {
@@ -83,11 +86,20 @@
     "openconext/monitor-bundle": {
         "version": "2.0"
     },
+    "overtrue/phplint": {
+        "version": "2.4.1"
+    },
     "paragonie/random_compat": {
         "version": "v9.99.100"
     },
     "pdepend/pdepend": {
         "version": "2.10.0"
+    },
+    "phar-io/manifest": {
+        "version": "1.0.3"
+    },
+    "phar-io/version": {
+        "version": "2.0.1"
     },
     "php": {
         "version": "7.2"
@@ -181,6 +193,9 @@
     "sebastian/object-enumerator": {
         "version": "2.0.1"
     },
+    "sebastian/object-reflector": {
+        "version": "1.1.2"
+    },
     "sebastian/phpcpd": {
         "version": "3.0.1"
     },
@@ -232,6 +247,9 @@
     "symfony/cache": {
         "version": "v4.4.30"
     },
+    "symfony/cache-contracts": {
+        "version": "v1.1.10"
+    },
     "symfony/config": {
         "version": "v4.4.30"
     },
@@ -262,6 +280,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v4.4.30"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.9"
     },
     "symfony/expression-language": {
         "version": "v4.4.30"
@@ -307,6 +328,9 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.10"
     },
     "symfony/http-foundation": {
         "version": "v4.4.30"
@@ -374,6 +398,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
+    "symfony/process": {
+        "version": "v4.4.30"
+    },
     "symfony/property-access": {
         "version": "v4.4.30"
     },
@@ -415,6 +442,9 @@
     "symfony/security-http": {
         "version": "v4.4.30"
     },
+    "symfony/service-contracts": {
+        "version": "v1.1.9"
+    },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
         "recipe": {
@@ -444,6 +474,9 @@
             "config/packages/translation.yaml",
             "translations/.gitignore"
         ]
+    },
+    "symfony/translation-contracts": {
+        "version": "v1.1.10"
     },
     "symfony/twig-bridge": {
         "version": "v4.4.27"
@@ -522,6 +555,9 @@
     },
     "theseer/fdomdocument": {
         "version": "1.6.6"
+    },
+    "theseer/tokenizer": {
+        "version": "1.2.1"
     },
     "twig/extensions": {
         "version": "1.0",

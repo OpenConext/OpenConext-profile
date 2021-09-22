@@ -4,20 +4,15 @@ COPY ./conf/engineblock.crt /etc/openconext/engineblock.crt
 COPY ./conf/start.sh /tmp/start.sh
 CMD ["/tmp/start.sh"]
 
-FROM ghcr.io/surfnet/sp-dashboard/spdashboard_php-fpm:3.3.0 AS spdphpfpm
+FROM ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest AS profilephpfpm
 WORKDIR /var/www/html/
 COPY --from=openconext /etc/pki/ca-trust/source/anchors/star.vm.openconext.org.pem /usr/local/share/ca-certificates/star.vm.openconext.org.pem
-COPY ./conf/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 COPY ./conf/engineblock.crt /etc/openconext/engineblock.crt
-RUN /usr/sbin/update-ca-certificates && \
-    apk --update --no-cache add autoconf g++ make && \
-    pecl install -f xdebug && \
-    docker-php-ext-enable xdebug && \
-    apk del --purge autoconf g++ make
+RUN /usr/sbin/update-ca-certificates
 
 CMD ["/usr/local/sbin/php-fpm" , "-F"]
 
-FROM ghcr.io/surfnet/sp-dashboard/spdashboard_web:3.3.0 AS spdhttpd
+FROM ghcr.io/openconext/openconext-containers/openconext-httpd:latest AS profilehttpd
 COPY ./conf/000-default-dev.conf /usr/local/apache2/conf/000-default.conf
 EXPOSE 80
 CMD ["httpd", "-D", "FOREGROUND"]
