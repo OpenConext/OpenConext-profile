@@ -22,6 +22,7 @@ use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\Security\Guard;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -73,7 +74,7 @@ class MyServicesController
         $this->logger                      = $logger;
     }
 
-    public function overviewAction()
+    public function overviewAction(Request $request)
     {
         $this->guard->userIsLoggedIn();
 
@@ -86,7 +87,10 @@ class MyServicesController
 
         return new Response($this->templateEngine->render(
             'OpenConextProfileBundle:MyServices:overview.html.twig',
-            ['specifiedConsentList' => $specifiedConsentList]
+            [
+                'specifiedConsentList' => $specifiedConsentList,
+                'locale' => $request->getLocale(),
+            ]
         ));
     }
 

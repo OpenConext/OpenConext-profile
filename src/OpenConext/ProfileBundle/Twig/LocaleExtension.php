@@ -21,33 +21,38 @@ namespace OpenConext\ProfileBundle\Twig;
 use OpenConext\Profile\Assert;
 use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension as Extension;
 use Twig\TwigFunction as SimpleFunction;
 
 final class LocaleExtension extends Extension
 {
     /**
-     * @var \Symfony\Component\Form\FormFactoryInterface
+     * @var FormFactoryInterface
      */
     private $formFactory;
 
-    public function __construct(FormFactoryInterface $formFactory)
+    /**
+     * @var string
+     */
+    private $locale;
+
+    public function __construct(FormFactoryInterface $formFactory, RequestStack $requestStack, $defaultLocale)
     {
         $this->formFactory = $formFactory;
+        $this->locale = $this->retrieveLocale($requestStack, $defaultLocale);
     }
 
     public function getFunctions()
     {
         return [
-            new SimpleFunction('profile_locale_switcher', [$this, 'getLocalePreferenceForm'])
+            new SimpleFunction('profile_locale_switcher', [$this, 'getLocalePreferenceForm']),
+            new SimpleFunction('locale', [$this, 'getLocale']),
         ];
     }
 
-    /**
-     * @param string $returnUrl
-     * @return \Symfony\Component\Form\FormView
-     */
-    public function getLocalePreferenceForm($returnUrl)
+    public function getLocalePreferenceForm(string $returnUrl): FormView
     {
         Assert::string($returnUrl);
 
@@ -60,8 +65,23 @@ final class LocaleExtension extends Extension
         return $form->createView();
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'profile_locale';
+    }
+
+    public function getLocale(): string
+    {
+        return $this->locale;
+    }
+
+    private function retrieveLocale(RequestStack $requestStack, $defaultLocale): string
+    {
+        $currentRequest = $requestStack->getCurrentRequest();
+        $locale = $defaultLocale;
+        if ($currentRequest) {
+            $locale = $currentRequest->getLocale();
+        }
+        return $locale;
     }
 }
