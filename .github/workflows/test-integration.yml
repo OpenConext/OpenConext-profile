@@ -81,6 +81,14 @@ jobs:
           '
         env:
           SYMFONY_ENV: test
+      - name: Run Cypress a11y tests
+        if: always()
+        run: |
+          APP_ENV=test docker-compose exec -T cypress sh -c '
+              echo -e "\nCypress a11y tests\n" && \
+              ./node_modules/.bin/cypress run --spec tests/cypress/integration/a11y/*.spec.js --browser=electron --headless'
+        env:
+          SYMFONY_ENV: test
       - name: Run security tests
         if: always()
         run: |
