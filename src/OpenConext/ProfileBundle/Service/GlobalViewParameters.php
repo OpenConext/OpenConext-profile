@@ -58,16 +58,9 @@ final class GlobalViewParameters
      */
     private $attributeInformationUrls;
 
-    /**
-     * @param TranslatorInterface $translator
-     * @param array $locales
-     * @param array $helpUrls
-     * @param array $privacyUrls
-     * @param array $platformUrls
-     * @param array $termsOfServiceUrls
-     * @param array $profileExplanationImageUrls
-     * @param array $attributeInformationUrls
-     */
+    /** @var bool */
+    private $removeConsentEnabled;
+
     public function __construct(
         TranslatorInterface $translator,
         array $locales,
@@ -76,7 +69,8 @@ final class GlobalViewParameters
         array $platformUrls,
         array $termsOfServiceUrls,
         array $profileExplanationImageUrls,
-        array $attributeInformationUrls
+        array $attributeInformationUrls,
+        bool $removeConsentEnabled
     ) {
         Assert::keysArePresent($helpUrls, $locales);
         Assert::keysArePresent($privacyUrls, $locales);
@@ -92,6 +86,7 @@ final class GlobalViewParameters
         $this->termsOfServiceUrls          = $termsOfServiceUrls;
         $this->profileExplanationImageUrls = $profileExplanationImageUrls;
         $this->attributeInformationUrls    = $attributeInformationUrls;
+        $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
     /**
@@ -140,5 +135,10 @@ final class GlobalViewParameters
     public function getAttributeInformationUrl()
     {
         return $this->attributeInformationUrls[$this->translator->getLocale()];
+    }
+
+    public function isRemoveConsentFeatureEnabled()
+    {
+        return $this->removeConsentEnabled;
     }
 }

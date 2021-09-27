@@ -31,6 +31,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -38,7 +39,7 @@ use Symfony\Component\Templating\EngineInterface;
 class MyConnectionsController
 {
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -77,18 +78,8 @@ class MyConnectionsController
      */
     private $urlGenerator;
 
-    /**
-     * @param EngineInterface $templateEngine
-     * @param Guard $guard
-     * @param LoggerInterface $logger
-     * @param AttributeAggregationService $service
-     * @param AuthenticatedUserProviderInterface $userProvider
-     * @param EmailAddressSupport $mailTo
-     * @param FormFactoryInterface $formFactory
-     * @param UrlGeneratorInterface $urlGenerator
-     */
     public function __construct(
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         Guard $guard,
         LoggerInterface $logger,
         AttributeAggregationService $service,
@@ -139,7 +130,7 @@ class MyConnectionsController
         }
 
         return new Response($this->templateEngine->render(
-            'OpenConextProfileBundle:MyConnections:overview.html.twig',
+            '@OpenConextProfile/MyConnections/overview.html.twig',
             [
                 'activeConnections' => $activeConnections,
                 'availableConnections' => $availableConnections,

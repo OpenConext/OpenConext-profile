@@ -20,7 +20,7 @@
         "nelmio/security-bundle": "^2.10",
         "openconext/monitor-bundle": "^2.0",
         "sensio/framework-extra-bundle": "^5.5",
-        "surfnet/stepup-saml-bundle": "^4.2.1",
+        "surfnet/stepup-saml-bundle": "^4.3",
         "symfony/expression-language": "4.4.*",
         "symfony/flex": "^1.15",
         "symfony/form": "4.4.*",

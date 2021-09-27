@@ -9,7 +9,7 @@
 
 {% set buttonRowContent %}
     <a
-        href="{{ path('profile.my_services_delete', { 'id': deleteId }) }}"
+        href="{{ path('profile.my_services_delete', { 'serviceEntityId': deleteId }) }}"
         class="button modalWindow__button"
     >
         {{ 'general.confirm'|trans }}

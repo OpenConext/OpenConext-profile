@@ -17,6 +17,11 @@ services:
         arguments:
             - ~ # engine block entity id
 
+    OpenConext\ProfileBundle\Controller\MyServicesController:
+        arguments:
+            $removeConsentEnabled: '%remove_consent_enabled%'
+        tags: ['controller.service_arguments']
+
     OpenConext\ProfileBundle\Storage\SingleCookieStorage:
         arguments:
             - ~ # locale cookie domain

@@ -28,5 +28,5 @@ interface ConsentRepositoryInterface
      */
     public function findAllFor(string $userId): ConsentList;
 
-    public function deleteServiceFor(string $userId): bool;
+    public function deleteServiceWith(string $collabPersonId, string $entityId): bool;
 }

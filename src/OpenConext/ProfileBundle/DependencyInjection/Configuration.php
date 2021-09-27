@@ -42,6 +42,10 @@ class Configuration implements ConfigurationInterface
                         ->thenInvalid('EngineBlock EntityID should be a string')
                     ->end()
                 ->end()
+                ->booleanNode('remove_consent_enabled')
+                    ->info('This is the feature flag that toggles the remove consent feature')
+                    ->isRequired()
+                ->end()
             ->end();
 
         $this->setupLocaleConfiguration($rootNode);

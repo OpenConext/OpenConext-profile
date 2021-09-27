@@ -21,5 +21,6 @@ services:
             - '%terms_of_service_url%'
             - '%profile_explanation_image_path%'
             - '%attribute_information_url%'
+            - '%remove_consent_enabled%'
     open_conext.profile_bundle.service.global_view_parameters:
         alias: OpenConext\ProfileBundle\Service\GlobalViewParameters

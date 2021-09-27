@@ -26,7 +26,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class AttributeSupportController
 {
@@ -36,7 +36,7 @@ class AttributeSupportController
     private $guard;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -62,7 +62,7 @@ class AttributeSupportController
 
     public function __construct(
         Guard $guard,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator,
         UserService $userService,

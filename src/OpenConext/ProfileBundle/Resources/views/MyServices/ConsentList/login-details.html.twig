@@ -1,9 +1,9 @@
-{% set deleteId = specifiedConsent.getEduPersonTargetedID() %}
+{% set deleteId = consent.serviceProvider.entity.entityId %}
 
 <div class="buttonedTitle">
     <h3 class="buttonedTitle__title title__details">{{ 'profile.my_services.login_details'|trans }}</h3>
 
-    {% if deleteId is not empty %}
+    {% if global_view_parameters.removeConsentFeatureEnabled and deleteId is not empty %}
         {% include '@OpenConextProfile/MyServices/ConsentList/delete-button-and-modal.html.twig' %}
     {% endif %}
 </div>
