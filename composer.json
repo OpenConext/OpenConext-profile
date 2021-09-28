@@ -18,7 +18,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/translation-bundle": "^1.1",
         "nelmio/security-bundle": "^2.10",
-        "openconext/monitor-bundle": "^2.0",
+        "openconext/monitor-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.5",
         "surfnet/stepup-saml-bundle": "^4.3",
         "symfony/expression-language": "4.4.*",
