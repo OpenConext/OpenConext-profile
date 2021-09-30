@@ -86,7 +86,7 @@ jobs:
         run: |
           APP_ENV=test docker-compose exec -T cypress sh -c '
               echo -e "\nCypress a11y tests\n" && \
-              cypress run --spec "tests/cypress/integration/a11y/*.spec.js" --browser=electron --headless'
+              cypress run --spec "./tests/cypress/integration/a11y/*.spec.js" --browser=electron --headless'
         env:
           SYMFONY_ENV: test
       - name: Run security tests

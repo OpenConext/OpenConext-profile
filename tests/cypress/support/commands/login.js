@@ -7,8 +7,31 @@ Cypress.Commands.add('fillPassword', (pass = 'Weatherwax') => {
 });
 
 Cypress.Commands.add('submitLoginForms', () => {
-    cy.get('.login-form').submit();
+    cy.get('input[type="submit"].button').then((loginButton) => {
+        loginButton.trigger('click');
+        setTimeout(() => {
+            console.log('waiting');
+        }, 600);
+    });
     cy.checkForConsent();
+});
+
+Cypress.Commands.add('checkForProfile', (tries = 1) => {
+    cy.get('body').then((body) => {
+        const isProfileHeader = document.querySelector('.header__profile');
+
+        if (!!isProfileHeader) {
+            cy.get('.header__profile');
+        } else {
+            if (tries < 20) {
+                cy.checkForProfile(tries++);
+            }
+        }
+    });
+});
+
+Cypress.Commands.add('checkForUrl', (url) => {
+    cy.url().should('eq', url);
 });
 
 Cypress.Commands.add('checkForConsent', () => {
@@ -16,6 +39,7 @@ Cypress.Commands.add('checkForConsent', () => {
         const isConsentPage = document.querySelector('.consent');
 
         if (!!isConsentPage) {
+            cy.wait(100);
             cy.get('#accept').submit();
         }
     });
@@ -29,4 +53,5 @@ Cypress.Commands.add('login', (username = 'Tiffany', pass = 'Aching', submit = t
         cy.submitLoginForms();
         cy.wait(300);
     }
+    cy.checkForUrl(url + '/');
 });
