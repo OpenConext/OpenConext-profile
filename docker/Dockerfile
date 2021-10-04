@@ -11,7 +11,7 @@ RUN composer install -n --prefer-dist -o --ignore-platform-reqs --no-dev && \
 FROM ghcr.io/openconext/openconext-containers/openconext-httpd:latest AS httpd-build
 MAINTAINER Bart Geesink (bart.geesink@surf.nl)
 RUN mkdir -p /var/www/html/
-COPY --from=node-build /var/www/html/web/. /var/www/html/web/
+COPY --from=node-build /var/www/html/public/. /var/www/html/public/
 COPY ./docker/conf/000-default.conf /usr/local/apache2/conf/
 COPY ./docker/conf/httpd.conf /usr/local/apache2/conf/
 
@@ -20,19 +20,17 @@ EXPOSE 80
 CMD ["httpd", "-D", "FOREGROUND"]
 
 FROM ghcr.io/openconext/openconext-containers/openconext-phpfpm:latest AS phpfpm-build
-COPY --from=node-build /var/www/html/app/. /var/www/html/app/
-COPY --from=node-build /var/www/html/web/. /var/www/html/web/
+COPY --from=node-build /var/www/html/public/. /var/www/html/public/
+COPY --from=node-build /var/www/html/config/. /var/www/html/config/
 COPY --from=node-build /var/www/html/vendor/. /var/www/html/vendor/
 COPY --from=node-build /var/www/html/var/. /var/www/html/var/
 COPY --from=node-build /var/www/html/src/. /var/www/html/src/
 COPY --from=node-build /var/www/html/bin/. /var/www/html/bin/
-COPY --from=node-build /var/www/html/composer.json /var/www/html/
 
 LABEL maintainer "Bart Geesink" <bart.geesink@surf.nl>
 
-RUN chown -R www-data /var/www/html/var/cache && \
-    chown -R www-data /var/www/html/var/logs && \
-    rm -rf /var/www/html/var/cache/prod/
+RUN mkdir -p /var/www/html/var/cache/prod && \
+    chown -R www-data /var/www/html/var/cache
 
 COPY ./docker/conf/zz-docker.conf /usr/local/etc/php-fpm.d
 COPY ./docker/conf/10-docker-opcache-openconext.conf /usr/local/etc/php/conf.d/
