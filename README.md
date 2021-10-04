@@ -25,7 +25,7 @@ information via EngineBlock's internal API.
 
 ## Development
 
-You can use both vagrant and docker to start a development environment.
+You can use docker to start a development environment.
 
 ### Docker
 
@@ -40,38 +40,6 @@ The docker container comes with EB and profile already installed & configured.  
 6. Run a build: `npm run build`
 7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
 9. Start developing on docker: `docker-compose up -d`
-
-### Vagrant
-To setup your development environment, run `vagrant up` in the project directory.
-Make sure an IdP (OpenConext Engineblock) is configured and running correctly. Do 
-so by using the installation instructions found in the [Openconext-Deploy repository](https://github.com/OpenConext/OpenConext-deploy/blob/master/README.md).
-
-After installing OpenConext-deploy, make sure your Profile installation is 
-registered in the Service registry or Manage. To do so follow the instructions 
-below.
-
-! Note that there now are two active OpenConext-profile installations, one development
-version: https://profile-dev.vm.openconext.org and the OpenConext-deploy pre-installed
-version available at: https://profile.vm.openconext.org.
-
-In order for the profile VM to be able to access the OpenConext-deploy
-VM, you need to modify the hosts file of the profile VM and point the
-EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
-
-    192.168.66.98 engine-api.vm.openconext.org aa.vm.openconext.org
-
-#### Configure Profile as SP in service registry
-
- 1. Visit https://manage.vm.openconext.org/
- 2. Enter username 'admin' on the mujina IDP login form (password also 'admin')
- 3. Click 'Import from XML'
- 4. Enter Entity ID: `https://profile-dev.vm.openconext.org/authentication/metadata`
- 5. Use the following URL: `https://profile-dev.vm.openconext.org/authentication/metadata`
- 7. Click 'Create'
- 8. Then set the state to 'Production'
- 9. Repeat steps 4 to 8 with Connection ID and entity url: `https://profile-dev.vm.openconext.org/app_dev.php/authentication/metadata`
- 
-You should now be able to successfully login!
 
 ## Attribute aggregation support
 Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
