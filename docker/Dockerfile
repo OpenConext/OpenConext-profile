@@ -20,7 +20,6 @@ EXPOSE 80
 CMD ["httpd", "-D", "FOREGROUND"]
 
 FROM ghcr.io/openconext/openconext-containers/openconext-phpfpm:latest AS phpfpm-build
-COPY --from=node-build /var/www/html/app/. /var/www/html/app/
 COPY --from=node-build /var/www/html/web/. /var/www/html/web/
 COPY --from=node-build /var/www/html/vendor/. /var/www/html/vendor/
 COPY --from=node-build /var/www/html/var/. /var/www/html/var/
