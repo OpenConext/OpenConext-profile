@@ -12,6 +12,7 @@ FROM ghcr.io/openconext/openconext-containers/openconext-httpd:latest AS httpd-b
 MAINTAINER Bart Geesink (bart.geesink@surf.nl)
 RUN mkdir -p /var/www/html/
 COPY --from=node-build /var/www/html/public/. /var/www/html/public/
+COPY --from=node-build /var/www/html/assets/. /var/www/html/assets/
 COPY ./docker/conf/000-default.conf /usr/local/apache2/conf/
 COPY ./docker/conf/httpd.conf /usr/local/apache2/conf/
 
@@ -21,6 +22,9 @@ CMD ["httpd", "-D", "FOREGROUND"]
 
 FROM ghcr.io/openconext/openconext-containers/openconext-phpfpm:latest AS phpfpm-build
 COPY --from=node-build /var/www/html/public/. /var/www/html/public/
+COPY --from=node-build /var/www/html/assets/. /var/www/html/assets/
+COPY --from=node-build /var/www/html/templates/. /var/www/html/templates/
+COPY --from=node-build /var/www/html/translations/. /var/www/html/translations/
 COPY --from=node-build /var/www/html/config/. /var/www/html/config/
 COPY --from=node-build /var/www/html/vendor/. /var/www/html/vendor/
 COPY --from=node-build /var/www/html/var/. /var/www/html/var/
