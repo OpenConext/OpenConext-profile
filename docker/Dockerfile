@@ -30,6 +30,7 @@ COPY --from=node-build /var/www/html/vendor/. /var/www/html/vendor/
 COPY --from=node-build /var/www/html/var/. /var/www/html/var/
 COPY --from=node-build /var/www/html/src/. /var/www/html/src/
 COPY --from=node-build /var/www/html/bin/. /var/www/html/bin/
+COPY --from=node-build /var/www/html/composer.json /var/www/html/
 
 LABEL maintainer "Bart Geesink" <bart.geesink@surf.nl>
 
