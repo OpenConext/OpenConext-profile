@@ -5,7 +5,7 @@ ENV SYMFONY_ENV=prod
 RUN composer install -n --prefer-dist -o --ignore-platform-reqs --no-dev && \
     composer run-script symfony-scripts && \
     bin/console assets:install && \
-    npm i && \
+    npm i --production && \
     npm run build
 
 FROM ghcr.io/openconext/openconext-containers/openconext-httpd:latest AS httpd-build
