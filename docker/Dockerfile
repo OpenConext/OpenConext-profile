@@ -33,8 +33,8 @@ COPY --from=node-build /var/www/html/bin/. /var/www/html/bin/
 
 LABEL maintainer "Bart Geesink" <bart.geesink@surf.nl>
 
-RUN mkdir -p /var/www/html/var/cache/prod && \
-    chown -R www-data /var/www/html/var/cache
+RUN mkdir -p /var/www/html/var/prod && \
+    chown -R www-data /var/www/html/var/prod
 
 COPY ./docker/conf/zz-docker.conf /usr/local/etc/php-fpm.d
 COPY ./docker/conf/10-docker-opcache-openconext.conf /usr/local/etc/php/conf.d/
