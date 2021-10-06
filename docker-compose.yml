@@ -18,7 +18,10 @@ services:
         aliases:
           - db.vm.openconext.org
           - manage.vm.openconext.org
+          - profile.vm.openconext.org
           - engine-api.vm.openconext.org
+          - engine.vm.openconext.org
+          - mujina-idp.vm.openconext.org
     volumes:
       - profile_mysql:/var/lib/mysql
       - profile_mongo:/var/lib/mongo
@@ -57,6 +60,18 @@ services:
       profile:
         aliases: 
           - profile_web
+  cypress:
+    image: "cypress/included:8.4.0"
+    depends_on:
+      - openconext
+    environment:
+      - CYPRESS_baseUrl=https://profile.vm.openconext.org
+    working_dir: /var/www/html/
+    entrypoint: cypress open --project .
+    volumes:
+      - .:/var/www/html/
+    networks:
+      profile:
 
 networks:
   profile:

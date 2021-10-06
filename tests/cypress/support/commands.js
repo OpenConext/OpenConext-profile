@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('removeSFToolbar', () => {
+    cy.get('body').then((body) => {
+        const hasToolbar = body.find('.sf-toolbar').length;
+        if (hasToolbar) {
+            body.find('.sf-toolbar').remove();
+        }
+    });
+});

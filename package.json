@@ -6,7 +6,7 @@
     "axe-core": "^4.3.3",
     "cypress": "^8.3.0",
     "cypress-axe": "^0.13.0",
-    "cypress-html-validate": "^2.0.2",
+    "cypress-html-validate": "^2.1.0",
     "cypress-terminal-report": "^3.3.2",
     "html-validate": "^5.5.0"
   },

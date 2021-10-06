@@ -52,7 +52,7 @@ jobs:
         if: always()
         run: |
           docker-compose exec -T php-fpm sh -c '
-              npm i && \
+              CYPRESS_INSTALL_BINARY=0 npm i && \
               npm run encore production
           '
       - name: Run code quality tests
@@ -80,6 +80,14 @@ jobs:
               ./ci/phpunit.sh
           '
         env:
+          SYMFONY_ENV: test
+      - name: Run Cypress a11y tests
+        if: always()
+        continue-on-error: true
+        run: |
+          APP_ENV=test docker-compose exec -T cypress sh -c '
+              echo -e "\nCypress a11y tests\n" && \
+              cypress run --spec "./tests/cypress/integration/a11y/*.spec.js" --browser=electron --headless'        env:
           SYMFONY_ENV: test
       - name: Run security tests
         if: always()
