@@ -44,10 +44,14 @@ cd ${PROJECT_DIR} &&
 git checkout ${TAG} &&
 
 echo "Running Composer Install";
-SYMFONY_ENV=${SYMFONY_ENV} composer install --no-dev --prefer-dist -o --no-scripts &&
+SYMFONY_ENV=${SYMFONY_ENV} composer install  -n --prefer-dist -o --ignore-platform-reqs --no-dev &&
+SYMFONY_ENV=${SYMFONY_ENV} composer run-script symfony-scripts &&
+
+echo "Link and install assets";
+bin/console assets:install &&
 
 echo "Running NPM install";
-npm i &&
+npm i --production &&
 npm run build &&
 
 echo "Tagging the release in RELEASE file" &&
@@ -55,39 +59,36 @@ COMMITHASH=`git rev-parse HEAD` &&
 echo "Tag: ${TAG}" > ${PROJECT_DIR}/RELEASE &&
 echo "Commit: ${COMMITHASH}" >> ${PROJECT_DIR}/RELEASE &&
 
-echo "Updating asset_version in config"
-sed -i s,#ASSETS_VERSION#,${TAG},g ${PROJECT_DIR}/app/config/config.yml
-
 echo "Cleaning build of dev files" &&
-rm -rf ${PROJECT_DIR}/ansible &&
-rm -rf ${PROJECT_DIR}/Vagrantfile &&
-rm -rf ${PROJECT_DIR}/.git &&
+rm -f ${PROJECT_DIR}/.docheader &&
+rm -f ${PROJECT_DIR}/.env.* &&
 rm -f ${PROJECT_DIR}/.gitignore &&
+rm -f ${PROJECT_DIR}/.scrutinizer.yml &&
+rm -f ${PROJECT_DIR}/docker-compose.yml &&
 rm -f ${PROJECT_DIR}/makeRelease.sh &&
-rm -rf ${PROJECT_DIR}/.scrutinizer.yml &&
-rm -rf ${PROJECT_DIR}/phpcs.xml &&
-rm -f ${PROJECT_DIR}/phpunit.xml &&
-rm -rf ${PROJECT_DIR}/phpmd.xml &&
-rm -rf ${PROJECT_DIR}/phpmd-pre-commit.xml &&
-rm -rf ${PROJECT_DIR}/build.xml &&
-rm -rf ${PROJECT_DIR}/build-pre-commit.xml &&
-rm -rf ${PROJECT_DIR}/tests &&
-rm -rf ${PROJECT_DIR}/ci &&
-rm -rf ${PROJECT_DIR}/node_modules &&
 rm -f ${PROJECT_DIR}/package.json &&
-rm -f ${PROJECT_DIR}/package.lock &&
-rm -rf ${PROJECT_DIR}/web/css
-rm -rf ${PROJECT_DIR}/web/fonts
-rm -rf ${PROJECT_DIR}/web/images
-rm -rf ${PROJECT_DIR}/web/js
-rm -rf ${PROJECT_DIR}/.travis.yml &&
-rm -rf ${PROJECT_DIR}/travis.php.ini &&
-rm -f ${PROJECT_DIR}/web/app_dev.php &&
+rm -f ${PROJECT_DIR}/package-lock.json &&
+rm -f ${PROJECT_DIR}/phpcs.xml &&
+rm -f ${PROJECT_DIR}/phpunit.xml &&
+rm -f ${PROJECT_DIR}/phpmd.xml &&
+rm -f ${PROJECT_DIR}/postcss.config.js &&
+rm -f ${PROJECT_DIR}/symfony.lock &&
+rm -f ${PROJECT_DIR}/webpack.config.js &&
+rm -rf ${PROJECT_DIR}/.github &&
+rm -rf ${PROJECT_DIR}/.git &&
+rm -rf ${PROJECT_DIR}/ci &&
+rm -rf ${PROJECT_DIR}/assets &&
+rm -f ${PROJECT_DIR}/bin/extract-translations.sh &&
+rm -rf ${PROJECT_DIR}/config/packages/dev &&
+rm -rf ${PROJECT_DIR}/config/packages/test &&
+rm -rf ${PROJECT_DIR}/cypress &&
+rm -rf ${PROJECT_DIR}/docker &&
+rm -rf ${PROJECT_DIR}/node_modules &&
+rm -rf ${PROJECT_DIR}/tests &&
 
 echo "Removing application cache, logs, bootstrap and parameters" &&
-rm -f ${PROJECT_DIR}/app/bootstrap.php.cache &&
-rm -rf ${PROJECT_DIR}/app/cache/* &&
-rm -rf ${PROJECT_DIR}/app/logs/* &&
+rm -rf ${PROJECT_DIR}/var/cache/* &&
+rm -rf ${PROJECT_DIR}/var/logs/* &&
 
 echo "Create tarball" &&
 cd ${RELEASE_DIR} &&
