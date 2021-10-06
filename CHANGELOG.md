@@ -1,7 +1,25 @@
 # Next release
 
 #Next
- * Upgrade Stepup-saml-bundle to version 4.1.8 #139
+
+# 3.0.0
+
+**Changes**
+- Redesign every screen for a better user experience, accessibility and to improve the look/feel
+- Allow users to remove consent per service
+- Add cypress tests for accessibility
+- Add docker for development / deploys
+- Improve documentation
+
+**Security**
+- Upgrade symfony version to 4.4 so we have LTS again
+- Upgrade several packages (over 777 vulnerabilities fixed)
+- Add the secure flag to the lang cookie
+
+# 2.0.3
+
+This is a security release that will harden the application against CVE 2019-3465
+
 
 # 2.0.2
 
