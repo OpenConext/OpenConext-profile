@@ -131,6 +131,49 @@ class JsonApiClient
     }
 
     /**
+     * @param string $path A URL path, optionally containing printf parameters. The parameters
+     *               will be URL encoded and formatted into the path string.
+     *               Example: "connections/%d.json"
+     * @param array  $parameters
+     * @return mixed $data
+     * @throws InvalidResponseException
+     * @throws MalformedResponseException
+     * @throws ResourceNotFoundException
+     */
+    public function delete($path, array $parameters = [])
+    {
+        $resource = $this->buildResourcePath($path, $parameters);
+
+        $response = $this->httpClient->request('DELETE', $resource, ['exceptions' => false]);
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode === 404) {
+            throw new ResourceNotFoundException(sprintf('Resource "%s" not found', $resource));
+        }
+
+        if ($statusCode !== 200) {
+            throw new InvalidResponseException(
+                sprintf(
+                    'Request to resource "%s" returned an invalid response with status code %s',
+                    $resource,
+                    $statusCode
+                )
+            );
+        }
+
+        try {
+            $data = $this->parseJson((string) $response->getBody());
+        } catch (InvalidArgumentException $e) {
+            throw new MalformedResponseException(
+                sprintf('Cannot read resource "%s": malformed JSON returned', $resource)
+            );
+        }
+
+        return $data;
+    }
+
+    /**
      * @param string $path
      * @param array $parameters
      * @return string
@@ -167,7 +210,7 @@ class JsonApiClient
      */
     private function parseJson($json)
     {
-        static $jsonErrors = [
+        $jsonErrors = [
             JSON_ERROR_DEPTH          => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',
             JSON_ERROR_STATE_MISMATCH => 'JSON_ERROR_STATE_MISMATCH - Underflow or the modes mismatch',
             JSON_ERROR_CTRL_CHAR      => 'JSON_ERROR_CTRL_CHAR - Unexpected control character found',

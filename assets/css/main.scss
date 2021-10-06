@@ -1,0 +1,36 @@
+/* Components */
+.toast {
+    padding: 1.5em;
+    font-size: 10px;
+    color: #4db3cf;
+    background-color: #e2e2e2;
+}
+.toast p {
+    margin: 0;
+}
+
+/* My Services */
+.no-js .service-details-state-toggle {
+    cursor: default;
+}
+.service-details-state-toggle {
+    cursor: pointer;
+}
+.no-js [data-service-details-state="initial"] .caret:before,
+[data-service-details-state="open"] .caret:before {
+    /* Caret down */
+    content: "\f107";
+}
+[data-service-details-state="initial"] .caret:before,
+[data-service-details-state="closed"] .caret:before {
+    /* Caret right */
+    content: "\f105";
+}
+.no-js [data-service-details-state="initial"] .service-details {
+    display: block;
+}
+
+[data-service-details-state="initial"] .service-details,
+[data-service-details-state="closed"] .service-details {
+    display: none;
+}

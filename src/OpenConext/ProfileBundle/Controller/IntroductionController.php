@@ -19,14 +19,21 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Security\Guard;
+use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class IntroductionController
 {
     /**
-     * @var EngineInterface
+     * @var UserService
+     */
+    private $userService;
+
+    /**
+     * @var Environment
      */
     private $templateEngine;
 
@@ -41,12 +48,18 @@ class IntroductionController
     private $logger;
 
     /**
-     * @param EngineInterface $templateEngine
+     * @param UserService $userService
+     * @param Environment $templateEngine
      * @param Guard $guard
      * @param LoggerInterface $logger
      */
-    public function __construct(EngineInterface $templateEngine, Guard $guard, LoggerInterface $logger)
-    {
+    public function __construct(
+        UserService $userService,
+        Environment $templateEngine,
+        Guard $guard,
+        LoggerInterface $logger
+    ) {
+        $this->userService    = $userService;
         $this->templateEngine = $templateEngine;
         $this->guard          = $guard;
         $this->logger         = $logger;
@@ -58,9 +71,20 @@ class IntroductionController
     public function overviewAction()
     {
         $this->guard->userIsLoggedIn();
-
         $this->logger->notice('Showing Introduction page');
+        $attributeDefinition = new AttributeDefinition(
+            'givenName',
+            'urn:mace:dir:attribute-def:givenName',
+            'urn:oid:2.5.4.42'
+        );
+        $userName = $this->userService
+                     ->getUser()
+                     ->getAttributes()
+                     ->getAttributeByDefinition($attributeDefinition)
+                     ->getValue()[0];
 
-        return new Response($this->templateEngine->render('OpenConextProfileBundle:Introduction:overview.html.twig'));
+        return new Response($this->templateEngine->render('@OpenConextProfile/Introduction/overview.html.twig', [
+            'userName' => $userName,
+        ]));
     }
 }

@@ -1,0 +1,50 @@
+<section class="myProfile__section">
+    <h2 class="title__emphasis">{{ 'profile.my_connections.active_connections'|trans }}</h2>
+    {% if activeConnections is empty %}
+        {{ 'profile.my_connections.no_active_connections.description'|trans }}
+    {% else %}
+        <ul class="connection__list list__details">
+            {% for connection in activeConnections %}
+                <li class="connection__listItem listDetails__item">
+                    <details class="connection__details listDetails__details">
+                        <summary class="connection__name listDetails__name">
+                            <h3 class="connection__title listDetails__title">
+                                <span>{{ 'profile.my_connections.orcid.title'|trans }}</span>
+                                {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow listDetails__statusArrow' } %}
+                            </h3>
+                        </summary>
+                        <div class="connection__info listDetails__info">
+                            <img src="{{ asset(connection.logoPath) }}" class="connection__logo" alt="" /> {# todo: find out why the alt / title aren't service-specific #}
+                            <p class="connection__orcidLinkWrapper">
+                                <img class="connection__orcidLogoSmall" src="{{ asset('build/images/orcid_small.png') }}" alt=""> <a class="connection__orcidLink" href="{{ connection.linkedId }}">
+                                    {{ connection.linkedId }}
+                                </a>
+                            </p>
+
+                            {% set modalContent %}
+                                <p id="description-part-1-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.explanation'|trans }}</p>
+                                <p id="description-part-2-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.warning'|trans }}</p>
+                            {% endset %}
+
+                            {% set buttonRowContent %}
+                                {{ form_start(confirmForm, {attr: { class: "connection__deleteForm", 'novalidate': 'novalidate'} }) }}
+                                {{ form_widget(confirmForm) }}
+                                {{ form_end(confirmForm) }}
+                            {% endset %}
+
+                            {% include '@OpenConextProfile/helpers/modal.html.twig' with {
+                                buttonText: 'profile.my_connections.orcid.disconnect_title'|trans,
+                                linkIdPrefix: 'delete_active_',
+                                buttonClass: 'modalWindowButton',
+                                modalContent: modalContent,
+                                describedBy: 'description-part-1-' ~ loop.index ~ ' description-part-2-' ~ loop.index,
+                                modalHeader: 'profile.my_connections.delete_connection.title'|trans,
+                                buttonRowContent: buttonRowContent,
+                            } %}
+                        </div>
+                    </details>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>

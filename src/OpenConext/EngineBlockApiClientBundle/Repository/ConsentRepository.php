@@ -18,10 +18,13 @@
 
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
+use Exception;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\ConsentRepositoryInterface;
+use OpenConext\Profile\Value\ConsentList;
+use Psr\Log\LoggerInterface;
 
 final class ConsentRepository implements ConsentRepositoryInterface
 {
@@ -30,12 +33,16 @@ final class ConsentRepository implements ConsentRepositoryInterface
      */
     private $apiClient;
 
-    public function __construct(JsonApiClient $apiClient)
+    /** @var LoggerInterface */
+    private $logger;
+
+    public function __construct(JsonApiClient $apiClient, LoggerInterface $logger)
     {
         $this->apiClient = $apiClient;
+        $this->logger = $logger;
     }
 
-    public function findAllFor($userId)
+    public function findAllFor(string $userId): ConsentList
     {
         Assert::string($userId, 'User ID "%s" expected to be string, type %s given.');
         Assert::notEmpty($userId, 'User ID "%s" is empty, but non empty value was expected.');
@@ -43,5 +50,20 @@ final class ConsentRepository implements ConsentRepositoryInterface
         $consentListJson = $this->apiClient->read('consent/%s', [$userId]);
 
         return ConsentListFactory::createListFromMetadata($consentListJson);
+    }
+
+    public function deleteServiceWith(string $collabPersonId, string $entityId): bool
+    {
+        try {
+            $this->logger->notice('Calling EngineBlock API remove-consent endpoint');
+            $this->apiClient->post(
+                ['collabPersonId' => $collabPersonId, 'serviceProviderEntityId' => $entityId],
+                'remove-consent'
+            );
+            return true;
+        } catch (Exception $e) {
+            $this->logger->notice(sprintf('EngineBlock API returned a non 200 response with error message (%s)', $e->getMessage()));
+            return false;
+        }
     }
 }

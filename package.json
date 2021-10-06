@@ -2,23 +2,23 @@
   "name": "openconext-profile",
   "version": "1.0.0",
   "description": "OpenConext-profile provides an overview of your OpenConext profile",
-  "dependencies": {
-    "jquery": "^3.6.0",
-    "material-design-lite": "1.0.5"
-  },
   "devDependencies": {
-    "@symfony/webpack-encore": "^1.5.0",
-    "file-loader": "^6.2.0"
+    "axe-core": "^4.3.3",
+    "cypress": "^8.3.0",
+    "cypress-axe": "^0.13.0",
+    "cypress-html-validate": "^2.1.0",
+    "cypress-terminal-report": "^3.3.2",
+    "html-validate": "^5.5.0"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1",
     "encore": "encore",
     "build": "encore production",
-    "watch": "encore dev --watch"
-  },
-  "resolutions": {
-    "css-what": "^5.0.1"
+    "watch": "encore dev --watch",
+    "cy:open": "cypress open",
+    "cypress:open": "npx cypress open",
+    "cy:run": "cypress run --browser firefox --headless"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,21 @@
   "bugs": {
     "url": "https://github.com/OpenConext/OpenConext-profile/issues"
   },
-  "homepage": "https://github.com/OpenConext/OpenConext-profile#readme"
+  "homepage": "https://github.com/OpenConext/OpenConext-profile#readme",
+  "browserslist": [
+    "last 2 versions",
+    "> 0.5%",
+    "IE 10",
+    "IE 11"
+  ],
+  "dependencies": {
+    "@symfony/webpack-encore": "^1.5.0",
+    "autoprefixer": "^10.3.2",
+    "cssnano": "^5.0.8",
+    "details-element-polyfill": "^2.4.0",
+    "file-loader": "^6.2.0",
+    "postcss-loader": "^5.3.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0"
+  }
 }

@@ -1,0 +1,35 @@
+@import '../helpers/breakpoints';
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.content {
+  @include display-grid;
+  @include grid-template-columns(calculateRem(229px) 1.5rem calculateRem(771px));
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  margin: 0 0 .75rem;
+
+  @include screen('mobile') {
+    display: block;
+    position: relative;
+  }
+}
+
+.main {
+  @include grid-position(1, 2, 3, 4);
+  background-color: $white;
+  border-bottom-right-radius: 6px;
+  padding: 1.5rem 1rem 1rem;
+  vertical-align: top;
+
+  @include screen('mobile') {
+    display: inline-block;
+    margin-left: 54px;
+    padding: .5rem;
+    position: relative;
+    width: calc(100vw - 54px);
+    z-index: $contentMobileZ;
+  }
+}
+

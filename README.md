@@ -25,53 +25,21 @@ information via EngineBlock's internal API.
 
 ## Development
 
-You can use both vagrant and docker to start a development environment.
+You can use docker to start a development environment.
 
 ### Docker
 
 The docker container comes with EB and profile already installed & configured.  Follow the below steps to get it up and running.
 
 1. Clone the repo
-2. Copy parameters file: `cp app/config/parameters.yml.dist app/config/parameters.yml`
-3. Copy global_view_parameters file: `cp app/config/global_view_parameters.yml.dist app/config/global_view_parameters.yml`
+2. Copy .env file: `cp ./.env.dist ./.env` and fill it with sensible settings (for instance use the dev env)
+2. Copy parameters file: `cp config/legacy/parameters.yaml.dist config/legacy/parameters/parameters.yaml`
+3. Copy global_view_parameters file: `cp config/legacy/parameters/global_view_parameters.yaml.dist config/legacy/parameters/global_view_parameters.yaml`
 4. Install composer dependencies: `SYMFONY_ENV=dev composer install --prefer-dist`
 5. Install npm dependencies: `npm i`
 6. Run a build: `npm run build`
 7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
-8. Copy the app_dev file: `cp ./ansible/roles/app/files/app_dev.php.dist web/app_dev.php`
 9. Start developing on docker: `docker-compose up -d`
-
-### Vagrant
-To setup your development environment, run `vagrant up` in the project directory.
-Make sure an IdP (OpenConext Engineblock) is configured and running correctly. Do 
-so by using the installation instructions found in the [Openconext-Deploy repository](https://github.com/OpenConext/OpenConext-deploy/blob/master/README.md).
-
-After installing OpenConext-deploy, make sure your Profile installation is 
-registered in the Service registry or Manage. To do so follow the instructions 
-below.
-
-! Note that there now are two active OpenConext-profile installations, one development
-version: https://profile-dev.vm.openconext.org and the OpenConext-deploy pre-installed
-version available at: https://profile.vm.openconext.org.
-
-In order for the profile VM to be able to access the OpenConext-deploy
-VM, you need to modify the hosts file of the profile VM and point the
-EngineBlock and aggregator (AA) hostnames to the loadbalancer VM:
-
-    192.168.66.98 engine-api.vm.openconext.org aa.vm.openconext.org
-
-#### Configure Profile as SP in service registry
-
- 1. Visit https://manage.vm.openconext.org/
- 2. Enter username 'admin' on the mujina IDP login form (password also 'admin')
- 3. Click 'Import from XML'
- 4. Enter Entity ID: `https://profile-dev.vm.openconext.org/authentication/metadata`
- 5. Use the following URL: `https://profile-dev.vm.openconext.org/authentication/metadata`
- 7. Click 'Create'
- 8. Then set the state to 'Production'
- 9. Repeat steps 4 to 8 with Connection ID and entity url: `https://profile-dev.vm.openconext.org/app_dev.php/authentication/metadata`
- 
-You should now be able to successfully login!
 
 ## Attribute aggregation support
 Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
@@ -92,7 +60,7 @@ open_conext_profile:
 
 ## User Lifecycle support
 By enabling the User Lifecyle API integration, you enable users of the platform to download an overview of their 
-personal data stored by SURFconext. To enable the API add the following configuration to the `parameters.yml`
+personal data stored by SURFconext. To enable the API add the following configuration to the `parameters.yaml`
 
 ```yaml
     user_lifecycle_enabled: true
@@ -106,6 +74,14 @@ Make sure to fill all parameters, also when the `user_lifecycle_enabled` toggle 
 
 See the User Lifecycle project on [GitHub](https://github.com/OpenConext/OpenConext-user-lifecycle) for more information.
 
+## EngineBlock consent removal support
+In order to allow user to retract consent for a given service. You can enable the remove consent feature in the 
+`parameters.yaml`. By setting `remove_consent_enabled` to `true`, every service in the 'my services' page will have a 
+delete button. Clicking this button will retract consent for only that service.
+
+In order for this feature to work, you need to have an EngineBlock instance that supports this feature. See the
+EngineBlock docs for more information on enabling the feature on the EngineBlock Api.
+
 ## Release strategy
 Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management for more information on the release strategy used in Openconext projects.
 
@@ -113,25 +89,42 @@ Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management
 Run `./makeRelease.sh` with the version number of the relevant release to create a deployable tar-ball.
 
 During deployment, unpack the tar on the deployment target and configure the
-application by placing the required `parameters.yml` and
-`global_view_parameters.yml` files in the `app/config` directory.
+application by placing the required `parameters.yaml` and
+`global_view_parameters.yaml` files in the `config/legacy` directory.
 To prepare the application environment, run `composer prepare-env` on the
 deployment target.
 
 Make sure to set the correct Symfony environment by setting or exporting
 `SYMFONY_ENV`.
 
+Running the release script can be run on bare metal, but this might result in side effects as certain extensions or PHP version do not match up with versions used in the containers.
+
+To have reproducible results, run the release script in your container:
+
+`docker run -v $PWD/Releases/:/root/Releases/ ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest /root/Releases/makeRelease.sh TAG/develop/master`
+
 ## Texts and translations
-Updating the texts (and translations of those texts) in the web interface
-can be done on an installation that runs in `DEV` mode. Make sure you log
-into profile at `https://profile-dev.vm.openconext.org`. Then go to
-`https://profile.vm.openconext.org/app_dev.php/_trans/` to update the strings.
+
+When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then use the command line to scan for translations.
 
 The following command can be used to scan for translations:
 
      ./bin/extract-translations.sh
 
+All new keys will be shown in the yml files with as text the key again followed by `# FIXME`.
+
+While the used bundle (JMS/Translation bundle) supports a web interface, it was removed in 2019 from this project and is no longer supported for Profile.
+
 ## Common tasks
+
+### Running tests
+QA tooling is installed for this project. A collection of code quality checks can be performed using the
+
+`composer run tests` 
+
+command. These tests will also be run when GitHub Actions runs the test-integration workflow.
+
+Individual tests can be run using the shell scripts that are found in the `ci` folder.
 
 ### Working on the front-end
 
@@ -141,7 +134,7 @@ The following command can be used to scan for translations:
    * Building the front-end can be done by running: `npm run encore dev` (for development, includes debug friendly features like sourcemaps)and `npm run build` for a production build.
    * Watch mode can be used, by using `npm run watch`, your mileage may vary as we are developing on a remote machine and fs changes might be noticed with a noticeable delay.
 * Front-end dependencies are tracked using NPM. Enabling us to keep track of known vulnerabilities and making updating packages easier. Feel free to use Yarn as an alternative, but please do not commit the Yarn lockfile as we chose to use the NPM solution.
-* Dialects: we use vanilla CSS and JavaScript for now.
+* Dialects: we use [SASS](https://sass-lang.com/) and [vanilla JavaScript](https://vanilla.js.org/).
 
 ### Add support for new Attribute Aggregation source
 In EngineBlock ARP, attributes can be derived from a source other than the IdP. Whenever a source other than
@@ -157,7 +150,7 @@ When a new source is added in the Service Registry (or Manage) it must also be a
     
     {# Add your new source here, make sure the source name complies with the sourcename specified in the service registry. #}
     ```
-2. Extract the new translation and translate them in the available `messages.LANG.xliff` translation files.
+2. Extract the new translation and translate them in the available `messages.LANG.yml` translation files.
 3. Done.
 
 To test your change. Modify one of the SP's already present in the 'My Services' overview with the newly added source. 

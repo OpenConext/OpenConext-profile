@@ -1,0 +1,28 @@
+{% set modalContent %}
+    <p id="description-part-1-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.explanation'|trans }}</p>
+    <p id="description-part-2-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.warning'|trans }}</p>
+{% endset %}
+
+{% set buttonText %}
+    {{ 'profile.my_services.delete_button'|trans }}<sup>*</sup>
+{% endset %}
+
+{% set buttonRowContent %}
+    <a
+        href="{{ path('profile.my_services_delete', { 'serviceEntityId': deleteId }) }}"
+        class="button modalWindow__button"
+    >
+        {{ 'general.confirm'|trans }}
+    </a>
+{% endset %}
+
+{% include '@OpenConextProfile/helpers/modal.html.twig' with {
+    buttonText: buttonText,
+    linkIdPrefix: 'delete_service_',
+    buttonClass: 'modalWindowButton buttonedTitle__button ',
+    buttonDescription: 'service__deleteDescription' ~ loop.index,
+    modalContent: modalContent,
+    describedBy: 'description-part-1-' ~ loop.index ~ ' description-part-2-' ~ loop.index,
+    modalHeader: 'profile.my_connections.delete_connection.title'|trans,
+    buttonRowContent: buttonRowContent,
+} %}

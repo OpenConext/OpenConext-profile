@@ -1,0 +1,159 @@
+/*******************************************************************
+    CSS shared across all pages with the default layout
+ ******************************************************************/
+@import '../helpers/helpers';
+@import './footer.scss';
+@import './header.scss';
+@import './main.scss';
+@import './navigation.scss';
+
+:root {
+    @include motion {
+        scroll-behavior: smooth;
+    }
+}
+
+[hidden] {
+    display: none;
+}
+
+body {
+    align-items: center;
+    background: $mainBackgroundGray;
+    display: flex;
+    font-family: 'SourceSansPro', sans-serif;
+    font-size: 100%;
+    justify-content: center;
+    line-height: 1.5;
+    margin: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box
+}
+
+*:not(button) {
+    @include focus;
+}
+
+a {
+    color: $buttonBlue;
+    font-weight: $bolder;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.content__title {
+    color: $green;
+    font-family: 'Nunito', sans-serif; // todo: proximanovasoft?
+    font-size: $f-h1;
+    font-weight: $bolder;
+    letter-spacing: -0.14px;
+    line-height: 1.5;
+    margin-top: 0;
+}
+
+h2 {
+    color: $titleBlack;
+    font-family: 'SourceSansPro', sans-serif;
+    font-size: $f-large;
+    font-weight: $bolder;
+    line-height: calculateRem(35px);
+}
+
+h3 {
+    color: $black;
+    font-family: 'Nunito', sans-serif;
+    font-size: $f-large;
+    font-weight: $bolder;
+    line-height: calculateRem(31px);
+    margin: 1rem 0;
+}
+
+h4 {
+    color: $black;
+    font-family: 'Nunito', sans-serif;
+    font-size: $f-xl;
+    font-weight: $bolder;
+    line-height: 1.5;
+}
+
+h5 {
+    color: $brownishGray;
+    font-size: $f-h5;
+    font-weight: $normal;
+    line-height: 1.5;
+}
+
+h6 {
+    color: $black;
+    font-size: $f-large;
+    font-weight: $bolder;
+    line-height: 1.5;
+}
+
+img {
+    overflow: hidden;
+}
+
+.page__header {
+    font-family: 'Nunito', sans-serif;
+}
+
+.page__title {
+    @include font-style-xl;
+    background-color: $yellow;
+    color: $black;
+    line-height: calculateRem(26px);
+    margin: 0;
+    padding: calculateRem(26px) 2rem;
+
+    @include screen('mobile') {
+        padding: .8125rem 1rem;
+    }
+
+    @include screen('smallMobile') {
+        padding: .8125rem .5rem;
+    }
+}
+
+.page__content {
+    @include border-bottom-radius(8px);
+    background-color: $gray;
+    box-shadow: 0 3px 0 2px $darkishBlueTwo;
+    padding: 2rem 2rem 2.5rem;
+
+    @include screen('mobile') {
+        padding: 2rem 1rem 1rem;
+    }
+
+    @include screen('smallMobile') {
+        padding: 1.5rem .5rem .5rem;
+    }
+}
+
+.button--secondary,
+.button--tertiary,
+.buttonLink--secondary,
+.buttonLink--tertiary {
+    &:focus {
+        box-shadow: none;
+        outline: none;
+
+        > * {
+            box-shadow: 0 0 0 3px $lightBlue;
+        }
+    }
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}

@@ -1,0 +1,27 @@
+nelmio_security:
+  clickjacking:
+    paths:
+      '^/.*': DENY
+  external_redirects:
+    abort: true
+    log: true
+    whitelist:
+      - '%saml_remote_idp_host%'
+  csp:
+    report_logger_service: monolog.logger.security
+    hosts: [ ]
+    content_types: [ ]
+    enforce:
+      report-uri: [ /csp/report ]
+      default-src:
+        - 'self'
+        - 'data:'
+      object-src:
+        - 'none'
+  content_type:
+    nosniff: true
+  xss_protection:
+    enabled: true
+    mode_block: true
+  forced_ssl:
+    enabled: true

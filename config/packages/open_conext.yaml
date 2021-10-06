@@ -1,0 +1,48 @@
+open_conext_engine_block_api_client:
+  http_client:
+    base_url: '%engineblock_api_base_url%'
+    username: '%engineblock_api_username%'
+    password: '%engineblock_api_password%'
+    verify_ssl: '%engineblock_api_verify_ssl%'
+
+open_conext_user_lifecycle_api_client:
+  enabled: '%user_lifecycle_enabled%'
+  http_client:
+    base_url: '%user_lifecycle_api_base_url%'
+    username: '%user_lifecycle_api_username%'
+    password: '%user_lifecycle_api_password%'
+    verify_ssl: '%user_lifecycle_api_verify_ssl%'
+
+open_conext_attribute_aggregation_api_client:
+  http_client:
+    base_url: '%attribute_aggregation_api_base_url%'
+    username: '%attribute_aggregation_api_username%'
+    password: '%attribute_aggregation_api_password%'
+    verify_ssl: '%attribute_aggregation_api_verify_ssl%'
+
+open_conext_profile:
+  engine_block_entity_id: '%saml_remote_idp_entity_id%'
+  locales: '%locales%'
+  default_locale: '%default_locale%'
+  locale_cookie_domain: '%open_conext_locale_cookie_domain%'
+  locale_cookie_key: '%open_conext_locale_cookie_key%'
+  locale_cookie_expires_in: '%open_conext_locale_cookie_expires_in%'
+  locale_cookie_secure: '%open_conext_locale_cookie_secure%'
+  locale_cookie_http_only: '%open_conext_locale_cookie_http_only%'
+  attribute_support:
+    email_from: '%attribute_support_email_from%'
+    email_to: '%attribute_support_email_to%'
+  information_request:
+    email_from: '%information_request_email_from%'
+    email_to: '%information_request_email_to%'
+  # An array of attribute identifiers supported by attribute aggregation
+  attribute_aggregation_supported_attributes:
+    # The accountType of the attribute. Should match the value of the name attribute from the Attribute Aggregation
+    # API account list response. For a list of supported attributes see:
+    # https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext
+    'ORCID':
+      # The relative path to an image. Starting from the /web folder
+      logo_path: '%attribute_aggregation_orcid_logo_path%'
+      # The Url where the attribute can be connected
+      connect_url: '%attribute_aggregation_orcid_connect_url%'
+  remove_consent_enabled: '%remove_consent_enabled%'

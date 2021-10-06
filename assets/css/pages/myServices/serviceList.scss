@@ -1,0 +1,47 @@
+@import '../../helpers/variables';
+
+.service__supportList {
+  list-style: none;
+  padding: 0;
+}
+
+.support__item {
+  display: inline-block;
+  padding: 0 2rem;
+
+  &:not(:first-of-type) {
+    border-left: 1px solid $softBorderGray;
+  }
+
+  @include screen('mobile') {
+    display: block;
+    margin: .5rem 0;
+    padding: 0;
+
+    &:not(:first-of-type) {
+      border: none;
+    }
+  }
+}
+
+.support__eula {
+  padding-left: 0;
+}
+
+.support__email {
+  padding-right: 0;
+
+  .support__icon {
+    transform: translateY(4px);
+    margin-right: calc(1rem + 4px);
+  }
+
+  @include screen('mobile') {
+    margin-top: -.5rem;
+  }
+}
+
+.support__icon {
+  margin-right: 1rem;
+  width: 24px;
+}

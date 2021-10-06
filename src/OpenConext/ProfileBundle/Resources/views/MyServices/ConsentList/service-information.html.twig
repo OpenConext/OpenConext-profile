@@ -1,0 +1,15 @@
+<h3 class="title__information">Information transferred to the service</h3>
+{% if specifiedConsent.releasedAttributes is empty %}
+    <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
+{% else %}
+    {% for sourceName, releasedAttributes in specifiedConsent.releasedAttributesGroupedBySource  %}
+        <ul class="attributeList">
+            {% if sourceName == 'idp' %}
+                {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
+            {% else %}
+                {% include '@OpenConextProfile/MyServices/AttributeList/aa.html.twig' %}
+            {% endif %}
+        </ul>
+    {% endfor %}
+{% endif %}
+

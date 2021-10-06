@@ -1,0 +1,26 @@
+imports:
+    - { resource: 'legacy/global_view_parameters.yaml' }
+    - { resource: 'legacy/parameters.yaml' }
+
+services:
+    logger:
+        alias: 'monolog.logger'
+        public: true
+    twig.text_extension:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - name: twig.extension
+
+    OpenConext\ProfileBundle\Service\GlobalViewParameters:
+        arguments:
+            - '@translator'
+            - '%locales%'
+            - '%help_url%'
+            - '%privacy_url%'
+            - '%platform_url%'
+            - '%terms_of_service_url%'
+            - '%profile_explanation_image_path%'
+            - '%attribute_information_url%'
+            - '%remove_consent_enabled%'
+    open_conext.profile_bundle.service.global_view_parameters:
+        alias: OpenConext\ProfileBundle\Service\GlobalViewParameters

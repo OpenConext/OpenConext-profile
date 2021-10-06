@@ -1,0 +1,79 @@
+@import '../helpers/mixins';
+@import '../helpers/variables.scss';
+
+.locale-switch {
+  text-align: center;
+  width: 33%;
+}
+
+label.locale-switch-label,
+select[name="profile_switch_locale[newLocale]"],
+button[type="submit"][name="profile_switch_locale[changeLocale]"] {
+  display: none;
+}
+
+.no-js label.locale-switch-label {
+  display: inline-block;
+}
+
+.no-js select[name="profile_switch_locale[newLocale]"],
+.no-js button[type="submit"][name="profile_switch_locale[changeLocale]"] {
+  border: none;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: $f-normal;
+  line-height: .89;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.no-js select[name="profile_switch_locale[newLocale]"] {
+  border: 2px solid $buttonBlue;
+  padding: calculateRem(6px) .6875rem;
+
+  option {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
+.no-js button[type="submit"][name="profile_switch_locale[changeLocale]"] {
+  background-color: $buttonBlue;
+  color: $white;
+  line-height: .89;
+  margin-left: calculateRem(10px);
+  padding: calculateRem(11px) calculateRem(42px);
+}
+
+.no-js button[data-locale] {
+  display: none;
+}
+
+button[data-locale] {
+  @include button-reset($mainBackgroundGray);
+  color: $black;
+  font-family: 'SourceSansPro', sans-serif;
+  font-size: $f-normal;
+  padding: 0 calculateRem(5px) 0 calculateRem(10px);
+
+  &.active {
+    cursor: not-allowed;
+    font-weight: $bolder;
+  } // todo: remove tabindex with JS
+
+  &:not(.active) {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &:not(:first-of-type) {
+    border-left: 1px solid $black;
+    margin-left: calculateRem(5px);
+    padding-left: calculateRem(10px);
+  }
+}

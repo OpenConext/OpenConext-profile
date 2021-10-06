@@ -1,0 +1,15 @@
+<label {% if noTab is defined %}{% else %}tabindex="0"{% endif%} for="{{ id }}" class="{{ class }}">
+    {% if text is defined %}
+        {% if hideText %}
+            <span class="visually-hidden">{{ text }}</span>
+            {% if ariaExpandable is defined and ariaExpandable %}
+                {% include '@OpenConextProfile/helpers/a11yButtonExpandable.html.twig' %}
+            {% endif %}
+        {% else %}
+            {{ text }}
+            {% if ariaExpandable is defined and ariaExpandable %}
+                {% include '@OpenConextProfile/helpers/a11yButtonExpandable.html.twig' %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</label>

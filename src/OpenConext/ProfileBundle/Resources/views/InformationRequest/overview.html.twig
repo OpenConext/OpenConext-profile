@@ -1,11 +1,11 @@
-{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+{% extends '@OpenConextProfile/layout.html.twig' %}
 
 {% block title %}
     {{ 'profile.information_request.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ 'profile.information_request.long_title'|trans }}</h1>
+    <h1 class="content__title">{{ 'profile.information_request.long_title'|trans }}</h1>
     <div class="table-overflow-container">
         <table class="account-data mdl-data-table">
             <thead>
