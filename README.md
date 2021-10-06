@@ -97,6 +97,12 @@ deployment target.
 Make sure to set the correct Symfony environment by setting or exporting
 `SYMFONY_ENV`.
 
+Running the release script can be run on bare metal, but this might result in side effects as certain extensions or PHP version do not match up with versions used in the containers.
+
+To have reproducible results, run the release script in your container:
+
+`docker run -v $PWD/Releases/:/root/Releases/ ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest /root/Releases/makeRelease.sh TAG/develop/master`
+
 ## Texts and translations
 
 When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then use the command line to scan for translations.
