@@ -44,10 +44,14 @@ cd ${PROJECT_DIR} &&
 git checkout ${TAG} &&
 
 echo "Running Composer Install";
-SYMFONY_ENV=${SYMFONY_ENV} composer install --no-dev --prefer-dist -o --no-scripts &&
+SYMFONY_ENV=${SYMFONY_ENV} composer install  -n --prefer-dist -o --ignore-platform-reqs --no-dev &&
+SYMFONY_ENV=${SYMFONY_ENV} composer run-script symfony-scripts &&
+
+echo "Link and install assets";
+bin/console assets:install &&
 
 echo "Running NPM install";
-npm i &&
+npm i --production &&
 npm run build &&
 
 echo "Tagging the release in RELEASE file" &&
