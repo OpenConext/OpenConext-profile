@@ -69,7 +69,7 @@ final class AttributeSupportMailService
         $user = $this->userService->getUser();
 
         $body = $this->templateEngine->render(
-            'OpenConextProfileBundle:AttributeSupport:email.html.twig',
+            '@OpenConextProfile/AttributeSupport/email.html.twig',
             ['attributes' => $user->getAttributes()]
         );
 

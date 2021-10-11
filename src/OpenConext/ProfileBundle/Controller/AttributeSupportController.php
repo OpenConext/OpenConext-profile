@@ -88,7 +88,7 @@ class AttributeSupportController
 
         return new Response(
             $this->templateEngine->render(
-                'OpenConextProfileBundle:AttributeSupport:overview.html.twig',
+                '@OpenConextProfile/AttributeSupport/overview.html.twig',
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
                     'attributeSupportMailForm' => $attributeSupportMailForm->createView()
@@ -111,7 +111,7 @@ class AttributeSupportController
         $this->guard->userIsLoggedIn();
 
         return new Response(
-            $this->templateEngine->render('OpenConextProfileBundle:AttributeSupport:confirmation.html.twig')
+            $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig')
         );
     }
 }
