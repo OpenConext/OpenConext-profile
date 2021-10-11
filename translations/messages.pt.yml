@@ -36,6 +36,7 @@ profile:
         short_title: 'Atributo enviado por email'
 
     error:
+        back_home: 'Go to SURFconext Profile'
         403:
             description: 'Se você não tiver acesso a esta página.'
             title: 'Acesso recusado'

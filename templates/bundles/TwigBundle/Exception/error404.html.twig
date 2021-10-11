@@ -2,5 +2,6 @@
 
 {% block content %}
     <h1 class="content__title">{{ 'profile.error.404.title'|trans }}</h1>
-    <div>{{ 'profile.error.404.description'|trans }}</div>
+    <p>{{ 'profile.error.404.description'|trans }}</p>
+    {% include '@Twig/Exception/button-back.html.twig' %}
 {% endblock %}
