@@ -21,6 +21,7 @@ namespace OpenConext\ProfileBundle\Controller;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -77,12 +78,16 @@ class IntroductionController
             'urn:mace:dir:attribute-def:givenName',
             'urn:oid:2.5.4.42'
         );
-        $userName = $this->userService
-                     ->getUser()
-                     ->getAttributes()
-                     ->getAttributeByDefinition($attributeDefinition)
-                     ->getValue()[0];
-
+        try {
+            $userName = $this->userService
+                ->getUser()
+                ->getAttributes()
+                ->getAttributeByDefinition($attributeDefinition)
+                ->getValue()[0];
+        } catch (RuntimeException $e) {
+            $this->logger->info("Unable to retrieve the givenName attribute. It is not present in the attribute set");
+            $userName = '';
+        }
         return new Response($this->templateEngine->render('@OpenConextProfile/Introduction/overview.html.twig', [
             'userName' => $userName,
         ]));
