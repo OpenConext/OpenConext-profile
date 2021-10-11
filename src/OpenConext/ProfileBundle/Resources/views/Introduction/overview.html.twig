@@ -9,8 +9,11 @@
 {% endblock %}
 
 {% block content %}
+    {% if userName %}
     <h1 class="content__title">{{ 'profile.introduction.long_title'|trans({ '%userName%': userName }) }}</h1>
-
+    {% else %}
+        <h1 class="content__title">{{ 'profile.introduction.long_title'|trans({ '%userName%': 'profile.introduction.long_title_user_name_replacement'|trans }) }}</h1>
+    {% endif %}
     <p>{{ 'profile.introduction.explanation.introduction.start'|trans }} <strong>{{ 'profile.introduction.explanation.introduction.serviceName'|trans }}</strong> {{ 'profile.introduction.explanation.introduction.end'|trans }}</p>
 
     {% include "@OpenConextProfile/Introduction/navigation-cards.html.twig" %}

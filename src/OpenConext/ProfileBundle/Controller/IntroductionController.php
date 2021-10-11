@@ -86,7 +86,7 @@ class IntroductionController
                 ->getValue()[0];
         } catch (RuntimeException $e) {
             $this->logger->info("Unable to retrieve the givenName attribute. It is not present in the attribute set");
-            $userName = '';
+            $userName = false;
         }
         return new Response($this->templateEngine->render('@OpenConextProfile/Introduction/overview.html.twig', [
             'userName' => $userName,
