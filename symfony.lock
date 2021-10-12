@@ -263,9 +263,6 @@
             "config/bootstrap.php"
         ]
     },
-    "symfony/contracts": {
-        "version": "v1.1.10"
-    },
     "symfony/debug": {
         "version": "v4.4.27"
     },
@@ -492,6 +489,9 @@
             "templates/base.html.twig"
         ]
     },
+    "symfony/twig-pack": {
+        "version": "v1.0.1"
+    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -567,6 +567,9 @@
         "files": [
             "config/packages/twig_extensions.yaml"
         ]
+    },
+    "twig/extra-bundle": {
+        "version": "v3.3.3"
     },
     "twig/twig": {
         "version": "v1.43.1"

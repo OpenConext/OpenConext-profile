@@ -36,6 +36,7 @@ profile:
         short_title: 'Attribute data mailed'
 
     error:
+        back_home: 'Go to SURFconext Profile'
         403:
             description: 'You do not have acess to this page.'
             title: 'Access denied'

@@ -36,6 +36,7 @@ profile:
         short_title: 'Attribuutdata gemaild'
 
     error:
+        back_home: 'Terug naar SURFconext Profile'
         403:
             description: 'U heeft geen toegang tot deze pagina.'
             title: 'Geen toegang'
