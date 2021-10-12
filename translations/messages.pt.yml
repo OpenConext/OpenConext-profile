@@ -67,6 +67,7 @@ profile:
                 start: Com
 
         long_title: 'Página do perfil da SURFconext'
+        long_title_user_name_replacement: ''
 
         purpose:
             profile_storage: "Em nome da sua instituição, a SURFconext envia uma quantidade limitada de seus dados pessoais para o serviço no qual você está a realizar a sua autenticação. Na maioria das vezes, você é obrigado a dar consentimento explícito para a transferência de informações. No entanto, em alguns casos, esse recurso é desativado a pedido de sua instituição.\n\nEsta página de perfil fornece informações que podem vir a ser dados pessoais. Estes dados são fornecidos pela sua instituição por meio da SURFconext que são encaminhados para cada serviço. Você também pode validar que dados pessoais estão a ser armazenados pela SURFconext e quais os serviços utilizou no passado."

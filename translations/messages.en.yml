@@ -67,6 +67,7 @@ profile:
                 start: With
 
         long_title: 'Hi %userName%!'
+        long_title_user_name_replacement: 'there'
 
         purpose:
             profile_storage: "On behalf of your institution, SURFconext forwards a limited amount of your personal data to the service you are logging in to. Most of the times you are required to give explicit consent for this information transfer. In some cases, however, this feature is disabled on request of your institution.\n\nThis profile page gives you insight in which personal data, provided by your institution via SURFconext, has been forwarded to which service. You can also review which personal data is being stored by SURFconext and which services you have logged in to in the past."
