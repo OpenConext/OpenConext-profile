@@ -149,7 +149,7 @@ final class ServiceProvider
     }
 
     /**
-     * @return ContactEmailAddress
+     * @return string
      */
     public function getSupportEmail()
     {
@@ -157,7 +157,7 @@ final class ServiceProvider
             throw new LogicException('Service provider has no support e-mail address');
         }
 
-        return $this->supportEmail;
+        return $this->supportEmail->__toString();
     }
 
     /**
