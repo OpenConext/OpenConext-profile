@@ -33,8 +33,7 @@ class InformationRequestMailType extends AbstractType
                 [
                     'label' => 'profile.information_request.send_mail',
                     'attr'  => [
-                        'class' =>
-                            'mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect'
+                        'class' => 'button modalWindow__button modalWindow__button--form',
                     ]
                 ]
             );

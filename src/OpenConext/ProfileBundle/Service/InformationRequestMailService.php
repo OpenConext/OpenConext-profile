@@ -79,7 +79,7 @@ final class InformationRequestMailService
         $attributes = $this->attributeFilter->filter($user->getAttributes());
 
         $body = $this->templateEngine->render(
-            'OpenConextProfileBundle:InformationRequest:email.html.twig',
+            '@OpenConextProfile/InformationRequest/email.html.twig',
             ['attributes' => $attributes]
         );
 
