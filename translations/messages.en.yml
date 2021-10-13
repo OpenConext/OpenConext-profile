@@ -167,7 +167,8 @@ profile:
             correction_title: 'Is the data shown incorrect?'
             support_link: 'Explanation'
             support_url: 'https://example.org'
-
+        service_information:
+            title: 'Information transferred to the service'
         implicit_consent_given: institution
         login_details: 'Login details'
         no_attribute_released: 'This service does not receive information about you.'
