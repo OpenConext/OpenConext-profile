@@ -1,14 +1,20 @@
-{% set deleteId = consent.serviceProvider.entity.entityId %}
+{% set entityId = consent.serviceProvider.entity.entityId %}
 
 <div class="buttonedTitle">
     <h3 class="buttonedTitle__title title__details">{{ 'profile.my_services.login_details'|trans }}</h3>
 
-    {% if global_view_parameters.removeConsentFeatureEnabled and deleteId is not empty %}
+    {% if global_view_parameters.removeConsentFeatureEnabled and entityId is not empty %}
         {% include '@OpenConextProfile/MyServices/ConsentList/delete-button-and-modal.html.twig' %}
     {% endif %}
 </div>
 
 <dl class="service__loginDetails">
+    <div class="loginDetails__row">
+        {# The entity ID of the service #}
+        <dt>{{ 'profile.my_services.entity_id'|trans }}:</dt>
+        <dd>{{ entityId }}
+        </dd>
+    </div>
     <div class="loginDetails__row">
         {# when was it first used #}
         <dt>{{ 'profile.my_services.consent_first_used_on'|trans }}:</dt>
@@ -26,7 +32,7 @@
         </dd>
     </div>
 </dl>
-{% if deleteId is not empty %}
+{% if entityId is not empty %}
     <p id="service__deleteDescription{{ loop.index }}" class="service__deleteDescription">
         <sup>*</sup> {{ 'profile.my_services.delete_explanation'|trans }}
     </p>

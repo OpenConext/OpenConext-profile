@@ -175,6 +175,7 @@ profile:
         supportEmail: 'Email de Suporte'
         support_title: Suporte
         support_url: Suporte
+        entity_id: Entity ID
 
     my_surf_conext:
         account_data: 'Dados da conta'
