@@ -18,6 +18,7 @@
 
 namespace OpenConext\Profile\Value;
 
+use OpenConext\Profile\Value\Consent\ServiceProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
@@ -137,5 +138,10 @@ class SpecifiedConsent
         }
 
         return '';
+    }
+
+    public function getServiceProvider(): ServiceProvider
+    {
+        return $this->consent->getServiceProvider();
     }
 }
