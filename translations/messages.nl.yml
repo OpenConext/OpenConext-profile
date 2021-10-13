@@ -167,7 +167,8 @@ profile:
             correction_title: 'Kloppen de getoonde gegevens niet?'
             support_link: 'Uitleg'
             support_url: 'https://example.org'
-
+        service_information:
+            title: 'Informatie doorgegeven aan de dienst'
         implicit_consent_given: instelling
         login_details: 'Login details'
         no_attribute_released: 'Deze dienst ontvangt geen gegevens over jou.'

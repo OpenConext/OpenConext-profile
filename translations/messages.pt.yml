@@ -167,7 +167,8 @@ profile:
             correction_title: 'Is the data shown incorrect?' # FIXME
             support_link: 'Explanation' # FIXME
             support_url: 'https://example.org' # FIXME
-
+        service_information:
+            title: 'Information transferred to the service' # FIXME
         implicit_consent_given: instituição
         login_details: 'Detalhes do Login'
         no_attribute_released: 'Este serviço não recebe informações sobre si.'
