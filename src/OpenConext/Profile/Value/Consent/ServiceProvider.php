@@ -26,7 +26,7 @@ use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\Url;
 
-final class ServiceProvider
+class ServiceProvider
 {
     /**
      * @var Entity

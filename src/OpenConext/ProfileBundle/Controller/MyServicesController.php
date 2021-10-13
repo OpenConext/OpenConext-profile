@@ -90,6 +90,7 @@ class MyServicesController
 
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
+        $specifiedConsentList->sortByDisplayName($request->getLocale());
 
         $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
 
