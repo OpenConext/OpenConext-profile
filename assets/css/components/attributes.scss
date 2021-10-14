@@ -1,0 +1,130 @@
+@import '../helpers/breakpoints';
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.attributeList{
+  background-color: $white;
+  border: 1px solid $softBorderGray;
+  border-radius: 6px;
+  margin: 0 0 2rem;
+  max-height: 200vh;
+  overflow: hidden;
+  padding: 0;
+  transition: max-height .6s ease-in;
+}
+
+.attribute__row {
+  @include display-grid;
+  @include grid-template-columns(35% 1% 55% 1% 8%);
+  border-bottom: 1px solid $softBorderGray;
+  line-height: 1.63;
+  padding: 6px 0;
+
+  &.attribute__noTooltip {
+    @include grid-template-columns(35% 1% 63% 1%);
+
+    @include screen('mobile') {
+      @include grid-template-columns(100%);
+    }
+  }
+
+  > * {
+    padding: 1rem 0;
+
+    @include screen('mobile') {
+      padding: 0;
+    }
+  }
+
+  @include screen('mobile') {
+    @include grid-template-columns(100%);
+    @include grid-template-rows(min-content min-content);
+    padding: 10px;
+  }
+
+  > *:not(input[type="checkbox"]):not(.attribute__name) {
+    color: $black;
+    line-height: 1.63;
+    text-align: left;
+  }
+
+  > input[type="checkbox"]:checked.tooltip ~ .attribute__name > label.tooltip {
+    @include closeTooltip;
+    background-position: left 17px bottom 11px;
+  }
+
+  .ie11__label,
+  .attribute__name > .label.tooltip {
+    @include grid-position(1, 2, 5, 6);
+
+    @include screen('mobile') {
+      display: none;
+    }
+  }
+
+  > label,
+  .ie11__label > label {
+    margin: auto 0;
+    padding: 1.2rem 35px;
+
+    &.tooltip {
+      margin-left: -20px;
+    }
+
+    @include screen('mobile') {
+      display: none;
+    }
+  }
+
+  > .tooltip__value {
+    @include grid-position(2, 3, 3, 6);
+    margin-left: 0;
+    padding: 0;
+    text-align: left;
+
+    @include screen('mobile') {
+      @include grid-position(3, 4, 1, 2);
+    }
+  }
+}
+
+.attribute__name {
+  @include grid-position(1, 2, 1, 2);
+  margin-right: 0.5rem;
+  text-align: right;
+
+  @include screen('mobile') {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  > label.tooltip {
+    display: none;
+
+    @include screen('mobile') {
+      background-position: left 12px bottom 8px;
+      display: inline-block;
+      margin: 0 0 -11px 0;
+      padding: 1rem 25px;
+    }
+  }
+}
+
+.attribute__value {
+  @include grid-position(1, 2, 3, 4);
+  font-weight: $bolder;
+  overflow-wrap: break-word;
+
+  @include screen('mobile') {
+    @include grid-position(2, 3, 1, 2);
+    padding: 0;
+  }
+}
+
+.attribute__values {
+  list-style-type: disc;
+  margin-left: 1rem;
+}

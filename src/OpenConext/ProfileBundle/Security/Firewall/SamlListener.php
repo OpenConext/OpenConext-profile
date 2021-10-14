@@ -37,7 +37,8 @@ use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterfac
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Firewall\ListenerInterface;
-use Twig_Environment as Twig;
+use Twig\Environment;
+use Twig\Environment as Twig;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -80,7 +81,7 @@ class SamlListener implements ListenerInterface
     private $stateHandler;
 
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     private $twig;
 

@@ -1,0 +1,125 @@
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.list__info {
+  background-color: $white;
+  border: 1px solid $softBorderGray;
+  border-radius: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+.info__item {
+  @include display-grid;
+  @include grid-template-columns(calculateRem(211px) calculateRem(9px) calculateRem(396px));
+  border-bottom: 1px solid $softBorderGray;
+  font-size: $f-normal;
+  line-height: 1.63;
+  padding: calculateRem(11px) calculateRem(27px) calculateRem(14px);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  @include screen('mobile') {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.info__name {
+  @include grid-column(1, 2);
+}
+
+.info__value {
+  @include grid-column(3, 4);
+  font-weight: $bolder;
+}
+
+.list__details {
+  list-style: none;
+  margin-top: 2.5rem;
+  padding: 0;
+
+  @include screen('mobile') {
+    margin-top: 1rem;
+  }
+}
+
+.listDetails__item {
+  &:last-of-type {
+    .listDetails__details {
+      border-bottom: none;
+    }
+  }
+}
+
+.listDetails__details {
+  border-top: 1px solid $idpSeparatorGray;
+  border-bottom: 1px solid $idpSeparatorGray;
+
+  &:hover {
+    .listDetails__title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.listDetails__statusArrow {
+  fill: $buttonBlue;
+  height: 100%;
+  transform: rotate(-180deg);
+}
+
+@include ie11Only('.listDetails__statusArrow') {
+  max-height: 2rem;
+}
+
+.listDetails__details[open] {
+  background-color: $gray;
+  border-top: 2px solid $oceanBlue;
+
+  .listDetails__title {
+    color: $titleBlack;
+  }
+
+  .listDetails__statusArrow {
+    fill: $arrowGray;
+    transform: none;
+  }
+}
+
+.listDetails__name {
+  cursor: pointer;
+  display: flex;
+  padding: 1rem 3rem;
+
+  &:hover {
+    background-color: $gray;
+    @include focus-style;
+  }
+
+  @include screen('mobile') {
+    padding: 1rem;
+  }
+}
+
+@include ie11Only('summary::before') {
+  content: '' !important;
+}
+
+.listDetails__info {
+  padding: 1rem 3rem;
+
+  @include screen('mobile') {
+    padding: 1rem;
+  }
+}
+
+.listDetails__title {
+  color: $oceanBlue;
+  display: flex;
+  justify-content: space-between;
+  margin: calculateRem(2.5px) 0;
+  width: 100%;
+}

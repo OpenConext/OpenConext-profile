@@ -1,22 +1,59 @@
-/.vagrant/
-/ansible/*.retry
-cache.properties
-/web/bundles/
-/web/app_dev.php
-/app/config/parameters.yml
-/app/config/global_view_parameters.yml
-!/var/cache/
-/var/cache/*
-!var/cache/.gitkeep
-!/var/logs/
-/var/logs/*
-!var/logs/.gitkeep
-!/var/sessions/
-/var/sessions/*
-!var/sessions/.gitkeep
-/var/bootstrap.php.cache
-!var/SymfonyRequirements.php
-/web/build/
+# IDE files #
+#############
+.idea
+
+/config/legacy/parameters.yaml
+/config/legacy/global_view_parameters.yaml
 /vendor/
-/node_modules/
+/var/
 /composer.phar
+/cache.properties
+/bin/*
+!/bin/extract-translations.sh
+!/bin/console
+node_modules
+public/build
+npm-debug.log
+yarn-error.log
+/phpunit.xml
+.phpunit.result.cache
+/.phpcs-cache
+.phpunit
+.phpunit.result.cache
+.phplint-cache
+config/preload.php
+local-php-security-checker
+/.env
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+/web/build/*

@@ -1,0 +1,44 @@
+@import '../../helpers/variables';
+
+.loginDetails__row {
+  border-bottom: 1px solid $idpSeparatorGray;
+  display: flex;
+  font-size: $f-normal;
+  padding: calculateRem(4px) 0;
+
+  dt {
+    color: $black;
+    font-weight: $normal;
+    line-height: calculateRem(31px);
+    width: 33%;
+  }
+
+  dd {
+    color: $titleBlack;
+    font-weight: $bolder;
+    line-height: calculateRem(31px);
+    margin: 0;
+    padding-left: 1rem;
+    width: 67%;
+  }
+
+  @include screen('mobile') {
+    flex-direction: column;
+
+    dd {
+      padding-left: 0;
+    }
+
+    dt,
+    dd {
+      width: unset;
+    }
+  }
+}
+
+.service__deleteDescription {
+  color: $titleBlack;
+  font-size: $f-small;
+  font-weight: $normal;
+  margin: calculateRem(5px) 0 1.5rem;
+}

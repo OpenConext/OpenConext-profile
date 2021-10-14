@@ -27,7 +27,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class InformationRequestController
 {
@@ -37,7 +37,7 @@ class InformationRequestController
     private $guard;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -68,7 +68,7 @@ class InformationRequestController
 
     public function __construct(
         Guard $guard,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator,
         UserService $userService,
@@ -98,7 +98,7 @@ class InformationRequestController
 
         return new Response(
             $this->templateEngine->render(
-                'OpenConextProfileBundle:InformationRequest:overview.html.twig',
+                '@OpenConextProfile/InformationRequest/overview.html.twig',
                 [
                     'attributes' => $attributes,
                     'informationRequestMailForm' => $informationRequestMailForm->createView()
@@ -121,7 +121,7 @@ class InformationRequestController
         $this->guard->userIsLoggedIn();
 
         return new Response(
-            $this->templateEngine->render('OpenConextProfileBundle:InformationRequest:confirmation.html.twig')
+            $this->templateEngine->render('@OpenConextProfile/InformationRequest/confirmation.html.twig')
         );
     }
 }

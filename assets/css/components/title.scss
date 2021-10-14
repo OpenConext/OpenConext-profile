@@ -1,0 +1,28 @@
+@import '../helpers/breakpoints';
+@import '../helpers/variables';
+
+.buttonedTitle {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 calculateRem(39px);
+
+  @include screen('mobile') {
+    flex-direction: column;
+    gap: .5rem;
+    margin: 1rem 0;
+  }
+}
+
+.buttonedTitle__title {
+  line-height: 1.5;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.title__emphasis {
+  color: $brownishGray;
+  font-family: 'Nunito', sans-serif;
+  font-size: $f-xxl;
+  letter-spacing: -.13px;
+  line-height: 1.17;
+}

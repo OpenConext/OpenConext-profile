@@ -1,52 +1,92 @@
-<p>{{ 'profile.my_services.attribute_release_description'|trans }}</p>
-<table class="mdl-data-table">
-    <thead>
-    <tr>
-        <th>{{ 'profile.table.attribute_name'|trans }}</th>
-        <th>{{ 'profile.table.attribute_value'|trans }}</th>
-        {% if specifiedConsent.hasMotivations %}
-            <th>{{ 'profile.table.motivation'|trans }}</th>
-        {% endif %}
-    </tr>
-    </thead>
-    <tbody>
-    {% for attribute in releasedAttributes %}
-        {% if attribute.attributeDefinition.hasUrnMace %}
-            {% set attributeUrn = attribute.attributeDefinition.urnMace %}
-        {% else %}
-            {% set attributeUrn = attribute.attributeDefinition.urnOid %}
-        {% endif %}
-        <tr>
-            <td title="{{ attributeUrn }}">
-                {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
-
-                {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                    <strong>{{ attributeUrn }}</strong>
-                {% else %}
-                    <strong>{{ translatedAttributeName }}</strong>
-                {% endif %}
-            </td>
-            <td>
-                {% if attribute.attributeDefinition.name == 'eduPersonTargetedID' and (
-                        specifiedConsent.consent.serviceProvider.nameIdFormat.isTransient or
-                        specifiedConsent.consent.serviceProvider.nameIdFormat.isPersistent) %}
-                    {% if specifiedConsent.consent.serviceProvider.nameIdFormat.isTransient %}
-                        <em>{{ 'profile.saml.attributes.eduPersonTargetedId.transient'|trans }}</em>
-                    {%  else %}
-                        <em>{{ 'profile.saml.attributes.eduPersonTargetedId.persistent'|trans }}</em>
-                    {%  endif %}
-                {% else %}
-                    {% for attributeValue in attribute.value  %}
-                        <p class="attribute-value">{{ attributeValue.value }}</p>
-                    {% endfor %}
-                {% endif %}
-            </td>
-            {% if specifiedConsent.hasMotivations %}
-            <td>
-                <p class="attribute-value">{{ specifiedConsent.motivation(attribute) }}</p>
-            </td>
+{% for attribute in releasedAttributes %}
+    {% if attribute.attributeDefinition.hasUrnMace %}
+        {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+    {% else %}
+        {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+    {% endif %}
+    {% set hasMotivation = specifiedConsent.hasMotivations %}
+    {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+    {% set nameFormat = sp.nameIdFormat %}
+    {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+        {% set attributeName = attributeUrn %}
+    {% else %}
+        {% set attributeName = translatedAttributeName %}
+    {% endif %}
+    {% set tooltipId = '%id%%index%'|replace({ '%id%': id, '%index%': loop.index })|trim %}
+    <li class="attribute__row{% if not hasMotivation %} attribute__noTooltip{% endif %}">
+        <div class="attribute__name">
+            {{ attributeName }}
+            {% if hasMotivation %}
+                {% include '@OpenConextProfile/helpers/label.html.twig' with
+                    {
+                        class: 'tooltip',
+                        hideText: true,
+                        ariaExpandable: true,
+                        id: tooltipId,
+                        text: 'accessibility.consent_tooltip_screenreader'|trans({ '%attr_name%': attributeName|lower }),
+                    }
+                %}
             {% endif %}
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </div>
+        <div class="attribute__value">
+            {% if attribute.attributeDefinition.name == 'eduPersonTargetedID' and (
+                nameFormat.isTransient or
+                nameFormat.isPersistent)
+            %}
+                {% if nameFormat.isTransient %}
+                    {{ 'profile.saml.attributes.eduPersonTargetedId.transient'|trans }}
+                {%  else %}
+                    {{ 'profile.saml.attributes.eduPersonTargetedId.persistent'|trans }}
+                {%  endif %}
+            {% else %} {# todo: see if this is ok for layout #}
+                {% if attribute.value|length > 1 %}
+                    <ul class="attribute__values">
+                        {% for attributeValue in attribute.value  %}
+                            <li class="attribute__value-multiple">{{ attributeValue.value }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {{ attribute.value[0].value }}
+                {% endif %}
+            {% endif %}
+        </div>
+        {% if hasMotivation %}
+            {% set tooltipValue = specifiedConsent.motivation(attribute) %}
+            <input type="checkbox" tabindex="-1" class="tooltip visually-hidden" aria-expanded="false" role="button" aria-pressed="false" id="{{ tooltipId }}" name="{{ tooltipId }}" />
+            {% include '@OpenConextProfile/helpers/tooltip.html.twig' with { tooltipValue: tooltipValue } %}
+        {% endif %}
+    </li>
+{% endfor %}
+<li class="idpRow">
+    {% set logoUrl = ('provided_by_attribute_source_logo_url_' ~ sourceName)|trans %}
+    {% set organisationName = ('provided_by_attribute_source_' ~ sourceName)|trans %}
+    {% set consentProvidedBy %}
+        <span class="idpRow__providedBy-content">{{ 'profile.my_services.idpRow.consent_provided_by'|trans }} <strong>{{ organisationName }}</strong></span>
+    {% endset %}
+
+    <img class="logo-small" src="{{ asset(logoUrl) }}"
+         alt="" />
+    {% if sourceName != 'idp' %}
+        {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
+        <p>{{ consentProvidedBy|raw }}</p>
+        <div class="ie11__link">
+            <a class="idpRow__supportUrl" href="{{ 'profile.my_services.idpRow.support_url'|trans }}" target="_blank" rel="noreferrer noopener">{{ 'profile.my_services.idpRow.support_link'|trans }}</a>
+        </div>
+    {% else %}
+        {% set id %}
+            incorrect_{{ sourceName }}{{ loop.index }}
+        {% endset %}
+        <input type="checkbox" tabindex="-1" aria-hidden="true" class="modal visually-hidden" id="{{ id|trim }}" name="{{ id|trim }}" />
+        {# note: the empty label is for display on mobile #}
+        <p>{{ consentProvidedBy|raw }}<label tabindex="0" for="{{ id|trim }}" class="modal"></label>
+        </p>
+        {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
+        <div class="ie11__label">
+            <label tabindex="0" for="{{ id|trim }}" class="modal">
+                <span class="label-text">{{ 'profile.my_services.idpRow.attributes_correction_text'|trans }}</span>
+            </label>
+            <span class="visually-hidden">{{ 'accessibility.button_screenreader'|trans }}</span>
+        </div>
+        {% include '@OpenConextProfile/helpers/correction.html.twig' %}
+    {% endif %}
+</li>

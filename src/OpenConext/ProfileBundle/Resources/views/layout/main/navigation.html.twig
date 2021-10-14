@@ -1,0 +1,49 @@
+{% set route = app.request.attributes.get('_route') %}
+<nav class="navigation" aria-labelledby="main-nav-label">
+    <h2 class="visually-hidden" id="main-nav-label">{{ 'accessibility.nav.title'|trans }}</h2>
+    <button
+        aria-haspopup="menu"
+        aria-pressed="false"
+        class="navigation__mobileButton"
+        type="button"
+    >
+        <span class="visually-hidden">
+            {{ 'accessibility.nav.title'|trans }}
+        </span>
+        {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'navigation__mobileIcon' } %}
+    </button>
+    <ul
+        class="navigation__list"
+    >
+        {% set isActive = route == 'profile.introduction_overview' %}
+        <li class="navigation__item navigation__home{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link navigation__link-first{% if isActive %} active{% endif %}" href="{{ path('profile.introduction_overview') }}">
+                {{ 'profile.introduction.short_title'|trans }}
+            </a>
+        </li>
+        {% set isActive = route == 'profile.my_profile_overview' %}
+        <li class="navigation__item navigation__myProfile{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_profile_overview') }}">
+                {{ 'profile.my_profile.short_title'|trans }}
+            </a>
+        </li>
+        {% set isActive = route == 'profile.my_surf_conext_overview' %}
+        <li class="navigation__item navigation__mySurf{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_surf_conext_overview') }}">
+                {{ 'profile.my_surf_conext.short_title'|trans }}
+            </a>
+        </li>
+        {% set isActive = route == 'profile.my_services_overview' %}
+        <li class="navigation__item navigation__myServices{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_services_overview') }}">
+            {{ 'profile.my_services.short_title'|trans }}
+            </a>
+        </li>
+        {% set isActive = route == 'profile.my_connections_overview' %}
+        <li class="navigation__item  navigation__myConnections{% if isActive %} active{% endif %}">
+            <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link navigation__link-last{% if isActive %} active{% endif %}" href="{{ path('profile.my_connections_overview') }}">
+                {{ 'profile.my_connections.short_title'|trans }}
+            </a>
+        </li>
+    </ul>
+</nav>

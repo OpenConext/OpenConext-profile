@@ -1,0 +1,33 @@
+<section class="myProfile__section">
+    <h2 class="title__emphasis">{{ 'profile.my_connections.available_connections'|trans }}</h2>
+    {% if availableConnections is empty %}
+        {{ 'profile.my_connections.no_connections_configured.description'|trans }}
+    {% else %}
+        <ul class="connection__list list__details">
+            {% for connection in availableConnections %}
+                <li class="connection__listItem listDetails__item">
+                    <details class="connection__details listDetails__details">
+                        <summary class="connection__name listDetails__name">
+                            <h3 class="connection__title listDetails__title">
+                                <span>{{ 'profile.my_connections.orcid.title'|trans }}</span>
+                                {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'connection__statusArrow listDetails__statusArrow' } %}
+                            </h3>
+                        </summary>
+                        <div class="connection__info listDetails__info">
+                            <img src="{{ asset(connection.logoPath) }}" class="connection__logo" alt="" /> {# todo: find out why the alt / title aren't service-specific #}
+                            <p>{{ 'profile.my_connections.orcid.description.start'|trans }}</p>
+                            <p>{{ 'profile.my_connections.orcid.description.end'|trans }}</p>
+                            <p class="connection__buttonWrapper">
+                                <a
+                                    class="button"
+                                    href="{{ connection.connectUrl }}">
+                                    {{ 'profile.my_connections.orcid.connect_title'|trans }}
+                                </a>
+                            </p>
+                        </div>
+                    </details>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>

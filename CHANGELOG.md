@@ -1,5 +1,52 @@
 # Next release
 
+# 3.0.1
+**Bugfixes**
+- Ensure givenName is not required for using Profile #205
+- Repair infomation request and attribute support pages #208
+- Support-mail and EULA trouble, where faulty data was used to show the links #211
+- Pinch missing translation from my services page #213
+- Docker: OpenConext prep script moved to /usr/local/sbin #215
+- Show delete description when feature flag is ON #212
+
+**Feature**
+- NL language improvements #490407db
+- Order the consent list alphabetically #216
+- Show custom error pages #210
+- Add entity Id to my services #214
+
+**Chores**
+- Remove global_view_parameters.yaml from VCS #207
+- Move makeRelease to bin folder #206
+- Temporarily disable AA aatributes in my services #217
+
+# 3.0.0
+
+**Changes**
+- Redesign every screen for a better user experience, accessibility and to improve the look/feel
+- Allow users to remove consent per service
+- Add cypress tests for accessibility
+- Add docker for development / deploys
+- Improve documentation
+
+**Security**
+- Upgrade symfony version to 4.4 so we have LTS again
+- Upgrade several packages (over 777 vulnerabilities fixed)
+- Add the secure flag to the lang cookie
+
+# 2.0.3
+
+This is a security release that will harden the application against CVE 2019-3465
+
+
+# 2.0.2
+
+**Changes**
+
+ * Optimize ORCiD button placement for all devices #136
+ * Add ECK ID saml attribute translation #133
+ * Fix the data retention translation #134
+
 # 2.0.1
 **Changes**
 

@@ -1,0 +1,48 @@
+@import '../helpers/breakpoints';
+@import '../helpers/variables';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.footer__navigation {
+  color: $contrastBlue;
+  font-weight: $normal;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 33%;
+}
+
+.footer__navigationItem {
+  @include screen('mobile') {
+    &:first-of-type {
+      display: none;
+    }
+  }
+}
+
+.footer__navigationLink {
+  color: $contrastBlue;
+  font-weight: $normal;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer__logoWrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 33%;
+}
+
+.footer__logoText {
+  line-height: 1.25rem;
+
+  @include screen('tabletAndSmaller') {
+    display: none;
+  }
+}

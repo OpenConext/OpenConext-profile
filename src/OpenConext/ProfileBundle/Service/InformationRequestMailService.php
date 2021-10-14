@@ -22,7 +22,7 @@ use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use Swift_Mailer as Mailer;
 use Swift_Message as Message;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class InformationRequestMailService
 {
@@ -42,7 +42,7 @@ final class InformationRequestMailService
     private $mailer;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -60,7 +60,7 @@ final class InformationRequestMailService
         EmailAddress $mailFrom,
         EmailAddress $mailTo,
         Mailer $mailer,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         UserService $userService,
         AttributeFilter $attributeFilter
     ) {
@@ -79,7 +79,7 @@ final class InformationRequestMailService
         $attributes = $this->attributeFilter->filter($user->getAttributes());
 
         $body = $this->templateEngine->render(
-            'OpenConextProfileBundle:InformationRequest:email.html.twig',
+            '@OpenConextProfile/InformationRequest/email.html.twig',
             ['attributes' => $attributes]
         );
 

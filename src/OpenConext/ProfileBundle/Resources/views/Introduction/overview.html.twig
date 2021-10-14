@@ -1,17 +1,21 @@
-{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+{% extends '@OpenConextProfile/layout.html.twig' %}
 
 {% block title %}
     {{ 'profile.introduction.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
+{% block contentClasses %}
+    content__home
+{% endblock %}
+
 {% block content %}
-    <h1>{{ 'profile.introduction.long_title'|trans }}</h1>
+    {% if userName %}
+    <h1 class="content__title">{{ 'profile.introduction.long_title'|trans({ '%userName%': userName }) }}</h1>
+    {% else %}
+        <h1 class="content__title">{{ 'profile.introduction.long_title'|trans({ '%userName%': 'profile.introduction.long_title_user_name_replacement'|trans }) }}</h1>
+    {% endif %}
+    <p>{{ 'profile.introduction.explanation.introduction.start'|trans }} <strong>{{ 'profile.introduction.explanation.introduction.serviceName'|trans }}</strong> {{ 'profile.introduction.explanation.introduction.end'|trans }}</p>
 
-    <h2>{{ 'profile.introduction.explanation.title'|trans }}</h2>
-    <p>{{ 'profile.introduction.explanation.introduction'|trans }}</p>
-
-    <img class="introduction-explanation-image" src="{{ asset(global_view_parameters.profileExplanationImage) }}"/>
-
-    <h2>{{ 'profile.introduction.purpose.title'|trans }}</h2>
-    <p>{{ 'profile.introduction.purpose.profile_storage'|trans }}</p>
+    {% include "@OpenConextProfile/Introduction/navigation-cards.html.twig" %}
+    {% include "@OpenConextProfile/Introduction/how-it-works.html.twig" %}
 {% endblock %}

@@ -1,58 +1,33 @@
-{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+{% extends '@OpenConextProfile/layout.html.twig' %}
 
 {% block title %}
     {{ 'profile.my_profile.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
+{% block contentClasses %}
+    content__myProfile
+{% endblock %}
+
 {% block content %}
-    <h1>{{ 'profile.my_profile.long_title'|trans }}</h1>
-    <p>{{ 'profile.my_profile.introduction'|trans }} <a href="{{ global_view_parameters.attributeInformationUrl }}">{{ 'profile.my_profile.attributes_information_link_title'|trans }}</a>.</p>
-    <p>{{ 'profile.my_profile.pi_processing'|trans }}</p>
+    <h1 class="content__title">{{ 'profile.my_profile.short_title'|trans }}</h1>
+    <p class="myProfile__intro">{{ 'profile.my_profile.introduction'|trans }} <a href="{{ global_view_parameters.attributeInformationUrl }}">{{ 'profile.my_profile.attributes_information_link_title'|trans }}</a>.</p>
+
+    {% include "@OpenConextProfile/MyProfile/attributes-table.html.twig" %}
 
     {% if user.hasSupportContactEmail %}
         {% set supportContactEmail = user.supportContactEmail|replace({'mailto:': ''}) %}
-
-    <p>{{ 'profile.my_profile.questions'|trans }} <a href="mailto:{{ supportContactEmail }}"><i class="prepended fa fa-envelope"></i>{{ supportContactEmail }}</a>.</p>
+        {% set text %}
+            <sup>*</sup> {{ 'profile.my_profile.questions'|trans }} <a href="mailto:{{ supportContactEmail }}">{{ supportContactEmail }}</a>.
+        {% endset %}
     {% else %}
-    <p>{{ 'profile.my_profile.questions_no_support_contact_email'|trans }}</p>
+        {% set text %}
+            <sup>*</sup> {{ 'profile.my_profile.questions_no_support_contact_email'|trans }}
+        {% endset %}
     {% endif %}
 
-    <div class="table-overflow-container">
-        <table class="account-data mdl-data-table">
-            <thead>
-            <tr>
-                <th>{{ 'profile.table.attribute_name'|trans }}</th>
-                <th>{{ 'profile.table.attribute_value'|trans }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for attribute in user.attributes %}
-                {% if attribute.attributeDefinition.hasUrnMace %}
-                    {% set attributeUrn = attribute.attributeDefinition.urnMace %}
-                {% else %}
-                    {% set attributeUrn = attribute.attributeDefinition.urnOid %}
-                {% endif %}
-                <tr>
-                    <td title="{{ attributeUrn }}">
-                        {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
-
-                        {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                            <strong>{{ attributeUrn }}</strong>
-                        {% else %}
-                            <strong>{{ translatedAttributeName }}</strong>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if attribute.value is iterable %}
-                            {{ attribute.value|join('\n')|nl2br }}
-                        {% else %}
-                            {{ attribute.value }}
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    {% include "@OpenConextProfile/helpers/paragraph-note.html.twig" with {
+        className: 'myProfile__note',
+        text: text
+    } %}
 
 {% endblock %}

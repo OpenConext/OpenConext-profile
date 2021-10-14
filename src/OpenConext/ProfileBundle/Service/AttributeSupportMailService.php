@@ -21,7 +21,7 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\Profile\Value\EmailAddress;
 use Swift_Mailer as Mailer;
 use Swift_Message as Message;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 final class AttributeSupportMailService
 {
@@ -41,7 +41,7 @@ final class AttributeSupportMailService
     private $mailer;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -54,7 +54,7 @@ final class AttributeSupportMailService
         EmailAddress $mailFrom,
         EmailAddress $mailTo,
         Mailer $mailer,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         UserService $userService
     ) {
         $this->mailFrom       = $mailFrom;
@@ -69,7 +69,7 @@ final class AttributeSupportMailService
         $user = $this->userService->getUser();
 
         $body = $this->templateEngine->render(
-            'OpenConextProfileBundle:AttributeSupport:email.html.twig',
+            '@OpenConextProfile/AttributeSupport/email.html.twig',
             ['attributes' => $user->getAttributes()]
         );
 

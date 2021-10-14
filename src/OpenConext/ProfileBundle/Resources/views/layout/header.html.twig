@@ -1,0 +1,11 @@
+<header class="header">
+    <a href="#main" class="skip-main">{{ 'accessibility.skip_link'|trans }}</a>
+    <a
+        class="header__homeLink"
+        href="{{ path('profile.introduction_overview') }}"
+    >
+        <span class="visually-hidden">{{ 'general.home'|trans }}</span>
+        <img src="{{ asset('build/images/logo_SURFconext.svg') }}" alt="" width="114px" height="38px">
+    </a>
+    <p class="header__profile">Profile</p>
+</header>

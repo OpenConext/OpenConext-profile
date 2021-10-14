@@ -1,0 +1,23 @@
+{% if tooltipValue %}
+    <div class="ie11__label">
+        {% include '@OpenConextProfile/helpers/label.html.twig' with
+            {
+                class: 'tooltip',
+                hideText: true,
+                ariaExpandable: true,
+                id: tooltipId,
+                text: 'accessibility.consent_tooltip_screenreader'|trans({ '%attr_name%': attributeName|lower }),
+            }
+        %}
+    </div>
+    {% apply spaceless %}
+        <div
+                aria-hidden="true"
+                class="tooltip__value"
+                data-for="{{ tooltipId }}"
+                tabindex="-1"
+        >
+            {{ tooltipValue }}
+        </div>
+    {% endapply %}
+{% endif %}

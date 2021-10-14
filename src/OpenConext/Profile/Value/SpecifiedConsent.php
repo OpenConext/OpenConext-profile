@@ -18,6 +18,7 @@
 
 namespace OpenConext\Profile\Value;
 
+use OpenConext\Profile\Value\Consent\ServiceProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
@@ -124,5 +125,23 @@ class SpecifiedConsent
     public function getMotivation(Attribute $attribute)
     {
         return $this->arp->getMotivationFor($attribute);
+    }
+
+    public function getEduPersonTargetedID(): string
+    {
+        foreach ($this->getReleasedAttributes() as $attribute) {
+            $attributeName = $attribute->getAttributeDefinition()->getName();
+
+            if ($attributeName === 'eduPersonTargetedID') {
+                return $attribute->getValue()[0]['value'];
+            }
+        }
+
+        return '';
+    }
+
+    public function getServiceProvider(): ServiceProvider
+    {
+        return $this->consent->getServiceProvider();
     }
 }

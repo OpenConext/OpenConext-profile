@@ -1,10 +1,10 @@
-{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+{% extends '@OpenConextProfile/layout.html.twig' %}
 
 {% block title %}
     {{ 'profile.attribute_support_confirmation.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <h1><i class="fa fa-check prepended"></i>{{ 'profile.attribute_support_confirmation.long_title'|trans }}</h1>
+    <h1 class="content__title"><i class="fa fa-check prepended"></i>{{ 'profile.attribute_support_confirmation.long_title'|trans }}</h1>
     <p>{{ 'profile.attribute_support_confirmation.explanation'|trans }}</p>
 {% endblock %}

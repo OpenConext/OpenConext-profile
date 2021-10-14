@@ -1,0 +1,24 @@
+security:
+  providers:
+    in_memory:
+      memory: ~
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    default:
+      pattern: ^/authentication/metadata$
+      anonymous: ~
+
+    monitor:
+      pattern: ^/(info|health)$
+      security: false
+
+    saml_based:
+      saml: true
+
+  access_control:
+    - { path: ^/authentication, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+    - { path: ^/, roles: ROLE_USER, requires_channel: https }

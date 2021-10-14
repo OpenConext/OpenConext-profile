@@ -1,0 +1,14 @@
+<h3 class="title__information">{{ 'profile.my_services.service_information.title'|trans }}</h3>
+{% if specifiedConsent.releasedAttributes is empty %}
+    <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
+{% else %}
+    {% for sourceName, releasedAttributes in specifiedConsent.releasedAttributesGroupedBySource  %}
+        {# TODO: the AA sourced attributes are yet to be rendered see: https://www.pivotaltracker.com/story/show/179920711 for details #}
+        {% if sourceName == 'idp' %}
+        <ul class="attributeList">
+            {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
+        </ul>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+

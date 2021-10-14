@@ -1,29 +1,23 @@
-<p class="aa-description">{{ 'profile.my_services.attribute_release_description_with_source'|trans({'%source%': ('profile.table.source_description.' ~ sourceName)|trans}) }}</p>
-
-<table class="mdl-data-table">
-    <thead>
-    <tr>
-        <th>{{ 'profile.table.attribute_name'|trans }}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for attribute in releasedAttributes %}
-        {% if attribute.attributeDefinition.hasUrnMace %}
-            {% set attributeUrn = attribute.attributeDefinition.urnMace %}
-        {% else %}
-            {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+{% for attribute in releasedAttributes %}
+    {% if attribute.attributeDefinition.hasUrnMace %}
+        {% set attributeUrn = attribute.attributeDefinition.urnMace %}
+    {% else %}
+        {% set attributeUrn = attribute.attributeDefinition.urnOid %}
+    {% endif %}
+    {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+    <li class="attribute__row attribute__noTooltip">
+        <div class="attribute__name">
+            {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+               {{ attributeUrn }}
+            {% else %}
+                {{ translatedAttributeName }}
+            {% endif %}
+        </div>
+        {% if not translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
+            <div class="attribute__value">
+                <strong>{{ attributeUrn }}</strong>
+            </div>
         {% endif %}
-        <tr>
-            <td title="{{ attributeUrn }}">
-                {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
-
-                {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-                    <strong>{{ attributeUrn }}</strong>
-                {% else %}
-                    <strong>{{ translatedAttributeName }}</strong>
-                {% endif %}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    </li>
+{% endfor %}
+{# todo: add provided by row #}

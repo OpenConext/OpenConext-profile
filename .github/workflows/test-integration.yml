@@ -1,0 +1,106 @@
+name: test-integration
+on:
+  push:
+    branches:
+      - master
+      - feature/redesign
+  pull_request:
+  # run at 6 hour UTC
+  schedule:
+    - cron: "0 6 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PROD_PHP: php72
+      DOCKER_COMPOSE: docker-compose -f ../docker-compose.yml
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Restore Composer cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Init environment
+        run: cd docker && ./init.sh && cat .env
+      - name: Build Docker environmnent
+        if: always()
+        run: |
+          cd docker &&
+          docker-compose -f ../docker-compose.yml up -d --build --force-recreate
+      - name: Install Composer dependencies
+        if: always()
+        run: |
+          docker-compose exec -T php-fpm sh -c '
+              SYMFONY_ENV=test COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -n -o
+          '
+      - name: Clear Symfony caches
+        if: always()
+        run: |
+          docker-compose exec -T php-fpm sh -c '
+              ./bin/console cache:clear --env=test
+          '
+      - name: Build frontend dependencies
+        if: always()
+        run: |
+          docker-compose exec -T php-fpm sh -c '
+              CYPRESS_INSTALL_BINARY=0 npm i && \
+              npm run encore production
+          '
+      - name: Run code quality tests
+        if: always()
+        run: |
+          docker-compose exec -T php-fpm sh -c '
+              echo -e "\nPHP Mess Detector\n" && \
+              ./ci/phpmd.sh && \
+              echo -e "\nPHP CodeSniffer\n" && \
+              ./ci/phpcs.sh && \
+              echo -e "\nPHP Lint\n" && \
+              ./ci/phplint.sh && \
+              echo -e "\nDocheader checker\n" && \
+              ./ci/docheader.sh && \
+              echo -e "\nPHP Copy Paste Detector\n" && \
+              ./ci/phpmd.sh
+          '
+        env:
+          SYMFONY_ENV: test
+      - name: Run unit tests
+        if: always()
+        run: |
+          APP_ENV=test docker-compose exec -T php-fpm sh -c '
+              echo -e "\nPHPUnit unit tests\n" && \
+              ./ci/phpunit.sh
+          '
+        env:
+          SYMFONY_ENV: test
+      - name: Run Cypress a11y tests
+        if: always()
+        continue-on-error: true
+        run: |
+          APP_ENV=test docker-compose exec -T cypress sh -c '
+              echo -e "\nCypress a11y tests\n" && \
+              cypress run --spec "./tests/cypress/integration/a11y/*.spec.js" --browser=electron --headless'        env:
+          SYMFONY_ENV: test
+      - name: Run security tests
+        if: always()
+        run: |
+          APP_ENV=test docker-compose exec -T php-fpm sh -c '
+              echo -e "\nSymfony security checker\n" && \
+              ./ci/security-checker.sh && \
+              echo -e "\nNPM Audit\n" && \
+              ./ci/npm-audit.sh
+          '
+        env:
+          SYMFONY_ENV: test
+      - name: Show log on failure
+        if: failure()
+        run:  |
+          cd docker && docker-compose exec -T php-fpm cat var/logs/test/test.log

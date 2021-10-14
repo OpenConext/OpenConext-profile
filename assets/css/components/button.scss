@@ -1,0 +1,34 @@
+@import '../helpers/breakpoints';
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.button {
+  @include button-primary($buttonBlue);
+  border: none;
+  line-height: .89;
+  padding: calculateRem(11px) calculateRem(42px);
+
+  @include screen('mobile') {
+    padding: calculateRem(11px);
+  }
+}
+
+.button__secondary {
+  &--gray{
+    @include button-secondary($gray);
+  }
+
+  &--white {
+    @include button-secondary($white);
+  }
+}
+
+.button__tertiary {
+  &--gray{
+    @include button-tertiary($gray);
+  }
+
+  &--white {
+    @include button-tertiary($white);
+  }
+}

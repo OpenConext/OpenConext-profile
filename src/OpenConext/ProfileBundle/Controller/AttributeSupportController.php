@@ -26,7 +26,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 
 class AttributeSupportController
 {
@@ -36,7 +36,7 @@ class AttributeSupportController
     private $guard;
 
     /**
-     * @var EngineInterface
+     * @var Environment
      */
     private $templateEngine;
 
@@ -62,7 +62,7 @@ class AttributeSupportController
 
     public function __construct(
         Guard $guard,
-        EngineInterface $templateEngine,
+        Environment $templateEngine,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator,
         UserService $userService,
@@ -88,7 +88,7 @@ class AttributeSupportController
 
         return new Response(
             $this->templateEngine->render(
-                'OpenConextProfileBundle:AttributeSupport:overview.html.twig',
+                '@OpenConextProfile/AttributeSupport/overview.html.twig',
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
                     'attributeSupportMailForm' => $attributeSupportMailForm->createView()
@@ -111,7 +111,7 @@ class AttributeSupportController
         $this->guard->userIsLoggedIn();
 
         return new Response(
-            $this->templateEngine->render('OpenConextProfileBundle:AttributeSupport:confirmation.html.twig')
+            $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig')
         );
     }
 }

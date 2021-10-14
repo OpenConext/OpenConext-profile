@@ -27,8 +27,8 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('open_conext_profile');
+        $treeBuilder = new TreeBuilder('open_conext_profile');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
@@ -41,6 +41,10 @@ class Configuration implements ConfigurationInterface
                         })
                         ->thenInvalid('EngineBlock EntityID should be a string')
                     ->end()
+                ->end()
+                ->booleanNode('remove_consent_enabled')
+                    ->info('This is the feature flag that toggles the remove consent feature')
+                    ->isRequired()
                 ->end()
             ->end();
 

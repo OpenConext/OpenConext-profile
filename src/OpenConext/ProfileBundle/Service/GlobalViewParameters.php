@@ -36,6 +36,11 @@ final class GlobalViewParameters
     /**
      * @var array
      */
+    private $privacyUrls;
+
+    /**
+     * @var array
+     */
     private $platformUrls;
 
     /**
@@ -53,25 +58,22 @@ final class GlobalViewParameters
      */
     private $attributeInformationUrls;
 
-    /**
-     * @param TranslatorInterface $translator
-     * @param array $locales
-     * @param array $helpUrls
-     * @param array $platformUrls
-     * @param array $termsOfServiceUrls
-     * @param array $profileExplanationImageUrls
-     * @param array $attributeInformationUrls
-     */
+    /** @var bool */
+    private $removeConsentEnabled;
+
     public function __construct(
         TranslatorInterface $translator,
         array $locales,
         array $helpUrls,
+        array $privacyUrls,
         array $platformUrls,
         array $termsOfServiceUrls,
         array $profileExplanationImageUrls,
-        array $attributeInformationUrls
+        array $attributeInformationUrls,
+        bool $removeConsentEnabled
     ) {
         Assert::keysArePresent($helpUrls, $locales);
+        Assert::keysArePresent($privacyUrls, $locales);
         Assert::keysArePresent($platformUrls, $locales);
         Assert::keysArePresent($termsOfServiceUrls, $locales);
         Assert::keysArePresent($profileExplanationImageUrls, $locales);
@@ -79,10 +81,12 @@ final class GlobalViewParameters
 
         $this->translator                  = $translator;
         $this->helpUrls                    = $helpUrls;
+        $this->privacyUrls                 = $privacyUrls;
         $this->platformUrls                = $platformUrls;
         $this->termsOfServiceUrls          = $termsOfServiceUrls;
         $this->profileExplanationImageUrls = $profileExplanationImageUrls;
         $this->attributeInformationUrls    = $attributeInformationUrls;
+        $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
     /**
@@ -91,6 +95,14 @@ final class GlobalViewParameters
     public function getHelpUrl()
     {
         return $this->helpUrls[$this->translator->getLocale()];
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrivacyUrl()
+    {
+        return $this->privacyUrls[$this->translator->getLocale()];
     }
 
     /**
@@ -123,5 +135,10 @@ final class GlobalViewParameters
     public function getAttributeInformationUrl()
     {
         return $this->attributeInformationUrls[$this->translator->getLocale()];
+    }
+
+    public function isRemoveConsentFeatureEnabled()
+    {
+        return $this->removeConsentEnabled;
     }
 }

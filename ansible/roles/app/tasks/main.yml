@@ -1,5 +1,0 @@
-- name: Copy app_dev.php.dist to /web/app_dev.php
-  copy: src=app_dev.php.dist dest=/var/www/{{ server.name }}/web/app_dev.php
-
-- name: Add engineblock api to hosts
-  lineinfile: dest=/etc/hosts state=present line="{{ engine_api.address }}  {{ engine_api.host }}"

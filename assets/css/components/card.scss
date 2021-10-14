@@ -1,0 +1,64 @@
+@import '../helpers/mixins';
+@import '../helpers/variables';
+
+.card__container {
+  display: flex;
+  column-gap: 1.25rem;
+  justify-content: space-between;
+  margin: 1.5rem 0 2.5rem;
+
+  @include screen('mobile') {
+    flex-direction: column;
+  }
+}
+
+.card {
+  background-color: $white;
+  border-radius: 6px;
+  border: 1px solid $idpSeparatorGray;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: calc((100% - 40px) / 3);
+
+  @include screen('mobile') {
+    max-width: unset;
+
+    &:not(:first-of-type) {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.card__top {
+  padding: 1rem;
+}
+
+.card__bottom {
+  @include border-bottom-radius(6px);
+  align-items: center;
+  background-color: $gray;
+  display: flex;
+  height: 4.5rem;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+.card__title {
+  color: $black;
+  font-family: 'Nunito', sans-serif;
+  font-size: $f-xl;
+  letter-spacing: -.12px;
+  line-height: 1.18;
+}
+
+.card__description {
+  color: $black;
+  font-size: $f-normal;
+}
+
+.card__button {
+  text-align: center;
+  width: 100%;
+}

@@ -1,15 +1,15 @@
-{% extends 'OpenConextProfileBundle::layout.html.twig' %}
+{% extends '@OpenConextProfile/layout.html.twig' %}
 
 {% block title %}
     {{ 'profile.information_request.short_title'|trans }} &mdash; {{ parent() }}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ 'profile.information_request.long_title'|trans }}</h1>
-    <div class="table-overflow-container">
-        <table class="account-data mdl-data-table">
-            <thead>
-            <tr>
+    <h1 class="content__title">{{ 'profile.information_request.long_title'|trans }}</h1>
+    <section class="myProfile__section">
+    <table class="attributesTable">
+        <thead>
+            <tr class="attributesTable__headerRow">
                 <th>{{ 'profile.table.attribute_name'|trans }}</th>
                 <th>{{ 'profile.table.attribute_value'|trans }}</th>
             </tr>
@@ -21,11 +21,12 @@
                 {% else %}
                     {% set attributeUrn = attribute.attributeDefinition.urnOid %}
                 {% endif %}
-                <tr>
-                    <td title="{{ attributeUrn }}">
+                <tr class="attributesTable__row">
+
+                    <td class="attributesTable__cell attributesTable__attribute" title="{{ attributeUrn }}">
                         <strong>{{ ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') }}</strong>
                     </td>
-                    <td>
+                    <td class="attributesTable__cell attributesTable__value">
                         {% if attribute.value is iterable %}
                             {{ attribute.value|join(', ') }}
                         {% else %}
@@ -36,7 +37,7 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
+    </section>
     <p>{{ 'profile.information_request.explanation'|trans }}</p>
     {{ form(informationRequestMailForm) }}
 
