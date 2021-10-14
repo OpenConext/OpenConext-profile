@@ -1,6 +1,24 @@
 # Next release
 
-#Next
+# 3.0.1
+**Bugfixes**
+- Ensure givenName is not required for using Profile #205
+- Repair infomation request and attribute support pages #208
+- Support-mail and EULA trouble, where faulty data was used to show the links #211
+- Pinch missing translation from my services page #213
+- Docker: OpenConext prep script moved to /usr/local/sbin #215
+- Show delete description when feature flag is ON #212
+
+**Feature**
+- NL language improvements #490407db
+- Order the consent list alphabetically #216
+- Show custom error pages #210
+- Add entity Id to my services #214
+
+**Chores**
+- Remove global_view_parameters.yaml from VCS #207
+- Move makeRelease to bin folder #206
+- Temporarily disable AA aatributes in my services #217
 
 # 3.0.0
 
