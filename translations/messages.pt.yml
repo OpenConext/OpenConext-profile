@@ -50,7 +50,7 @@ profile:
             title: 'Server error'
 
     information_request:
-        explanation: 'If you press ''confirm request'', your attributes will be sent to the Privacy Officer of SURFnet, and your request about the processing of personal data will be taken care of.'
+        explanation: 'If you press ''confirm request'', your attributes will be sent to SURF''s Privacy Officer, and your request about the processing of personal data will be taken care of.'
         long_title: 'Identification because of request data subject'
         send_mail: 'Confirm request'
         short_title: 'Identification request'

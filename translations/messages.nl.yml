@@ -50,7 +50,7 @@ profile:
             title: Serverfout
 
     information_request:
-        explanation: 'Door op de verzend-knop te drukken, worden uw attributen naar de Privacy Officer van SURFnet gestuurd en kan uw verzoek rondom de verwerking van persoonsgegevens in behandeling worden genomen.'
+        explanation: 'Door op de verzend-knop te drukken, worden uw attributen naar de Privacy Officer van SURF gestuurd en kan uw verzoek rondom de verwerking van persoonsgegevens in behandeling worden genomen.'
         long_title: 'Identificatie n.a.v. verzoek betrokkene'
         send_mail: Verzenden
         short_title: Identificatieverzoek
@@ -214,6 +214,6 @@ profile:
 
         source_description:
             orcid: 'ORCID iD'
-            sab: 'SURFnet Autorisatie Beheer'
+            sab: 'SURF Autorisatie Beheer'
             surfmarket_entitlements: 'SURFmarket Entitlements'
             voot: Groepslidmaatschap
