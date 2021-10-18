@@ -39,10 +39,7 @@ parameters:
     attribute_aggregation_orcid_logo_path: 'build/images/orcid.png'
     attribute_aggregation_orcid_connect_url: 'https://link.surfconext.nl/orcid?redirectUrl=https://profile.surfconext.nl/my-connections'
 
-    mailer_transport:  sendmail
-    mailer_host:       ~
-    mailer_user:       ~
-    mailer_password:   ~
+    mailer_url: smtp://user:pass@host:port/?timeout=60&encryption=ssl&auth_mode=login&...
 
     attribute_support_email_from: noreply@domain.invalid
     attribute_support_email_to: help@domain.invalid
