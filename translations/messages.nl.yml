@@ -32,7 +32,7 @@ profile:
 
     attribute_support_confirmation:
         explanation: 'De mail met informatie is succesvol verstuurd.'
-        long_title: 'De attribuutdata is gemaild'
+        long_title: 'De attribuutdata zijn gemaild'
         short_title: 'Attribuutdata gemaild'
 
     error:
