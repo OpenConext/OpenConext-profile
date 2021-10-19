@@ -1,5 +1,11 @@
 # Next release
 
+# 3.0.2
+**Bugfixes and chores**
+ - Company rebranding
+ - Add ansi-regex resolution adressing GitHub advisory #209
+ - Update Swiftmailer configuration #218
+ 
 # 3.0.1
 **Bugfixes**
 - Ensure givenName is not required for using Profile #205
