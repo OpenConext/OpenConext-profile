@@ -124,7 +124,7 @@ profile:
             button: Bekijken
 
             data:
-                description: 'Welke persoonlijke gegevens doorgegeven kunnen orden naar de diensten die je gebruikt.'
+                description: 'Welke persoonlijke gegevens doorgegeven kunnen worden naar de diensten die je gebruikt.'
                 title: 'Jouw persoonlijke data'
 
             services:
