@@ -90,9 +90,9 @@ profile:
         available_connections: 'Beschikbare koppelingen'
 
         delete_connection:
-            explanation: 'Ben je zeker dat je jouw unieke gepseudonimiseerde eduId voor ORCID wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?'
+            explanation: 'Ben je zeker dat je jouw connectie met ORCID wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?'
             title: 'Dienst verwijderen'
-            warning: 'Deze dienst zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor al je persoonlijke data kan verloren zijn.'
+            warning: 'Een dienst zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor je geen toegang meer hebt tot je gegevens.'
 
         explanation: 'Je kunt externe bronnen koppelen aan je SURFconext-profiel. SURFconext kan deze gegevens gebruiken om je bestaande attributen afkomstig van je instellingsaccount te verrijken met de waarden uit de gekoppelde account. Diensten die verbonden zijn met SURFconext kunnen vervolgens deze informatie ontvangen.'
         long_title: 'Accounts gelinkt aan je profiel'

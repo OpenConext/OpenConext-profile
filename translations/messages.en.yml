@@ -90,9 +90,9 @@ profile:
         available_connections: 'Available Connections'
 
         delete_connection:
-            explanation: 'Are you sure you want to delete your unique pseudonymised eduId for ORCID and revoke access to your linked accounts?'
+            explanation: 'Are you sure you want to delete your connection to ORCID and revoke access to your linked accounts?'
             title: 'Delete Service'
-            warning: 'This service might not recognize you the next time you login and all your personal data within this service might be lost.'
+            warning: 'A service might not recognize you the next time you login and all personal data within this service might no longer be available.'
 
         explanation: 'It''s possible to connect external sources to your SURFconext profile. SURFconext can use this information to enrich the existing attributes of your institutional account with the values from this external account. Services connected to SURFconext can receive and use this information.'
         long_title: 'Accounts linked to your profile'
