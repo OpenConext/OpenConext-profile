@@ -31,21 +31,21 @@ window.addEventListener('load', function () {
         tooltipOrModal.addEventListener('click', function (e) {
             const id = e.target.getAttribute('for');
             const checkbox = document.getElementById(id);
-            const expanded = checkbox.getAttribute('aria-expanded');
 
             if (!!checkbox) {
                 changeAriaExpanded(checkbox);
                 changeAriaPressed(checkbox);
-            }
 
-            setTimeout(function () {
-                const value = document.querySelector(`[data-for ="${id}"]`);
-                if (expanded === 'false' && !!value) {
-                    value.focus();
-                } else {
-                    e.target.focus();
-                }
-            }, 200);
+                setTimeout(function () {
+                    const expanded = checkbox.getAttribute('aria-expanded');
+                    const value = document.querySelector(`[data-for ="${id}"]`);
+                    if (expanded === 'false' && !!value) {
+                        value.focus();
+                    } else {
+                        e.target.focus();
+                    }
+                }, 200);
+            }
         });
 
         tooltipOrModal.addEventListener('keydown', function (e) {
