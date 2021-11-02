@@ -1,10 +1,10 @@
 {% if sp.hasEulaUrl or sp.hasSupportUrl(app.request.locale) or sp.hasSupportEmail %}
-    <h3 class="title__support">{{ 'profile.my_services.support_title'|trans }}</h3>{
+    <h3 class="title__support">{{ 'profile.my_services.support_title'|trans }}</h3>
     <ul class="service__supportList">
         {% if sp.hasEulaUrl %}
             <li class="support__item support__eula">{% apply spaceless %}
                 {% include "@OpenConextProfile/svgs/network-information.svg" with { className: 'support__icon' } %}
-                <a href="{{ eulaUrl }}">{{ 'profile.my_services.eula'|trans }}</a>
+                <a href="{{ sp.eulaUrl }}">{{ 'profile.my_services.eula'|trans }}</a>
             {% endapply %}</li>
         {% endif %}
         {% if sp.hasSupportUrl(app.request.locale) %}
@@ -16,7 +16,7 @@
             {% endapply %}</li>
         {% endif %}
         {% if sp.hasSupportEmail %}
-            {% set supportEmail = supportEmail|replace({'mailto:': ''}) %}
+            {% set supportEmail = sp.supportEmail|replace({'mailto:': ''}) %}
             <li class="support__item support__email">{% apply spaceless %}
                 {% include "@OpenConextProfile/svgs/email-action-unread.svg" with { className: 'support__icon' } %}
                 <a href="mailto:{{ supportEmail }}">{{ 'profile.my_services.supportEmail'|trans }}</a>

@@ -98,7 +98,7 @@ class InformationRequestController
 
         return new Response(
             $this->templateEngine->render(
-                'OpenConextProfileBundle:InformationRequest:overview.html.twig',
+                '@OpenConextProfile/InformationRequest/overview.html.twig',
                 [
                     'attributes' => $attributes,
                     'informationRequestMailForm' => $informationRequestMailForm->createView()
@@ -121,7 +121,7 @@ class InformationRequestController
         $this->guard->userIsLoggedIn();
 
         return new Response(
-            $this->templateEngine->render('OpenConextProfileBundle:InformationRequest:confirmation.html.twig')
+            $this->templateEngine->render('@OpenConextProfile/InformationRequest/confirmation.html.twig')
         );
     }
 }

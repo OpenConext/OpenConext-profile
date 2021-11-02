@@ -86,7 +86,7 @@ EngineBlock docs for more information on enabling the feature on the EngineBlock
 Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management for more information on the release strategy used in Openconext projects.
 
 ## Deployment
-Run `./makeRelease.sh` with the version number of the relevant release to create a deployable tar-ball.
+Run `./bin/makeRelease.sh` with the version number of the relevant release to create a deployable tar-ball.
 
 During deployment, unpack the tar on the deployment target and configure the
 application by placing the required `parameters.yaml` and
@@ -101,7 +101,7 @@ Running the release script can be run on bare metal, but this might result in si
 
 To have reproducible results, run the release script in your container:
 
-`docker run -v $PWD/Releases/:/root/Releases/ ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest /root/Releases/makeRelease.sh TAG/develop/master`
+`docker run -v ~/Releases/:/root/Releases/ -v $PWD/bin/makeRelease.sh:/root/Releases/makeRelease.sh ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest /root/Releases/makeRelease.sh`
 
 ## Texts and translations
 

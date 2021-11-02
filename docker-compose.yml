@@ -36,9 +36,9 @@ services:
       target: profilephpfpm
     volumes:
       - .:/var/www/html/
-      - type: bind
-        source: /dev/log
-        target: /dev/log
+#      - type: bind
+#        source: /dev/log
+#        target: /dev/log
     environment:
       - PHPFPM_PORT=9000
     networks:

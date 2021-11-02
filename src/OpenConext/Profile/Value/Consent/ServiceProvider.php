@@ -26,7 +26,7 @@ use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\Url;
 
-final class ServiceProvider
+class ServiceProvider
 {
     /**
      * @var Entity
@@ -149,7 +149,7 @@ final class ServiceProvider
     }
 
     /**
-     * @return ContactEmailAddress
+     * @return string
      */
     public function getSupportEmail()
     {
@@ -157,7 +157,7 @@ final class ServiceProvider
             throw new LogicException('Service provider has no support e-mail address');
         }
 
-        return $this->supportEmail;
+        return $this->supportEmail->__toString();
     }
 
     /**

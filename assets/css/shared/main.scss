@@ -22,7 +22,9 @@
   border-bottom-right-radius: 6px;
   padding: 1.5rem 1rem 1rem;
   vertical-align: top;
-
+  &.wide {
+    grid-column: 1/4;
+  }
   @include screen('mobile') {
     display: inline-block;
     margin-left: 54px;

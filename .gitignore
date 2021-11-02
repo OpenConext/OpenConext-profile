@@ -3,8 +3,6 @@
 .idea
 
 /config/legacy/parameters.yaml
-/config/legacy/samlstepupproviders.yaml
-/config/legacy/samlstepupproviders_parameters.yaml
 /config/legacy/global_view_parameters.yaml
 /vendor/
 /var/

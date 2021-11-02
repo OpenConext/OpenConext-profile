@@ -64,6 +64,7 @@ rm -f ${PROJECT_DIR}/.docheader &&
 rm -f ${PROJECT_DIR}/.env.* &&
 rm -f ${PROJECT_DIR}/.gitignore &&
 rm -f ${PROJECT_DIR}/.scrutinizer.yml &&
+rm -f ${PROJECT_DIR}/cypress.json &&
 rm -f ${PROJECT_DIR}/docker-compose.yml &&
 rm -f ${PROJECT_DIR}/makeRelease.sh &&
 rm -f ${PROJECT_DIR}/package.json &&
@@ -84,6 +85,7 @@ rm -rf ${PROJECT_DIR}/config/packages/test &&
 rm -rf ${PROJECT_DIR}/cypress &&
 rm -rf ${PROJECT_DIR}/docker &&
 rm -rf ${PROJECT_DIR}/node_modules &&
+rm -rf ${PROJECT_DIR}/Releases &&
 rm -rf ${PROJECT_DIR}/tests &&
 
 echo "Removing application cache, logs, bootstrap and parameters" &&
