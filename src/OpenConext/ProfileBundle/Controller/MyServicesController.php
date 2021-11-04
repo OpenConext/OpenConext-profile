@@ -18,7 +18,12 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
+use OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository;
+use OpenConext\EngineBlockApiClientBundle\Repository\InstitutionRepository;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
+use OpenConext\Profile\Entity\AuthenticatedUser;
+use OpenConext\Profile\Value\SpecifiedConsent;
+use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\Security\Guard;
 use Psr\Log\LoggerInterface;
@@ -61,6 +66,11 @@ class MyServicesController
      */
     private $logger;
 
+    /**
+     * @var InstitutionRepository
+     */
+    private $institutionRepository;
+
     /** @var bool */
     private $removeConsentEnabled;
 
@@ -71,6 +81,7 @@ class MyServicesController
         Guard $guard,
         UrlGeneratorInterface $urlGenerator,
         LoggerInterface $logger,
+        InstitutionRepository $institutionRepository,
         bool $removeConsentEnabled
     ) {
         $this->templateEngine = $templateEngine;
@@ -79,6 +90,7 @@ class MyServicesController
         $this->guard = $guard;
         $this->urlGenerator = $urlGenerator;
         $this->logger = $logger;
+        $this->institutionRepository = $institutionRepository;
         $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
@@ -88,17 +100,25 @@ class MyServicesController
 
         $this->logger->notice('User requested My Services page');
 
+        $locale = $request->getLocale();
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
-        $specifiedConsentList->sortByDisplayName($request->getLocale());
+        $specifiedConsentList->sortByDisplayName($locale);
 
         $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
+
+        list(
+            'displayName' => $displayName,
+            'logo' => $logo
+        ) = $this->institutionRepository->getDisplayNameAndLogoForIdp($user, $locale);
 
         return new Response($this->templateEngine->render(
             '@OpenConextProfile/MyServices/overview.html.twig',
             [
                 'specifiedConsentList' => $specifiedConsentList,
-                'locale' => $request->getLocale(),
+                'locale' => $locale,
+                'displayName' => $displayName,
+                'logo' => $logo,
             ]
         ));
     }
@@ -110,7 +130,9 @@ class MyServicesController
             throw new ResourceNotFoundException('The remove consent action is disabled');
         }
 
-        $this->logger->notice(sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId));
+        $this->logger->notice(
+            sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId)
+        );
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $result = $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);
         $this->logger->notice(sprintf('Removing consent %s', ($result ? 'succeeded' : 'failed')));

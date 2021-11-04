@@ -58,14 +58,14 @@
     </li>
 {% endfor %}
 <li class="idpRow">
-    {% set logoUrl = ('provided_by_attribute_source_logo_url_' ~ sourceName)|trans %}
-    {% set organisationName = ('provided_by_attribute_source_' ~ sourceName)|trans %}
     {% set consentProvidedBy %}
-        <span class="idpRow__providedBy-content">{{ 'profile.my_services.idpRow.consent_provided_by'|trans }} <strong>{{ organisationName }}</strong></span>
+        <span class="idpRow__providedBy-content">{{ 'profile.my_services.idpRow.consent_provided_by'|trans }} <strong>{{ displayName }}</strong></span>
     {% endset %}
 
-    <img class="logo-small" src="{{ asset(logoUrl) }}"
+    {% if logo %}
+        <img class="logo-small" src="{{ asset(logo.url) }}"
          alt="" />
+    {% endif %}
     {% if sourceName != 'idp' %}
         {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
         <p>{{ consentProvidedBy|raw }}</p>
