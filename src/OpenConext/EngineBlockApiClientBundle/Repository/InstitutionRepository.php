@@ -25,6 +25,7 @@ use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Logo;
+use OpenConext\Profile\Value\Organization;
 use Psr\Log\LoggerInterface;
 
 final class InstitutionRepository
@@ -65,14 +66,17 @@ final class InstitutionRepository
         }
     }
 
-    public function getDisplayNameAndLogoForIdp(AuthenticatedUser $user, string $locale): array
+    /**
+     * @throws AssertionFailedException
+     */
+    public function getOrganizationAndLogoForIdp(AuthenticatedUser $user): array
     {
         $entityIds = $user->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
         $json = $this->findAllForIdp($authenticatingIdpEntityId->getEntityId());
 
         return [
-            'displayName' => $this->getDisplayName($json, $locale),
+            'organization' => $this->getOrganization($json),
             'logo' => $this->getLogo($json),
             'json' => $json,
         ];
@@ -111,23 +115,8 @@ final class InstitutionRepository
         return false;
     }
 
-    private function getDisplayName(array $json, string $locale): string
+    private function getOrganization(array $json): Organization
     {
-        $displayNameLocale = $json['display_name'][$locale];
-        if (!empty($displayNameLocale)) {
-            return $displayNameLocale;
-        }
-
-        $localeName = $json['name'][$locale];
-        if (!empty($localeName)) {
-            return $localeName;
-        }
-
-        $englishName = $json['name']['en'];
-        if (!empty($englishName)) {
-            return $englishName;
-        }
-
-        return '';
+        return Organization::fromArray($json);
     }
 }
