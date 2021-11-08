@@ -105,15 +105,22 @@ To have reproducible results, run the release script in your container:
 
 ## Texts and translations
 
-When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then use the command line to scan for translations.
+When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then add them to the translations files (see `<root>/translations`).
 
-The following command can be used to scan for translations:
+### Overriding translations
 
-     ./bin/extract-translations.sh
+Translations can be overriden by adding an `overrides.<lang>.php` file in the `<root> /translations/overrides` folder.  A sample content of such a file:
+```php
+<?php
 
-All new keys will be shown in the yml files with as text the key again followed by `# FIXME`.
+return [
+    'general' => [
+        'suite_name' => 'Unseen university',
+    ]
+];
+```
 
-While the used bundle (JMS/Translation bundle) supports a web interface, it was removed in 2019 from this project and is no longer supported for Profile.
+This would override the `general_suite_name` key.
 
 ## Common tasks
 
