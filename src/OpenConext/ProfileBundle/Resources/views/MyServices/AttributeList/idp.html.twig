@@ -73,16 +73,14 @@
             <a class="idpRow__supportUrl" href="{{ 'profile.my_services.idpRow.support_url'|trans }}" target="_blank" rel="noreferrer noopener">{{ 'profile.my_services.idpRow.support_link'|trans }}</a>
         </div>
     {% else %}
-        {% set id %}
-            incorrect_{{ sourceName }}{{ loop.index }}
-        {% endset %}
-        <input type="checkbox" tabindex="-1" aria-hidden="true" class="modal visually-hidden" id="{{ id|trim }}" name="{{ id|trim }}" />
+        {% set sanitizedId = orgId|trim|escape('html_attr') %}
+        <input type="checkbox" tabindex="-1" aria-hidden="true" class="modal visually-hidden" id="{{ sanitizedId }}" name="{{ sanitizedId }}" />
         {# note: the empty label is for display on mobile #}
         <p>{{ consentProvidedBy|raw }}<label tabindex="0" for="{{ id|trim }}" class="modal"></label>
         </p>
         {# note: the div is here only for IE11, as soon as IE11 support is scrapped, this can be removed along with the CSS/JS for it  #}
         <div class="ie11__label">
-            <label tabindex="0" for="{{ id|trim }}" class="modal">
+            <label tabindex="0" for="{{ sanitizedId }}" class="modal">
                 <span class="label-text">{{ 'profile.my_services.idpRow.attributes_correction_text'|trans }}</span>
             </label>
             <span class="visually-hidden">{{ 'accessibility.button_screenreader'|trans }}</span>
