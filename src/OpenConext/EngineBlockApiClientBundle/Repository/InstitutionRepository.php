@@ -43,7 +43,7 @@ final class InstitutionRepository
         $this->engineBlockEntityId = $engineBlockEntityId;
     }
 
-    public function findAllForIdp(string $entityId)
+    private function findAllForIdp(string $entityId)
     {
         try {
             return $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId]);
