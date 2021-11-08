@@ -19,9 +19,11 @@
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
 use Exception;
+use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
+use Psr\Log\LoggerInterface;
 
 final class InstitutionRepository
 {
@@ -35,12 +37,17 @@ final class InstitutionRepository
      */
     private $engineBlockEntityId;
 
+    /** @var LoggerInterface */
+    private $logger;
+
     public function __construct(
         JsonApiClient $apiClient,
-        EntityId $engineBlockEntityId
+        EntityId $engineBlockEntityId,
+        LoggerInterface $logger
     ) {
         $this->apiClient = $apiClient;
         $this->engineBlockEntityId = $engineBlockEntityId;
+        $this->logger = $logger;
     }
 
     private function findAllForIdp(string $entityId)
@@ -48,7 +55,11 @@ final class InstitutionRepository
         try {
             return $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId]);
         } catch (Exception $e) {
-            return $e->getMessage();
+            $this->logger->notice(
+                sprintf('EngineBlock API returned a non 200 response with error message (%s)', $e->getMessage())
+            );
+
+            throw new ResourceNotFoundException();
         }
     }
 
