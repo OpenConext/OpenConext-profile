@@ -33,7 +33,12 @@ final class Organization
      */
     private $name;
 
-    public function __construct(array $displayName, array $name)
+    /**
+     * @var Logo
+     */
+    private $logo;
+
+    public function __construct(array $displayName, array $name, Logo $logo)
     {
         Assert::allString(array_keys($displayName), 'DisplayName translations must be indexed by locale');
         Assert::allNotBlank(array_keys($displayName), 'Locales may not be blank');
@@ -42,11 +47,13 @@ final class Organization
 
         $this->displayName = $displayName;
         $this->name = $name;
+        $this->logo = $logo;
     }
 
     public static function fromArray(array $json): Organization
     {
-        return new self($json['display_name'], $json['name']);
+        Assert::keysArePresent($json, ['display_name', 'name', 'logo']);
+        return new self($json['display_name'], $json['name'], Logo::fromArray($json['logo']));
     }
 
     public function getDisplayName(string $locale): string
@@ -67,5 +74,22 @@ final class Organization
         }
 
         return '';
+    }
+
+    /**
+     * @return false|Logo
+     */
+    public function getLogo()
+    {
+        if (!$this->hasLogo()) {
+            return false;
+        }
+
+        return $this->logo;
+    }
+
+    private function hasLogo(): bool
+    {
+        return $this->logo->hasUrl();
     }
 }

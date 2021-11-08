@@ -38,35 +38,27 @@ final class Logo
      */
     private $width;
 
-    /**
-     * @throws AssertionFailedException
-     */
-    public function __construct(string $url, string $height, string $width)
+    public function __construct(?string $url, ?string $height, ?string $width)
     {
-        Assert::notBlank($url, 'Logo url cannot be blank');
-        /**
-         * Note: we are not testing the values of height/width here because:
-         * - we are not using them at this time, so we don't care
-         * - we don't know whether the api always returns them
-         * Both properties are included for completenes' sake.
-         */
-
-        $this->url = $url;
-        $this->height = $height;
-        $this->width = $width;
+        $this->url = $url ?? '';
+        $this->height = $height ?? '';
+        $this->width = $width ?? '';
     }
 
-    /**
-     * @throws AssertionFailedException
-     */
     public static function fromArray(array $logo): Logo
     {
+        Assert::keysArePresent($logo, ['url', 'height', 'width']);
         return new self($logo['url'], $logo['height'], $logo['width']);
     }
 
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    public function hasUrl(): bool
+    {
+        return !empty($this->getUrl());
     }
 
     /**

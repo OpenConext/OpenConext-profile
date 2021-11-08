@@ -18,13 +18,11 @@
 
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
-use Assert\AssertionFailedException;
 use Exception;
 use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
-use OpenConext\Profile\Value\Logo;
 use OpenConext\Profile\Value\Organization;
 use Psr\Log\LoggerInterface;
 
@@ -67,22 +65,6 @@ final class InstitutionRepository
     }
 
     /**
-     * @throws AssertionFailedException
-     */
-    public function getOrganizationAndLogoForIdp(AuthenticatedUser $user): array
-    {
-        $entityIds = $user->getAuthenticatingAuthorities();
-        $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
-        $json = $this->findAllForIdp($authenticatingIdpEntityId->getEntityId());
-
-        return [
-            'organization' => $this->getOrganization($json),
-            'logo' => $this->getLogo($json),
-            'json' => $json,
-        ];
-    }
-
-    /**
      * @param EntityId[] $entityIds
      * @return null|EntityId
      */
@@ -101,22 +83,12 @@ final class InstitutionRepository
         return array_pop($entityIds);
     }
 
-    /**
-     * @return false|Logo
-     * @throws AssertionFailedException
-     */
-    private function getLogo(array $json)
+    public function getOrganizationAndLogoForIdp(AuthenticatedUser $user): Organization
     {
-        $logo = $json['logo'];
-        if (!empty($logo['url'])) {
-            return Logo::fromArray($logo);
-        }
+        $entityIds = $user->getAuthenticatingAuthorities();
+        $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
+        $json = $this->findAllForIdp($authenticatingIdpEntityId->getEntityId());
 
-        return false;
-    }
-
-    private function getOrganization(array $json): Organization
-    {
         return Organization::fromArray($json);
     }
 }

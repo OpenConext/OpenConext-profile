@@ -107,18 +107,15 @@ class MyServicesController
 
         $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
 
-        list(
-            'displayName' => $displayName,
-            'logo' => $logo
-        ) = $this->institutionRepository->getDisplayNameAndLogoForIdp($user, $locale);
+        $organization = $this->institutionRepository->getOrganizationAndLogoForIdp($user);
 
         return new Response($this->templateEngine->render(
             '@OpenConextProfile/MyServices/overview.html.twig',
             [
                 'specifiedConsentList' => $specifiedConsentList,
                 'locale' => $locale,
-                'displayName' => $displayName,
-                'logo' => $logo,
+                'displayName' => $organization->getDisplayName($locale),
+                'logo' => $organization->getLogo(),
             ]
         ));
     }
