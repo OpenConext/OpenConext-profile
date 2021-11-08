@@ -18,11 +18,13 @@
 
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
+use Assert\AssertionFailedException;
 use Exception;
 use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
+use OpenConext\Profile\Value\Logo;
 use Psr\Log\LoggerInterface;
 
 final class InstitutionRepository
@@ -72,6 +74,7 @@ final class InstitutionRepository
         return [
             'displayName' => $this->getDisplayName($json, $locale),
             'logo' => $this->getLogo($json),
+            'json' => $json,
         ];
     }
 
@@ -95,13 +98,14 @@ final class InstitutionRepository
     }
 
     /**
-     * @return false|array
+     * @return false|Logo
+     * @throws AssertionFailedException
      */
     private function getLogo(array $json)
     {
         $logo = $json['logo'];
         if (!empty($logo['url'])) {
-            return $logo;
+            return Logo::fromArray($logo);
         }
 
         return false;
