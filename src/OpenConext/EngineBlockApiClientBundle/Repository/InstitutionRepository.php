@@ -38,17 +38,12 @@ final class InstitutionRepository
      */
     private $engineBlockEntityId;
 
-    /** @var LoggerInterface */
-    private $logger;
-
     public function __construct(
         JsonApiClient $apiClient,
-        EntityId $engineBlockEntityId,
-        LoggerInterface $logger
+        EntityId $engineBlockEntityId
     ) {
         $this->apiClient = $apiClient;
         $this->engineBlockEntityId = $engineBlockEntityId;
-        $this->logger = $logger;
     }
 
     private function findAllForIdp(string $entityId)
@@ -56,11 +51,9 @@ final class InstitutionRepository
         try {
             return $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId]);
         } catch (Exception $e) {
-            $this->logger->notice(
+            throw new ResourceNotFoundException(
                 sprintf('EngineBlock API returned a non 200 response with error message (%s)', $e->getMessage())
             );
-
-            throw new ResourceNotFoundException();
         }
     }
 

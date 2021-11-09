@@ -18,7 +18,6 @@
 
 namespace OpenConext\Profile\Value;
 
-use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 
 final class Logo
@@ -61,17 +60,11 @@ final class Logo
         return !empty($this->getUrl());
     }
 
-    /**
-     * @return string
-     */
     public function getHeight(): string
     {
         return $this->height;
     }
 
-    /**
-     * @return string
-     */
     public function getWidth(): string
     {
         return $this->width;

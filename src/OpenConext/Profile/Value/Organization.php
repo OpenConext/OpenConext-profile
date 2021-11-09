@@ -76,15 +76,8 @@ final class Organization
         return '';
     }
 
-    /**
-     * @return false|Logo
-     */
-    public function getLogo()
+    public function getLogo(): Logo
     {
-        if (!$this->hasLogo()) {
-            return false;
-        }
-
         return $this->logo;
     }
 
