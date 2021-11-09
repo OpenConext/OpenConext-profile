@@ -80,9 +80,4 @@ final class Organization
     {
         return $this->logo;
     }
-
-    private function hasLogo(): bool
-    {
-        return $this->logo->hasUrl();
-    }
 }
