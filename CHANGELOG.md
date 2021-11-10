@@ -1,5 +1,14 @@
 # Next release
 
+# 3.0.3
+**Bugfixes**
+- Ensure something incorrect disclosure is shown.
+- Ensure support icons have the right colour
+- Use correct institution data
+
+**Features**
+- Translations are now overrideable.  This is a BC breaking change compared to pre v3 releases.
+
 # 3.0.2
 **Bugfixes and chores**
  - Company rebranding
