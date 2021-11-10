@@ -1,2 +1,2 @@
 #!/bin/sh
-npm audit
+npm audit --production

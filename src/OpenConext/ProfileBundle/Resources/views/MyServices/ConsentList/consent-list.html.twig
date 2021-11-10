@@ -2,7 +2,8 @@
     {% for specifiedConsent in consentList %}
         {% set consent = specifiedConsent.consent %}
         {% set sp = consent.serviceProvider %}
-        {% set orgId = sp.entity.entityId.entityId|trim|split(' ')|join %}
+        {% set entityId = sp.entity.entityId.entityId %}
+        {% set orgId = entityId|trim|split(' ')|join %}
         {% set id = 'tooltip%index%%orgId%'|replace({ '%index%': loop.index, '%orgId%': orgId })|trim %}
         <li class="service__listItem listDetails__item" data-orgId="{{ orgId }}">
             <details class="service__details listDetails__details">

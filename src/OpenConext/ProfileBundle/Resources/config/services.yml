@@ -17,6 +17,8 @@ services:
         arguments:
             - ~ # engine block entity id
 
+    OpenConext\EngineBlockApiClientBundle\Repository\InstitutionRepository:
+
     OpenConext\ProfileBundle\Controller\MyServicesController:
         arguments:
             $removeConsentEnabled: '%remove_consent_enabled%'
