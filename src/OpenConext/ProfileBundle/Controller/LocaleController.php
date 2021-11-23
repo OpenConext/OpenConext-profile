@@ -74,7 +74,7 @@ class LocaleController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->notice('User requested to switch locale');
+        $this->logger->info('User requested to switch locale');
 
         $returnUrl = $request->query->get('return-url');
 
