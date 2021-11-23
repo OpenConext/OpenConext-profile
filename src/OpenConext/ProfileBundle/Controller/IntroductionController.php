@@ -72,7 +72,7 @@ class IntroductionController
     public function overviewAction()
     {
         $this->guard->userIsLoggedIn();
-        $this->logger->notice('Showing Introduction page');
+        $this->logger->info('Showing Introduction page');
         $attributeDefinition = new AttributeDefinition(
             'givenName',
             'urn:mace:dir:attribute-def:givenName',

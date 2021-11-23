@@ -98,14 +98,14 @@ class MyServicesController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->notice('User requested My Services page');
+        $this->logger->info('User requested My Services page');
 
         $locale = $request->getLocale();
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $specifiedConsentList = $this->specifiedConsentListService->getListFor($user);
         $specifiedConsentList->sortByDisplayName($locale);
 
-        $this->logger->notice(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
+        $this->logger->info(sprintf('Showing %s services on My Services page', count($specifiedConsentList)));
 
         $organization = $this->institutionRepository->getOrganizationAndLogoForIdp($user);
 

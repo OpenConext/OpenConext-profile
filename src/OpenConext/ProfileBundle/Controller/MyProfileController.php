@@ -65,7 +65,7 @@ class MyProfileController
     {
         $this->guard->userIsLoggedIn();
 
-        $this->logger->notice('Showing My Profile page');
+        $this->logger->info('Showing My Profile page');
 
         $user = $this->userService->getUser();
 
