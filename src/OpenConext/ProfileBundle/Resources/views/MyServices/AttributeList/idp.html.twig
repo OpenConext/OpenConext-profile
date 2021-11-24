@@ -62,7 +62,7 @@
         <span class="idpRow__providedBy-content">{{ 'profile.my_services.idpRow.consent_provided_by'|trans }} <strong>{{ displayName }}</strong></span>
     {% endset %}
 
-    {% if logo.hasLogo %}
+    {% if logo.hasUrl %}
         <img class="logo-small" src="{{ asset(logo.url) }}"
          alt="" />
     {% endif %}
