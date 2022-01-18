@@ -103,6 +103,8 @@ To have reproducible results, run the release script in your container:
 
 `docker run -v ~/Releases/:/root/Releases/ -v $PWD/bin/makeRelease.sh:/root/Releases/makeRelease.sh ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest /root/Releases/makeRelease.sh`
 
+Note that the release script is run automatically on pushing a new semver tag to Github. The release script builds the release artifacts and uploads them to the release page.
+
 ## Texts and translations
 
 When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then add them to the translations files (see `<root>/translations`).
