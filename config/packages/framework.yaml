@@ -9,6 +9,6 @@ framework:
   default_locale: "%default_locale%"
   trusted_hosts: ~
   session:
-    handler_id: ~
+    handler_id: "%session_handler%"
   fragments: ~
   http_method_override: true
