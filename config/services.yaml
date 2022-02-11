@@ -26,5 +26,5 @@ services:
         alias: OpenConext\ProfileBundle\Service\GlobalViewParameters
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         arguments:
-            - 'mysql://%database_user%:%database_password%@%database_host%/%database_name%?serverVersion=5.7'
+            - '%dsn%'
     Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler:

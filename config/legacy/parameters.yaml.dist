@@ -56,8 +56,4 @@ parameters:
     #session_handler: 'Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler'
     session_handler: ~
     # Database settings when using a db to store sessions. Unused in the default setup
-    database_user: profilerw
-    database_name: profile
-    database_password: secret
-    database_host: localhost
-
+    dsn: mysql://profilerw:secret@localhost/profile?serverVersion=5.7
