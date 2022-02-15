@@ -24,3 +24,7 @@ services:
             - '%remove_consent_enabled%'
     open_conext.profile_bundle.service.global_view_parameters:
         alias: OpenConext\ProfileBundle\Service\GlobalViewParameters
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        arguments:
+            - '%dsn%'
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler:
