@@ -62,7 +62,7 @@ return $overrides + [
         'introduction' => [
             'explanation' => [
                 'introduction' => [
-                    'end' => 'you login with your instituteaccount on different (cloud)services. You can find more info here.',
+                    'end' => 'you login with your institutional account on different (cloud)services. You can find more info here.',
                     'serviceName' => 'SURFconext',
                     'start' => 'With',
                 ],
