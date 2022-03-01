@@ -46,6 +46,22 @@ return $overrides + [
             'short_title' => 'Attribuutdata gemaild',
         ],
 
+        'error' => [
+            '403' => [
+                'title' => 'Geen toegang (403)',
+                'description' => 'Je hebt geen toegang tot deze pagina.',
+            ],
+            '404' => [
+                'title' => 'Pagina niet gevonden (404)',
+                'description' => 'De pagina kon niet gevonden worden.',
+            ],
+            '500' => [
+                'title' => 'Onverwachte fout',
+                'description' => 'Er ging iets mis. Probeer het opnieuw, of neem contact op met support als het probleem aanhoudt.',
+            ],
+            'back_home' => 'Terug naar de startpagina',
+        ],
+
         'information_request' => [
             'explanation' => 'Door op de verzend-knop te drukken, worden uw attributen naar de Privacy Officer van SURF gestuurd en kan uw verzoek rondom de verwerking van persoonsgegevens in behandeling worden genomen.',
             'long_title' => 'Identificatie n.a.v. verzoek betrokkene',

@@ -46,6 +46,22 @@ return $overrides + [
             'short_title' => 'Atributo enviado por email',
         ],
 
+        'error' => [
+            '403' => [
+                'title' => 'No access (403)',
+                'description' => 'You do not have access to this page.',
+            ],
+            '404' => [
+                'title' => 'Page not found (404)',
+                'description' => 'The page could not be found.',
+            ],
+            '500' => [
+                'title' => 'Unexpected error',
+                'description' => 'Something went wrong. Please try again, or contact support if the problem persists.',
+            ],
+            'back_home' => 'Back home',
+        ],
+
         'information_request' => [
             'explanation' => 'If you press \'confirm request\', your attributes will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
             'long_title' => 'Identification because of request data subject',
