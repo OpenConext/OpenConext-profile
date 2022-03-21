@@ -152,7 +152,7 @@ return $overrides + [
                 'button' => 'View',
 
                 'data' => [
-                    'description' => 'Which personal data can be passed on to the services your using.',
+                    'description' => 'Which personal data could be transferred to the services you use through SURFconext.',
                     'title' => 'Your personal data',
                 ],
 
@@ -162,7 +162,7 @@ return $overrides + [
                 ],
 
                 'store' => [
-                    'description' => 'Which data SURFconext stores from you.',
+                    'description' => 'Which services you previously logged in to using SURFconext.',
                     'title' => 'What we store',
                 ],
             ],
@@ -190,7 +190,7 @@ return $overrides + [
             'eula' => 'EULA',
 
             'explanation' => [
-                'end' => 'It shows which subset of your personal data (attributes) has been shared between your institution and the service. Additionally it shows whether you or your institutiton has agreed to sharing your attributes with the service.',
+                'end' => 'It shows which subset of your personal data (attributes) has been shared between your institution and the service. Additionally it shows whether you or your institution has agreed to sharing your attributes with the service.',
                 'start' => 'This overview contains all services you have logged in to through SURFconext at least once.',
             ],
 
