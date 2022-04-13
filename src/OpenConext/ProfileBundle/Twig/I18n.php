@@ -16,15 +16,14 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockBundle\Twig\Extensions\Extension;
+namespace OpenConext\ProfileBundle\Twig;
 
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extensions\I18nExtension;
-use Symfony\Component\Translation\TranslatorInterface;
 use Twig\TwigFilter;
 
 class I18n extends I18nExtension
 {
-
     /**
      * @var TranslatorInterface
      */
@@ -78,8 +77,8 @@ class I18n extends I18nExtension
      */
     private function prepareDefaultPlaceholders(array $args)
     {
-        $args[1]['%suiteName%'] = $this->translator->trans('suite_name');
-        $args[1]['%organisationNoun%'] = $this->translator->trans('organisation_noun');
+        $args[1]['%suiteName%'] = $this->translator->trans('general.suite_name');
+        $args[1]['%organisationNoun%'] = $this->translator->trans('general.organisation_noun');
 
         return $args;
     }
