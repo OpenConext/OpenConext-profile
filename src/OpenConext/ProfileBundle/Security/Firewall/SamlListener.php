@@ -171,7 +171,9 @@ class SamlListener implements ListenerInterface
         $this->session->migrate();
 
         $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
-        $logger->info('Authentication succeeded, redirecting to original location');
+        $logger->notice('Authentication succeeded, redirecting to original location',
+            ['user' => (string)$authToken->getUser()]
+        );
     }
 
     /**
