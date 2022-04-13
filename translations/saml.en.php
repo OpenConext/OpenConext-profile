@@ -54,7 +54,7 @@ return [
                 'eduPersonOrgDN' => 'profile.saml.attributes.eduPersonOrgDN',
                 'eduPersonOrgUnitDN' => 'profile.saml.attributes.eduPersonOrgUnitDN',
                 'eduPersonPrimaryAffiliation' => 'Primary affiliation',
-                'eduPersonPrincipalName' => 'Institution User ID',
+                'eduPersonPrincipalName' => '%organisationNoun% User ID',
                 'eduPersonScopedAffiliation' => 'Scoped affiliation',
                 'eduPersonTargetedID' => 'Identifier',
                 'email' => 'Email Address',

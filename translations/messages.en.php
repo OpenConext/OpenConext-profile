@@ -19,7 +19,7 @@ return $overrides + [
 
         'skip_link' => 'To main content',
     ],
-
+    'suite_name' => 'OpenConext',
     'general' => [
         'cancel' => 'Cancel',
         'confirm' => 'Confirm',
@@ -27,15 +27,14 @@ return $overrides + [
         'organisation_noun' => 'organisation',
         'suite_name' => 'OpenConext',
     ],
-
     'profile' => [
         'application' => [
-            'platform_connection_name' => 'SURFconext',
+            'platform_connection_name' => '%suiteName%',
         ],
 
         'attribute_support' => [
-            'explanation' => 'SURFconext support may ask you to share the abovementioned data. This information can help them to answer your support question.',
-            'long_title' => 'Send data to SURFconext support',
+            'explanation' => '%suiteName% support may ask you to share the abovementioned data. This information can help them to answer your support question.',
+            'long_title' => 'Send data to %suiteName% support',
             'send_mail' => 'Send data',
             'short_title' => 'Send data',
         ],
@@ -78,8 +77,8 @@ return $overrides + [
         'introduction' => [
             'explanation' => [
                 'introduction' => [
-                    'end' => 'you login with your institutional account on different (cloud)services. You can find more info here.',
-                    'serviceName' => 'SURFconext',
+                    'end' => 'you login with your %organisationNoun%al account on different (cloud)services. You can find more info here.',
+                    'serviceName' => '%suiteName%',
                     'start' => 'With',
                 ],
             ],
@@ -88,10 +87,10 @@ return $overrides + [
             'long_title_user_name_replacement' => 'there',
 
             'purpose' => [
-                'profile_storage' => 'On behalf of your institution, SURFconext forwards a limited amount of your personal data to the service you are logging in to. Most of the times you are required to give explicit consent for this information transfer. In some cases, however, this feature is disabled on request of your institution.
+                'profile_storage' => 'On behalf of your %organisationNoun%, %suiteName% forwards a limited amount of your personal data to the service you are logging in to. Most of the times you are required to give explicit consent for this information transfer. In some cases, however, this feature is disabled on request of your %organisationNoun%.
 
-            This profile page gives you insight in which personal data, provided by your institution via SURFconext, has been forwarded to which service. You can also review which personal data is being stored by SURFconext and which services you have logged in to in the past.',
-                'title' => 'How SURFconext works',
+            This profile page gives you insight in which personal data, provided by your %organisationNoun% via %suiteName%, has been forwarded to which service. You can also review which personal data is being stored by %suiteName% and which services you have logged in to in the past.',
+                'title' => 'How %suiteName% works',
             ],
 
             'short_title' => 'Home',
@@ -117,7 +116,7 @@ return $overrides + [
                 'warning' => 'A service might not recognize you the next time you login and all personal data within this service might no longer be available.',
             ],
 
-            'explanation' => 'It\'s possible to connect external sources to your SURFconext profile. SURFconext can use this information to enrich the existing attributes of your institutional account with the values from this external account. Services connected to SURFconext can receive and use this information.',
+            'explanation' => 'It\'s possible to connect external sources to your %suiteName% profile. %suiteName% can use this information to enrich the existing attributes of your %organisationNoun%al account with the values from this external account. Services connected to %suiteName% can receive and use this information.',
             'long_title' => 'Accounts linked to your profile',
             'missing_connections' => 'Missing Connections?',
 
@@ -133,8 +132,8 @@ return $overrides + [
                 'connect_title' => 'Register or Connect your ORCID iD',
 
                 'description' => [
-                    'end' => 'After you have been redirected to ORCID, you can link your ORCID iD by logging in and clicking on \'Authorize\'. In the future, your ORCID iD can then be passed on via SURFconext to services that want to use it.',
-                    'start' => 'Connect your existing or newly created ORCID iD to SURFconext once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.',
+                    'end' => 'After you have been redirected to ORCID, you can link your ORCID iD by logging in and clicking on \'Authorize\'. In the future, your ORCID iD can then be passed on via %suiteName% to services that want to use it.',
+                    'start' => 'Connect your existing or newly created ORCID iD to %suiteName% once. The ORCID iD is a code that is used to uniquely identify scientific and other academic authors.',
                 ],
 
                 'disconnect_title' => 'Disconnect',
@@ -146,35 +145,35 @@ return $overrides + [
         ],
 
         'my_profile' => [
-            'attributes_information_link_title' => 'Attributes in SURFconext',
+            'attributes_information_link_title' => 'Attributes in %suiteName%',
 
             'cards' => [
                 'button' => 'View',
 
                 'data' => [
-                    'description' => 'Which personal data could be transferred to the services you use through SURFconext.',
+                    'description' => 'Which personal data could be transferred to the services you use through %suiteName%.',
                     'title' => 'Your personal data',
                 ],
 
                 'services' => [
-                    'description' => 'Which services you logged in to in the past using SURFconext.',
+                    'description' => 'Which services you logged in to in the past using %suiteName%.',
                     'title' => 'Accessed services',
                 ],
 
                 'store' => [
-                    'description' => 'Which services you previously logged in to using SURFconext.',
+                    'description' => 'Which services you previously logged in to using %suiteName%.',
                     'title' => 'What we store',
                 ],
             ],
 
-            'introduction' => 'The table below contains an overview of all your personal data that your institution can pass on to several services through SURFconext. Within SURFconext, your personal data are called \'attributes\'. An attribute can for instance be your name, your e-mail address or the name of your institution. For more technical information about these attributes, SURFconext provides the following extra information page:',
-            'questions' => 'Please note: your institution is responsible for the personal data displayed here. SURFconext is simply showing the information received from your institution. If you have any questions about your attributes, please contact the help desk of your institution through:',
-            'questions_no_support_contact_email' => 'If you have any questions about your personal data, please contact the help desk of your institution.',
+            'introduction' => 'The table below contains an overview of all your personal data that your %organisationNoun% can pass on to several services through %suiteName%. Within %suiteName%, your personal data are called \'attributes\'. An attribute can for instance be your name, your e-mail address or the name of your %organisationNoun%. For more technical information about these attributes, %suiteName% provides the following extra information page:',
+            'questions' => 'Please note: your %organisationNoun% is responsible for the personal data displayed here. %suiteName% is simply showing the information received from your %organisationNoun%. If you have any questions about your attributes, please contact the help desk of your %organisationNoun% through:',
+            'questions_no_support_contact_email' => 'If you have any questions about your personal data, please contact the help desk of your %organisationNoun%.',
             'short_title' => 'Your personal data',
-            'sup_text' => 'Your institution decides which services are accessible for you through SURFconext. Most services you use through SURFconext request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to',
+            'sup_text' => 'Your %organisationNoun% decides which services are accessible for you through %suiteName%. Most services you use through %suiteName% request a subset of this data. Some services require no personal data. If you want to see which services received which data, please refer to',
 
             'user_data_download' => [
-                'explanation' => 'You can download an overview with personal data stored by SURFconext in json format.',
+                'explanation' => 'You can download an overview with personal data stored by %suiteName% in json format.',
                 'link_text' => 'Download overview',
                 'title' => 'Download',
             ],
@@ -184,14 +183,14 @@ return $overrides + [
             'consent_first_used_on' => 'First used on',
             'consent_type' => 'Consent was given by',
             'delete_button' => 'Delete login details',
-            'delete_explanation' => 'deleting these login details means SURFconext removes this information from your SURFconext account.  You still have an account at the service itself.  If you want that removed, please do so at the service.',
+            'delete_explanation' => 'deleting these login details means %suiteName% removes this information from your %suiteName% account.  You still have an account at the service itself.  If you want that removed, please do so at the service.',
             'entity_id' => 'Entity ID',
             'error_loading_consent' => 'The list of services which you are logged in to cannot be retrieved.',
             'eula' => 'EULA',
 
             'explanation' => [
-                'end' => 'It shows which subset of your personal data (attributes) has been shared between your institution and the service. Additionally it shows whether you or your institution has agreed to sharing your attributes with the service.',
-                'start' => 'This overview contains all services you have logged in to through SURFconext at least once.',
+                'end' => 'It shows which subset of your personal data (attributes) has been shared between your %organisationNoun% and the service. Additionally it shows whether you or your %organisationNoun% has agreed to sharing your attributes with the service.',
+                'start' => 'This overview contains all services you have logged in to through %suiteName% at least once.',
             ],
 
             'explicit_consent_given' => 'user',
@@ -205,7 +204,7 @@ return $overrides + [
                 'support_url' => 'https://example.org',
             ],
 
-            'implicit_consent_given' => 'institution',
+            'implicit_consent_given' => '%organisationNoun%',
             'login_details' => 'Login details',
             'no_attribute_released' => 'This service does not receive information about you.',
 
@@ -221,19 +220,19 @@ return $overrides + [
 
         'my_surf_conext' => [
             'account_data' => 'Account data',
-            'account_data_explanation' => 'SURFconext can provide (cloud) services a privacy-friendly identifier (number) with which you can be recognized when you return to the service.',
-            'account_data_origin' => 'User ID and institution name from your institution + number generated by SURFconext',
+            'account_data_explanation' => '%suiteName% can provide (cloud) services a privacy-friendly identifier (number) with which you can be recognized when you return to the service.',
+            'account_data_origin' => 'User ID and %organisationNoun% name from your %organisationNoun% + number generated by %suiteName%',
             'account_data_retention_period' => 'Until 3 years after last login.',
             'consent_data' => 'Consent Data',
-            'consent_data_explanation' => 'Most services require you, prior to the first login, to explicitly give consent to your institution to share your personal data with the service you are logging in to. SURFconext stores at which moment and for which service you have given consent. To see which personal data is being shared with which service, please go to',
-            'consent_data_origin' => 'Generated by SURFconext',
+            'consent_data_explanation' => 'Most services require you, prior to the first login, to explicitly give consent to your %organisationNoun% to share your personal data with the service you are logging in to. %suiteName% stores at which moment and for which service you have given consent. To see which personal data is being shared with which service, please go to',
+            'consent_data_origin' => 'Generated by %suiteName%',
             'consent_data_retention_period' => 'Until 3 years after last login.',
             'data_origin' => 'Information and origin',
             'data_retention_period' => 'Retention Period',
-            'introduction' => 'SURFconext stores the following data to allow you to log in easily and securely to various (cloud) services.',
+            'introduction' => '%suiteName% stores the following data to allow you to log in easily and securely to various (cloud) services.',
             'logging_data' => 'Logging Data',
-            'logging_data_explanation' => 'SURFconext logs when you use SURFconext, which service you are logging in to and from which IP address. This is necessary for administration and security purposes.',
-            'logging_data_origin' => 'Generated by SURFconext',
+            'logging_data_explanation' => '%suiteName% logs when you use %suiteName%, which service you are logging in to and from which IP address. This is necessary for administration and security purposes.',
+            'logging_data_origin' => 'Generated by %suiteName%',
             'logging_data_retention_period' => '6 months. After 6 months the log files are anonymized.',
             'origin' => 'Origin',
             'short_title' => 'What we store',
