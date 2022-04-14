@@ -3,7 +3,7 @@
 
     <li class="attribute__row attribute__noTooltip">
         <div class="attribute__name">
-            {{ attribute.value[0].source }}
+            {{ ('profile.table.source_description.' ~ attribute.value[0].source)|trans }}
         </div>
         <div class="attribute__value">
             {{ translatedAttributeName }}
