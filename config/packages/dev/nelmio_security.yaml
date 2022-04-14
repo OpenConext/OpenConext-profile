@@ -9,4 +9,3 @@ nelmio_security:
         - unsafe-inline
       style-src:
         - self
-        - unsafe-inline
