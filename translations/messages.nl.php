@@ -212,6 +212,9 @@ return $overrides + [
 
             'service_information' => [
                 'title' => 'Informatie doorgegeven aan de dienst',
+                'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources',
+                'source' => 'Bron',
+                'attribute_name' => 'Naam',
             ],
 
             'short_title' => 'Mijn diensten',

@@ -211,6 +211,9 @@ return $overrides + [
 
             'service_information' => [
                 'title' => 'Information transferred to the service',
+                'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources',
+                'source' => 'Source',
+                'attribute_name' => 'Attribute name',
             ],
 
             'short_title' => 'Os Meus Serviços',
