@@ -113,6 +113,12 @@ services:
         tags:
             - { name: twig.extension }
 
+    OpenConext\ProfileBundle\Twig\I18n:
+        arguments:
+            - "@translator"
+        tags:
+            - { name: twig.extension }
+
     OpenConext\ProfileBundle\Attribute\AttributeFilter:
 
     OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider:
