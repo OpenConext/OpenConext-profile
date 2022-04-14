@@ -97,7 +97,7 @@ class SpecifiedConsent
      *
      * @return Attribute[]
      */
-    public function getReleasedAttributesGroupedBySource()
+    public function getIdPAttributes(): array
     {
         $grouped = [];
         foreach ($this->getReleasedAttributes() as $attribute) {
@@ -109,9 +109,12 @@ class SpecifiedConsent
 
             $grouped[$source][] = $attribute;
         }
-        $grouped = array_merge($grouped, $this->arp->getNonIdpAttributes());
-
         return $grouped;
+    }
+
+    public function getAttributeAggregatedAttributes(): array
+    {
+        return $this->arp->getNonIdpAttributes();
     }
 
     /**
