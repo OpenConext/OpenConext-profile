@@ -1,0 +1,11 @@
+@import '../helpers/variables';
+
+.support__icon {
+  fill: none;
+  margin-right: 1rem;
+  stroke: $buttonBlue;
+  width: 24px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:1.5px;
+}
