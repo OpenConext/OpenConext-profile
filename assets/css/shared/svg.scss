@@ -1,30 +1,11 @@
 @import '../helpers/variables';
 
-.header {
-  background-color: $oceanBlue;
-  box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5);
-  max-height: calculateRem(60px);
-  padding: calculateRem(11px) 1rem;
-  position: relative;
-}
-
-.header__profile {
-  color: $white;
-  font-family: 'Nunito', sans-serif;
-  font-size: $f-small;
-  font-weight: $bolder;
-  left: 146px;
-  letter-spacing: .26px;
-  margin: 0;
-  position: absolute;
-  top: 13px;
-}
-
-.header__homeLink {
-  display: inline-block;
-  padding-right: 4rem;
-
-  &:focus {
-    @include focus-style($oceanBlue);
-  }
+.support__icon {
+  fill: none;
+  margin-right: 1rem;
+  stroke: $buttonBlue;
+  width: 24px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:1.5px;
 }
