@@ -2,13 +2,30 @@
 {% if specifiedConsent.releasedAttributes is empty %}
     <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
 {% else %}
-    {% for sourceName, releasedAttributes in specifiedConsent.releasedAttributesGroupedBySource  %}
-        {# TODO: the AA sourced attributes are yet to be rendered see: https://www.pivotaltracker.com/story/show/179920711 for details #}
+    {% for sourceName, releasedAttributes in specifiedConsent.getIdPAttributes  %}
         {% if sourceName == 'idp' %}
         <ul class="attributeList">
             {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
         </ul>
         {% endif %}
     {% endfor %}
+
+    {% if specifiedConsent.getAttributeAggregatedAttributes|length > 1 %}
+
+    <p>{{ 'profile.my_services.service_information.aa_text'|trans }}</p>
+
+    <ul class="attributeList">
+        <li class="attribute__row attribute__row-header">
+            <div class="attribute__name"><strong>{{ 'profile.my_services.service_information.source'|trans }}</strong></div>
+            <div class="attribute__value"><strong>{{ 'profile.my_services.service_information.attribute_name'|trans }}</strong>
+            </div>
+        </li>
+    {% for sourceName, releasedAttributes in specifiedConsent.getAttributeAggregatedAttributes  %}
+        {% if sourceName != 'idp' %}
+            {% include '@OpenConextProfile/MyServices/AttributeList/aa.html.twig' %}
+        {% endif %}
+    {% endfor %}
+    </ul>
+    {% endif %}
 {% endif %}
 
