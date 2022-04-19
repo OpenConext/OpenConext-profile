@@ -117,9 +117,12 @@
 }
 
 .listDetails__title {
-  color: $oceanBlue;
   display: flex;
   justify-content: space-between;
   margin: calculateRem(2.5px) 0;
   width: 100%;
+
+  span.lighter {
+    font-weight: lighter;
+  }
 }

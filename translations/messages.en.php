@@ -185,6 +185,7 @@ return $overrides + [
             'delete_button' => 'Delete login details',
             'delete_explanation' => 'deleting these login details means %suiteName% removes this information from your %suiteName% account.  You still have an account at the service itself.  If you want that removed, please do so at the service.',
             'entity_id' => 'Entity ID',
+            'organization_name' => 'Offered by',
             'error_loading_consent' => 'The list of services which you are logged in to cannot be retrieved.',
             'eula' => 'EULA',
 

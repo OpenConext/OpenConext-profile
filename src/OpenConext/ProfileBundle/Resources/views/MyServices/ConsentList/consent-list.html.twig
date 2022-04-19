@@ -4,12 +4,14 @@
         {% set sp = consent.serviceProvider %}
         {% set entityId = sp.entity.entityId.entityId %}
         {% set orgId = entityId|trim|split(' ')|join %}
+        {% set organizationName = sp.organizationNameByLocale(app.request.locale) %}
+        {% set translatedDisplayName = sp.getLocaleAwareEntityName(app.request.locale) %}
         {% set id = 'tooltip%index%%orgId%'|replace({ '%index%': loop.index, '%orgId%': orgId })|trim %}
         <li class="service__listItem listDetails__item" data-orgId="{{ orgId }}">
             <details class="service__details listDetails__details">
                 <summary class="service__name listDetails__name">
                     <h2 class="service__title listDetails__title">
-                        <span>{{ sp.getLocaleAwareEntityName(app.request.locale) }}</span>
+                        <span>{{ translatedDisplayName }} <span class="lighter">- {{ organizationName }}</span></span>
                         {% include "@OpenConextProfile/svgs/arrow.svg" with { className: 'service__statusArrow listDetails__statusArrow' } %}
                     </h2>
                 </summary> {# todo: figure out where the logo should come from #}

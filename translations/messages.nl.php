@@ -187,6 +187,7 @@ return $overrides + [
             'delete_button' => 'Verwijder login gegevens',
             'delete_explanation' => 'deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je %suiteName% account.  Je hebt dan nog steeds een account bij de dienst zelf.  Indien je die ook wil verwijderen moet je dat bij de dienst zelf doen.',
             'entity_id' => 'Entity ID',
+            'organization_name' => 'Aangeboden door',
             'error_loading_consent' => 'De lijst met diensten waar je bent ingelogd kan niet opgehaald worden.',
             'eula' => 'Gebruikersovereenkomst',
 
