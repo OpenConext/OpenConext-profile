@@ -2,13 +2,27 @@
 {% if specifiedConsent.releasedAttributes is empty %}
     <p>{{ 'profile.my_services.no_attribute_released'|trans }}</p>
 {% else %}
-    {% for sourceName, releasedAttributes in specifiedConsent.releasedAttributesGroupedBySource  %}
-        {# TODO: the AA sourced attributes are yet to be rendered see: https://www.pivotaltracker.com/story/show/179920711 for details #}
-        {% if sourceName == 'idp' %}
+    {% for sourceName, releasedAttributes in specifiedConsent.getIdPAttributes  %}
         <ul class="attributeList">
             {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
         </ul>
-        {% endif %}
     {% endfor %}
+
+    {% if specifiedConsent.getAttributeAggregatedAttributes is not empty %}
+
+    <p>{{ 'profile.my_services.service_information.aa_text'|trans }}</p>
+
+    <ul class="attributeList">
+    {% for sourceName, releasedAttributes in specifiedConsent.getAttributeAggregatedAttributes  %}
+        {% include '@OpenConextProfile/MyServices/AttributeList/aa.html.twig' %}
+    {% endfor %}
+    <li class="aaRow">
+        {% set singular = 'profile.table.explanation.singular'|trans %}
+        {% set plural = 'profile.table.explanation.plural'|trans %}
+        {% set singularOrPlural = specifiedConsent.getAttributeAggregatedAttributes|length > 1 ? plural : singular %}
+        <p>{{ 'profile.table.explanation.text'|trans({'%singularOrPlural%': singularOrPlural }) }}</p>
+    </li>
+    </ul>
+    {% endif %}
 {% endif %}
 

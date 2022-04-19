@@ -1,23 +1,13 @@
 {% for attribute in releasedAttributes %}
-    {% if attribute.attributeDefinition.hasUrnMace %}
-        {% set attributeUrn = attribute.attributeDefinition.urnMace %}
-    {% else %}
-        {% set attributeUrn = attribute.attributeDefinition.urnOid %}
-    {% endif %}
     {% set translatedAttributeName = ('profile.saml.attributes.' ~ attribute.attributeDefinition.name)|trans({}, 'saml') %}
+
     <li class="attribute__row attribute__noTooltip">
         <div class="attribute__name">
-            {% if translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-               {{ attributeUrn }}
-            {% else %}
-                {{ translatedAttributeName }}
-            {% endif %}
+            {{ ('profile.table.source_description.' ~ attribute.value[0].source)|trans }}
         </div>
-        {% if not translatedAttributeName == 'profile.saml.attributes.' ~ attribute.attributeDefinition.name %}
-            <div class="attribute__value">
-                <strong>{{ attributeUrn }}</strong>
-            </div>
-        {% endif %}
+        <div class="attribute__value">
+            {{ translatedAttributeName }}
+        </div>
     </li>
 {% endfor %}
 {# todo: add provided by row #}
