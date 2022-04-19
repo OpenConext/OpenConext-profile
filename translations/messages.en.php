@@ -210,9 +210,7 @@ return $overrides + [
 
             'service_information' => [
                 'title' => 'Information transferred to the service',
-                'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources',
-                'source' => 'Source',
-                'attribute_name' => 'Attribute name',
+                'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources:',
             ],
 
             'short_title' => 'Services you accessed',
@@ -263,13 +261,17 @@ return $overrides + [
             'source_description' => [
                 'orcid' => 'ORCID iD',
                 'sab' => 'SURF Autorisatie Beheer',
-                'surfmarket_entitlements' => 'SURFmarket Entitlements',
                 'voot' => 'Group membership',
                 'manage' => 'SURF CRM',
                 'eduid' => 'eduID',
-                'ala' => 'ALA',
-                'sbs' => 'SBS',
+                'ala' => 'eduID Account linking',
+                'sbs' => 'SURF Research Access Management',
             ],
+            'explanation' => [
+                'singular' => 'This attribute is',
+                'plural' => 'These attributes are',
+                'text' => '%singularOrPlural% retrieved at the time you log in to the service. We are therefore unable to show the actual values here.'
+            ]
         ],
     ],
 ];

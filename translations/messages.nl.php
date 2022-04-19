@@ -212,9 +212,7 @@ return $overrides + [
 
             'service_information' => [
                 'title' => 'Informatie doorgegeven aan de dienst',
-                'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources',
-                'source' => 'Bron',
-                'attribute_name' => 'Naam',
+                'aa_text' => 'In aanvulling op de gegevens hierboven ontvangt deze dienst de volgende gegevens uit andere bronnen:',
             ],
 
             'short_title' => 'Mijn diensten',
@@ -265,12 +263,16 @@ return $overrides + [
             'source_description' => [
                 'orcid' => 'ORCID iD',
                 'sab' => 'SURF Autorisatie Beheer',
-                'surfmarket_entitlements' => 'SURFmarket Entitlements',
                 'voot' => 'Groepslidmaatschap',
                 'manage' => 'SURF CRM',
                 'eduid' => 'eduID',
-                'ala' => 'ALA',
-                'sbs' => 'SBS',
+                'ala' => 'eduID Account linking',
+                'sbs' => 'SURF Research Access Management',
+            ],
+            'explanation' => [
+                'singular' => 'Dit attribuut wordt',
+                'plural' => 'Deze attributen worden',
+                'text' => '%singularOrPlural% opgehaald op het moment dat je inlogt bij de dienst. We kunnen daarom de betreffende waarde hier niet laten zien.'
             ],
         ],
     ],
