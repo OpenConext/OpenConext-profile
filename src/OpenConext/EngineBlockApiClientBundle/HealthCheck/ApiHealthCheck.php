@@ -36,11 +36,7 @@ class ApiHealthCheck implements HealthCheckInterface
         $this->repository = $repository;
     }
 
-    /**
-     * @param HealthReportInterface $report
-     * @return HealthReportInterface
-     */
-    public function check(HealthReportInterface $report)
+    public function check(HealthReportInterface $report): HealthReportInterface
     {
         try {
             $this->repository->findAllFor('a73b204b8d896a55b34e41e71f0138f81e81f4da');
