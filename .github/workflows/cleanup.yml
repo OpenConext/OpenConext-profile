@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       package_name:
-        description: 'The name of the package to delete'     
+        description: 'The name of the package to delete'
         required: true
 
 jobs:
