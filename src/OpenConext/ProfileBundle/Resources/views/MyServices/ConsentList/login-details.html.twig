@@ -10,6 +10,11 @@
 
 <dl class="service__loginDetails">
     <div class="loginDetails__row">
+        {# The organization offering the service #}
+        <dt>{{ 'profile.my_services.organization_name'|trans }}:</dt>
+        <dd>{{ organizationName }}</dd>
+    </div>
+    <div class="loginDetails__row">
         {# The entity ID of the service #}
         <dt>{{ 'profile.my_services.entity_id'|trans }}:</dt>
         <dd>{{ entityId }}

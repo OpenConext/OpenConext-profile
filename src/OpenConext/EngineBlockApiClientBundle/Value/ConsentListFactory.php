@@ -106,6 +106,7 @@ final class ConsentListFactory
     {
         Assert::keyExists($data, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
         Assert::keyExists($data, 'display_name', 'Consent JSON structure must contain key "display_name"');
+        Assert::keyExists($data, 'organization_display_name', 'Consent JSON structure must contain key "organization_display_name"');
         Assert::keyExists($data, 'eula_url', 'Consent JSON structure must contain key "eula_url"');
         Assert::keyExists($data, 'support_email', 'Consent JSON structure must contain key "support_email"');
         Assert::keyExists($data, 'name_id_format', 'Consent JSON structure must contain key "name_id_format"');
@@ -113,6 +114,7 @@ final class ConsentListFactory
 
         $entity       = new Entity(new EntityId($data['entity_id']), EntityType::SP());
         $displayName  = new DisplayName($data['display_name']);
+        $displayOrganizationName  = new DisplayName($data['organization_display_name']);
         $nameIdFormat = new NameIdFormat($data['name_id_format']);
         $eulaUrl      = null;
         $supportEmail = null;
@@ -138,6 +140,7 @@ final class ConsentListFactory
         return new ServiceProvider(
             $entity,
             $displayName,
+            $displayOrganizationName,
             $nameIdFormat,
             $eulaUrl,
             $supportEmail,

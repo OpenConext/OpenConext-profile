@@ -186,6 +186,7 @@ return $overrides + [
             'delete_button' => 'Apagar detalhes do login',
             'delete_explanation' => 'excluir esses detalhes de login significa que a %suiteName% remove essas informações da sua conta %suiteName%. Você ainda continua a ter conta no serviço em si. Mas se pretender que seja removido, faça-o no serviço.',
             'entity_id' => 'Entity ID',
+            'organization_name' => 'Offered by',
             'error_loading_consent' => 'A lista dos serviços nos quais está autenticado não pode ser apresentada.',
             'eula' => 'EULA',
 

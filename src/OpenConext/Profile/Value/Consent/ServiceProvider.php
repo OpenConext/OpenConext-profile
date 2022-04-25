@@ -39,6 +39,11 @@ class ServiceProvider
     private $displayName;
 
     /**
+     * @var DisplayName
+     */
+    private $organizationDisplayName;
+
+    /**
      * @var NameIdFormat
      */
     private $nameIdFormat;
@@ -66,6 +71,7 @@ class ServiceProvider
     public function __construct(
         Entity $entity,
         DisplayName $displayName,
+        DisplayName $organizationDisplayName,
         NameIdFormat $nameIdFormat,
         Url $eulaUrl = null,
         ContactEmailAddress $supportEmail = null,
@@ -74,6 +80,7 @@ class ServiceProvider
     ) {
         $this->entity       = $entity;
         $this->displayName  = $displayName;
+        $this->organizationDisplayName = $organizationDisplayName;
         $this->nameIdFormat = $nameIdFormat;
         $this->eulaUrl      = $eulaUrl;
         $this->supportEmail = $supportEmail;
@@ -92,9 +99,17 @@ class ServiceProvider
     /**
      * @return DisplayName
      */
-    public function getDisplayName()
+    public function getDisplayName(): DisplayName
     {
         return $this->displayName;
+    }
+
+    public function getOrganizationNameByLocale(string $locale): string
+    {
+        if (!$this->organizationDisplayName->hasFilledTranslationForLocale($locale)) {
+            throw new LogicException(sprintf('Unable to retrieve organization display name for locale: %s', $locale));
+        }
+        return $this->organizationDisplayName->getTranslation($locale);
     }
 
     /**
