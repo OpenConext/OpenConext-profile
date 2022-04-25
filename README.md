@@ -191,6 +191,25 @@ To test your change. Modify one of the SP's already present in the 'My Services'
 Do this by changing the source of one of the attributes to the newly added source. You might need to add the source to 
 the SR/Manage configuration first. 
 
+### Catching mail
+Two 'hidden' (unlinked) support pages can send a mail to the service desk. These are found on the `profile.attribute_support_overview` 
+and `profile.information_request_overview` routes.
+
+In order to receive these messages in a dev or test environment, the docker-compose file includes a `mailcatcher` service. This service can be 
+viewed on `http://0.0.0.0:1080`. 
+
+In order to get the profile application to send the message using mailcatcher, configure your `parameters.yml` to use the correct `mailer_url`. In  my case this was:
+
+```yaml
+mailer_url: 'smtp://profile_mailcatcher:1025' # Note, we use the hostname as specified in the docker-compose.yml
+```
+
+Any mail send by the application can now be viewed on the aforementioned mailcatcher http interface.
+
+```
+http://0.0.0.0:1080
+```
+
 # License
 This project is licensed under version 2.0 of the Apache License, as described
 in the file [LICENSE](LICENSE).
