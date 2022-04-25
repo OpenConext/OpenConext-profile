@@ -56,6 +56,9 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new DisplayName([
+                    'en' => 'Some organization display name'
+                ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
@@ -95,6 +98,9 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new DisplayName([
+                    'en' => 'Some organization display name'
+                ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
@@ -126,6 +132,9 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new DisplayName([
+                    'en' => 'Some organization display name'
+                ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
@@ -154,6 +163,9 @@ class SpecifiedConsentTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new DisplayName([
+                    'en' => 'Some organization display name'
+                ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
@@ -170,7 +182,7 @@ class SpecifiedConsentTest extends TestCase
             Arp::createWith($arpData)
         );
 
-        $groupedBySources = $specifiedConsent->getReleasedAttributesGroupedBySource();
+        $groupedBySources = $specifiedConsent->getAttributeAggregatedAttributes();
 
         $this->assertTrue($specifiedConsent->hasMultipleSources());
         $this->assertCount(3, $groupedBySources);

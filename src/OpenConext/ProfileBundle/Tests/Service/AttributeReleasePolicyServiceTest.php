@@ -168,6 +168,9 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 new DisplayName([
                     'en' => 'Some display name'
                 ]),
+                new DisplayName([
+                    'en' => 'Some organization display name'
+                ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
                 new ContactEmailAddress('some@email.example')
@@ -183,6 +186,9 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 ),
                 new DisplayName([
                     'en' =>'Another display name'
+                ]),
+                new DisplayName([
+                    'en' => 'Some organization display name'
                 ]),
                 new NameIdFormat(''),
                 new Url('http://another-eula-url.example'),

@@ -20,6 +20,7 @@ namespace OpenConext\Profile\Tests\Value;
 
 use Mockery as m;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
+use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use PHPUnit\Framework\TestCase;
@@ -79,10 +80,20 @@ class SpecifiedConsentListTest extends TestCase
         $mockSp = m::mock(ServiceProvider::class);
         if ($entityId === '') {
             $mockSp->shouldReceive('getLocaleAwareEntityName')->with($locale)->andReturn($displayName);
-            $mockSp->shouldReceive('getDisplayName->hasFilledTranslationForLocale')->with($locale)->andReturn(true);
+            $displayNameMock = m::mock(DisplayName::class);
+            $displayNameMock
+                ->shouldReceive('hasFilledTranslationForLocale')
+                ->with($locale)
+                ->andReturn(true);
+            $mockSp->shouldReceive('getDisplayName')->andReturn($displayNameMock);
         } else {
             $mockSp->shouldReceive('getLocaleAwareEntityName')->with($locale)->andReturn($entityId);
-            $mockSp->shouldReceive('getDisplayName->hasFilledTranslationForLocale')->with($locale)->andReturn(false);
+            $displayNameMock = m::mock(DisplayName::class);
+            $displayNameMock
+                ->shouldReceive('hasFilledTranslationForLocale')
+                ->with($locale)
+                ->andReturn(false);
+            $mockSp->shouldReceive('getDisplayName')->andReturn($displayNameMock);
         }
 
         $mock = m::mock(SpecifiedConsent::class);
