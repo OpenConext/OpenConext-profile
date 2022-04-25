@@ -19,9 +19,8 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Value\EmailAddress;
-use Swift_Mailer as Mailer;
-use Swift_Message as Message;
-use Twig\Environment;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface as Mailer;
 
 final class AttributeSupportMailService
 {
@@ -41,11 +40,6 @@ final class AttributeSupportMailService
     private $mailer;
 
     /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
      * @var UserService
      */
     private $userService;
@@ -54,13 +48,11 @@ final class AttributeSupportMailService
         EmailAddress $mailFrom,
         EmailAddress $mailTo,
         Mailer $mailer,
-        Environment $templateEngine,
         UserService $userService
     ) {
         $this->mailFrom       = $mailFrom;
         $this->mailTo         = $mailTo;
         $this->mailer         = $mailer;
-        $this->templateEngine = $templateEngine;
         $this->userService    = $userService;
     }
 
@@ -68,19 +60,12 @@ final class AttributeSupportMailService
     {
         $user = $this->userService->getUser();
 
-        $body = $this->templateEngine->render(
-            '@OpenConextProfile/AttributeSupport/email.html.twig',
-            ['attributes' => $user->getAttributes()]
-        );
-
-        /** @var Message $message */
-        $message = $this->mailer->createMessage();
-        $message
-            ->setFrom($this->mailFrom->getEmailAddress())
-            ->setTo($this->mailTo->getEmailAddress())
-            ->setSubject(sprintf('Personal debug info of %s', $user->getId()))
-            ->setBody($body, 'text/html', 'utf-8');
-
-        $this->mailer->send($message);
+        $email = (new TemplatedEmail())
+            ->from($this->mailFrom->getEmailAddress())
+            ->to($this->mailTo->getEmailAddress())
+            ->subject(sprintf('Personal debug info of %s', $user->getId()))
+            ->htmlTemplate('@OpenConextProfile/AttributeSupport/email.html.twig')
+            ->context(['attributes' => $user->getAttributes()]);
+        $this->mailer->send($email);
     }
 }
