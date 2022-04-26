@@ -21,7 +21,7 @@ namespace OpenConext\Profile\Value;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
 
-final class DisplayName
+class DisplayName
 {
     /**
      * @var string[]
