@@ -20,9 +20,8 @@ namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
-use Swift_Mailer as Mailer;
-use Swift_Message as Message;
-use Twig\Environment;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface as Mailer;
 
 final class InformationRequestMailService
 {
@@ -42,11 +41,6 @@ final class InformationRequestMailService
     private $mailer;
 
     /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
      * @var UserService
      */
     private $userService;
@@ -60,14 +54,12 @@ final class InformationRequestMailService
         EmailAddress $mailFrom,
         EmailAddress $mailTo,
         Mailer $mailer,
-        Environment $templateEngine,
         UserService $userService,
         AttributeFilter $attributeFilter
     ) {
         $this->mailFrom = $mailFrom;
         $this->mailTo = $mailTo;
         $this->mailer = $mailer;
-        $this->templateEngine = $templateEngine;
         $this->userService = $userService;
         $this->attributeFilter = $attributeFilter;
     }
@@ -75,22 +67,13 @@ final class InformationRequestMailService
     public function sendInformationRequestMail()
     {
         $user = $this->userService->getUser();
-
         $attributes = $this->attributeFilter->filter($user->getAttributes());
-
-        $body = $this->templateEngine->render(
-            '@OpenConextProfile/InformationRequest/email.html.twig',
-            ['attributes' => $attributes]
-        );
-
-        /** @var Message $message */
-        $message = $this->mailer->createMessage();
-        $message
-            ->setFrom($this->mailFrom->getEmailAddress())
-            ->setTo($this->mailTo->getEmailAddress())
-            ->setSubject(sprintf('Information request for user: %s', $user->getId()))
-            ->setBody($body, 'text/html', 'utf-8');
-
-        $this->mailer->send($message);
+        $email = (new TemplatedEmail())
+            ->from($this->mailFrom->getEmailAddress())
+            ->to($this->mailTo->getEmailAddress())
+            ->subject(sprintf('Personal debug info of %s', $user->getId()))
+            ->htmlTemplate('@OpenConextProfile/InformationRequest/email.html.twig')
+            ->context(['attributes' => $attributes]);
+        $this->mailer->send($email);
     }
 }
