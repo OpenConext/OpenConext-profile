@@ -113,7 +113,7 @@ return $overrides + [
             'available_connections' => 'Beschikbare koppelingen',
 
             'delete_connection' => [
-                'explanation' => 'Ben je zeker dat je jouw connectie met ORCID wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?',
+                'explanation' => 'Weet je zeker dat je jouw connectie met %serviceName% wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?',
                 'title' => 'Dienst verwijderen',
                 'warning' => 'Een dienst zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor je geen toegang meer hebt tot je gegevens.',
             ],
@@ -185,7 +185,7 @@ return $overrides + [
             'consent_first_used_on' => 'Voor het eerst gebruikt op',
             'consent_type' => 'Toestemming gegeven door',
             'delete_button' => 'Verwijder login gegevens',
-            'delete_explanation' => 'deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je %suiteName% account.  Je hebt dan nog steeds een account bij de dienst zelf.  Indien je die ook wil verwijderen moet je dat bij de dienst zelf doen.',
+            'delete_explanation' => 'Deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je %suiteName% account. Je hebt dan nog steeds een account bij de dienst zelf.  Indien je die ook wil verwijderen moet je dat bij de dienst zelf doen.',
             'entity_id' => 'Entity ID',
             'organization_name' => 'Aangeboden door',
             'error_loading_consent' => 'De lijst met diensten waar je bent ingelogd kan niet opgehaald worden.',
