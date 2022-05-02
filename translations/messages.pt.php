@@ -112,7 +112,7 @@ return $overrides + [
             'available_connections' => 'Ligações disponíveis',
 
             'delete_connection' => [
-                'explanation' => 'Are you sure you want to delete your unique pseudonymised eduId for ORCID and revoke access to your linked accounts?',
+                'explanation' => 'Are you sure you want to delete your connection to %serviceName% and revoke access to your linked accounts?',
                 'title' => 'Delete Service',
                 'warning' => 'This service might not recognize you the next time you login and all your personal data within this service might be lost.',
             ],
@@ -184,7 +184,7 @@ return $overrides + [
             'consent_first_used_on' => 'Utilizado pela primeira vez em',
             'consent_type' => 'O consentimento foi dado por',
             'delete_button' => 'Apagar detalhes do login',
-            'delete_explanation' => 'excluir esses detalhes de login significa que a %suiteName% remove essas informações da sua conta %suiteName%. Você ainda continua a ter conta no serviço em si. Mas se pretender que seja removido, faça-o no serviço.',
+            'delete_explanation' => 'Excluir esses detalhes de login significa que a %suiteName% remove essas informações da sua conta %suiteName%. Você ainda continua a ter conta no serviço em si. Mas se pretender que seja removido, faça-o no serviço.',
             'entity_id' => 'Entity ID',
             'organization_name' => 'Offered by',
             'error_loading_consent' => 'A lista dos serviços nos quais está autenticado não pode ser apresentada.',

@@ -111,7 +111,7 @@ return $overrides + [
             'available_connections' => 'Available Connections',
 
             'delete_connection' => [
-                'explanation' => 'Are you sure you want to delete your connection to ORCID and revoke access to your linked accounts?',
+                'explanation' => 'Are you sure you want to delete your connection to %serviceName% and revoke access to your linked accounts?',
                 'title' => 'Delete Service',
                 'warning' => 'A service might not recognize you the next time you login and all personal data within this service might no longer be available.',
             ],
@@ -183,7 +183,7 @@ return $overrides + [
             'consent_first_used_on' => 'First used on',
             'consent_type' => 'Consent was given by',
             'delete_button' => 'Delete login details',
-            'delete_explanation' => 'deleting these login details means %suiteName% removes this information from your %suiteName% account.  You still have an account at the service itself.  If you want that removed, please do so at the service.',
+            'delete_explanation' => 'Deleting these login details means %suiteName% removes this information from your %suiteName% account.  You still have an account at the service itself.  If you want that removed, please do so at the service.',
             'entity_id' => 'Entity ID',
             'organization_name' => 'Offered by',
             'error_loading_consent' => 'The list of services which you are logged in to cannot be retrieved.',

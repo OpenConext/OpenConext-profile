@@ -37,8 +37,3 @@
         </dd>
     </div>
 </dl>
-{% if global_view_parameters.removeConsentFeatureEnabled and entityId is not empty %}
-    <p id="service__deleteDescription{{ loop.index }}" class="service__deleteDescription">
-        <sup>*</sup> {{ 'profile.my_services.delete_explanation'|trans }}
-    </p>
-{% endif %}
