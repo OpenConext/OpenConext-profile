@@ -1,5 +1,32 @@
 # Next release
 
+# 3.1.0
+
+**Features**
+* Show attribute aggregation attributes on the my-services page #235
+* Add the option to store sessions in the database #227
+
+**Improvements**
+* Log which user authenticated to the application. #229
+* Remove SURFisms from translation files #233
+* Prevent unsafe-inline CSP errors on SVG images #234
+* Expose info and health on /internal by updating the Monitor bundle #236
+* Replace deprecated Swiftmailer with Symfony mailer #241
+* Install Mailcatcher and document the change #239
+* Show the organization name on the my-services page #238
+
+**Maintenance**
+* Install periodic security upgrades #226
+
+**Bugfix**
+* Enable test-integration runs on develop #240
+
+# 3.0.4
+
+* Create release artifacts when project is tagged #225
+* Fix IdP logo display in My Services overview #224
+* Downgrade 'normal operation' log messages to info #223
+
 # 3.0.3
 **Bugfixes**
 - Ensure something incorrect disclosure is shown.
