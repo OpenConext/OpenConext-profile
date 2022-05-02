@@ -55,7 +55,7 @@ class SamlController
      */
     public function metadataAction()
     {
-        $this->logger->notice('Showing SAML metadata');
+        $this->logger->info('Showing SAML metadata');
 
         return new XMLResponse($this->metadataFactory->generate());
     }

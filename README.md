@@ -103,6 +103,8 @@ To have reproducible results, run the release script in your container:
 
 `docker run -v ~/Releases/:/root/Releases/ -v $PWD/bin/makeRelease.sh:/root/Releases/makeRelease.sh ghcr.io/openconext/openconext-containers/openconext-phpfpm-dev:latest /root/Releases/makeRelease.sh`
 
+Note that the release script is run automatically on pushing a new semver tag to Github. The release script builds the release artifacts and uploads them to the release page.
+
 ## Texts and translations
 
 When adding translatable keys, the easiest way to work is to add them in the twig templates first (eg. `'some.key'|trans`) and then add them to the translations files (see `<root>/translations`).
@@ -120,7 +122,32 @@ return [
 ];
 ```
 
-This would override the `general_suite_name` key.
+This would override the `general.suite_name` key.
+
+The suite name and the organisation noun can be used as 'magic' translation parameters in the translation files. This
+can be achieved by using `%suiteName%` and `%organisationNoun%` in your translations. These translations are 
+automatically replaced in the i18n Twig extension.
+
+#### Example:
+
+In your translation file (php based in this case)
+```php
+'general' => [
+    'suite_name' => 'Unseen university',
+    'organisation_noun' => 'library',
+]
+'introduction' => 'With %suiteName% you login with all different services used by your %organisationNoun%';
+```
+
+In your twig template:
+```twig
+<p>{{ 'introduction'|trans }}</p> {# Note that no suiteName or orgNoun translation parameters are passed! #}
+```
+
+Results in the following translation
+
+`With Unseen university you login with all different services used by your library`
+
 
 ## Common tasks
 
@@ -163,6 +190,25 @@ When a new source is added in the Service Registry (or Manage) it must also be a
 To test your change. Modify one of the SP's already present in the 'My Services' overview with the newly added source. 
 Do this by changing the source of one of the attributes to the newly added source. You might need to add the source to 
 the SR/Manage configuration first. 
+
+### Catching mail
+Two 'hidden' (unlinked) support pages can send a mail to the service desk. These are found on the `profile.attribute_support_overview` 
+and `profile.information_request_overview` routes.
+
+In order to receive these messages in a dev or test environment, the docker-compose file includes a `mailcatcher` service. This service can be 
+viewed on `http://0.0.0.0:1080`. 
+
+In order to get the profile application to send the message using mailcatcher, configure your `parameters.yml` to use the correct `mailer_url`. In  my case this was:
+
+```yaml
+mailer_url: 'smtp://profile_mailcatcher:1025' # Note, we use the hostname as specified in the docker-compose.yml
+```
+
+Any mail send by the application can now be viewed on the aforementioned mailcatcher http interface.
+
+```
+http://0.0.0.0:1080
+```
 
 # License
 This project is licensed under version 2.0 of the Apache License, as described

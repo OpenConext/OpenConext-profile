@@ -1,3 +1,0 @@
-swiftmailer:
-    url: '%mailer_url%'
-    spool: { type: 'memory' }

@@ -106,7 +106,7 @@ class MyConnectionsController
     public function overviewAction(Request $request)
     {
         $this->guard->userIsLoggedIn();
-        $this->logger->notice('Showing My Connections page');
+        $this->logger->info('Showing My Connections page');
 
         $user = $this->userProvider->getCurrentUser();
         $attributes = $this->service->findByUser($user);

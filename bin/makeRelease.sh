@@ -66,6 +66,7 @@ rm -f ${PROJECT_DIR}/.gitignore &&
 rm -f ${PROJECT_DIR}/.scrutinizer.yml &&
 rm -f ${PROJECT_DIR}/cypress.json &&
 rm -f ${PROJECT_DIR}/docker-compose.yml &&
+rm -f ${PROJECT_DIR}/docker-compose-tag-release.yml &&
 rm -f ${PROJECT_DIR}/makeRelease.sh &&
 rm -f ${PROJECT_DIR}/package.json &&
 rm -f ${PROJECT_DIR}/package-lock.json &&

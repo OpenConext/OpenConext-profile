@@ -30,12 +30,12 @@ return $overrides + [
 
     'profile' => [
         'application' => [
-            'platform_connection_name' => 'SURFconext',
+            'platform_connection_name' => '%suiteName%',
         ],
 
         'attribute_support' => [
-            'explanation' => 'SURFconext support kan je vragen om bovenstaande informatie te delen. Deze informatie kan hen helpen om jouw supportvraag te beantwoorden.',
-            'long_title' => 'Mail data naar SURFconext support',
+            'explanation' => '%suiteName% support kan je vragen om bovenstaande informatie te delen. Deze informatie kan hen helpen om jouw supportvraag te beantwoorden.',
+            'long_title' => 'Mail data naar %suiteName% support',
             'send_mail' => 'Mail data',
             'short_title' => 'Mail data',
         ],
@@ -44,6 +44,22 @@ return $overrides + [
             'explanation' => 'De mail met informatie is succesvol verstuurd.',
             'long_title' => 'De attribuutdata zijn gemaild',
             'short_title' => 'Attribuutdata gemaild',
+        ],
+
+        'error' => [
+            '403' => [
+                'title' => 'Geen toegang (403)',
+                'description' => 'Je hebt geen toegang tot deze pagina.',
+            ],
+            '404' => [
+                'title' => 'Pagina niet gevonden (404)',
+                'description' => 'De pagina kon niet gevonden worden.',
+            ],
+            '500' => [
+                'title' => 'Onverwachte fout',
+                'description' => 'Er ging iets mis. Probeer het opnieuw, of neem contact op met support als het probleem aanhoudt.',
+            ],
+            'back_home' => 'Terug naar de startpagina',
         ],
 
         'information_request' => [
@@ -62,8 +78,8 @@ return $overrides + [
         'introduction' => [
             'explanation' => [
                 'introduction' => [
-                    'end' => 'log je in met de account van je instelling bij verschillende (cloud)diensten.  Je kunt hier meer info vinden.',
-                    'serviceName' => 'SURFconext',
+                    'end' => 'log je in met de account van je %organisationNoun% bij verschillende (cloud)diensten.  Je kunt hier meer info vinden.',
+                    'serviceName' => '%suiteName%',
                     'start' => 'Met',
                 ],
             ],
@@ -72,9 +88,9 @@ return $overrides + [
             'long_title_user_name_replacement' => 'daar',
 
             'purpose' => [
-                'profile_storage' => 'Op verzoek van jouw instelling geeft SURFconext een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgifte van jouw gegevens.
+                'profile_storage' => 'Op verzoek van jouw %organisationNoun% geeft %suiteName% een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgifte van jouw gegevens.
 
-            Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw instelling, via SURFconext aan welke dienst wordt doorgegeven. Ook kun je zien welke gegevens door SURFconext worden opgeslagen en bij welke diensten je in het verleden bent ingelogd via SURFconext.',
+            Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw %organisationNoun%, via %suiteName% aan welke dienst wordt doorgegeven. Ook kun je zien welke gegevens door %suiteName% worden opgeslagen en bij welke diensten je in het verleden bent ingelogd via %suiteName%.',
                 'title' => 'Wat kun je op deze profielpagina?
             ',
             ],
@@ -97,12 +113,12 @@ return $overrides + [
             'available_connections' => 'Beschikbare koppelingen',
 
             'delete_connection' => [
-                'explanation' => 'Ben je zeker dat je jouw connectie met ORCID wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?',
+                'explanation' => 'Weet je zeker dat je jouw connectie met %serviceName% wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?',
                 'title' => 'Dienst verwijderen',
                 'warning' => 'Een dienst zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor je geen toegang meer hebt tot je gegevens.',
             ],
 
-            'explanation' => 'Je kunt externe bronnen koppelen aan je SURFconext-profiel. SURFconext kan deze gegevens gebruiken om je bestaande attributen afkomstig van je instellingsaccount te verrijken met de waarden uit de gekoppelde account. Diensten die verbonden zijn met SURFconext kunnen vervolgens deze informatie ontvangen.',
+            'explanation' => 'Je kunt externe bronnen koppelen aan je %suiteName%-profiel. %suiteName% kan deze gegevens gebruiken om je bestaande attributen afkomstig van je %organisationNoun%saccount te verrijken met de waarden uit de gekoppelde account. Diensten die verbonden zijn met %suiteName% kunnen vervolgens deze informatie ontvangen.',
             'long_title' => 'Accounts gelinkt aan je profiel',
             'missing_connections' => 'Missende koppelingen?',
 
@@ -118,8 +134,8 @@ return $overrides + [
                 'connect_title' => 'Registreer of koppel je ORCID iD',
 
                 'description' => [
-                    'end' => 'Nadat je bent geredirected naar ORCID, kan je jouw ORCID iD linken door in te loggen en te klikken op "Autoriseren".  Vanaf dan kan je ORCID ID via SURFconext doorgegeven worden aan de diensten die het willen gebruiken.',
-                    'start' => 'Verbind je bestaande of nieuw aangemaakte  ORCID iD eenmalig met SURFconext.  ORCID iD is een code die gebruikt wordt om wetenschappelijke- en academische auteurs uniek te identificeren.',
+                    'end' => 'Nadat je bent geredirected naar ORCID, kan je jouw ORCID iD linken door in te loggen en te klikken op "Autoriseren".  Vanaf dan kan je ORCID ID via %suiteName% doorgegeven worden aan de diensten die het willen gebruiken.',
+                    'start' => 'Verbind je bestaande of nieuw aangemaakte  ORCID iD eenmalig met %suiteName%.  ORCID iD is een code die gebruikt wordt om wetenschappelijke- en academische auteurs uniek te identificeren.',
                 ],
 
                 'disconnect_title' => 'Ontkoppelen',
@@ -131,7 +147,7 @@ return $overrides + [
         ],
 
         'my_profile' => [
-            'attributes_information_link_title' => 'Attributen in SURFconext',
+            'attributes_information_link_title' => 'Attributen in %suiteName%',
 
             'cards' => [
                 'button' => 'Bekijken',
@@ -142,24 +158,24 @@ return $overrides + [
                 ],
 
                 'services' => [
-                    'description' => 'Bij welke diensten je in het verleden bent ingelogd via SURFconext.',
+                    'description' => 'Bij welke diensten je in het verleden bent ingelogd via %suiteName%.',
                     'title' => 'Gebruikte diensten',
                 ],
 
                 'store' => [
-                    'description' => 'Welke gegevens SURFconext over jou opslaat.',
+                    'description' => 'Welke gegevens %suiteName% over jou opslaat.',
                     'title' => 'Wat we bewaren',
                 ],
             ],
 
-            'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw instelling via SURFconext kunnen worden doorgegeven aan diensten. In SURFconext worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw instelling zijn. Voor technische informatie over deze attributen heeft SURFconext een aparte informatiepagina ingericht:',
-            'questions' => 'Let op: jouw instelling is verantwoordelijk voor de persoonsgegevens die je hier ziet. SURFconext laat slechts de informatie zien zoals ontvangen van jouw instelling. Heb je vragen over je persoonsgegevens? Neem dan contact op met je instelling via:',
-            'questions_no_support_contact_email' => 'Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je instelling.',
+            'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan diensten. In %suiteName% worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze attributen heeft %suiteName% een aparte informatiepagina ingericht:',
+            'questions' => 'Let op: jouw %organisationNoun% is verantwoordelijk voor de persoonsgegevens die je hier ziet. %suiteName% laat slechts de informatie zien zoals ontvangen van jouw %organisationNoun%. Heb je vragen over je persoonsgegevens? Neem dan contact op met je %organisationNoun% via:',
+            'questions_no_support_contact_email' => 'Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je %organisationNoun%.',
             'short_title' => 'Mijn profiel',
-            'sup_text' => 'Je instelling beslist welke diensten toegankelijk voor je zijn via SURFconext.  De meeste diensten die je gebruikt via SURFconext vragen een subset van deze data.  Sommige diensten gebruiken geen persoonlijke data.  Indien je wil weten welke diensten welke data ontvingen, dan vind je dat bij',
+            'sup_text' => 'Je %organisationNoun% beslist welke diensten toegankelijk voor je zijn via %suiteName%.  De meeste diensten die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige diensten gebruiken geen persoonlijke data.  Indien je wil weten welke diensten welke data ontvingen, dan vind je dat bij',
 
             'user_data_download' => [
-                'explanation' => 'Je kunt een overzicht van de persoonlijke data die SURFconext bewaard downloaden in json-formaat.',
+                'explanation' => 'Je kunt een overzicht van de persoonlijke data die %suiteName% bewaard downloaden in json-formaat.',
                 'link_text' => 'Download overzicht',
                 'title' => 'Downloaden',
             ],
@@ -169,14 +185,15 @@ return $overrides + [
             'consent_first_used_on' => 'Voor het eerst gebruikt op',
             'consent_type' => 'Toestemming gegeven door',
             'delete_button' => 'Verwijder login gegevens',
-            'delete_explanation' => 'deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je SURFconext account.  Je hebt dan nog steeds een account bij de dienst zelf.  Indien je die ook wil verwijderen moet je dat bij de dienst zelf doen.',
+            'delete_explanation' => 'Deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je %suiteName% account. Je hebt dan nog steeds een account bij de dienst zelf.  Indien je die ook wil verwijderen moet je dat bij de dienst zelf doen.',
             'entity_id' => 'Entity ID',
+            'organization_name' => 'Aangeboden door',
             'error_loading_consent' => 'De lijst met diensten waar je bent ingelogd kan niet opgehaald worden.',
             'eula' => 'Gebruikersovereenkomst',
 
             'explanation' => [
-                'end' => 'Het toont welke subset van je persoonlijke data (attributen) gedeeld werd tussen je instelling en de dienst.  Daarnaast toont het ook of het jij of je instelling was die toestemming gaf om je attributen te delen met de dienst.',
-                'start' => 'Dit overzicht bevat alle diensten waar je minstens één maal op ingelogd bent via SURFconext.',
+                'end' => 'Het toont welke subset van je persoonlijke data (attributen) gedeeld werd tussen je %organisationNoun% en de dienst.  Daarnaast toont het ook of het jij of je %organisationNoun% was die toestemming gaf om je attributen te delen met de dienst.',
+                'start' => 'Dit overzicht bevat alle diensten waar je minstens één maal op ingelogd bent via %suiteName%.',
             ],
 
             'explicit_consent_given' => 'gebruiker',
@@ -190,12 +207,13 @@ return $overrides + [
                 'support_url' => 'https://example.org',
             ],
 
-            'implicit_consent_given' => 'instelling',
+            'implicit_consent_given' => '%organisationNoun%',
             'login_details' => 'Login details',
             'no_attribute_released' => 'Deze dienst ontvangt geen gegevens over jou.',
 
             'service_information' => [
                 'title' => 'Informatie doorgegeven aan de dienst',
+                'aa_text' => 'In aanvulling op de gegevens hierboven ontvangt deze dienst de volgende gegevens uit andere bronnen:',
             ],
 
             'short_title' => 'Mijn diensten',
@@ -206,22 +224,22 @@ return $overrides + [
 
         'my_surf_conext' => [
             'account_data' => 'Accountgegevens',
-            'account_data_explanation' => 'SURFconext kan (cloud)diensten een privacyvriendelijke identifier (nummer) geven waarmee je herkend kan worden als je opnieuw inlogt bij een dienst. Om dit te kunnen doen, moet SURFconext je Gebruikers-ID en de naam van jouw instelling opslaan.',
-            'account_data_origin' => 'Gebruikers-ID en de naam van jouw instelling + nummer gegenereerd door SURFconext',
+            'account_data_explanation' => '%suiteName% kan (cloud)diensten een privacyvriendelijke identifier (nummer) geven waarmee je herkend kan worden als je opnieuw inlogt bij een dienst. Om dit te kunnen doen, moet %suiteName% je Gebruikers-ID en de naam van jouw %organisationNoun% opslaan.',
+            'account_data_origin' => 'Gebruikers-ID en de naam van jouw %organisationNoun% + nummer gegenereerd door %suiteName%',
             'account_data_retention_period' => 'Tot 3 jaar na laatste inlog.',
             'consent_data' => 'Toestemmingsgegevens',
-            'consent_data_explanation' => 'Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw attributen te delen met de dienst waar je wilt inloggen. SURFconext slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder',
-            'consent_data_origin' => 'Gegenereerd door SURFconext',
+            'consent_data_explanation' => 'Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw attributen te delen met de dienst waar je wilt inloggen. %suiteName% slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder',
+            'consent_data_origin' => 'Gegenereerd door %suiteName%',
             'consent_data_retention_period' => 'Tot 3 jaar na laatste inlog.',
             'data_origin' => 'Gegevens en herkomst',
             'data_retention_period' => 'Bewaartermijn',
-            'introduction' => 'SURFconext slaat gegevens op om je eenvoudig en veilig in te kunnen laten loggen bij verschillende (cloud)diensten en om je inzicht te geven waar je allemaal bent ingelogd. Jouw instelling bepaalt welke diensten voor jou toegankelijk zijn via SURFconext. De meeste diensten die je via SURFconext benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij %my_services_link%.',
+            'introduction' => '%suiteName% slaat gegevens op om je eenvoudig en veilig in te kunnen laten loggen bij verschillende (cloud)diensten en om je inzicht te geven waar je allemaal bent ingelogd. Jouw %organisationNoun% bepaalt welke diensten voor jou toegankelijk zijn via %suiteName%. De meeste diensten die je via %suiteName% benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij %my_services_link%.',
             'logging_data' => 'Loggegevens',
-            'logging_data_explanation' => 'SURFconext bewaart tijdelijk wanneer en vanaf welk IP-adres je gebruik maakt van SURFconext en bij welke diensten je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van SURFconext.',
-            'logging_data_origin' => 'Gegenereerd door SURFconext',
+            'logging_data_explanation' => '%suiteName% bewaart tijdelijk wanneer en vanaf welk IP-adres je gebruik maakt van %suiteName% en bij welke diensten je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van %suiteName%.',
+            'logging_data_origin' => 'Gegenereerd door %suiteName%',
             'logging_data_retention_period' => '6 maanden. Na 6 maanden worden de logbestanden geanonimiseerd.',
             'origin' => 'Herkomst',
-            'short_title' => 'Mijn SURFconext',
+            'short_title' => 'Mijn %suiteName%',
         ],
 
         'navigation' => [
@@ -246,8 +264,16 @@ return $overrides + [
             'source_description' => [
                 'orcid' => 'ORCID iD',
                 'sab' => 'SURF Autorisatie Beheer',
-                'surfmarket_entitlements' => 'SURFmarket Entitlements',
                 'voot' => 'Groepslidmaatschap',
+                'manage' => 'SURF CRM',
+                'eduid' => 'eduID',
+                'ala' => 'eduID Account linking',
+                'sbs' => 'SURF Research Access Management',
+            ],
+            'explanation' => [
+                'singular' => 'Dit attribuut wordt',
+                'plural' => 'Deze attributen worden',
+                'text' => '%singularOrPlural% opgehaald op het moment dat je inlogt bij de dienst. We kunnen daarom de betreffende waarde hier niet laten zien.'
             ],
         ],
     ],

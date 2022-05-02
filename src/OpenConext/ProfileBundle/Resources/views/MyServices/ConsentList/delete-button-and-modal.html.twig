@@ -1,15 +1,16 @@
 {% set modalContent %}
-    <p id="description-part-1-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.explanation'|trans }}</p>
+    <p id="description-part-1-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.explanation'|trans({ '%serviceName%': translatedDisplayName }) }}</p>
     <p id="description-part-2-{{ loop.index }}">{{ 'profile.my_connections.delete_connection.warning'|trans }}</p>
+    <p id="description-part-2-{{ loop.index }}">{{ 'profile.my_services.delete_explanation'|trans }}</p>
 {% endset %}
 
 {% set buttonText %}
-    {{ 'profile.my_services.delete_button'|trans }}<sup>*</sup>
+    {{ 'profile.my_services.delete_button'|trans }}
 {% endset %}
 
 {% set buttonRowContent %}
     <a
-        href="{{ path('profile.my_services_delete', { 'serviceEntityId': deleteId }) }}"
+        href="{{ path('profile.my_services_delete', { 'serviceEntityId': entityId }) }}"
         class="button modalWindow__button"
     >
         {{ 'general.confirm'|trans }}

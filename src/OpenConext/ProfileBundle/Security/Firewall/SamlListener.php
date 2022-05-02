@@ -151,7 +151,7 @@ class SamlListener implements ListenerInterface
             throw new AuthenticationException('Unknown or unexpected InResponseTo in SAMLResponse');
         }
 
-        $logger->notice('Successfully processed SAMLResponse, attempting to authenticate');
+        $logger->info('Successfully processed SAMLResponse, attempting to authenticate');
 
         $token = new SamlToken();
         $token->assertion = $assertion;
@@ -171,7 +171,10 @@ class SamlListener implements ListenerInterface
         $this->session->migrate();
 
         $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
-        $logger->notice('Authentication succeeded, redirecting to original location');
+        $logger->notice(
+            'Authentication succeeded, redirecting to original location',
+            ['user' => (string)$authToken->getUser()]
+        );
     }
 
     /**
@@ -200,7 +203,7 @@ class SamlListener implements ListenerInterface
         $event->setResponse($this->samlInteractionProvider->initiateSamlRequest());
 
         $logger = $this->logger;
-        $logger->notice('Sending AuthnRequest');
+        $logger->info('Sending AuthnRequest');
     }
 
     /**

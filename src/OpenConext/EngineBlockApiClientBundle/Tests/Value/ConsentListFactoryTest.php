@@ -56,6 +56,7 @@ final class ConsentListFactoryTest extends TestCase
                 'service_provider' => [
                     'entity_id'     => $firstEntityId,
                     'display_name'  => ['en' => '', 'nl' => '',],
+                    'organization_display_name'  => ['en' => 'OpenConext', 'nl' => 'OpenConext'],
                     'support_url'  => ['en' => 'https://example.org/support-en', 'nl' => 'https://example.org/support-nl'],
                     'eula_url'      => $firstEula,
                     'support_email' => null,
@@ -68,6 +69,7 @@ final class ConsentListFactoryTest extends TestCase
                 'service_provider' => [
                     'entity_id'     => $secondEntityId,
                     'display_name'  => ['en' => 'OpenConext ServiceRegistry', 'nl' => 'OpenConext ServiceRegistry'],
+                    'organization_display_name'  => ['en' => 'OpenConext', 'nl' => 'OpenConext'],
                     'support_url'  => ['en' => 'https://example.org/support-en', 'nl' => 'https://example.org/support-nl'],
                     'eula_url'      => null,
                     'support_email' => $secondSupportEmail,
@@ -83,6 +85,7 @@ final class ConsentListFactoryTest extends TestCase
                 new ServiceProvider(
                     new Entity(new EntityId($firstEntityId), EntityType::SP()),
                     new DisplayName(['nl' => '', 'en' => '']),
+                    new DisplayName(['nl' => 'OpenConext', 'en' => 'OpenConext']),
                     new NameIdFormat('test'),
                     new Url($firstEula),
                     null,
@@ -96,6 +99,7 @@ final class ConsentListFactoryTest extends TestCase
                 new ServiceProvider(
                     new Entity(new EntityId($secondEntityId), EntityType::SP()),
                     new DisplayName(['nl' => 'OpenConext ServiceRegistry', 'en' => 'OpenConext ServiceRegistry']),
+                    new DisplayName(['nl' => 'OpenConext', 'en' => 'OpenConext']),
                     new NameIdFormat('test'),
                     null,
                     new ContactEmailAddress($secondSupportEmail),
