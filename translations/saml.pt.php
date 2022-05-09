@@ -41,6 +41,7 @@ return [
                 'domainComponent' => 'profile.saml.attributes.domainComponent',
                 'drink' => 'profile.saml.attributes.drink',
                 'eckId' => 'ECK ID',
+                'eduId' => 'eduID',
                 'eduOrgHomePageURI' => 'profile.saml.attributes.eduOrgHomePageURI',
                 'eduOrgIdentityAuthNPolicyURI' => 'profile.saml.attributes.eduOrgIdentityAuthNPolicyURI',
                 'eduOrgLegalName' => 'profile.saml.attributes.eduOrgLegalName',
