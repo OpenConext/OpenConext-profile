@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f647e0a456f6d6a44f2399991fb7893b",
+    "content-hash": "831779affce665d29ec673f5a4bb3a52",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2292,16 +2292,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "4.3.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "2924e2973466061a074079b1993f7a4fd2dc6c08"
+                "reference": "79fb931d8a6d2612d80a77b1e2322c6346f12cf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/2924e2973466061a074079b1993f7a4fd2dc6c08",
-                "reference": "2924e2973466061a074079b1993f7a4fd2dc6c08",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/79fb931d8a6d2612d80a77b1e2322c6346f12cf0",
+                "reference": "79fb931d8a6d2612d80a77b1e2322c6346f12cf0",
                 "shasum": ""
             },
             "require": {
@@ -2344,7 +2344,11 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2021-09-23T11:20:24+00:00"
+            "support": {
+                "issues": "https://github.com/OpenConext/Stepup-saml-bundle/issues",
+                "source": "https://github.com/OpenConext/Stepup-saml-bundle/tree/4.4.0"
+            },
+            "time": "2022-05-09T14:26:10+00:00"
         },
         {
             "name": "symfony/asset",
@@ -9250,5 +9254,5 @@
     "platform-overrides": {
         "php": "7.2.20"
     },
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.2.0"
 }
