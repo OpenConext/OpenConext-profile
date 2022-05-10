@@ -50,9 +50,9 @@ class Kernel extends BaseKernel
     {
         // The dev cache lives in the tmp folder of the Docker container
         if ($this->getEnvironment() === 'dev') {
-            return '/tmp/'.$this->environment.'/cache';
+            return '/tmp/cache/'.$this->environment;
         }
-        return dirname(__DIR__).'/var/'.$this->environment.'/cache';
+        return dirname(__DIR__).'/var/cache/'.$this->environment;
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void

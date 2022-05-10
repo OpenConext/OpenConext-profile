@@ -71,7 +71,7 @@ final class InformationRequestMailService
         $email = (new TemplatedEmail())
             ->from($this->mailFrom->getEmailAddress())
             ->to($this->mailTo->getEmailAddress())
-            ->subject(sprintf('Personal debug info of %s', $user->getId()))
+            ->subject(sprintf('Information request for user: %s', $user->getId()))
             ->htmlTemplate('@OpenConextProfile/InformationRequest/email.html.twig')
             ->context(['attributes' => $attributes]);
         $this->mailer->send($email);

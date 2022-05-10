@@ -7,8 +7,9 @@
             {% include '@OpenConextProfile/MyServices/AttributeList/idp.html.twig' %}
         </ul>
     {% endfor %}
+{% endif %}
 
-    {% if specifiedConsent.getAttributeAggregatedAttributes is not empty %}
+{% if specifiedConsent.getAttributeAggregatedAttributes is not empty %}
 
     <p>{{ 'profile.my_services.service_information.aa_text'|trans }}</p>
 
@@ -23,6 +24,4 @@
         <p>{{ 'profile.table.explanation.text'|trans({'%singularOrPlural%': singularOrPlural }) }}</p>
     </li>
     </ul>
-    {% endif %}
 {% endif %}
-
