@@ -1,5 +1,26 @@
 # Next release
 
+# 3.1.3
+
+**Fixes**
+* Update dependencies for security fixes
+
+# 3.1.2
+
+**Fixes**
+* Fix Symfony 4.4 compatibility issue
+
+# 3.1.1
+
+**Features**
+* Profile SP metadata now includes signing certificate
+
+**Improvements**
+* Make the cache path var/cache/prod again instead of var/prod/cache
+* Show aggregated attributes even if SP has no IdP-attributes
+* Translate two more attributes
+* Fix translation of information-request email
+
 # 3.1.0
 
 **Features**
