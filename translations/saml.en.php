@@ -114,7 +114,7 @@ return [
                 'organizationalStatus' => 'profile.saml.attributes.organizationalStatus',
                 'organizationalUnitName' => 'profile.saml.attributes.organizationalUnitName',
                 'otherMailbox' => 'profile.saml.attributes.otherMailbox',
-                'ou' => 'profile.saml.attributes.ou',
+                'ou' => 'Organizational Unit',
                 'owner' => 'profile.saml.attributes.owner',
                 'pager' => 'profile.saml.attributes.pager',
                 'pagerTelephoneNumber' => 'profile.saml.attributes.pagerTelephoneNumber',
