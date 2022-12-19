@@ -1,5 +1,11 @@
 # Next release
 
+# 3.1.4
+
+**Fixes**
+* Add translation for Organizational Unit attribute
+* Update dependencies for security fixes
+
 # 3.1.3
 
 **Fixes**
