@@ -2336,16 +2336,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "4.4.1",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "07be27ec720fb61fc90a11c02e1778f08655cd0f"
+                "reference": "6e5bd70984e25415d75f8acc245fd4937c612812"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/07be27ec720fb61fc90a11c02e1778f08655cd0f",
-                "reference": "07be27ec720fb61fc90a11c02e1778f08655cd0f",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/6e5bd70984e25415d75f8acc245fd4937c612812",
+                "reference": "6e5bd70984e25415d75f8acc245fd4937c612812",
                 "shasum": ""
             },
             "require": {
@@ -2388,7 +2388,11 @@
                 "stepup",
                 "surfnet"
             ],
-            "time": "2022-05-10T08:37:04+00:00"
+            "support": {
+                "issues": "https://github.com/OpenConext/Stepup-saml-bundle/issues",
+                "source": "https://github.com/OpenConext/Stepup-saml-bundle/tree/4.4.2"
+            },
+            "time": "2023-01-04T09:16:46+00:00"
         },
         {
             "name": "symfony/asset",
@@ -9295,5 +9299,5 @@
     "platform-overrides": {
         "php": "7.2.20"
     },
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.3.0"
 }
