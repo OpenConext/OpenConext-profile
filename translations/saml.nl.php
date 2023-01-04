@@ -56,6 +56,7 @@ return [
                 'eduPersonOrgUnitDN' => 'profile.saml.attributes.eduPersonOrgUnitDN',
                 'eduPersonPrimaryAffiliation' => 'Primaire betrekking',
                 'eduPersonPrincipalName' => 'Gebruikers-ID bij de %organisationNoun%',
+                'subjectId' => 'Gebruikers-ID bij de %organisationNoun%',
                 'eduPersonScopedAffiliation' => 'Betrekking (scoped)',
                 'eduPersonTargetedID' => 'Identifier',
                 'email' => 'E-mailadres',
