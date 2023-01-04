@@ -1,5 +1,10 @@
 # Next release
 
+# 3.1.5
+
+**Improvements**
+* Add translation for SAML subjectId attribute.
+
 # 3.1.4
 
 **Fixes**
