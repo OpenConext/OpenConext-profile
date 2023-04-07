@@ -6,7 +6,7 @@ if (file_exists($overridesFile)) {
     $overrides = require $overridesFile;
 }
 
-return $overrides + [
+return array_merge_recursive($overrides, [
     'provided_by_attribute_source_url' => 'https://test.me',
     'accessibility' => [
         'button_expandable_screenreader' => ' ,knop, uitklapbaar',
@@ -277,4 +277,4 @@ return $overrides + [
             ],
         ],
     ],
-];
+]);
