@@ -1,5 +1,12 @@
 # Next release
 
+# 3.1.6
+
+**Fixes**
+* Fix translation in connection disconnect dialog
+* Fix translation overrides for a subset of keys of a nested array
+* Update dependencies for security fixes
+
 # 3.1.5
 
 **Improvements**
