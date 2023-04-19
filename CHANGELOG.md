@@ -1,5 +1,10 @@
 # Next release
 
+# 3.1.7
+
+**Fixes**
+* Fix translation overrides.
+
 # 3.1.6
 
 **Fixes**
