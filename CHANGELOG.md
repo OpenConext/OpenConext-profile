@@ -1,5 +1,11 @@
 # Next release
 
+# 3.1.8
+
+**Fixes**
+* Add missing oid for SAML eduPersonAssurance attribute.
+* Update dependencies for security fixes
+
 # 3.1.7
 
 **Fixes**
