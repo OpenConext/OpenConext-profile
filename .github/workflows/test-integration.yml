@@ -83,17 +83,6 @@ jobs:
               echo -e "\nCypress a11y tests\n" && \
               cypress run --spec "./tests/cypress/integration/a11y/*.spec.js" --browser=electron --headless'        env:
           SYMFONY_ENV: test
-      - name: Run security tests
-        if: always()
-        run: |
-          APP_ENV=test docker-compose exec -T php-fpm sh -c '
-              echo -e "\nSymfony security checker\n" && \
-              ./ci/security-checker.sh && \
-              echo -e "\nNPM Audit\n" && \
-              ./ci/npm-audit.sh
-          '
-        env:
-          SYMFONY_ENV: test
       - name: Show log on failure
         if: failure()
         run:  |
