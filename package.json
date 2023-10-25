@@ -37,7 +37,7 @@
     "IE 11"
   ],
   "dependencies": {
-    "@symfony/webpack-encore": "^1.7",
+    "@symfony/webpack-encore": "^4.5",
     "autoprefixer": "^10.3.2",
     "cssnano": "^5.0.8",
     "details-element-polyfill": "^2.4.0",
