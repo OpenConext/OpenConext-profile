@@ -1,0 +1,10 @@
+monolog:
+  handlers:
+    main:
+      type: fingers_crossed
+      action_level: ERROR
+      passthru_level: NOTICE
+      handler: stdout
+    stdout:
+      type:     stream
+      path:     php://stderr
