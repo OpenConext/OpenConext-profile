@@ -1,0 +1,15 @@
+FROM ghcr.io/openconext/openconext-basecontainers/php72-apache2:latest
+COPY *.tar.gz /tmp/
+RUN tar --strip-components=1 -xvzf /tmp/*.tar.gz -C /var/www/html/ && \
+  rm -rf /tmp/*.tar.bz2
+
+# Add the config files for Apache2
+RUN rm -rf /etc/apache2/sites-enabled/*
+COPY ./docker/conf/000-default.conf /etc/apache2/sites-enabled/profile.conf
+COPY ./docker/conf/monolog.yaml /var/www/html/config/packages/
+
+
+# Set the default workdir
+WORKDIR /var/www/html
+EXPOSE 80
+CMD ["apache2-foreground"]
