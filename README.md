@@ -17,7 +17,7 @@ from the IdP (OpenConext Engineblock) and requests and displays additional
 information via EngineBlock's internal API.
 
 ## Requirements
-- PHP 7.0
+- PHP 8.2
 - EngineBlock 5.6 >= 5.6.7 
 - EngineBlock 5.7 >= 5.7.1
 - EngineBlock must be configured to release an unspecified NameID to Profile
@@ -38,7 +38,7 @@ The docker container comes with EB and profile already installed & configured.  
 5. Install npm dependencies: `npm i`
 6. Run a build: `npm run build`
 7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
-9. Start developing on docker: `docker-compose up -d`
+9. Start developing on docker: `docker compose up -d`
 
 ## Attribute aggregation support
 Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
