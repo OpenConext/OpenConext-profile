@@ -175,7 +175,7 @@ return array_replace_recursive([
             'sup_text' => 'Je %organisationNoun% beslist welke diensten toegankelijk voor je zijn via %suiteName%.  De meeste diensten die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige diensten gebruiken geen persoonlijke data.  Indien je wil weten welke diensten welke data ontvingen, dan vind je dat bij',
 
             'user_data_download' => [
-                'explanation' => 'Je kunt een overzicht van de persoonlijke data die %suiteName% bewaart downloaden in json-formaat.',
+                'explanation' => 'Je kunt een overzicht van de persoonlijke data die %suiteName% bewaard downloaden in json-formaat.',
                 'link_text' => 'Download overzicht',
                 'title' => 'Downloaden',
             ],
