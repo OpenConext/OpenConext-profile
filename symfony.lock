@@ -146,9 +146,6 @@
     "phpmd/phpmd": {
         "version": "2.10.2"
     },
-    "phpspec/prophecy": {
-        "version": "v1.10.3"
-    },
     "phpstan/phpstan": {
         "version": "1.10",
         "recipe": {
@@ -427,6 +424,21 @@
     },
     "symfony/options-resolver": {
         "version": "v4.4.30"
+    },
+    "symfony/phpunit-bridge": {
+        "version": "7.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.1",
+            "ref": "2f91477d6efaed3fb857db87480f7d07d31cbb3e"
+        },
+        "files": [
+            ".env.test",
+            "bin/phpunit",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php"
+        ]
     },
     "symfony/polyfill-ctype": {
         "version": "v1.23.0"

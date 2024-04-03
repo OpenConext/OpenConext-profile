@@ -48,18 +48,19 @@ class ArpTest extends TestCase
         $this->assertEmpty($arp->getAttributesGroupedBySource());
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         Mockery::close();
     }
 
     /**
-     * @expectedException \OpenConext\Profile\Exception\InvalidArpDataException
+     *
      * @dataProvider invalidArpData
      */
     public function test_it_rejects_invalid_data_structures($invalidArpData)
     {
+        $this->expectException(InvalidArpDataException::class);
         Arp::createWith($invalidArpData);
     }
 
@@ -113,7 +114,7 @@ class ArpTest extends TestCase
         }
     }
 
-    public function invalidArpData()
+    public function invalidArpData(): array
     {
         return [
             [[null]],

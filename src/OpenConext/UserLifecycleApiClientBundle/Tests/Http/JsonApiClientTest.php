@@ -25,6 +25,8 @@ use PHPUnit\Framework\TestCase;
 
 class JsonApiClientTest extends TestCase
 {
+    use m\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
     /**
      * @test
      * @group eb_api_service

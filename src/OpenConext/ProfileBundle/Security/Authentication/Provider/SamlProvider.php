@@ -32,7 +32,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class SamlProvider implements AuthenticationProviderInterface
 {
     /**
-     * @var \Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary
+     * @var AttributeDictionary
      */
     private $attributeDictionary;
 

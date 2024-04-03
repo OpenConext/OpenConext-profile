@@ -27,7 +27,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeFilterTest extends TestCase
 {
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         m::close();

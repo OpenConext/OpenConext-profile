@@ -56,7 +56,11 @@ class Configuration implements ConfigurationInterface
                                 ->ifTrue(function ($baseUrl) {
                                     $path = parse_url($baseUrl, PHP_URL_PATH);
 
-                                    return $path[strlen($path)-1] !== '/';
+                                    if ($path === null) {
+                                        return true;
+                                    }
+
+                                    return ! str_ends_with($path, '/');
                                 })
                                 ->thenInvalid('The user lifecycle base URL must end in a forward slash')
                             ->end()

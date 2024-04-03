@@ -29,11 +29,13 @@ class AssertTest extends TestCase
      * @group Assert
      * @dataProvider missingKeysProvider
      *
-     * @expectedException \OpenConext\Profile\Exception\AssertionFailedException
-     * @expectedExceptionMessage Required key
+     *
+     *
      */
     public function missing_required_keys_trigger_an_exception($givenArray, $expectedKeys)
     {
+        $this->expectException(AssertionFailedException::class);
+        $this->expectExceptionMessage("Required key");
         Assert::keysArePresent($givenArray, $expectedKeys);
     }
 

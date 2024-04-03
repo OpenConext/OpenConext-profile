@@ -73,12 +73,12 @@ final class ContactPersonList implements IteratorAggregate, Countable
         return $this->contactPersons[0];
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->contactPersons);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->contactPersons);
     }

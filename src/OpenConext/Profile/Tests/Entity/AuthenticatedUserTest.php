@@ -38,7 +38,7 @@ class AuthenticatedUserTest extends TestCase
     /**
      * We need to set the correct SAML2 Container Singleton for SAML2 to work.
      */
-    public function setUp()
+    public function setUp(): void
     {
         ContainerSingleton::setContainer(new BridgeContainer(new NullLogger()));
     }

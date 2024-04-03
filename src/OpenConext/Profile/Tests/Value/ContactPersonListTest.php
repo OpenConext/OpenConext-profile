@@ -18,6 +18,7 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
+use OpenConext\Profile\Exception\OutOfRangeException;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
@@ -58,10 +59,11 @@ class ContactPersonListTest extends TestCase
      * @test
      * @group ContactPerson
      *
-     * @expectedException \OpenConext\Profile\Exception\OutOfRangeException
+     *
      */
     public function first_contact_person_cannot_be_retrieved_from_empty_list()
     {
+        $this->expectException(OutOfRangeException::class);
         $contactPersonList = new ContactPersonList([]);
         $contactPersonList->first();
     }

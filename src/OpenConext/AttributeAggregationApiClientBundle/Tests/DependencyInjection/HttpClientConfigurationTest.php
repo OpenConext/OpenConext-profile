@@ -24,7 +24,7 @@ use OpenConext\AttributeAggregationApiClientBundle\Tests\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 
-final class ConfigurationTest extends TestCase
+final class HttpClientConfigurationTest extends TestCase
 {
     use ConfigurationTestCaseTrait;
     use DataProvider;
