@@ -113,8 +113,7 @@ class JsonApiClient
                 sprintf(
                     'Request to resource "%s" returned an invalid response with status code %s',
                     $resource,
-                    $statusCode,
-                    $response->getBody()
+                    $statusCode
                 )
             );
         }
