@@ -22,6 +22,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use OpenConext\Profile\Exception\LogicException;
+use Traversable;
 use function ksort;
 use const SORT_STRING;
 
@@ -76,12 +77,12 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
         $this->specifiedConsents[] = $specifiedConsent;
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->specifiedConsents);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->specifiedConsents);
     }

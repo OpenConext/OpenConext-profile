@@ -63,12 +63,12 @@ final class LocaleSet implements IteratorAggregate, Countable
         return false;
     }
 
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->locales);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->locales);
     }

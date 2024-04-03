@@ -21,6 +21,7 @@ namespace OpenConext\Profile\Value;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 final class ConsentList implements IteratorAggregate, Countable
 {
@@ -56,12 +57,12 @@ final class ConsentList implements IteratorAggregate, Countable
         return array_map($predicate, $this->consents);
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->consents);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->consents);
     }
