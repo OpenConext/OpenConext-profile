@@ -5,7 +5,7 @@ nelmio_security:
   external_redirects:
     abort: true
     log: true
-    whitelist:
+    allow_list:
       - '%saml_remote_idp_host%'
   csp:
     report_logger_service: monolog.logger.security
