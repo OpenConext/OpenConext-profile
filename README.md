@@ -32,8 +32,8 @@ The docker container comes with EB and profile already installed & configured.  
 
 1. Clone the repo
 2. Copy .env file: `cp ./.env.dist ./.env` and fill it with sensible settings (for instance use the dev env)
-2. Copy parameters file: `cp config/legacy/parameters.yaml.dist config/legacy/parameters/parameters.yaml`
-3. Copy global_view_parameters file: `cp config/legacy/parameters/global_view_parameters.yaml.dist config/legacy/parameters/global_view_parameters.yaml`
+2. Copy parameters file: `cp config/openconext/parameters.yaml.dist config/openconext/parameters/parameters.yaml`
+3. Copy global_view_parameters file: `cp config/openconext/parameters/global_view_parameters.yaml.dist config/openconext/parameters/global_view_parameters.yaml`
 4. Install composer dependencies: `SYMFONY_ENV=dev composer install --prefer-dist`
 5. Install npm dependencies: `npm i`
 6. Run a build: `npm run build`
