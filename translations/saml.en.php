@@ -154,6 +154,7 @@ return [
                 'supportedAlgorithms' => 'profile.saml.attributes.supportedAlgorithms',
                 'supportedApplicationContext' => 'profile.saml.attributes.supportedApplicationContext',
                 'surf-crm-id' => 'Organisation ID in SURF CRM',
+                'surf-autorisaties' => 'SURF-authorizations',
                 'surfconextAccountStatus' => 'SURFconext Status',
                 'surfconextLicenseInfo' => 'License Information',
                 'surfconextVirtualOrganisationName' => 'Virtual Organization Name',
