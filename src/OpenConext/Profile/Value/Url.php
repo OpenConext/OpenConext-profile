@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -22,27 +23,12 @@ use OpenConext\Profile\Assert;
 
 final class Url
 {
-    /**
-     * @var string
-     */
-    private $url;
-
-    /**
-     * @param string $url
-     */
-    public function __construct($url)
+    public function __construct(private readonly string $url)
     {
-        Assert::string($url, 'URL "%s" must be a string');
         Assert::url($url);
-
-        $this->url = $url;
     }
 
-    /**
-     * @param Url $other
-     * @return bool
-     */
-    public function equals(Url $other)
+    public function equals(Url $other): bool
     {
         return $this == $other;
     }
