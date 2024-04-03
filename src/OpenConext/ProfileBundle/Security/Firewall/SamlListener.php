@@ -29,21 +29,20 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use \Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Twig\Environment;
 use Twig\Environment as Twig;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class SamlListener implements ListenerInterface
+class SamlListener
 {
     /**
      * @var SessionInterface
@@ -105,7 +104,7 @@ class SamlListener implements ListenerInterface
         $this->twig = $twig;
     }
 
-    public function handle(GetResponseEvent $event)
+    public function __invoke(RequestEvent $event)
     {
         try {
             $this->handleEvent($event);
@@ -115,10 +114,7 @@ class SamlListener implements ListenerInterface
         }
     }
 
-    /**
-     * @param GetResponseEvent $event
-     */
-    private function handleEvent(GetResponseEvent $event)
+    private function handleEvent(RequestEvent $event)
     {
         if ($this->tokenStorage->getToken()) {
             return;
@@ -194,9 +190,9 @@ class SamlListener implements ListenerInterface
     }
 
     /**
-     * @param GetResponseEvent $event
+     * @param RequestEvent $event
      */
-    private function sendAuthnRequest(GetResponseEvent $event)
+    private function sendAuthnRequest(RequestEvent $event)
     {
         $this->stateHandler->setCurrentRequestUri($event->getRequest()->getUri());
 
@@ -208,9 +204,9 @@ class SamlListener implements ListenerInterface
 
     /**
      * @param PreconditionNotMetException $exception
-     * @param GetResponseEvent $event
+     * @param RequestEvent $event
      */
-    private function setPreconditionExceptionResponse(PreconditionNotMetException $exception, GetResponseEvent $event)
+    private function setPreconditionExceptionResponse(PreconditionNotMetException $exception, RequestEvent $event)
     {
         $template = null;
 
@@ -226,9 +222,9 @@ class SamlListener implements ListenerInterface
 
     /**
      * Deny authentication by default
-     * @param GetResponseEvent $event
+     * @param RequestEvent $event
      */
-    private function setAuthenticationFailedResponse(GetResponseEvent $event)
+    private function setAuthenticationFailedResponse(RequestEvent $event)
     {
         $response = new Response();
         $response->setStatusCode(Response::HTTP_FORBIDDEN);

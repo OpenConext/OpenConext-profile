@@ -19,7 +19,7 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Assert;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface ;
 
 final class GlobalViewParameters
 {

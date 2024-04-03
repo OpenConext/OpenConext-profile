@@ -22,8 +22,8 @@ use DateTime;
 use OpenConext\Profile\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class SingleCookieStorage implements EventSubscriberInterface
@@ -77,36 +77,22 @@ class SingleCookieStorage implements EventSubscriberInterface
         $this->cookieHttpOnly       = $cookieHttpOnly;
     }
 
-    /**
-     * @param string $value
-     */
-    public function setValue($value)
+    public function setValue(string $value)
     {
-        Assert::string($value);
-
         $this->cookieValue = $value;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->cookieValue;
     }
 
-    /**
-     * @param GetResponseEvent $event
-     */
-    public function loadValueFromCookie(GetResponseEvent $event)
+    public function loadValueFromCookie(RequestEvent $event)
     {
         $this->cookieValue = $event->getRequest()->cookies->get($this->cookieKey, null);
     }
 
-    /**
-     * @param FilterResponseEvent $event
-     */
-    public function storeValueInCookie(FilterResponseEvent $event)
+    public function storeValueInCookie(ResponseEvent $event)
     {
         // If no date is specified for cookie expiration, a session cookie should be created
         $cookieExpirationDate = $this->cookieExpirationDate ?: 0;
@@ -123,7 +109,7 @@ class SingleCookieStorage implements EventSubscriberInterface
         );
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             // Must be loaded early
