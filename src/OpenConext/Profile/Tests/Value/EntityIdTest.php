@@ -18,6 +18,7 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
+use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\EntityId;
 use PHPUnit\Framework\TestCase;
@@ -32,12 +33,10 @@ class EntityIdTest extends TestCase
      * @group Value
      *
      * @dataProvider notNonEmptyOrBlankStringProvider
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     *
-     * @param mixed $invalidValue
      */
-    public function only_non_empty_strings_are_valid_entity_ids($invalidValue)
+    public function only_non_empty_strings_are_valid_entity_ids(mixed $invalidValue)
     {
+        $this->expectException(InvalidArgumentException::class);
         new EntityId($invalidValue);
     }
 

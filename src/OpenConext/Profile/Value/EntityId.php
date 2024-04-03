@@ -22,21 +22,12 @@ use OpenConext\Profile\Assert;
 
 final class EntityId
 {
-    /**
-     * @var string
-     */
-    private $entityId;
 
-    /**
-     * @param string $entityId
-     */
-    public function __construct($entityId)
+
+    public function __construct(private readonly string $entityId)
     {
         Assert::notEmpty($entityId);
-        Assert::string($entityId);
         Assert::notBlank($entityId);
-
-        $this->entityId = $entityId;
     }
 
     /**
