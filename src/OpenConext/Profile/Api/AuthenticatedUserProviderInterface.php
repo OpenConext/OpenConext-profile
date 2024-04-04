@@ -22,8 +22,5 @@ use OpenConext\Profile\Entity\AuthenticatedUser;
 
 interface AuthenticatedUserProviderInterface
 {
-    /**
-     * @return AuthenticatedUser
-     */
-    public function getCurrentUser();
+    public function getCurrentUser(): AuthenticatedUser;
 }

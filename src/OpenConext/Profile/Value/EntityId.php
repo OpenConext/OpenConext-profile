@@ -22,27 +22,18 @@ use OpenConext\Profile\Assert;
 
 final class EntityId
 {
-
-
     public function __construct(private readonly string $entityId)
     {
         Assert::notEmpty($entityId);
         Assert::notBlank($entityId);
     }
 
-    /**
-     * @param EntityId $other
-     * @return bool
-     */
-    public function equals(EntityId $other)
+    public function equals(EntityId $other): bool
     {
         return $this->entityId === $other->entityId;
     }
 
-    /**
-     * @return string
-     */
-    public function getEntityId()
+    public function getEntityId(): string
     {
         return $this->entityId;
     }

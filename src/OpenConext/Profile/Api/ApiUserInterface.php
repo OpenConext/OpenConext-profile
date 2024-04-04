@@ -24,34 +24,15 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 interface ApiUserInterface
 {
-    /**
-     * @param Locale $locale
-     * @return void
-     */
-    public function switchLocaleTo(Locale $locale);
+    public function switchLocaleTo(Locale $locale): void;
 
-    /**
-     * @return bool
-     */
-    public function hasSupportContactEmail();
+    public function hasSupportContactEmail(): bool;
 
-    /**
-     * @return null|ContactEmailAddress
-     */
-    public function getSupportContactEmail();
+    public function getSupportContactEmail(): ?ContactEmailAddress;
 
-    /**
-     * @return Locale
-     */
-    public function getLocale();
+    public function getLocale(): Locale;
 
-    /**
-     * @return AttributeSet
-     */
-    public function getAttributes();
+    public function getAttributes(): AttributeSet;
 
-    /**
-     * @return string
-     */
-    public function getId();
+    public function getId(): string;
 }

@@ -58,7 +58,7 @@ final class AuthenticatedUser
      * @return AuthenticatedUser
      * @throws RuntimeException
      */
-    public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities)
+    public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities): AuthenticatedUser
     {
         $attributes = [];
 
@@ -84,9 +84,8 @@ final class AuthenticatedUser
      * @param AttributeSet $attributes
      * @param EntityId[] $authenticatingAuthorities
      */
-    private function __construct($nameId, AttributeSet $attributes, array $authenticatingAuthorities)
+    private function __construct(string $nameId, AttributeSet $attributes, array $authenticatingAuthorities)
     {
-        Assert::string($nameId);
         Assert::allIsInstanceOf($authenticatingAuthorities, '\OpenConext\Profile\Value\EntityId');
 
         $this->nameId                    = $nameId;
@@ -94,18 +93,12 @@ final class AuthenticatedUser
         $this->authenticatingAuthorities = $authenticatingAuthorities;
     }
 
-    /**
-     * @return string
-     */
-    public function getNameId()
+    public function getNameId(): string
     {
         return $this->nameId;
     }
 
-    /**
-     * @return AttributeSet
-     */
-    public function getAttributes()
+    public function getAttributes(): AttributeSet
     {
         return $this->attributes;
     }
@@ -113,7 +106,7 @@ final class AuthenticatedUser
     /**
      * @return EntityId[]
      */
-    public function getAuthenticatingAuthorities()
+    public function getAuthenticatingAuthorities(): array
     {
         return $this->authenticatingAuthorities;
     }
@@ -130,19 +123,20 @@ final class AuthenticatedUser
         return $this->nameId;
     }
 
-    /**
-     * @return AttributeSet
-     */
-    public function getAttributesFiltered()
+    public function getAttributesFiltered(): AttributeSet
     {
         $attributes = $this->getAttributes();
         $filtered = [];
-        /** @var Attribute $attribute */
+
         foreach ($attributes as $attribute) {
+
+            assert($attribute instanceof Attribute);
+
             // Filter out blacklisted attributes
             if (in_array($attribute->getAttributeDefinition()->getUrnOid(), self::$blacklistedAttributes)) {
                 continue;
             }
+
             $filtered[] = $attribute;
         }
         return AttributeSet::create($filtered);
