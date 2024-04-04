@@ -11,28 +11,28 @@
         ]
     },
     "require": {
-        "ext-json": "*",
         "php": "^8.2",
-        "beberlei/assert": "^2.4 || ^3.0",
-        "doctrine/annotations": "^1.13 || ^2.0",
-        "guzzlehttp/guzzle": "^6.1 || ^7.0",
+        "ext-json": "*",
+        "beberlei/assert": "^3.0",
+        "doctrine/annotations": "^2.0",
+        "guzzlehttp/guzzle": "^7.0",
         "incenteev/composer-parameter-handler": "^2.2",
         "jms/translation-bundle": "^1.1 || ^2.0",
         "nelmio/security-bundle": "^2.10",
         "openconext/monitor-bundle": "^3.1 || ^4.0",
         "sensio/framework-extra-bundle": "^5.5 || ^6.0",
-        "surfnet/stepup-saml-bundle": "4.4.* || 6.0.*",
+        "surfnet/stepup-saml-bundle": "^6.0.18",
         "symfony/expression-language": "4.4.* || 6.4.*",
         "symfony/flex": "^1.18 || ^2",
         "symfony/form": "4.4.* || 6.4.*",
         "symfony/mailer": "4.4.* || 6.4.*",
         "symfony/monolog-bundle": "^3.7",
+        "symfony/runtime": "4.4.* || 6.4.*",
         "symfony/security-bundle": "4.4.* || 6.4.*",
         "symfony/translation": "4.4.* || 6.4.*",
         "symfony/twig-bundle": "4.4.* || 6.4.*",
         "symfony/web-profiler-bundle": "4.4.* || 6.4.*",
         "symfony/webpack-encore-bundle": "^1.17 || ^2.0",
-        "twig/extensions": "^1.5 || ^2 || ^3",
         "twig/extra-bundle": "^2 || ^3",
         "twig/twig": "^2 || ^3"
     },
@@ -89,13 +89,17 @@
         },
         "sort-packages": true,
         "allow-plugins": {
-            "symfony/flex": true
+            "symfony/flex": true,
+            "symfony/runtime": true
         }
     },
     "extra": {
+        "runtime": {
+            "disable_dotenv": true
+        },
         "symfony": {
             "allow-contrib": false,
-            "require": "4.4.* || 6.4.*"
+            "require": "6.4.*"
         },
         "symfony-assets-install": "relative",
         "incenteev-parameters": [
