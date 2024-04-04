@@ -45,6 +45,37 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeReleasePolicyServiceTest extends TestCase
 {
+    private const ARP_DATA = [
+            'some-entity-id' => [
+                'urn:mace:some-attribute' => [
+                    [
+                        'value' => 'some-value',
+                        'source' => 'idp',
+                    ],
+                ],
+                'urn:oid:0.0.0.0.0.1' => [
+                    [
+                        'value' => 'some-value',
+                        'source' => 'idp',
+                    ],
+                ],
+                'urn:oid:0.0.0.0.0.2' => [
+                    [
+                        'value' => 'another-value',
+                        'source' => 'sab',
+                    ],
+                ],
+            ],
+            'another-entity-id' => [
+                'urn:oid:0.0.0.0.0.2' => [
+                    [
+                        'value' => 'another-value',
+                        'source' => 'voot',
+                    ],
+                ]
+            ],
+        ];
+
     /**
      * @test
      * @group AttributeReleasePolicy
@@ -112,37 +143,6 @@ class AttributeReleasePolicyServiceTest extends TestCase
                 ],
             ]);
 
-        $arpData = [
-            'some-entity-id' => [
-                'urn:mace:some-attribute' => [
-                    [
-                        'value' => 'some-value',
-                        'source' => 'idp',
-                    ],
-                ],
-                'urn:oid:0.0.0.0.0.1' => [
-                    [
-                        'value' => 'some-value',
-                        'source' => 'idp',
-                    ],
-                ],
-                'urn:oid:0.0.0.0.0.2' => [
-                    [
-                        'value' => 'another-value',
-                        'source' => 'sab',
-                    ],
-                ],
-            ],
-            'another-entity-id' => [
-                'urn:oid:0.0.0.0.0.2' => [
-                    [
-                        'value' => 'another-value',
-                        'source' => 'voot',
-                    ],
-                ]
-            ],
-        ];
-
         $client->expects('post')
             ->with(
                     [
@@ -153,7 +153,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
                     ],
                     '/read-arp',
             )
-            ->andReturn($arpData);
+            ->andReturn(self::ARP_DATA);
 
         $someConsent = new Consent(
             new ServiceProvider(
@@ -207,12 +207,12 @@ class AttributeReleasePolicyServiceTest extends TestCase
             SpecifiedConsent::specifies(
                 $someConsent,
                 AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
-                Arp::createWith($arpData['some-entity-id'], $attributeDictionary)
+                Arp::createWith(self::ARP_DATA['some-entity-id'], $attributeDictionary)
             ),
             SpecifiedConsent::specifies(
                 $anotherConsent,
                 AttributeSetWithFallbacks::create([$expectedAnotherAttribute]),
-                Arp::createWith($arpData['another-entity-id'], $attributeDictionary)
+                Arp::createWith(self::ARP_DATA['another-entity-id'], $attributeDictionary)
             )
         ]);
 
