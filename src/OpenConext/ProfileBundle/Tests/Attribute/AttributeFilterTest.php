@@ -26,12 +26,6 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeFilterTest extends TestCase
 {
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        m::close();
-    }
-
     public function test_it_handles_empty_set()
     {
         $filter = new AttributeFilter();
