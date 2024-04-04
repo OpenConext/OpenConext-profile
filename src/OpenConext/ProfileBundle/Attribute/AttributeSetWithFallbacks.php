@@ -31,7 +31,7 @@ final class AttributeSetWithFallbacks extends AttributeSet implements AttributeS
 {
     public static function createFrom(
         Assertion $assertion,
-        AttributeDictionary $attributeDictionary
+        AttributeDictionary $attributeDictionary,
     ): AttributeSet {
         $attributeSet = new AttributeSetWithFallbacks();
 

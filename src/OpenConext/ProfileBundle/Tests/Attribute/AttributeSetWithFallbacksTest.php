@@ -18,7 +18,6 @@
 
 namespace OpenConext\ProfileBundle\Tests\Attribute;
 
-use Mockery;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use PHPUnit\Framework\TestCase;
 use SAML2\Assertion;
@@ -39,10 +38,8 @@ class AttributeSetWithFallbacksTest extends TestCase
      */
     public function attribute_set_with_fallbacks_can_be_configured_when_creating_an_assertion_adapter()
     {
-        $assertion = Mockery::mock(Assertion::class);
-        $assertion
-            ->shouldReceive('getAttributes')
-            ->andReturn([]);
+        $assertion = $this->createMock(Assertion::class);
+        $assertion->method('getAttributes')->willReturn([]);
 
         $dictionary = new AttributeDictionary();
 
@@ -68,13 +65,10 @@ class AttributeSetWithFallbacksTest extends TestCase
 
         $attributeDefinition = new AttributeDefinition('some-attribute', $attributeMaceUrn);
 
-        $assertion = Mockery::mock(Assertion::class);
-        $assertion
-            ->shouldReceive('getAttributes')
-            ->andReturn([
-                $attributeMaceUrn => $attributeValue
-            ]);
-
+        $assertion = $this->createMock(Assertion::class);
+        $assertion->method('getAttributes')->willReturn([
+            $attributeMaceUrn => $attributeValue
+        ]);
         $dictionary = new AttributeDictionary();
         $dictionary->addAttributeDefinition($attributeDefinition);
 
@@ -97,12 +91,11 @@ class AttributeSetWithFallbacksTest extends TestCase
         $undefinedAttributeUrn = 'urn:mace:not-defined';
         $attributeValue        = ['some-value'];
 
-        $assertion = Mockery::mock(Assertion::class);
-        $assertion
-            ->shouldReceive('getAttributes')
-            ->andReturn([
-                $undefinedAttributeUrn => $attributeValue
-            ]);
+        $assertion = $this->createMock(Assertion::class);
+        $assertion->method('getAttributes')->willReturn([
+            $undefinedAttributeUrn => $attributeValue
+        ]);
+
         $dictionary = new AttributeDictionary();
 
         $attributeSet = AttributeSetWithFallbacks::createFrom($assertion, $dictionary);
