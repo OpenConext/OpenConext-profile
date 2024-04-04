@@ -58,7 +58,7 @@ final class ConsentRepository implements ConsentRepositoryInterface
             $this->logger->notice('Calling EngineBlock API remove-consent endpoint');
             $this->apiClient->post(
                 ['collabPersonId' => $collabPersonId, 'serviceProviderEntityId' => $entityId],
-                'remove-consent'
+                'remove-consent',
             );
             return true;
         } catch (Exception $e) {

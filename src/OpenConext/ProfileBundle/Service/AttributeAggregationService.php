@@ -46,7 +46,7 @@ final class AttributeAggregationService
     public function __construct(
         AttributeAggregationRepositoryInterface $repository,
         AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->repository = $repository;
         $this->attributeAggregationEnabledAttributes = $attributeAggregationEnabledAttributes;
@@ -75,7 +75,7 @@ final class AttributeAggregationService
                         true,
                         $aaAttribute->getId(),
                         $aaAttribute->getUserNameId(),
-                        $aaAttribute->getLinkedId()
+                        $aaAttribute->getLinkedId(),
                     );
                 } else {
                     $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false, -1, '');
@@ -87,8 +87,8 @@ final class AttributeAggregationService
             $this->logger->error(
                 sprintf(
                     'Error while finding AA attributes. Original error message: "%s"',
-                    $e->getMessage()
-                )
+                    $e->getMessage(),
+                ),
             );
             return null;
         }
@@ -129,7 +129,7 @@ final class AttributeAggregationService
         if ($nameId !== $orcidAttribute->getUserNameId()) {
             $this->logger->error(
                 'The users NameId associated with ORCID iD account does not match the NameId of the 
-                authenticated user.'
+                authenticated user.',
             );
             return false;
         }

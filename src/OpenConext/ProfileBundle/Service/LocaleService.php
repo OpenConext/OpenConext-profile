@@ -45,8 +45,11 @@ final class LocaleService
      * @param LocaleSet $availableLocales
      * @param Locale $defaultLocale
      */
-    public function __construct(LocaleRepositoryInterface $localeRepository, LocaleSet $availableLocales, Locale $defaultLocale)
-    {
+    public function __construct(
+        LocaleRepositoryInterface $localeRepository,
+        LocaleSet $availableLocales,
+        Locale $defaultLocale,
+    ) {
         $this->localeRepository = $localeRepository;
         $this->availableLocales = $availableLocales;
         $this->defaultLocale    = $defaultLocale;

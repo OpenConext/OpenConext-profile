@@ -105,8 +105,8 @@ final class AttributeReleasePolicyService
                         sprintf(
                             'EntityID "%s" was not found in the ARP response (entityIDs: %s)',
                             $entityId,
-                            join(', ', array_keys($response))
-                        )
+                            join(', ', array_keys($response)),
+                        ),
                     );
                 }
 
@@ -129,7 +129,7 @@ final class AttributeReleasePolicyService
                 }
 
                 return SpecifiedConsent::specifies($consent, AttributeSetWithFallbacks::create($attributes), $arp);
-            }
+            },
         );
 
         return SpecifiedConsentList::createWith($specifiedConsents);

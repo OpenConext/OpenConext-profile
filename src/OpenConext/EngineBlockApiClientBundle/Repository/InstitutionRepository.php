@@ -40,7 +40,7 @@ final class InstitutionRepository
 
     public function __construct(
         JsonApiClient $apiClient,
-        EntityId $engineBlockEntityId
+        EntityId $engineBlockEntityId,
     ) {
         $this->apiClient = $apiClient;
         $this->engineBlockEntityId = $engineBlockEntityId;
@@ -52,7 +52,7 @@ final class InstitutionRepository
             return $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId]);
         } catch (Exception $e) {
             throw new ResourceNotFoundException(
-                sprintf('EngineBlock API returned a non 200 response with error message (%s)', $e->getMessage())
+                sprintf('EngineBlock API returned a non 200 response with error message (%s)', $e->getMessage()),
             );
         }
     }

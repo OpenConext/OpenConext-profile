@@ -36,7 +36,7 @@ class ConfirmConnectionDeleteType extends AbstractType
                         'class' => 'button modalWindow__button modalWindow__button--form',
                     ],
                     'label' => 'general.confirm',
-                ]
+                ],
             );
     }
 

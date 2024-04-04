@@ -45,8 +45,8 @@ class ApiHealthCheck implements HealthCheckInterface
                 sprintf(
                     'EngineBlock API is not responding as expected. Message "%s" of type "%s".',
                     $e->getMessage(),
-                    get_class($e)
-                )
+                    get_class($e),
+                ),
             );
         }
         return $report;

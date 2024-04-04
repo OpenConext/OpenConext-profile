@@ -23,13 +23,14 @@ use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class LocaleController
+class LocaleController extends AbstractController
 {
     /**
      * @var FormFactoryInterface
@@ -59,13 +60,13 @@ class LocaleController
     public function __construct(
         FormFactoryInterface $formFactory,
         UserService $userService,
-        FlashBagInterface $flashBag,
+        //        FlashBagInterface $flashBag,
         Guard $guard,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->formFactory = $formFactory;
         $this->userService = $userService;
-        $this->flashBag    = $flashBag;
+//        $this->flashBag    = $flashBag;
         $this->guard       = $guard;
         $this->logger      = $logger;
     }
@@ -85,7 +86,7 @@ class LocaleController
         if (strpos($returnUrl, $domain) !== 0) {
             $this->logger->error(sprintf(
                 'Illegal return-url ("%s") for redirection after changing locale, aborting request',
-                $returnUrl
+                $returnUrl,
             ));
             throw new BadRequestHttpException('Invalid return-url given');
         }
@@ -96,7 +97,7 @@ class LocaleController
         $this->logger->notice(sprintf(
             'Switching locale from "%s" to "%s"',
             $request->getLocale(),
-            $command->newLocale
+            $command->newLocale,
         ));
 
         if ($form->isValid()) {
@@ -106,10 +107,10 @@ class LocaleController
             $this->logger->notice(sprintf(
                 'Successfully switched locale from "%s" to "%s"',
                 $request->getLocale(),
-                $command->newLocale
+                $command->newLocale,
             ));
         } else {
-            $this->flashBag->add('error', 'profile.locale.locale_change_fail');
+            $this->addFlash('error', 'profile.locale.locale_change_fail');
 
             $this->logger->error('Locale not switched: the switch locale form contained invalid data');
         }

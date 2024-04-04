@@ -58,7 +58,7 @@ class IntroductionController
         UserService $userService,
         Environment $templateEngine,
         Guard $guard,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->userService    = $userService;
         $this->templateEngine = $templateEngine;
@@ -76,7 +76,7 @@ class IntroductionController
         $attributeDefinition = new AttributeDefinition(
             'givenName',
             'urn:mace:dir:attribute-def:givenName',
-            'urn:oid:2.5.4.42'
+            'urn:oid:2.5.4.42',
         );
         try {
             $userName = $this->userService

@@ -70,9 +70,9 @@ class DisplayName
                     function ($locale) {
                         return sprintf('%s=%s', $locale, $this->translations[$locale]);
                     },
-                    array_keys($this->translations)
-                )
-            )
+                    array_keys($this->translations),
+                ),
+            ),
         );
     }
 }

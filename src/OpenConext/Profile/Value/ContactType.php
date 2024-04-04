@@ -42,7 +42,7 @@ final class ContactType
         Assert::choice(
             $contactType,
             [self::TYPE_TECHNICAL, self::TYPE_SUPPORT, self::TYPE_ADMINISTRATIVE, self::TYPE_BILLING, self::TYPE_OTHER],
-            '"%s" is not one of the valid ContactTypes: %s'
+            '"%s" is not one of the valid ContactTypes: %s',
         );
 
         $this->contactType = $contactType;

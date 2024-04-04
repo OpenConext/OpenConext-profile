@@ -35,7 +35,7 @@ class InvalidArgumentException extends CoreInvalidArgumentException
             'Invalid argument type: "%s" expected, "%s" given for "%s"',
             $expected,
             is_object($parameter) ? get_class($parameter) : gettype($parameter),
-            $parameterName
+            $parameterName,
         );
 
         return new self($message);

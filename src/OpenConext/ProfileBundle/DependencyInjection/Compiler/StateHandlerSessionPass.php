@@ -30,9 +30,9 @@ class StateHandlerSessionPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $container
-            ->getDefinition('session')
-            ->addMethodCall('registerBag', [new Reference('profile.session.namespaced_attribute_bag')])
-            ->addMethodCall('registerBag', [new Reference('profile.saml_session.namespaced_attribute_bag')]);
+//        $container
+//            ->getDefinition('session')
+//            ->addMethodCall('registerBag', [new Reference('profile.session.namespaced_attribute_bag')])
+//            ->addMethodCall('registerBag', [new Reference('profile.saml_session.namespaced_attribute_bag')]);
     }
 }

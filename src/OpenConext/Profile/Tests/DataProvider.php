@@ -20,6 +20,8 @@ declare(strict_types=1);
 
 namespace OpenConext\Profile\Tests;
 
+use stdClass;
+
 trait DataProvider
 {
     public function notObjectProvider()
@@ -52,7 +54,7 @@ trait DataProvider
             'null'     => [null],
             'bool'     => [false],
             'array'    => [[]],
-            'object'   => [new \stdClass],
+            'object'   => [new stdClass],
             'resource' => [fopen('php://memory', 'w')],
         ];
     }

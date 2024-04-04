@@ -59,7 +59,7 @@ final class LocaleExtension extends Extension
         $form = $this->formFactory->create(
             SwitchLocaleType::class,
             null,
-            ['return_url' => $returnUrl]
+            ['return_url' => $returnUrl],
         );
 
         return $form->createView();

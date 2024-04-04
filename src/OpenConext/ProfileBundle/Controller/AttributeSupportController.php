@@ -22,13 +22,15 @@ use OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeSupportMailService;
 use OpenConext\ProfileBundle\Service\UserService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
-class AttributeSupportController
+class AttributeSupportController extends AbstractController
 {
     /**
      * @var Guard
@@ -66,7 +68,7 @@ class AttributeSupportController
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator,
         UserService $userService,
-        AttributeSupportMailService $attributeSupportMailService
+        AttributeSupportMailService $attributeSupportMailService,
     ) {
         $this->guard                       = $guard;
         $this->templateEngine              = $templateEngine;
@@ -83,7 +85,7 @@ class AttributeSupportController
         $attributeSupportMailForm = $this->formFactory->create(
             AttributeSupportMailType::class,
             null,
-            ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')]
+            ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')],
         );
 
         return new Response(
@@ -92,8 +94,8 @@ class AttributeSupportController
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
                     'attributeSupportMailForm' => $attributeSupportMailForm->createView()
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -111,7 +113,7 @@ class AttributeSupportController
         $this->guard->userIsLoggedIn();
 
         return new Response(
-            $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig')
+            $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig'),
         );
     }
 }

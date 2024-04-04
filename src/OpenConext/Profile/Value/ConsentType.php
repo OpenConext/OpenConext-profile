@@ -54,7 +54,7 @@ final class ConsentType
         Assert::choice(
             $consentType,
             [ConsentType::TYPE_EXPLICIT, ConsentType::TYPE_IMPLICIT],
-            '"%s" is not one of the valid ConsentTypes: %s'
+            '"%s" is not one of the valid ConsentTypes: %s',
         );
 
         $this->consentType = $consentType;

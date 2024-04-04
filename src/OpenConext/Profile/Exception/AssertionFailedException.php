@@ -44,7 +44,7 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
      *
      * @return string
      */
-    public function getPropertyPath()
+    public function getPropertyPath(): ?string
     {
         return $this->propertyPath;
     }
@@ -54,7 +54,7 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
      *
      * @return mixed
      */
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }
@@ -63,7 +63,7 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
      *
      * @return array
      */
-    public function getConstraints()
+    public function getConstraints(): array
     {
         return $this->constraints;
     }

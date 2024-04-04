@@ -27,6 +27,7 @@ use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -85,7 +86,7 @@ class SamlListener
     private $twig;
 
     public function __construct(
-        SessionInterface $session,
+        private RequestStack $requestStack,
         UrlMatcherInterface $urlMatcher,
         TokenStorageInterface $tokenStorage,
         AuthenticationManagerInterface $authenticationManager,
@@ -94,7 +95,6 @@ class SamlListener
         LoggerInterface $logger,
         Twig $twig
     ) {
-        $this->session                  = $session;
         $this->urlMatcher               = $urlMatcher;
         $this->tokenStorage             = $tokenStorage;
         $this->authenticationManager    = $authenticationManager;
@@ -163,8 +163,8 @@ class SamlListener
 
         $this->tokenStorage->setToken($authToken);
 
-        // migrate the session to prevent session hijacking
-        $this->session->migrate();
+        // migrate the Sion to prevent session hijacking
+        $this->requestStack->getSession()->migrate();
 
         $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
         $logger->notice(

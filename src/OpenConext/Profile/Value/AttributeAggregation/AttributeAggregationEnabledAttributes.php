@@ -33,7 +33,7 @@ final class AttributeAggregationEnabledAttributes
         foreach ($attributes as $accountType => $attribute) {
             $this->attributes[$accountType] = AttributeAggregationAttributeConfiguration::fromConfig(
                 $accountType,
-                $attribute
+                $attribute,
             );
         }
     }

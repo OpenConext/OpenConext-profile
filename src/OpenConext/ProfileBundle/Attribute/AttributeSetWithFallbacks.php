@@ -29,8 +29,10 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 
 final class AttributeSetWithFallbacks extends AttributeSet implements AttributeSetFactory, AttributeSetInterface
 {
-    public static function createFrom(Assertion $assertion, AttributeDictionary $attributeDictionary)
-    {
+    public static function createFrom(
+        Assertion $assertion,
+        AttributeDictionary $attributeDictionary
+    ): AttributeSet {
         $attributeSet = new AttributeSetWithFallbacks();
 
         foreach ($assertion->getAttributes() as $urn => $attributeValue) {
@@ -46,7 +48,7 @@ final class AttributeSetWithFallbacks extends AttributeSet implements AttributeS
         return $attributeSet;
     }
 
-    public static function create(array $attributes)
+    public static function create(array $attributes): AttributeSet
     {
         $attributeSet = new AttributeSetWithFallbacks();
 

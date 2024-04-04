@@ -86,7 +86,7 @@ class MyConnectionsController
         AuthenticatedUserProviderInterface $userProvider,
         EmailAddressSupport $mailTo,
         FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator
+        UrlGeneratorInterface $urlGenerator,
     ) {
         $this->templateEngine = $templateEngine;
         $this->guard = $guard;
@@ -136,7 +136,7 @@ class MyConnectionsController
                 'availableConnections' => $availableConnections,
                 'mailTo' => $this->mailTo->getEmailAddress(),
                 'confirmForm' => $confirmationForm->createView(),
-            ]
+            ],
         ));
     }
 }

@@ -40,7 +40,7 @@ class SpecifiedConsentListService
      */
     public function __construct(
         ConsentService $consentService,
-        AttributeReleasePolicyService $attributeReleasePolicyService
+        AttributeReleasePolicyService $attributeReleasePolicyService,
     ) {
         $this->consentService                = $consentService;
         $this->attributeReleasePolicyService = $attributeReleasePolicyService;
@@ -59,7 +59,7 @@ class SpecifiedConsentListService
 
         return $this->attributeReleasePolicyService->applyAttributeReleasePolicies(
             $consentList,
-            $user->getAttributesFiltered()
+            $user->getAttributesFiltered(),
         );
     }
 

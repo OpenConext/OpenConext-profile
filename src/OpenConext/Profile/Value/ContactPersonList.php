@@ -22,6 +22,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use OpenConext\Profile\Exception\OutOfRangeException;
+use Traversable;
 
 final class ContactPersonList implements IteratorAggregate, Countable
 {
@@ -56,8 +57,8 @@ final class ContactPersonList implements IteratorAggregate, Countable
                 $this->contactPersons,
                 function (ContactPerson $contactPerson) use ($predicate) {
                     return $predicate($contactPerson);
-                }
-            )
+                },
+            ),
         );
     }
 
@@ -73,7 +74,7 @@ final class ContactPersonList implements IteratorAggregate, Countable
         return $this->contactPersons[0];
     }
 
-    public function getIterator(): \Traversable
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->contactPersons);
     }

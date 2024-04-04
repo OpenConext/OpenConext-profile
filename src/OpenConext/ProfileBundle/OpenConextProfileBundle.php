@@ -33,6 +33,6 @@ class OpenConextProfileBundle extends Bundle
 
         /** @var \Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension $extension */
         $extension = $container->getExtension('security');
-        $extension->addSecurityListenerFactory(new SamlFactory());
+        $extension->addAuthenticatorFactory(new SamlFactory());
     }
 }

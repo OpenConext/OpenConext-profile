@@ -105,7 +105,7 @@ class ArpTest extends TestCase
 
         $arp = Arp::createWith(
             json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true),
-            $dictionary
+            $dictionary,
         );
 
         // All entries should have the same attribute definition

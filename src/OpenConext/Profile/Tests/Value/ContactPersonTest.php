@@ -63,9 +63,11 @@ class ContactPersonTest extends TestCase
      */
     public function presence_of_email_address_can_be_asserted()
     {
-        $contactPerson = new ContactPerson(new ContactType(
-            ContactType::TYPE_TECHNICAL),
-            new ContactEmailAddress('invalid@email.address')
+        $contactPerson = new ContactPerson(
+            new ContactType(
+                ContactType::TYPE_TECHNICAL,
+            ),
+            new ContactEmailAddress('invalid@email.address'),
         );
 
         $hasEmailAddress = $contactPerson->hasEmailAddress();

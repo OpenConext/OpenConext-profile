@@ -52,7 +52,7 @@ final class AttributeAggregationAttributeConfiguration
         return new self(
             $accountType,
             $attributeConfigParameters['logo_path'],
-            $attributeConfigParameters['connect_url']
+            $attributeConfigParameters['connect_url'],
         );
     }
 

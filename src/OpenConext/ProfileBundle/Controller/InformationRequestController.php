@@ -73,7 +73,7 @@ class InformationRequestController
         UrlGeneratorInterface $urlGenerator,
         UserService $userService,
         AttributeFilter $attributeFilter,
-        InformationRequestMailService $informationRequestMailService
+        InformationRequestMailService $informationRequestMailService,
     ) {
         $this->guard = $guard;
         $this->templateEngine = $templateEngine;
@@ -91,7 +91,7 @@ class InformationRequestController
         $informationRequestMailForm = $this->formFactory->create(
             InformationRequestMailType::class,
             null,
-            ['action' => $this->urlGenerator->generate('profile.information_request_send_mail')]
+            ['action' => $this->urlGenerator->generate('profile.information_request_send_mail')],
         );
 
         $attributes = $this->attributeFilter->filter($this->userService->getUser()->getAttributes());
@@ -102,8 +102,8 @@ class InformationRequestController
                 [
                     'attributes' => $attributes,
                     'informationRequestMailForm' => $informationRequestMailForm->createView()
-                ]
-            )
+                ],
+            ),
         );
     }
 
@@ -121,7 +121,7 @@ class InformationRequestController
         $this->guard->userIsLoggedIn();
 
         return new Response(
-            $this->templateEngine->render('@OpenConextProfile/InformationRequest/confirmation.html.twig')
+            $this->templateEngine->render('@OpenConextProfile/InformationRequest/confirmation.html.twig'),
         );
     }
 }

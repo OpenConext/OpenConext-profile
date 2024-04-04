@@ -50,7 +50,7 @@ class MyProfileController
         UserService $userService,
         Environment $templateEngine,
         Guard $guard,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->userService    = $userService;
         $this->templateEngine = $templateEngine;
@@ -71,7 +71,7 @@ class MyProfileController
 
         return new Response($this->templateEngine->render(
             '@OpenConextProfile/MyProfile/overview.html.twig',
-            ['user' => $user]
+            ['user' => $user],
         ));
     }
 }

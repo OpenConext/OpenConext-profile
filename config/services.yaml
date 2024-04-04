@@ -3,13 +3,26 @@ imports:
     - { resource: 'openconext/parameters.yaml' }
 
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    OpenConext\ProfileBundle\Controller\:
+        resource: '../src/OpenConext/ProfileBundle/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    OpenConext\ProfileBundle\Controller\MyServicesController:
+        arguments:
+            $removeConsentEnabled: '%remove_consent_enabled%'
+        tags: [ 'controller.service_arguments' ]
+
+    surfnet_saml.saml_provider:
+        class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
+
     logger:
         alias: 'monolog.logger'
         public: true
-    twig.text_extension:
-        class: Twig_Extensions_Extension_Text
-        tags:
-            - name: twig.extension
 
     OpenConext\ProfileBundle\Service\GlobalViewParameters:
         arguments:
@@ -22,12 +35,12 @@ services:
             - '%profile_explanation_image_path%'
             - '%attribute_information_url%'
             - '%remove_consent_enabled%'
+            -
     open_conext.profile_bundle.service.global_view_parameters:
         alias: OpenConext\ProfileBundle\Service\GlobalViewParameters
+
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         arguments:
             - '%dsn%'
-    Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler:
 
-#    App\EventListener\ExceptionListener:
-#        tags: [ kernel.event_listener ]
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler:

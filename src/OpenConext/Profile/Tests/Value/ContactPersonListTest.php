@@ -81,7 +81,7 @@ class ContactPersonListTest extends TestCase
 
         $expectedFirstContactPerson = new ContactPerson(
             new ContactType(ContactType::TYPE_SUPPORT),
-            new ContactEmailAddress('first@invalid.email')
+            new ContactEmailAddress('first@invalid.email'),
         );
 
         $actualFirstContactPerson = $contactPersonList->first();

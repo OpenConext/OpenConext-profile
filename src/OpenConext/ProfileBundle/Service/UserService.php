@@ -64,7 +64,7 @@ final class UserService
         UserRepositoryInterface $userRepository,
         AuthenticatedUserProviderInterface $authenticatedUserProvider,
         LocaleService $localeService,
-        EntityId $engineBlockEntityId
+        EntityId $engineBlockEntityId,
     ) {
         $this->supportContactEmailService = $supportContactEmailService;
         $this->userRepository             = $userRepository;
@@ -125,7 +125,7 @@ final class UserService
         $user = $this->getUser();
 
         return $this->userLifecycleApiClient->read(
-            sprintf('/api/deprovision/%s', $user->getId())
+            sprintf('/api/deprovision/%s', $user->getId()),
         );
     }
 
@@ -151,7 +151,7 @@ final class UserService
         }
 
         $supportContactEmail = $this->supportContactEmailService->findSupportContactEmailForIdp(
-            $authenticatingIdpEntityId
+            $authenticatingIdpEntityId,
         );
 
         if ($supportContactEmail === null) {

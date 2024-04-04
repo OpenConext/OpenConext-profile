@@ -43,7 +43,7 @@ class SpecifiedConsentTest extends TestCase
         $someAttributeDefinition = new AttributeDefinition(
             'someAttribute',
             'urn:mace:some-attribute',
-            'urn:oid:0.0.0.0.0.1'
+            'urn:oid:0.0.0.0.0.1',
         );
         $anotherAttributeDefinition = new AttributeDefinition('anotherAttribute', null, 'urn:oid:0.0.0.0.0.2');
 
@@ -51,7 +51,7 @@ class SpecifiedConsentTest extends TestCase
             new ServiceProvider(
                 new Entity(
                     new EntityId('some-entity-id'),
-                    EntityType::SP()
+                    EntityType::SP(),
                 ),
                 new DisplayName([
                     'en' => 'Some display name'
@@ -61,10 +61,10 @@ class SpecifiedConsentTest extends TestCase
                 ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
-                new ContactEmailAddress('some@email.example')
+                new ContactEmailAddress('some@email.example'),
             ),
             new DateTimeImmutable(),
-            ConsentType::explicit()
+            ConsentType::explicit(),
         );
 
         // The results as expected to have been returned from the API (sources have been added)
@@ -74,7 +74,7 @@ class SpecifiedConsentTest extends TestCase
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
             AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
-            Arp::createWith([])
+            Arp::createWith([]),
         );
 
         $this->assertTrue($specifiedConsent->hasMultipleSources());
@@ -85,7 +85,7 @@ class SpecifiedConsentTest extends TestCase
         $someAttributeDefinition = new AttributeDefinition(
             'someAttribute',
             'urn:mace:some-attribute',
-            'urn:oid:0.0.0.0.0.1'
+            'urn:oid:0.0.0.0.0.1',
         );
         $anotherAttributeDefinition = new AttributeDefinition('anotherAttribute', null, 'urn:oid:0.0.0.0.0.2');
 
@@ -93,7 +93,7 @@ class SpecifiedConsentTest extends TestCase
             new ServiceProvider(
                 new Entity(
                     new EntityId('some-entity-id'),
-                    EntityType::SP()
+                    EntityType::SP(),
                 ),
                 new DisplayName([
                     'en' => 'Some display name'
@@ -103,10 +103,10 @@ class SpecifiedConsentTest extends TestCase
                 ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
-                new ContactEmailAddress('some@email.example')
+                new ContactEmailAddress('some@email.example'),
             ),
             new DateTimeImmutable(),
-            ConsentType::explicit()
+            ConsentType::explicit(),
         );
 
         // The results as expected to have been returned from the API (sources have been added)
@@ -116,7 +116,7 @@ class SpecifiedConsentTest extends TestCase
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
             AttributeSetWithFallbacks::create([$expectedSomeAttribute, $expectedAnotherAttribute]),
-            Arp::createWith([])
+            Arp::createWith([]),
         );
 
         $this->assertFalse($specifiedConsent->hasMultipleSources());
@@ -127,7 +127,7 @@ class SpecifiedConsentTest extends TestCase
             new ServiceProvider(
                 new Entity(
                     new EntityId('some-entity-id'),
-                    EntityType::SP()
+                    EntityType::SP(),
                 ),
                 new DisplayName([
                     'en' => 'Some display name'
@@ -137,16 +137,16 @@ class SpecifiedConsentTest extends TestCase
                 ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
-                new ContactEmailAddress('some@email.example')
+                new ContactEmailAddress('some@email.example'),
             ),
             new DateTimeImmutable(),
-            ConsentType::explicit()
+            ConsentType::explicit(),
         );
 
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
             AttributeSetWithFallbacks::create([]),
-            Arp::createWith([])
+            Arp::createWith([]),
         );
 
         $this->assertFalse($specifiedConsent->hasMultipleSources());
@@ -158,7 +158,7 @@ class SpecifiedConsentTest extends TestCase
             new ServiceProvider(
                 new Entity(
                     new EntityId('some-entity-id'),
-                    EntityType::SP()
+                    EntityType::SP(),
                 ),
                 new DisplayName([
                     'en' => 'Some display name'
@@ -168,10 +168,10 @@ class SpecifiedConsentTest extends TestCase
                 ]),
                 new NameIdFormat(''),
                 new Url('http://some-eula-url.example'),
-                new ContactEmailAddress('some@email.example')
+                new ContactEmailAddress('some@email.example'),
             ),
             new DateTimeImmutable(),
-            ConsentType::explicit()
+            ConsentType::explicit(),
         );
 
         $arpData = json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true);
@@ -179,7 +179,7 @@ class SpecifiedConsentTest extends TestCase
         $specifiedConsent = SpecifiedConsent::specifies(
             $someConsent,
             AttributeSetWithFallbacks::create([]),
-            Arp::createWith($arpData)
+            Arp::createWith($arpData),
         );
 
         $groupedBySources = $specifiedConsent->getAttributeAggregatedAttributes();

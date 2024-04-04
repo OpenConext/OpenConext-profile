@@ -55,7 +55,7 @@ final class InformationRequestMailService
         EmailAddress $mailTo,
         Mailer $mailer,
         UserService $userService,
-        AttributeFilter $attributeFilter
+        AttributeFilter $attributeFilter,
     ) {
         $this->mailFrom = $mailFrom;
         $this->mailTo = $mailTo;

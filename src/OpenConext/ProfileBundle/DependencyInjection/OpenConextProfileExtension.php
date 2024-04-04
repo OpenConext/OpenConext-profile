@@ -53,12 +53,12 @@ class OpenConextProfileExtension extends Extension
             $config['locale_cookie_expires_in'],
             $config['locale_cookie_secure'],
             $config['locale_cookie_http_only'],
-            $container
+            $container,
         );
 
         $this->parseEngineBlockAttributeAggregationConfiguration(
             $config['attribute_aggregation_supported_attributes'],
-            $container
+            $container,
         );
 
         // The user lifecycle can be disabled
@@ -85,8 +85,10 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(0, $attributeSupportConfig['email_to']);
     }
 
-    private function parseInformationRequestMailConfiguration(array $attributeSupportConfig, ContainerBuilder $container)
-    {
+    private function parseInformationRequestMailConfiguration(
+        array $attributeSupportConfig,
+        ContainerBuilder $container,
+    ) {
         $container
             ->getDefinition('profile.information_request.email_from')
             ->replaceArgument(0, $attributeSupportConfig['email_from']);
@@ -119,7 +121,7 @@ class OpenConextProfileExtension extends Extension
         $localeCookieExpiresIn,
         $localeCookieSecure,
         $localeCookieHttpOnly,
-        ContainerBuilder $container
+        ContainerBuilder $container,
     ) {
 
         if ($localeCookieExpiresIn !== null) {

@@ -49,7 +49,7 @@ final class ConsentListFactory
         // We cannot use self::class because translation extractions fails on that
         $consents = array_map(
             ['\OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory', 'createConsent'],
-            $data
+            $data,
         );
 
         return new ConsentList($consents);
@@ -70,7 +70,7 @@ final class ConsentListFactory
         Assert::choice(
             $data['consent_type'],
             [ConsentType::TYPE_EXPLICIT, ConsentType::TYPE_IMPLICIT],
-            '"%s" is not one of the valid ConsentTypes: %s'
+            '"%s" is not one of the valid ConsentTypes: %s',
         );
 
         $consentGivenOn = DateTimeImmutable::createFromFormat(DateTime::ATOM, $data['consent_given_on']);
@@ -81,8 +81,8 @@ final class ConsentListFactory
             '\DateTimeImmutable',
             sprintf(
                 'Consent given on date must be formatted according to the ISO8601 standard, got "%s"',
-                $data['consent_given_on']
-            )
+                $data['consent_given_on'],
+            ),
         );
 
         if ($data['consent_type'] === ConsentType::TYPE_EXPLICIT) {
@@ -94,7 +94,7 @@ final class ConsentListFactory
         return new Consent(
             self::createServiceProvider($data['service_provider']),
             $consentGivenOn,
-            $consentType
+            $consentType,
         );
     }
 
@@ -145,7 +145,7 @@ final class ConsentListFactory
             $eulaUrl,
             $supportEmail,
             $supportUrlEn,
-            $supportUrlNl
+            $supportUrlNl,
         );
     }
 }

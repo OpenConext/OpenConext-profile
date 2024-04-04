@@ -105,20 +105,6 @@ services:
         tags:
             - { name: form.type, alias: profile_confirm_connection_delete }
 
-    OpenConext\ProfileBundle\Twig\LocaleExtension:
-        arguments:
-            - "@form.factory"
-            - "@request_stack"
-            - "%default_locale%"
-        tags:
-            - { name: twig.extension }
-
-    OpenConext\ProfileBundle\Twig\I18n:
-        arguments:
-            - "@translator"
-        tags:
-            - { name: twig.extension }
-
     OpenConext\ProfileBundle\Attribute\AttributeFilter:
 
     OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider:

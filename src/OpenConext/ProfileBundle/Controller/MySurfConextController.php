@@ -52,7 +52,7 @@ class MySurfConextController
         UserService $userService,
         Environment $templateEngine,
         Guard $guard,
-        LoggerInterface $logger
+        LoggerInterface $logger,
     ) {
         $this->userService    = $userService;
         $this->templateEngine = $templateEngine;
@@ -76,7 +76,7 @@ class MySurfConextController
             [
                 'user' => $user,
                 'userLifecycleIsEnabled' => $this->userService->userLifecycleApiIsEnabled(),
-            ]
+            ],
         ));
     }
 
@@ -98,7 +98,7 @@ class MySurfConextController
             200,
             [
                 'Content-Disposition' => 'attachment; filename="profile-user-data.json"'
-            ]
+            ],
         );
     }
 }

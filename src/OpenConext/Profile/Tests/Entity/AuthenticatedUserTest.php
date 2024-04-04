@@ -25,7 +25,6 @@ use Psr\Log\NullLogger;
 use SAML2\Assertion;
 use SAML2\Compat\ContainerSingleton;
 use SAML2\DOMDocumentFactory;
-use SAML2\Exception\RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -70,11 +69,11 @@ class AuthenticatedUserTest extends TestCase
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Chuck', 'Tester']
+                ['Chuck', 'Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
-                ['Chuck Tester']
+                ['Chuck Tester'],
             )
         ]);
 
@@ -96,26 +95,26 @@ class AuthenticatedUserTest extends TestCase
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Chuck', 'Tester']
+                ['Chuck', 'Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
-                ['Chuck Tester']
+                ['Chuck Tester'],
             )
         ]);
 
         $attributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Chuck', 'Tester']
+                ['Chuck', 'Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
-                ['Chuck Tester']
+                ['Chuck Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('LDAP Directory string', '', 'urn:oid:1.3.6.1.4.1.1466.115.121.1.15'),
-                ['testers/chuck1']
+                ['testers/chuck1'],
             )
         ]);
 
@@ -138,11 +137,11 @@ class AuthenticatedUserTest extends TestCase
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('eduPersonTargetedID', 'urn:mace:dir:attribute-def:eduPersonTargetedID'),
-                ['abcd-some-value-xyz']
+                ['abcd-some-value-xyz'],
             ),
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Tester']
+                ['Tester'],
             ),
         ]);
 
@@ -151,7 +150,7 @@ class AuthenticatedUserTest extends TestCase
 
         $assertionAdapter  = $this->mockAssertionAdapterWith(
             AttributeSet::createFrom($assertionWithEpti, $attributeDictionary),
-            'abcd-some-value-xyz'
+            'abcd-some-value-xyz',
         );
 
         $authenticatedUser  = AuthenticatedUser::createFrom($assertionAdapter, []);
@@ -178,10 +177,10 @@ class AuthenticatedUserTest extends TestCase
     {
         $attributeDictionary = new AttributeDictionary();
         $attributeDictionary->addAttributeDefinition(
-            new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName')
+            new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
         );
         $attributeDictionary->addAttributeDefinition(
-            new AttributeDefinition('eduPersonTargetedID', 'urn:mace:dir:attribute-def:eduPersonTargetedID')
+            new AttributeDefinition('eduPersonTargetedID', 'urn:mace:dir:attribute-def:eduPersonTargetedID'),
         );
 
         return $attributeDictionary;

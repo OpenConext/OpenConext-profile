@@ -67,8 +67,8 @@ class JsonApiClient
                 sprintf(
                     'Request to resource "%s" returned an invalid response with status code %s',
                     $resource,
-                    $statusCode
-                )
+                    $statusCode,
+                ),
             );
         }
 
@@ -76,7 +76,7 @@ class JsonApiClient
             $data = $this->parseJson((string) $response->getBody());
         } catch (InvalidArgumentException $e) {
             throw new MalformedResponseException(
-                sprintf('Cannot read resource "%s": malformed JSON returned', $resource)
+                sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
             );
         }
 
@@ -102,8 +102,8 @@ class JsonApiClient
                 sprintf(
                     'Could not construct resource path from path "%s", parameters "%s"',
                     $path,
-                    implode('","', $parameters)
-                )
+                    implode('","', $parameters),
+                ),
             );
         }
 

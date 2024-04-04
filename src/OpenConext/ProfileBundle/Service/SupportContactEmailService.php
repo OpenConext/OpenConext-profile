@@ -46,7 +46,7 @@ final class SupportContactEmailService
             function (ContactPerson $contactPerson) {
                 return $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
                     && $contactPerson->hasEmailAddress();
-            }
+            },
         );
 
         if (count($supportContactPersons) === 0) {

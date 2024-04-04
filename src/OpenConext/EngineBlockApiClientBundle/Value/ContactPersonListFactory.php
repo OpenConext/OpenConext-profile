@@ -39,7 +39,7 @@ final class ContactPersonListFactory
         // We cannot use self::class because translation extractions fails on that
         $contactPersons = array_map(
             ['\OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory', 'createContactPerson'],
-            $data['contact_persons']
+            $data['contact_persons'],
         );
 
         return new ContactPersonList($contactPersons);
@@ -62,7 +62,7 @@ final class ContactPersonListFactory
 
         return new ContactPerson(
             new ContactType($data['contact_type']),
-            new ContactEmailAddress($data['email_address'])
+            new ContactEmailAddress($data['email_address']),
         );
     }
 }

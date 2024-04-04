@@ -21,6 +21,7 @@ namespace OpenConext\Profile\Tests\Value;
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\Url;
 use PHPUnit\Framework\TestCase;
+use OpenConext\Profile\Exception\InvalidArgumentException;
 
 class UrlTest extends TestCase
 {
@@ -43,8 +44,7 @@ class UrlTest extends TestCase
      */
     public function one_without_scheme_fails_validation()
     {
-        $this->expectException(\OpenConext\Profile\Exception\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         new Url('www.exampe.org');
     }
-
 }

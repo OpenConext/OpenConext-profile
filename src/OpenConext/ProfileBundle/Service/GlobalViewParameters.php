@@ -70,7 +70,7 @@ final class GlobalViewParameters
         array $termsOfServiceUrls,
         array $profileExplanationImageUrls,
         array $attributeInformationUrls,
-        bool $removeConsentEnabled
+        bool $removeConsentEnabled,
     ) {
         Assert::keysArePresent($helpUrls, $locales);
         Assert::keysArePresent($privacyUrls, $locales);

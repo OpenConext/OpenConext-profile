@@ -18,18 +18,22 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Provider;
 
+use BadMethodCallException;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
+use SAML2\Assertion;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetFactory;
 use Surfnet\SamlBundle\SAML2\Attribute\ConfigurableAttributeSetFactory;
-use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
+use Surfnet\SamlBundle\Security\Authentication\Provider\SamlProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class SamlProvider implements AuthenticationProviderInterface
+class SamlProvider implements SamlProviderInterface, UserProviderInterface
 {
     /**
      * @var AttributeDictionary
@@ -50,7 +54,7 @@ class SamlProvider implements AuthenticationProviderInterface
             function ($authenticatingAuthority) {
                 return new EntityId($authenticatingAuthority);
             },
-            $token->assertion->getAuthenticatingAuthority()
+            $token->assertion->getAuthenticatingAuthority(),
         );
 
         $user = AuthenticatedUser::createFrom($translatedAssertion, $authenticatingAuthorities);
@@ -64,5 +68,29 @@ class SamlProvider implements AuthenticationProviderInterface
     public function supports(TokenInterface $token)
     {
         return $token instanceof SamlToken;
+    }
+
+    public function getNameId(Assertion $assertion): string
+    {
+        // TODO: Implement getNameId() method.
+    }
+
+    public function getUser(Assertion $assertion): UserInterface
+    {
+        // TODO: Implement getUser() method.
+    }
+
+    public function refreshUser(UserInterface $user)
+    {
+        // TODO: Implement refreshUser() method.
+    }
+
+    public function supportsClass(string $class)
+    {
+    }
+
+    public function loadUserByIdentifier(string $identifier): UserInterface
+    {
+        throw new BadMethodCallException('Use `getUser` to load a user by username');
     }
 }

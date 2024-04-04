@@ -43,7 +43,7 @@ class SwitchLocaleType extends AbstractType
 
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
-        LocaleService $localeService
+        LocaleService $localeService,
     ) {
         $this->urlGenerator  = $urlGenerator;
         $this->localeService = $localeService;
@@ -58,8 +58,8 @@ class SwitchLocaleType extends AbstractType
             ->setAction(
                 $this->urlGenerator->generate(
                     'profile.locale_switch_locale',
-                    ['return-url' => $options['return_url']]
-                )
+                    ['return-url' => $options['return_url']],
+                ),
             )
             ->add(
                 'newLocale',
@@ -70,7 +70,7 @@ class SwitchLocaleType extends AbstractType
                     'attr'    => [
                         'data-locale-options' => ''
                     ]
-                ]
+                ],
             )
             ->add('changeLocale', SubmitType::class, ['label' => 'profile.locale.choose_locale']);
     }
@@ -81,7 +81,7 @@ class SwitchLocaleType extends AbstractType
             [
                 'return_url' => '',
                 'data_class' => ChangeLocaleCommand::class
-            ]
+            ],
         );
 
         $resolver->setRequired('return_url');

@@ -46,7 +46,7 @@ final class Consent
     public function __construct(
         ServiceProvider $serviceProvider,
         DateTimeImmutable $consentGivenOn,
-        ConsentType $consentType
+        ConsentType $consentType,
     ) {
         $this->serviceProvider = $serviceProvider;
         $this->consentGivenOn  = $consentGivenOn;

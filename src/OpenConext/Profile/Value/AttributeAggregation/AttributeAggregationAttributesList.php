@@ -93,7 +93,7 @@ final class AttributeAggregationAttributesList
             $this->attributes,
             function (AttributeAggregationAttribute $attribute) use ($enabledAttributes) {
                 return $enabledAttributes->isEnabled($attribute->getAccountType());
-            }
+            },
         );
     }
 
@@ -113,8 +113,8 @@ final class AttributeAggregationAttributesList
         throw new InvalidArgumentException(
             sprintf(
                 'The requested attribute for account type "%s" could not be found',
-                $accountType
-            )
+                $accountType,
+            ),
         );
     }
 }

@@ -48,7 +48,7 @@ final class AttributeSupportMailService
         EmailAddress $mailFrom,
         EmailAddress $mailTo,
         Mailer $mailer,
-        UserService $userService
+        UserService $userService,
     ) {
         $this->mailFrom       = $mailFrom;
         $this->mailTo         = $mailTo;

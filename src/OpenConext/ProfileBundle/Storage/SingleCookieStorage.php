@@ -63,7 +63,7 @@ class SingleCookieStorage implements EventSubscriberInterface
         $cookieKey,
         DateTime $cookieExpirationDate = null,
         $cookieSecure = false,
-        $cookieHttpOnly = true
+        $cookieHttpOnly = true,
     ) {
         Assert::string($cookieDomain, 'Cookie domain "%s" expected to be string, type %s given.');
         Assert::string($cookieKey, 'Cookie key "%s" expected to be string, type %s given.');
@@ -104,8 +104,8 @@ class SingleCookieStorage implements EventSubscriberInterface
                 null,
                 $this->cookieDomain,
                 $this->cookieSecure,
-                $this->cookieHttpOnly
-            )
+                $this->cookieHttpOnly,
+            ),
         );
     }
 

@@ -82,7 +82,7 @@ class MyServicesController
         UrlGeneratorInterface $urlGenerator,
         LoggerInterface $logger,
         InstitutionRepository $institutionRepository,
-        bool $removeConsentEnabled
+        bool $removeConsentEnabled,
     ) {
         $this->templateEngine = $templateEngine;
         $this->authenticatedUserProvider = $authenticatedUserProvider;
@@ -116,7 +116,7 @@ class MyServicesController
                 'locale' => $locale,
                 'displayName' => $organization->getDisplayName($locale),
                 'logo' => $organization->getLogo(),
-            ]
+            ],
         ));
     }
 
@@ -128,7 +128,7 @@ class MyServicesController
         }
 
         $this->logger->notice(
-            sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId)
+            sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId),
         );
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $result = $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);

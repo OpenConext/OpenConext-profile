@@ -58,7 +58,7 @@ class SamlInteractionProvider
         IdentityProvider $identityProvider,
         RedirectBinding $redirectBinding,
         PostBinding $postBinding,
-        StateHandler $sessionHandler
+        StateHandler $sessionHandler,
     ) {
         $this->serviceProvider = $serviceProvider;
         $this->identityProvider = $identityProvider;
@@ -82,7 +82,7 @@ class SamlInteractionProvider
     {
         $authnRequest = AuthnRequestFactory::createNewRequest(
             $this->serviceProvider,
-            $this->identityProvider
+            $this->identityProvider,
         );
 
         $this->stateHandler->setRequestId($authnRequest->getRequestId());
@@ -100,7 +100,7 @@ class SamlInteractionProvider
         $assertion = $this->postBinding->processResponse(
             $request,
             $this->identityProvider,
-            $this->serviceProvider
+            $this->serviceProvider,
         );
 
         $this->stateHandler->clearRequestId();

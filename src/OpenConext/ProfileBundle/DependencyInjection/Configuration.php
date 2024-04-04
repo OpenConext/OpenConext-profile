@@ -25,7 +25,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('open_conext_profile');
         $rootNode = $treeBuilder->getRootNode();
@@ -56,7 +56,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function setupLocaleConfiguration(ArrayNodeDefinition $rootNode)
+    private function setupLocaleConfiguration(ArrayNodeDefinition $rootNode): void
     {
         $rootNode
             ->children()
@@ -134,7 +134,7 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupAttributeSupportConfiguration(ArrayNodeDefinition $rootNode)
+    private function setupAttributeSupportConfiguration(ArrayNodeDefinition $rootNode): void
     {
         $rootNode
             ->children()
@@ -178,7 +178,7 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupAttributeAggregationAttributeConfiguration(ArrayNodeDefinition $rootNode)
+    private function setupAttributeAggregationAttributeConfiguration(ArrayNodeDefinition $rootNode): void
     {
 
         $protoType = $rootNode
@@ -216,7 +216,7 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupInformationRequestConfiguration(ArrayNodeDefinition $rootNode)
+    private function setupInformationRequestConfiguration(ArrayNodeDefinition $rootNode): void
     {
         $rootNode
             ->children()

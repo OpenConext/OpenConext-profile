@@ -36,7 +36,7 @@ class AttributeSupportMailType extends AbstractType
                     'attr'  => [
                         'class' => 'button modalWindow__button modalWindow__button--form',
                     ]
-                ]
+                ],
             );
     }
 

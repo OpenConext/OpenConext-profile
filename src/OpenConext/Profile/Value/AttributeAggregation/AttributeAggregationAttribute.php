@@ -73,7 +73,7 @@ final class AttributeAggregationAttribute
         $linkedId,
         $logoPath,
         $connectUrl,
-        $isConnected
+        $isConnected,
     ) {
         $this->id = $id;
         $this->userId = $userId;
@@ -89,7 +89,7 @@ final class AttributeAggregationAttribute
         $isConnected,
         $id,
         $userId,
-        $linkedId = null
+        $linkedId = null,
     ) {
         return new self(
             $id,
@@ -98,7 +98,7 @@ final class AttributeAggregationAttribute
             $linkedId,
             $enabledAttribute->getLogoPath(),
             $enabledAttribute->getConnectUrl(),
-            $isConnected
+            $isConnected,
         );
     }
 
@@ -124,7 +124,7 @@ final class AttributeAggregationAttribute
             '',
             '',
             '',
-            true
+            true,
         );
     }
 

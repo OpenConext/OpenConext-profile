@@ -2,22 +2,32 @@ security:
   providers:
     in_memory:
       memory: ~
+#    saml-provider:
+#      id: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
+
 
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
 
+
+    login_firewall:
+      pattern: ^/saml/metadata
+
     default:
       pattern: ^/authentication/metadata$
-      anonymous: ~
+#      anonymous: ~
 
     monitor:
       pattern: ^/(info|health)$
       security: false
 
     saml_based:
-      saml: true
+      custom_authenticators:
+        - Surfnet\SamlBundle\Security\Authentication\SamlAuthenticator
+      logout:
+        path: /logout
 
   access_control:
     - { path: ^/authentication, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

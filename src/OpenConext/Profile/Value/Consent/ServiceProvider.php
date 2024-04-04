@@ -76,7 +76,7 @@ class ServiceProvider
         Url $eulaUrl = null,
         ContactEmailAddress $supportEmail = null,
         Url $supportUrlEn = null,
-        Url $supportUrlNl = null
+        Url $supportUrlNl = null,
     ) {
         $this->entity       = $entity;
         $this->displayName  = $displayName;
