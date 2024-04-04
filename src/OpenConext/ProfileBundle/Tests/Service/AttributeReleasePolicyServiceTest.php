@@ -65,9 +65,8 @@ class AttributeReleasePolicyServiceTest extends TestCase
         $client = Mockery::mock(JsonApiClient::class);
         $arpService = new AttributeReleasePolicyService($client, $attributeDictionary);
 
-        $client->shouldReceive('post')
-            ->withArgs(
-                [
+        $client->expects('post')
+            ->with(
                     [
                         'entityIds'  => [
                             'some-entity-id',
@@ -81,7 +80,6 @@ class AttributeReleasePolicyServiceTest extends TestCase
                         'showSources' => true
                     ],
                     '/arp',
-                ]
             )
             ->andReturn([
                 'some-entity-id' => [
@@ -145,9 +143,8 @@ class AttributeReleasePolicyServiceTest extends TestCase
             ],
         ];
 
-        $client->shouldReceive('post')
-            ->withArgs(
-                [
+        $client->expects('post')
+            ->with(
                     [
                         'entityIds' => [
                             'some-entity-id',
@@ -155,7 +152,6 @@ class AttributeReleasePolicyServiceTest extends TestCase
                         ]
                     ],
                     '/read-arp',
-                ]
             )
             ->andReturn($arpData);
 
