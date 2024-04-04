@@ -18,7 +18,6 @@
 
 namespace OpenConext\ProfileBundle\Tests\Attribute;
 
-use Mockery as m;
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use PHPUnit\Framework\TestCase;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
@@ -60,19 +59,12 @@ class AttributeFilterTest extends TestCase
 
     private function getMockAttribute($attributeName)
     {
-        $mockAttribute = m::mock(Attribute::class);
-        $attributeDefinition = m::mock(AttributeDefinition::class);
-        $mockAttribute
-            ->shouldReceive('equals')
-            ->andReturn(false);
+        $mockAttribute = $this->createMock(Attribute::class);
+        $attributeDefinition = $this->createMock(AttributeDefinition::class);
 
-        $mockAttribute
-            ->shouldReceive('getAttributeDefinition')
-            ->andReturn($attributeDefinition);
-
-        $attributeDefinition
-            ->shouldReceive('getName')
-            ->andReturn($attributeName);
+        $mockAttribute->method('equals')->willReturn(false);
+        $mockAttribute->method('getAttributeDefinition')->willReturn($attributeDefinition);
+        $attributeDefinition->method('getName')->willReturn($attributeName);
 
         return $mockAttribute;
     }
