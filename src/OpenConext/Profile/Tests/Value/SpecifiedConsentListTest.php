@@ -18,7 +18,6 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use Mockery as m;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\SpecifiedConsent;
@@ -77,27 +76,26 @@ class SpecifiedConsentListTest extends TestCase
 
     private function buildMockSpecifiedConsent(string $locale, string $displayName, string $entityId = '')
     {
-        $mockSp = m::mock(ServiceProvider::class);
+      $mockSp = $this->createMock(ServiceProvider::class);
         if ($entityId === '') {
-            $mockSp->shouldReceive('getLocaleAwareEntityName')->with($locale)->andReturn($displayName);
-            $displayNameMock = m::mock(DisplayName::class);
-            $displayNameMock
-                ->shouldReceive('hasFilledTranslationForLocale')
-                ->with($locale)
-                ->andReturn(true);
-            $mockSp->shouldReceive('getDisplayName')->andReturn($displayNameMock);
+            $mockSp->method('getLocaleAwareEntityName')->with($locale)->willReturn($displayName);
+
+            $displayNameMock = $this->createMock(DisplayName::class);
+            $displayNameMock->method('hasFilledTranslationForLocale')->with($locale)->willReturn(true);
+
+            $mockSp->method('getDisplayName')->willReturn($displayNameMock);
         } else {
-            $mockSp->shouldReceive('getLocaleAwareEntityName')->with($locale)->andReturn($entityId);
-            $displayNameMock = m::mock(DisplayName::class);
-            $displayNameMock
-                ->shouldReceive('hasFilledTranslationForLocale')
-                ->with($locale)
-                ->andReturn(false);
-            $mockSp->shouldReceive('getDisplayName')->andReturn($displayNameMock);
+            $mockSp->method('getLocaleAwareEntityName')->with($locale)->willReturn($entityId);
+
+            $displayNameMock = $this->createMock(DisplayName::class);
+            $displayNameMock->method('hasFilledTranslationForLocale')->with($locale)->willReturn(false);
+
+            $mockSp->method('getDisplayName')->willReturn($displayNameMock);
         }
 
-        $mock = m::mock(SpecifiedConsent::class);
-        $mock->shouldReceive('getServiceProvider')->andReturn($mockSp);
+        $mock = $this->createMock(SpecifiedConsent::class);
+        $mock->method('getServiceProvider')->willReturn($mockSp);
+
         return $mock;
     }
 }
