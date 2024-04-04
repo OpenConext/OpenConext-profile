@@ -20,7 +20,6 @@ namespace OpenConext\AttributeAggregationApiClientBundle\Tests\Http;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Utils;
-use Mockery as m;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
@@ -30,8 +29,6 @@ use OpenConext\AttributeAggregationApiClientBundle\Exception\ResourceNotFoundExc
 
 class JsonApiClientTest extends TestCase
 {
-    use m\Adapter\Phpunit\MockeryPHPUnitIntegration;
-
     /**
      * @test
      * @group eb_api_service
@@ -98,23 +95,20 @@ class JsonApiClientTest extends TestCase
 
     /**
      * @test
-     * @dataProvider notAllowedStatusCodeProvider
      * @group eb_api_service
      */
     public function throw_exception_when_empty_resource()
     {
         $this->expectException('\RuntimeException');
 
-        $response = m::mock('GuzzleHttp\Message\ResponseInterface')
-            ->shouldReceive('getStatusCode')
-            ->andReturn(200)
-            ->getMock();
+        $response = $this->createMock(ResponseInterface::class);
+        $response->method('getStatusCode')->willReturn(200);
 
-        $guzzle = m::mock('GuzzleHttp\ClientInterface')
-            ->shouldReceive('request')
-            ->with('GET', '', m::any())
-            ->andReturn($response)
-            ->getMock();
+        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle->expects($this->never())
+            ->method('request')
+            ->with('GET', '', $this->anything())
+            ->willReturn($response);
 
         $service = new JsonApiClient($guzzle);
         $service->read('');
@@ -160,12 +154,10 @@ class JsonApiClientTest extends TestCase
         $api->read("/resource");
     }
 
-    public function notAllowedStatusCodeProvider(): array
+    public function notAllowedStatusCodeProvider(): \Generator
     {
-        return [
-            [300],
-            [400],
-            [500],
-        ];
+        yield [300];
+        yield [400];
+        yield [500];
     }
 }
