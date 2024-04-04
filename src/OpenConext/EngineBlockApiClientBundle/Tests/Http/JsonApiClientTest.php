@@ -20,7 +20,6 @@ namespace OpenConext\EngineBlockApiClientBundle\Tests\Http;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Utils;
-use Mockery as m;
 use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\EngineBlockApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;

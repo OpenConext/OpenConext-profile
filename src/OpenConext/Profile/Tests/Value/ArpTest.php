@@ -18,21 +18,8 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use DateTimeImmutable;
-use Mockery;
 use OpenConext\Profile\Exception\InvalidArpDataException;
 use OpenConext\Profile\Value\Arp;
-use OpenConext\Profile\Value\Consent;
-use OpenConext\Profile\Value\Consent\ServiceProvider;
-use OpenConext\Profile\Value\ConsentType;
-use OpenConext\Profile\Value\ContactEmailAddress;
-use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\Entity;
-use OpenConext\Profile\Value\EntityId;
-use OpenConext\Profile\Value\EntityType;
-use OpenConext\Profile\Value\SpecifiedConsent;
-use OpenConext\Profile\Value\Url;
-use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
@@ -46,12 +33,6 @@ class ArpTest extends TestCase
         $arp = Arp::createWith([]);
         $this->assertInstanceOf(Arp::class, $arp);
         $this->assertEmpty($arp->getAttributesGroupedBySource());
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        Mockery::close();
     }
 
     /**
@@ -96,12 +77,11 @@ class ArpTest extends TestCase
     public function test_dictionary_usage()
     {
         // The dictionary is mocked and always returns the same definition.
-        $dictionary = Mockery::mock(AttributeDictionary::class);
+        $dictionary = $this->createMock(AttributeDictionary::class);
         $bogusDefinition = new AttributeDefinition('Foobar', 'urn.mace.FooBar', '123.323.432.12');
-        $dictionary
-            ->shouldReceive('getAttributeDefinitionByUrn')
-            ->times(13)
-            ->andReturn($bogusDefinition);
+        $dictionary->expects($this->exactly(13))
+            ->method('getAttributeDefinitionByUrn')
+            ->willReturn($bogusDefinition);
 
         $arp = Arp::createWith(
             json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true),
