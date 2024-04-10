@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "516afb0c41cbbddaf568e8a270578e98",
+    "content-hash": "2e1448f679d3b6d75420249c9e117f6c",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1747,16 +1747,16 @@
         },
         {
             "name": "openconext/monitor-bundle",
-            "version": "4.1.2",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Monitor-bundle.git",
-                "reference": "9fad7f1c77c53fdc1fd4040a34ad4a4e0073f225"
+                "reference": "6167c618146da13300eacf8997e957b1f3c25f49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Monitor-bundle/zipball/9fad7f1c77c53fdc1fd4040a34ad4a4e0073f225",
-                "reference": "9fad7f1c77c53fdc1fd4040a34ad4a4e0073f225",
+                "url": "https://api.github.com/repos/OpenConext/Monitor-bundle/zipball/6167c618146da13300eacf8997e957b1f3c25f49",
+                "reference": "6167c618146da13300eacf8997e957b1f3c25f49",
                 "shasum": ""
             },
             "require": {
@@ -1798,9 +1798,9 @@
             ],
             "support": {
                 "issues": "https://github.com/OpenConext/Monitor-bundle/issues",
-                "source": "https://github.com/OpenConext/Monitor-bundle/tree/4.1.2"
+                "source": "https://github.com/OpenConext/Monitor-bundle/tree/4.2.0"
             },
-            "time": "2024-02-28T14:23:16+00:00"
+            "time": "2024-04-09T08:51:19+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -9117,16 +9117,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.18",
+            "version": "9.6.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04"
+                "reference": "a1a54a473501ef4cdeaae4e06891674114d79db8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
-                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a1a54a473501ef4cdeaae4e06891674114d79db8",
+                "reference": "a1a54a473501ef4cdeaae4e06891674114d79db8",
                 "shasum": ""
             },
             "require": {
@@ -9200,7 +9200,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.18"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.19"
             },
             "funding": [
                 {
@@ -9216,7 +9216,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-21T12:07:32+00:00"
+            "time": "2024-04-05T04:35:58+00:00"
         },
         {
             "name": "rector/rector",
