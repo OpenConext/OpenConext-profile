@@ -1,5 +1,5 @@
 open_conext_profile:
-  resource:   "@OpenConextProfileBundle/Resources/config/routing.yml"
+  resource:   "@OpenConextProfileBundle/Resources/config/routing.yaml"
   prefix:     /
 
 openconext_monitor:
