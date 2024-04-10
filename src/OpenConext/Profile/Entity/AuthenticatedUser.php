@@ -58,7 +58,7 @@ final class AuthenticatedUser
             }
 
             $eptiValues = $attribute->getValue();
-            $attributes[] = new Attribute($definition, [$eptiValues[0]->value]);
+            $attributes[] = new Attribute($definition, [$eptiValues[0]->getValue()]);
         }
 
         return new self($assertionAdapter->getNameId(), AttributeSet::create($attributes), $authenticatingAuthorities);
