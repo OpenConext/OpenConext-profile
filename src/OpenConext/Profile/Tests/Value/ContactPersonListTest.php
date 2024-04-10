@@ -41,9 +41,7 @@ class ContactPersonListTest extends TestCase
             new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('second@invalid.email')),
         ]);
 
-        $filterPredicate = function (ContactPerson $contactPerson) use ($filterCriterium) {
-            return $contactPerson->hasContactTypeOf($filterCriterium);
-        };
+        $filterPredicate = fn(ContactPerson $contactPerson) => $contactPerson->hasContactTypeOf($filterCriterium);
 
         $expectedFilteredList = new ContactPersonList([
             new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),

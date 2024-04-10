@@ -69,9 +69,6 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
         ksort($sortedByEntityId, SORT_STRING);
         $this->specifiedConsents = $sorted +  $sortedByEntityId;
     }
-    /**
-     * @param SpecifiedConsent $specifiedConsent
-     */
     private function initializeWith(SpecifiedConsent $specifiedConsent): void
     {
         $this->specifiedConsents[] = $specifiedConsent;

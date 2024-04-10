@@ -22,8 +22,8 @@ use OpenConext\Profile\Assert;
 
 final class NameIdFormat
 {
-    const PERSISTENT_IDENTIFIER = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
-    const TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
+    public const PERSISTENT_IDENTIFIER = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
+    public const TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
 
     /**
      * @var string
@@ -53,7 +53,7 @@ final class NameIdFormat
     /**
      * @return bool
      */
-    public function isPersistent()
+    public function isPersistent(): bool
     {
         return $this->value === self::PERSISTENT_IDENTIFIER;
     }
@@ -61,7 +61,7 @@ final class NameIdFormat
     /**
      * @return bool
      */
-    public function isTransient()
+    public function isTransient(): bool
     {
         return $this->value === self::TRANSIENT_IDENTIFIER;
     }

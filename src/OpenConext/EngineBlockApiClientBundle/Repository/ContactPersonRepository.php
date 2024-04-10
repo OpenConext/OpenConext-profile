@@ -24,16 +24,10 @@ use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
 
-final class ContactPersonRepository implements ContactPersonRepositoryInterface
+final readonly class ContactPersonRepository implements ContactPersonRepositoryInterface
 {
-    /**
-     * @var JsonApiClient
-     */
-    private $apiClient;
-
-    public function __construct(JsonApiClient $apiClient)
+    public function __construct(private JsonApiClient $apiClient)
     {
-        $this->apiClient = $apiClient;
     }
 
     /**

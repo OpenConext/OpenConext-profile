@@ -44,11 +44,6 @@ class SingleCookieStorage implements EventSubscriberInterface
     private $cookieValue;
 
     /**
-     * @var DateTime|null
-     */
-    private $cookieExpirationDate;
-
-    /**
      * @var boolean
      */
     private $cookieSecure;
@@ -61,7 +56,7 @@ class SingleCookieStorage implements EventSubscriberInterface
     public function __construct(
         $cookieDomain,
         $cookieKey,
-        DateTime $cookieExpirationDate = null,
+        private readonly ?DateTime $cookieExpirationDate = null,
         $cookieSecure = false,
         $cookieHttpOnly = true,
     ) {
@@ -72,7 +67,6 @@ class SingleCookieStorage implements EventSubscriberInterface
 
         $this->cookieDomain         = $cookieDomain;
         $this->cookieKey            = $cookieKey;
-        $this->cookieExpirationDate = $cookieExpirationDate;
         $this->cookieSecure         = $cookieSecure;
         $this->cookieHttpOnly       = $cookieHttpOnly;
     }

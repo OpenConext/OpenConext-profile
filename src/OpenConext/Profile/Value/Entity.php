@@ -20,41 +20,26 @@ namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
+use Stringable;
 
-final class Entity
+final readonly class Entity implements Stringable
 {
     /**
-     * @var EntityId
-     */
-    private $entityId;
-
-    /**
-     * @var EntityType
-     */
-    private $entityType;
-
-    /**
-     * @param array $descriptor
      * @return Entity
      */
     public static function fromDescriptor(array $descriptor)
     {
         Assert::count($descriptor, 2);
 
-        switch ($descriptor[1]) {
-            case 'sp':
-                return new Entity(new EntityId($descriptor[0]), EntityType::SP());
-            case 'idp':
-                return new Entity(new EntityId($descriptor[0]), EntityType::IdP());
-            default:
-                throw new LogicException('Entity descriptor type neither "sp" nor "idp"');
-        }
+        return match ($descriptor[1]) {
+            'sp' => new Entity(new EntityId($descriptor[0]), EntityType::SP()),
+            'idp' => new Entity(new EntityId($descriptor[0]), EntityType::IdP()),
+            default => throw new LogicException('Entity descriptor type neither "sp" nor "idp"'),
+        };
     }
 
-    public function __construct(EntityId $entityId, EntityType $entityType)
+    public function __construct(private EntityId $entityId, private EntityType $entityType)
     {
-        $this->entityId = $entityId;
-        $this->entityType = $entityType;
     }
 
     /**
@@ -74,15 +59,14 @@ final class Entity
     }
 
     /**
-     * @param Entity $other
      * @return bool
      */
-    public function equals(Entity $other)
+    public function equals(Entity $other): bool
     {
         return $this->entityId->equals($other->entityId) && $this->entityType->equals($other->entityType);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->entityId . '(' . $this->entityType . ')';
     }

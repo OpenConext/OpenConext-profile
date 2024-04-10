@@ -61,7 +61,7 @@ class AssertTest extends TestCase
 
         try {
             Assert::keysArePresent($givenArray, $expectedKeys);
-        } catch (AssertionFailedException $e) {
+        } catch (AssertionFailedException) {
             $exceptionIsThrown = true;
         }
 

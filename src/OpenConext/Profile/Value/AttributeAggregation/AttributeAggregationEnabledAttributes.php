@@ -25,9 +25,6 @@ final class AttributeAggregationEnabledAttributes
      */
     private $attributes = [];
 
-    /**
-     * @param array $attributes
-     */
     public function __construct(array $attributes)
     {
         foreach ($attributes as $accountType => $attribute) {
@@ -46,7 +43,7 @@ final class AttributeAggregationEnabledAttributes
         return $this->attributes;
     }
 
-    public function isEnabled($accountType)
+    public function isEnabled($accountType): bool
     {
         return array_key_exists($accountType, $this->attributes);
     }

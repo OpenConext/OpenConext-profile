@@ -31,22 +31,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SwitchLocaleType extends AbstractType
 {
-    /**
-     * @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var LocaleService
-     */
-    private $localeService;
-
     public function __construct(
-        UrlGeneratorInterface $urlGenerator,
-        LocaleService $localeService,
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly LocaleService $localeService,
     ) {
-        $this->urlGenerator  = $urlGenerator;
-        $this->localeService = $localeService;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -94,7 +82,6 @@ class SwitchLocaleType extends AbstractType
     }
 
     /**
-     * @param LocaleSet $availableLocales
      * @return array
      */
     private function formatLocaleChoices(LocaleSet $availableLocales)

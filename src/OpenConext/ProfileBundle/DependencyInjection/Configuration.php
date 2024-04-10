@@ -36,9 +36,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The EntityID of EngineBlock')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($entityId) {
-                            return !is_string($entityId);
-                        })
+                        ->ifTrue(fn($entityId) => !is_string($entityId))
                         ->thenInvalid('EngineBlock EntityID should be a string')
                     ->end()
                 ->end()
@@ -65,9 +63,7 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->prototype('scalar')
                         ->validate()
-                            ->ifTrue(function ($locale) {
-                                return !is_string($locale);
-                            })
+                            ->ifTrue(fn($locale) => !is_string($locale))
                             ->thenInvalid('Available application locales should be strings')
                         ->end()
                     ->end()
@@ -76,9 +72,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The default application locale')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($locale) {
-                            return !is_string($locale);
-                        })
+                        ->ifTrue(fn($locale) => !is_string($locale))
                         ->thenInvalid('Default application locale should be a string')
                     ->end()
                 ->end()
@@ -86,9 +80,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The domain for which the locale cookie is set')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($domain) {
-                            return !is_string($domain);
-                        })
+                        ->ifTrue(fn($domain) => !is_string($domain))
                         ->thenInvalid('Locale cookie domain should be a string')
                     ->end()
                 ->end()
@@ -96,9 +88,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The key for which the locale cookie value is set')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($key) {
-                            return !is_string($key);
-                        })
+                        ->ifTrue(fn($key) => !is_string($key))
                         ->thenInvalid('Locale cookie key should be a string')
                     ->end()
                 ->end()
@@ -106,7 +96,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The time interval after which the locale cookie expires; null gives a session cookie')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($expiresIn) {
+                        ->ifTrue(function ($expiresIn): bool {
                             if ($expiresIn === null) {
                                 return false;
                             }
@@ -145,15 +135,11 @@ class Configuration implements ConfigurationInterface
                             ->info('Email address to which attributes are sent')
                             ->isRequired()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !is_string($email);
-                                })
+                                ->ifTrue(fn($email) => !is_string($email))
                                 ->thenInvalid('Email address to which attributes are sent should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
-                                })
+                                ->ifTrue(fn($email) => !filter_var($email, FILTER_VALIDATE_EMAIL))
                                 ->thenInvalid('Email address to which attributes are sent should be valid')
                             ->end()
                         ->end()
@@ -161,15 +147,11 @@ class Configuration implements ConfigurationInterface
                             ->info('mail address from which attributes are sent')
                             ->isRequired()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !is_string($email);
-                                })
+                                ->ifTrue(fn($email) => !is_string($email))
                                 ->thenInvalid('Email address from which attributes are sent should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
-                                })
+                                ->ifTrue(fn($email) => !filter_var($email, FILTER_VALIDATE_EMAIL))
                                 ->thenInvalid('Email address from which attributes are sent should be valid')
                             ->end()
                         ->end()
@@ -197,9 +179,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The logo path of the AA attribute')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($logoPath) {
-                            return !is_string($logoPath);
-                        })
+                        ->ifTrue(fn($logoPath) => !is_string($logoPath))
                         ->thenInvalid('The logo path of the AA attribute should be a string')
                     ->end()
                 ->end()
@@ -207,9 +187,7 @@ class Configuration implements ConfigurationInterface
                     ->info('The connect url of the AA attribute')
                     ->isRequired()
                     ->validate()
-                        ->ifTrue(function ($connectUrl) {
-                            return !is_string($connectUrl);
-                        })
+                        ->ifTrue(fn($connectUrl) => !is_string($connectUrl))
                         ->thenInvalid('The connect url of the AA attribute should be a string')
                     ->end()
                 ->end()
@@ -227,15 +205,11 @@ class Configuration implements ConfigurationInterface
                             ->info('Email address to which the information request results are sent')
                             ->isRequired()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !is_string($email);
-                                })
+                                ->ifTrue(fn($email) => !is_string($email))
                                 ->thenInvalid('Email address to which information request results are sent should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
-                                })
+                                ->ifTrue(fn($email) => !filter_var($email, FILTER_VALIDATE_EMAIL))
                                 ->thenInvalid('Email address to which information request results are sent should be valid')
                             ->end()
                         ->end()
@@ -243,15 +217,11 @@ class Configuration implements ConfigurationInterface
                             ->info('mail address from which information requests are sent')
                             ->isRequired()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !is_string($email);
-                                })
+                                ->ifTrue(fn($email) => !is_string($email))
                                 ->thenInvalid('Email address from which information requests are sent should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($email) {
-                                    return !filter_var($email, FILTER_VALIDATE_EMAIL);
-                                })
+                                ->ifTrue(fn($email) => !filter_var($email, FILTER_VALIDATE_EMAIL))
                                 ->thenInvalid('Email address from which information requests are sent should be valid')
                             ->end()
                         ->end()

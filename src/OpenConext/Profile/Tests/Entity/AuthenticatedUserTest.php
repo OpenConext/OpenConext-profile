@@ -182,7 +182,7 @@ class AuthenticatedUserTest extends TestCase
 
     private function getAssertionWithEpti(): Assertion
     {
-        $xml = <<<XML
+        $xml = <<<XML_WRAP
 <saml:Assertion
         xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
         xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
@@ -202,7 +202,7 @@ class AuthenticatedUserTest extends TestCase
          </saml:Attribute>
       </saml:AttributeStatement>
    </saml:Assertion>
-XML;
+XML_WRAP;
 
         return new Assertion(DOMDocumentFactory::fromString($xml)->firstChild);
     }

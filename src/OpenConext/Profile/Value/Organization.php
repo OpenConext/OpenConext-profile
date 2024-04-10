@@ -33,12 +33,7 @@ final class Organization
      */
     private $name;
 
-    /**
-     * @var Logo
-     */
-    private $logo;
-
-    public function __construct(array $displayName, array $name, Logo $logo)
+    public function __construct(array $displayName, array $name, private readonly Logo $logo)
     {
         Assert::allString(array_keys($displayName), 'DisplayName translations must be indexed by locale');
         Assert::allNotBlank(array_keys($displayName), 'Locales may not be blank');
@@ -47,7 +42,6 @@ final class Organization
 
         $this->displayName = $displayName;
         $this->name = $name;
-        $this->logo = $logo;
     }
 
     public static function fromArray(array $json): Organization

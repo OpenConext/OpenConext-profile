@@ -28,33 +28,14 @@ use Psr\Log\LoggerInterface;
 
 final class AttributeAggregationService
 {
-    /**
-     * @var AttributeAggregationRepositoryInterface
-     */
-    private $repository;
-
-    /**
-     * @var AttributeAggregationEnabledAttributes
-     */
-    private $attributeAggregationEnabledAttributes;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
     public function __construct(
-        AttributeAggregationRepositoryInterface $repository,
-        AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
-        LoggerInterface $logger,
+        private readonly AttributeAggregationRepositoryInterface $repository,
+        private AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->repository = $repository;
-        $this->attributeAggregationEnabledAttributes = $attributeAggregationEnabledAttributes;
-        $this->logger = $logger;
     }
 
     /**
-     * @param AuthenticatedUser $user
      * @return null|AttributeAggregationAttributesList
      */
     public function findByUser(AuthenticatedUser $user)
@@ -98,8 +79,6 @@ final class AttributeAggregationService
     }
 
     /**
-     * @param AuthenticatedUser $user
-     * @param AttributeAggregationAttribute $orcidAttribute
      *
      * @return bool returns false when deletion failed
      */
@@ -118,11 +97,10 @@ final class AttributeAggregationService
     /**
      * Validate the users identity matches that of the identity set on the ORCID attribute retrieved from AA.
      *
-     * @param AttributeAggregationAttribute $orcidAttribute
      *
      * @return bool
      */
-    private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
+    private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute): bool
     {
         $nameId = $user->getNameId();
 

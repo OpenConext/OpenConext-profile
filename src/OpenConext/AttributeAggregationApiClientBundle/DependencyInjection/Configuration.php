@@ -38,19 +38,15 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(function ($baseUrl) {
-                                    return !is_string($baseUrl);
-                                })
+                                ->ifTrue(fn($baseUrl) => !is_string($baseUrl))
                                 ->thenInvalid('The Attribute Aggregation API base URL should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($baseUrl) {
-                                    return !filter_var($baseUrl, FILTER_VALIDATE_URL);
-                                })
+                                ->ifTrue(fn($baseUrl) => !filter_var($baseUrl, FILTER_VALIDATE_URL))
                                 ->thenInvalid('The Attribute Aggregation API base URL should be a valid URL')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($baseUrl) {
+                                ->ifTrue(function ($baseUrl): bool {
                                     $path = parse_url($baseUrl, PHP_URL_PATH);
 
                                     if ($path === null) {
@@ -70,9 +66,7 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(function ($username) {
-                                    return !is_string($username);
-                                })
+                                ->ifTrue(fn($username) => !is_string($username))
                                 ->thenInvalid('The Attribute Aggregation API username should be a string')
                             ->end()
                         ->end()
@@ -81,9 +75,7 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(function ($password) {
-                                    return !is_string($password);
-                                })
+                                ->ifTrue(fn($password) => !is_string($password))
                                 ->thenInvalid('The Attribute Aggregation API password should be a string')
                             ->end()
                         ->end()

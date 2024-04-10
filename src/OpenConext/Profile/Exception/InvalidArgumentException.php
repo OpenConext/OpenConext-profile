@@ -29,12 +29,12 @@ class InvalidArgumentException extends CoreInvalidArgumentException
      *
      * @return self
      */
-    public static function invalidType($expected, $parameterName, $parameter)
+    public static function invalidType($expected, $parameterName, mixed $parameter)
     {
         $message = sprintf(
             'Invalid argument type: "%s" expected, "%s" given for "%s"',
             $expected,
-            is_object($parameter) ? get_class($parameter) : gettype($parameter),
+            get_debug_type($parameter),
             $parameterName,
         );
 

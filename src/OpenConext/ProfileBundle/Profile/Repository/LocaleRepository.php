@@ -24,14 +24,8 @@ use OpenConext\ProfileBundle\Service\LocaleStorageDriver;
 
 class LocaleRepository implements LocaleRepositoryInterface
 {
-    /**
-     * @var LocaleStorageDriver
-     */
-    private $localeStorageDriver;
-
-    public function __construct(LocaleStorageDriver $localeStorageDriver)
+    public function __construct(private readonly LocaleStorageDriver $localeStorageDriver)
     {
-        $this->localeStorageDriver = $localeStorageDriver;
     }
 
     public function findLocale()

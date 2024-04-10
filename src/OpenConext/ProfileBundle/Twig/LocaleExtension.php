@@ -29,26 +29,23 @@ use Twig\TwigFunction as SimpleFunction;
 final class LocaleExtension extends Extension
 {
     /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
      * @var string
      */
     private $locale;
 
-    public function __construct(FormFactoryInterface $formFactory, RequestStack $requestStack, $defaultLocale)
-    {
-        $this->formFactory = $formFactory;
+    public function __construct(
+        private readonly FormFactoryInterface $formFactory,
+        RequestStack $requestStack,
+        $defaultLocale,
+    ) {
         $this->locale = $this->retrieveLocale($requestStack, $defaultLocale);
     }
 
     public function getFunctions()
     {
         return [
-            new SimpleFunction('profile_locale_switcher', [$this, 'getLocalePreferenceForm']),
-            new SimpleFunction('locale', [$this, 'getLocale']),
+            new SimpleFunction('profile_locale_switcher', $this->getLocalePreferenceForm(...)),
+            new SimpleFunction('locale', $this->getLocale(...)),
         ];
     }
 

@@ -20,10 +20,11 @@ declare(strict_types=1);
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class Url
+final readonly class Url implements Stringable
 {
-    public function __construct(private readonly string $url)
+    public function __construct(private string $url)
     {
         Assert::url($url);
     }
@@ -33,7 +34,7 @@ final class Url
         return $this == $other;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->url;
     }

@@ -26,24 +26,10 @@ use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Organization;
 use Psr\Log\LoggerInterface;
 
-final class InstitutionRepository
+final readonly class InstitutionRepository
 {
-    /**
-     * @var JsonApiClient
-     */
-    private $apiClient;
-
-    /**
-     * @var EntityId
-     */
-    private $engineBlockEntityId;
-
-    public function __construct(
-        JsonApiClient $apiClient,
-        EntityId $engineBlockEntityId,
-    ) {
-        $this->apiClient = $apiClient;
-        $this->engineBlockEntityId = $engineBlockEntityId;
+    public function __construct(private JsonApiClient $apiClient, private EntityId $engineBlockEntityId)
+    {
     }
 
     private function findAllForIdp(string $entityId)

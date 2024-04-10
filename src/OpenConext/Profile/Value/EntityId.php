@@ -19,10 +19,11 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class EntityId
+final readonly class EntityId implements Stringable
 {
-    public function __construct(private readonly string $entityId)
+    public function __construct(private string $entityId)
     {
         Assert::notEmpty($entityId);
         Assert::notBlank($entityId);
@@ -38,7 +39,7 @@ final class EntityId
         return $this->entityId;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->entityId;
     }

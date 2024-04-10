@@ -27,24 +27,14 @@ use OpenConext\EngineBlockApiClientBundle\Exception\RuntimeException;
 
 class JsonApiClient
 {
-    /**
-     * @var ClientInterface
-     */
-    private $httpClient;
-
-    /**
-     * @param ClientInterface $httpClient
-     */
-    public function __construct(ClientInterface $httpClient)
+    public function __construct(private readonly ClientInterface $httpClient)
     {
-        $this->httpClient = $httpClient;
     }
 
     /**
      * @param string $path A URL path, optionally containing printf parameters. The parameters
      *               will be URL encoded and formatted into the path string.
      *               Example: "connections/%d.json"
-     * @param array  $parameters
      * @return mixed $data
      * @throws InvalidResponseException
      * @throws MalformedResponseException
@@ -74,7 +64,7 @@ class JsonApiClient
 
         try {
             $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw new MalformedResponseException(
                 sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
             );
@@ -84,12 +74,11 @@ class JsonApiClient
     }
 
     /**
-     * @param mixed $data
      * @param string $path
      * @param array $parameters
      * @return mixed
      */
-    public function post($data, $path, $parameters = [])
+    public function post(mixed $data, $path, $parameters = [])
     {
         $resource = $this->buildResourcePath($path, $parameters);
 
@@ -120,7 +109,7 @@ class JsonApiClient
 
         try {
             $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw new MalformedResponseException(
                 sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
             );
@@ -131,7 +120,6 @@ class JsonApiClient
 
     /**
      * @param string $path
-     * @param array $parameters
      * @return string
      * @throws RuntimeException
      */

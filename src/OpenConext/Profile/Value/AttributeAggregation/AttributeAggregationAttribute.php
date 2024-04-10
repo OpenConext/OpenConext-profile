@@ -23,41 +23,6 @@ use Assert\Assertion;
 final class AttributeAggregationAttribute
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $userId;
-
-    /**
-     * @var string
-     */
-    private $accountType;
-
-    /**
-     * @var string
-     */
-    private $linkedId;
-
-    /**
-     * @var string
-     */
-    private $logoPath;
-
-    /**
-     * @var string
-     */
-    private $connectUrl;
-
-    /**
-     * @var bool
-     */
-    private $isConnected = false;
-
-    /**
      * @param int $id
      * @param string $userId
      * @param string $accountType
@@ -67,21 +32,14 @@ final class AttributeAggregationAttribute
      * @param bool $isConnected
      */
     public function __construct(
-        $id,
-        $userId,
-        $accountType,
-        $linkedId,
-        $logoPath,
-        $connectUrl,
-        $isConnected,
+        private $id,
+        private $userId,
+        private $accountType,
+        private $linkedId,
+        private $logoPath,
+        private $connectUrl,
+        private $isConnected,
     ) {
-        $this->id = $id;
-        $this->userId = $userId;
-        $this->accountType = $accountType;
-        $this->linkedId = $linkedId;
-        $this->logoPath = $logoPath;
-        $this->connectUrl = $connectUrl;
-        $this->isConnected = $isConnected;
     }
 
     public static function fromConfig(

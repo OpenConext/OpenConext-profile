@@ -24,26 +24,10 @@ use OpenConext\Profile\Value\SpecifiedConsentList;
 
 class SpecifiedConsentListService
 {
-    /**
-     * @var ConsentService
-     */
-    private $consentService;
-
-    /**
-     * @var AttributeReleasePolicyService
-     */
-    private $attributeReleasePolicyService;
-
-    /**
-     * @param ConsentService $consentService
-     * @param AttributeReleasePolicyService $attributeReleasePolicyService
-     */
     public function __construct(
-        ConsentService $consentService,
-        AttributeReleasePolicyService $attributeReleasePolicyService,
+        private readonly ConsentService $consentService,
+        private readonly AttributeReleasePolicyService $attributeReleasePolicyService,
     ) {
-        $this->consentService                = $consentService;
-        $this->attributeReleasePolicyService = $attributeReleasePolicyService;
     }
 
     public function getListFor(AuthenticatedUser $user): SpecifiedConsentList

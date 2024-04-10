@@ -38,7 +38,7 @@ final class AttributeSetWithFallbacks extends AttributeSet implements AttributeS
         foreach ($assertion->getAttributes() as $urn => $attributeValue) {
             try {
                 $attributeDefinition = $attributeDictionary->getAttributeDefinitionByUrn($urn);
-            } catch (UnknownUrnException $exception) {
+            } catch (UnknownUrnException) {
                 $attributeDefinition = new AttributeDefinition($urn, $urn, $urn);
             }
 

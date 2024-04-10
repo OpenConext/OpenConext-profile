@@ -19,8 +19,9 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class ContactEmailAddress
+final class ContactEmailAddress implements Stringable
 {
     /**
      * @var string
@@ -38,15 +39,14 @@ final class ContactEmailAddress
     }
 
     /**
-     * @param ContactEmailAddress $other
      * @return bool
      */
-    public function equals(ContactEmailAddress $other)
+    public function equals(ContactEmailAddress $other): bool
     {
         return $this->emailAddress === $other->emailAddress;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->emailAddress;
     }

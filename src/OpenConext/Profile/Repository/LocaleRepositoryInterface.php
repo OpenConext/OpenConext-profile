@@ -28,7 +28,6 @@ interface LocaleRepositoryInterface
     public function findLocale();
 
     /**
-     * @param Locale $locale
      * @return void
      */
     public function save(Locale $locale);

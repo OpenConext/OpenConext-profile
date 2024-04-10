@@ -35,25 +35,17 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class SamlProvider implements SamlProviderInterface, UserProviderInterface
 {
-    /**
-     * @var AttributeDictionary
-     */
-    private $attributeDictionary;
-
-    public function __construct(AttributeDictionary $attributeDictionary)
+    public function __construct(private readonly AttributeDictionary $attributeDictionary)
     {
-        $this->attributeDictionary = $attributeDictionary;
     }
 
-    public function authenticate(TokenInterface $token)
+    public function authenticate(TokenInterface $token): SamlToken
     {
         ConfigurableAttributeSetFactory::configureWhichAttributeSetToCreate(AttributeSetWithFallbacks::class);
         $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
 
         $authenticatingAuthorities = array_map(
-            function ($authenticatingAuthority) {
-                return new EntityId($authenticatingAuthority);
-            },
+            fn($authenticatingAuthority) => new EntityId($authenticatingAuthority),
             $token->assertion->getAuthenticatingAuthority(),
         );
 
@@ -65,14 +57,14 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
         return $authenticatedToken;
     }
 
-    public function supports(TokenInterface $token)
+    public function supports(TokenInterface $token): bool
     {
         return $token instanceof SamlToken;
     }
 
     public function getNameId(Assertion $assertion): string
     {
-        // TODO: Implement getNameId() method.
+        return $this->attributeDictionary->translate($assertion)->getNameID();
     }
 
     public function getUser(Assertion $assertion): UserInterface
@@ -80,9 +72,9 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
         // TODO: Implement getUser() method.
     }
 
-    public function refreshUser(UserInterface $user): void
+    public function refreshUser(UserInterface $user): UserInterface
     {
-        // TODO: Implement refreshUser() method.
+        return $user;
     }
 
     public function supportsClass(string $class)

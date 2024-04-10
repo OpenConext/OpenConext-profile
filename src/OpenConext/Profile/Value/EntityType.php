@@ -19,11 +19,12 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class EntityType
+final class EntityType implements Stringable
 {
-    const TYPE_SP  = 'saml20-sp';
-    const TYPE_IDP = 'saml20-idp';
+    public const TYPE_SP  = 'saml20-sp';
+    public const TYPE_IDP = 'saml20-idp';
 
     /**
      * @var string
@@ -67,7 +68,7 @@ final class EntityType
     /**
      * @return bool
      */
-    public function isSP()
+    public function isSP(): bool
     {
         return $this->type === self::TYPE_SP;
     }
@@ -75,22 +76,20 @@ final class EntityType
     /**
      * @return bool
      */
-    public function isIdP()
+    public function isIdP(): bool
     {
         return $this->type === self::TYPE_IDP;
     }
     // @codingStandardsIgnoreEnd
-
     /**
-     * @param EntityType $other
      * @return bool
      */
-    public function equals(EntityType $other)
+    public function equals(EntityType $other): bool
     {
         return $this->type === $other->type;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->type;
     }

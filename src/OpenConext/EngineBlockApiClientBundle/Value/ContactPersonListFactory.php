@@ -27,10 +27,9 @@ use OpenConext\Profile\Value\ContactEmailAddress;
 final class ContactPersonListFactory
 {
     /**
-     * @param mixed $data
      * @return ContactPersonList
      */
-    public static function createListFromMetadata($data)
+    public static function createListFromMetadata(mixed $data)
     {
         Assert::isArray($data, 'Metadata JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_persons', 'Entity JSON structure must contain key "contact_persons"');
@@ -38,7 +37,7 @@ final class ContactPersonListFactory
 
         // We cannot use self::class because translation extractions fails on that
         $contactPersons = array_map(
-            ['\OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory', 'createContactPerson'],
+            ContactPersonListFactory::createContactPerson(...),
             $data['contact_persons'],
         );
 
@@ -46,12 +45,10 @@ final class ContactPersonListFactory
     }
 
     /**
-     * @param mixed $data
      * @return ContactPerson
-     *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createContactPerson($data)
+    private static function createContactPerson(mixed $data)
     {
         Assert::isArray($data, 'Contact person JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_type', 'Contact person JSON structure must contain key "contact_type"');

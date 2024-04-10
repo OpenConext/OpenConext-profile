@@ -26,20 +26,10 @@ use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;
 use Psr\Log\LoggerInterface;
 
-final class ConsentRepository implements ConsentRepositoryInterface
+final readonly class ConsentRepository implements ConsentRepositoryInterface
 {
-    /**
-     * @var JsonApiClient
-     */
-    private $apiClient;
-
-    /** @var LoggerInterface */
-    private $logger;
-
-    public function __construct(JsonApiClient $apiClient, LoggerInterface $logger)
+    public function __construct(private JsonApiClient $apiClient, private LoggerInterface $logger)
     {
-        $this->apiClient = $apiClient;
-        $this->logger = $logger;
     }
 
     public function findAllFor(string $userId): ConsentList

@@ -24,8 +24,9 @@ use OpenConext\Profile\Value\EntityId;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
+use Stringable;
 
-final class AuthenticatedUser
+final class AuthenticatedUser implements Stringable
 {
     /**
      * A list of blacklisted attributes defined by their Urn OID
@@ -65,8 +66,6 @@ final class AuthenticatedUser
     }
 
     /**
-     * @param string $nameId
-     * @param AttributeSet $attributes
      * @param EntityId[] $authenticatingAuthorities
      */
     private function __construct(
@@ -96,7 +95,7 @@ final class AuthenticatedUser
      * which uses the string representation to detect changes in the user object.
      * Not implementing a UserInterface, because methods defined there will not be used.
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->nameId;
     }

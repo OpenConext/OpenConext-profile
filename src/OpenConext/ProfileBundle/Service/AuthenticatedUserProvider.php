@@ -22,11 +22,11 @@ use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
+final readonly class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
 
     public function __construct(
-        private readonly TokenStorageInterface $tokenStorage,
+        private TokenStorageInterface $tokenStorage,
     ) {
     }
 

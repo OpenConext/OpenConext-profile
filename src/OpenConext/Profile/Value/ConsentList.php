@@ -40,19 +40,15 @@ final class ConsentList implements IteratorAggregate, Countable
         }
     }
 
-    /**
-     * @param Consent $consent
-     */
     private function initializeWith(Consent $consent): void
     {
         $this->consents[] = $consent;
     }
 
     /**
-     * @param callable $predicate
      * @return array
      */
-    public function map(callable $predicate)
+    public function map(callable $predicate): array
     {
         return array_map($predicate, $this->consents);
     }

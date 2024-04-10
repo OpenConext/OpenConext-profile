@@ -23,16 +23,10 @@ use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 
-final class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
+final readonly class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
 {
-    /**
-     * @var JsonApiClient
-     */
-    private $apiClient;
-
-    public function __construct(JsonApiClient $apiClient)
+    public function __construct(private JsonApiClient $apiClient)
     {
-        $this->apiClient = $apiClient;
     }
 
     public function findAllFor($userId)
@@ -45,7 +39,7 @@ final class AttributeAggregationRepository implements AttributeAggregationReposi
         return AttributeAggregationAttributesList::fromApiResponse($attributes);
     }
 
-    public function unsubscribeAccount($accountId)
+    public function unsubscribeAccount($accountId): bool
     {
         Assert::integer($accountId, 'Account id "%s" expected to be string, type %s given.');
 

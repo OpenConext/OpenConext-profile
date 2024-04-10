@@ -62,7 +62,7 @@ final class Arp
             if (!is_null($dictionary)) {
                 try {
                     $attributeDefinition = $dictionary->getAttributeDefinitionByUrn($attributeName);
-                } catch (UnknownUrnException $exception) {
+                } catch (UnknownUrnException) {
                     // Use the previously created attributeDefinition.
                 }
             }
@@ -116,10 +116,9 @@ final class Arp
      *   ],
      * ]
      *
-     * @param array $attributeInformation
      * @return bool
      */
-    private static function isValidAttribute(array $attributeInformation)
+    private static function isValidAttribute(array $attributeInformation): bool
     {
         foreach ($attributeInformation as $attributeInformationEntry) {
             if (!isset($attributeInformationEntry['value'])) {
@@ -153,7 +152,7 @@ final class Arp
     /**
      * @return bool
      */
-    public function hasMotivations()
+    public function hasMotivations(): bool
     {
         foreach ($this->arp as $arpSource) {
             foreach ($arpSource as $arpEntry) {

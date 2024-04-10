@@ -21,36 +21,13 @@ namespace OpenConext\Profile\Value;
 use DateTimeImmutable;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 
-final class Consent
+final readonly class Consent
 {
-    /**
-     * @var ServiceProvider
-     */
-    private $serviceProvider;
-
-    /**
-     * @var DateTimeImmutable
-     */
-    private $consentGivenOn;
-
-    /**
-     * @var ConsentType
-     */
-    private $consentType;
-
-    /**
-     * @param ServiceProvider $serviceProvider
-     * @param DateTimeImmutable $consentGivenOn
-     * @param ConsentType $consentType
-     */
     public function __construct(
-        ServiceProvider $serviceProvider,
-        DateTimeImmutable $consentGivenOn,
-        ConsentType $consentType,
+        private ServiceProvider $serviceProvider,
+        private DateTimeImmutable $consentGivenOn,
+        private ConsentType $consentType,
     ) {
-        $this->serviceProvider = $serviceProvider;
-        $this->consentGivenOn  = $consentGivenOn;
-        $this->consentType     = $consentType;
     }
 
     /**

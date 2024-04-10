@@ -42,10 +42,8 @@ final class ContactEmailAddressTest extends TestCase
      * @group Value
      * @dataProvider nonStringProvider
      *
-     *
-     * @param mixed $nonString
      */
-    public function it_doesnt_accept_non_strings_as_email($nonString): void
+    public function it_doesnt_accept_non_strings_as_email(mixed $nonString): void
     {
         $this->expectException(InvalidArgumentException::class);
         new ContactEmailAddress($nonString);

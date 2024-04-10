@@ -24,20 +24,13 @@ use OpenConext\Profile\Entity\AuthenticatedUser;
 use Psr\Log\LoggerInterface;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
-final class ConsentService
+final readonly class ConsentService
 {
-    /**
-     * @var ConsentRepositoryInterface
-     */
-    private $consentRepository;
-
-    public function __construct(ConsentRepositoryInterface $consentRepository)
+    public function __construct(private ConsentRepositoryInterface $consentRepository)
     {
-        $this->consentRepository = $consentRepository;
     }
 
     /**
-     * @param AuthenticatedUser $user
      * @return ConsentList|null
      */
     public function findAllFor(AuthenticatedUser $user)

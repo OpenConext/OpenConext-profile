@@ -25,24 +25,6 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 class SpecifiedConsent
 {
     /**
-     * @var Consent
-     */
-    private $consent;
-
-    /**
-     * @var AttributeSet
-     */
-    private $releasedAttributes;
-
-    /**
-     * @var Arp
-     */
-    private $arp;
-
-    /**
-     * @param Consent $consent
-     * @param AttributeSet $releasedAttributes
-     * @param Arp $arp
      * @return SpecifiedConsent
      */
     public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
@@ -50,16 +32,11 @@ class SpecifiedConsent
         return new self($consent, $releasedAttributes, $arp);
     }
 
-    /**
-     * @param Consent $consent
-     * @param AttributeSet $releasedAttributes
-     * @param Arp $arp
-     */
-    private function __construct(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
-    {
-        $this->consent = $consent;
-        $this->releasedAttributes = $releasedAttributes;
-        $this->arp = $arp;
+    private function __construct(
+        private readonly Consent $consent,
+        private readonly AttributeSet $releasedAttributes,
+        private readonly Arp $arp,
+    ) {
     }
 
     /**
@@ -78,7 +55,7 @@ class SpecifiedConsent
         return $this->releasedAttributes;
     }
 
-    public function hasMultipleSources()
+    public function hasMultipleSources(): bool
     {
         $sources = [];
         foreach ($this->getReleasedAttributes() as $attribute) {

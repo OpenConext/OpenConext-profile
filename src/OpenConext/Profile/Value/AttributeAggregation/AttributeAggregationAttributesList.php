@@ -26,20 +26,13 @@ use OpenConext\AttributeAggregationApiClientBundle\Exception\InvalidArgumentExce
 final class AttributeAggregationAttributesList
 {
     /**
-     * @var AttributeAggregationAttribute[]
-     */
-    private $attributes;
-
-    /**
      * @param AttributeAggregationAttribute[] $attributes
      */
-    public function __construct(array $attributes)
+    public function __construct(private array $attributes)
     {
-        $this->attributes = $attributes;
     }
 
     /**
-     * @param array $attributes
      * @return AttributeAggregationAttributesList
      */
     public static function fromApiResponse(array $attributes)
@@ -77,7 +70,7 @@ final class AttributeAggregationAttributesList
      * @param string $accountType
      * @return bool
      */
-    public function hasAttribute($accountType)
+    public function hasAttribute($accountType): bool
     {
         foreach ($this->attributes as $attribute) {
             if ($attribute->getAccountType() === $accountType) {
@@ -91,9 +84,7 @@ final class AttributeAggregationAttributesList
     {
         $this->attributes = array_filter(
             $this->attributes,
-            function (AttributeAggregationAttribute $attribute) use ($enabledAttributes) {
-                return $enabledAttributes->isEnabled($attribute->getAccountType());
-            },
+            fn(AttributeAggregationAttribute $attribute) => $enabledAttributes->isEnabled($attribute->getAccountType()),
         );
     }
 

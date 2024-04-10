@@ -26,14 +26,8 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class LocaleListener implements EventSubscriberInterface
 {
-    /**
-     * @var LocaleService
-     */
-    private $localeService;
-
-    public function __construct(LocaleService $localeService)
+    public function __construct(private readonly LocaleService $localeService)
     {
-        $this->localeService = $localeService;
     }
 
     public function onKernelRequest(RequestEvent $event): void

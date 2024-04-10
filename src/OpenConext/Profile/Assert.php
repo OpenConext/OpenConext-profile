@@ -23,15 +23,13 @@ use OpenConext\Profile\Exception\AssertionFailedException;
 
 class Assert extends BaseAssertion
 {
-    protected static $exceptionClass = 'OpenConext\Profile\Exception\AssertionFailedException';
+    protected static $exceptionClass = AssertionFailedException::class;
 
     /**
      * Verifies if the expected keys are in the array
      *
      * An exact match is not required.
      *
-     * @param array $array
-     * @param array $expectedKeys
      * @param null $propertyPath
      */
     public static function keysArePresent(array $array, array $expectedKeys, $propertyPath = null): void
@@ -48,7 +46,7 @@ class Assert extends BaseAssertion
         foreach ($expectedKeys as $expectedKey) {
             if (!in_array($expectedKey, $givenKeys)) {
                 $message = sprintf('Required key "%s" is missing', $expectedKey);
-                throw new AssertionFailedException($message, 0, $propertyPath, $array);
+                throw new AssertionFailedException($message, 0, $array, $propertyPath);
             }
         }
         return;

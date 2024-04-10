@@ -24,11 +24,6 @@ use Symfony\Contracts\Translation\TranslatorInterface ;
 final class GlobalViewParameters
 {
     /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    /**
      * @var array
      */
     private $helpUrls;
@@ -58,11 +53,8 @@ final class GlobalViewParameters
      */
     private $attributeInformationUrls;
 
-    /** @var bool */
-    private $removeConsentEnabled;
-
     public function __construct(
-        TranslatorInterface $translator,
+        private readonly TranslatorInterface $translator,
         array $locales,
         array $helpUrls,
         array $privacyUrls,
@@ -70,7 +62,7 @@ final class GlobalViewParameters
         array $termsOfServiceUrls,
         array $profileExplanationImageUrls,
         array $attributeInformationUrls,
-        bool $removeConsentEnabled,
+        private readonly bool $removeConsentEnabled,
     ) {
         Assert::keysArePresent($helpUrls, $locales);
         Assert::keysArePresent($privacyUrls, $locales);
@@ -78,15 +70,12 @@ final class GlobalViewParameters
         Assert::keysArePresent($termsOfServiceUrls, $locales);
         Assert::keysArePresent($profileExplanationImageUrls, $locales);
         Assert::keysArePresent($attributeInformationUrls, $locales);
-
-        $this->translator                  = $translator;
         $this->helpUrls                    = $helpUrls;
         $this->privacyUrls                 = $privacyUrls;
         $this->platformUrls                = $platformUrls;
         $this->termsOfServiceUrls          = $termsOfServiceUrls;
         $this->profileExplanationImageUrls = $profileExplanationImageUrls;
         $this->attributeInformationUrls    = $attributeInformationUrls;
-        $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
     /**
@@ -137,7 +126,7 @@ final class GlobalViewParameters
         return $this->attributeInformationUrls[$this->translator->getLocale()];
     }
 
-    public function isRemoveConsentFeatureEnabled()
+    public function isRemoveConsentFeatureEnabled(): bool
     {
         return $this->removeConsentEnabled;
     }

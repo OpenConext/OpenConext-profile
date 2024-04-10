@@ -79,7 +79,7 @@ class JsonApiClientTest extends TestCase
      */
     public function throw_exception_when_status_code_is_not_200($statusCode): void
     {
-        $this->expectException('\OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException');
+        $this->expectException(\OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException::class);
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn($statusCode);
 

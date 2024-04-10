@@ -76,7 +76,7 @@ class SpecifiedConsentListTest extends TestCase
 
     private function buildMockSpecifiedConsent(string $locale, string $displayName, string $entityId = '')
     {
-      $mockSp = $this->createMock(ServiceProvider::class);
+        $mockSp = $this->createMock(ServiceProvider::class);
         if ($entityId === '') {
             $mockSp->method('getLocaleAwareEntityName')->with($locale)->willReturn($displayName);
 

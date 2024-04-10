@@ -52,7 +52,7 @@ class IntroductionController
                 ->getAttributes()
                 ->getAttributeByDefinition($attributeDefinition)
                 ->getValue()[0];
-        } catch (RuntimeException $e) {
+        } catch (RuntimeException) {
             $this->logger->info("Unable to retrieve the givenName attribute. It is not present in the attribute set");
             $userName = false;
         }

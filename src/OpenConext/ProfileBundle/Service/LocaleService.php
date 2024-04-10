@@ -23,40 +23,16 @@ use OpenConext\Profile\Value\Locale;
 use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\LocaleSet;
 
-final class LocaleService
+final readonly class LocaleService
 {
-    /**
-     * @var LocaleRepositoryInterface
-     */
-    private $localeRepository;
-
-    /**
-     * @var LocaleSet
-     */
-    private $availableLocales;
-
-    /**
-     * @var Locale
-     */
-    private $defaultLocale;
-
-    /**
-     * @param LocaleRepositoryInterface $localeRepository
-     * @param LocaleSet $availableLocales
-     * @param Locale $defaultLocale
-     */
     public function __construct(
-        LocaleRepositoryInterface $localeRepository,
-        LocaleSet $availableLocales,
-        Locale $defaultLocale,
+        private LocaleRepositoryInterface $localeRepository,
+        private LocaleSet $availableLocales,
+        private Locale $defaultLocale,
     ) {
-        $this->localeRepository = $localeRepository;
-        $this->availableLocales = $availableLocales;
-        $this->defaultLocale    = $defaultLocale;
     }
 
     /**
-     * @param Locale $locale
      * @return bool
      */
     public function isAvailableLocale(Locale $locale)
@@ -78,9 +54,6 @@ final class LocaleService
         return $this->defaultLocale;
     }
 
-    /**
-     * @param ApiUserInterface $user
-     */
     public function saveLocaleOf(ApiUserInterface $user): void
     {
         $this->localeRepository->save($user->getLocale());

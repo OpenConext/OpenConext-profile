@@ -29,6 +29,7 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 use \DateTime;
+use OpenConext\Profile\Value\EntityId;
 
 class OpenConextProfileExtension extends Extension
 {
@@ -71,12 +72,14 @@ class OpenConextProfileExtension extends Extension
     private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container): void
     {
         $container
-            ->getDefinition('OpenConext\Profile\Value\EntityId')
+            ->getDefinition(EntityId::class)
             ->replaceArgument(0, $engineBlockEntityId);
     }
 
-    private function parseAttributeSupportMailConfiguration(array $attributeSupportConfig, ContainerBuilder $container): void
-    {
+    private function parseAttributeSupportMailConfiguration(
+        array $attributeSupportConfig,
+        ContainerBuilder $container,
+    ): void {
         $container
             ->getDefinition('profile.attribute_support.email_from')
             ->replaceArgument(0, $attributeSupportConfig['email_from']);
@@ -106,9 +109,7 @@ class OpenConextProfileExtension extends Extension
 
     private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container): void
     {
-        $availableLocales = array_map(function ($availableLocale) {
-            return new Definition(Locale::class, [$availableLocale]);
-        }, $availableLocaleConfig);
+        $availableLocales = array_map(fn($availableLocale) => new Definition(Locale::class, [$availableLocale]), $availableLocaleConfig);
 
         $container
             ->getDefinition(LocaleSet::class)

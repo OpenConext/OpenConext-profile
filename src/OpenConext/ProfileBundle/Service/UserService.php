@@ -29,7 +29,7 @@ use OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient as UserLifecycleA
 
 final class UserService
 {
-    private UserLifecycleApiClient $userLifecycleApiClient;
+    private ?UserLifecycleApiClient $userLifecycleApiClient = null;
 
     public function __construct(
         private readonly SupportContactEmailService $supportContactEmailService,

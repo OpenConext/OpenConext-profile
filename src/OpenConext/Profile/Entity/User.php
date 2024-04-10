@@ -25,32 +25,15 @@ use OpenConext\Profile\Value\Locale;
 final class User implements ApiUserInterface
 {
     /**
-     * @var AuthenticatedUser
-     */
-    private $authenticatedUser;
-
-    /**
-     * @var Locale
-     */
-    private $locale;
-
-    /**
      * @var ContactEmailAddress|null
      */
     private $supportContactEmail;
 
-    /**
-     * @param AuthenticatedUser $authenticatedUser
-     * @param Locale $locale
-     */
-    public function __construct(AuthenticatedUser $authenticatedUser, Locale $locale)
+    public function __construct(private AuthenticatedUser $authenticatedUser, private Locale $locale)
     {
-        $this->authenticatedUser = $authenticatedUser;
-        $this->locale            = $locale;
     }
 
     /**
-     * @param ContactEmailAddress $supportContactEmail
      * @return UserInterface
      */
     public function withSupportContactEmail(ContactEmailAddress $supportContactEmail)

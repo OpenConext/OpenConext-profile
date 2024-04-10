@@ -26,14 +26,8 @@ use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 
 class ApiHealthCheck implements HealthCheckInterface
 {
-    /**
-     * @var ConsentRepositoryInterface
-     */
-    private $repository;
-
-    public function __construct(ConsentRepositoryInterface $repository)
+    public function __construct(private readonly ConsentRepositoryInterface $repository)
     {
-        $this->repository = $repository;
     }
 
     public function check(HealthReportInterface $report): HealthReportInterface
@@ -45,7 +39,7 @@ class ApiHealthCheck implements HealthCheckInterface
                 sprintf(
                     'EngineBlock API is not responding as expected. Message "%s" of type "%s".',
                     $e->getMessage(),
-                    get_class($e),
+                    $e::class,
                 ),
             );
         }

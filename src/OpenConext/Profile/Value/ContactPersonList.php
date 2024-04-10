@@ -23,8 +23,9 @@ use Countable;
 use IteratorAggregate;
 use OpenConext\Profile\Exception\OutOfRangeException;
 use Traversable;
+use Stringable;
 
-final class ContactPersonList implements IteratorAggregate, Countable
+final class ContactPersonList implements IteratorAggregate, Countable, Stringable
 {
     /**
      * @var ContactPerson[]
@@ -38,16 +39,12 @@ final class ContactPersonList implements IteratorAggregate, Countable
         }
     }
 
-    /**
-     * @param ContactPerson $contactPerson
-     */
     private function initializeWith(ContactPerson $contactPerson): void
     {
         $this->contactPersons[] = $contactPerson;
     }
 
     /**
-     * @param callable $predicate
      * @return ContactPersonList
      */
     public function filter(callable $predicate)
@@ -55,9 +52,7 @@ final class ContactPersonList implements IteratorAggregate, Countable
         return new ContactPersonList(
             array_filter(
                 $this->contactPersons,
-                function (ContactPerson $contactPerson) use ($predicate) {
-                    return $predicate($contactPerson);
-                },
+                fn(ContactPerson $contactPerson) => $predicate($contactPerson),
             ),
         );
     }
@@ -84,7 +79,7 @@ final class ContactPersonList implements IteratorAggregate, Countable
         return count($this->contactPersons);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return implode(', ', $this->contactPersons);
     }

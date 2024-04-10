@@ -28,7 +28,6 @@ interface UserRepositoryInterface
     public function findUser();
 
     /**
-     * @param ApiUserInterface $user
      * @return void
      */
     public function save(ApiUserInterface $user);

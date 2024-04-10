@@ -39,16 +39,15 @@ use OpenConext\Profile\Value\Url;
 final class ConsentListFactory
 {
     /**
-     * @param mixed $data
      * @return ConsentList
      */
-    public static function createListFromMetadata($data)
+    public static function createListFromMetadata(mixed $data)
     {
         Assert::isArray($data, 'Consent list JSON structure must be an associative array, got %s');
 
         // We cannot use self::class because translation extractions fails on that
         $consents = array_map(
-            ['\OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory', 'createConsent'],
+            ConsentListFactory::createConsent(...),
             $data,
         );
 
@@ -56,12 +55,10 @@ final class ConsentListFactory
     }
 
     /**
-     * @param mixed $data
      * @return Consent
-     *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createConsent($data)
+    private static function createConsent(mixed $data)
     {
         Assert::keyExists($data, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
         Assert::keyExists($data, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
@@ -99,10 +96,9 @@ final class ConsentListFactory
     }
 
     /**
-     * @param mixed $data
      * @return ServiceProvider
      */
-    private static function createServiceProvider($data)
+    private static function createServiceProvider(mixed $data)
     {
         Assert::keyExists($data, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
         Assert::keyExists($data, 'display_name', 'Consent JSON structure must contain key "display_name"');

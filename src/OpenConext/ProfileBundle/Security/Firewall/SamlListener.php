@@ -46,61 +46,29 @@ use Twig\Environment as Twig;
 class SamlListener
 {
     /**
-     * @var \Symfony\Component\Routing\Matcher\UrlMatcherInterface
-     */
-    private $urlMatcher;
-
-    /**
-     * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface
-     */
-    private $tokenStorage;
-
-    /**
      * @var \Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface
      */
     private $authenticationManager;
 
-    /**
-     * @var \Surfnet\SamlBundle\Monolog\SamlAuthenticationLogger
-     */
-    private $logger;
-
-    /**
-     * @var \OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider
-     */
-    private $samlInteractionProvider;
-
-    /**
-     * @var \OpenConext\ProfileBundle\Saml\StateHandler
-     */
-    private $stateHandler;
-
-    /**
-     * @var Environment
-     */
-    private $twig;
-
     public function __construct(
-        private RequestStack $requestStack,
-        UrlMatcherInterface $urlMatcher,
-        TokenStorageInterface $tokenStorage,
+        private readonly RequestStack $requestStack,
+        private readonly UrlMatcherInterface $urlMatcher,
+        private readonly TokenStorageInterface $tokenStorage,
         AuthenticationManagerInterface $authenticationManager,
-        SamlInteractionProvider $samlInteractionProvider,
-        StateHandler $stateHandler,
-        LoggerInterface $logger,
-        Twig $twig,
+        private readonly SamlInteractionProvider $samlInteractionProvider,
+        private readonly StateHandler $stateHandler,
+        /**
+         * @var \Surfnet\SamlBundle\Monolog\SamlAuthenticationLogger
+         */
+        private LoggerInterface $logger,
+        private readonly Twig $twig,
     ) {
-        $this->urlMatcher               = $urlMatcher;
-        $this->tokenStorage             = $tokenStorage;
         $this->authenticationManager    = $authenticationManager;
-        $this->samlInteractionProvider  = $samlInteractionProvider;
-        $this->stateHandler             = $stateHandler;
-        $this->logger                   = $logger;
-        $this->twig = $twig;
     }
 
     public function __invoke(RequestEvent $event): void
     {
+        dd('SamlListener Invoked');
         try {
             $this->handleEvent($event);
         } catch (Exception $e) {
@@ -173,20 +141,17 @@ class SamlListener
      *
      * @return bool
      */
-    private function isAcsRequest(Request $request)
+    private function isAcsRequest(Request $request): bool
     {
         try {
             $params = $this->urlMatcher->match($request->getPathInfo());
-        } catch (ResourceNotFoundException $e) {
+        } catch (ResourceNotFoundException) {
             return false;
         }
 
         return $params['_route'] === 'profile.saml_consume_assertion';
     }
 
-    /**
-     * @param RequestEvent $event
-     */
     private function sendAuthnRequest(RequestEvent $event): void
     {
         $this->stateHandler->setCurrentRequestUri($event->getRequest()->getUri());
@@ -197,10 +162,6 @@ class SamlListener
         $logger->info('Sending AuthnRequest');
     }
 
-    /**
-     * @param PreconditionNotMetException $exception
-     * @param RequestEvent $event
-     */
     private function setPreconditionExceptionResponse(PreconditionNotMetException $exception, RequestEvent $event): void
     {
         $template = null;
@@ -217,7 +178,6 @@ class SamlListener
 
     /**
      * Deny authentication by default
-     * @param RequestEvent $event
      */
     private function setAuthenticationFailedResponse(RequestEvent $event): void
     {

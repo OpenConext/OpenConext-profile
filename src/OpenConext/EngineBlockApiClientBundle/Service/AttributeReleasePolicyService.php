@@ -36,36 +36,20 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects) Build and mapping logic causes complexity
  */
-final class AttributeReleasePolicyService
+final readonly class AttributeReleasePolicyService
 {
-    /**
-     * @var JsonApiClient
-     */
-    private $jsonApiClient;
-
-    /**
-     * @var AttributeDictionary
-     */
-    private $attributeDictionary;
-
-    public function __construct(JsonApiClient $jsonApiClient, AttributeDictionary $attributeDictionary)
+    public function __construct(private JsonApiClient $jsonApiClient, private AttributeDictionary $attributeDictionary)
     {
-        $this->jsonApiClient = $jsonApiClient;
-        $this->attributeDictionary = $attributeDictionary;
     }
 
     /**
-     * @param ConsentList $consentList
-     * @param AttributeSetInterface $attributeSet
      * @return SpecifiedConsentList
      * @SuppressWarnings(PHPMD.NPathComplexity) Build and mapping logic causes complexity
      * @SuppressWarnings(PHPMD.CyclomaticComplexity) Build and mapping logic causes complexity
      */
     public function applyAttributeReleasePolicies(ConsentList $consentList, AttributeSetInterface $attributeSet)
     {
-        $entityIds = $consentList->map(function (Consent $consent) {
-            return $consent->getServiceProvider()->getEntity()->getEntityId()->getEntityId();
-        });
+        $entityIds = $consentList->map(fn(Consent $consent) => $consent->getServiceProvider()->getEntity()->getEntityId()->getEntityId());
 
         $mappedAttributes = [];
         foreach ($attributeSet as $attribute) {
@@ -114,7 +98,7 @@ final class AttributeReleasePolicyService
                 foreach ($response[$entityId] as $attributeName => $attributeValue) {
                     try {
                         $attributeDefinition = $this->attributeDictionary->getAttributeDefinitionByUrn($attributeName);
-                    } catch (UnknownUrnException $exception) {
+                    } catch (UnknownUrnException) {
                         $attributeDefinition = new AttributeDefinition($attributeName, $attributeName, $attributeName);
                     }
 

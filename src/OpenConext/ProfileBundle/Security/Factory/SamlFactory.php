@@ -28,7 +28,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class SamlFactory implements AuthenticatorFactoryInterface
 {
-    public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
+    public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint): array
     {
         $providerId = 'security.authentication.provider.saml.' . $id;
         $container->setDefinition(
@@ -41,7 +41,7 @@ class SamlFactory implements AuthenticatorFactoryInterface
             new ChildDefinition(SamlListener::class),
         );
 
-        return array($providerId, $listenerId, $defaultEntryPoint);
+        return [$providerId, $listenerId, $defaultEntryPoint];
     }
 
     public function getPosition(): string

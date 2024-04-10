@@ -19,8 +19,9 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class Locale
+final class Locale implements Stringable
 {
     /**
      * @var string
@@ -39,10 +40,9 @@ final class Locale
     }
 
     /**
-     * @param Locale $other
      * @return bool
      */
-    public function equals(Locale $other)
+    public function equals(Locale $other): bool
     {
         return $this->locale === $other->locale;
     }
@@ -58,7 +58,7 @@ final class Locale
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->locale;
     }

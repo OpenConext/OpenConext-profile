@@ -20,8 +20,9 @@ namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
+use Stringable;
 
-class DisplayName
+class DisplayName implements Stringable
 {
     /**
      * @var string[]
@@ -41,7 +42,7 @@ class DisplayName
      * @param string $locale
      * @return bool
      */
-    public function hasFilledTranslationForLocale($locale)
+    public function hasFilledTranslationForLocale($locale): bool
     {
         Assert::string($locale, 'Locale must be string', 'locale');
 
@@ -60,16 +61,14 @@ class DisplayName
         return $this->translations[$locale];
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             'DisplayName(%s)',
             join(
                 ', ',
                 array_map(
-                    function ($locale) {
-                        return sprintf('%s=%s', $locale, $this->translations[$locale]);
-                    },
+                    fn($locale) => sprintf('%s=%s', $locale, $this->translations[$locale]),
                     array_keys($this->translations),
                 ),
             ),

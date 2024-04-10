@@ -49,10 +49,9 @@ final class LocaleSet implements IteratorAggregate, Countable
     }
 
     /**
-     * @param Locale $otherLocale
      * @return bool
      */
-    public function contains(Locale $otherLocale)
+    public function contains(Locale $otherLocale): bool
     {
         foreach ($this->locales as $locale) {
             if ($locale->equals($otherLocale)) {
@@ -74,8 +73,6 @@ final class LocaleSet implements IteratorAggregate, Countable
     }
 
     /**
-     * @param Locale $locale
-     *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod) PHPMD does not see that this is being called in our static method
      */
     private function initializeWith(Locale $locale): void

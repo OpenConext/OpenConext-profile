@@ -21,30 +21,12 @@ namespace OpenConext\Profile\Value\AttributeAggregation;
 final class AttributeAggregationAttributeConfiguration
 {
     /**
-     * @var string
-     */
-    private $accountType;
-
-    /**
-     * @var string
-     */
-    private $logoPath;
-
-    /**
-     * @var string
-     */
-    private $connectUrl;
-
-    /**
      * @param string $accountType
      * @param string $logoPath
      * @param string $connectUrl
      */
-    public function __construct($accountType, $logoPath, $connectUrl)
+    public function __construct(private $accountType, private $logoPath, private $connectUrl)
     {
-        $this->accountType = $accountType;
-        $this->logoPath = $logoPath;
-        $this->connectUrl = $connectUrl;
     }
 
     public static function fromConfig($accountType, $attributeConfigParameters)

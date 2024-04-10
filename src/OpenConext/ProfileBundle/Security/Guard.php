@@ -21,11 +21,11 @@ namespace OpenConext\ProfileBundle\Security;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-final class Guard
+final readonly class Guard
 {
 
     public function __construct(
-        private readonly AuthorizationCheckerInterface $authorizationChecker,
+        private AuthorizationCheckerInterface $authorizationChecker,
     ) {
     }
 

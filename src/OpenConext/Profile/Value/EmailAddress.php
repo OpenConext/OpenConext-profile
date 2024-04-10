@@ -19,8 +19,9 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class EmailAddress implements EmailAddressSupport, EmailAddressInformationRequest
+final class EmailAddress implements EmailAddressSupport, EmailAddressInformationRequest, Stringable
 {
     /**
      * @var string
@@ -39,10 +40,9 @@ final class EmailAddress implements EmailAddressSupport, EmailAddressInformation
     }
 
     /**
-     * @param EmailAddress $other
      * @return bool
      */
-    public function equals(EmailAddress $other)
+    public function equals(EmailAddress $other): bool
     {
         return $this->emailAddress === $other->emailAddress;
     }
@@ -55,7 +55,7 @@ final class EmailAddress implements EmailAddressSupport, EmailAddressInformation
         return $this->emailAddress;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->emailAddress;
     }

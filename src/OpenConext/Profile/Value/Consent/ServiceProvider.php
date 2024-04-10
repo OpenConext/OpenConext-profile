@@ -28,64 +28,16 @@ use OpenConext\Profile\Value\Url;
 
 class ServiceProvider
 {
-    /**
-     * @var Entity
-     */
-    private $entity;
-
-    /**
-     * @var DisplayName
-     */
-    private $displayName;
-
-    /**
-     * @var DisplayName
-     */
-    private $organizationDisplayName;
-
-    /**
-     * @var NameIdFormat
-     */
-    private $nameIdFormat;
-
-    /**
-     * @var Url|null
-     */
-    private $eulaUrl;
-
-    /**
-     * @var ContactEmailAddress|null
-     */
-    private $supportEmail;
-
-    /**
-     * @var Url|null
-     */
-    private $supportUrlEn;
-
-    /**
-     * @var Url|null
-     */
-    private $supportUrlNl;
-
     public function __construct(
-        Entity $entity,
-        DisplayName $displayName,
-        DisplayName $organizationDisplayName,
-        NameIdFormat $nameIdFormat,
-        Url $eulaUrl = null,
-        ContactEmailAddress $supportEmail = null,
-        Url $supportUrlEn = null,
-        Url $supportUrlNl = null,
+        private readonly Entity $entity,
+        private readonly DisplayName $displayName,
+        private readonly DisplayName $organizationDisplayName,
+        private readonly NameIdFormat $nameIdFormat,
+        private readonly ?Url $eulaUrl = null,
+        private readonly ?ContactEmailAddress $supportEmail = null,
+        private readonly ?Url $supportUrlEn = null,
+        private readonly ?Url $supportUrlNl = null,
     ) {
-        $this->entity       = $entity;
-        $this->displayName  = $displayName;
-        $this->organizationDisplayName = $organizationDisplayName;
-        $this->nameIdFormat = $nameIdFormat;
-        $this->eulaUrl      = $eulaUrl;
-        $this->supportEmail = $supportEmail;
-        $this->supportUrlEn = $supportUrlEn;
-        $this->supportUrlNl = $supportUrlNl;
     }
 
     /**
@@ -138,7 +90,7 @@ class ServiceProvider
     /**
      * @return bool
      */
-    public function hasEulaUrl()
+    public function hasEulaUrl(): bool
     {
         return $this->eulaUrl !== null;
     }
@@ -158,7 +110,7 @@ class ServiceProvider
     /**
      * @return bool
      */
-    public function hasSupportEmail()
+    public function hasSupportEmail(): bool
     {
         return $this->supportEmail !== null;
     }
@@ -166,7 +118,7 @@ class ServiceProvider
     /**
      * @return string
      */
-    public function getSupportEmail()
+    public function getSupportEmail(): string
     {
         if (!$this->hasSupportEmail()) {
             throw new LogicException('Service provider has no support e-mail address');
@@ -192,7 +144,7 @@ class ServiceProvider
      * @param $locale
      * @return bool
      */
-    public function hasSupportUrl($locale)
+    public function hasSupportUrl($locale): bool
     {
         if ($locale === 'nl') {
             return $this->supportUrlNl !== null;
