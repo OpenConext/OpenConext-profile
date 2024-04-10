@@ -26,59 +26,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 class AttributeSupportController extends AbstractController
 {
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var AttributeSupportMailService
-     */
-    private $attributeSupportMailService;
-
     public function __construct(
-        Guard $guard,
-        Environment $templateEngine,
-        FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator,
-        UserService $userService,
-        AttributeSupportMailService $attributeSupportMailService,
+        private readonly Guard                       $guard,
+        private readonly Environment                 $templateEngine,
+        private readonly FormFactoryInterface        $formFactory,
+        private readonly UrlGeneratorInterface       $urlGenerator,
+        private readonly UserService                 $userService,
+        private readonly AttributeSupportMailService $attributeSupportMailService,
     ) {
-        $this->guard                       = $guard;
-        $this->templateEngine              = $templateEngine;
-        $this->formFactory                 = $formFactory;
-        $this->urlGenerator                = $urlGenerator;
-        $this->userService                 = $userService;
-        $this->attributeSupportMailService = $attributeSupportMailService;
     }
 
-    public function overviewAction()
+    public function overviewAction(): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -99,7 +62,7 @@ class AttributeSupportController extends AbstractController
         );
     }
 
-    public function sendMailAction()
+    public function sendMailAction(): RedirectResponse
     {
         $this->guard->userIsLoggedIn();
 
@@ -108,7 +71,7 @@ class AttributeSupportController extends AbstractController
         return new RedirectResponse($this->urlGenerator->generate('profile.attribute_support_confirm_mail_sent'));
     }
 
-    public function confirmMailSentAction()
+    public function confirmMailSentAction(): Response
     {
         $this->guard->userIsLoggedIn();
 

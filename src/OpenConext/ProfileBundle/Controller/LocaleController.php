@@ -32,46 +32,16 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class LocaleController extends AbstractController
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var FlashBagInterface
-     */
-    private $flashBag;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
 
     public function __construct(
-        FormFactoryInterface $formFactory,
-        UserService $userService,
-        //        FlashBagInterface $flashBag,
-        Guard $guard,
-        LoggerInterface $logger,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly UserService $userService,
+        private readonly Guard $guard,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->formFactory = $formFactory;
-        $this->userService = $userService;
-//        $this->flashBag    = $flashBag;
-        $this->guard       = $guard;
-        $this->logger      = $logger;
     }
 
-    public function switchLocaleAction(Request $request)
+    public function switchLocaleAction(Request $request): RedirectResponse
     {
         $this->guard->userIsLoggedIn();
 
@@ -83,7 +53,7 @@ class LocaleController extends AbstractController
         // @see https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpFoundation/Request.php#L878
         $domain = $request->getSchemeAndHttpHost() . '/';
 
-        if (strpos($returnUrl, $domain) !== 0) {
+        if (!str_starts_with($returnUrl, $domain)) {
             $this->logger->error(sprintf(
                 'Illegal return-url ("%s") for redirection after changing locale, aborting request',
                 $returnUrl,
@@ -102,7 +72,7 @@ class LocaleController extends AbstractController
 
         if ($form->isValid()) {
             $this->userService->changeLocale($command);
-            $this->flashBag->add('success', 'profile.locale.locale_change_success');
+            $this->addFlash('success', 'profile.locale.locale_change_success');
 
             $this->logger->notice(sprintf(
                 'Successfully switched locale from "%s" to "%s"',

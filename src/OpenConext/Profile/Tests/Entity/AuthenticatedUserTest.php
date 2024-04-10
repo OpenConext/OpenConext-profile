@@ -18,7 +18,6 @@
 
 namespace OpenConext\Profile\Tests\Entity;
 
-use Mockery as m;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
@@ -161,19 +160,14 @@ class AuthenticatedUserTest extends TestCase
 
     private function mockAssertionAdapterWith(AttributeSet $attributeSet, $nameId)
     {
-        $assertionAdapter = m::mock(AssertionAdapter::class);
-        $assertionAdapter
-            ->shouldReceive('getAttributeSet')
-            ->andReturn($attributeSet);
-
-        $assertionAdapter
-            ->shouldReceive('getNameID')
-            ->andReturn($nameId);
+        $assertionAdapter = $this->createMock(AssertionAdapter::class);
+        $assertionAdapter->method('getAttributeSet')->willReturn($attributeSet);
+        $assertionAdapter->method('getNameID')->willReturn($nameId);
 
         return $assertionAdapter;
     }
 
-    private function getAttributeDictionary()
+    private function getAttributeDictionary(): AttributeDictionary
     {
         $attributeDictionary = new AttributeDictionary();
         $attributeDictionary->addAttributeDefinition(
@@ -186,7 +180,7 @@ class AuthenticatedUserTest extends TestCase
         return $attributeDictionary;
     }
 
-    private function getAssertionWithEpti()
+    private function getAssertionWithEpti(): Assertion
     {
         $xml = <<<XML
 <saml:Assertion

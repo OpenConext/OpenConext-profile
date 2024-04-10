@@ -25,24 +25,10 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class SamlController
 {
-    /**
-     * @var MetadataFactory
-     */
-    private $metadataFactory;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @param MetadataFactory $metadataFactory
-     * @param LoggerInterface $logger
-     */
-    public function __construct(MetadataFactory $metadataFactory, LoggerInterface $logger)
-    {
-        $this->metadataFactory = $metadataFactory;
-        $this->logger = $logger;
+    public function __construct(
+        private readonly MetadataFactory $metadataFactory,
+        private readonly LoggerInterface $logger,
+    ) {
     }
 
     public function consumeAssertionAction()
@@ -50,10 +36,7 @@ class SamlController
         throw new BadRequestHttpException('Unexpected request sent to ACS');
     }
 
-    /**
-     * @return XMLResponse
-     */
-    public function metadataAction()
+    public function metadataAction(): XMLResponse
     {
         $this->logger->info('Showing SAML metadata');
 

@@ -46,11 +46,6 @@ use Twig\Environment as Twig;
 class SamlListener
 {
     /**
-     * @var SessionInterface
-     */
-    private $session;
-
-    /**
      * @var \Symfony\Component\Routing\Matcher\UrlMatcherInterface
      */
     private $urlMatcher;
@@ -93,7 +88,7 @@ class SamlListener
         SamlInteractionProvider $samlInteractionProvider,
         StateHandler $stateHandler,
         LoggerInterface $logger,
-        Twig $twig
+        Twig $twig,
     ) {
         $this->urlMatcher               = $urlMatcher;
         $this->tokenStorage             = $tokenStorage;
@@ -108,7 +103,7 @@ class SamlListener
     {
         try {
             $this->handleEvent($event);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->samlInteractionProvider->reset();
             throw $e;
         }
@@ -169,7 +164,7 @@ class SamlListener
         $event->setResponse(new RedirectResponse($this->stateHandler->getCurrentRequestUri()));
         $logger->notice(
             'Authentication succeeded, redirecting to original location',
-            ['user' => (string)$authToken->getUser()]
+            ['user' => (string)$authToken->getUser()],
         );
     }
 

@@ -23,20 +23,13 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 final class Guard
 {
-    /**
-     * @var AuthorizationCheckerInterface
-     */
-    private $authorizationChecker;
 
-    /**
-     * @param AuthorizationCheckerInterface $authorizationChecker
-     */
-    public function __construct(AuthorizationCheckerInterface $authorizationChecker)
-    {
-        $this->authorizationChecker = $authorizationChecker;
+    public function __construct(
+        private readonly AuthorizationCheckerInterface $authorizationChecker,
+    ) {
     }
 
-    public function userIsLoggedIn()
+    public function userIsLoggedIn(): void
     {
         if (!$this->authorizationChecker->isGranted('ROLE_USER')) {
             throw new AccessDeniedException('User should be logged in to use this service');

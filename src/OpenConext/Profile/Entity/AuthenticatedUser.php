@@ -28,38 +28,23 @@ use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 final class AuthenticatedUser
 {
     /**
-     * @var string
-     */
-    private $nameId;
-
-    /**
-     * @var AttributeSet
-     */
-    private $attributes;
-
-    /**
-     * @var EntityId[]
-     */
-    private $authenticatingAuthorities;
-
-    /**
      * A list of blacklisted attributes defined by their Urn OID
-     * @var array
+     * @var string[]
      */
-    private static $blacklistedAttributes = [
+    private static array $blacklistedAttributes = [
         'urn:oid:1.3.6.1.4.1.1076.20.40.40.1',
         'urn:oid:1.3.6.1.4.1.1466.115.121.1.15',
     ];
 
     /**
-     * @param AssertionAdapter $assertionAdapter
      * @param EntityId[] $authenticatingAuthorities
-     *
-     * @return AuthenticatedUser
      * @throws RuntimeException
      */
-    public static function createFrom(AssertionAdapter $assertionAdapter, array $authenticatingAuthorities): AuthenticatedUser
-    {
+    public static function createFrom(
+        AssertionAdapter $assertionAdapter,
+        array $authenticatingAuthorities,
+    ): AuthenticatedUser {
+
         $attributes = [];
 
         /** @var Attribute $attribute */
@@ -84,23 +69,18 @@ final class AuthenticatedUser
      * @param AttributeSet $attributes
      * @param EntityId[] $authenticatingAuthorities
      */
-    private function __construct(string $nameId, AttributeSet $attributes, array $authenticatingAuthorities)
-    {
-        Assert::allIsInstanceOf($authenticatingAuthorities, '\OpenConext\Profile\Value\EntityId');
-
-        $this->nameId                    = $nameId;
-        $this->attributes                = $attributes;
-        $this->authenticatingAuthorities = $authenticatingAuthorities;
+    private function __construct(
+        private readonly string       $nameId,
+        private readonly AttributeSet $attributes,
+        /**  @var EntityId[] */
+        private readonly array        $authenticatingAuthorities,
+    ) {
+        Assert::allIsInstanceOf($authenticatingAuthorities, EntityId::class);
     }
 
     public function getNameId(): string
     {
         return $this->nameId;
-    }
-
-    public function getAttributes(): AttributeSet
-    {
-        return $this->attributes;
     }
 
     /**
@@ -115,8 +95,6 @@ final class AuthenticatedUser
      * Using toString in order to comply with AbstractToken's setUser method,
      * which uses the string representation to detect changes in the user object.
      * Not implementing a UserInterface, because methods defined there will not be used.
-     *
-     * @return string
      */
     public function __toString()
     {
@@ -125,11 +103,9 @@ final class AuthenticatedUser
 
     public function getAttributesFiltered(): AttributeSet
     {
-        $attributes = $this->getAttributes();
         $filtered = [];
 
-        foreach ($attributes as $attribute) {
-
+        foreach ($this->attributes as $attribute) {
             assert($attribute instanceof Attribute);
 
             // Filter out blacklisted attributes

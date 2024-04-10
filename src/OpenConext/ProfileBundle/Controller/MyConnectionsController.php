@@ -38,72 +38,19 @@ use Twig\Environment;
  */
 class MyConnectionsController
 {
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var AttributeAggregationService
-     */
-    private $service;
-
-    /**
-     * @var AuthenticatedUserProviderInterface
-     */
-    private $userProvider;
-
-    /**
-     * @var EmailAddress
-     */
-    private $mailTo;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
     public function __construct(
-        Environment $templateEngine,
-        Guard $guard,
-        LoggerInterface $logger,
-        AttributeAggregationService $service,
-        AuthenticatedUserProviderInterface $userProvider,
-        EmailAddressSupport $mailTo,
-        FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator,
+        private readonly Environment $templateEngine,
+        private readonly Guard $guard,
+        private readonly LoggerInterface $logger,
+        private readonly AttributeAggregationService $service,
+        private readonly AuthenticatedUserProviderInterface $userProvider,
+        private readonly EmailAddressSupport $mailTo,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly UrlGeneratorInterface $urlGenerator,
     ) {
-        $this->templateEngine = $templateEngine;
-        $this->guard = $guard;
-        $this->logger = $logger;
-        $this->service = $service;
-        $this->userProvider = $userProvider;
-        $this->mailTo = $mailTo;
-        $this->formFactory = $formFactory;
-        $this->urlGenerator = $urlGenerator;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function overviewAction(Request $request)
+    public function overviewAction(Request $request): Response
     {
         $this->guard->userIsLoggedIn();
         $this->logger->info('Showing My Connections page');

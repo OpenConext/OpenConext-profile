@@ -36,65 +36,20 @@ use Twig\Environment;
 
 class MyServicesController
 {
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var SpecifiedConsentListService
-     */
-    private $specifiedConsentListService;
-
-    /**
-     * @var AuthenticatedUserProviderInterface
-     */
-    private $authenticatedUserProvider;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var InstitutionRepository
-     */
-    private $institutionRepository;
-
-    /** @var bool */
-    private $removeConsentEnabled;
 
     public function __construct(
-        Environment $templateEngine,
-        AuthenticatedUserProviderInterface $authenticatedUserProvider,
-        SpecifiedConsentListService $specifiedConsentListService,
-        Guard $guard,
-        UrlGeneratorInterface $urlGenerator,
-        LoggerInterface $logger,
-        InstitutionRepository $institutionRepository,
-        bool $removeConsentEnabled,
+        private readonly Environment                        $templateEngine,
+        private readonly AuthenticatedUserProviderInterface $authenticatedUserProvider,
+        private readonly SpecifiedConsentListService        $specifiedConsentListService,
+        private readonly Guard                              $guard,
+        private readonly UrlGeneratorInterface              $urlGenerator,
+        private readonly LoggerInterface                    $logger,
+        private readonly InstitutionRepository              $institutionRepository,
+        private readonly bool                               $removeConsentEnabled,
     ) {
-        $this->templateEngine = $templateEngine;
-        $this->authenticatedUserProvider = $authenticatedUserProvider;
-        $this->specifiedConsentListService = $specifiedConsentListService;
-        $this->guard = $guard;
-        $this->urlGenerator = $urlGenerator;
-        $this->logger = $logger;
-        $this->institutionRepository = $institutionRepository;
-        $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
-    public function overviewAction(Request $request)
+    public function overviewAction(Request $request): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -133,6 +88,7 @@ class MyServicesController
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $result = $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);
         $this->logger->notice(sprintf('Removing consent %s', ($result ? 'succeeded' : 'failed')));
+
         return new RedirectResponse($this->urlGenerator->generate('profile.my_services_overview'));
     }
 }

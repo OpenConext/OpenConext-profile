@@ -31,60 +31,18 @@ use Twig\Environment;
 
 class InformationRequestController
 {
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var InformationRequestMailService
-     */
-    private $informationRequestMailService;
-
-    /**
-     * @var AttributeFilter
-     */
-    private $attributeFilter;
-
     public function __construct(
-        Guard $guard,
-        Environment $templateEngine,
-        FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator,
-        UserService $userService,
-        AttributeFilter $attributeFilter,
-        InformationRequestMailService $informationRequestMailService,
+        private readonly Guard $guard,
+        private readonly Environment $templateEngine,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly UserService $userService,
+        private readonly AttributeFilter $attributeFilter,
+        private readonly InformationRequestMailService $informationRequestMailService,
     ) {
-        $this->guard = $guard;
-        $this->templateEngine = $templateEngine;
-        $this->formFactory = $formFactory;
-        $this->urlGenerator = $urlGenerator;
-        $this->userService = $userService;
-        $this->attributeFilter = $attributeFilter;
-        $this->informationRequestMailService = $informationRequestMailService;
     }
 
-    public function overviewAction()
+    public function overviewAction(): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -107,7 +65,7 @@ class InformationRequestController
         );
     }
 
-    public function sendMailAction()
+    public function sendMailAction(): RedirectResponse
     {
         $this->guard->userIsLoggedIn();
 
@@ -116,7 +74,7 @@ class InformationRequestController
         return new RedirectResponse($this->urlGenerator->generate('profile.information_request_confirm_mail_sent'));
     }
 
-    public function confirmMailSentAction()
+    public function confirmMailSentAction(): Response
     {
         $this->guard->userIsLoggedIn();
 

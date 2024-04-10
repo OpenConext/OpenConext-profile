@@ -24,20 +24,13 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
 
-    public function __construct(TokenStorageInterface $tokenStorage)
-    {
-        $this->tokenStorage = $tokenStorage;
+    public function __construct(
+        private readonly TokenStorageInterface $tokenStorage,
+    ) {
     }
 
-    /**
-     * @return AuthenticatedUser
-     */
-    public function getCurrentUser()
+    public function getCurrentUser(): AuthenticatedUser
     {
         return $this->tokenStorage->getToken()->getUser();
     }

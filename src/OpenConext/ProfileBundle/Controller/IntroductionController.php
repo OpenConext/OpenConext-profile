@@ -28,48 +28,16 @@ use Twig\Environment;
 
 class IntroductionController
 {
-    /**
-     * @var UserService
-     */
-    private $userService;
 
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @param UserService $userService
-     * @param Environment $templateEngine
-     * @param Guard $guard
-     * @param LoggerInterface $logger
-     */
     public function __construct(
-        UserService $userService,
-        Environment $templateEngine,
-        Guard $guard,
-        LoggerInterface $logger,
+        private readonly UserService $userService,
+        private readonly Environment $templateEngine,
+        private readonly Guard $guard,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->userService    = $userService;
-        $this->templateEngine = $templateEngine;
-        $this->guard          = $guard;
-        $this->logger         = $logger;
     }
 
-    /**
-     * @return Response
-     */
-    public function overviewAction()
+    public function overviewAction(): Response
     {
         $this->guard->userIsLoggedIn();
         $this->logger->info('Showing Introduction page');
