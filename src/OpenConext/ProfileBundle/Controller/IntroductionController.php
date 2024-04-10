@@ -23,10 +23,11 @@ use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class IntroductionController
+class IntroductionController extends AbstractController
 {
 
     public function __construct(
@@ -37,7 +38,7 @@ class IntroductionController
     ) {
     }
 
-    public function overviewAction(): Response
+    public function overview(): Response
     {
         $this->guard->userIsLoggedIn();
         $this->logger->info('Showing Introduction page');

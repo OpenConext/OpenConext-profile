@@ -21,9 +21,10 @@ namespace OpenConext\ProfileBundle\Controller;
 use Psr\Log\LoggerInterface;
 use Surfnet\SamlBundle\Http\XMLResponse;
 use Surfnet\SamlBundle\Metadata\MetadataFactory;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class SamlController
+class SamlController extends AbstractController
 {
     public function __construct(
         private readonly MetadataFactory $metadataFactory,
@@ -31,12 +32,12 @@ class SamlController
     ) {
     }
 
-    public function consumeAssertionAction(): never
+    public function consumeAssertion(): never
     {
         throw new BadRequestHttpException('Unexpected request sent to ACS');
     }
 
-    public function metadataAction(): XMLResponse
+    public function metadata(): XMLResponse
     {
         $this->logger->info('Showing SAML metadata');
 

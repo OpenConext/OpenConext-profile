@@ -21,10 +21,11 @@ namespace OpenConext\ProfileBundle\Controller;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class MyProfileController
+class MyProfileController extends AbstractController
 {
 
     public function __construct(
@@ -35,7 +36,7 @@ class MyProfileController
     ) {
     }
 
-    public function overviewAction(): Response
+    public function overview(): Response
     {
         $this->guard->userIsLoggedIn();
 

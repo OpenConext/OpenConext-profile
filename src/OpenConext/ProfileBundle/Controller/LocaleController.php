@@ -41,7 +41,7 @@ class LocaleController extends AbstractController
     ) {
     }
 
-    public function switchLocaleAction(Request $request): RedirectResponse
+    public function switchLocale(Request $request): RedirectResponse
     {
         $this->guard->userIsLoggedIn();
 

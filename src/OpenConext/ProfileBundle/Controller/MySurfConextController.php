@@ -21,12 +21,13 @@ namespace OpenConext\ProfileBundle\Controller;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Twig\Environment;
 
-class MySurfConextController
+class MySurfConextController extends AbstractController
 {
 
     public function __construct(
@@ -37,7 +38,7 @@ class MySurfConextController
     ) {
     }
 
-    public function overviewAction(): Response
+    public function overview(): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -54,7 +55,7 @@ class MySurfConextController
         ));
     }
 
-    public function userDataDownloadAction(): JsonResponse
+    public function userDataDownload(): JsonResponse
     {
         $this->guard->userIsLoggedIn();
 

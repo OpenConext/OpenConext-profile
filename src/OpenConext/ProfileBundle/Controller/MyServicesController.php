@@ -27,6 +27,7 @@ use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use OpenConext\ProfileBundle\Security\Guard;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +35,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
-class MyServicesController
+class MyServicesController extends AbstractController
 {
 
     public function __construct(
@@ -49,7 +50,7 @@ class MyServicesController
     ) {
     }
 
-    public function overviewAction(Request $request): Response
+    public function overview(Request $request): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -75,7 +76,7 @@ class MyServicesController
         ));
     }
 
-    public function deleteAction(string $serviceEntityId): Response
+    public function delete(string $serviceEntityId): Response
     {
         $this->guard->userIsLoggedIn();
         if (!$this->removeConsentEnabled) {

@@ -41,7 +41,7 @@ class AttributeSupportController extends AbstractController
     ) {
     }
 
-    public function overviewAction(): Response
+    public function overview(): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -62,7 +62,7 @@ class AttributeSupportController extends AbstractController
         );
     }
 
-    public function sendMailAction(): RedirectResponse
+    public function sendMail(): RedirectResponse
     {
         $this->guard->userIsLoggedIn();
 
@@ -71,7 +71,7 @@ class AttributeSupportController extends AbstractController
         return new RedirectResponse($this->urlGenerator->generate('profile.attribute_support_confirm_mail_sent'));
     }
 
-    public function confirmMailSentAction(): Response
+    public function confirmMailSent(): Response
     {
         $this->guard->userIsLoggedIn();
 

@@ -25,6 +25,7 @@ use OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +37,7 @@ use Twig\Environment;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class MyConnectionsController
+class MyConnectionsController extends AbstractController
 {
     public function __construct(
         private readonly Environment $templateEngine,
@@ -50,7 +51,7 @@ class MyConnectionsController
     ) {
     }
 
-    public function overviewAction(Request $request): Response
+    public function overview(Request $request): Response
     {
         $this->guard->userIsLoggedIn();
         $this->logger->info('Showing My Connections page');

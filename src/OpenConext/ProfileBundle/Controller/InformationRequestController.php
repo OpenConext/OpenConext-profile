@@ -23,13 +23,14 @@ use OpenConext\ProfileBundle\Form\Type\InformationRequestMailType;
 use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\InformationRequestMailService;
 use OpenConext\ProfileBundle\Service\UserService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
-class InformationRequestController
+class InformationRequestController extends AbstractController
 {
     public function __construct(
         private readonly Guard $guard,
@@ -42,7 +43,7 @@ class InformationRequestController
     ) {
     }
 
-    public function overviewAction(): Response
+    public function overview(): Response
     {
         $this->guard->userIsLoggedIn();
 
@@ -65,7 +66,7 @@ class InformationRequestController
         );
     }
 
-    public function sendMailAction(): RedirectResponse
+    public function sendMail(): RedirectResponse
     {
         $this->guard->userIsLoggedIn();
 
@@ -74,7 +75,7 @@ class InformationRequestController
         return new RedirectResponse($this->urlGenerator->generate('profile.information_request_confirm_mail_sent'));
     }
 
-    public function confirmMailSentAction(): Response
+    public function confirmMailSent(): Response
     {
         $this->guard->userIsLoggedIn();
 
