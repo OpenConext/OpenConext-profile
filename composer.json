@@ -63,7 +63,7 @@
          "symfony/symfony": "*"
     },
     "scripts": {
-        "tests" : [
+        "check" : [
             "./ci/docheader.sh",
             "./ci/phpmd.sh",
             "./ci/phpcs.sh",
