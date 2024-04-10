@@ -29,7 +29,7 @@ class ContactPersonTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function given_contact_type_can_be_asserted()
+    public function given_contact_type_can_be_asserted(): void
     {
         $contactType     = new ContactType(ContactType::TYPE_TECHNICAL);
         $sameContactType = new ContactType(ContactType::TYPE_TECHNICAL);
@@ -45,7 +45,7 @@ class ContactPersonTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function given_contact_type_cannot_be_asserted()
+    public function given_contact_type_cannot_be_asserted(): void
     {
         $contactType          = new ContactType(ContactType::TYPE_TECHNICAL);
         $differentContactType = new ContactType(ContactType::TYPE_SUPPORT);
@@ -61,7 +61,7 @@ class ContactPersonTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function presence_of_email_address_can_be_asserted()
+    public function presence_of_email_address_can_be_asserted(): void
     {
         $contactPerson = new ContactPerson(
             new ContactType(
@@ -79,7 +79,7 @@ class ContactPersonTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function presence_of_email_address_cannot_be_asserted()
+    public function presence_of_email_address_cannot_be_asserted(): void
     {
         $contactPerson = new ContactPerson(new ContactType(ContactType::TYPE_TECHNICAL));
 
@@ -92,7 +92,7 @@ class ContactPersonTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function given_email_address_can_be_retrieved()
+    public function given_email_address_can_be_retrieved(): void
     {
         $givenEmailAddress = new ContactEmailAddress('invalid@email.address');
 

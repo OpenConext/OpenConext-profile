@@ -27,7 +27,7 @@ use function array_shift;
 
 class SpecifiedConsentListTest extends TestCase
 {
-    public function test_it_can_order_by_display_name_of_sp()
+    public function test_it_can_order_by_display_name_of_sp(): void
     {
         $locale = 'en';
         $specifiedConsent = [
@@ -47,7 +47,7 @@ class SpecifiedConsentListTest extends TestCase
      * The entities with a display name are sorted on top of the list, followed by the ones with only an entityID.
      * Both lists are sorted alphabetically.
      */
-    public function test_it_can_order_by_display_name_of_sp_handle_sps_without_display_name_correctly()
+    public function test_it_can_order_by_display_name_of_sp_handle_sps_without_display_name_correctly(): void
     {
         $locale = 'en';
         $specifiedConsent = [
@@ -66,7 +66,7 @@ class SpecifiedConsentListTest extends TestCase
         $this->assertEquals('https://selfservice.stepup.example.com/metadata', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
     }
 
-    public function test_it_can_order_nothing()
+    public function test_it_can_order_nothing(): void
     {
         $specifiedConsent = [];
         $list = SpecifiedConsentList::createWith($specifiedConsent);

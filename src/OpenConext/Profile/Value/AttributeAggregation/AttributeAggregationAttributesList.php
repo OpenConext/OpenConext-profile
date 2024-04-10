@@ -87,7 +87,7 @@ final class AttributeAggregationAttributesList
         return false;
     }
 
-    public function filterEnabledAttributes(AttributeAggregationEnabledAttributes $enabledAttributes)
+    public function filterEnabledAttributes(AttributeAggregationEnabledAttributes $enabledAttributes): void
     {
         $this->attributes = array_filter(
             $this->attributes,

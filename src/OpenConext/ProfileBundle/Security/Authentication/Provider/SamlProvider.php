@@ -80,7 +80,7 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
         // TODO: Implement getUser() method.
     }
 
-    public function refreshUser(UserInterface $user)
+    public function refreshUser(UserInterface $user): void
     {
         // TODO: Implement refreshUser() method.
     }

@@ -46,7 +46,7 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function no_attributes_are_set_if_no_attributes_are_given_when_creating_an_authenticated_user()
+    public function no_attributes_are_set_if_no_attributes_are_given_when_creating_an_authenticated_user(): void
     {
         $emptyAttributeSet = AttributeSet::create([]);
 
@@ -63,7 +63,7 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function attributes_are_set_with_given_attributes_when_creating_an_authenticated_user()
+    public function attributes_are_set_with_given_attributes_when_creating_an_authenticated_user(): void
     {
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
@@ -89,7 +89,7 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function attributes_are_filtered_when_creating_an_authenticated_user()
+    public function attributes_are_filtered_when_creating_an_authenticated_user(): void
     {
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
@@ -131,7 +131,7 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function epti_attribute_is_correctly_set_when_creating_an_authenticated_user()
+    public function epti_attribute_is_correctly_set_when_creating_an_authenticated_user(): void
     {
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(

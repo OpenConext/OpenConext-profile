@@ -38,7 +38,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
 class SpecifiedConsentTest extends TestCase
 {
-    public function test_it_is_aware_of_multiple_attribute_sources()
+    public function test_it_is_aware_of_multiple_attribute_sources(): void
     {
         $someAttributeDefinition = new AttributeDefinition(
             'someAttribute',
@@ -80,7 +80,7 @@ class SpecifiedConsentTest extends TestCase
         $this->assertTrue($specifiedConsent->hasMultipleSources());
     }
 
-    public function test_it_is_aware_of_a_single_attribute_source()
+    public function test_it_is_aware_of_a_single_attribute_source(): void
     {
         $someAttributeDefinition = new AttributeDefinition(
             'someAttribute',
@@ -121,7 +121,7 @@ class SpecifiedConsentTest extends TestCase
 
         $this->assertFalse($specifiedConsent->hasMultipleSources());
     }
-    public function test_it_is_aware_of_zero_attribute_sources()
+    public function test_it_is_aware_of_zero_attribute_sources(): void
     {
         $someConsent = new Consent(
             new ServiceProvider(
@@ -152,7 +152,7 @@ class SpecifiedConsentTest extends TestCase
         $this->assertFalse($specifiedConsent->hasMultipleSources());
     }
 
-    public function test_it_handles_arp_sources()
+    public function test_it_handles_arp_sources(): void
     {
         $someConsent = new Consent(
             new ServiceProvider(

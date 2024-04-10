@@ -43,7 +43,7 @@ class UserRepository implements UserRepositoryInterface
         return $this->namespacedAttributeBag->get('user');
     }
 
-    public function save(ApiUserInterface $user)
+    public function save(ApiUserInterface $user): void
     {
         $this->namespacedAttributeBag->set('user', $user);
     }

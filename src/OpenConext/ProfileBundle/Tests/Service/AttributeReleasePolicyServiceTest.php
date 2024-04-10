@@ -80,7 +80,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
      * @test
      * @group AttributeReleasePolicy
      */
-    public function consent_list_and_attributes_are_correctly_converted_to_a_request_and_the_response_is_mapped_correctly_to_a_result()
+    public function consent_list_and_attributes_are_correctly_converted_to_a_request_and_the_response_is_mapped_correctly_to_a_result(): void
     {
         $someAttributeDefinition = new AttributeDefinition(
             'someAttribute',

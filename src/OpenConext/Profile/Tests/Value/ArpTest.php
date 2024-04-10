@@ -28,7 +28,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 
 class ArpTest extends TestCase
 {
-    public function test_it_can_be_constructed_with_empty_arp_data()
+    public function test_it_can_be_constructed_with_empty_arp_data(): void
     {
         $arp = Arp::createWith([]);
         $this->assertInstanceOf(Arp::class, $arp);
@@ -39,13 +39,13 @@ class ArpTest extends TestCase
      *
      * @dataProvider invalidArpData
      */
-    public function test_it_rejects_invalid_data_structures($invalidArpData)
+    public function test_it_rejects_invalid_data_structures($invalidArpData): void
     {
         $this->expectException(InvalidArpDataException::class);
         Arp::createWith($invalidArpData);
     }
 
-    public function test_construction_with_valid_arp_data()
+    public function test_construction_with_valid_arp_data(): void
     {
         $arp = Arp::createWith(json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true));
         $this->assertInstanceOf(Arp::class, $arp);
@@ -63,7 +63,7 @@ class ArpTest extends TestCase
         }
     }
 
-    public function test_filtering_of_idp_sources()
+    public function test_filtering_of_idp_sources(): void
     {
         $arp = Arp::createWith(json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true));
         $this->assertArrayNotHasKey('idp', $arp->getNonIdpAttributes());
@@ -74,7 +74,7 @@ class ArpTest extends TestCase
         $this->assertArrayNotHasKey('idp', $arp->getAttributesGroupedBySource());
     }
 
-    public function test_dictionary_usage()
+    public function test_dictionary_usage(): void
     {
         // The dictionary is mocked and always returns the same definition.
         $dictionary = $this->createMock(AttributeDictionary::class);

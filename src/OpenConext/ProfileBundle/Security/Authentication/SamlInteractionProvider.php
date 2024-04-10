@@ -111,7 +111,7 @@ class SamlInteractionProvider
     /**
      * Resets the SAML flow.
      */
-    public function reset()
+    public function reset(): void
     {
         $this->stateHandler->clearRequestId();
     }

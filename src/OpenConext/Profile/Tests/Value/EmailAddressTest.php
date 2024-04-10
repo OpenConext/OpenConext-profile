@@ -31,7 +31,7 @@ final class EmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function it_accepts_emails()
+    public function it_accepts_emails(): void
     {
         $email = new EmailAddress('juliette.dupree+spam@that.invalid');
 
@@ -44,7 +44,7 @@ final class EmailAddressTest extends TestCase
      * @dataProvider nonStringProvider
      * @param mixed $nonString
      */
-    public function it_doesnt_accept_non_strings_as_email($nonString)
+    public function it_doesnt_accept_non_strings_as_email($nonString): void
     {
         $this->expectException(InvalidArgumentException::class);
         new EmailAddress($nonString);
@@ -56,7 +56,7 @@ final class EmailAddressTest extends TestCase
      *
      *
      */
-    public function email_address_may_not_contain_mailto()
+    public function email_address_may_not_contain_mailto(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $emailAddressWithMailto = 'mailto:mail@domain.invalid';
@@ -70,7 +70,7 @@ final class EmailAddressTest extends TestCase
      *
      *
      */
-    public function email_address_must_be_valid($invalidEmailAddress)
+    public function email_address_must_be_valid($invalidEmailAddress): void
     {
         $this->expectException(InvalidArgumentException::class);
         new EmailAddress($invalidEmailAddress);
@@ -80,7 +80,7 @@ final class EmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function two_emails_can_equal_each_other()
+    public function two_emails_can_equal_each_other(): void
     {
         $url0 = new EmailAddress('renee.dupree@datrijmtook.invalid');
         $url1 = new EmailAddress('renee.dupree@datrijmtook.invalid');
@@ -92,7 +92,7 @@ final class EmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function two_emails_can_differ()
+    public function two_emails_can_differ(): void
     {
         $url0 = new EmailAddress('renee.boulanger@vara.invalid');
         $url1 = new EmailAddress('francois.boulanger@vara.invalid');

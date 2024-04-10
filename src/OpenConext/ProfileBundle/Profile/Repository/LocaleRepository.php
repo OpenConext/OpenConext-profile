@@ -39,7 +39,7 @@ class LocaleRepository implements LocaleRepositoryInterface
         return $this->localeStorageDriver->find();
     }
 
-    public function save(Locale $locale)
+    public function save(Locale $locale): void
     {
         $this->localeStorageDriver->save($locale);
     }

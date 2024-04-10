@@ -32,7 +32,7 @@ use \DateTime;
 
 class OpenConextProfileExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
@@ -68,14 +68,14 @@ class OpenConextProfileExtension extends Extension
         }
     }
 
-    private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container)
+    private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container): void
     {
         $container
             ->getDefinition('OpenConext\Profile\Value\EntityId')
             ->replaceArgument(0, $engineBlockEntityId);
     }
 
-    private function parseAttributeSupportMailConfiguration(array $attributeSupportConfig, ContainerBuilder $container)
+    private function parseAttributeSupportMailConfiguration(array $attributeSupportConfig, ContainerBuilder $container): void
     {
         $container
             ->getDefinition('profile.attribute_support.email_from')
@@ -88,7 +88,7 @@ class OpenConextProfileExtension extends Extension
     private function parseInformationRequestMailConfiguration(
         array $attributeSupportConfig,
         ContainerBuilder $container,
-    ) {
+    ): void {
         $container
             ->getDefinition('profile.information_request.email_from')
             ->replaceArgument(0, $attributeSupportConfig['email_from']);
@@ -97,14 +97,14 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(0, $attributeSupportConfig['email_to']);
     }
 
-    private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container)
+    private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container): void
     {
         $container
             ->getDefinition(Locale::class)
             ->replaceArgument(0, $defaultLocaleConfig);
     }
 
-    private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container)
+    private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container): void
     {
         $availableLocales = array_map(function ($availableLocale) {
             return new Definition(Locale::class, [$availableLocale]);
@@ -122,7 +122,7 @@ class OpenConextProfileExtension extends Extension
         $localeCookieSecure,
         $localeCookieHttpOnly,
         ContainerBuilder $container,
-    ) {
+    ): void {
 
         if ($localeCookieExpiresIn !== null) {
             $localeCookieExpirationDateDefinition = new Definition(DateTime::class);
@@ -140,7 +140,7 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(4, $localeCookieHttpOnly);
     }
 
-    private function parseEngineBlockAttributeAggregationConfiguration($aaConfig, ContainerBuilder $container)
+    private function parseEngineBlockAttributeAggregationConfiguration($aaConfig, ContainerBuilder $container): void
     {
         $container
             ->getDefinition(AttributeAggregationEnabledAttributes::class)

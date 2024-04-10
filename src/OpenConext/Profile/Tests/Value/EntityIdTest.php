@@ -34,7 +34,7 @@ class EntityIdTest extends TestCase
      *
      * @dataProvider notNonEmptyOrBlankStringProvider
      */
-    public function only_non_empty_strings_are_valid_entity_ids(mixed $invalidValue)
+    public function only_non_empty_strings_are_valid_entity_ids(mixed $invalidValue): void
     {
         $this->expectException(InvalidArgumentException::class);
         new EntityId($invalidValue);
@@ -45,7 +45,7 @@ class EntityIdTest extends TestCase
      * @group Entity
      * @group Value
      */
-    public function the_same_entity_ids_are_considered_equal()
+    public function the_same_entity_ids_are_considered_equal(): void
     {
         $base      = new EntityId('a');
         $theSame   = new EntityId('a');

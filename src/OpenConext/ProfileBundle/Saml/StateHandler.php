@@ -62,7 +62,7 @@ class StateHandler
     /**
      * Removes the requestId from the session
      */
-    public function clearRequestId()
+    public function clearRequestId(): void
     {
         $this->attributeBag->remove('request_id');
     }
@@ -70,7 +70,7 @@ class StateHandler
     /**
      * @param string $uri
      */
-    public function setCurrentRequestUri($uri)
+    public function setCurrentRequestUri($uri): void
     {
         $this->attributeBag->set('current_uri', $uri);
     }

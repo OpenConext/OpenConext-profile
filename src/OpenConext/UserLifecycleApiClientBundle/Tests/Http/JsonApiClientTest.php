@@ -33,7 +33,7 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function throw_exception_when_json_cannot_be_parsed()
+    public function throw_exception_when_json_cannot_be_parsed(): void
     {
         $this->expectException(MalformedResponseException::class);
 
@@ -55,7 +55,7 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function throw_exception_when_resource_cannot_be_found()
+    public function throw_exception_when_resource_cannot_be_found(): void
     {
         $this->expectException(ResourceNotFoundException::class);
 
@@ -77,7 +77,7 @@ class JsonApiClientTest extends TestCase
      * @dataProvider notAllowedStatusCodeProvider
      * @group eb_api_service
      */
-    public function throw_exception_when_status_code_is_not_200($statusCode)
+    public function throw_exception_when_status_code_is_not_200($statusCode): void
     {
         $this->expectException('\OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException');
         $response = $this->createMock(ResponseInterface::class);
@@ -97,7 +97,7 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function throw_exception_when_empty_resource()
+    public function throw_exception_when_empty_resource(): void
     {
         $this->expectException('\RuntimeException');
 
@@ -118,7 +118,7 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function format_resource_parameters()
+    public function format_resource_parameters(): void
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
@@ -138,7 +138,7 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function pass_request_to_guzzle()
+    public function pass_request_to_guzzle(): void
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);

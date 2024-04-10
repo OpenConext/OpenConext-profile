@@ -32,7 +32,7 @@ final class ContactPersonListFactoryTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_can_be_deserialized()
+    public function contact_person_list_can_be_deserialized(): void
     {
         $given = [
             'contact_persons' => [
@@ -89,7 +89,7 @@ final class ContactPersonListFactoryTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_with_duplicates_can_be_deserialized()
+    public function contact_person_list_with_duplicates_can_be_deserialized(): void
     {
         $given = [
             'contact_persons' => [
@@ -121,7 +121,7 @@ final class ContactPersonListFactoryTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_with_contact_person_without_email_address_can_be_deserialized()
+    public function contact_person_list_with_contact_person_without_email_address_can_be_deserialized(): void
     {
         $given = [
             'contact_persons' => [
@@ -152,7 +152,7 @@ final class ContactPersonListFactoryTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_without_contact_persons_can_be_deserialized()
+    public function contact_person_list_without_contact_persons_can_be_deserialized(): void
     {
         $given = [
             'contact_persons' => []
@@ -168,7 +168,7 @@ final class ContactPersonListFactoryTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_with_one_contact_person_can_be_deserialized()
+    public function contact_person_list_with_one_contact_person_can_be_deserialized(): void
     {
         $given = [
             'contact_persons' => [

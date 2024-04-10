@@ -81,7 +81,7 @@ final class LocaleService
     /**
      * @param ApiUserInterface $user
      */
-    public function saveLocaleOf(ApiUserInterface $user)
+    public function saveLocaleOf(ApiUserInterface $user): void
     {
         $this->localeRepository->save($user->getLocale());
     }

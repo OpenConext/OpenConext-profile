@@ -50,7 +50,7 @@ class LocaleStorageDriver
     /**
      * @param Locale $locale
      */
-    public function save(Locale $locale)
+    public function save(Locale $locale): void
     {
         $this->singleCookieStorage->setValue($locale->getLocale());
     }

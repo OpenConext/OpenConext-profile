@@ -41,7 +41,7 @@ final class ContactPersonList implements IteratorAggregate, Countable
     /**
      * @param ContactPerson $contactPerson
      */
-    private function initializeWith(ContactPerson $contactPerson)
+    private function initializeWith(ContactPerson $contactPerson): void
     {
         $this->contactPersons[] = $contactPerson;
     }

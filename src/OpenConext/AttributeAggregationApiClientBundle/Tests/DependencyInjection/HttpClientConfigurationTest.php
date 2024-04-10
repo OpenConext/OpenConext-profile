@@ -40,7 +40,7 @@ final class HttpClientConfigurationTest extends TestCase
      * @group eb_api_config
      * @dataProvider nonStringScalarProvider
      */
-    public function base_url_cannot_be_other_than_string($value)
+    public function base_url_cannot_be_other_than_string($value): void
     {
         $config = $this->validConfig;
         $config["base_url"] = $value;
@@ -56,7 +56,7 @@ final class HttpClientConfigurationTest extends TestCase
      * @test
      * @group eb_api_config
      */
-    public function base_url_has_to_be_valid_url()
+    public function base_url_has_to_be_valid_url(): void
     {
         $config = $this->validConfig;
         $config["base_url"] = "not a valid URL";
@@ -72,7 +72,7 @@ final class HttpClientConfigurationTest extends TestCase
      * @test
      * @group eb_api_config
      */
-    public function base_url_must_end_in_forward_slash()
+    public function base_url_must_end_in_forward_slash(): void
     {
         $config = $this->validConfig;
         $config["base_url"] = "https://aa.invalid";
@@ -89,7 +89,7 @@ final class HttpClientConfigurationTest extends TestCase
      * @group eb_api_config
      * @dataProvider nonStringScalarProvider
      */
-    public function username_cannot_be_other_than_string($value)
+    public function username_cannot_be_other_than_string($value): void
     {
         $config = $this->validConfig;
         $config["username"] = $value;
@@ -106,7 +106,7 @@ final class HttpClientConfigurationTest extends TestCase
      * @group eb_api_config
      * @dataProvider nonStringScalarProvider
      */
-    public function password_cannot_be_other_than_string($value)
+    public function password_cannot_be_other_than_string($value): void
     {
         $config = $this->validConfig;
         $config["password"] = $value;

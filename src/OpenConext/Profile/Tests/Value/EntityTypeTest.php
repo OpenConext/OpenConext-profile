@@ -28,7 +28,7 @@ class EntityTypeTest extends TestCase
      * @group Entity
      * @group Value
      */
-    public function the_same_entity_types_are_considered_equal()
+    public function the_same_entity_types_are_considered_equal(): void
     {
         $base      = EntityType::SP();
         $theSame   = EntityType::SP();

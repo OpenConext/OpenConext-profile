@@ -26,7 +26,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeFilterTest extends TestCase
 {
-    public function test_it_handles_empty_set()
+    public function test_it_handles_empty_set(): void
     {
         $filter = new AttributeFilter();
         $set = AttributeSet::create([]);
@@ -36,7 +36,7 @@ class AttributeFilterTest extends TestCase
         $this->assertEquals($set->count(), $filterResult->count());
     }
 
-    public function test_it_filters_inappropriate_attributes()
+    public function test_it_filters_inappropriate_attributes(): void
     {
         $filter = new AttributeFilter();
 

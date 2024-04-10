@@ -31,7 +31,7 @@ class UrlTest extends TestCase
      * @test
      * @group Value
      */
-    public function one_can_be_created_with_a_valid_url()
+    public function one_can_be_created_with_a_valid_url(): void
     {
         $url = new Url('https://domain.invalid');
 
@@ -42,7 +42,7 @@ class UrlTest extends TestCase
      * @test
      * @group Value
      */
-    public function one_without_scheme_fails_validation()
+    public function one_without_scheme_fails_validation(): void
     {
         $this->expectException(InvalidArgumentException::class);
         new Url('www.exampe.org');

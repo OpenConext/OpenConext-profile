@@ -31,7 +31,7 @@ final class ContactEmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function it_accepts_emails()
+    public function it_accepts_emails(): void
     {
         $email = new ContactEmailAddress('juliette.dupree+spam@that.invalid');
         $this->assertTrue((string) $email === 'juliette.dupree+spam@that.invalid');
@@ -45,7 +45,7 @@ final class ContactEmailAddressTest extends TestCase
      *
      * @param mixed $nonString
      */
-    public function it_doesnt_accept_non_strings_as_email($nonString)
+    public function it_doesnt_accept_non_strings_as_email($nonString): void
     {
         $this->expectException(InvalidArgumentException::class);
         new ContactEmailAddress($nonString);
@@ -55,7 +55,7 @@ final class ContactEmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function email_address_may_contain_mailto()
+    public function email_address_may_contain_mailto(): void
     {
         $emailAddressWithMailto = 'mailto:mail@domain.invalid';
 
@@ -68,7 +68,7 @@ final class ContactEmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function two_emails_can_equal_each_other()
+    public function two_emails_can_equal_each_other(): void
     {
         $url0 = new ContactEmailAddress('renee.dupree@datrijmtook.invalid');
         $url1 = new ContactEmailAddress('renee.dupree@datrijmtook.invalid');
@@ -80,7 +80,7 @@ final class ContactEmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function two_emails_can_differ()
+    public function two_emails_can_differ(): void
     {
         $url0 = new ContactEmailAddress('renee.boulanger@vara.invalid');
         $url1 = new ContactEmailAddress('francois.boulanger@vara.invalid');

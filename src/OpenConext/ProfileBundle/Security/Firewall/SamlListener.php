@@ -99,7 +99,7 @@ class SamlListener
         $this->twig = $twig;
     }
 
-    public function __invoke(RequestEvent $event)
+    public function __invoke(RequestEvent $event): void
     {
         try {
             $this->handleEvent($event);
@@ -109,7 +109,7 @@ class SamlListener
         }
     }
 
-    private function handleEvent(RequestEvent $event)
+    private function handleEvent(RequestEvent $event): void
     {
         if ($this->tokenStorage->getToken()) {
             return;
@@ -187,7 +187,7 @@ class SamlListener
     /**
      * @param RequestEvent $event
      */
-    private function sendAuthnRequest(RequestEvent $event)
+    private function sendAuthnRequest(RequestEvent $event): void
     {
         $this->stateHandler->setCurrentRequestUri($event->getRequest()->getUri());
 
@@ -201,7 +201,7 @@ class SamlListener
      * @param PreconditionNotMetException $exception
      * @param RequestEvent $event
      */
-    private function setPreconditionExceptionResponse(PreconditionNotMetException $exception, RequestEvent $event)
+    private function setPreconditionExceptionResponse(PreconditionNotMetException $exception, RequestEvent $event): void
     {
         $template = null;
 
@@ -219,7 +219,7 @@ class SamlListener
      * Deny authentication by default
      * @param RequestEvent $event
      */
-    private function setAuthenticationFailedResponse(RequestEvent $event)
+    private function setAuthenticationFailedResponse(RequestEvent $event): void
     {
         $response = new Response();
         $response->setStatusCode(Response::HTTP_FORBIDDEN);

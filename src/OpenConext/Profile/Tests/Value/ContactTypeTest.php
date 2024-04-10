@@ -34,7 +34,7 @@ class ContactTypeTest extends TestCase
      * @dataProvider nonStringProvider
      *
      */
-    public function contact_type_can_be_invalid($contactTypeValue)
+    public function contact_type_can_be_invalid($contactTypeValue): void
     {
         $this->expectException(InvalidArgumentException::class);
         new ContactType($contactTypeValue);
@@ -44,7 +44,7 @@ class ContactTypeTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function two_contact_types_can_equal_each_other()
+    public function two_contact_types_can_equal_each_other(): void
     {
         $contactType     = new ContactType(ContactType::TYPE_TECHNICAL);
         $sameContactType = new ContactType(ContactType::TYPE_TECHNICAL);
@@ -58,7 +58,7 @@ class ContactTypeTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function two_contact_types_can_differ()
+    public function two_contact_types_can_differ(): void
     {
         $contactType          = new ContactType(ContactType::TYPE_TECHNICAL);
         $differentContactType = new ContactType(ContactType::TYPE_ADMINISTRATIVE);

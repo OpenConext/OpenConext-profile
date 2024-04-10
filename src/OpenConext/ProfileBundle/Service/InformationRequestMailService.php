@@ -64,7 +64,7 @@ final class InformationRequestMailService
         $this->attributeFilter = $attributeFilter;
     }
 
-    public function sendInformationRequestMail()
+    public function sendInformationRequestMail(): void
     {
         $user = $this->userService->getUser();
         $attributes = $this->attributeFilter->filter($user->getAttributes());

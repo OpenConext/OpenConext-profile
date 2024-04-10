@@ -29,7 +29,7 @@ class OrganizationTest extends TestCase
      * @group Organization
      * @group Value
      */
-    public function getDisplayNameReturnsCorrectValue()
+    public function getDisplayNameReturnsCorrectValue(): void
     {
         $displayName = ['en' => 'English displayname', 'pt' => null, 'nl' => 'Nederlandse displaynaam'];
         $name = ['en' => 'English name', 'pt' => null, 'nl' => 'Nederlandse naam'];

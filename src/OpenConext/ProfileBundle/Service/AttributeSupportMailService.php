@@ -56,7 +56,7 @@ final class AttributeSupportMailService
         $this->userService    = $userService;
     }
 
-    public function sendAttributeSupportMail()
+    public function sendAttributeSupportMail(): void
     {
         $user = $this->userService->getUser();
 

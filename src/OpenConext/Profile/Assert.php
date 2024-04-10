@@ -34,7 +34,7 @@ class Assert extends BaseAssertion
      * @param array $expectedKeys
      * @param null $propertyPath
      */
-    public static function keysArePresent(array $array, array $expectedKeys, $propertyPath = null)
+    public static function keysArePresent(array $array, array $expectedKeys, $propertyPath = null): void
     {
         $givenKeys = array_keys($array);
 

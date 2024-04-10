@@ -31,7 +31,7 @@ class ContactPersonListTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_can_be_filtered_according_to_predicate()
+    public function contact_person_list_can_be_filtered_according_to_predicate(): void
     {
         $filterCriterium = new ContactType(ContactType::TYPE_SUPPORT);
 
@@ -61,7 +61,7 @@ class ContactPersonListTest extends TestCase
      *
      *
      */
-    public function first_contact_person_cannot_be_retrieved_from_empty_list()
+    public function first_contact_person_cannot_be_retrieved_from_empty_list(): void
     {
         $this->expectException(OutOfRangeException::class);
         $contactPersonList = new ContactPersonList([]);
@@ -72,7 +72,7 @@ class ContactPersonListTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function first_contact_person_can_be_retrieved_from_list()
+    public function first_contact_person_can_be_retrieved_from_list(): void
     {
         $contactPersonList = new ContactPersonList([
             new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),

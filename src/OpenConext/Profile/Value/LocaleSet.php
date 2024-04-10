@@ -78,7 +78,7 @@ final class LocaleSet implements IteratorAggregate, Countable
      *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod) PHPMD does not see that this is being called in our static method
      */
-    private function initializeWith(Locale $locale)
+    private function initializeWith(Locale $locale): void
     {
         if ($this->contains($locale)) {
             return;

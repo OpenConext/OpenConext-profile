@@ -28,7 +28,7 @@ class LocaleTest extends TestCase
      * @group Locale
      * @group Value
      */
-    public function two_locales_with_different_values_are_not_equal()
+    public function two_locales_with_different_values_are_not_equal(): void
     {
         $localeA = new Locale('a');
         $differentThanLocaleA = new Locale('b');
@@ -44,7 +44,7 @@ class LocaleTest extends TestCase
      * @group Value
      *
      */
-    public function two_locales_with_the_same_value_are_equal()
+    public function two_locales_with_the_same_value_are_equal(): void
     {
         $localeA = new Locale('a');
         $sameAsLocaleA = new Locale('a');

@@ -32,7 +32,7 @@ class AssertTest extends TestCase
      *
      *
      */
-    public function missing_required_keys_trigger_an_exception($givenArray, $expectedKeys)
+    public function missing_required_keys_trigger_an_exception($givenArray, $expectedKeys): void
     {
         $this->expectException(AssertionFailedException::class);
         $this->expectExceptionMessage("Required key");
@@ -55,7 +55,7 @@ class AssertTest extends TestCase
      * @group Assert
      * @dataProvider matchingKeysProvider
      */
-    public function present_keys_do_not_trigger_an_exception($givenArray, $expectedKeys)
+    public function present_keys_do_not_trigger_an_exception($givenArray, $expectedKeys): void
     {
         $exceptionIsThrown = false;
 

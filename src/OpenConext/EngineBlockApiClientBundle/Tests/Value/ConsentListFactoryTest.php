@@ -39,7 +39,7 @@ final class ConsentListFactoryTest extends TestCase
      * @test
      * @group Consent
      */
-    public function it_can_create_a_consent_list()
+    public function it_can_create_a_consent_list(): void
     {
         $firstEntityId      = 'http://profile.vm.openconext.invalid/authentication/metadata';
         $secondEntityId     = 'https://serviceregistry.vm.openconext.invalid/simplesaml/module.php/saml/sp/metadata.php/default-sp';
