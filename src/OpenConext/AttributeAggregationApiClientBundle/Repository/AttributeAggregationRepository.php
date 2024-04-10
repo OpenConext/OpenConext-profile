@@ -25,13 +25,13 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributes
 
 final readonly class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
 {
-    public function __construct(private JsonApiClient $apiClient)
-    {
+    public function __construct(
+        private JsonApiClient $apiClient,
+    ) {
     }
 
-    public function findAllFor($userId)
+    public function findAllFor(string $userId): AttributeAggregationAttributesList
     {
-        Assert::string($userId, '$userId "%s" (NameID) expected to be string, type %s given.');
         Assert::notEmpty($userId, '$userId "%s" (NameID) can not be empty');
 
         $attributes = $this->apiClient->read('accounts/%s', [$userId]);
@@ -39,10 +39,8 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
         return AttributeAggregationAttributesList::fromApiResponse($attributes);
     }
 
-    public function unsubscribeAccount($accountId): bool
+    public function unsubscribeAccount(int $accountId): bool
     {
-        Assert::integer($accountId, 'Account id "%s" expected to be string, type %s given.');
-
         $result = $this->apiClient->delete('disconnect/%d', [$accountId]);
 
         return isset($result->status) && $result->status === 'OK';

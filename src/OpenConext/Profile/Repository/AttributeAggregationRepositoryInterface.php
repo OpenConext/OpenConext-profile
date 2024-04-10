@@ -24,18 +24,13 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributes
 interface AttributeAggregationRepositoryInterface
 {
     /**
-     * @param string $userId
-     * @return AttributeAggregationAttributesList
      * @throws InvalidArgumentException When $userId is not a non-empty string
      */
-    public function findAllFor($userId);
+    public function findAllFor(string $userId): AttributeAggregationAttributesList;
 
     /**
      * Removes an account by providing the account id. The method returns a boolean value reflecting the
      * result of the API call.
-     *
-     * @param $accountId
-     * @return bool
      */
-    public function unsubscribeAccount($accountId);
+    public function unsubscribeAccount(int $accountId): bool;
 }
