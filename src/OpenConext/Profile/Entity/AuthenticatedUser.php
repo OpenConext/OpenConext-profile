@@ -117,4 +117,9 @@ final class AuthenticatedUser
         }
         return AttributeSet::create($filtered);
     }
+
+    public function getAttributes(): AttributeSet
+    {
+        return $this->attributes;
+    }
 }
