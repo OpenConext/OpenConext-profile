@@ -54,7 +54,7 @@ class SamlFactory implements AuthenticatorFactoryInterface
         return 'saml';
     }
 
-    public function addConfiguration(NodeDefinition $builder)
+    public function addConfiguration(NodeDefinition $builder): void
     {
     }
 

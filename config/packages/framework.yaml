@@ -5,11 +5,17 @@ framework:
   secret: "%secret%"
   form: ~
   csrf_protection: ~
-  validation: { enable_annotations: true }
+  validation: { enable_attributes: true }
   default_locale: "%default_locale%"
   trusted_hosts: ~
   session:
     handler_id: "%session_handler%"
+    cookie_secure: auto
+    cookie_samesite: lax
   esi: false
   fragments: false
   http_method_override: true
+  handle_all_throwables: true
+  php_errors:
+    log: true
+  annotations: { enabled: false }

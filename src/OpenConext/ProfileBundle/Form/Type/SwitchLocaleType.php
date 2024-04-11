@@ -76,15 +76,12 @@ class SwitchLocaleType extends AbstractType
         $resolver->setAllowedTypes('return_url', 'string');
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_switch_locale';
     }
 
-    /**
-     * @return array
-     */
-    private function formatLocaleChoices(LocaleSet $availableLocales)
+    private function formatLocaleChoices(LocaleSet $availableLocales): array
     {
         $localeChoices = [];
 

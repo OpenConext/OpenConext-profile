@@ -39,7 +39,7 @@ class InformationRequestMailType extends AbstractType
             );
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_information_request_mail';
     }

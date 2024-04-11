@@ -40,7 +40,7 @@ class AttributeSupportMailType extends AbstractType
             );
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_attribute_support_mail';
     }
