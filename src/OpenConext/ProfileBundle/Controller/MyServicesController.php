@@ -18,14 +18,9 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository;
 use OpenConext\EngineBlockApiClientBundle\Repository\InstitutionRepository;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Entity\AuthenticatedUser;
-use OpenConext\Profile\Value\SpecifiedConsent;
-use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
-use OpenConext\ProfileBundle\Security\Guard;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,7 +37,6 @@ class MyServicesController extends AbstractController
         private readonly Environment                        $templateEngine,
         private readonly AuthenticatedUserProviderInterface $authenticatedUserProvider,
         private readonly SpecifiedConsentListService        $specifiedConsentListService,
-        private readonly Guard                              $guard,
         private readonly UrlGeneratorInterface              $urlGenerator,
         private readonly LoggerInterface                    $logger,
         private readonly InstitutionRepository              $institutionRepository,
@@ -52,8 +46,6 @@ class MyServicesController extends AbstractController
 
     public function overview(Request $request): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $this->logger->info('User requested My Services page');
 
         $locale = $request->getLocale();
@@ -78,7 +70,6 @@ class MyServicesController extends AbstractController
 
     public function delete(string $serviceEntityId): Response
     {
-        $this->guard->userIsLoggedIn();
         if (!$this->removeConsentEnabled) {
             throw new ResourceNotFoundException('The remove consent action is disabled');
         }

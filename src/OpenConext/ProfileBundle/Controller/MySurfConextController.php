@@ -18,7 +18,6 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,15 +32,12 @@ class MySurfConextController extends AbstractController
     public function __construct(
         private readonly UserService $userService,
         private readonly Environment $templateEngine,
-        private readonly Guard $guard,
         private readonly LoggerInterface $logger,
     ) {
     }
 
     public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $this->logger->info('Showing My SURFconext page');
 
         $user = $this->userService->getUser();
@@ -57,8 +53,6 @@ class MySurfConextController extends AbstractController
 
     public function userDataDownload(): JsonResponse
     {
-        $this->guard->userIsLoggedIn();
-
         if (!$this->userService->userLifecycleApiIsEnabled()) {
             throw new ResourceNotFoundException('User lifecycle API is disabled');
         }

@@ -20,14 +20,12 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class LocaleController extends AbstractController
@@ -36,15 +34,12 @@ class LocaleController extends AbstractController
     public function __construct(
         private readonly FormFactoryInterface $formFactory,
         private readonly UserService $userService,
-        private readonly Guard $guard,
         private readonly LoggerInterface $logger,
     ) {
     }
 
     public function switchLocale(Request $request): RedirectResponse
     {
-        $this->guard->userIsLoggedIn();
-
         $this->logger->info('User requested to switch locale');
 
         $returnUrl = $request->query->get('return-url');

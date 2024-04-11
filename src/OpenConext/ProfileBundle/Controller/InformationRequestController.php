@@ -20,7 +20,6 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use OpenConext\ProfileBundle\Form\Type\InformationRequestMailType;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\InformationRequestMailService;
 use OpenConext\ProfileBundle\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,7 +32,6 @@ use Twig\Environment;
 class InformationRequestController extends AbstractController
 {
     public function __construct(
-        private readonly Guard $guard,
         private readonly Environment $templateEngine,
         private readonly FormFactoryInterface $formFactory,
         private readonly UrlGeneratorInterface $urlGenerator,
@@ -45,8 +43,6 @@ class InformationRequestController extends AbstractController
 
     public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $informationRequestMailForm = $this->formFactory->create(
             InformationRequestMailType::class,
             null,
@@ -68,8 +64,6 @@ class InformationRequestController extends AbstractController
 
     public function sendMail(): RedirectResponse
     {
-        $this->guard->userIsLoggedIn();
-
         $this->informationRequestMailService->sendInformationRequestMail();
 
         return new RedirectResponse($this->urlGenerator->generate('profile.information_request_confirm_mail_sent'));
@@ -77,8 +71,6 @@ class InformationRequestController extends AbstractController
 
     public function confirmMailSent(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         return new Response(
             $this->templateEngine->render('@OpenConextProfile/InformationRequest/confirmation.html.twig'),
         );

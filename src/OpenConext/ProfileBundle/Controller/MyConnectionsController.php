@@ -19,10 +19,8 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\Profile\Value\EmailAddressSupport;
 use OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +29,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Templating\EngineInterface;
 use Twig\Environment;
 
 /**
@@ -41,7 +38,6 @@ class MyConnectionsController extends AbstractController
 {
     public function __construct(
         private readonly Environment $templateEngine,
-        private readonly Guard $guard,
         private readonly LoggerInterface $logger,
         private readonly AttributeAggregationService $service,
         private readonly AuthenticatedUserProviderInterface $userProvider,
@@ -53,7 +49,6 @@ class MyConnectionsController extends AbstractController
 
     public function overview(Request $request): Response
     {
-        $this->guard->userIsLoggedIn();
         $this->logger->info('Showing My Connections page');
 
         $user = $this->userProvider->getCurrentUser();

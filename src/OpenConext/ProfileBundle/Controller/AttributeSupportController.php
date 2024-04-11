@@ -19,7 +19,6 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeSupportMailService;
 use OpenConext\ProfileBundle\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +31,6 @@ use Twig\Environment;
 class AttributeSupportController extends AbstractController
 {
     public function __construct(
-        private readonly Guard                       $guard,
         private readonly Environment                 $templateEngine,
         private readonly FormFactoryInterface        $formFactory,
         private readonly UrlGeneratorInterface       $urlGenerator,
@@ -43,8 +41,6 @@ class AttributeSupportController extends AbstractController
 
     public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $attributeSupportMailForm = $this->formFactory->create(
             AttributeSupportMailType::class,
             null,
@@ -64,8 +60,6 @@ class AttributeSupportController extends AbstractController
 
     public function sendMail(): RedirectResponse
     {
-        $this->guard->userIsLoggedIn();
-
         $this->attributeSupportMailService->sendAttributeSupportMail();
 
         return new RedirectResponse($this->urlGenerator->generate('profile.attribute_support_confirm_mail_sent'));
@@ -73,8 +67,6 @@ class AttributeSupportController extends AbstractController
 
     public function confirmMailSent(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         return new Response(
             $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig'),
         );

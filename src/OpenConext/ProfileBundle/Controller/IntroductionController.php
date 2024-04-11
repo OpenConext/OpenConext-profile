@@ -18,7 +18,6 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
@@ -33,14 +32,12 @@ class IntroductionController extends AbstractController
     public function __construct(
         private readonly UserService $userService,
         private readonly Environment $templateEngine,
-        private readonly Guard $guard,
         private readonly LoggerInterface $logger,
     ) {
     }
 
     public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
         $this->logger->info('Showing Introduction page');
         $attributeDefinition = new AttributeDefinition(
             'givenName',
