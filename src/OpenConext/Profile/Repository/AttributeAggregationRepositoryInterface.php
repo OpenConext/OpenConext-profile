@@ -24,9 +24,6 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributes
 
 interface AttributeAggregationRepositoryInterface
 {
-    /**
-     * @throws InvalidArgumentException When $userId is not a non-empty string
-     */
     public function findAllFor(string $userId): AttributeAggregationAttributesList;
 
     /**

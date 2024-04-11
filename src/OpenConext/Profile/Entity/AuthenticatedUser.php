@@ -41,7 +41,6 @@ final class AuthenticatedUser implements Stringable, UserInterface
 
     /**
      * @param EntityId[] $authenticatingAuthorities
-     * @throws RuntimeException
      */
     public static function createFrom(
         AssertionAdapter $assertionAdapter,

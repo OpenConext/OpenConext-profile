@@ -24,9 +24,6 @@ use OpenConext\Profile\Value\ConsentList;
 
 interface ConsentRepositoryInterface
 {
-    /**
-     * @throws InvalidArgumentException When $userId is not a non-empty string
-     */
     public function findAllFor(string $userId): ConsentList;
 
     public function deleteServiceWith(string $collabPersonId, string $entityId): bool;

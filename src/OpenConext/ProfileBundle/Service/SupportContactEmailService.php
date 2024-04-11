@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
@@ -31,15 +32,12 @@ final readonly class SupportContactEmailService
     {
     }
 
-    /**
-     * @param string EntityId $entityId
-     * @return null|ContactEmailAddress
-     */
-    public function findSupportContactEmailForIdp(EntityId $entityId)
+    public function findSupportContactEmailForIdp(EntityId $entityId): ?ContactEmailAddress
     {
         $supportContactPersons = $this->contactPersonRepository->findAllForIdp($entityId)->filter(
-            fn(ContactPerson $contactPerson): bool => $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
-                && $contactPerson->hasEmailAddress(),
+            fn(ContactPerson $contactPerson): bool
+                => $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
+                    && $contactPerson->hasEmailAddress(),
         );
 
         if (count($supportContactPersons) === 0) {

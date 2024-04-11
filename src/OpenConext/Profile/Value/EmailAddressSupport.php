@@ -22,4 +22,5 @@ namespace OpenConext\Profile\Value;
 
 interface EmailAddressSupport
 {
+    public function getEmailAddress(): string;
 }

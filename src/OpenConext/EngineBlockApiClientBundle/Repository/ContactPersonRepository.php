@@ -23,6 +23,7 @@ namespace OpenConext\EngineBlockApiClientBundle\Repository;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
+use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\EntityId;
 
 final readonly class ContactPersonRepository implements ContactPersonRepositoryInterface
@@ -31,11 +32,7 @@ final readonly class ContactPersonRepository implements ContactPersonRepositoryI
     {
     }
 
-    /**
-     * @param EntityId $entityId
-     * @return ContactPersonList
-     */
-    public function findAllForIdp(EntityId $entityId)
+    public function findAllForIdp(EntityId $entityId): ContactPersonList
     {
         $identityProviderJson = $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId->getEntityId()]);
 

@@ -36,7 +36,6 @@ final readonly class ConsentRepository implements ConsentRepositoryInterface
 
     public function findAllFor(string $userId): ConsentList
     {
-        Assert::string($userId, 'User ID "%s" expected to be string, type %s given.');
         Assert::notEmpty($userId, 'User ID "%s" is empty, but non empty value was expected.');
 
         $consentListJson = $this->apiClient->read('consent/%s', [$userId]);

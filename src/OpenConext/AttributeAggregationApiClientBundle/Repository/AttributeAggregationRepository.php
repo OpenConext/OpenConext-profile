@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\AttributeAggregationApiClientBundle\Repository;
 
+use Assert\AssertionFailedException;
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;
@@ -32,6 +33,9 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
     ) {
     }
 
+    /**
+     * @throws AssertionFailedException
+     */
     public function findAllFor(string $userId): AttributeAggregationAttributesList
     {
         Assert::notEmpty($userId, '$userId "%s" (NameID) can not be empty');

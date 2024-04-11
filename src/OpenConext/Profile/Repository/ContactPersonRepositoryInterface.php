@@ -20,12 +20,10 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Repository;
 
+use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\EntityId;
 
 interface ContactPersonRepositoryInterface
 {
-    /**
-     * @return ContactPersonList
-     */
-    public function findAllForIdp(EntityId $entityId);
+     public function findAllForIdp(EntityId $entityId): ContactPersonList;
 }

@@ -21,6 +21,7 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Attribute;
 
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 
 final class AttributeFilter
 {
@@ -39,6 +40,7 @@ final class AttributeFilter
         /** @var Attribute[] $attributes */
         $attributes = $attributeSet->getIterator()->getArrayCopy();
         foreach ($attributes as $index => $attribute) {
+            assert($attribute instanceof Attribute);
             $attributeName = $attribute->getAttributeDefinition()->getName();
             if (!in_array($attributeName, self::$filterValues)) {
                 unset($attributes[$index]);

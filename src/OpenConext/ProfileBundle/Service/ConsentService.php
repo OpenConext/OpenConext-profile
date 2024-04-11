@@ -30,9 +30,6 @@ final readonly class ConsentService
     {
     }
 
-    /**
-     * @return ConsentList|null
-     */
     public function findAllFor(AuthenticatedUser $user): ConsentList
     {
         return $this->consentRepository->findAllFor($user->getNameId());
