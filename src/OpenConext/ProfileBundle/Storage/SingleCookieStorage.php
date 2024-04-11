@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -28,47 +30,15 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class SingleCookieStorage implements EventSubscriberInterface
 {
-    /**
-     * @var string
-     */
-    private $cookieDomain;
-
-    /**
-     * @var string
-     */
-    private $cookieKey;
-
-    /**
-     * @var string|null
-     */
-    private $cookieValue;
-
-    /**
-     * @var boolean
-     */
-    private $cookieSecure;
-
-    /**
-     * @var boolean
-     */
-    private $cookieHttpOnly;
+    private ?string $cookieValue = null;
 
     public function __construct(
-        $cookieDomain,
-        $cookieKey,
+        private readonly string    $cookieDomain,
+        private readonly string    $cookieKey,
         private readonly ?DateTime $cookieExpirationDate = null,
-        $cookieSecure = false,
-        $cookieHttpOnly = true,
+        private readonly bool      $cookieSecure = false,
+        private readonly bool      $cookieHttpOnly = true,
     ) {
-        Assert::string($cookieDomain, 'Cookie domain "%s" expected to be string, type %s given.');
-        Assert::string($cookieKey, 'Cookie key "%s" expected to be string, type %s given.');
-        Assert::boolean($cookieSecure, 'Cookie secure setting "%s" is expected to be boolean.');
-        Assert::boolean($cookieHttpOnly, 'Cookie HttpOnly setting "%s" expected to be boolean');
-
-        $this->cookieDomain         = $cookieDomain;
-        $this->cookieKey            = $cookieKey;
-        $this->cookieSecure         = $cookieSecure;
-        $this->cookieHttpOnly       = $cookieHttpOnly;
     }
 
     public function setValue(string $value): void
