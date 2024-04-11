@@ -35,7 +35,7 @@ services:
             - '%profile_explanation_image_path%'
             - '%attribute_information_url%'
             - '%remove_consent_enabled%'
-            -
+
     open_conext.profile_bundle.service.global_view_parameters:
         alias: OpenConext\ProfileBundle\Service\GlobalViewParameters
 
@@ -48,4 +48,7 @@ services:
     OpenConext\ProfileBundle\Twig\LocaleExtension:
         arguments:
             $defaultLocale: '%default_locale%'
+        tags: ['twig.extension']
+
+    OpenConext\ProfileBundle\Twig\I18n:
         tags: ['twig.extension']
