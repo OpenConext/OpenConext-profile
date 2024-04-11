@@ -18,7 +18,7 @@
 
 namespace OpenConext\ProfileBundle\Saml;
 
-use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
+use OpenConext\ProfileBundle\Session\NamespacedAttributeBag;
 
 class StateHandler
 {

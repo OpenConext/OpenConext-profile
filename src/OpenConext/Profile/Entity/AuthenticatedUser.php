@@ -25,8 +25,9 @@ use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
 use Stringable;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-final class AuthenticatedUser implements Stringable
+final class AuthenticatedUser implements Stringable, UserInterface
 {
     /**
      * A list of blacklisted attributes defined by their Urn OID
@@ -120,5 +121,20 @@ final class AuthenticatedUser implements Stringable
     public function getAttributes(): AttributeSet
     {
         return $this->attributes;
+    }
+
+    public function getRoles(): array
+    {
+        return ["ROLE_USER"];
+    }
+
+    public function eraseCredentials(): array
+    {
+        return [];
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->getNameId();
     }
 }

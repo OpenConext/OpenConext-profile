@@ -20,7 +20,7 @@ services:
     surfnet_saml.saml_provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
 
-    logger:
+    Psr\Log\LoggerInterface:
         alias: 'monolog.logger'
         public: true
 
@@ -44,3 +44,8 @@ services:
             - '%dsn%'
 
     Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler:
+
+    OpenConext\ProfileBundle\Twig\LocaleExtension:
+        arguments:
+            $defaultLocale: '%default_locale%'
+        tags: ['twig.extension']

@@ -29,7 +29,7 @@ final class HttpClientConfigurationTest extends TestCase
     use ConfigurationTestCaseTrait;
     use DataProvider;
 
-    private $validConfig = [
+    private array $validConfig = [
         'base_url' => 'http://aa.invalid/',
         'username' => 'test user',
         'password' => 'test password',

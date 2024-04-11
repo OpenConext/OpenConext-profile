@@ -24,8 +24,7 @@ class ChangeLocaleCommand
 {
     /**
      * @var string
-     *
-     * @Assert\NotBlank
      */
+    #[Assert\NotBlank]
     public $newLocale;
 }

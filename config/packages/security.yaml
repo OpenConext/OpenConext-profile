@@ -1,23 +1,15 @@
 security:
   providers:
-    in_memory:
-      memory: ~
-#    saml-provider:
-#      id: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
-
+    saml-provider:
+      id: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
 
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
 
-
     login_firewall:
       pattern: ^/saml/metadata
-
-    default:
-      pattern: ^/authentication/metadata$
-#      anonymous: ~
 
     monitor:
       pattern: ^/(info|health)$
@@ -30,5 +22,6 @@ security:
         path: /logout
 
   access_control:
-    - { path: ^/authentication, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+    - { path: ^/saml, roles: PUBLIC_ACCESS, requires_channel: https }
+    - { path: ^/authentication, roles: PUBLIC_ACCESS, requires_channel: https }
     - { path: ^/, roles: ROLE_USER, requires_channel: https }

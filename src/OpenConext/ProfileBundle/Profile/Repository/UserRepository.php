@@ -20,7 +20,7 @@ namespace OpenConext\ProfileBundle\Profile\Repository;
 
 use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Repository\UserRepositoryInterface;
-use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
+use OpenConext\ProfileBundle\Session\NamespacedAttributeBag;
 
 class UserRepository implements UserRepositoryInterface
 {

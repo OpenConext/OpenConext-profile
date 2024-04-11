@@ -18,41 +18,35 @@
 
 namespace OpenConext\ProfileBundle\Twig;
 
-use OpenConext\Profile\Assert;
 use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Twig\Extension\AbstractExtension as Extension;
-use Twig\TwigFunction as SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-final class LocaleExtension extends Extension
+final class LocaleExtension extends AbstractExtension
 {
-    /**
-     * @var string
-     */
-    private $locale;
+    private string $locale = 'en';
 
     public function __construct(
         private readonly FormFactoryInterface $formFactory,
         RequestStack $requestStack,
-        $defaultLocale,
+        string $defaultLocale,
     ) {
         $this->locale = $this->retrieveLocale($requestStack, $defaultLocale);
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new SimpleFunction('profile_locale_switcher', $this->getLocalePreferenceForm(...)),
-            new SimpleFunction('locale', $this->getLocale(...)),
+            new TwigFunction('profile_locale_switcher', $this->getLocalePreferenceForm(...)),
+            new TwigFunction('locale', $this->getLocale(...)),
         ];
     }
 
     public function getLocalePreferenceForm(string $returnUrl): FormView
     {
-        Assert::string($returnUrl);
-
         $form = $this->formFactory->create(
             SwitchLocaleType::class,
             null,

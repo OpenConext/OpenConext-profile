@@ -24,12 +24,12 @@ use OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
 use SAML2\Response\Exception\PreconditionNotMetException;
 use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
+use Surfnet\SamlBundle\Monolog\SamlAuthenticationLogger;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use \Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
@@ -37,7 +37,6 @@ use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Twig\Environment;
 use Twig\Environment as Twig;
 
 /**
@@ -58,7 +57,7 @@ class SamlListener
         private readonly SamlInteractionProvider $samlInteractionProvider,
         private readonly StateHandler $stateHandler,
         /**
-         * @var \Surfnet\SamlBundle\Monolog\SamlAuthenticationLogger
+         * @var SamlAuthenticationLogger
          */
         private LoggerInterface $logger,
         private readonly Twig $twig,

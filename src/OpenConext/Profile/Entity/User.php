@@ -21,22 +21,23 @@ namespace OpenConext\Profile\Entity;
 use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Locale;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 final class User implements ApiUserInterface
 {
-    /**
-     * @var ContactEmailAddress|null
-     */
-    private $supportContactEmail;
+    private ?ContactEmailAddress $supportContactEmail = null;
 
-    public function __construct(private AuthenticatedUser $authenticatedUser, private Locale $locale)
-    {
+    public function __construct(
+        private readonly AuthenticatedUser $authenticatedUser,
+        private Locale                     $locale,
+    ) {
     }
 
     /**
      * @return UserInterface
      */
-    public function withSupportContactEmail(ContactEmailAddress $supportContactEmail)
+    public function withSupportContactEmail(ContactEmailAddress $supportContactEmail): UserInterface|User
     {
         $newUser = clone $this;
         $newUser->supportContactEmail = $supportContactEmail;
@@ -44,32 +45,32 @@ final class User implements ApiUserInterface
         return $newUser;
     }
 
-    public function switchLocaleTo(Locale $locale)
+    public function switchLocaleTo(Locale $locale): void
     {
         $this->locale = $locale;
     }
 
-    public function hasSupportContactEmail()
+    public function hasSupportContactEmail(): bool
     {
         return $this->supportContactEmail !== null;
     }
 
-    public function getSupportContactEmail()
+    public function getSupportContactEmail(): ?ContactEmailAddress
     {
         return $this->supportContactEmail;
     }
 
-    public function getLocale()
+    public function getLocale(): Locale
     {
         return $this->locale;
     }
 
-    public function getAttributes()
+    public function getAttributes(): AttributeSet
     {
         return $this->authenticatedUser->getAttributesFiltered();
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->authenticatedUser->getNameId();
     }

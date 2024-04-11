@@ -35,26 +35,9 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class SamlProvider implements SamlProviderInterface, UserProviderInterface
 {
-    public function __construct(private readonly AttributeDictionary $attributeDictionary)
-    {
-    }
-
-    public function authenticate(TokenInterface $token): SamlToken
-    {
-        ConfigurableAttributeSetFactory::configureWhichAttributeSetToCreate(AttributeSetWithFallbacks::class);
-        $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
-
-        $authenticatingAuthorities = array_map(
-            fn($authenticatingAuthority) => new EntityId($authenticatingAuthority),
-            $token->assertion->getAuthenticatingAuthority(),
-        );
-
-        $user = AuthenticatedUser::createFrom($translatedAssertion, $authenticatingAuthorities);
-
-        $authenticatedToken = new SamlToken(['ROLE_USER']);
-        $authenticatedToken->setUser($user);
-
-        return $authenticatedToken;
+    public function __construct(
+        private readonly AttributeDictionary $attributeDictionary,
+    ) {
     }
 
     public function supports(TokenInterface $token): bool
@@ -69,7 +52,15 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
 
     public function getUser(Assertion $assertion): UserInterface
     {
-        // TODO: Implement getUser() method.
+        ConfigurableAttributeSetFactory::configureWhichAttributeSetToCreate(AttributeSetWithFallbacks::class);
+        $translatedAssertion = $this->attributeDictionary->translate($assertion);
+
+        $authenticatingAuthorities = array_map(
+            fn($authenticatingAuthority) => new EntityId($authenticatingAuthority),
+            $assertion->getAuthenticatingAuthority(),
+        );
+
+        return AuthenticatedUser::createFrom($translatedAssertion, $authenticatingAuthorities);
     }
 
     public function refreshUser(UserInterface $user): UserInterface
@@ -77,8 +68,9 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
         return $user;
     }
 
-    public function supportsClass(string $class)
+    public function supportsClass(string $class): bool
     {
+        return $class === AuthenticatedUser::class;
     }
 
     public function loadUserByIdentifier(string $identifier): UserInterface
