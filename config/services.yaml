@@ -52,3 +52,7 @@ services:
 
     OpenConext\ProfileBundle\Twig\I18n:
         tags: ['twig.extension']
+
+#    Surfnet\StepupSelfService\SamlStepupProviderBundle\Session\SessionFactoryWithAttributeBag:
+#        decorates: session.factory
+#        arguments: [ '@.inner' ]

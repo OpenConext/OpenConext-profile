@@ -20,6 +20,7 @@ namespace OpenConext\ProfileBundle;
 
 use OpenConext\ProfileBundle\DependencyInjection\Compiler\StateHandlerSessionPass;
 use OpenConext\ProfileBundle\Security\Factory\SamlFactory;
+use Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -29,9 +30,7 @@ class OpenConextProfileBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new StateHandlerSessionPass());
-
-        /** @var \Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension $extension */
+        /** @var SecurityExtension $extension */
         $extension = $container->getExtension('security');
         $extension->addAuthenticatorFactory(new SamlFactory());
     }

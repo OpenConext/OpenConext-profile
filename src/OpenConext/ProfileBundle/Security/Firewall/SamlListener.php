@@ -34,7 +34,6 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 use \Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
-use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Twig\Environment as Twig;
@@ -53,7 +52,6 @@ class SamlListener
         private readonly RequestStack $requestStack,
         private readonly UrlMatcherInterface $urlMatcher,
         private readonly TokenStorageInterface $tokenStorage,
-        AuthenticationManagerInterface $authenticationManager,
         private readonly SamlInteractionProvider $samlInteractionProvider,
         private readonly StateHandler $stateHandler,
         /**
@@ -62,7 +60,6 @@ class SamlListener
         private LoggerInterface $logger,
         private readonly Twig $twig,
     ) {
-        $this->authenticationManager    = $authenticationManager;
     }
 
     public function __invoke(RequestEvent $event): void

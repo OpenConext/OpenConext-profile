@@ -68,7 +68,7 @@ services:
     OpenConext\Profile\Repository\UserRepositoryInterface:
         class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
         arguments:
-            - '@profile.session.namespaced_attribute_bag'
+            - '@request_stack'
 
     OpenConext\Profile\Repository\LocaleRepositoryInterface:
         class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
@@ -117,35 +117,35 @@ services:
 
     OpenConext\ProfileBundle\Saml\StateHandler:
         arguments:
-            - '@profile.session'
+            - '@request_stack'
 
-    profile.saml_session:
-        public: false
-        class: OpenConext\ProfileBundle\Session\NamespacedAttributeBag
-        factory: ['@request_stack', 'getSession->getBag']
-        arguments: ['profile_saml']
-
-    profile.saml_session.namespaced_attribute_bag:
-        public: false
-        class: OpenConext\ProfileBundle\Session\NamespacedAttributeBag
-        arguments:
-            - '__profile_saml__'
-        calls:
-            - [setName, ['profile_saml']]
-
-    profile.session:
-        public: false
-        class: OpenConext\ProfileBundle\Session\NamespacedAttributeBag
-        factory: ['@request_stack', 'getSession->getBag']
-        arguments: ['profile']
-
-    profile.session.namespaced_attribute_bag:
-        public: false
-        class: OpenConext\ProfileBundle\Session\NamespacedAttributeBag
-        arguments:
-            - '__profile__'
-        calls:
-            - [setName, ['profile']]
+#    profile.saml_session:
+#        public: false
+#        class: Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
+#        factory: ['@request_stack', 'getSession()->getBag']
+#        arguments: ['__profile_saml__']
+#
+#    profile.saml_session.namespaced_attribute_bag:
+#        public: false
+#        class: Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
+#        arguments:
+#            - '__profile_saml__'
+#        calls:
+#            - [setName, ['profile_saml']]
+#
+#    profile.session:
+#        public: false
+#        class: Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
+#        factory: ['@request_stack', 'getSession()->getBag']
+#        arguments: ['__profile__']
+#
+#    profile.session.attribute_bag:
+#        public: false
+#        class: Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag
+#        arguments:
+#            - '__profile__'
+#        calls:
+#            - [setName, ['profile']]
 
     OpenConext\ProfileBundle\Service\AttributeSupportMailService:
         arguments:

@@ -21,7 +21,6 @@ namespace OpenConext\ProfileBundle\Security\Factory;
 use OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider;
 use OpenConext\ProfileBundle\Security\Firewall\SamlListener;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\AuthenticatorFactoryInterface;
-use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -19,11 +19,13 @@
 namespace OpenConext\ProfileBundle\Security\Authentication;
 
 use OpenConext\ProfileBundle\Saml\StateHandler;
+use SAML2\Assertion;
 use Surfnet\SamlBundle\Entity\IdentityProvider;
 use Surfnet\SamlBundle\Entity\ServiceProvider;
 use Surfnet\SamlBundle\Http\PostBinding;
 use Surfnet\SamlBundle\Http\RedirectBinding;
 use Surfnet\SamlBundle\SAML2\AuthnRequestFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class SamlInteractionProvider
@@ -40,15 +42,15 @@ class SamlInteractionProvider
     /**
      * @return bool
      */
-    public function isSamlAuthenticationInitiated()
+    public function isSamlAuthenticationInitiated(): bool
     {
         return $this->stateHandler->hasRequestId();
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
-    public function initiateSamlRequest()
+    public function initiateSamlRequest(): RedirectResponse
     {
         $authnRequest = AuthnRequestFactory::createNewRequest(
             $this->serviceProvider,
@@ -61,11 +63,11 @@ class SamlInteractionProvider
     }
 
     /**
-     * @return \SAML2\Assertion
+     * @return Assertion
      */
-    public function processSamlResponse(Request $request)
+    public function processSamlResponse(Request $request): Assertion
     {
-        /** @var \SAML2\Assertion $assertion */
+        /** @var Assertion $assertion */
         $assertion = $this->postBinding->processResponse(
             $request,
             $this->identityProvider,
