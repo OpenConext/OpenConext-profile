@@ -55,7 +55,7 @@ class I18n extends AbstractExtension
         $args = func_get_args();
         return call_user_func_array(
             [$this->translator, 'trans'],
-            $this->prepareDefaultPlaceholders($args)
+            $this->prepareDefaultPlaceholders($args),
         );
     }
 
@@ -67,7 +67,7 @@ class I18n extends AbstractExtension
         $args = func_get_args();
         return call_user_func_array(
             [$this->translator, 'transChoice'],
-            $this->prepareDefaultPlaceholders($args)
+            $this->prepareDefaultPlaceholders($args),
         );
     }
 
