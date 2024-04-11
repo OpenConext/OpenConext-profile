@@ -22,23 +22,14 @@ use Assert\Assertion;
 
 final class AttributeAggregationAttribute
 {
-    /**
-     * @param int $id
-     * @param string $userId
-     * @param string $accountType
-     * @param string $linkedId
-     * @param string $logoPath
-     * @param string $connectUrl
-     * @param bool $isConnected
-     */
     public function __construct(
-        private $id,
-        private $userId,
-        private $accountType,
-        private $linkedId,
-        private $logoPath,
-        private $connectUrl,
-        private $isConnected,
+        private int    $id,
+        private string $userId,
+        private string $accountType,
+        private string $linkedId,
+        private string $logoPath,
+        private string $connectUrl,
+        private bool   $isConnected,
     ) {
     }
 
@@ -48,7 +39,7 @@ final class AttributeAggregationAttribute
         $id,
         $userId,
         $linkedId = null,
-    ) {
+    ): AttributeAggregationAttribute {
         return new self(
             $id,
             $userId,
@@ -60,7 +51,7 @@ final class AttributeAggregationAttribute
         );
     }
 
-    public static function fromApiResponse(array $attributeData)
+    public static function fromApiResponse(array $attributeData): AttributeAggregationAttribute
     {
         Assertion::keyExists($attributeData, 'id', 'No id found on attribute');
         Assertion::integer($attributeData['id'], 'Id should be integer');
@@ -81,60 +72,41 @@ final class AttributeAggregationAttribute
             $attributeData['linkedId'],
             '',
             '',
-            '',
             true,
         );
     }
 
-    /**
-     * @return string
-     */
-    public function getAccountType()
+    public function getAccountType(): string
     {
         return $this->accountType;
     }
 
-    /**
-     * @return string
-     */
-    public function getLinkedId()
+    public function getLinkedId(): string
     {
         return $this->linkedId;
     }
 
-    /**
-     * @return string
-     */
-    public function getLogoPath()
+    public function getLogoPath(): string
     {
         return $this->logoPath;
     }
 
-    /**
-     * @return string
-     */
-    public function getConnectUrl()
+    public function getConnectUrl(): string
     {
         return $this->connectUrl;
     }
 
-    /**
-     * @return bool
-     */
-    public function isConnected()
+    public function isConnected(): bool
     {
         return $this->isConnected;
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getUserNameId()
+    public function getUserNameId(): string
     {
         return $this->userId;
     }
