@@ -169,7 +169,7 @@ class JsonApiClient
 
             $errorMessage = $jsonErrors[$last];
 
-            if (!isset($errorMessage)) {
+            if ($errorMessage === null) {
                 $errorMessage = 'Unknown error';
             }
 
