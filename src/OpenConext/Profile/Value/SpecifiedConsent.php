@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,13 +23,14 @@ namespace OpenConext\Profile\Value;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
+use OpenConext\Profile\Value\Consent;
 
 class SpecifiedConsent
 {
     /**
      * @return SpecifiedConsent
      */
-    public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
+    public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp): self
     {
         return new self($consent, $releasedAttributes, $arp);
     }
@@ -42,7 +45,7 @@ class SpecifiedConsent
     /**
      * @return Consent
      */
-    public function getConsent()
+    public function getConsent(): Consent
     {
         return $this->consent;
     }
@@ -50,7 +53,7 @@ class SpecifiedConsent
     /**
      * @return AttributeSet
      */
-    public function getReleasedAttributes()
+    public function getReleasedAttributes(): AttributeSet
     {
         return $this->releasedAttributes;
     }
@@ -97,7 +100,7 @@ class SpecifiedConsent
     /**
      * @return bool
      */
-    public function hasMotivations()
+    public function hasMotivations(): bool
     {
         return $this->arp->hasMotivations();
     }

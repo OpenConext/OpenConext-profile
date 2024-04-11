@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -39,7 +41,7 @@ class ArpTest extends TestCase
      *
      * @dataProvider invalidArpData
      */
-    public function test_it_rejects_invalid_data_structures($invalidArpData): void
+    public function test_it_rejects_invalid_data_structures(array $invalidArpData): void
     {
         $this->expectException(InvalidArpDataException::class);
         Arp::createWith($invalidArpData);

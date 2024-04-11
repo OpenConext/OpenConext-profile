@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -23,7 +25,7 @@ final class AttributeAggregationEnabledAttributes
     /**
      * @var AttributeAggregationAttributeConfiguration[]
      */
-    private $attributes = [];
+    private array $attributes = [];
 
     public function __construct(array $attributes)
     {

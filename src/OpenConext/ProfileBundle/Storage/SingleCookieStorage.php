@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 /**
  * Copyright 2015 SURFnet B.V.
@@ -21,7 +21,6 @@ declare(strict_types=1);
 namespace OpenConext\ProfileBundle\Storage;
 
 use DateTime;
-use OpenConext\Profile\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpKernel\Event\RequestEvent;

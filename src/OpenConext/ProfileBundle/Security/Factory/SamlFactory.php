@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -27,7 +29,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class SamlFactory implements AuthenticatorFactoryInterface
 {
-    public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint): array
+    public function create(ContainerBuilder $container, string $id, $config, $userProvider, $defaultEntryPoint): array
     {
         $providerId = 'security.authentication.provider.saml.' . $id;
         $container->setDefinition(

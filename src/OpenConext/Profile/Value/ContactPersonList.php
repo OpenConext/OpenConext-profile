@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -30,7 +32,7 @@ final class ContactPersonList implements IteratorAggregate, Countable, Stringabl
     /**
      * @var ContactPerson[]
      */
-    private $contactPersons = [];
+    private array $contactPersons = [];
 
     public function __construct(array $contactPersons)
     {
@@ -47,7 +49,7 @@ final class ContactPersonList implements IteratorAggregate, Countable, Stringabl
     /**
      * @return ContactPersonList
      */
-    public function filter(callable $predicate)
+    public function filter(callable $predicate): ContactPersonList
     {
         return new ContactPersonList(
             array_filter(

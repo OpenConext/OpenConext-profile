@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -35,7 +37,7 @@ final class AttributeAggregationAttributesList
     /**
      * @return AttributeAggregationAttributesList
      */
-    public static function fromApiResponse(array $attributes)
+    public static function fromApiResponse(array $attributes): self
     {
         $attributeCollection = [];
         foreach ($attributes as $attributeData) {
@@ -44,7 +46,10 @@ final class AttributeAggregationAttributesList
         return new self($attributeCollection);
     }
 
-    public function getActiveAttributes()
+    /**
+     * @return mixed[]
+     */
+    public function getActiveAttributes(): array
     {
         $output = [];
         foreach ($this->attributes as $attribute) {
@@ -55,7 +60,10 @@ final class AttributeAggregationAttributesList
         return $output;
     }
 
-    public function getAvailableAttributes()
+    /**
+     * @return mixed[]
+     */
+    public function getAvailableAttributes(): array
     {
         $output = [];
         foreach ($this->attributes as $attribute) {
@@ -84,7 +92,7 @@ final class AttributeAggregationAttributesList
     {
         $this->attributes = array_filter(
             $this->attributes,
-            fn(AttributeAggregationAttribute $attribute) => $enabledAttributes->isEnabled($attribute->getAccountType()),
+            fn(AttributeAggregationAttribute $attribute): bool => $enabledAttributes->isEnabled($attribute->getAccountType()),
         );
     }
 

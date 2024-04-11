@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -30,7 +32,7 @@ class LocaleStorageDriver
     /**
      * @return Locale|null
      */
-    public function find()
+    public function find(): ?Locale
     {
         $localeValue = $this->singleCookieStorage->getValue();
 

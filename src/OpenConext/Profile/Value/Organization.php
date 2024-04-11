@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -18,7 +20,6 @@
 
 namespace OpenConext\Profile\Value;
 
-use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 
 final class Organization
@@ -26,12 +27,12 @@ final class Organization
     /**
      * @var string[]
      */
-    private $displayName;
+    private array $displayName;
 
     /**
      * @var string[]
      */
-    private $name;
+    private array $name;
 
     public function __construct(array $displayName, array $name, private readonly Logo $logo)
     {

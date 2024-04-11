@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -22,9 +24,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class StateHandler
 {
-    const REQUEST_ID = 'request_id';
-    const CURRENT_URI = 'current_uri';
-    public function __construct(private RequestStack $requestStack)
+    public const REQUEST_ID = 'request_id';
+    public const CURRENT_URI = 'current_uri';
+    public function __construct(private readonly RequestStack $requestStack)
     {
     }
 
@@ -53,9 +55,6 @@ class StateHandler
         $this->requestStack->getSession()->remove(self::REQUEST_ID);
     }
 
-    /**
-     * @param string $uri
-     */
     public function setCurrentRequestUri(string $uri): void
     {
         $this->requestStack->getSession()->set(self::CURRENT_URI, $uri);

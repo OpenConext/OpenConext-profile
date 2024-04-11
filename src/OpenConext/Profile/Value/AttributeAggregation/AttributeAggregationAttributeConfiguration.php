@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -29,7 +31,7 @@ final class AttributeAggregationAttributeConfiguration
     {
     }
 
-    public static function fromConfig($accountType, $attributeConfigParameters)
+    public static function fromConfig($accountType, array $attributeConfigParameters): self
     {
         return new self(
             $accountType,

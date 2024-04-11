@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -47,7 +49,7 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
         $translatedAssertion = $this->attributeDictionary->translate($assertion);
 
         $authenticatingAuthorities = array_map(
-            fn($authenticatingAuthority) => new EntityId($authenticatingAuthority),
+            fn($authenticatingAuthority): EntityId => new EntityId($authenticatingAuthority),
             $assertion->getAuthenticatingAuthority(),
         );
 

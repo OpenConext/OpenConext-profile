@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -43,7 +45,7 @@ class ServiceProvider
     /**
      * @return Entity
      */
-    public function getEntity()
+    public function getEntity(): Entity
     {
         return $this->entity;
     }
@@ -67,7 +69,7 @@ class ServiceProvider
     /**
      * @return NameIdFormat
      */
-    public function getNameIdFormat()
+    public function getNameIdFormat(): NameIdFormat
     {
         return $this->nameIdFormat;
     }
@@ -98,7 +100,7 @@ class ServiceProvider
     /**
      * @return Url
      */
-    public function getEulaUrl()
+    public function getEulaUrl(): ?Url
     {
         if (!$this->hasEulaUrl()) {
             throw new LogicException('Service provider has no EULA url');
@@ -131,7 +133,7 @@ class ServiceProvider
      * @param string $locale
      * @return null|Url
      */
-    public function getSupportUrl($locale)
+    public function getSupportUrl($locale): ?Url
     {
         if ($locale === 'nl') {
             return $this->supportUrlNl;

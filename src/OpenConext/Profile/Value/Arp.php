@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -32,9 +34,9 @@ final class Arp
     /**
      * @var array The arp configuration is grouped on source. The source values are a collection of Attribute
      */
-    private $arp;
+    private readonly array $arp;
 
-    public static function createWith(array $arp, AttributeDictionary $dictionary = null)
+    public static function createWith(array $arp, AttributeDictionary $dictionary = null): self
     {
         // Input validation
         foreach ($arp as $attributeInformation) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -28,7 +30,7 @@ final class ConsentList implements IteratorAggregate, Countable
     /**
      * @var Consent[]
      */
-    private $consents = [];
+    private array $consents = [];
 
     /**
      * @param Consent[] $consents

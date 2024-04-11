@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,8 +23,6 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Entity\AuthenticatedUser;
-use Psr\Log\LoggerInterface;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
 final readonly class ConsentService
 {
@@ -33,7 +33,7 @@ final readonly class ConsentService
     /**
      * @return ConsentList|null
      */
-    public function findAllFor(AuthenticatedUser $user)
+    public function findAllFor(AuthenticatedUser $user): ConsentList
     {
         return $this->consentRepository->findAllFor($user->getNameId());
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,7 +23,6 @@ namespace OpenConext\Profile\Value;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
-use OpenConext\Profile\Exception\LogicException;
 use Traversable;
 use function ksort;
 use const SORT_STRING;
@@ -37,7 +38,7 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
      * @param SpecifiedConsent[] $specifiedConsents
      * @return SpecifiedConsentList
      */
-    public static function createWith(array $specifiedConsents)
+    public static function createWith(array $specifiedConsents): self
     {
         return new self($specifiedConsents);
     }

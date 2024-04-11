@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -20,7 +22,7 @@ namespace OpenConext\Profile\Value\AttributeAggregation;
 
 use Assert\Assertion;
 
-final class AttributeAggregationAttribute
+final readonly class AttributeAggregationAttribute
 {
     public function __construct(
         private int    $id,

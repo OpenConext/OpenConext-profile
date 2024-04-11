@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -24,10 +26,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class UserRepository implements UserRepositoryInterface
 {
-    const USER = 'user';
+    public const USER = 'user';
 
     public function __construct(
-        private RequestStack $requestStack,
+        private readonly RequestStack $requestStack,
     ) {
     }
 

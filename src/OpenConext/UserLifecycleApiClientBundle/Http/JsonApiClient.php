@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2018 SURFnet B.V.
  *
@@ -103,11 +105,10 @@ class JsonApiClient
      * Function to provide functionality common to Guzzle 5 Response's json method,
      * without config options as they are not needed.
      *
-     * @param string $json
      * @return mixed
      * @throws InvalidArgumentException
      */
-    private function parseJson($json)
+    private function parseJson(string $json)
     {
         $jsonErrors = [
             JSON_ERROR_DEPTH          => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',

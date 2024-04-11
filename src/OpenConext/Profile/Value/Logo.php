@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -22,20 +24,11 @@ use OpenConext\Profile\Assert;
 
 final class Logo
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private readonly string $url;
 
-    /**
-     * @var string
-     */
-    private $height;
+    private readonly string $height;
 
-    /**
-     * @var string
-     */
-    private $width;
+    private readonly string $width;
 
     public function __construct(?string $url, ?string $height, ?string $width)
     {

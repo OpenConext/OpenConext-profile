@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,7 +20,6 @@
 
 namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\EntityId;
 
 interface ContactPersonRepositoryInterface

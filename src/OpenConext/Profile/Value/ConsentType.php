@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -34,7 +36,7 @@ final class ConsentType implements Stringable
     /**
      * @return ConsentType
      */
-    public static function explicit()
+    public static function explicit(): self
     {
         return new self(self::TYPE_EXPLICIT);
     }
@@ -42,7 +44,7 @@ final class ConsentType implements Stringable
     /**
      * @return ConsentType
      */
-    public static function implicit()
+    public static function implicit(): self
     {
         return new self(self::TYPE_IMPLICIT);
     }

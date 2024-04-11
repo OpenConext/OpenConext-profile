@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2018 SURFnet B.V.
  *
@@ -25,10 +27,7 @@ final class NameIdFormat
     public const PERSISTENT_IDENTIFIER = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
     public const TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
 
-    /**
-     * @var string
-     */
-    private $value;
+    private readonly string $value;
 
     /**
      * @param string $value

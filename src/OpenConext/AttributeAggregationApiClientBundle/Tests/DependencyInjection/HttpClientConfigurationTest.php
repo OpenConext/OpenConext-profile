@@ -118,7 +118,7 @@ final class HttpClientConfigurationTest extends TestCase
         );
     }
 
-    protected function getConfiguration()
+    protected function getConfiguration(): \OpenConext\AttributeAggregationApiClientBundle\DependencyInjection\Configuration
     {
         return new Configuration();
     }

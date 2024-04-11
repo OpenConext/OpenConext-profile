@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -19,11 +21,10 @@
 namespace OpenConext\ProfileBundle\Attribute;
 
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
-use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 
 final class AttributeFilter
 {
-    private static $filterValues = [
+    private static array $filterValues = [
         'commonName',
         'displayName',
         'mail',
@@ -33,7 +34,7 @@ final class AttributeFilter
         'schacHomeOrganization',
     ];
 
-    public function filter(AttributeSet $attributeSet)
+    public function filter(AttributeSet $attributeSet): AttributeSet
     {
         /** @var Attribute[] $attributes */
         $attributes = $attributeSet->getIterator()->getArrayCopy();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,7 +21,6 @@
 namespace OpenConext\EngineBlockApiClientBundle\Repository;
 
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
-use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;

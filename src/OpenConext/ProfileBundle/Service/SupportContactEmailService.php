@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,7 +23,6 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
-use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\EntityId;
 
 final readonly class SupportContactEmailService
@@ -37,7 +38,7 @@ final readonly class SupportContactEmailService
     public function findSupportContactEmailForIdp(EntityId $entityId)
     {
         $supportContactPersons = $this->contactPersonRepository->findAllForIdp($entityId)->filter(
-            fn(ContactPerson $contactPerson) => $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
+            fn(ContactPerson $contactPerson): bool => $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
                 && $contactPerson->hasEmailAddress(),
         );
 

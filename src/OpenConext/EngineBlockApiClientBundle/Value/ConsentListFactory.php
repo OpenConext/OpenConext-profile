@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -41,7 +43,7 @@ final class ConsentListFactory
     /**
      * @return ConsentList
      */
-    public static function createListFromMetadata(mixed $data)
+    public static function createListFromMetadata(mixed $data): ConsentList
     {
         Assert::isArray($data, 'Consent list JSON structure must be an associative array, got %s');
 
@@ -58,7 +60,7 @@ final class ConsentListFactory
      * @return Consent
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createConsent(mixed $data)
+    private static function createConsent(mixed $data): Consent
     {
         Assert::keyExists($data, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
         Assert::keyExists($data, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
@@ -98,7 +100,7 @@ final class ConsentListFactory
     /**
      * @return ServiceProvider
      */
-    private static function createServiceProvider(mixed $data)
+    private static function createServiceProvider(mixed $data): ServiceProvider
     {
         Assert::keyExists($data, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
         Assert::keyExists($data, 'display_name', 'Consent JSON structure must contain key "display_name"');

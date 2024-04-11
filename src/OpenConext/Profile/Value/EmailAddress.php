@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -23,10 +25,7 @@ use Stringable;
 
 final class EmailAddress implements EmailAddressSupport, EmailAddressInformationRequest, Stringable
 {
-    /**
-     * @var string
-     */
-    private $emailAddress;
+    private readonly string $emailAddress;
 
     /**
      * @param string $emailAddress

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -38,11 +40,11 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(fn($baseUrl) => !is_string($baseUrl))
+                                ->ifTrue(fn($baseUrl): bool => !is_string($baseUrl))
                                 ->thenInvalid('The EngineBlock API base URL should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(fn($baseUrl) => !filter_var($baseUrl, FILTER_VALIDATE_URL))
+                                ->ifTrue(fn($baseUrl): bool => !filter_var($baseUrl, FILTER_VALIDATE_URL))
                                 ->thenInvalid('The EngineBlock API base URL should be a valid URL')
                             ->end()
                             ->validate()
@@ -66,7 +68,7 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(fn($username) => !is_string($username))
+                                ->ifTrue(fn($username): bool => !is_string($username))
                                 ->thenInvalid('The EngineBlock API username should be a string')
                             ->end()
                         ->end()
@@ -75,7 +77,7 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(fn($password) => !is_string($password))
+                                ->ifTrue(fn($password): bool => !is_string($password))
                                 ->thenInvalid('The EngineBlock API password should be a string')
                             ->end()
                         ->end()

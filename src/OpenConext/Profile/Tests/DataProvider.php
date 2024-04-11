@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 /**
  * Copyright 2015 SURFnet B.V.
@@ -24,7 +24,7 @@ use stdClass;
 
 trait DataProvider
 {
-    public function notObjectProvider()
+    public function notObjectProvider(): array
     {
         return [
             'string' => [''],
@@ -36,7 +36,7 @@ trait DataProvider
         ];
     }
 
-    public function notNonEmptyOrBlankStringProvider()
+    public function notNonEmptyOrBlankStringProvider(): array
     {
         return [
             'empty string' => [''],
@@ -44,7 +44,7 @@ trait DataProvider
         ];
     }
 
-    public function nonStringProvider()
+    public function nonStringProvider(): array
     {
         return [
             'int'      => [1],
@@ -59,7 +59,7 @@ trait DataProvider
         ];
     }
 
-    public function intFloatBoolProvider()
+    public function intFloatBoolProvider(): array
     {
         return [
             'int 0'   => [0],

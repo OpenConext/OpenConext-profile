@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -27,7 +29,7 @@ class DisplayName implements Stringable
     /**
      * @var string[]
      */
-    private $translations = [];
+    private array $translations;
 
     public function __construct(array $translations = [])
     {
@@ -68,7 +70,7 @@ class DisplayName implements Stringable
             join(
                 ', ',
                 array_map(
-                    fn($locale) => sprintf('%s=%s', $locale, $this->translations[$locale]),
+                    fn($locale): string => sprintf('%s=%s', $locale, $this->translations[$locale]),
                     array_keys($this->translations),
                 ),
             ),

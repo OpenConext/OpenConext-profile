@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -48,7 +50,7 @@ final class EntityType implements Stringable
      * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public static function SP()
+    public static function SP(): EntityType
     {
         return new EntityType(self::TYPE_SP);
     }
@@ -60,7 +62,7 @@ final class EntityType implements Stringable
      *
      * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
-    public static function IdP()
+    public static function IdP(): \OpenConext\Profile\Value\EntityType
     {
         return new EntityType(self::TYPE_IDP);
     }

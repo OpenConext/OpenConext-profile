@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -66,7 +68,7 @@ final class LocaleExtension extends AbstractExtension
         return $this->locale;
     }
 
-    private function retrieveLocale(RequestStack $requestStack, $defaultLocale): string
+    private function retrieveLocale(RequestStack $requestStack, string $defaultLocale): string
     {
         $currentRequest = $requestStack->getCurrentRequest();
         $locale = $defaultLocale;

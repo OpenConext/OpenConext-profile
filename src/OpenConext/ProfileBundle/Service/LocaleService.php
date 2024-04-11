@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -35,7 +37,7 @@ final readonly class LocaleService
     /**
      * @return bool
      */
-    public function isAvailableLocale(Locale $locale)
+    public function isAvailableLocale(Locale $locale): bool
     {
         return $this->availableLocales->contains($locale);
     }
@@ -62,7 +64,7 @@ final readonly class LocaleService
     /**
      * @return LocaleSet
      */
-    public function getAvailableLocales()
+    public function getAvailableLocales(): LocaleSet
     {
         return $this->availableLocales;
     }

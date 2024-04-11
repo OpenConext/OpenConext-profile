@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2010 SURFnet B.V.
  *
@@ -24,14 +26,8 @@ use Twig\TwigFilter;
 
 class I18n extends AbstractExtension
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator)
     {
-        $this->translator = $translator;
     }
 
     /**
@@ -41,10 +37,7 @@ class I18n extends AbstractExtension
      */
     public function getFilters(): array
     {
-        return array(
-            new TwigFilter('trans', array($this, 'translateSingular')),
-            new TwigFilter('transchoice', array($this, 'translatePlural')),
-        );
+        return [new TwigFilter('trans', $this->translateSingular(...)), new TwigFilter('transchoice', $this->translatePlural(...))];
     }
 
     /**
@@ -54,7 +47,7 @@ class I18n extends AbstractExtension
     {
         $args = func_get_args();
         return call_user_func_array(
-            [$this->translator, 'trans'],
+            $this->translator->trans(...),
             $this->prepareDefaultPlaceholders($args),
         );
     }
@@ -72,7 +65,6 @@ class I18n extends AbstractExtension
     }
 
     /**
-     * @param array $args
      * @return array
      */
     private function prepareDefaultPlaceholders(array $args): array

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -29,7 +31,7 @@ class InvalidArgumentException extends CoreInvalidArgumentException
      *
      * @return self
      */
-    public static function invalidType($expected, $parameterName, mixed $parameter)
+    public static function invalidType($expected, $parameterName, mixed $parameter): self
     {
         $message = sprintf(
             'Invalid argument type: "%s" expected, "%s" given for "%s"',

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -38,8 +40,9 @@ final class AttributeAggregationService
     /**
      * @return null|AttributeAggregationAttributesList
      */
-    public function findByUser(AuthenticatedUser $user)
-    {
+    public function findByUser(
+        AuthenticatedUser $user,
+    ): ?AttributeAggregationAttributesList {
         $enabledAttributes = $this->attributeAggregationEnabledAttributes;
 
         try {
@@ -82,7 +85,7 @@ final class AttributeAggregationService
      *
      * @return bool returns false when deletion failed
      */
-    public function disconnectAttributeFor(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
+    public function disconnectAttributeFor(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute): bool
     {
         if ($this->isValidRequest($user, $orcidAttribute)) {
             $result = $this->repository->unsubscribeAccount($orcidAttribute->getId());

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,13 +23,15 @@ namespace OpenConext\Profile\Value;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
 use Stringable;
+use OpenConext\Profile\Value\EntityId;
+use OpenConext\Profile\Value\EntityType;
 
 final readonly class Entity implements Stringable
 {
     /**
      * @return Entity
      */
-    public static function fromDescriptor(array $descriptor)
+    public static function fromDescriptor(array $descriptor): self
     {
         Assert::count($descriptor, 2);
 
@@ -45,7 +49,7 @@ final readonly class Entity implements Stringable
     /**
      * @return EntityId
      */
-    public function getEntityId()
+    public function getEntityId(): EntityId
     {
         return $this->entityId;
     }
@@ -53,7 +57,7 @@ final readonly class Entity implements Stringable
     /**
      * @return EntityType
      */
-    public function getEntityType()
+    public function getEntityType(): EntityType
     {
         return $this->entityType;
     }

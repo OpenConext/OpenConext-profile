@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -23,35 +25,17 @@ use Symfony\Contracts\Translation\TranslatorInterface ;
 
 final class GlobalViewParameters
 {
-    /**
-     * @var array
-     */
-    private $helpUrls;
+    private array $helpUrls;
 
-    /**
-     * @var array
-     */
-    private $privacyUrls;
+    private array $privacyUrls;
 
-    /**
-     * @var array
-     */
-    private $platformUrls;
+    private array $platformUrls;
 
-    /**
-     * @var array
-     */
-    private $termsOfServiceUrls;
+    private array $termsOfServiceUrls;
 
-    /**
-     * @var array
-     */
-    private $profileExplanationImageUrls;
+    private array $profileExplanationImageUrls;
 
-    /**
-     * @var array
-     */
-    private $attributeInformationUrls;
+    private array $attributeInformationUrls;
 
     public function __construct(
         private readonly TranslatorInterface $translator,

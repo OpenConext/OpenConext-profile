@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -29,7 +31,7 @@ final class ContactPersonListFactory
     /**
      * @return ContactPersonList
      */
-    public static function createListFromMetadata(mixed $data)
+    public static function createListFromMetadata(mixed $data): ContactPersonList
     {
         Assert::isArray($data, 'Metadata JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_persons', 'Entity JSON structure must contain key "contact_persons"');
@@ -48,7 +50,7 @@ final class ContactPersonListFactory
      * @return ContactPerson
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createContactPerson(mixed $data)
+    private static function createContactPerson(mixed $data): ContactPerson
     {
         Assert::isArray($data, 'Contact person JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_type', 'Contact person JSON structure must contain key "contact_type"');

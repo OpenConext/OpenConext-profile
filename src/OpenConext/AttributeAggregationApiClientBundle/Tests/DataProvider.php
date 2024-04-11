@@ -20,7 +20,7 @@ namespace OpenConext\AttributeAggregationApiClientBundle\Tests;
 
 trait DataProvider
 {
-    public function nonStringScalarProvider()
+    public function nonStringScalarProvider(): array
     {
         return [
             'boolean'      => [true],

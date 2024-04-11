@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -61,7 +63,7 @@ class MySurfConextController extends AbstractController
 
         return new JsonResponse(
             $this->userService->getUserLifecycleData(),
-            200,
+            Response::HTTP_OK,
             [
                 'Content-Disposition' => 'attachment; filename="profile-user-data.json"'
             ],

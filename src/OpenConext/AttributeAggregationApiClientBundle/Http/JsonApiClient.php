@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -59,7 +61,7 @@ class JsonApiClient
         return $this->handle('DELETE', $path, $parameters);
     }
 
-    private function handle($method, $path, array $parameters = [])
+    private function handle(string $method, $path, array $parameters = [])
     {
         $resource = $this->buildResourcePath($path, $parameters);
 
@@ -122,11 +124,10 @@ class JsonApiClient
      * Function to provide functionality common to Guzzle 5 Response's json method,
      * without config options as they are not needed.
      *
-     * @param string $json
      * @return mixed
      * @throws InvalidArgumentException
      */
-    private function parseJson($json)
+    private function parseJson(string $json)
     {
         $jsonErrors = [
             JSON_ERROR_DEPTH          => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',

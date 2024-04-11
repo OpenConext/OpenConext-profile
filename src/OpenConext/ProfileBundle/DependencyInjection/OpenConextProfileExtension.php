@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -109,7 +111,7 @@ class OpenConextProfileExtension extends Extension
 
     private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container): void
     {
-        $availableLocales = array_map(fn($availableLocale) => new Definition(Locale::class, [$availableLocale]), $availableLocaleConfig);
+        $availableLocales = array_map(fn($availableLocale): Definition => new Definition(Locale::class, [$availableLocale]), $availableLocaleConfig);
 
         $container
             ->getDefinition(LocaleSet::class)

@@ -76,7 +76,7 @@ class JsonApiClientTest extends TestCase
      * @dataProvider notAllowedStatusCodeProvider
      * @group eb_api_service
      */
-    public function throw_exception_when_status_code_is_not_200($statusCode): void
+    public function throw_exception_when_status_code_is_not_200(int $statusCode): void
     {
         $this->expectException(InvalidResponseException::class);
 

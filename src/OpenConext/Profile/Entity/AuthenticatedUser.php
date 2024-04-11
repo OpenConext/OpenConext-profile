@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,7 +21,6 @@
 namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Exception\RuntimeException;
 use OpenConext\Profile\Value\EntityId;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;

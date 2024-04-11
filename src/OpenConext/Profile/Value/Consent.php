@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -20,6 +22,7 @@ namespace OpenConext\Profile\Value;
 
 use DateTimeImmutable;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
+use OpenConext\Profile\Value\ConsentType;
 
 final readonly class Consent
 {
@@ -33,7 +36,7 @@ final readonly class Consent
     /**
      * @return ServiceProvider
      */
-    public function getServiceProvider()
+    public function getServiceProvider(): ServiceProvider
     {
         return $this->serviceProvider;
     }
@@ -41,7 +44,7 @@ final readonly class Consent
     /**
      * @return DateTimeImmutable
      */
-    public function getConsentGivenOn()
+    public function getConsentGivenOn(): DateTimeImmutable
     {
         return $this->consentGivenOn;
     }
@@ -49,7 +52,7 @@ final readonly class Consent
     /**
      * @return ConsentType
      */
-    public function getConsentType()
+    public function getConsentType(): ConsentType
     {
         return $this->consentType;
     }

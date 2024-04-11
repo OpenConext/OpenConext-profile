@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -27,13 +29,13 @@ final class LocaleSet implements IteratorAggregate, Countable
     /**
      * @var Locale[]
      */
-    private $locales = [];
+    private array $locales = [];
 
     /**
      * @param Locale[] $locales
      * @return LocaleSet
      */
-    public static function create(array $locales)
+    public static function create(array $locales): LocaleSet
     {
         $localeSet = new LocaleSet();
 

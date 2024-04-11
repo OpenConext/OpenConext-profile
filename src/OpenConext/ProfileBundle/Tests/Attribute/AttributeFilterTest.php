@@ -51,7 +51,7 @@ class AttributeFilterTest extends TestCase
         $this->assertEquals(2, $filterResult->count());
     }
 
-    private function getMockAttribute($attributeName)
+    private function getMockAttribute(string $attributeName)
     {
         $mockAttribute = $this->createMock(Attribute::class);
         $attributeDefinition = $this->createMock(AttributeDefinition::class);

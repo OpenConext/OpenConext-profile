@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2016 SURFnet B.V.
  *
@@ -158,7 +160,7 @@ class AuthenticatedUserTest extends TestCase
         $this->assertEquals($expectedAttributeSet, $actualAttributeSet);
     }
 
-    private function mockAssertionAdapterWith(AttributeSet $attributeSet, $nameId)
+    private function mockAssertionAdapterWith(AttributeSet $attributeSet, string $nameId)
     {
         $assertionAdapter = $this->createMock(AssertionAdapter::class);
         $assertionAdapter->method('getAttributeSet')->willReturn($attributeSet);

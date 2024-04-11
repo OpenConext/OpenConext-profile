@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -32,7 +34,7 @@ final readonly class ContactPerson implements Stringable
     /**
      * @return bool
      */
-    public function hasContactTypeOf(ContactType $otherContactType)
+    public function hasContactTypeOf(ContactType $otherContactType): bool
     {
         return $this->contactType->equals($otherContactType);
     }
@@ -48,7 +50,7 @@ final readonly class ContactPerson implements Stringable
     /**
      * @return null|ContactEmailAddress
      */
-    public function getEmailAddress()
+    public function getEmailAddress(): ?ContactEmailAddress
     {
         return $this->emailAddress;
     }

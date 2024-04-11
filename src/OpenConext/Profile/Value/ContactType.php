@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -29,10 +31,7 @@ final class ContactType implements Stringable
     public const TYPE_BILLING = 'billing';
     public const TYPE_OTHER = 'other';
 
-    /**
-     * @var string
-     */
-    private $contactType;
+    private readonly string $contactType;
 
     /**
      * @param string $contactType

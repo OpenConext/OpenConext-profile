@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -24,7 +26,6 @@ use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Organization;
-use Psr\Log\LoggerInterface;
 
 final readonly class InstitutionRepository
 {

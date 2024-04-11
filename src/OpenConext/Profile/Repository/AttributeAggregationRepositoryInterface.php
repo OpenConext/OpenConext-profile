@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -18,7 +20,6 @@
 
 namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 
 interface AttributeAggregationRepositoryInterface
