@@ -22,14 +22,10 @@ use BadMethodCallException;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
-use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
 use SAML2\Assertion;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetFactory;
 use Surfnet\SamlBundle\SAML2\Attribute\ConfigurableAttributeSetFactory;
 use Surfnet\SamlBundle\Security\Authentication\Provider\SamlProviderInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -38,11 +34,6 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
     public function __construct(
         private readonly AttributeDictionary $attributeDictionary,
     ) {
-    }
-
-    public function supports(TokenInterface $token): bool
-    {
-        return $token instanceof SamlToken;
     }
 
     public function getNameId(Assertion $assertion): string
