@@ -20,9 +20,9 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Api;
 
-use OpenConext\Profile\Entity\AuthenticatedUser;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 interface AuthenticatedUserProviderInterface
 {
-    public function getCurrentUser(): AuthenticatedUser;
+    public function getCurrentUser(): UserInterface;
 }

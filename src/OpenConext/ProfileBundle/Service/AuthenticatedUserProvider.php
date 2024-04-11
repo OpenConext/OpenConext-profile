@@ -23,6 +23,7 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
@@ -32,7 +33,7 @@ final readonly class AuthenticatedUserProvider implements AuthenticatedUserProvi
     ) {
     }
 
-    public function getCurrentUser(): AuthenticatedUser
+    public function getCurrentUser(): UserInterface
     {
         return $this->tokenStorage->getToken()->getUser();
     }

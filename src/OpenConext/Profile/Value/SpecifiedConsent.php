@@ -27,9 +27,6 @@ use OpenConext\Profile\Value\Consent;
 
 class SpecifiedConsent
 {
-    /**
-     * @return SpecifiedConsent
-     */
     public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp): self
     {
         return new self($consent, $releasedAttributes, $arp);
@@ -72,15 +69,17 @@ class SpecifiedConsent
     }
 
     /**
-     * Groups the released attributes on the group they originate from. This can be used to show the AA attributes.
+     * Groups the released attributes on the group they originate from. This
+     * can be used to show the AA attributes.
      * Note that the attributes from the IdP source are omitted in the results.
      *
-     * @return Attribute[]
+     * @return array<string, array<int, Attribute>>
      */
     public function getIdPAttributes(): array
     {
         $grouped = [];
         foreach ($this->getReleasedAttributes() as $attribute) {
+            assert($attribute instanceof Attribute);
             // The source is the same for all possible attribute values, so use the first one.
             $source = $attribute->getValue()[0]['source'];
             if ($source !== 'idp') {
