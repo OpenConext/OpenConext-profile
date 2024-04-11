@@ -37,7 +37,7 @@ class StateHandler
 
     public function getRequestId(): ?string
     {
-        $this->requestStack->getSession()->get(self::REQUEST_ID);
+        return $this->requestStack->getSession()->get(self::REQUEST_ID);
     }
 
     public function hasRequestId(): bool
