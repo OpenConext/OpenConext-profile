@@ -88,7 +88,6 @@ class SwitchLocaleType extends AbstractType
         $localeChoices = [];
 
         foreach ($availableLocales as $locale) {
-
             assert($locale instanceof Locale);
             $localeChoices['profile.locale.' . $locale->getLocale()] = $locale->getLocale();
         }
