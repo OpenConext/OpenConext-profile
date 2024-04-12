@@ -7,3 +7,6 @@ twig:
   paths:
     '%kernel.project_dir%/templates': 'OpenConextProfile'
 
+when@test:
+  twig:
+    strict_variables: true

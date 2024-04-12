@@ -19,3 +19,24 @@ framework:
   php_errors:
     log: true
   annotations: { enabled: false }
+
+when@prod:
+  framework:
+    router:
+      strict_requirements: null
+
+when@dev:
+  framework:
+    router:
+      strict_requirements: true
+    profiler: { only_exceptions: false }
+
+when@test:
+  framework:
+    test: ~
+    session:
+      storage_id: session.storage.mock_file
+    profiler:
+      collect: false
+    validation:
+      not_compromised_password: false
