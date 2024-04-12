@@ -25,6 +25,7 @@ use Surfnet\SamlBundle\Http\XMLResponse;
 use Surfnet\SamlBundle\Metadata\MetadataFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Routing\Attribute\Route;
 
 class SamlController extends AbstractController
 {
@@ -34,11 +35,23 @@ class SamlController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: '/authentication/consume-assertion',
+        name: 'profile.saml_consume_assertion',
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
     public function consumeAssertion(): never
     {
         throw new BadRequestHttpException('Unexpected request sent to ACS');
     }
 
+    #[Route(
+        path: '/authentication/metadata',
+        name: 'profile.saml_metadata',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function metadata(): XMLResponse
     {
         $this->logger->info('Showing SAML metadata');

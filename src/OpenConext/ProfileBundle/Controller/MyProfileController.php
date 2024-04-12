@@ -24,6 +24,7 @@ use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Twig\Environment;
 
 class MyProfileController extends AbstractController
@@ -36,6 +37,12 @@ class MyProfileController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: "/my-profile",
+        name: "profile.my_profile_overview",
+        methods: ["GET"],
+        schemes: "https",
+    )]
     public function overview(): Response
     {
         $this->logger->info('Showing My Profile page');

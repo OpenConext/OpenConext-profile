@@ -26,6 +26,7 @@ use RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Twig\Environment;
 
 class IntroductionController extends AbstractController
@@ -38,6 +39,12 @@ class IntroductionController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: "/",
+        name: "profile.introduction_overview",
+        methods: ["GET"],
+        schemes: "https"
+    )]
     public function overview(): Response
     {
         $this->logger->info('Showing Introduction page');

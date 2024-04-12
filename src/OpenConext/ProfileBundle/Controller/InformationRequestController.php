@@ -28,6 +28,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
@@ -43,6 +44,12 @@ class InformationRequestController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: '/information-request',
+        name: 'profile.information_request_overview',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function overview(): Response
     {
         $informationRequestMailForm = $this->formFactory->create(
@@ -64,6 +71,12 @@ class InformationRequestController extends AbstractController
         );
     }
 
+    #[Route(
+        path: '/information-request/send-mail',
+        name: 'profile.information_request_send_mail',
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
     public function sendMail(): RedirectResponse
     {
         $this->informationRequestMailService->sendInformationRequestMail();
@@ -71,6 +84,12 @@ class InformationRequestController extends AbstractController
         return new RedirectResponse($this->urlGenerator->generate('profile.information_request_confirm_mail_sent'));
     }
 
+    #[Route(
+        path: '/information-request/confirmation',
+        name: 'profile.information_request_confirm_mail_sent',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function confirmMailSent(): Response
     {
         return new Response(

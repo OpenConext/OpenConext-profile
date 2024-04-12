@@ -27,6 +27,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
@@ -41,6 +42,12 @@ class AttributeSupportController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: '/attribute-support',
+        name: 'profile.attribute_support_overview',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function overview(): Response
     {
         $attributeSupportMailForm = $this->formFactory->create(
@@ -60,6 +67,12 @@ class AttributeSupportController extends AbstractController
         );
     }
 
+    #[Route(
+        path: '/attribute-support/send-mail',
+        name: 'profile.attribute_support_send_mail',
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
     public function sendMail(): RedirectResponse
     {
         $this->attributeSupportMailService->sendAttributeSupportMail();
@@ -67,6 +80,12 @@ class AttributeSupportController extends AbstractController
         return new RedirectResponse($this->urlGenerator->generate('profile.attribute_support_confirm_mail_sent'));
     }
 
+    #[Route(
+        path: '/attribute-support/confirmation',
+        name: 'profile.attribute_support_confirm_mail_sent',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function confirmMailSent(): Response
     {
         return new Response(

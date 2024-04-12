@@ -28,6 +28,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
@@ -46,6 +47,12 @@ class MyServicesController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: '/my-services',
+        name: 'profile.my_services_overview',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function overview(Request $request): Response
     {
         $this->logger->info('User requested My Services page');
@@ -70,6 +77,13 @@ class MyServicesController extends AbstractController
         ));
     }
 
+    #[Route(
+        path: '/my-services/delete/{serviceEntityId}',
+        name: 'profile.my_services_delete',
+        requirements: ['serviceEntityId' => '.+'],
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
     public function delete(string $serviceEntityId): Response
     {
         if (!$this->removeConsentEnabled) {

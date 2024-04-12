@@ -29,6 +29,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Routing\Attribute\Route;
 
 class LocaleController extends AbstractController
 {
@@ -40,6 +41,13 @@ class LocaleController extends AbstractController
     ) {
     }
 
+    #[Route(
+        path: '/switch-locale',
+        name: 'profile.locale_switch_locale',
+        requirements: ['return-url' => '.+'],
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
     public function switchLocale(Request $request): RedirectResponse
     {
         $this->logger->info('User requested to switch locale');
