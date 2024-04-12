@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd $(dirname $0)/../../
+./vendor/bin/phpmd src xml ci/qa/phpmd.xml --exclude */Tests/*

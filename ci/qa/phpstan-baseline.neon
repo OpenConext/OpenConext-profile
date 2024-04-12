@@ -1,0 +1,90 @@
+parameters:
+	ignoreErrors:
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class OpenConext\\\\ProfileBundle\\\\Attribute\\\\AttributeSetWithFallbacks\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClientBundle/Service/AttributeReleasePolicyService.php
+
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 2
+			path: ../../src/OpenConext/Profile/Entity/AuthenticatedUser.php
+
+		-
+			message: "#^Call to an undefined method Traversable\\<mixed, mixed\\>\\:\\:getArrayCopy\\(\\)\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
+
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
+
+		-
+			message: "#^Access to property \\$assertion on an unknown class OpenConext\\\\ProfileBundle\\\\Security\\\\Authentication\\\\Token\\\\SamlToken\\.$#"
+			count: 2
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Call to method authenticate\\(\\) on an unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\AuthenticationManagerInterface\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Instantiated class OpenConext\\\\ProfileBundle\\\\Security\\\\Authentication\\\\Token\\\\SamlToken not found\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Method OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlListener\\:\\:handleEvent\\(\\) is unused\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^PHPDoc type for property OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlListener\\:\\:\\$logger with type OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlAuthenticationLogger is not subtype of native type Psr\\\\Log\\\\LoggerInterface\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Parameter \\$logger of method OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlListener\\:\\:__construct\\(\\) has invalid type OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlAuthenticationLogger\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Property OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlListener\\:\\:\\$authenticationManager has unknown class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\AuthenticationManagerInterface as its type\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Property OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlListener\\:\\:\\$authenticationManager is never written, only read\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Property OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlListener\\:\\:\\$logger has unknown class OpenConext\\\\ProfileBundle\\\\Security\\\\Firewall\\\\SamlAuthenticationLogger as its type\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Security/Firewall/SamlListener.php
+
+		-
+			message: "#^Call to an undefined method OpenConext\\\\Profile\\\\Api\\\\ApiUserInterface\\:\\:withSupportContactEmail\\(\\)\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getAuthenticatingAuthorities\\(\\)\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
