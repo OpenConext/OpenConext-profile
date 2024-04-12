@@ -20,7 +20,6 @@ declare(strict_types = 1);
 
 namespace OpenConext\AttributeAggregationApiClientBundle\Repository;
 
-use Assert\AssertionFailedException;
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;

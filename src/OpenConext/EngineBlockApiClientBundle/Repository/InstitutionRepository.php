@@ -26,6 +26,7 @@ use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Organization;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class InstitutionRepository
 {
@@ -46,9 +47,8 @@ final readonly class InstitutionRepository
 
     /**
      * @param EntityId[] $entityIds
-     * @return null|EntityId
      */
-    private function getNearestAuthenticatingAuthorityEntityId(array $entityIds)
+    private function getNearestAuthenticatingAuthorityEntityId(array $entityIds): ?EntityId
     {
         $lastEntityId = array_pop($entityIds);
 
@@ -63,8 +63,10 @@ final readonly class InstitutionRepository
         return array_pop($entityIds);
     }
 
-    public function getOrganizationAndLogoForIdp(AuthenticatedUser $user): Organization
+    public function getOrganizationAndLogoForIdp(UserInterface $user): Organization
     {
+        assert($user instanceof AuthenticatedUser);
+
         $entityIds = $user->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
         $json = $this->findAllForIdp($authenticatingIdpEntityId->getEntityId());

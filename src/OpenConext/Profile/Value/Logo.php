@@ -52,4 +52,14 @@ final class Logo
     {
         return !empty($this->getUrl());
     }
+
+    public function getHeight(): string
+    {
+        return $this->height;
+    }
+
+    public function getWidth(): string
+    {
+        return $this->width;
+    }
 }

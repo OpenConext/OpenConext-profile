@@ -20,19 +20,13 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
-use OpenConext\Profile\Assert;
-
 final class NameIdFormat
 {
     public const PERSISTENT_IDENTIFIER = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
     public const TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
 
-    private readonly string $value;
 
-    /**
-     * @param string $value
-     */
-    public function __construct($value)
+    public function __construct(private ?string $value)
     {
         // A service provider usually always has a NameIDFormat, because it's
         // required by the manage web interface.
@@ -44,22 +38,14 @@ final class NameIdFormat
             $value = self::PERSISTENT_IDENTIFIER;
         }
 
-        Assert::string($value, 'NameIDFormat "%s" must be a string');
-
         $this->value = $value;
     }
 
-    /**
-     * @return bool
-     */
     public function isPersistent(): bool
     {
         return $this->value === self::PERSISTENT_IDENTIFIER;
     }
 
-    /**
-     * @return bool
-     */
     public function isTransient(): bool
     {
         return $this->value === self::TRANSIENT_IDENTIFIER;

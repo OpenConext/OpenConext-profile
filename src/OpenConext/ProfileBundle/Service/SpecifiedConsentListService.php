@@ -23,6 +23,7 @@ namespace OpenConext\ProfileBundle\Service;
 use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\SpecifiedConsentList;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class SpecifiedConsentListService
 {
@@ -32,16 +33,11 @@ class SpecifiedConsentListService
     ) {
     }
 
-    public function getListFor(AuthenticatedUser $user): SpecifiedConsentList
+    public function getListFor(UserInterface $user): SpecifiedConsentList
     {
-        $consentList = $this->consentService->findAllFor($user);
+        assert($user instanceof AuthenticatedUser);
 
-        // There is an off chance the user didn't give consent yet, in that case the consent list is null. It's not
-        // possible to apply ARP on empty consent list.
-        if (is_null($consentList)) {
-            // So return an empty SpecifiedConsentList
-            return SpecifiedConsentList::createWith([]);
-        }
+        $consentList = $this->consentService->findAllFor($user);
 
         return $this->attributeReleasePolicyService->applyAttributeReleasePolicies(
             $consentList,
@@ -49,8 +45,10 @@ class SpecifiedConsentListService
         );
     }
 
-    public function deleteServiceWith(AuthenticatedUser $user, string $serviceEntityId): bool
+    public function deleteServiceWith(UserInterface $user, string $serviceEntityId): bool
     {
+        assert($user instanceof AuthenticatedUser);
+
         return $this->consentService->deleteServiceWith($user, $serviceEntityId);
     }
 }

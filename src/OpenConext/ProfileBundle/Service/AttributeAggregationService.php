@@ -27,6 +27,7 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttribute;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 final class AttributeAggregationService
 {
@@ -41,9 +42,11 @@ final class AttributeAggregationService
      * @return null|AttributeAggregationAttributesList
      */
     public function findByUser(
-        AuthenticatedUser $user,
+        UserInterface $user,
     ): ?AttributeAggregationAttributesList {
         $enabledAttributes = $this->attributeAggregationEnabledAttributes;
+
+        assert($user instanceof AuthenticatedUser);
 
         try {
             $collection = [];
@@ -74,7 +77,6 @@ final class AttributeAggregationService
                     $e->getMessage(),
                 ),
             );
-            return null;
         }
 
         $this->logger->notice('No enabled attribute aggregation attributes found.');
@@ -85,8 +87,10 @@ final class AttributeAggregationService
      *
      * @return bool returns false when deletion failed
      */
-    public function disconnectAttributeFor(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute): bool
+    public function disconnectAttributeFor(UserInterface $user, AttributeAggregationAttribute $orcidAttribute): bool
     {
+        assert($user instanceof AuthenticatedUser);
+
         if ($this->isValidRequest($user, $orcidAttribute)) {
             $result = $this->repository->unsubscribeAccount($orcidAttribute->getId());
             if (!$result) {
@@ -99,9 +103,6 @@ final class AttributeAggregationService
 
     /**
      * Validate the users identity matches that of the identity set on the ORCID attribute retrieved from AA.
-     *
-     *
-     * @return bool
      */
     private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute): bool
     {

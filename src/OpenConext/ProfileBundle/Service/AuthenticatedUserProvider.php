@@ -21,7 +21,6 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Entity\AuthenticatedUser;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 

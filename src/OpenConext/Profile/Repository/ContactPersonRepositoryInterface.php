@@ -25,5 +25,5 @@ use OpenConext\Profile\Value\EntityId;
 
 interface ContactPersonRepositoryInterface
 {
-     public function findAllForIdp(EntityId $entityId): ContactPersonList;
+    public function findAllForIdp(EntityId $entityId): ContactPersonList;
 }

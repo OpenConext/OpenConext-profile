@@ -29,20 +29,22 @@ use OpenConext\UserLifecycleApiClientBundle\Exception\RuntimeException;
 
 class JsonApiClient
 {
-    public function __construct(private readonly ClientInterface $httpClient)
-    {
+    public function __construct(
+        private readonly ClientInterface $httpClient,
+    ) {
     }
 
     /**
-     * @param string $path A URL path, optionally containing printf parameters. The parameters
-     *               will be URL encoded and formatted into the path string.
-     *               Example: "connections/%d.json"
+     * @param string $path
+     * A URL path, optionally containing printf parameters. The parameters
+     * will be URL encoded and formatted into the path string.
+     * Example: "connections/%d.json"
      * @return mixed $data
      * @throws InvalidResponseException
      * @throws MalformedResponseException
-     * @throws ResourceNotFoundException
+     * @throws ResourceNotFoundException|GuzzleException
      */
-    public function read($path, array $parameters = [])
+    public function read(string $path, array $parameters = []): mixed
     {
         $resource = $this->buildResourcePath($path, $parameters);
 
@@ -76,11 +78,9 @@ class JsonApiClient
     }
 
     /**
-     * @param string $path
-     * @return string
      * @throws RuntimeException
      */
-    private function buildResourcePath($path, array $parameters)
+    private function buildResourcePath(string $path, array $parameters): string
     {
         if (count($parameters) > 0) {
             $resource = vsprintf($path, array_map('urlencode', $parameters));
@@ -102,34 +102,15 @@ class JsonApiClient
     }
 
     /**
-     * Function to provide functionality common to Guzzle 5 Response's json method,
+     * Function to provide functionality common to Guzzle 7 Response's json method,
      * without config options as they are not needed.
-     *
-     * @return mixed
-     * @throws InvalidArgumentException
      */
-    private function parseJson(string $json)
+    private function parseJson(string $json): mixed
     {
-        $jsonErrors = [
-            JSON_ERROR_DEPTH          => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',
-            JSON_ERROR_STATE_MISMATCH => 'JSON_ERROR_STATE_MISMATCH - Underflow or the modes mismatch',
-            JSON_ERROR_CTRL_CHAR      => 'JSON_ERROR_CTRL_CHAR - Unexpected control character found',
-            JSON_ERROR_SYNTAX         => 'JSON_ERROR_SYNTAX - Syntax error, malformed JSON',
-            JSON_ERROR_UTF8           => 'JSON_ERROR_UTF8 - Malformed UTF-8 characters, possibly incorrectly encoded',
-        ];
-
         $data = json_decode($json, true);
 
         if (JSON_ERROR_NONE !== json_last_error()) {
-            $last = json_last_error();
-
-            $errorMessage = $jsonErrors[$last];
-
-            if ($errorMessage === null) {
-                $errorMessage = 'Unknown error';
-            }
-
-            throw new InvalidArgumentException(sprintf('Unable to parse JSON data: %s', $errorMessage));
+            throw new InvalidArgumentException('Unable to parse JSON data: ' . json_last_error_msg());
         }
 
         return $data;

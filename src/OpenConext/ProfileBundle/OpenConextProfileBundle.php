@@ -21,7 +21,6 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle;
 
 use OpenConext\ProfileBundle\Security\Factory\SamlFactory;
-use Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -43,6 +43,6 @@ class SamlController extends AbstractController
     {
         $this->logger->info('Showing SAML metadata');
 
-        return new XMLResponse($this->metadataFactory->generate());
+        return new XMLResponse((string) $this->metadataFactory->generate());
     }
 }

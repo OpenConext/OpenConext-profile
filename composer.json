@@ -1,6 +1,7 @@
 {
     "name": "openconext/openconext-profile",
     "license": "Apache-2.0",
+    "description": "OpenConext Profile",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -62,14 +63,27 @@
          "symfony/symfony": "*"
     },
     "scripts": {
-        "check" : [
-            "./ci/docheader.sh",
-            "./ci/phpmd.sh",
-            "./ci/phpcs.sh",
-            "./ci/phplint.sh",
-            "./ci/phpunit.sh",
-            "./ci/security-checker.sh",
-            "./ci/npm-audit.sh"
+        "check": [
+            "@composer-validate",
+            "@phplint",
+            "@phpmd",
+            "@phpcs",
+            "@license-headers",
+            "@test",
+            "@phpstan"
+        ],
+        "composer-validate": "./ci/qa/validate",
+        "phplint": "./ci/qa/phplint",
+        "license-headers": "./ci/qa/docheader",
+        "phpmd": "./ci/qa/phpmd",
+        "phpcs": "./ci/qa/phpcs",
+        "phpstan": "./ci/qa/phpstan",
+        "phpstan-baseline": "./ci/qa/phpstan-update-baseline",
+        "phpcbf": "./ci/qa/phpcbf",
+        "test":  "./ci/qa/phpunit",
+        "frontend-install": [
+            "yarn install --frozen-lockfile",
+            "yarn encore production"
         ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
