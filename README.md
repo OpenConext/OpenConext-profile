@@ -31,14 +31,13 @@ You can use docker to start a development environment.
 The docker container comes with EB and profile already installed & configured.  Follow the below steps to get it up and running.
 
 1. Clone the repo
-2. Copy .env file: `cp ./.env.dist ./.env` and fill it with sensible settings (for instance use the dev env)
-2. Copy parameters file: `cp config/openconext/parameters.yaml.dist config/openconext/parameters/parameters.yaml`
-3. Copy global_view_parameters file: `cp config/openconext/parameters/global_view_parameters.yaml.dist config/openconext/parameters/global_view_parameters.yaml`
-4. Install composer dependencies: `SYMFONY_ENV=dev composer install --prefer-dist`
-5. Install npm dependencies: `npm i`
-6. Run a build: `npm run build`
-7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
-9. Start developing on docker: `docker compose up -d`
+2. Go to the devconf core
+3. Run `/start-dev-env.sh profile:<path to your local profile development directory>`
+4. Run `docker exec -it core-profile-1 bash`
+5. Run `composer install --prefer-dist`
+6. Install npm dependencies: `npm i`
+7. Run a build: `npm run build`
+8. Ensure the var folder has the correct rights: `chmod -R 777 var/`
 
 ## Attribute aggregation support
 Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
