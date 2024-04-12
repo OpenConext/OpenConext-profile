@@ -43,7 +43,7 @@ class MySurfConextController extends AbstractController
         path: "/my-surfconext",
         name: "profile.my_surf_conext_overview",
         methods: ["GET"],
-        schemes: "https"
+        schemes: "https",
     )]
     public function overview(): Response
     {
@@ -64,7 +64,7 @@ class MySurfConextController extends AbstractController
         path: "/my-surfconext/download",
         name: "profile.my_surf_conext_user_data_download",
         methods: ["GET"],
-        schemes: "https"
+        schemes: "https",
     )]
     public function userDataDownload(): JsonResponse
     {

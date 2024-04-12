@@ -43,7 +43,7 @@ class IntroductionController extends AbstractController
         path: "/",
         name: "profile.introduction_overview",
         methods: ["GET"],
-        schemes: "https"
+        schemes: "https",
     )]
     public function overview(): Response
     {
