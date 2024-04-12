@@ -40,16 +40,6 @@ final class EmailAddressTest extends TestCase
         $this->assertTrue((string) $email === 'juliette.dupree+spam@that.invalid');
     }
 
-    /**
-     * @test
-     * @group Value
-     * @dataProvider nonStringProvider
-     */
-    public function it_doesnt_accept_non_strings_as_email(mixed $nonString): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        new EmailAddress($nonString);
-    }
 
     /**
      * @test

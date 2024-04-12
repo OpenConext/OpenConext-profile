@@ -32,9 +32,6 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
     ) {
     }
 
-    /**
-     * @throws AssertionFailedException
-     */
     public function findAllFor(string $userId): AttributeAggregationAttributesList
     {
         Assert::notEmpty($userId, '$userId "%s" (NameID) can not be empty');

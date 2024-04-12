@@ -21,6 +21,7 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Form\Type;
 
 use OpenConext\Profile\Value\LocaleSet;
+use OpenConext\Profile\Value\Locale;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 use OpenConext\ProfileBundle\Service\LocaleService;
 use Symfony\Component\Form\AbstractType;
@@ -86,8 +87,9 @@ class SwitchLocaleType extends AbstractType
     {
         $localeChoices = [];
 
-        /** @var Locale $locale */
         foreach ($availableLocales as $locale) {
+
+            assert($locale instanceof Locale);
             $localeChoices['profile.locale.' . $locale->getLocale()] = $locale->getLocale();
         }
 

@@ -35,14 +35,9 @@ class JsonApiClient
     }
 
     /**
-     * @param string $path
      * A URL path, optionally containing printf parameters. The parameters
      * will be URL encoded and formatted into the path string.
      * Example: "connections/%d.json"
-     * @return mixed $data
-     * @throws InvalidResponseException
-     * @throws MalformedResponseException
-     * @throws ResourceNotFoundException|GuzzleException
      */
     public function read(string $path, array $parameters = []): mixed
     {
