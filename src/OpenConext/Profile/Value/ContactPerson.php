@@ -20,8 +20,8 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
-use Stringable;
 use OpenConext\Profile\Value\ContactEmailAddress;
+use Stringable;
 
 final readonly class ContactPerson implements Stringable
 {

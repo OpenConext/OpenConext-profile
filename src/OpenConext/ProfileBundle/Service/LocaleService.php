@@ -20,9 +20,9 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Repository\LocaleRepositoryInterface;
 use OpenConext\Profile\Value\Locale;
-use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\LocaleSet;
 
 final readonly class LocaleService

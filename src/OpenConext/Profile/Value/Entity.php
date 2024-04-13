@@ -22,9 +22,9 @@ namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
-use Stringable;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
+use Stringable;
 
 final readonly class Entity implements Stringable
 {

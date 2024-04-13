@@ -20,9 +20,9 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;
-use OpenConext\Profile\Entity\AuthenticatedUser;
 
 final readonly class ConsentService
 {

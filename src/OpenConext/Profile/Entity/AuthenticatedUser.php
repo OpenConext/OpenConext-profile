@@ -22,10 +22,10 @@ namespace OpenConext\Profile\Entity;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\EntityId;
+use Stringable;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Response\AssertionAdapter;
-use Stringable;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class AuthenticatedUser implements Stringable, UserInterface

@@ -27,12 +27,12 @@ use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;
 use OpenConext\Profile\Value\ConsentType;
-use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\ContactEmailAddress;
+use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\Entity;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\EntityType;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\Url;
 
 /**

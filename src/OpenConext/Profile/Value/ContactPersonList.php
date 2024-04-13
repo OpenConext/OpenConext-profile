@@ -24,8 +24,8 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use OpenConext\Profile\Exception\OutOfRangeException;
-use Traversable;
 use Stringable;
+use Traversable;
 
 final class ContactPersonList implements IteratorAggregate, Countable, Stringable
 {

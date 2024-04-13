@@ -21,10 +21,10 @@ declare(strict_types = 1);
 namespace OpenConext\EngineBlockApiClientBundle\Value;
 
 use OpenConext\Profile\Assert;
+use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Value\ContactEmailAddress;
 
 final class ContactPersonListFactory
 {

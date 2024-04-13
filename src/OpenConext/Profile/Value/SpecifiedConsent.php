@@ -20,10 +20,10 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
-use OpenConext\Profile\Value\Consent;
 
 class SpecifiedConsent
 {

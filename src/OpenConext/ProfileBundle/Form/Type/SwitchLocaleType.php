@@ -20,8 +20,8 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Form\Type;
 
-use OpenConext\Profile\Value\LocaleSet;
 use OpenConext\Profile\Value\Locale;
+use OpenConext\Profile\Value\LocaleSet;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
 use OpenConext\ProfileBundle\Service\LocaleService;
 use Symfony\Component\Form\AbstractType;

@@ -20,10 +20,10 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactType;
-use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
 
 final readonly class SupportContactEmailService

@@ -21,9 +21,9 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Api\ApiUserInterface;
+use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Entity\User;
-use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Repository\UserRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Locale;

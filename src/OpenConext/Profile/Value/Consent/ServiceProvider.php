@@ -22,10 +22,10 @@ namespace OpenConext\Profile\Value\Consent;
 
 use OpenConext\EngineBlockApiClientBundle\Exception\LogicException;
 use OpenConext\Profile\Assert;
-use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\ContactEmailAddress;
+use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\Entity;
+use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\Url;
 
 class ServiceProvider

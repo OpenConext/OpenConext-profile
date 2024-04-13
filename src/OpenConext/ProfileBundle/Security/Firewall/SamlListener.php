@@ -24,6 +24,7 @@ use Exception;
 use OpenConext\ProfileBundle\Saml\StateHandler;
 use OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider;
 use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
+use Psr\Log\LoggerInterface;
 use SAML2\Response\Exception\PreconditionNotMetException;
 use Surfnet\SamlBundle\Http\Exception\AuthnFailedSamlResponseException;
 use Surfnet\SamlBundle\SAML2\Response\Assertion\InResponseTo;
@@ -32,11 +33,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
-use \Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Twig\Environment as Twig;
 
 /**

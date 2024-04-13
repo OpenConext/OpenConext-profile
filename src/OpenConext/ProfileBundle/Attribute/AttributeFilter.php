@@ -20,8 +20,8 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Attribute;
 
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
+use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 final class AttributeFilter
 {

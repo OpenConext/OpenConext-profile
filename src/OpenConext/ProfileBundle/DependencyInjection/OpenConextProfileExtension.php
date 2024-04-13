@@ -20,18 +20,18 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\DependencyInjection;
 
+use DateTime;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
+use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Locale;
 use OpenConext\Profile\Value\LocaleSet;
 use OpenConext\ProfileBundle\Service\UserService;
 use OpenConext\ProfileBundle\Storage\SingleCookieStorage;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use \DateTime;
-use OpenConext\Profile\Value\EntityId;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class OpenConextProfileExtension extends Extension
 {
