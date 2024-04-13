@@ -25,8 +25,9 @@ use OpenConext\ProfileBundle\Storage\SingleCookieStorage;
 
 class LocaleStorageDriver
 {
-    public function __construct(private readonly SingleCookieStorage $singleCookieStorage)
-    {
+    public function __construct(
+        private readonly SingleCookieStorage $singleCookieStorage,
+    ) {
     }
 
     /**
@@ -43,8 +44,9 @@ class LocaleStorageDriver
         return new Locale($localeValue);
     }
 
-    public function save(Locale $locale): void
-    {
+    public function save(
+        Locale $locale,
+    ): void {
         $this->singleCookieStorage->setValue($locale->getLocale());
     }
 }

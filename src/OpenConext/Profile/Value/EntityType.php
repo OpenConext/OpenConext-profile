@@ -36,8 +36,9 @@ final class EntityType implements Stringable
     /**
      * @param string $type
      */
-    public function __construct($type)
-    {
+    public function __construct(
+        $type,
+    ) {
         Assert::inArray($type, [self::TYPE_SP, self::TYPE_IDP]);
 
         $this->type = $type;
@@ -86,8 +87,9 @@ final class EntityType implements Stringable
     /**
      * @return bool
      */
-    public function equals(EntityType $other): bool
-    {
+    public function equals(
+        EntityType $other,
+    ): bool {
         return $this->type === $other->type;
     }
 

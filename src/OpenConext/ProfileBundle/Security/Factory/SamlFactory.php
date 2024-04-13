@@ -29,8 +29,13 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class SamlFactory implements AuthenticatorFactoryInterface
 {
-    public function create(ContainerBuilder $container, string $id, $config, $userProvider, $defaultEntryPoint): array
-    {
+    public function create(
+        ContainerBuilder $container,
+        string $id,
+        $config,
+        $userProvider,
+        $defaultEntryPoint,
+    ): array {
         $providerId = 'security.authentication.provider.saml.' . $id;
         $container->setDefinition(
             $providerId,
@@ -55,8 +60,9 @@ class SamlFactory implements AuthenticatorFactoryInterface
         return 'saml';
     }
 
-    public function addConfiguration(NodeDefinition $builder): void
-    {
+    public function addConfiguration(
+        NodeDefinition $builder,
+    ): void {
     }
 
     public function getPriority(): int

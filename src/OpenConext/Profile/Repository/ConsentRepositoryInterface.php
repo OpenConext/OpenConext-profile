@@ -24,7 +24,12 @@ use OpenConext\Profile\Value\ConsentList;
 
 interface ConsentRepositoryInterface
 {
-    public function findAllFor(string $userId): ConsentList;
+    public function findAllFor(
+        string $userId,
+    ): ConsentList;
 
-    public function deleteServiceWith(string $collabPersonId, string $entityId): bool;
+    public function deleteServiceWith(
+        string $collabPersonId,
+        string $entityId,
+    ): bool;
 }

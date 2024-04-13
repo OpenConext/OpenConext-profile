@@ -27,12 +27,14 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class LocaleListener implements EventSubscriberInterface
 {
-    public function __construct(private readonly LocaleService $localeService)
-    {
+    public function __construct(
+        private readonly LocaleService $localeService,
+    ) {
     }
 
-    public function onKernelRequest(RequestEvent $event): void
-    {
+    public function onKernelRequest(
+        RequestEvent $event,
+    ): void {
         $request = $event->getRequest();
 
         if (!$request->hasPreviousSession()) {

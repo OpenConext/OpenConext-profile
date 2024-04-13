@@ -40,8 +40,10 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
  */
 final readonly class AttributeReleasePolicyService
 {
-    public function __construct(private JsonApiClient $jsonApiClient, private AttributeDictionary $attributeDictionary)
-    {
+    public function __construct(
+        private JsonApiClient $jsonApiClient,
+        private AttributeDictionary $attributeDictionary,
+    ) {
     }
 
     /**
@@ -49,8 +51,10 @@ final readonly class AttributeReleasePolicyService
      * @SuppressWarnings(PHPMD.NPathComplexity) Build and mapping logic causes complexity
      * @SuppressWarnings(PHPMD.CyclomaticComplexity) Build and mapping logic causes complexity
      */
-    public function applyAttributeReleasePolicies(ConsentList $consentList, AttributeSetInterface $attributeSet)
-    {
+    public function applyAttributeReleasePolicies(
+        ConsentList $consentList,
+        AttributeSetInterface $attributeSet,
+    ) {
         $entityIds = $consentList->map(fn(Consent $consent) => $consent->getServiceProvider()->getEntity()->getEntityId()->getEntityId());
 
         $mappedAttributes = [];

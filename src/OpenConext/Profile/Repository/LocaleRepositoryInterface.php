@@ -32,5 +32,7 @@ interface LocaleRepositoryInterface
     /**
      * @return void
      */
-    public function save(Locale $locale);
+    public function save(
+        Locale $locale,
+    );
 }

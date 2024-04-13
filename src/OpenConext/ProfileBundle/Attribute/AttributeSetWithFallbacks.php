@@ -50,8 +50,9 @@ final class AttributeSetWithFallbacks extends AttributeSet implements AttributeS
         return $attributeSet;
     }
 
-    public static function create(array $attributes): AttributeSet
-    {
+    public static function create(
+        array $attributes,
+    ): AttributeSet {
         $attributeSet = new AttributeSetWithFallbacks();
 
         foreach ($attributes as $attribute) {

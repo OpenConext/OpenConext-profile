@@ -27,8 +27,11 @@ use OpenConext\Profile\Value\Consent;
 
 class SpecifiedConsent
 {
-    public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp): self
-    {
+    public static function specifies(
+        Consent $consent,
+        AttributeSet $releasedAttributes,
+        Arp $arp,
+    ): self {
         return new self($consent, $releasedAttributes, $arp);
     }
 
@@ -104,8 +107,9 @@ class SpecifiedConsent
         return $this->arp->hasMotivations();
     }
 
-    public function getMotivation(Attribute $attribute)
-    {
+    public function getMotivation(
+        Attribute $attribute,
+    ) {
         return $this->arp->getMotivationFor($attribute);
     }
 

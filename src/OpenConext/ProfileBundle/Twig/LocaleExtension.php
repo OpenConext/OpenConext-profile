@@ -47,8 +47,9 @@ final class LocaleExtension extends AbstractExtension
         ];
     }
 
-    public function getLocalePreferenceForm(string $returnUrl): FormView
-    {
+    public function getLocalePreferenceForm(
+        string $returnUrl,
+    ): FormView {
         $form = $this->formFactory->create(
             SwitchLocaleType::class,
             null,
@@ -68,8 +69,10 @@ final class LocaleExtension extends AbstractExtension
         return $this->locale;
     }
 
-    private function retrieveLocale(RequestStack $requestStack, string $defaultLocale): string
-    {
+    private function retrieveLocale(
+        RequestStack $requestStack,
+        string $defaultLocale,
+    ): string {
         $currentRequest = $requestStack->getCurrentRequest();
         $locale = $defaultLocale;
         if ($currentRequest) {

@@ -31,8 +31,9 @@ class DisplayName implements Stringable
      */
     private array $translations;
 
-    public function __construct(array $translations = [])
-    {
+    public function __construct(
+        array $translations = [],
+    ) {
         Assert::allString(array_keys($translations), 'Translations must be indexed by locale');
         Assert::allNotBlank(array_keys($translations), 'Locales may not be blank');
         Assert::allString($translations, 'Translations must be strings');
@@ -44,8 +45,9 @@ class DisplayName implements Stringable
      * @param string $locale
      * @return bool
      */
-    public function hasFilledTranslationForLocale($locale): bool
-    {
+    public function hasFilledTranslationForLocale(
+        $locale,
+    ): bool {
         Assert::string($locale, 'Locale must be string', 'locale');
 
         return array_key_exists($locale, $this->translations) && trim($this->translations[$locale]) !== '';
@@ -54,8 +56,9 @@ class DisplayName implements Stringable
     /**
      * @return string
      */
-    public function getTranslation($locale)
-    {
+    public function getTranslation(
+        $locale,
+    ) {
         if (!isset($this->translations[$locale])) {
             throw new LogicException(sprintf('Could not find translation for locale "%s"', $locale));
         }

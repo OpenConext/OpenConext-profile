@@ -30,8 +30,9 @@ final class ContactEmailAddress implements Stringable
     /**
      * @param string $emailAddress
      */
-    public function __construct($emailAddress)
-    {
+    public function __construct(
+        $emailAddress,
+    ) {
         Assert::string($emailAddress, 'E-mail address "%s" must be a string');
 
         $this->emailAddress = $emailAddress;
@@ -40,8 +41,9 @@ final class ContactEmailAddress implements Stringable
     /**
      * @return bool
      */
-    public function equals(ContactEmailAddress $other): bool
-    {
+    public function equals(
+        ContactEmailAddress $other,
+    ): bool {
         return $this->emailAddress === $other->emailAddress;
     }
 

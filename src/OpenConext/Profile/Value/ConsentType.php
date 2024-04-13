@@ -52,8 +52,9 @@ final class ConsentType implements Stringable
     /**
      * @param string $consentType
      */
-    private function __construct($consentType)
-    {
+    private function __construct(
+        $consentType,
+    ) {
         Assert::choice(
             $consentType,
             [ConsentType::TYPE_EXPLICIT, ConsentType::TYPE_IMPLICIT],
@@ -66,8 +67,9 @@ final class ConsentType implements Stringable
     /**
      * @return bool
      */
-    public function equals(ConsentType $other): bool
-    {
+    public function equals(
+        ConsentType $other,
+    ): bool {
         return $this->consentType === $other->consentType;
     }
 

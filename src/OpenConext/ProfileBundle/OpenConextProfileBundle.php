@@ -27,8 +27,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class OpenConextProfileBundle extends Bundle
 {
-    public function build(ContainerBuilder $container): void
-    {
+    public function build(
+        ContainerBuilder $container,
+    ): void {
         parent::build($container);
 
         $extension = $container->getExtension('security');

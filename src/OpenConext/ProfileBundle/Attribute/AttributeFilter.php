@@ -35,8 +35,9 @@ final class AttributeFilter
         'schacHomeOrganization',
     ];
 
-    public function filter(AttributeSet $attributeSet): AttributeSet
-    {
+    public function filter(
+        AttributeSet $attributeSet,
+    ): AttributeSet {
         /** @var Attribute[] $attributes */
         $attributes = $attributeSet->getIterator()->getArrayCopy();
         foreach ($attributes as $index => $attribute) {

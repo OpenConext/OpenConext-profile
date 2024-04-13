@@ -25,14 +25,16 @@ use Stringable;
 
 final readonly class EntityId implements Stringable
 {
-    public function __construct(private string $entityId)
-    {
+    public function __construct(
+        private string $entityId,
+    ) {
         Assert::notEmpty($entityId);
         Assert::notBlank($entityId);
     }
 
-    public function equals(EntityId $other): bool
-    {
+    public function equals(
+        EntityId $other,
+    ): bool {
         return $this->entityId === $other->entityId;
     }
 

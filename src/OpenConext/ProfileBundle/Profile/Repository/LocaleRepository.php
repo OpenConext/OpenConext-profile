@@ -26,8 +26,9 @@ use OpenConext\ProfileBundle\Service\LocaleStorageDriver;
 
 class LocaleRepository implements LocaleRepositoryInterface
 {
-    public function __construct(private readonly LocaleStorageDriver $localeStorageDriver)
-    {
+    public function __construct(
+        private readonly LocaleStorageDriver $localeStorageDriver,
+    ) {
     }
 
     public function findLocale()
@@ -35,8 +36,9 @@ class LocaleRepository implements LocaleRepositoryInterface
         return $this->localeStorageDriver->find();
     }
 
-    public function save(Locale $locale): void
-    {
+    public function save(
+        Locale $locale,
+    ): void {
         $this->localeStorageDriver->save($locale);
     }
 }

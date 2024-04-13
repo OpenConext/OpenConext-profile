@@ -39,8 +39,10 @@ class JsonApiClient
      * will be URL encoded and formatted into the path string.
      * Example: "connections/%d.json"
      */
-    public function read(string $path, array $parameters = []): mixed
-    {
+    public function read(
+        string $path,
+        array $parameters = [],
+    ): mixed {
         $resource = $this->buildResourcePath($path, $parameters);
 
         $response = $this->httpClient->request('GET', $resource, ['exceptions' => false]);
@@ -75,8 +77,10 @@ class JsonApiClient
     /**
      * @throws RuntimeException
      */
-    private function buildResourcePath(string $path, array $parameters): string
-    {
+    private function buildResourcePath(
+        string $path,
+        array $parameters,
+    ): string {
         if (count($parameters) > 0) {
             $resource = vsprintf($path, array_map('urlencode', $parameters));
         } else {
@@ -100,8 +104,9 @@ class JsonApiClient
      * Function to provide functionality common to Guzzle 7 Response's json method,
      * without config options as they are not needed.
      */
-    private function parseJson(string $json): mixed
-    {
+    private function parseJson(
+        string $json,
+    ): mixed {
         $data = json_decode($json, true);
 
         if (JSON_ERROR_NONE !== json_last_error()) {

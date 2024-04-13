@@ -25,13 +25,15 @@ use Stringable;
 
 final readonly class Url implements Stringable
 {
-    public function __construct(private string $url)
-    {
+    public function __construct(
+        private string $url,
+    ) {
         Assert::url($url);
     }
 
-    public function equals(Url $other): bool
-    {
+    public function equals(
+        Url $other,
+    ): bool {
         return $this == $other;
     }
 

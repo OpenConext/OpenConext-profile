@@ -20,9 +20,13 @@
         </properties>
     </rule>
     <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/DeclareStrictTypesSniff.php" />
-    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly" />
-    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/UnusedUsesSniff.php" />
-    <rule ref="SlevomatCodingStandard.Classes.RequireMultiLineMethodSignature" />
+<!--    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly" />-->
+<!--    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/Namespaces/UnusedUsesSniff.php" />-->
+    <rule ref="SlevomatCodingStandard.Classes.RequireMultiLineMethodSignature">
+        <properties>
+            <property name="minLineLength" value="0"/>
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall" />
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration" />
 </ruleset>

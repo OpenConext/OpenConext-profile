@@ -38,13 +38,15 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
     ) {
     }
 
-    public function getNameId(Assertion $assertion): string
-    {
+    public function getNameId(
+        Assertion $assertion,
+    ): string {
         return $this->attributeDictionary->translate($assertion)->getNameID();
     }
 
-    public function getUser(Assertion $assertion): UserInterface
-    {
+    public function getUser(
+        Assertion $assertion,
+    ): UserInterface {
         ConfigurableAttributeSetFactory::configureWhichAttributeSetToCreate(AttributeSetWithFallbacks::class);
         $translatedAssertion = $this->attributeDictionary->translate($assertion);
 
@@ -56,18 +58,21 @@ class SamlProvider implements SamlProviderInterface, UserProviderInterface
         return AuthenticatedUser::createFrom($translatedAssertion, $authenticatingAuthorities);
     }
 
-    public function refreshUser(UserInterface $user): UserInterface
-    {
+    public function refreshUser(
+        UserInterface $user,
+    ): UserInterface {
         return $user;
     }
 
-    public function supportsClass(string $class): bool
-    {
+    public function supportsClass(
+        string $class,
+    ): bool {
         return $class === AuthenticatedUser::class;
     }
 
-    public function loadUserByIdentifier(string $identifier): UserInterface
-    {
+    public function loadUserByIdentifier(
+        string $identifier,
+    ): UserInterface {
         throw new BadMethodCallException('Use `getUser` to load a user by username');
     }
 }

@@ -40,8 +40,9 @@ class SingleCookieStorage implements EventSubscriberInterface
     ) {
     }
 
-    public function setValue(string $value): void
-    {
+    public function setValue(
+        string $value,
+    ): void {
         $this->cookieValue = $value;
     }
 
@@ -50,13 +51,15 @@ class SingleCookieStorage implements EventSubscriberInterface
         return $this->cookieValue;
     }
 
-    public function loadValueFromCookie(RequestEvent $event): void
-    {
+    public function loadValueFromCookie(
+        RequestEvent $event,
+    ): void {
         $this->cookieValue = $event->getRequest()->cookies->get($this->cookieKey, null);
     }
 
-    public function storeValueInCookie(ResponseEvent $event): void
-    {
+    public function storeValueInCookie(
+        ResponseEvent $event,
+    ): void {
         // If no date is specified for cookie expiration, a session cookie should be created
         $cookieExpirationDate = $this->cookieExpirationDate ?: 0;
         $event->getResponse()->headers->setCookie(

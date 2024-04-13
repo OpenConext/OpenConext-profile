@@ -26,8 +26,9 @@ use Twig\TwigFilter;
 
 class I18n extends AbstractExtension
 {
-    public function __construct(private readonly TranslatorInterface $translator)
-    {
+    public function __construct(
+        private readonly TranslatorInterface $translator,
+    ) {
     }
 
     /**
@@ -67,8 +68,9 @@ class I18n extends AbstractExtension
     /**
      * @return array
      */
-    private function prepareDefaultPlaceholders(array $args): array
-    {
+    private function prepareDefaultPlaceholders(
+        array $args,
+    ): array {
         $args[1]['%suiteName%'] = $this->translator->trans('general.suite_name');
         $args[1]['%organisationNoun%'] = $this->translator->trans('general.organisation_noun');
 

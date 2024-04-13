@@ -37,8 +37,9 @@ final readonly class LocaleService
     /**
      * @return bool
      */
-    public function isAvailableLocale(Locale $locale): bool
-    {
+    public function isAvailableLocale(
+        Locale $locale,
+    ): bool {
         return $this->availableLocales->contains($locale);
     }
 
@@ -56,8 +57,9 @@ final readonly class LocaleService
         return $this->defaultLocale;
     }
 
-    public function saveLocaleOf(ApiUserInterface $user): void
-    {
+    public function saveLocaleOf(
+        ApiUserInterface $user,
+    ): void {
         $this->localeRepository->save($user->getLocale());
     }
 

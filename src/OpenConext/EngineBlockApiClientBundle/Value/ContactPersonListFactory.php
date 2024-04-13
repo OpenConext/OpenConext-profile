@@ -31,8 +31,9 @@ final class ContactPersonListFactory
     /**
      * @return ContactPersonList
      */
-    public static function createListFromMetadata(mixed $data): ContactPersonList
-    {
+    public static function createListFromMetadata(
+        mixed $data,
+    ): ContactPersonList {
         Assert::isArray($data, 'Metadata JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_persons', 'Entity JSON structure must contain key "contact_persons"');
         Assert::isArray($data['contact_persons'], 'Contact persons JSON structure must be an associative array, got %s');
@@ -50,8 +51,9 @@ final class ContactPersonListFactory
      * @return ContactPerson
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createContactPerson(mixed $data): ContactPerson
-    {
+    private static function createContactPerson(
+        mixed $data,
+    ): ContactPerson {
         Assert::isArray($data, 'Contact person JSON structure must be an associative array, got %s');
         Assert::keyExists($data, 'contact_type', 'Contact person JSON structure must contain key "contact_type"');
 

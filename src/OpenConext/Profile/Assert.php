@@ -34,8 +34,11 @@ class Assert extends BaseAssertion
      *
      * @param null $propertyPath
      */
-    public static function keysArePresent(array $array, array $expectedKeys, $propertyPath = null): void
-    {
+    public static function keysArePresent(
+        array $array,
+        array $expectedKeys,
+        $propertyPath = null,
+    ): void {
         $givenKeys = array_keys($array);
 
         sort($givenKeys);

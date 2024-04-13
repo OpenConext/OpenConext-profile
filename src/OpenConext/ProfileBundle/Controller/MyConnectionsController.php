@@ -56,8 +56,9 @@ class MyConnectionsController extends AbstractController
         methods: ['GET', 'POST'],
         schemes: ['https'],
     )]
-    public function overview(Request $request): Response
-    {
+    public function overview(
+        Request $request,
+    ): Response {
         $this->logger->info('Showing My Connections page');
 
         $user = $this->userProvider->getCurrentUser();

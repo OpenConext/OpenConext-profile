@@ -33,8 +33,9 @@ class SpecifiedConsentListService
     ) {
     }
 
-    public function getListFor(UserInterface $user): SpecifiedConsentList
-    {
+    public function getListFor(
+        UserInterface $user,
+    ): SpecifiedConsentList {
         assert($user instanceof AuthenticatedUser);
 
         $consentList = $this->consentService->findAllFor($user);
@@ -45,8 +46,10 @@ class SpecifiedConsentListService
         );
     }
 
-    public function deleteServiceWith(UserInterface $user, string $serviceEntityId): bool
-    {
+    public function deleteServiceWith(
+        UserInterface $user,
+        string $serviceEntityId,
+    ): bool {
         assert($user instanceof AuthenticatedUser);
 
         return $this->consentService->deleteServiceWith($user, $serviceEntityId);

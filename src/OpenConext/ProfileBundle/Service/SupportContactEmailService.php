@@ -28,12 +28,14 @@ use OpenConext\Profile\Value\EntityId;
 
 final readonly class SupportContactEmailService
 {
-    public function __construct(private ContactPersonRepositoryInterface $contactPersonRepository)
-    {
+    public function __construct(
+        private ContactPersonRepositoryInterface $contactPersonRepository,
+    ) {
     }
 
-    public function findSupportContactEmailForIdp(EntityId $entityId): ?ContactEmailAddress
-    {
+    public function findSupportContactEmailForIdp(
+        EntityId $entityId,
+    ): ?ContactEmailAddress {
         $supportContactPersons = $this->contactPersonRepository->findAllForIdp($entityId)->filter(
             fn(ContactPerson $contactPerson): bool
                 => $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))

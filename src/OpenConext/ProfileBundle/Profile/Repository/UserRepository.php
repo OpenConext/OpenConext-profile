@@ -42,8 +42,9 @@ class UserRepository implements UserRepositoryInterface
         return $this->requestStack->getSession()->get(self::USER);
     }
 
-    public function save(ApiUserInterface $user): void
-    {
+    public function save(
+        ApiUserInterface $user,
+    ): void {
         $this->requestStack->getSession()->set(self::USER, $user);
     }
 }

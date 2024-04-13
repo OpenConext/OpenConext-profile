@@ -32,8 +32,9 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
     ) {
     }
 
-    public function findAllFor(string $userId): AttributeAggregationAttributesList
-    {
+    public function findAllFor(
+        string $userId,
+    ): AttributeAggregationAttributesList {
         Assert::notEmpty($userId, '$userId "%s" (NameID) can not be empty');
 
         $attributes = $this->apiClient->read('accounts/%s', [$userId]);
@@ -41,8 +42,9 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
         return AttributeAggregationAttributesList::fromApiResponse($attributes);
     }
 
-    public function unsubscribeAccount(int $accountId): bool
-    {
+    public function unsubscribeAccount(
+        int $accountId,
+    ): bool {
         $result = $this->apiClient->delete('disconnect/%d', [$accountId]);
 
         return isset($result->status) && $result->status === 'OK';

@@ -39,8 +39,10 @@ class SwitchLocaleType extends AbstractType
     ) {
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options,
+    ): void {
         $availableLocales = $this->localeService->getAvailableLocales();
         $localeChoices    = $this->formatLocaleChoices($availableLocales);
 
@@ -65,8 +67,9 @@ class SwitchLocaleType extends AbstractType
             ->add('changeLocale', SubmitType::class, ['label' => 'profile.locale.choose_locale']);
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
+    public function configureOptions(
+        OptionsResolver $resolver,
+    ): void {
         $resolver->setDefaults(
             [
                 'return_url' => '',
@@ -83,8 +86,9 @@ class SwitchLocaleType extends AbstractType
         return 'profile_switch_locale';
     }
 
-    private function formatLocaleChoices(LocaleSet $availableLocales): array
-    {
+    private function formatLocaleChoices(
+        LocaleSet $availableLocales,
+    ): array {
         $localeChoices = [];
 
         foreach ($availableLocales as $locale) {

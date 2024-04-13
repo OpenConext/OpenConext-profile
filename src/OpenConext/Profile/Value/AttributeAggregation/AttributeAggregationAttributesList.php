@@ -30,15 +30,14 @@ final class AttributeAggregationAttributesList
     /**
      * @param AttributeAggregationAttribute[] $attributes
      */
-    public function __construct(private array $attributes)
-    {
+    public function __construct(
+        private array $attributes,
+    ) {
     }
 
-    /**
-     * @return AttributeAggregationAttributesList
-     */
-    public static function fromApiResponse(array $attributes): self
-    {
+    public static function fromApiResponse(
+        array $attributes,
+    ): self {
         $attributeCollection = [];
         foreach ($attributes as $attributeData) {
             $attributeCollection[] = AttributeAggregationAttribute::fromApiResponse($attributeData);
@@ -46,9 +45,6 @@ final class AttributeAggregationAttributesList
         return new self($attributeCollection);
     }
 
-    /**
-     * @return mixed[]
-     */
     public function getActiveAttributes(): array
     {
         $output = [];
@@ -60,9 +56,6 @@ final class AttributeAggregationAttributesList
         return $output;
     }
 
-    /**
-     * @return mixed[]
-     */
     public function getAvailableAttributes(): array
     {
         $output = [];
@@ -74,12 +67,9 @@ final class AttributeAggregationAttributesList
         return $output;
     }
 
-    /**
-     * @param string $accountType
-     * @return bool
-     */
-    public function hasAttribute($accountType): bool
-    {
+    public function hasAttribute(
+        string $accountType,
+    ): bool {
         foreach ($this->attributes as $attribute) {
             if ($attribute->getAccountType() === $accountType) {
                 return true;
@@ -88,21 +78,19 @@ final class AttributeAggregationAttributesList
         return false;
     }
 
-    public function filterEnabledAttributes(AttributeAggregationEnabledAttributes $enabledAttributes): void
-    {
+    public function filterEnabledAttributes(
+        AttributeAggregationEnabledAttributes $enabledAttributes,
+    ): void {
         $this->attributes = array_filter(
             $this->attributes,
-            fn(AttributeAggregationAttribute $attribute): bool => $enabledAttributes->isEnabled($attribute->getAccountType()),
+            fn(AttributeAggregationAttribute $attribute): bool
+                => $enabledAttributes->isEnabled($attribute->getAccountType()),
         );
     }
 
-    /**
-     * @param string $accountType
-     * @return AttributeAggregationAttribute
-     * @throws InvalidArgumentException
-     */
-    public function getAttribute($accountType)
-    {
+    public function getAttribute(
+        string $accountType,
+    ): AttributeAggregationAttribute {
         foreach ($this->attributes as $attribute) {
             if ($attribute->getAccountType() === $accountType) {
                 return $attribute;

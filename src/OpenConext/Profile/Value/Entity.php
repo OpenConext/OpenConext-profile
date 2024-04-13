@@ -31,8 +31,9 @@ final readonly class Entity implements Stringable
     /**
      * @return Entity
      */
-    public static function fromDescriptor(array $descriptor): self
-    {
+    public static function fromDescriptor(
+        array $descriptor,
+    ): self {
         Assert::count($descriptor, 2);
 
         return match ($descriptor[1]) {
@@ -42,8 +43,10 @@ final readonly class Entity implements Stringable
         };
     }
 
-    public function __construct(private EntityId $entityId, private EntityType $entityType)
-    {
+    public function __construct(
+        private EntityId $entityId,
+        private EntityType $entityType,
+    ) {
     }
 
     /**
@@ -65,8 +68,9 @@ final readonly class Entity implements Stringable
     /**
      * @return bool
      */
-    public function equals(Entity $other): bool
-    {
+    public function equals(
+        Entity $other,
+    ): bool {
         return $this->entityId->equals($other->entityId) && $this->entityType->equals($other->entityType);
     }
 

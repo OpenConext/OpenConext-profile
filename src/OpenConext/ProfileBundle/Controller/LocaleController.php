@@ -48,8 +48,9 @@ class LocaleController extends AbstractController
         methods: ['POST'],
         schemes: ['https'],
     )]
-    public function switchLocale(Request $request): RedirectResponse
-    {
+    public function switchLocale(
+        Request $request,
+    ): RedirectResponse {
         $this->logger->info('User requested to switch locale');
 
         $returnUrl = $request->query->get('return-url');

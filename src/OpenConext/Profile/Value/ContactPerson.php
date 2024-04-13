@@ -34,8 +34,9 @@ final readonly class ContactPerson implements Stringable
     /**
      * @return bool
      */
-    public function hasContactTypeOf(ContactType $otherContactType): bool
-    {
+    public function hasContactTypeOf(
+        ContactType $otherContactType,
+    ): bool {
         return $this->contactType->equals($otherContactType);
     }
 

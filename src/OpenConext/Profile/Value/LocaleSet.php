@@ -35,8 +35,9 @@ final class LocaleSet implements IteratorAggregate, Countable
      * @param Locale[] $locales
      * @return LocaleSet
      */
-    public static function create(array $locales): LocaleSet
-    {
+    public static function create(
+        array $locales,
+    ): LocaleSet {
         $localeSet = new LocaleSet();
 
         foreach ($locales as $locale) {
@@ -53,8 +54,9 @@ final class LocaleSet implements IteratorAggregate, Countable
     /**
      * @return bool
      */
-    public function contains(Locale $otherLocale): bool
-    {
+    public function contains(
+        Locale $otherLocale,
+    ): bool {
         foreach ($this->locales as $locale) {
             if ($locale->equals($otherLocale)) {
                 return true;
@@ -77,8 +79,9 @@ final class LocaleSet implements IteratorAggregate, Countable
     /**
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod) PHPMD does not see that this is being called in our static method
      */
-    private function initializeWith(Locale $locale): void
-    {
+    private function initializeWith(
+        Locale $locale,
+    ): void {
         if ($this->contains($locale)) {
             return;
         }

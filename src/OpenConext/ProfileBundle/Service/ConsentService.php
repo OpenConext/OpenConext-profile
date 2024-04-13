@@ -26,17 +26,21 @@ use OpenConext\Profile\Entity\AuthenticatedUser;
 
 final readonly class ConsentService
 {
-    public function __construct(private ConsentRepositoryInterface $consentRepository)
-    {
+    public function __construct(
+        private ConsentRepositoryInterface $consentRepository,
+    ) {
     }
 
-    public function findAllFor(AuthenticatedUser $user): ConsentList
-    {
+    public function findAllFor(
+        AuthenticatedUser $user,
+    ): ConsentList {
         return $this->consentRepository->findAllFor($user->getNameId());
     }
 
-    public function deleteServiceWith(AuthenticatedUser $user, string $serviceEntityId): bool
-    {
+    public function deleteServiceWith(
+        AuthenticatedUser $user,
+        string $serviceEntityId,
+    ): bool {
         return $this->consentRepository->deleteServiceWith($user->getNameId(), $serviceEntityId);
     }
 }

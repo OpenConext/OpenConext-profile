@@ -56,8 +56,9 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function setupLocaleConfiguration(ArrayNodeDefinition $rootNode): void
-    {
+    private function setupLocaleConfiguration(
+        ArrayNodeDefinition $rootNode,
+    ): void {
         $rootNode
             ->children()
                 ->arrayNode('locales')
@@ -126,8 +127,9 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupAttributeSupportConfiguration(ArrayNodeDefinition $rootNode): void
-    {
+    private function setupAttributeSupportConfiguration(
+        ArrayNodeDefinition $rootNode,
+    ): void {
         $rootNode
             ->children()
                 ->arrayNode('attribute_support')
@@ -162,8 +164,9 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupAttributeAggregationAttributeConfiguration(ArrayNodeDefinition $rootNode): void
-    {
+    private function setupAttributeAggregationAttributeConfiguration(
+        ArrayNodeDefinition $rootNode,
+    ): void {
 
         $protoType = $rootNode
             ->children()
@@ -196,8 +199,9 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
-    private function setupInformationRequestConfiguration(ArrayNodeDefinition $rootNode): void
-    {
+    private function setupInformationRequestConfiguration(
+        ArrayNodeDefinition $rootNode,
+    ): void {
         $rootNode
             ->children()
                 ->arrayNode('information_request')

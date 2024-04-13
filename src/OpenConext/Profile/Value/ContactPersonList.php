@@ -34,23 +34,26 @@ final class ContactPersonList implements IteratorAggregate, Countable, Stringabl
      */
     private array $contactPersons = [];
 
-    public function __construct(array $contactPersons)
-    {
+    public function __construct(
+        array $contactPersons,
+    ) {
         foreach ($contactPersons as $contactPerson) {
             $this->initializeWith($contactPerson);
         }
     }
 
-    private function initializeWith(ContactPerson $contactPerson): void
-    {
+    private function initializeWith(
+        ContactPerson $contactPerson,
+    ): void {
         $this->contactPersons[] = $contactPerson;
     }
 
     /**
      * @return ContactPersonList
      */
-    public function filter(callable $predicate): ContactPersonList
-    {
+    public function filter(
+        callable $predicate,
+    ): ContactPersonList {
         return new ContactPersonList(
             array_filter(
                 $this->contactPersons,

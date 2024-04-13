@@ -63,8 +63,9 @@ class SamlListener
     ) {
     }
 
-    public function __invoke(RequestEvent $event): void
-    {
+    public function __invoke(
+        RequestEvent $event,
+    ): void {
         dd('SamlListener Invoked');
         try {
             $this->handleEvent($event);
@@ -74,8 +75,9 @@ class SamlListener
         }
     }
 
-    private function handleEvent(RequestEvent $event): void
-    {
+    private function handleEvent(
+        RequestEvent $event,
+    ): void {
         if ($this->tokenStorage->getToken()) {
             return;
         }
@@ -138,8 +140,9 @@ class SamlListener
      *
      * @return bool
      */
-    private function isAcsRequest(Request $request): bool
-    {
+    private function isAcsRequest(
+        Request $request,
+    ): bool {
         try {
             $params = $this->urlMatcher->match($request->getPathInfo());
         } catch (ResourceNotFoundException) {
@@ -149,8 +152,9 @@ class SamlListener
         return $params['_route'] === 'profile.saml_consume_assertion';
     }
 
-    private function sendAuthnRequest(RequestEvent $event): void
-    {
+    private function sendAuthnRequest(
+        RequestEvent $event,
+    ): void {
         $this->stateHandler->setCurrentRequestUri($event->getRequest()->getUri());
 
         $event->setResponse($this->samlInteractionProvider->initiateSamlRequest());
@@ -159,8 +163,10 @@ class SamlListener
         $logger->info('Sending AuthnRequest');
     }
 
-    private function setPreconditionExceptionResponse(PreconditionNotMetException $exception, RequestEvent $event): void
-    {
+    private function setPreconditionExceptionResponse(
+        PreconditionNotMetException $exception,
+        RequestEvent $event,
+    ): void {
         $template = null;
 
         if ($exception instanceof AuthnFailedSamlResponseException) {
@@ -176,8 +182,9 @@ class SamlListener
     /**
      * Deny authentication by default
      */
-    private function setAuthenticationFailedResponse(RequestEvent $event): void
-    {
+    private function setAuthenticationFailedResponse(
+        RequestEvent $event,
+    ): void {
         $response = new Response();
         $response->setStatusCode(Response::HTTP_FORBIDDEN);
         $event->setResponse($response);

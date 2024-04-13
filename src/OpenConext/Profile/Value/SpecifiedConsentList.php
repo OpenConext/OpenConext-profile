@@ -38,23 +38,26 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
      * @param SpecifiedConsent[] $specifiedConsents
      * @return SpecifiedConsentList
      */
-    public static function createWith(array $specifiedConsents): self
-    {
+    public static function createWith(
+        array $specifiedConsents,
+    ): self {
         return new self($specifiedConsents);
     }
 
     /**
      * @param SpecifiedConsent[] $specifiedConsents
      */
-    private function __construct(array $specifiedConsents)
-    {
+    private function __construct(
+        array $specifiedConsents,
+    ) {
         foreach ($specifiedConsents as $specifiedConsent) {
             $this->initializeWith($specifiedConsent);
         }
     }
 
-    public function sortByDisplayName(string $locale): void
-    {
+    public function sortByDisplayName(
+        string $locale,
+    ): void {
         $sorted = [];
         $sortedByEntityId = [];
         /** @var SpecifiedConsent $consent */
@@ -70,8 +73,9 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
         ksort($sortedByEntityId, SORT_STRING);
         $this->specifiedConsents = $sorted +  $sortedByEntityId;
     }
-    private function initializeWith(SpecifiedConsent $specifiedConsent): void
-    {
+    private function initializeWith(
+        SpecifiedConsent $specifiedConsent,
+    ): void {
         $this->specifiedConsents[] = $specifiedConsent;
     }
 

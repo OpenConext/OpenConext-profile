@@ -58,8 +58,9 @@ class ServiceProvider
         return $this->displayName;
     }
 
-    public function getOrganizationNameByLocale(string $locale): string
-    {
+    public function getOrganizationNameByLocale(
+        string $locale,
+    ): string {
         if (!$this->organizationDisplayName->hasFilledTranslationForLocale($locale)) {
             throw new LogicException(sprintf('Unable to retrieve organization display name for locale: %s', $locale));
         }
@@ -78,8 +79,9 @@ class ServiceProvider
      * @param string $locale
      * @return string
      */
-    public function getLocaleAwareEntityName($locale)
-    {
+    public function getLocaleAwareEntityName(
+        $locale,
+    ) {
         Assert::string($locale);
 
         if ($this->displayName->hasFilledTranslationForLocale($locale)) {
@@ -133,8 +135,9 @@ class ServiceProvider
      * @param string $locale
      * @return null|Url
      */
-    public function getSupportUrl($locale): ?Url
-    {
+    public function getSupportUrl(
+        $locale,
+    ): ?Url {
         if ($locale === 'nl') {
             return $this->supportUrlNl;
         } else {
@@ -146,8 +149,9 @@ class ServiceProvider
      * @param $locale
      * @return bool
      */
-    public function hasSupportUrl($locale): bool
-    {
+    public function hasSupportUrl(
+        $locale,
+    ): bool {
         if ($locale === 'nl') {
             return $this->supportUrlNl !== null;
         } else {

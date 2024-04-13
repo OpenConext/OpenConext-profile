@@ -39,16 +39,18 @@ final class User implements ApiUserInterface
     /**
      * @return UserInterface
      */
-    public function withSupportContactEmail(ContactEmailAddress $supportContactEmail): UserInterface|User
-    {
+    public function withSupportContactEmail(
+        ContactEmailAddress $supportContactEmail,
+    ): UserInterface|User {
         $newUser = clone $this;
         $newUser->supportContactEmail = $supportContactEmail;
 
         return $newUser;
     }
 
-    public function switchLocaleTo(Locale $locale): void
-    {
+    public function switchLocaleTo(
+        Locale $locale,
+    ): void {
         $this->locale = $locale;
     }
 

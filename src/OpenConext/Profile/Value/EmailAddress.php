@@ -31,8 +31,9 @@ final class EmailAddress implements EmailAddressSupport, EmailAddressInformation
         Assert::email($emailAddress);
     }
 
-    public function equals(EmailAddress $other): bool
-    {
+    public function equals(
+        EmailAddress $other,
+    ): bool {
         return $this->emailAddress === $other->emailAddress;
     }
 

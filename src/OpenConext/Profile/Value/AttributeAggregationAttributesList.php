@@ -22,13 +22,11 @@ namespace OpenConext\Profile\Value;
 
 final readonly class AttributeAggregationAttributesList
 {
-    public function __construct(private array $attributes)
-    {
+    public function __construct(
+        private array $attributes,
+    ) {
     }
 
-    /**
-     * @return array
-     */
     public function getAttributes(): array
     {
         return $this->attributes;
@@ -38,8 +36,9 @@ final readonly class AttributeAggregationAttributesList
      * @param $attributeName
      * @return bool
      */
-    public function hasAttribute($attributeName): bool
-    {
+    public function hasAttribute(
+        $attributeName,
+    ): bool {
         return array_key_exists($attributeName, $this->attributes);
     }
 }

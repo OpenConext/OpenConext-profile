@@ -53,8 +53,9 @@ class MyServicesController extends AbstractController
         methods: ['GET'],
         schemes: ['https'],
     )]
-    public function overview(Request $request): Response
-    {
+    public function overview(
+        Request $request,
+    ): Response {
         $this->logger->info('User requested My Services page');
 
         $locale = $request->getLocale();
@@ -84,8 +85,9 @@ class MyServicesController extends AbstractController
         methods: ['GET'],
         schemes: ['https'],
     )]
-    public function delete(string $serviceEntityId): Response
-    {
+    public function delete(
+        string $serviceEntityId,
+    ): Response {
         if (!$this->removeConsentEnabled) {
             throw new ResourceNotFoundException('The remove consent action is disabled');
         }

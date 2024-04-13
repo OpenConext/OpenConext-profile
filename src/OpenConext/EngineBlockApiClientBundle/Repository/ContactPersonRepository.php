@@ -28,12 +28,14 @@ use OpenConext\Profile\Value\EntityId;
 
 final readonly class ContactPersonRepository implements ContactPersonRepositoryInterface
 {
-    public function __construct(private JsonApiClient $apiClient)
-    {
+    public function __construct(
+        private JsonApiClient $apiClient,
+    ) {
     }
 
-    public function findAllForIdp(EntityId $entityId): ContactPersonList
-    {
+    public function findAllForIdp(
+        EntityId $entityId,
+    ): ContactPersonList {
         $identityProviderJson = $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId->getEntityId()]);
 
         return ContactPersonListFactory::createListFromMetadata($identityProviderJson);

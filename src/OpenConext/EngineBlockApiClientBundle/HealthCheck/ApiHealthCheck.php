@@ -28,12 +28,14 @@ use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 
 class ApiHealthCheck implements HealthCheckInterface
 {
-    public function __construct(private readonly ConsentRepositoryInterface $repository)
-    {
+    public function __construct(
+        private readonly ConsentRepositoryInterface $repository,
+    ) {
     }
 
-    public function check(HealthReportInterface $report): HealthReportInterface
-    {
+    public function check(
+        HealthReportInterface $report,
+    ): HealthReportInterface {
         try {
             $this->repository->findAllFor('a73b204b8d896a55b34e41e71f0138f81e81f4da');
         } catch (Exception $e) {

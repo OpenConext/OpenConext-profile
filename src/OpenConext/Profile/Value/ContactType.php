@@ -36,8 +36,9 @@ final class ContactType implements Stringable
     /**
      * @param string $contactType
      */
-    public function __construct($contactType)
-    {
+    public function __construct(
+        $contactType,
+    ) {
         Assert::string($contactType);
         Assert::choice(
             $contactType,
@@ -51,8 +52,9 @@ final class ContactType implements Stringable
     /**
      * @return bool
      */
-    public function equals(ContactType $other): bool
-    {
+    public function equals(
+        ContactType $other,
+    ): bool {
         return $this->contactType === $other->contactType;
     }
 

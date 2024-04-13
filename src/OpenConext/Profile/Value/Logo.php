@@ -30,15 +30,19 @@ final class Logo
 
     private readonly string $width;
 
-    public function __construct(?string $url, ?string $height, ?string $width)
-    {
+    public function __construct(
+        ?string $url,
+        ?string $height,
+        ?string $width,
+    ) {
         $this->url = $url ?? '';
         $this->height = $height ?? '';
         $this->width = $width ?? '';
     }
 
-    public static function fromArray(array $logo): Logo
-    {
+    public static function fromArray(
+        array $logo,
+    ): Logo {
         Assert::keysArePresent($logo, ['url', 'height', 'width']);
         return new self($logo['url'], $logo['height'], $logo['width']);
     }

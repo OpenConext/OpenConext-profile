@@ -87,8 +87,10 @@ final class AttributeAggregationService
      *
      * @return bool returns false when deletion failed
      */
-    public function disconnectAttributeFor(UserInterface $user, AttributeAggregationAttribute $orcidAttribute): bool
-    {
+    public function disconnectAttributeFor(
+        UserInterface $user,
+        AttributeAggregationAttribute $orcidAttribute,
+    ): bool {
         assert($user instanceof AuthenticatedUser);
 
         if ($this->isValidRequest($user, $orcidAttribute)) {
@@ -104,8 +106,10 @@ final class AttributeAggregationService
     /**
      * Validate the users identity matches that of the identity set on the ORCID attribute retrieved from AA.
      */
-    private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute): bool
-    {
+    private function isValidRequest(
+        AuthenticatedUser $user,
+        AttributeAggregationAttribute $orcidAttribute,
+    ): bool {
         $nameId = $user->getNameId();
 
         if ($nameId !== $orcidAttribute->getUserNameId()) {

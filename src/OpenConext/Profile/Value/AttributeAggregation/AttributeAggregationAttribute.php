@@ -53,8 +53,9 @@ final readonly class AttributeAggregationAttribute
         );
     }
 
-    public static function fromApiResponse(array $attributeData): AttributeAggregationAttribute
-    {
+    public static function fromApiResponse(
+        array $attributeData,
+    ): AttributeAggregationAttribute {
         Assertion::keyExists($attributeData, 'id', 'No id found on attribute');
         Assertion::integer($attributeData['id'], 'Id should be integer');
 

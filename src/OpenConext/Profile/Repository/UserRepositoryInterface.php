@@ -32,5 +32,7 @@ interface UserRepositoryInterface
     /**
      * @return void
      */
-    public function save(ApiUserInterface $user);
+    public function save(
+        ApiUserInterface $user,
+    );
 }

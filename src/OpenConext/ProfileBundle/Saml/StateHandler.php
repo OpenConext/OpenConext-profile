@@ -26,12 +26,14 @@ class StateHandler
 {
     public const REQUEST_ID = 'request_id';
     public const CURRENT_URI = 'current_uri';
-    public function __construct(private readonly RequestStack $requestStack)
-    {
+    public function __construct(
+        private readonly RequestStack $requestStack,
+    ) {
     }
 
-    public function setRequestId(string $originalRequestId): StateHandler
-    {
+    public function setRequestId(
+        string $originalRequestId,
+    ): StateHandler {
         $this->requestStack->getSession()->set(self::REQUEST_ID, $originalRequestId);
 
         return $this;
@@ -55,8 +57,9 @@ class StateHandler
         $this->requestStack->getSession()->remove(self::REQUEST_ID);
     }
 
-    public function setCurrentRequestUri(string $uri): void
-    {
+    public function setCurrentRequestUri(
+        string $uri,
+    ): void {
         $this->requestStack->getSession()->set(self::CURRENT_URI, $uri);
     }
 

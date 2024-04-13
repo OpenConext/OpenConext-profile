@@ -67,8 +67,9 @@ class SamlInteractionProvider
     /**
      * @return Assertion
      */
-    public function processSamlResponse(Request $request): Assertion
-    {
+    public function processSamlResponse(
+        Request $request,
+    ): Assertion {
         /** @var Assertion $assertion */
         $assertion = $this->postBinding->processResponse(
             $request,

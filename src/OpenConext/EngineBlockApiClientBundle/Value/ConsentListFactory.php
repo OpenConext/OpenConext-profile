@@ -43,8 +43,9 @@ final class ConsentListFactory
     /**
      * @return ConsentList
      */
-    public static function createListFromMetadata(mixed $data): ConsentList
-    {
+    public static function createListFromMetadata(
+        mixed $data,
+    ): ConsentList {
         Assert::isArray($data, 'Consent list JSON structure must be an associative array, got %s');
 
         // We cannot use self::class because translation extractions fails on that
@@ -60,8 +61,9 @@ final class ConsentListFactory
      * @return Consent
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private static function createConsent(mixed $data): Consent
-    {
+    private static function createConsent(
+        mixed $data,
+    ): Consent {
         Assert::keyExists($data, 'service_provider', 'Consent JSON structure must contain key "service_provider"');
         Assert::keyExists($data, 'consent_given_on', 'Consent JSON structure must contain key "consent_given_on"');
         Assert::keyExists($data, 'consent_type', 'Consent JSON structure must contain key "consent_type"');
@@ -100,8 +102,9 @@ final class ConsentListFactory
     /**
      * @return ServiceProvider
      */
-    private static function createServiceProvider(mixed $data): ServiceProvider
-    {
+    private static function createServiceProvider(
+        mixed $data,
+    ): ServiceProvider {
         Assert::keyExists($data, 'entity_id', 'Consent JSON structure must contain key "entity_id"');
         Assert::keyExists($data, 'display_name', 'Consent JSON structure must contain key "display_name"');
         Assert::keyExists($data, 'organization_display_name', 'Consent JSON structure must contain key "organization_display_name"');

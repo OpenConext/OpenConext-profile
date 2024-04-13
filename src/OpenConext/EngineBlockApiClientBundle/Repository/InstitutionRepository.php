@@ -30,12 +30,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class InstitutionRepository
 {
-    public function __construct(private JsonApiClient $apiClient, private EntityId $engineBlockEntityId)
-    {
+    public function __construct(
+        private JsonApiClient $apiClient,
+        private EntityId $engineBlockEntityId,
+    ) {
     }
 
-    private function findAllForIdp(string $entityId)
-    {
+    private function findAllForIdp(
+        string $entityId,
+    ) {
         try {
             return $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId]);
         } catch (Exception $e) {
@@ -48,8 +51,9 @@ final readonly class InstitutionRepository
     /**
      * @param EntityId[] $entityIds
      */
-    private function getNearestAuthenticatingAuthorityEntityId(array $entityIds): ?EntityId
-    {
+    private function getNearestAuthenticatingAuthorityEntityId(
+        array $entityIds,
+    ): ?EntityId {
         $lastEntityId = array_pop($entityIds);
 
         if ($lastEntityId === null) {
@@ -63,8 +67,9 @@ final readonly class InstitutionRepository
         return array_pop($entityIds);
     }
 
-    public function getOrganizationAndLogoForIdp(UserInterface $user): Organization
-    {
+    public function getOrganizationAndLogoForIdp(
+        UserInterface $user,
+    ): Organization {
         assert($user instanceof AuthenticatedUser);
 
         $entityIds = $user->getAuthenticatingAuthorities();

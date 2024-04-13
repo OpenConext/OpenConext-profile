@@ -26,7 +26,9 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 interface ApiUserInterface
 {
-    public function switchLocaleTo(Locale $locale): void;
+    public function switchLocaleTo(
+        Locale $locale,
+    ): void;
 
     public function hasSupportContactEmail(): bool;
 

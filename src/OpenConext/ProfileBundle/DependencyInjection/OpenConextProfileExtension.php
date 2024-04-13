@@ -35,8 +35,10 @@ use OpenConext\Profile\Value\EntityId;
 
 class OpenConextProfileExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container): void
-    {
+    public function load(
+        array $configs,
+        ContainerBuilder $container,
+    ): void {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
 
@@ -71,8 +73,10 @@ class OpenConextProfileExtension extends Extension
         }
     }
 
-    private function parseEngineBlockEntityIdConfiguration($engineBlockEntityId, ContainerBuilder $container): void
-    {
+    private function parseEngineBlockEntityIdConfiguration(
+        $engineBlockEntityId,
+        ContainerBuilder $container,
+    ): void {
         $container
             ->getDefinition(EntityId::class)
             ->replaceArgument(0, $engineBlockEntityId);
@@ -102,15 +106,19 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(0, $attributeSupportConfig['email_to']);
     }
 
-    private function parseDefaultLocaleConfiguration($defaultLocaleConfig, ContainerBuilder $container): void
-    {
+    private function parseDefaultLocaleConfiguration(
+        $defaultLocaleConfig,
+        ContainerBuilder $container,
+    ): void {
         $container
             ->getDefinition(Locale::class)
             ->replaceArgument(0, $defaultLocaleConfig);
     }
 
-    private function parseAvailableLocaleConfiguration(array $availableLocaleConfig, ContainerBuilder $container): void
-    {
+    private function parseAvailableLocaleConfiguration(
+        array $availableLocaleConfig,
+        ContainerBuilder $container,
+    ): void {
         $availableLocales = array_map(fn($availableLocale): Definition => new Definition(Locale::class, [$availableLocale]), $availableLocaleConfig);
 
         $container
@@ -143,8 +151,10 @@ class OpenConextProfileExtension extends Extension
             ->replaceArgument(4, $localeCookieHttpOnly);
     }
 
-    private function parseEngineBlockAttributeAggregationConfiguration($aaConfig, ContainerBuilder $container): void
-    {
+    private function parseEngineBlockAttributeAggregationConfiguration(
+        $aaConfig,
+        ContainerBuilder $container,
+    ): void {
         $container
             ->getDefinition(AttributeAggregationEnabledAttributes::class)
             ->replaceArgument(0, $aaConfig);

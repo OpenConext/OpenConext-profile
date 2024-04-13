@@ -46,8 +46,9 @@ final class UserService
     /**
      * The user lifecycle client is optional.
      */
-    public function setUserLifecycleApiClient(?UserLifecycleApiClient $client = null): void
-    {
+    public function setUserLifecycleApiClient(
+        ?UserLifecycleApiClient $client = null,
+    ): void {
         $this->userLifecycleApiClient = $client;
     }
 
@@ -69,8 +70,9 @@ final class UserService
         return $user;
     }
 
-    public function changeLocale(ChangeLocaleCommand $changeLocaleCommand): void
-    {
+    public function changeLocale(
+        ChangeLocaleCommand $changeLocaleCommand,
+    ): void {
         $user = $this->getUser();
         $user->switchLocaleTo(new Locale($changeLocaleCommand->newLocale));
 
@@ -98,8 +100,9 @@ final class UserService
         return $this->userLifecycleApiClient !== null;
     }
 
-    private function enrichUserWithSupportContactEmail(ApiUserInterface $user): ApiUserInterface
-    {
+    private function enrichUserWithSupportContactEmail(
+        ApiUserInterface $user,
+    ): ApiUserInterface {
         $entityIds                 = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
 
@@ -121,8 +124,9 @@ final class UserService
     /**
      * @param EntityId[] $entityIds
      */
-    private function getNearestAuthenticatingAuthorityEntityId(array $entityIds): ?EntityId
-    {
+    private function getNearestAuthenticatingAuthorityEntityId(
+        array $entityIds,
+    ): ?EntityId {
         $lastEntityId = array_pop($entityIds);
 
         if ($lastEntityId === null) {

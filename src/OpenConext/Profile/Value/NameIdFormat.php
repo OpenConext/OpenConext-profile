@@ -26,8 +26,9 @@ final class NameIdFormat
     public const TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
 
 
-    public function __construct(private ?string $value)
-    {
+    public function __construct(
+        private ?string $value,
+    ) {
         // A service provider usually always has a NameIDFormat, because it's
         // required by the manage web interface.
         //

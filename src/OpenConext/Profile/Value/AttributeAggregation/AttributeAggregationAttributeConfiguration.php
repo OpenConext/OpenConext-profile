@@ -22,17 +22,17 @@ namespace OpenConext\Profile\Value\AttributeAggregation;
 
 final class AttributeAggregationAttributeConfiguration
 {
-    /**
-     * @param string $accountType
-     * @param string $logoPath
-     * @param string $connectUrl
-     */
-    public function __construct(private $accountType, private $logoPath, private $connectUrl)
-    {
+    public function __construct(
+        private readonly string $accountType,
+        private readonly string $logoPath,
+        private readonly string $connectUrl,
+    ) {
     }
 
-    public static function fromConfig($accountType, array $attributeConfigParameters): self
-    {
+    public static function fromConfig(
+        $accountType,
+        array $attributeConfigParameters,
+    ): self {
         return new self(
             $accountType,
             $attributeConfigParameters['logo_path'],
@@ -40,26 +40,17 @@ final class AttributeAggregationAttributeConfiguration
         );
     }
 
-    /**
-     * @return string
-     */
-    public function getAccountType()
+    public function getAccountType(): string
     {
         return $this->accountType;
     }
 
-    /**
-     * @return string
-     */
-    public function getLogoPath()
+    public function getLogoPath(): string
     {
         return $this->logoPath;
     }
 
-    /**
-     * @return string
-     */
-    public function getConnectUrl()
+    public function getConnectUrl(): string
     {
         return $this->connectUrl;
     }

@@ -34,8 +34,11 @@ final class Organization
      */
     private array $name;
 
-    public function __construct(array $displayName, array $name, private readonly Logo $logo)
-    {
+    public function __construct(
+        array $displayName,
+        array $name,
+        private readonly Logo $logo,
+    ) {
         Assert::allString(array_keys($displayName), 'DisplayName translations must be indexed by locale');
         Assert::allNotBlank(array_keys($displayName), 'Locales may not be blank');
         Assert::allString(array_keys($name), 'Name translations must be indexed by locale');
@@ -45,14 +48,16 @@ final class Organization
         $this->name = $name;
     }
 
-    public static function fromArray(array $json): Organization
-    {
+    public static function fromArray(
+        array $json,
+    ): Organization {
         Assert::keysArePresent($json, ['display_name', 'name', 'logo']);
         return new self($json['display_name'], $json['name'], Logo::fromArray($json['logo']));
     }
 
-    public function getDisplayName(string $locale): string
-    {
+    public function getDisplayName(
+        string $locale,
+    ): string {
         $displayNameLocale = $this->displayName[$locale];
         if (!empty($displayNameLocale)) {
             return $displayNameLocale;

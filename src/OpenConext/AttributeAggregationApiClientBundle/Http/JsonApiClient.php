@@ -43,8 +43,10 @@ class JsonApiClient
      * @throws MalformedResponseException
      * @throws ResourceNotFoundException
      */
-    public function read(string $path, array $parameters = []): mixed
-    {
+    public function read(
+        string $path,
+        array $parameters = [],
+    ): mixed {
         return $this->handle('GET', $path, $parameters);
     }
 
@@ -57,13 +59,18 @@ class JsonApiClient
      * @throws MalformedResponseException
      * @throws ResourceNotFoundException
      */
-    public function delete(string $path, array $parameters = []): mixed
-    {
+    public function delete(
+        string $path,
+        array $parameters = [],
+    ): mixed {
         return $this->handle('DELETE', $path, $parameters);
     }
 
-    private function handle(string $method, string $path, array $parameters = [])
-    {
+    private function handle(
+        string $method,
+        string $path,
+        array $parameters = [],
+    ) {
         $resource = $this->buildResourcePath($path, $parameters);
 
         $response = $this->httpClient->request($method, $resource, ['exceptions' => false]);
@@ -96,8 +103,10 @@ class JsonApiClient
     }
 
 
-    private function buildResourcePath(string $path, array $parameters): string
-    {
+    private function buildResourcePath(
+        string $path,
+        array $parameters,
+    ): string {
         if (count($parameters) > 0) {
             $resource = vsprintf($path, array_map('urlencode', $parameters));
         } else {
@@ -121,8 +130,9 @@ class JsonApiClient
      * Function to provide functionality common to Guzzle 5 Response's json method,
      * without config options as they are not needed.
      */
-    private function parseJson(string $json): mixed
-    {
+    private function parseJson(
+        string $json,
+    ): mixed {
         $data = json_decode($json, true);
 
         if (JSON_ERROR_NONE !== json_last_error()) {

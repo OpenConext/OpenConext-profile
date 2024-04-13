@@ -30,8 +30,9 @@ final class Locale implements Stringable
     /**
      * @param string $locale
      */
-    public function __construct($locale)
-    {
+    public function __construct(
+        $locale,
+    ) {
         Assert::string($locale);
         Assert::notEmpty($locale);
 
@@ -41,8 +42,9 @@ final class Locale implements Stringable
     /**
      * @return bool
      */
-    public function equals(Locale $other): bool
-    {
+    public function equals(
+        Locale $other,
+    ): bool {
         return $this->locale === $other->locale;
     }
 

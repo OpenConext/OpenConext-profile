@@ -36,8 +36,10 @@ final class Arp
      */
     private readonly array $arp;
 
-    public static function createWith(array $arp, AttributeDictionary $dictionary = null): self
-    {
+    public static function createWith(
+        array $arp,
+        AttributeDictionary $dictionary = null,
+    ): self {
         // Input validation
         foreach ($arp as $attributeInformation) {
             if (!is_array($attributeInformation)) {
@@ -51,8 +53,10 @@ final class Arp
         return new self($arp, $dictionary);
     }
 
-    private function __construct(array $arp, AttributeDictionary $dictionary = null)
-    {
+    private function __construct(
+        array $arp,
+        AttributeDictionary $dictionary = null,
+    ) {
         $arpCollection = [];
 
         // Create Attribute instances for all attributes
@@ -120,8 +124,9 @@ final class Arp
      *
      * @return bool
      */
-    private static function isValidAttribute(array $attributeInformation): bool
-    {
+    private static function isValidAttribute(
+        array $attributeInformation,
+    ): bool {
         foreach ($attributeInformation as $attributeInformationEntry) {
             if (!isset($attributeInformationEntry['value'])) {
                 return false;
@@ -168,8 +173,9 @@ final class Arp
         return false;
     }
 
-    public function getMotivationFor(Attribute $attribute)
-    {
+    public function getMotivationFor(
+        Attribute $attribute,
+    ) {
         foreach ($this->arp as $arpSource) {
             foreach ($arpSource as $arpEntry) {
                 if ($attribute->getAttributeDefinition()->getUrnMace() == $arpEntry->getAttributeDefinition()->getUrnMace()) {

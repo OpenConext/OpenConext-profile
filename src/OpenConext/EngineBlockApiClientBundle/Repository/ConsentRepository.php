@@ -30,12 +30,15 @@ use Psr\Log\LoggerInterface;
 
 final readonly class ConsentRepository implements ConsentRepositoryInterface
 {
-    public function __construct(private JsonApiClient $apiClient, private LoggerInterface $logger)
-    {
+    public function __construct(
+        private JsonApiClient $apiClient,
+        private LoggerInterface $logger,
+    ) {
     }
 
-    public function findAllFor(string $userId): ConsentList
-    {
+    public function findAllFor(
+        string $userId,
+    ): ConsentList {
         Assert::notEmpty($userId, 'User ID "%s" is empty, but non empty value was expected.');
 
         $consentListJson = $this->apiClient->read('consent/%s', [$userId]);
@@ -43,8 +46,10 @@ final readonly class ConsentRepository implements ConsentRepositoryInterface
         return ConsentListFactory::createListFromMetadata($consentListJson);
     }
 
-    public function deleteServiceWith(string $collabPersonId, string $entityId): bool
-    {
+    public function deleteServiceWith(
+        string $collabPersonId,
+        string $entityId,
+    ): bool {
         try {
             $this->logger->notice('Calling EngineBlock API remove-consent endpoint');
             $this->apiClient->post(
