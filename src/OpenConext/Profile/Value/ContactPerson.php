@@ -31,26 +31,17 @@ final readonly class ContactPerson implements Stringable
     ) {
     }
 
-    /**
-     * @return bool
-     */
     public function hasContactTypeOf(
         ContactType $otherContactType,
     ): bool {
         return $this->contactType->equals($otherContactType);
     }
 
-    /**
-     * @return bool
-     */
     public function hasEmailAddress(): bool
     {
         return $this->emailAddress !== null;
     }
 
-    /**
-     * @return null|ContactEmailAddress
-     */
     public function getEmailAddress(): ?ContactEmailAddress
     {
         return $this->emailAddress;

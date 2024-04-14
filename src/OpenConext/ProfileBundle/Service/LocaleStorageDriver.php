@@ -30,9 +30,6 @@ class LocaleStorageDriver
     ) {
     }
 
-    /**
-     * @return Locale|null
-     */
     public function find(): ?Locale
     {
         $localeValue = $this->singleCookieStorage->getValue();

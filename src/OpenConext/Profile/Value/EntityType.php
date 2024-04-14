@@ -84,9 +84,6 @@ final class EntityType implements Stringable
         return $this->type === self::TYPE_IDP;
     }
     // @codingStandardsIgnoreEnd
-    /**
-     * @return bool
-     */
     public function equals(
         EntityType $other,
     ): bool {

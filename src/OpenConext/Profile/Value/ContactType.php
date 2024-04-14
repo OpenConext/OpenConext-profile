@@ -49,9 +49,6 @@ final class ContactType implements Stringable
         $this->contactType = $contactType;
     }
 
-    /**
-     * @return bool
-     */
     public function equals(
         ContactType $other,
     ): bool {

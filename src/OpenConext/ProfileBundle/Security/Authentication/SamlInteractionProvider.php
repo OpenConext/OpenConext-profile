@@ -41,17 +41,11 @@ class SamlInteractionProvider
     ) {
     }
 
-    /**
-     * @return bool
-     */
     public function isSamlAuthenticationInitiated(): bool
     {
         return $this->stateHandler->hasRequestId();
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function initiateSamlRequest(): RedirectResponse
     {
         $authnRequest = AuthnRequestFactory::createNewRequest(
@@ -64,9 +58,6 @@ class SamlInteractionProvider
         return $this->redirectBinding->createResponseFor($authnRequest);
     }
 
-    /**
-     * @return Assertion
-     */
     public function processSamlResponse(
         Request $request,
     ): Assertion {

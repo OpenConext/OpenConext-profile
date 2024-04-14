@@ -51,9 +51,6 @@ final class LocaleSet implements IteratorAggregate, Countable
     {
     }
 
-    /**
-     * @return bool
-     */
     public function contains(
         Locale $otherLocale,
     ): bool {

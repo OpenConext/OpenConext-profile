@@ -64,34 +64,22 @@ final class ConsentType implements Stringable
         $this->consentType = $consentType;
     }
 
-    /**
-     * @return bool
-     */
     public function equals(
         ConsentType $other,
     ): bool {
         return $this->consentType === $other->consentType;
     }
 
-    /**
-     * @return bool
-     */
     public function isExplicit(): bool
     {
         return $this->consentType === self::TYPE_EXPLICIT;
     }
 
-    /**
-     * @return bool
-     */
     public function isImplicit(): bool
     {
         return $this->consentType === self::TYPE_IMPLICIT;
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->consentType;

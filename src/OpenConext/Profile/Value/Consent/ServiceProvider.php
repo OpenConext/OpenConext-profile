@@ -42,17 +42,11 @@ class ServiceProvider
     ) {
     }
 
-    /**
-     * @return Entity
-     */
     public function getEntity(): Entity
     {
         return $this->entity;
     }
 
-    /**
-     * @return DisplayName
-     */
     public function getDisplayName(): DisplayName
     {
         return $this->displayName;
@@ -67,9 +61,6 @@ class ServiceProvider
         return $this->organizationDisplayName->getTranslation($locale);
     }
 
-    /**
-     * @return NameIdFormat
-     */
     public function getNameIdFormat(): NameIdFormat
     {
         return $this->nameIdFormat;
@@ -91,17 +82,11 @@ class ServiceProvider
         return $this->entity->getEntityId()->getEntityId();
     }
 
-    /**
-     * @return bool
-     */
     public function hasEulaUrl(): bool
     {
         return $this->eulaUrl !== null;
     }
 
-    /**
-     * @return Url
-     */
     public function getEulaUrl(): ?Url
     {
         if (!$this->hasEulaUrl()) {
@@ -111,17 +96,11 @@ class ServiceProvider
         return $this->eulaUrl;
     }
 
-    /**
-     * @return bool
-     */
     public function hasSupportEmail(): bool
     {
         return $this->supportEmail !== null;
     }
 
-    /**
-     * @return string
-     */
     public function getSupportEmail(): string
     {
         if (!$this->hasSupportEmail()) {

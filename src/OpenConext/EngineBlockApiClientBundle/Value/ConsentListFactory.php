@@ -40,9 +40,6 @@ use OpenConext\Profile\Value\Url;
  */
 final class ConsentListFactory
 {
-    /**
-     * @return ConsentList
-     */
     public static function createListFromMetadata(
         mixed $data,
     ): ConsentList {
@@ -99,9 +96,6 @@ final class ConsentListFactory
         );
     }
 
-    /**
-     * @return ServiceProvider
-     */
     private static function createServiceProvider(
         mixed $data,
     ): ServiceProvider {

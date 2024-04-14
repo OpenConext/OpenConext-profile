@@ -42,17 +42,11 @@ class SpecifiedConsent
     ) {
     }
 
-    /**
-     * @return Consent
-     */
     public function getConsent(): Consent
     {
         return $this->consent;
     }
 
-    /**
-     * @return AttributeSet
-     */
     public function getReleasedAttributes(): AttributeSet
     {
         return $this->releasedAttributes;
@@ -99,9 +93,6 @@ class SpecifiedConsent
         return $this->arp->getNonIdpAttributes();
     }
 
-    /**
-     * @return bool
-     */
     public function hasMotivations(): bool
     {
         return $this->arp->hasMotivations();

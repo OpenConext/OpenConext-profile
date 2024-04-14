@@ -156,9 +156,6 @@ final class Arp
         return $this->arp;
     }
 
-    /**
-     * @return bool
-     */
     public function hasMotivations(): bool
     {
         foreach ($this->arp as $arpSource) {

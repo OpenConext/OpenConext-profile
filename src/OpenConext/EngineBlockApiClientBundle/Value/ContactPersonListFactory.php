@@ -28,9 +28,6 @@ use OpenConext\Profile\Value\ContactType;
 
 final class ContactPersonListFactory
 {
-    /**
-     * @return ContactPersonList
-     */
     public static function createListFromMetadata(
         mixed $data,
     ): ContactPersonList {

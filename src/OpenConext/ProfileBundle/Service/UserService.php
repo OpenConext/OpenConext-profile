@@ -92,9 +92,6 @@ final class UserService
         );
     }
 
-    /**
-     * @return bool
-     */
     public function userLifecycleApiIsEnabled(): bool
     {
         return $this->userLifecycleApiClient !== null;

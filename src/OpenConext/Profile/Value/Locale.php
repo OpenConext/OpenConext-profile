@@ -39,9 +39,6 @@ final class Locale implements Stringable
         $this->locale = $locale;
     }
 
-    /**
-     * @return bool
-     */
     public function equals(
         Locale $other,
     ): bool {
@@ -56,9 +53,6 @@ final class Locale implements Stringable
         return $this->locale;
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->locale;

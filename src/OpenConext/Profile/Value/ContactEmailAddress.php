@@ -38,9 +38,6 @@ final class ContactEmailAddress implements Stringable
         $this->emailAddress = $emailAddress;
     }
 
-    /**
-     * @return bool
-     */
     public function equals(
         ContactEmailAddress $other,
     ): bool {

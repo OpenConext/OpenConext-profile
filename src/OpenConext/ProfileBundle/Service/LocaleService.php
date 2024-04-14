@@ -34,9 +34,6 @@ final readonly class LocaleService
     ) {
     }
 
-    /**
-     * @return bool
-     */
     public function isAvailableLocale(
         Locale $locale,
     ): bool {
@@ -63,9 +60,6 @@ final readonly class LocaleService
         $this->localeRepository->save($user->getLocale());
     }
 
-    /**
-     * @return LocaleSet
-     */
     public function getAvailableLocales(): LocaleSet
     {
         return $this->availableLocales;

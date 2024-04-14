@@ -38,9 +38,6 @@ final class AttributeAggregationService
     ) {
     }
 
-    /**
-     * @return null|AttributeAggregationAttributesList
-     */
     public function findByUser(
         UserInterface $user,
     ): ?AttributeAggregationAttributesList {

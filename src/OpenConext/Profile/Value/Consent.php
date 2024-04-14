@@ -33,25 +33,16 @@ final readonly class Consent
     ) {
     }
 
-    /**
-     * @return ServiceProvider
-     */
     public function getServiceProvider(): ServiceProvider
     {
         return $this->serviceProvider;
     }
 
-    /**
-     * @return DateTimeImmutable
-     */
     public function getConsentGivenOn(): DateTimeImmutable
     {
         return $this->consentGivenOn;
     }
 
-    /**
-     * @return ConsentType
-     */
     public function getConsentType(): ConsentType
     {
         return $this->consentType;

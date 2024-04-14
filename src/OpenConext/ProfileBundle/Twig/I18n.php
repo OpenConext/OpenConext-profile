@@ -41,9 +41,6 @@ class I18n extends AbstractExtension
         return [new TwigFilter('trans', $this->translateSingular(...)), new TwigFilter('transchoice', $this->translatePlural(...))];
     }
 
-    /**
-     * @return string
-     */
     public function translateSingular(): string
     {
         $args = func_get_args();
@@ -53,9 +50,6 @@ class I18n extends AbstractExtension
         );
     }
 
-    /**
-     * @return string
-     */
     public function translatePlural(): string
     {
         $args = func_get_args();
@@ -65,9 +59,6 @@ class I18n extends AbstractExtension
         );
     }
 
-    /**
-     * @return array
-     */
     private function prepareDefaultPlaceholders(
         array $args,
     ): array {

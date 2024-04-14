@@ -49,25 +49,16 @@ final readonly class Entity implements Stringable
     ) {
     }
 
-    /**
-     * @return EntityId
-     */
     public function getEntityId(): EntityId
     {
         return $this->entityId;
     }
 
-    /**
-     * @return EntityType
-     */
     public function getEntityType(): EntityType
     {
         return $this->entityType;
     }
 
-    /**
-     * @return bool
-     */
     public function equals(
         Entity $other,
     ): bool {

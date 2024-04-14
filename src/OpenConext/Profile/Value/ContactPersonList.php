@@ -48,9 +48,6 @@ final class ContactPersonList implements IteratorAggregate, Countable, Stringabl
         $this->contactPersons[] = $contactPerson;
     }
 
-    /**
-     * @return ContactPersonList
-     */
     public function filter(
         callable $predicate,
     ): ContactPersonList {
