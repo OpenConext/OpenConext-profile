@@ -65,7 +65,6 @@ foreach ($regex as $file) {
         subject: $originalContent
     );
 
-
     if ($originalContent === $newContent) {
         echo "No changes needed for file $filePath" . PHP_EOL;
         continue;
