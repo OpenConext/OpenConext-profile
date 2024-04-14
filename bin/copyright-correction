@@ -23,9 +23,11 @@ $dir = new RecursiveDirectoryIterator(directory: 'src/');
 $iterator = new RecursiveIteratorIterator(iterator: $dir);
 $regex = new RegexIterator(iterator: $iterator, pattern:'/^.+\.php$/i', mode: RegexIterator::GET_MATCH);
 
+$fileCounter = 0;
 $counter = 0;
 
 foreach ($regex as $file) {
+    $fileCounter++;
     $filePath = $file[0];
 
     $year = shell_exec(
@@ -75,3 +77,4 @@ foreach ($regex as $file) {
 }
 
 echo "Number of files changed: $counter" . PHP_EOL;
+echo "Number of files evaluated: $fileCounter" . PHP_EOL;
