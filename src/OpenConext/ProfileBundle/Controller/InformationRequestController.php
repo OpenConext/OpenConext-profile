@@ -30,12 +30,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
 class InformationRequestController extends AbstractController
 {
     public function __construct(
-        private readonly Environment $twig,
         private readonly FormFactoryInterface $formFactory,
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly UserService $userService,
@@ -60,14 +58,12 @@ class InformationRequestController extends AbstractController
 
         $attributes = $this->attributeFilter->filter($this->userService->getUser()->getAttributes());
 
-        return new Response(
-            $this->twig->render(
-                '@OpenConextProfile/InformationRequest/overview.html.twig',
-                [
+        return $this->render(
+            '@OpenConextProfile/InformationRequest/overview.html.twig',
+            [
                     'attributes' => $attributes,
                     'informationRequestMailForm' => $informationRequestMailForm->createView()
                 ],
-            ),
         );
     }
 
@@ -92,8 +88,6 @@ class InformationRequestController extends AbstractController
     )]
     public function confirmMailSent(): Response
     {
-        return new Response(
-            $this->twig->render('@OpenConextProfile/InformationRequest/confirmation.html.twig'),
-        );
+        return $this->render('@OpenConextProfile/InformationRequest/confirmation.html.twig');
     }
 }

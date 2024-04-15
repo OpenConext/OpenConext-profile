@@ -27,14 +27,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Twig\Environment;
 
 class MySurfConextController extends AbstractController
 {
 
     public function __construct(
         private readonly UserService $userService,
-        private readonly Environment $twig,
         private readonly LoggerInterface $logger,
     ) {
     }
@@ -51,13 +49,13 @@ class MySurfConextController extends AbstractController
 
         $user = $this->userService->getUser();
 
-        return new Response($this->twig->render(
+        return $this->render(
             '@OpenConextProfile/MySurfConext/overview.html.twig',
             [
                 'user' => $user,
                 'userLifecycleIsEnabled' => $this->userService->userLifecycleApiIsEnabled(),
             ],
-        ));
+        );
     }
 
     #[Route(

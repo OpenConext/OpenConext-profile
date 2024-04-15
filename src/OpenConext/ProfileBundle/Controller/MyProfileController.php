@@ -25,14 +25,12 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Twig\Environment;
 
 class MyProfileController extends AbstractController
 {
 
     public function __construct(
         private readonly UserService $userService,
-        private readonly Environment $twig,
         private readonly LoggerInterface $logger,
     ) {
     }
@@ -49,9 +47,9 @@ class MyProfileController extends AbstractController
 
         $user = $this->userService->getUser();
 
-        return new Response($this->twig->render(
+        return $this->render(
             '@OpenConextProfile/MyProfile/overview.html.twig',
             ['user' => $user],
-        ));
+        );
     }
 }

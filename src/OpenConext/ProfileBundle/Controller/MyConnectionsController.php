@@ -32,7 +32,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -40,7 +39,6 @@ use Twig\Environment;
 class MyConnectionsController extends AbstractController
 {
     public function __construct(
-        private readonly Environment $twig,
         private readonly LoggerInterface $logger,
         private readonly AttributeAggregationService $service,
         private readonly AuthenticatedUserProviderInterface $userProvider,
@@ -82,7 +80,7 @@ class MyConnectionsController extends AbstractController
             return new RedirectResponse($this->urlGenerator->generate('profile.my_connections_overview'));
         }
 
-        return new Response($this->twig->render(
+        return $this->render(
             '@OpenConextProfile/MyConnections/overview.html.twig',
             [
                 'activeConnections' => $activeConnections,
@@ -90,6 +88,6 @@ class MyConnectionsController extends AbstractController
                 'mailTo' => $this->mailTo->getEmailAddress(),
                 'confirmForm' => $confirmationForm->createView(),
             ],
-        ));
+        );
     }
 }

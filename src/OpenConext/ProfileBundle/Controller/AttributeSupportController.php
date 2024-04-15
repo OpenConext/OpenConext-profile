@@ -29,12 +29,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
 class AttributeSupportController extends AbstractController
 {
     public function __construct(
-        private readonly Environment                 $twig,
         private readonly FormFactoryInterface        $formFactory,
         private readonly UrlGeneratorInterface       $urlGenerator,
         private readonly UserService                 $userService,
@@ -56,15 +54,14 @@ class AttributeSupportController extends AbstractController
             ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')],
         );
 
-        return new Response(
-            $this->twig->render(
+        return
+            $this->render(
                 '@OpenConextProfile/AttributeSupport/overview.html.twig',
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
                     'attributeSupportMailForm' => $attributeSupportMailForm->createView()
                 ],
-            ),
-        );
+            );
     }
 
     #[Route(
@@ -88,8 +85,6 @@ class AttributeSupportController extends AbstractController
     )]
     public function confirmMailSent(): Response
     {
-        return new Response(
-            $this->twig->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig'),
-        );
+        return $this->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig');
     }
 }

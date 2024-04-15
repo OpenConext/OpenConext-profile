@@ -31,13 +31,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
 class MyServicesController extends AbstractController
 {
-
     public function __construct(
-        private readonly Environment                        $twig,
         private readonly AuthenticatedUserProviderInterface $authenticatedUserProvider,
         private readonly SpecifiedConsentListService        $specifiedConsentListService,
         private readonly UrlGeneratorInterface              $urlGenerator,
@@ -67,7 +64,7 @@ class MyServicesController extends AbstractController
 
         $organization = $this->institutionRepository->getOrganizationAndLogoForIdp($user);
 
-        return new Response($this->twig->render(
+        return $this->render(
             '@OpenConextProfile/MyServices/overview.html.twig',
             [
                 'specifiedConsentList' => $specifiedConsentList,
@@ -75,7 +72,7 @@ class MyServicesController extends AbstractController
                 'displayName' => $organization->getDisplayName($locale),
                 'logo' => $organization->getLogo(),
             ],
-        ));
+        );
     }
 
     #[Route(

@@ -27,14 +27,12 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Twig\Environment;
 
 class IntroductionController extends AbstractController
 {
 
     public function __construct(
         private readonly UserService     $userService,
-        private readonly Environment     $twig,
         private readonly LoggerInterface $logger,
     ) {
     }
@@ -63,8 +61,9 @@ class IntroductionController extends AbstractController
             $this->logger->info("Unable to retrieve the givenName attribute. It is not present in the attribute set");
             $userName = false;
         }
-        return new Response($this->twig->render('@OpenConextProfile/Introduction/overview.html.twig', [
-            'userName' => $userName,
-        ]));
+        return $this->render(
+            '@OpenConextProfile/Introduction/overview.html.twig',
+            ['userName' => $userName],
+        );
     }
 }
