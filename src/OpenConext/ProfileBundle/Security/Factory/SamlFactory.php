@@ -21,7 +21,6 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Security\Factory;
 
 use OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider;
-use OpenConext\ProfileBundle\Security\Firewall\SamlListener;
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\AuthenticatorFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
@@ -41,13 +40,8 @@ class SamlFactory implements AuthenticatorFactoryInterface
             $providerId,
             new ChildDefinition(SamlProvider::class),
         );
-        $listenerId = 'security.authentication.listener.saml.' . $id;
-        $container->setDefinition(
-            $listenerId,
-            new ChildDefinition(SamlListener::class),
-        );
 
-        return [$providerId, $listenerId, $defaultEntryPoint];
+        return [$providerId, $defaultEntryPoint];
     }
 
     public function getPosition(): string

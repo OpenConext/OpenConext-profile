@@ -61,7 +61,6 @@ class SamlInteractionProvider
     public function processSamlResponse(
         Request $request,
     ): Assertion {
-        /** @var Assertion $assertion */
         $assertion = $this->postBinding->processResponse(
             $request,
             $this->identityProvider,
