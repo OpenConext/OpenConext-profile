@@ -28,7 +28,7 @@ final readonly class AttributeAggregationAttribute
         private int    $id,
         private string $userId,
         private string $accountType,
-        private string $linkedId,
+        private ?string $linkedId,
         private string $logoPath,
         private string $connectUrl,
         private bool   $isConnected,
