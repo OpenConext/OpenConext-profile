@@ -25,18 +25,10 @@ use Stringable;
 
 final class Locale implements Stringable
 {
-    private readonly string $locale;
-
-    /**
-     * @param string $locale
-     */
     public function __construct(
-        $locale,
+        private readonly string $locale,
     ) {
-        Assert::string($locale);
         Assert::notEmpty($locale);
-
-        $this->locale = $locale;
     }
 
     public function equals(
@@ -45,10 +37,7 @@ final class Locale implements Stringable
         return $this->locale === $other->locale;
     }
 
-    /**
-     * @return string
-     */
-    public function getLocale()
+    public function getLocale(): string
     {
         return $this->locale;
     }

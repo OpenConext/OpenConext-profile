@@ -40,10 +40,7 @@ final readonly class LocaleService
         return $this->availableLocales->contains($locale);
     }
 
-    /**
-     * @return Locale
-     */
-    public function getLocale()
+    public function getLocale(): Locale
     {
         $locale = $this->localeRepository->findLocale();
 
