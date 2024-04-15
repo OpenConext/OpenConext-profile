@@ -5,7 +5,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "OpenConext\\": "src/OpenConext"
         },
         "classmap": [
             "src/Kernel.php"
@@ -15,7 +15,6 @@
         "php": "^8.2",
         "ext-json": "*",
         "beberlei/assert": "^3.0",
-        "doctrine/annotations": "^2.0",
         "guzzlehttp/guzzle": "^7.0",
         "incenteev/composer-parameter-handler": "^2.2",
         "jms/translation-bundle": "^2.0",
@@ -36,7 +35,7 @@
         "symfony/webpack-encore-bundle": "^2.0",
         "twig/extra-bundle": "^3.8",
         "twig/intl-extra": "^3.8",
-        "twig/twig": "^2 || ^3"
+        "twig/twig": "^3"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^1.0",
