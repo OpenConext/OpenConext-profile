@@ -35,7 +35,7 @@ parameters:
   user_lifecycle_api_password: secret
   user_lifecycle_api_verify_ssl: true
 
-  attribute_aggregation_api_base_url: "https://aa.dev.openconext.local/aa/api/internal/"
+  attribute_aggregation_api_base_url: "https://aa.dev.openconext.local/internal/"
   attribute_aggregation_api_username: eb
   attribute_aggregation_api_password: secret
   attribute_aggregation_api_verify_ssl: true
