@@ -1,127 +1,143 @@
 {
-    "name": "openconext/openconext-profile",
-    "license": "Apache-2.0",
-    "description": "OpenConext Profile",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "OpenConext\\": "src/OpenConext"
-        }
-    },
-    "require": {
-        "php": "^8.2",
-        "ext-json": "*",
-        "beberlei/assert": "^3.0",
-        "guzzlehttp/guzzle": "^7.0",
-        "incenteev/composer-parameter-handler": "^2.2",
-        "jms/translation-bundle": "^2.0",
-        "nelmio/security-bundle": "^2.10",
-        "openconext/monitor-bundle": "^4.0",
-        "surfnet/stepup-saml-bundle": "^6.0.18",
-        "symfony/expression-language": "6.4.*",
-        "symfony/flex": "^2",
-        "symfony/form": "6.4.*",
-        "symfony/mailer": "6.4.*",
-        "symfony/monolog-bundle": "^3.7",
-        "symfony/runtime": "6.4.*",
-        "symfony/security-bundle": "6.4.*",
-        "symfony/translation": "6.4.*",
-        "symfony/twig-bridge": "6.4.*",
-        "symfony/twig-bundle": "6.4.*",
-        "symfony/web-profiler-bundle": "6.4.*",
-        "symfony/webpack-encore-bundle": "^2.0",
-        "twig/extra-bundle": "^3.8",
-        "twig/intl-extra": "^3.8",
-        "twig/twig": "^3"
-    },
-    "require-dev": {
-        "jakub-onderka/php-parallel-lint": "^1.0",
-        "malukenho/docheader": "^1.0",
-        "matthiasnoback/symfony-config-test": "^5.0",
-        "mockery/mockery": "^1.0.0",
-        "overtrue/phplint": "^9.1.2",
-        "phpdocumentor/reflection-docblock": "^5.2",
-        "phpmd/phpmd": "^2.8",
-        "phpstan/phpstan": "^1.10",
-        "phpstan/phpstan-deprecation-rules": "^1.1",
-        "phpstan/phpstan-symfony": "^1.3",
-        "phpunit/phpunit": "^9.5",
-        "rector/rector": "^1.0",
-        "sebastian/phpcpd": "^6.0.3",
-        "slevomat/coding-standard": "^8.15",
-        "squizlabs/php_codesniffer": "^3.1",
-        "symfony/debug-bundle": "6.4.*",
-        "symfony/phpunit-bridge": "^7.0",
-        "symfony/var-dumper": "6.4.*"
-    },
-    "conflict": {
-         "symfony/symfony": "*"
-    },
-    "scripts": {
-        "check": [
-            "@composer-validate",
-            "@phplint",
-            "@phpmd",
-            "@phpcs",
-            "@license-headers",
-            "@test",
-            "@phpstan"
-        ],
-        "composer-validate": "./ci/qa/validate",
-        "phplint": "./ci/qa/phplint",
-        "license-headers": "./ci/qa/docheader",
-        "phpmd": "./ci/qa/phpmd",
-        "phpcs": "./ci/qa/phpcs",
-        "phpstan": "./ci/qa/phpstan",
-        "phpstan-baseline": "./ci/qa/phpstan-update-baseline",
-        "phpcbf": "./ci/qa/phpcbf",
-        "test":  "./ci/qa/phpunit",
-        "frontend-install": [
-            "yarn install --frozen-lockfile",
-            "yarn encore production"
-        ],
-        "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-        ],
-        "post-install-cmd": [
-            "@symfony-scripts"
-        ],
-        "post-update-cmd": [
-            "@symfony-scripts"
-        ],
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "8.2.17"
-        },
-        "sort-packages": true,
-        "allow-plugins": {
-            "symfony/flex": true,
-            "symfony/runtime": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "extra": {
-        "runtime": {
-            "disable_dotenv": true
-        },
-        "symfony": {
-            "allow-contrib": false,
-            "require": "6.4.*"
-        },
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": [
-            {
-                "file": "config/openconext/parameters.yaml"
-            },
-            {
-                "file": "config/openconext/global_view_parameters.yaml"
-            }
-        ]
+  "name": "openconext/openconext-profile",
+  "license": "Apache-2.0",
+  "description": "OpenConext Profile",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "OpenConext\\": "src/OpenConext"
     }
+  },
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*",
+    "beberlei/assert": "^3.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "incenteev/composer-parameter-handler": "^2.2",
+    "jms/translation-bundle": "^2.0",
+    "nelmio/security-bundle": "^2.10",
+    "openconext/monitor-bundle": "^4.0",
+    "surfnet/stepup-saml-bundle": "^6.0.18",
+    "symfony/expression-language": "6.4.*",
+    "symfony/flex": "^2",
+    "symfony/form": "6.4.*",
+    "symfony/mailer": "6.4.*",
+    "symfony/monolog-bundle": "^3.7",
+    "symfony/runtime": "6.4.*",
+    "symfony/security-bundle": "6.4.*",
+    "symfony/translation": "6.4.*",
+    "symfony/twig-bridge": "6.4.*",
+    "symfony/twig-bundle": "6.4.*",
+    "symfony/web-profiler-bundle": "6.4.*",
+    "symfony/webpack-encore-bundle": "^2.0",
+    "twig/extra-bundle": "^3.8",
+    "twig/intl-extra": "^3.8",
+    "twig/twig": "^3"
+  },
+  "require-dev": {
+    "jakub-onderka/php-parallel-lint": "^1.0",
+    "malukenho/docheader": "^1.0",
+    "matthiasnoback/symfony-config-test": "^5.0",
+    "mockery/mockery": "^1.0.0",
+    "overtrue/phplint": "^9.1.2",
+    "phpdocumentor/reflection-docblock": "^5.2",
+    "phpmd/phpmd": "^2.8",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-deprecation-rules": "^1.1",
+    "phpstan/phpstan-symfony": "^1.3",
+    "phpunit/phpunit": "^9.5",
+    "rector/rector": "^1.0",
+    "sebastian/phpcpd": "^6.0.3",
+    "slevomat/coding-standard": "^8.15",
+    "squizlabs/php_codesniffer": "^3.1",
+    "symfony/debug-bundle": "6.4.*",
+    "symfony/phpunit-bridge": "^7.0",
+    "symfony/var-dumper": "6.4.*"
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "scripts": {
+    "check": [
+      "@composer-validate",
+      "@phplint",
+      "@phpmd",
+      "@phpcs",
+      "@license-headers",
+      "@test",
+      "@phpstan"
+    ],
+    "composer-validate": "./ci/qa/validate",
+    "phplint": "./ci/qa/phplint",
+    "license-headers": "./ci/qa/docheader",
+    "phpmd": "./ci/qa/phpmd",
+    "phpcs": "./ci/qa/phpcs",
+    "phpstan": "./ci/qa/phpstan",
+    "phpstan-baseline": "./ci/qa/phpstan-update-baseline",
+    "phpcbf": "./ci/qa/phpcbf",
+    "test": "./ci/qa/phpunit",
+    "frontend-install": [
+      "yarn install --frozen-lockfile",
+      "yarn encore production"
+    ],
+    "symfony-scripts": [
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+    ],
+    "post-install-cmd": [
+      "@symfony-scripts"
+    ],
+    "post-update-cmd": [
+      "@symfony-scripts"
+    ],
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.2.17"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/flex": true,
+      "symfony/runtime": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "archive": {
+    "exclude": [
+      "*",
+      ".*",
+      "*/Tests/*",
+      "!/bin",
+      "!/component_info",
+      "!/config",
+      "!/public",
+      "!/src",
+      "!/templates",
+      "!/translations",
+      "!/var/cache/prod",
+      "!/vendor"
+    ]
+  },
+  "extra": {
+    "runtime": {
+      "disable_dotenv": true
+    },
+    "symfony": {
+      "allow-contrib": false,
+      "require": "6.4.*"
+    },
+    "symfony-assets-install": "relative",
+    "incenteev-parameters": [
+      {
+        "file": "config/openconext/parameters.yaml"
+      },
+      {
+        "file": "config/openconext/global_view_parameters.yaml"
+      }
+    ]
+  }
 }
