@@ -34,7 +34,7 @@ use Twig\Environment;
 class AttributeSupportController extends AbstractController
 {
     public function __construct(
-        private readonly Environment                 $templateEngine,
+        private readonly Environment                 $twig,
         private readonly FormFactoryInterface        $formFactory,
         private readonly UrlGeneratorInterface       $urlGenerator,
         private readonly UserService                 $userService,
@@ -57,7 +57,7 @@ class AttributeSupportController extends AbstractController
         );
 
         return new Response(
-            $this->templateEngine->render(
+            $this->twig->render(
                 '@OpenConextProfile/AttributeSupport/overview.html.twig',
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
@@ -89,7 +89,7 @@ class AttributeSupportController extends AbstractController
     public function confirmMailSent(): Response
     {
         return new Response(
-            $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig'),
+            $this->twig->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig'),
         );
     }
 }

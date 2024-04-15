@@ -34,7 +34,7 @@ class MySurfConextController extends AbstractController
 
     public function __construct(
         private readonly UserService $userService,
-        private readonly Environment $templateEngine,
+        private readonly Environment $twig,
         private readonly LoggerInterface $logger,
     ) {
     }
@@ -51,7 +51,7 @@ class MySurfConextController extends AbstractController
 
         $user = $this->userService->getUser();
 
-        return new Response($this->templateEngine->render(
+        return new Response($this->twig->render(
             '@OpenConextProfile/MySurfConext/overview.html.twig',
             [
                 'user' => $user,

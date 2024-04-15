@@ -37,7 +37,7 @@ class MyServicesController extends AbstractController
 {
 
     public function __construct(
-        private readonly Environment                        $templateEngine,
+        private readonly Environment                        $twig,
         private readonly AuthenticatedUserProviderInterface $authenticatedUserProvider,
         private readonly SpecifiedConsentListService        $specifiedConsentListService,
         private readonly UrlGeneratorInterface              $urlGenerator,
@@ -67,7 +67,7 @@ class MyServicesController extends AbstractController
 
         $organization = $this->institutionRepository->getOrganizationAndLogoForIdp($user);
 
-        return new Response($this->templateEngine->render(
+        return new Response($this->twig->render(
             '@OpenConextProfile/MyServices/overview.html.twig',
             [
                 'specifiedConsentList' => $specifiedConsentList,

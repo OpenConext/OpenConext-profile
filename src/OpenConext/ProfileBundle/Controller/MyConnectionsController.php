@@ -40,7 +40,7 @@ use Twig\Environment;
 class MyConnectionsController extends AbstractController
 {
     public function __construct(
-        private readonly Environment $templateEngine,
+        private readonly Environment $twig,
         private readonly LoggerInterface $logger,
         private readonly AttributeAggregationService $service,
         private readonly AuthenticatedUserProviderInterface $userProvider,
@@ -82,7 +82,7 @@ class MyConnectionsController extends AbstractController
             return new RedirectResponse($this->urlGenerator->generate('profile.my_connections_overview'));
         }
 
-        return new Response($this->templateEngine->render(
+        return new Response($this->twig->render(
             '@OpenConextProfile/MyConnections/overview.html.twig',
             [
                 'activeConnections' => $activeConnections,
