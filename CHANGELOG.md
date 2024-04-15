@@ -1,5 +1,17 @@
 # Next release
 
+# 4.0.0
+* Upgraded dependencies to their latest compatible version
+* Fixed all direct deprececations (SF 7.0 ready)
+* Routes are migrated to attributes
+* Using new security authentication system
+* legacy moved to openconext
+* removed .env and using all parameters
+* simplified kernel (using MicroKernelTrait)
+* Using property promotion as much as possible
+* strict typing everywhere
+* typed variables where detected by rector or manual changes if detected
+
 # 3.1.8
 
 **Fixes**
