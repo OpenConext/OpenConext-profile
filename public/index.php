@@ -1,6 +1,6 @@
 <?php
 
-use App\Kernel;
+use OpenConext\Kernel;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 require_once dirname(__DIR__).'/config/bootstrap.php';
