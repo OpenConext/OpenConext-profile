@@ -11,7 +11,7 @@ services:
     OpenConext\:
         resource: '../src/OpenConext/'
         exclude:
-            - '../src/OpenConext/Profile/'
+            - '../src/OpenConext/Profile/Value/'
             - '../src/OpenConext/ProfileBundle/'
             - '../src/OpenConext/Kernel.php'
 
