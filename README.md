@@ -35,9 +35,9 @@ The docker container comes with EB and profile already installed & configured.  
 3. Run `/start-dev-env.sh profile:<path to your local profile development directory>`
 4. Run `docker exec -it core-profile-1 bash`
 5. Run `composer install --prefer-dist`
-6. Install npm dependencies: `npm i`
-7. Run a build: `npm run build`
-8. Ensure the var folder has the correct rights: `chmod -R 777 var/`
+6. Install npm dependencies: `yarn install`
+7. Run a build: `yarn build`
+8. Ensure the var folder has the correct rights. If not, run: `chmod -R 777 var/`
 
 ## Attribute aggregation support
 Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses
