@@ -19,7 +19,7 @@ jobs:
         uses: robinraju/release-downloader@v1.9
         with:
           latest: true
-          fileName: "*.tar.gz"
+          fileName: "*.tar.bz2"
 
       - name: Get commit details for the tag from the latest release
         id: commit_details
