@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\AttributeAggregationApiClientBundle\Repository;
 
+use Exception;
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;
@@ -45,8 +46,11 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
     public function unsubscribeAccount(
         int $accountId,
     ): bool {
-        $result = $this->apiClient->delete('disconnect/%d', [$accountId]);
-
-        return isset($result->status) && $result->status === 'OK';
+        try {
+            $this->apiClient->delete('disconnect/%d', [$accountId]);
+            return true;
+        } catch (Exception) {
+            return false;
+        }
     }
 }
