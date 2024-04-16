@@ -45,7 +45,7 @@ class JsonApiClient
     ): array {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->userLifecycleApiClient->request('GET', $resource, ['exceptions' => false]);
+        $response = $this->userLifecycleApiClient->request('GET', $resource);
 
         $statusCode = $response->getStatusCode();
 
