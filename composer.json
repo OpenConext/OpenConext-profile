@@ -21,6 +21,7 @@
     "symfony/expression-language": "6.4.*",
     "symfony/flex": "^2",
     "symfony/form": "6.4.*",
+    "symfony/http-client": "6.4.*",
     "symfony/mailer": "6.4.*",
     "symfony/monolog-bundle": "^3.7",
     "symfony/runtime": "6.4.*",
