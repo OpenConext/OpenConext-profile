@@ -141,4 +141,5 @@ services:
 
     OpenConext\ProfileBundle\Service\UserService:
         calls:
-            - [ setUserLifecycleApiClient, [ '@?openconext_user_lifecycle_api.service.api' ] ]
+            - [ setUserLifecycleApiClient,
+                [ '@OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient' ] ]
