@@ -15,7 +15,6 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1",
     "encore": "encore",
     "build": "encore production",
