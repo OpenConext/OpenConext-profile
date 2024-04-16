@@ -18,14 +18,15 @@
 
 namespace OpenConext\EngineBlockApiClientBundle\Tests\Http;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Psr7\Utils;
 use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\EngineBlockApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\HttpClient\Exception\JsonException;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
 
 class JsonApiClientTest extends TestCase
 {
@@ -39,9 +40,11 @@ class JsonApiClientTest extends TestCase
 
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(Utils::streamFor('invalid json'));
+        $response->expects($this->once())
+            ->method('toArray')
+            ->willThrowException(new JsonException());
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->once())
             ->method('request')
             ->with('GET', '/resource', $this->anything())
@@ -62,10 +65,10 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(404);
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->once())
             ->method('request')
-            ->with('GET', '/resource', $this->anything())
+            ->with('GET', '/resource')
             ->willReturn($response);
 
         $service = new JsonApiClient($guzzle);
@@ -84,10 +87,10 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn($statusCode);
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->once())
             ->method('request')
-            ->with('GET', '/resource', $this->anything())
+            ->with('GET', '/resource')
             ->willReturn($response);
 
         $service = new JsonApiClient($guzzle);
@@ -105,7 +108,7 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->never())
             ->method('request')
             ->with('GET', '', $this->anything())
@@ -123,9 +126,9 @@ class JsonApiClientTest extends TestCase
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(Utils::streamFor('{}'));
+        $response->method('toArray')->willReturn([]);
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->once())
             ->method('request')
             ->with('GET', '/resource/John%2FDoe', $this->anything())
@@ -143,9 +146,9 @@ class JsonApiClientTest extends TestCase
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(Utils::streamFor('{}'));
+        $response->method('toArray')->willReturn([]);
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->once())
             ->method('request')
             ->with('GET', '/resource', $this->anything())

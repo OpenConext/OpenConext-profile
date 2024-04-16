@@ -20,17 +20,19 @@ declare(strict_types = 1);
 
 namespace OpenConext\EngineBlockApiClientBundle\Http;
 
-use GuzzleHttp\ClientInterface;
-use OpenConext\EngineBlockApiClientBundle\Exception\InvalidArgumentException;
 use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\EngineBlockApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\EngineBlockApiClientBundle\Exception\RuntimeException;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class JsonApiClient
 {
     public function __construct(
-        private readonly ClientInterface $httpClient,
+//        private ClientInterface $guzzle,
+        private readonly HttpClientInterface $engineBlockApiClient
     ) {
     }
 
@@ -42,79 +44,30 @@ class JsonApiClient
     public function read(
         string $path,
         array $parameters = [],
-    ): mixed {
+    ): array {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->httpClient->request('GET', $resource, ['exceptions' => false]);
+        $response = $this->engineBlockApiClient->request('GET', $resource);
 
-        $statusCode = $response->getStatusCode();
-
-        if ($statusCode === 404) {
-            throw new ResourceNotFoundException(sprintf('Resource "%s" not found', $resource));
-        }
-
-        if ($statusCode !== 200) {
-            throw new InvalidResponseException(
-                sprintf(
-                    'Request to resource "%s" returned an invalid response with status code %s',
-                    $resource,
-                    $statusCode,
-                ),
-            );
-        }
-
-        try {
-            $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException) {
-            throw new MalformedResponseException(
-                sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
-            );
-        }
-
-        return $data;
+        return $this->getDataFromResponse($response, $resource);
     }
 
     public function post(
         mixed $data,
         string $path,
         $parameters = [],
-    ): mixed {
+    ): array {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->httpClient->request(
+        $response = $this->engineBlockApiClient->request(
             'POST',
             $resource,
             [
-                'exceptions' => false,
                 'body' => json_encode($data)
             ],
         );
 
-        $statusCode = $response->getStatusCode();
-
-        if ($statusCode === 404) {
-            throw new ResourceNotFoundException(sprintf('Resource "%s" not found', $resource));
-        }
-
-        if ($statusCode !== 200) {
-            throw new InvalidResponseException(
-                sprintf(
-                    'Request to resource "%s" returned an invalid response with status code %s',
-                    $resource,
-                    $statusCode,
-                ),
-            );
-        }
-
-        try {
-            $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException) {
-            throw new MalformedResponseException(
-                sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
-            );
-        }
-
-        return $data;
+        return $this->getDataFromResponse($response, $resource);
     }
 
     private function buildResourcePath(
@@ -140,17 +93,30 @@ class JsonApiClient
         return $resource;
     }
 
-    /**
-     * Function to provide functionality common to Guzzle 7 Response's json method,
-     * without config options as they are not needed.
-     */
-    private function parseJson(
-        string $json,
-    ): mixed {
-        $data = json_decode($json, true);
+    private function getDataFromResponse(ResponseInterface $response, string $resource): array
+    {
+        $statusCode = $response->getStatusCode();
 
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new InvalidArgumentException('Unable to parse JSON data: ' . json_last_error_msg());
+        if ($statusCode === 404) {
+            throw new ResourceNotFoundException(sprintf('Resource "%s" not found', $resource));
+        }
+
+        if ($statusCode !== 200) {
+            throw new InvalidResponseException(
+                sprintf(
+                    'Request to resource "%s" returned an invalid response with status code %s',
+                    $resource,
+                    $statusCode,
+                ),
+            );
+        }
+
+        try {
+            $data = $response->toArray();
+        } catch (DecodingExceptionInterface) {
+            throw new MalformedResponseException(
+                sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
+            );
         }
 
         return $data;

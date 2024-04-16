@@ -1,0 +1,24 @@
+framework:
+    http_client:
+        default_options:
+            headers:
+                Accept: 'application/json'
+        scoped_clients:
+            engine_block_api_client:
+                base_uri: '%engineblock_api_base_url%'
+                auth_basic: '%engineblock_api_username%:%engineblock_api_password%'
+                verify_host: '%engineblock_api_verify_ssl%'
+                verify_peer: '%engineblock_api_verify_ssl%'
+
+            user_lifecycle_api_client:
+                base_uri: '%user_lifecycle_api_base_url%'
+                auth_basic: '%user_lifecycle_api_username%:%user_lifecycle_api_password%'
+                verify_host: '%user_lifecycle_api_verify_ssl%'
+                verify_peer: '%user_lifecycle_api_verify_ssl%'
+
+            aa_api_client:
+                base_uri: '%attribute_aggregation_api_base_url%'
+                auth_basic: '%attribute_aggregation_api_username%:%attribute_aggregation_api_password%'
+                verify_host: '%attribute_aggregation_api_verify_ssl%'
+                verify_peer: '%attribute_aggregation_api_verify_ssl%'
+
