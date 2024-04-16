@@ -44,13 +44,13 @@ class JsonApiClientTest extends TestCase
             ->method('toArray')
             ->willThrowException(new EventSourceException());
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
             ->with('GET', '/resource', $this->anything())
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource');
     }
 

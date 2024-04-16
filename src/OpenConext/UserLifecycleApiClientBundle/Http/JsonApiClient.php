@@ -20,8 +20,6 @@ declare(strict_types = 1);
 
 namespace OpenConext\UserLifecycleApiClientBundle\Http;
 
-use GuzzleHttp\ClientInterface;
-use OpenConext\UserLifecycleApiClientBundle\Exception\InvalidArgumentException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\ResourceNotFoundException;

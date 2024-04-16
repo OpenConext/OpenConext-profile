@@ -31,7 +31,6 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 class JsonApiClient
 {
     public function __construct(
-        //        private ClientInterface $guzzle,
         private readonly HttpClientInterface $engineBlockApiClient,
     ) {
     }

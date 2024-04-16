@@ -139,7 +139,7 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function pass_request_to_guzzle(): void
+    public function pass_request_to_httpclient(): void
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);

@@ -44,13 +44,13 @@ class JsonApiClientTest extends TestCase
             ->method('toArray')
             ->willThrowException(new JsonException());
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
             ->with('GET', '/resource', $this->anything())
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource');
     }
 
@@ -65,13 +65,13 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(404);
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
             ->with('GET', '/resource')
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource');
     }
 
@@ -87,13 +87,13 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn($statusCode);
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
             ->with('GET', '/resource')
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource');
     }
 
@@ -108,13 +108,13 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->never())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->never())
             ->method('request')
             ->with('GET', '', $this->anything())
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('');
     }
 
@@ -128,13 +128,13 @@ class JsonApiClientTest extends TestCase
         $response->method('getStatusCode')->willReturn(200);
         $response->method('toArray')->willReturn([]);
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
             ->with('GET', '/resource/John%2FDoe', $this->anything())
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource/%s', ['John/Doe']);
     }
     
@@ -142,19 +142,19 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function pass_request_to_guzzle(): void
+    public function pass_request_to_http_client(): void
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
         $response->method('toArray')->willReturn([]);
 
-        $guzzle = $this->createMock(HttpClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
             ->with('GET', '/resource', $this->anything())
             ->willReturn($response);
 
-        $api = new JsonApiClient($guzzle);
+        $api = new JsonApiClient($httpClient);
         $api->read("/resource");
     }
 
