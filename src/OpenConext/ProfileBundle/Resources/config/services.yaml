@@ -4,10 +4,6 @@ services:
         autoconfigure: true
         public: false
 
-    OpenConext\ProfileBundle\Controller\:
-        resource: '../../Controller'
-        tags: ['controller.service_arguments']
-
     OpenConext\ProfileBundle\Security\:
         resource: '../../Security'
 
