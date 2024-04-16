@@ -20,17 +20,17 @@ declare(strict_types = 1);
 
 namespace OpenConext\AttributeAggregationApiClientBundle\Http;
 
-use GuzzleHttp\ClientInterface;
-use OpenConext\AttributeAggregationApiClientBundle\Exception\InvalidArgumentException;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\RuntimeException;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class JsonApiClient
 {
     public function __construct(
-        private readonly ClientInterface $httpClient,
+        private readonly HttpClientInterface $aaApiClient,
     ) {
     }
 
@@ -38,15 +38,15 @@ class JsonApiClient
      * @param string $path A URL path, optionally containing printf parameters. The parameters
      *               will be URL encoded and formatted into the path string.
      *               Example: "connections/%d.json"
-     * @return mixed $data
+     * @return array $data
      * @throws InvalidResponseException
      * @throws MalformedResponseException
      * @throws ResourceNotFoundException
      */
     public function read(
         string $path,
-        array $parameters = [],
-    ): mixed {
+        array  $parameters = [],
+    ): array {
         return $this->handle('GET', $path, $parameters);
     }
 
@@ -54,26 +54,26 @@ class JsonApiClient
      * @param string $path A URL path, optionally containing printf parameters. The parameters
      *               will be URL encoded and formatted into the path string.
      *               Example: "connections/%d.json"
-     * @return mixed $data
+     * @return array $data
      * @throws InvalidResponseException
      * @throws MalformedResponseException
      * @throws ResourceNotFoundException
      */
     public function delete(
         string $path,
-        array $parameters = [],
-    ): mixed {
+        array  $parameters = [],
+    ): array {
         return $this->handle('DELETE', $path, $parameters);
     }
 
     private function handle(
         string $method,
         string $path,
-        array $parameters = [],
-    ) {
+        array  $parameters = [],
+    ): array {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->httpClient->request($method, $resource, ['exceptions' => false]);
+        $response = $this->aaApiClient->request($method, $resource);
 
         $statusCode = $response->getStatusCode();
 
@@ -92,8 +92,8 @@ class JsonApiClient
         }
 
         try {
-            $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException) {
+            $data = $response->toArray();
+        } catch (DecodingExceptionInterface) {
             throw new MalformedResponseException(
                 sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
             );
@@ -105,7 +105,7 @@ class JsonApiClient
 
     private function buildResourcePath(
         string $path,
-        array $parameters,
+        array  $parameters,
     ): string {
         if (count($parameters) > 0) {
             $resource = vsprintf($path, array_map('urlencode', $parameters));
@@ -124,21 +124,5 @@ class JsonApiClient
         }
 
         return $resource;
-    }
-
-    /**
-     * Function to provide functionality common to Guzzle 5 Response's json method,
-     * without config options as they are not needed.
-     */
-    private function parseJson(
-        string $json,
-    ): mixed {
-        $data = json_decode($json, true);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new InvalidArgumentException('Unable to parse JSON data: ' . json_last_error_msg());
-        }
-
-        return $data;
     }
 }

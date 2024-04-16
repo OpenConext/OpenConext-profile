@@ -18,13 +18,14 @@
 
 namespace OpenConext\AttributeAggregationApiClientBundle\Tests\Http;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Psr7\Utils;
+use OpenConext\AttributeAggregationApiClientBundle\Exception\RuntimeException;
+use Symfony\Component\HttpClient\Exception\EventSourceException;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 use OpenConext\AttributeAggregationApiClientBundle\Exception\ResourceNotFoundException;
 
 class JsonApiClientTest extends TestCase
@@ -39,13 +40,16 @@ class JsonApiClientTest extends TestCase
 
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(Utils::streamFor('invalid json'));
+        $response->expects($this->once())
+            ->method('toArray')
+            ->willThrowException(new EventSourceException());
 
-        $guzzle = $this->createMock(ClientInterface::class);
+        $guzzle = $this->createMock(HttpClientInterface::class);
         $guzzle->expects($this->once())
             ->method('request')
             ->with('GET', '/resource', $this->anything())
             ->willReturn($response);
+
         $service = new JsonApiClient($guzzle);
         $service->read('/resource');
     }
@@ -61,13 +65,13 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(404);
 
-        $guzzle = $this->createMock(ClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
-            ->with('GET', '/resource', $this->anything())
+            ->with('GET', '/resource')
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource');
     }
 
@@ -83,13 +87,13 @@ class JsonApiClientTest extends TestCase
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn($statusCode);
 
-        $guzzle = $this->createMock(ClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
-            ->with('GET', '/resource', $this->anything())
+            ->with('GET', '/resource')
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource');
     }
 
@@ -99,18 +103,18 @@ class JsonApiClientTest extends TestCase
      */
     public function throw_exception_when_empty_resource(): void
     {
-        $this->expectException('\RuntimeException');
+        $this->expectException(RuntimeException::class);
 
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
 
-        $guzzle = $this->createMock(ClientInterface::class);
-        $guzzle->expects($this->never())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->never())
             ->method('request')
-            ->with('GET', '', $this->anything())
+            ->with('GET', '')
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('');
     }
 
@@ -122,15 +126,15 @@ class JsonApiClientTest extends TestCase
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(Utils::streamFor('{}'));
+        $response->method('toArray')->willReturn([]);
 
-        $guzzle = $this->createMock(ClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
-            ->with('GET', '/resource/John%2FDoe', $this->anything())
+            ->with('GET', '/resource/John%2FDoe')
             ->willReturn($response);
 
-        $service = new JsonApiClient($guzzle);
+        $service = new JsonApiClient($httpClient);
         $service->read('/resource/%s', ['John/Doe']);
     }
 
@@ -138,19 +142,19 @@ class JsonApiClientTest extends TestCase
      * @test
      * @group eb_api_service
      */
-    public function pass_request_to_guzzle(): void
+    public function pass_request_to_httpClient(): void
     {
         $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(Utils::streamFor('{}'));
+        $response->method('toArray')->willReturn([]);
 
-        $guzzle = $this->createMock(ClientInterface::class);
-        $guzzle->expects($this->once())
+        $httpClient = $this->createMock(HttpClientInterface::class);
+        $httpClient->expects($this->once())
             ->method('request')
-            ->with('GET', '/resource', $this->anything())
+            ->with('GET', '/resource')
             ->willReturn($response);
 
-        $api = new JsonApiClient($guzzle);
+        $api = new JsonApiClient($httpClient);
         $api->read("/resource");
     }
 

@@ -31,24 +31,5 @@ class OpenConextAttributeAggregationApiClientExtension extends Extension
         array $configs,
         ContainerBuilder $container,
     ): void {
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
-
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yaml');
-
-        $container->getDefinition('openconext_aa_api.guzzle')
-            ->replaceArgument(0, [
-                'base_uri' => $config['http_client']['base_url'],
-                'verify' => $config['http_client']['verify_ssl'],
-                'auth' => [
-                    $config['http_client']['username'],
-                    $config['http_client']['password'],
-                    'basic'
-                ],
-                'headers' => [
-                    'Accept' => 'application/json'
-                ]
-            ]);
     }
 }

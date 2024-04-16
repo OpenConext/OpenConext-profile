@@ -1,9 +1,0 @@
-services:
-    openconext_aa_api.guzzle:
-        class: GuzzleHttp\Client
-        arguments:
-            - [] # Client options
-
-    OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient:
-        arguments:
-            - '@openconext_aa_api.guzzle'

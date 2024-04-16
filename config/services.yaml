@@ -55,3 +55,6 @@ services:
 
     OpenConext\EngineBlockApiClientBundle\:
         resource: '../src/OpenConext/EngineBlockApiClientBundle'
+
+    OpenConext\AttributeAggregationApiClientBundle\:
+        resource: '../src/OpenConext/AttributeAggregationApiClientBundle'
