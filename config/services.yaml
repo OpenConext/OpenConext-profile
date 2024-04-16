@@ -8,6 +8,13 @@ services:
         autoconfigure: true
         public: false
 
+    OpenConext\:
+        resource: '../src/OpenConext/'
+        exclude:
+            - '../src/OpenConext/Profile/'
+            - '../src/OpenConext/ProfileBundle/'
+            - '../src/OpenConext/Kernel.php'
+
     OpenConext\ProfileBundle\Controller\:
         resource: '../src/OpenConext/ProfileBundle/Controller/'
         tags: [ 'controller.service_arguments' ]
@@ -53,11 +60,3 @@ services:
     OpenConext\ProfileBundle\Twig\I18n:
         tags: ['twig.extension']
 
-    OpenConext\EngineBlockApiClientBundle\:
-        resource: '../src/OpenConext/EngineBlockApiClientBundle'
-
-    OpenConext\AttributeAggregationApiClientBundle\:
-        resource: '../src/OpenConext/AttributeAggregationApiClientBundle'
-
-    OpenConext\UserLifecycleApiClientBundle\:
-        resource: '../src/OpenConext/UserLifecycleApiClientBundle'
