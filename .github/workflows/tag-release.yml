@@ -10,14 +10,22 @@ jobs:
     if: always()
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
       - name: Output the semver tag to the tag variable
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      - name: Pull OpenConext build container
-        run: docker-compose -f ./docker-compose-tag-release.yml up -d
-      - name: Make the release files
-        run: docker-compose exec -T openconext sh -c 'HOME=/var/www/html ./bin/makeRelease.sh ${{ steps.vars.outputs.tag }}'
+      - name: Run release script
+        run: ./stepup-build.sh ${COMPONENT_NAME} --tag ${{ steps.vars.outputs.tag }}
+      - name: Grab the archive filename
+        id: archive
+        run: |
+          echo ::set-output name=archive::$(find . -maxdepth 1 -name "$COMPONENT_NAME*.tar.bz2" -printf '%f\n')
+          echo ::set-output name=shasum::$(find . -maxdepth 1 -name "$COMPONENT_NAME*.sha" -printf '%f\n')
+      - name: Build Changelog
+        id: changelog
+        uses: ardalanamini/auto-changelog@v3
+        with:
+          default-commit-type: New Features
       - name: Create Draft Release
         id: create_release
         uses: actions/create-release@v1
@@ -26,7 +34,8 @@ jobs:
         with:
           tag_name: ${{ steps.vars.outputs.tag }}
           release_name: ${{ steps.vars.outputs.tag }}
-          body: Auto generated release. Please update these release notes manually.
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
           draft: true
           prerelease: false
       - uses: actions/upload-release-asset@v1.0.1
@@ -35,17 +44,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Releases/OpenConext-profile-${{ steps.vars.outputs.tag }}.tar.gz
-          asset_name: OpenConext-profile-${{ steps.vars.outputs.tag }}.tar.gz
+          asset_path: ${{ steps.archive.outputs.archive }}
+          asset_name: ${{ steps.archive.outputs.archive }}
           asset_content_type: application/gzip
       - uses: actions/upload-release-asset@v1.0.1
-        name: Upload the release artefact verification hash
+        name: Upload the release artefact verification shasum
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Releases/OpenConext-profile-${{ steps.vars.outputs.tag }}.sha
-          asset_name: OpenConext-profile-${{ steps.vars.outputs.tag }}.sha
+          asset_path: ${{ steps.archive.outputs.shasum }}
+          asset_name: ${{ steps.archive.outputs.shasum }}
           asset_content_type: text/plain
       - uses: eregon/publish-release@v1
         name: Publish the new release
