@@ -38,15 +38,6 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
-    "guzzlehttp/guzzle": {
-        "version": "6.5.5"
-    },
-    "guzzlehttp/promises": {
-        "version": "1.4.1"
-    },
-    "guzzlehttp/psr7": {
-        "version": "1.8.2"
-    },
     "hamcrest/hamcrest-php": {
         "version": "v1.2.2"
     },
@@ -166,14 +157,8 @@
     "psr/container": {
         "version": "1.1.1"
     },
-    "psr/http-message": {
-        "version": "1.0.1"
-    },
     "psr/log": {
         "version": "1.1.4"
-    },
-    "ralouphie/getallheaders": {
-        "version": "3.0.3"
     },
     "robrichards/xmlseclibs": {
         "version": "3.1.1"
