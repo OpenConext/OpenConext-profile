@@ -7,6 +7,9 @@ jobs:
   build:
     permissions:
       contents: write
+      pull-requests: write
+      repository-projects: write
+
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
