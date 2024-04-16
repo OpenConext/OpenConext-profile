@@ -58,3 +58,6 @@ services:
 
     OpenConext\AttributeAggregationApiClientBundle\:
         resource: '../src/OpenConext/AttributeAggregationApiClientBundle'
+
+    OpenConext\UserLifecycleApiClientBundle\:
+        resource: '../src/OpenConext/UserLifecycleApiClientBundle'

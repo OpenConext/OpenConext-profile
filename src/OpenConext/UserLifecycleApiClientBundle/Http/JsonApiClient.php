@@ -26,11 +26,13 @@ use OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\RuntimeException;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class JsonApiClient
 {
     public function __construct(
-        private readonly ClientInterface $httpClient,
+        private readonly HttpClientInterface $userLifecycleApiClient,
     ) {
     }
 
@@ -42,10 +44,10 @@ class JsonApiClient
     public function read(
         string $path,
         array $parameters = [],
-    ): mixed {
+    ): array {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->httpClient->request('GET', $resource, ['exceptions' => false]);
+        $response = $this->userLifecycleApiClient->request('GET', $resource, ['exceptions' => false]);
 
         $statusCode = $response->getStatusCode();
 
@@ -64,8 +66,8 @@ class JsonApiClient
         }
 
         try {
-            $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException) {
+            $data = $response->toArray();
+        } catch (DecodingExceptionInterface) {
             throw new MalformedResponseException(
                 sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
             );
@@ -98,21 +100,5 @@ class JsonApiClient
         }
 
         return $resource;
-    }
-
-    /**
-     * Function to provide functionality common to Guzzle 7 Response's json method,
-     * without config options as they are not needed.
-     */
-    private function parseJson(
-        string $json,
-    ): mixed {
-        $data = json_decode($json, true);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new InvalidArgumentException('Unable to parse JSON data: ' . json_last_error_msg());
-        }
-
-        return $data;
     }
 }
