@@ -1,5 +1,10 @@
 # Next release
 
+# 4.0.1
+* Centralized services in cerntal services.yaml
+* Replaced guzzle with symfony native
+* Moved some extension config to yaml values
+
 # 4.0.0
 * Upgraded dependencies to their latest compatible version
 * Fixed all direct deprececations (SF 7.0 ready)
