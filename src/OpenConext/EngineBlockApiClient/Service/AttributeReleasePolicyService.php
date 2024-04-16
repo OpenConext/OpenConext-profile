@@ -18,10 +18,10 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Service;
+namespace OpenConext\EngineBlockApiClient\Service;
 
-use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
-use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
+use OpenConext\EngineBlockApiClient\Exception\InvalidResponseException;
+use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
 use OpenConext\Profile\Value\Arp;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\ConsentList;

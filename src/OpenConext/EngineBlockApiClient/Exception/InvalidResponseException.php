@@ -18,7 +18,7 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Exception;
+namespace OpenConext\EngineBlockApiClient\Exception;
 
 class InvalidResponseException extends RuntimeException
 {

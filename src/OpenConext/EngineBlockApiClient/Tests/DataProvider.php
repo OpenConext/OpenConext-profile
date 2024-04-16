@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,10 +16,16 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Exception;
+namespace OpenConext\EngineBlockApiClient\Tests;
 
-use LogicException as CoreLogicException;
-
-class LogicException extends CoreLogicException implements OpenConextEngineBlockApiClientException
+trait DataProvider
 {
+    public function nonStringScalarProvider(): array
+    {
+        return [
+            'boolean'      => [true],
+            'integer'      => [1],
+            'float'        => [1.2],
+        ];
+    }
 }

@@ -18,12 +18,12 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Http;
+namespace OpenConext\EngineBlockApiClient\Http;
 
-use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
-use OpenConext\EngineBlockApiClientBundle\Exception\MalformedResponseException;
-use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
-use OpenConext\EngineBlockApiClientBundle\Exception\RuntimeException;
+use OpenConext\EngineBlockApiClient\Exception\InvalidResponseException;
+use OpenConext\EngineBlockApiClient\Exception\MalformedResponseException;
+use OpenConext\EngineBlockApiClient\Exception\ResourceNotFoundException;
+use OpenConext\EngineBlockApiClient\Exception\RuntimeException;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;

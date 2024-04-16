@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -16,16 +18,8 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Tests;
+namespace OpenConext\EngineBlockApiClient\Exception;
 
-trait DataProvider
+interface OpenConextEngineBlockApiClientException
 {
-    public function nonStringScalarProvider(): array
-    {
-        return [
-            'boolean'      => [true],
-            'integer'      => [1],
-            'float'        => [1.2],
-        ];
-    }
 }

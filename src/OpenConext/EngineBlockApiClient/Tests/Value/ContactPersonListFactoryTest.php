@@ -16,9 +16,9 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Tests\Value;
+namespace OpenConext\EngineBlockApiClient\Tests\Value;
 
-use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
+use OpenConext\EngineBlockApiClient\Value\ContactPersonListFactory;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;

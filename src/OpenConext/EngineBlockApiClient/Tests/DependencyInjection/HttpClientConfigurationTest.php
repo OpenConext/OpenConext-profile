@@ -16,11 +16,11 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Tests\DependencyInjection;
+namespace OpenConext\EngineBlockApiClient\Tests\DependencyInjection;
 
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use OpenConext\EngineBlockApiClientBundle\DependencyInjection\Configuration;
-use OpenConext\EngineBlockApiClientBundle\Tests\DataProvider;
+use OpenConext\EngineBlockApiClient\DependencyInjection\Configuration;
+use OpenConext\EngineBlockApiClient\Tests\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 
@@ -118,7 +118,7 @@ final class HttpClientConfigurationTest extends TestCase
         );
     }
 
-    protected function getConfiguration(): \OpenConext\EngineBlockApiClientBundle\DependencyInjection\Configuration
+    protected function getConfiguration(): \OpenConext\EngineBlockApiClient\DependencyInjection\Configuration
     {
         return new Configuration();
     }

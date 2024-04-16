@@ -18,11 +18,11 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Repository;
+namespace OpenConext\EngineBlockApiClient\Repository;
 
 use Exception;
-use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
-use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
+use OpenConext\EngineBlockApiClient\Exception\ResourceNotFoundException;
+use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Organization;

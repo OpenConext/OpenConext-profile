@@ -15,7 +15,7 @@ parameters:
         - ../../config
     excludePaths:
         - ../../src/OpenConext/AttributeAggregationApiClientBundle/Tests
-        - ../../src/OpenConext/EngineBlockApiClientBundle/Tests
+        - ../../src/OpenConext/EngineBlockApiClient/Tests
         - ../../src/OpenConext/Profile/Tests
         - ../../src/OpenConext/ProfileBundle/Tests
         - ../../src/OpenConext/UserLifecycleApiClientBundle/Tests

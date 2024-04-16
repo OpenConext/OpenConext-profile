@@ -20,7 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\EngineBlockApiClientBundle\Repository\InstitutionRepository;
+use OpenConext\EngineBlockApiClient\Repository\InstitutionRepository;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
 use Psr\Log\LoggerInterface;

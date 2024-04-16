@@ -18,10 +18,8 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Exception;
+namespace OpenConext\EngineBlockApiClient\Exception;
 
-use RuntimeException as CoreRuntimeException;
-
-class RuntimeException extends CoreRuntimeException implements OpenConextEngineBlockApiClientException
+class MalformedResponseException extends RuntimeException
 {
 }

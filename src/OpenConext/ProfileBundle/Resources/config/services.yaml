@@ -18,7 +18,7 @@ services:
         arguments:
             - ~ # engine block entity id
 
-    OpenConext\EngineBlockApiClientBundle\Repository\InstitutionRepository:
+    OpenConext\EngineBlockApiClient\Repository\InstitutionRepository:
 
     OpenConext\ProfileBundle\Controller\MyServicesController:
         arguments:
@@ -43,13 +43,13 @@ services:
         class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
 
     OpenConext\Profile\Repository\ContactPersonRepositoryInterface:
-        class: OpenConext\EngineBlockApiClientBundle\Repository\ContactPersonRepository
+        class: OpenConext\EngineBlockApiClient\Repository\ContactPersonRepository
 
     OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface:
         class: OpenConext\AttributeAggregationApiClientBundle\Repository\AttributeAggregationRepository
 
     OpenConext\Profile\Repository\ConsentRepositoryInterface:
-        class: OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository
+        class: OpenConext\EngineBlockApiClient\Repository\ConsentRepository
 
     OpenConext\Profile\Api\AuthenticatedUserProviderInterface:
         class: OpenConext\ProfileBundle\Service\AuthenticatedUserProvider

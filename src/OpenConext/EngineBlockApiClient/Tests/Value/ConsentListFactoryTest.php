@@ -16,10 +16,10 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Tests\Value;
+namespace OpenConext\EngineBlockApiClient\Tests\Value;
 
 use DateTimeImmutable;
-use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
+use OpenConext\EngineBlockApiClient\Value\ConsentListFactory;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\ConsentList;

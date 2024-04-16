@@ -18,11 +18,11 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Repository;
+namespace OpenConext\EngineBlockApiClient\Repository;
 
 use Exception;
-use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
-use OpenConext\EngineBlockApiClientBundle\Value\ConsentListFactory;
+use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
+use OpenConext\EngineBlockApiClient\Value\ConsentListFactory;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;

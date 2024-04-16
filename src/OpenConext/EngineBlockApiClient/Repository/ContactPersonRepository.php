@@ -18,10 +18,10 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Repository;
+namespace OpenConext\EngineBlockApiClient\Repository;
 
-use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
-use OpenConext\EngineBlockApiClientBundle\Value\ContactPersonListFactory;
+use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
+use OpenConext\EngineBlockApiClient\Value\ContactPersonListFactory;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\EntityId;

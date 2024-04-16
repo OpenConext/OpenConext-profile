@@ -18,7 +18,7 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Value;
+namespace OpenConext\EngineBlockApiClient\Value;
 
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\ContactEmailAddress;

@@ -18,7 +18,7 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\HealthCheck;
+namespace OpenConext\EngineBlockApiClient\HealthCheck;
 
 use Exception;
 use OpenConext\MonitorBundle\HealthCheck\HealthCheckInterface;

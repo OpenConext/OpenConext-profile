@@ -20,7 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\ProfileBundle\Service;
 
-use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
+use OpenConext\EngineBlockApiClient\Service\AttributeReleasePolicyService;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use Symfony\Component\Security\Core\User\UserInterface;

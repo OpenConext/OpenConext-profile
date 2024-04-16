@@ -16,12 +16,12 @@
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Tests\Http;
+namespace OpenConext\EngineBlockApiClient\Tests\Http;
 
-use OpenConext\EngineBlockApiClientBundle\Exception\InvalidResponseException;
-use OpenConext\EngineBlockApiClientBundle\Exception\MalformedResponseException;
-use OpenConext\EngineBlockApiClientBundle\Exception\ResourceNotFoundException;
-use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
+use OpenConext\EngineBlockApiClient\Exception\InvalidResponseException;
+use OpenConext\EngineBlockApiClient\Exception\MalformedResponseException;
+use OpenConext\EngineBlockApiClient\Exception\ResourceNotFoundException;
+use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\Exception\JsonException;
 use Symfony\Contracts\HttpClient\ResponseInterface;

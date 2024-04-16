@@ -18,10 +18,8 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Exception;
+namespace OpenConext\EngineBlockApiClient\Exception;
 
-use InvalidArgumentException as CoreInvalidArgumentException;
-
-class InvalidArgumentException extends CoreInvalidArgumentException implements OpenConextEngineBlockApiClientException
+class ResourceNotFoundException extends RuntimeException
 {
 }

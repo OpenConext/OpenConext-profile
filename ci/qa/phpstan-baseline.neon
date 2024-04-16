@@ -6,7 +6,7 @@ parameters:
 				Will be replaced with different creation implementation$#
 			"""
 			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClientBundle/Service/AttributeReleasePolicyService.php
+			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
 
 		-
 			message: """

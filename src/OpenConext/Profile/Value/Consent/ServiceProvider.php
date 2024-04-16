@@ -20,7 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value\Consent;
 
-use OpenConext\EngineBlockApiClientBundle\Exception\LogicException;
+use OpenConext\EngineBlockApiClient\Exception\LogicException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\DisplayName;

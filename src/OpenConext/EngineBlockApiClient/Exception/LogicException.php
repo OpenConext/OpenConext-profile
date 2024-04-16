@@ -18,8 +18,10 @@ declare(strict_types = 1);
  * limitations under the License.
  */
 
-namespace OpenConext\EngineBlockApiClientBundle\Exception;
+namespace OpenConext\EngineBlockApiClient\Exception;
 
-class MalformedResponseException extends RuntimeException
+use LogicException as CoreLogicException;
+
+class LogicException extends CoreLogicException implements OpenConextEngineBlockApiClientException
 {
 }

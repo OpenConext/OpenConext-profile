@@ -20,8 +20,8 @@ namespace OpenConext\ProfileBundle\Tests\Service;
 
 use DateTimeImmutable;
 use Mockery;
-use OpenConext\EngineBlockApiClientBundle\Http\JsonApiClient;
-use OpenConext\EngineBlockApiClientBundle\Service\AttributeReleasePolicyService;
+use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
+use OpenConext\EngineBlockApiClient\Service\AttributeReleasePolicyService;
 use OpenConext\Profile\Value\Arp;
 use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
