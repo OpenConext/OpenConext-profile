@@ -21,6 +21,14 @@ jobs:
           latest: true
           fileName: "*.tar.gz"
 
+      - name: Get commit details for the tag from the latest release
+        id: commit_details
+        run: |
+          GIT_SHA=$(git rev-list -n 1 ${{ steps.release.outputs.tag_name }})
+          GIT_COMMIT_TIME=$(git show -s --format=%ci ${{ steps.release.outputs.tag_name }})
+          echo "::set-output name=sha::$GIT_SHA"
+          echo "::set-output name=commit_time::$GIT_COMMIT_TIME"
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -33,27 +41,28 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set docker metadata for the container
+   
+      - name: Set docker labels and tags
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: |
-            ghcr.io/openconext/openconext-profile/profile
+          images: ghcr.io/openconext/openconext-profile/profile
           tags: |
             type=ref,event=tag
-            type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
+            type=sha
+            type=raw,value=prod
 
       - name: Build and push the Production image
         uses: docker/build-push-action@v5
         with:
           context: .
+          build-args: |
+            APP_VERSION=${{ steps.release.outputs.tag_name }}
+            GIT_SHA=${{ steps.commit_details.outputs.sha }}
+            GIT_COMMIT_TIME=${{ steps.commit_details.outputs.commit_time }}
           file: docker/Dockerfile.prod
-          platforms: linux/amd64
-          push: true
+          platforms: linux/amd64,linux/arm64
+          push: true          
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
