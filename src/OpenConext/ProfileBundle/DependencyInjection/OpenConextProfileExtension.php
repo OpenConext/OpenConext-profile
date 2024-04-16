@@ -46,11 +46,6 @@ class OpenConextProfileExtension extends Extension
         $loader->load('services.yaml');
 
         $this->parseEngineBlockEntityIdConfiguration($config['engine_block_entity_id'], $container);
-
-        $this->parseAttributeSupportMailConfiguration($config['attribute_support'], $container);
-        $this->parseInformationRequestMailConfiguration($config['information_request'], $container);
-
-        $this->parseDefaultLocaleConfiguration($config['default_locale'], $container);
         $this->parseAvailableLocaleConfiguration($config['locales'], $container);
         $this->parseLocaleCookieStorageConfiguration(
             $config['locale_cookie_domain'],
@@ -80,39 +75,6 @@ class OpenConextProfileExtension extends Extension
         $container
             ->getDefinition(EntityId::class)
             ->replaceArgument(0, $engineBlockEntityId);
-    }
-
-    private function parseAttributeSupportMailConfiguration(
-        array $attributeSupportConfig,
-        ContainerBuilder $container,
-    ): void {
-        $container
-            ->getDefinition('profile.attribute_support.email_from')
-            ->replaceArgument(0, $attributeSupportConfig['email_from']);
-        $container
-            ->getDefinition('profile.attribute_support.email_to')
-            ->replaceArgument(0, $attributeSupportConfig['email_to']);
-    }
-
-    private function parseInformationRequestMailConfiguration(
-        array $attributeSupportConfig,
-        ContainerBuilder $container,
-    ): void {
-        $container
-            ->getDefinition('profile.information_request.email_from')
-            ->replaceArgument(0, $attributeSupportConfig['email_from']);
-        $container
-            ->getDefinition('profile.information_request.email_to')
-            ->replaceArgument(0, $attributeSupportConfig['email_to']);
-    }
-
-    private function parseDefaultLocaleConfiguration(
-        $defaultLocaleConfig,
-        ContainerBuilder $container,
-    ): void {
-        $container
-            ->getDefinition(Locale::class)
-            ->replaceArgument(0, $defaultLocaleConfig);
     }
 
     private function parseAvailableLocaleConfiguration(

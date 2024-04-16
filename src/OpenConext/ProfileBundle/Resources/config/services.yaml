@@ -35,41 +35,9 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    profile.attribute_support.email_from:
-        public: false
-        class: OpenConext\Profile\Value\EmailAddress
-        arguments:
-            - ~ # attribute support email from
-
-    OpenConext\Profile\Value\EmailAddressSupport: '@profile.attribute_support.email_to'
-    OpenConext\Profile\Value\EmailAddressInformationRequest: '@profile.information_request.email_to'
-
-    profile.attribute_support.email_to:
-        public: false
-        class: OpenConext\Profile\Value\EmailAddress
-        arguments:
-            - ~ # attribute support email to
-
-    profile.information_request.email_from:
-        public: false
-        class: OpenConext\Profile\Value\EmailAddress
-        arguments:
-            - ~ # information request email from
-
-    profile.information_request.email_to:
-        public: false
-        class: OpenConext\Profile\Value\EmailAddress
-        arguments:
-            - ~ # information request email to
-
     OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes:
         arguments:
             - [] # available attribute aggregation attributes
-
-    OpenConext\Profile\Repository\UserRepositoryInterface:
-        class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
-        arguments:
-            - '@request_stack'
 
     OpenConext\Profile\Repository\LocaleRepositoryInterface:
         class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
@@ -85,10 +53,6 @@ services:
 
     OpenConext\Profile\Api\AuthenticatedUserProviderInterface:
         class: OpenConext\ProfileBundle\Service\AuthenticatedUserProvider
-
-    OpenConext\ProfileBundle\EventListener\LocaleListener:
-        tags:
-            - { name: kernel.event_subscriber }
 
     OpenConext\ProfileBundle\Form\Type\SwitchLocaleType:
         tags:
@@ -120,26 +84,9 @@ services:
         arguments:
             - '@request_stack'
 
-    OpenConext\ProfileBundle\Service\AttributeSupportMailService:
-        arguments:
-            - '@profile.attribute_support.email_from'
-            - '@profile.attribute_support.email_to'
-
-    OpenConext\ProfileBundle\Service\InformationRequestMailService:
-        arguments:
-            - '@profile.information_request.email_from'
-            - '@profile.information_request.email_to'
-
     OpenConext\Profile\Value\LocaleSet:
         factory: [OpenConext\Profile\Value\LocaleSet, create]
         arguments:
             - [] # available locales
 
-    OpenConext\Profile\Value\Locale:
-        arguments:
-            - ~ # default locale
 
-    OpenConext\ProfileBundle\Service\UserService:
-        calls:
-            - [ setUserLifecycleApiClient,
-                [ '@OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient' ] ]

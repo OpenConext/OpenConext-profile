@@ -60,3 +60,58 @@ services:
     OpenConext\ProfileBundle\Twig\I18n:
         tags: ['twig.extension']
 
+
+    OpenConext\ProfileBundle\Service\UserService:
+        calls:
+            - [ setUserLifecycleApiClient,
+                [ '@OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient' ] ]
+
+    OpenConext\Profile\Value\Locale:
+        arguments:
+            - '%default_locale%' # default locale
+
+    profile.attribute_support.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%attribute_support_email_from%'
+
+    OpenConext\Profile\Value\EmailAddressSupport: '@profile.attribute_support.email_to'
+    OpenConext\Profile\Value\EmailAddressInformationRequest: '@profile.information_request.email_to'
+
+    profile.attribute_support.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%attribute_support_email_to%'
+
+    profile.information_request.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%information_request_email_from%'
+
+    profile.information_request.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%information_request_email_to%'
+
+    OpenConext\ProfileBundle\Service\AttributeSupportMailService:
+        arguments:
+            - '@profile.attribute_support.email_from'
+            - '@profile.attribute_support.email_to'
+
+    OpenConext\ProfileBundle\Service\InformationRequestMailService:
+        arguments:
+            - '@profile.information_request.email_from'
+            - '@profile.information_request.email_to'
+
+    OpenConext\ProfileBundle\EventListener\LocaleListener:
+        tags:
+            - { name: kernel.event_subscriber }
+
+    OpenConext\Profile\Repository\UserRepositoryInterface:
+        class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
+        arguments:
+            - '@request_stack'
