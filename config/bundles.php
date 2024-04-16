@@ -3,7 +3,6 @@
 return [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     OpenConext\AttributeAggregationApiClientBundle\OpenConextAttributeAggregationApiClientBundle::class => ['all' => true],
-    OpenConext\EngineBlockApiClientBundle\OpenConextEngineBlockApiClientBundle::class => ['all' => true],
     OpenConext\MonitorBundle\OpenConextMonitorBundle::class => ['all' => true],
     OpenConext\ProfileBundle\OpenConextProfileBundle::class => ['all' => true],
     OpenConext\UserLifecycleApiClientBundle\OpenConextUserLifecycleApiClientBundle::class => ['all' => true],
