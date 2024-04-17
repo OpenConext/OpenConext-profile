@@ -134,8 +134,8 @@ return array_replace_recursive([
                 'connect_title' => 'Registreer of koppel je ORCID iD',
 
                 'description' => [
-                    'end' => 'Nadat je bent geredirected naar ORCID, kan je jouw ORCID iD linken door in te loggen en te klikken op "Autoriseren".  Vanaf dan kan je ORCID ID via %suiteName% doorgegeven worden aan de diensten die het willen gebruiken.',
-                    'start' => 'Verbind je bestaande of nieuw aangemaakte  ORCID iD eenmalig met %suiteName%.  ORCID iD is een code die gebruikt wordt om wetenschappelijke- en academische auteurs uniek te identificeren.',
+                    'end' => 'Nadat je bent geredirected naar ORCID, kan je jouw ORCID iD linken door in te loggen en te klikken op "Autoriseren". Vanaf dan kan je ORCID iD via %suiteName% doorgegeven worden aan de diensten die het willen gebruiken.',
+                    'start' => 'Verbind je bestaande of nieuw aangemaakte ORCID iD eenmalig met %suiteName%. ORCID iD is een code die gebruikt wordt om wetenschappelijke- en academische auteurs uniek te identificeren.',
                 ],
 
                 'disconnect_title' => 'Ontkoppelen',
