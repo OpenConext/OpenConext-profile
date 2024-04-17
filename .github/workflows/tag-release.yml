@@ -28,22 +28,16 @@ jobs:
         run: |
           echo "archive=$(find . -maxdepth 1 -name "$COMPONENT_NAME*.tar.bz2" -printf '%f\n')" >> $GITHUB_OUTPUT
           echo "shasum=$(find . -maxdepth 1 -name "$COMPONENT_NAME*.sha" -printf '%f\n')" >> $GITHUB_OUTPUT
-      - name: Build Changelog
-        id: changelog
-        uses: ardalanamini/auto-changelog@v3
-        with:
-          default-commit-type: New Features
 
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ${{ steps.archive.outputs.archive }}
             ${{ steps.archive.outputs.shasum }}
           token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_unmatched_files: true
-          body: ${{ steps.changelog.outputs.changelog }}
+          generate_release_notes: true
 
   after_build:
     needs: build
