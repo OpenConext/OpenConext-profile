@@ -141,7 +141,7 @@ return array_replace_recursive([
             ],
 
             'send_request' => 'Send us a request',
-            'short_title' => 'My Connections',
+            'short_title' => 'Your connections',
         ],
 
         'my_profile' => [
@@ -214,7 +214,7 @@ return array_replace_recursive([
                 'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources:',
             ],
 
-            'short_title' => 'Services you accessed',
+            'short_title' => 'Accessed services',
             'supportEmail' => 'Contact support',
             'support_title' => 'Support',
             'support_url' => 'Support pages',

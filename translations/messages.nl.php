@@ -143,7 +143,7 @@ return array_replace_recursive([
             ],
 
             'send_request' => 'Stuur ons een verzoek',
-            'short_title' => 'Mijn koppelingen',
+            'short_title' => 'Je koppelingen',
         ],
 
         'my_profile' => [
@@ -154,7 +154,7 @@ return array_replace_recursive([
 
                 'data' => [
                     'description' => 'Welke persoonlijke gegevens doorgegeven kunnen worden naar de diensten die je gebruikt.',
-                    'title' => 'Jouw persoonlijke data',
+                    'title' => 'Je persoonlijke data',
                 ],
 
                 'services' => [
@@ -171,7 +171,7 @@ return array_replace_recursive([
             'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan diensten. In %suiteName% worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze attributen heeft %suiteName% een aparte informatiepagina ingericht:',
             'questions' => 'Let op: jouw %organisationNoun% is verantwoordelijk voor de persoonsgegevens die je hier ziet. %suiteName% laat slechts de informatie zien zoals ontvangen van jouw %organisationNoun%. Heb je vragen over je persoonsgegevens? Neem dan contact op met je %organisationNoun% via:',
             'questions_no_support_contact_email' => 'Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je %organisationNoun%.',
-            'short_title' => 'Mijn profiel',
+            'short_title' => 'Je persoonlijke data',
             'sup_text' => 'Je %organisationNoun% beslist welke diensten toegankelijk voor je zijn via %suiteName%.  De meeste diensten die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige diensten gebruiken geen persoonlijke data.  Indien je wil weten welke diensten welke data ontvingen, dan vind je dat bij',
 
             'user_data_download' => [
@@ -216,7 +216,7 @@ return array_replace_recursive([
                 'aa_text' => 'In aanvulling op de gegevens hierboven ontvangt deze dienst de volgende gegevens uit andere bronnen:',
             ],
 
-            'short_title' => 'Mijn diensten',
+            'short_title' => 'Gebruikte diensten',
             'supportEmail' => 'E-mailadres support',
             'support_title' => 'Support',
             'support_url' => 'Support pagina\'s',
@@ -239,7 +239,7 @@ return array_replace_recursive([
             'logging_data_origin' => 'Gegenereerd door %suiteName%',
             'logging_data_retention_period' => '6 maanden. Na 6 maanden worden de logbestanden geanonimiseerd.',
             'origin' => 'Herkomst',
-            'short_title' => 'Mijn %suiteName%',
+            'short_title' => 'Wat we bewaren',
         ],
 
         'navigation' => [
