@@ -66,6 +66,31 @@ parameters:
 			path: ../../src/OpenConext/AttributeAggregationApiClientBundle/Http/JsonApiClient.php
 
 		-
+			message: "#^Method OpenConext\\\\AttributeAggregationApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:base_url_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/AttributeAggregationApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\AttributeAggregationApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:nonStringScalarProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/AttributeAggregationApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\AttributeAggregationApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:password_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/AttributeAggregationApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\AttributeAggregationApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:username_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/AttributeAggregationApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Property OpenConext\\\\AttributeAggregationApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:\\$validConfig type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/AttributeAggregationApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
 			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Http\\\\JsonApiClient\\:\\:buildResourcePath\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/OpenConext/EngineBlockApiClient/Http/JsonApiClient.php
@@ -122,6 +147,41 @@ parameters:
 			message: "#^Cannot call method getValue\\(\\) on mixed\\.$#"
 			count: 2
 			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
+
+		-
+			message: "#^Instantiated class OpenConext\\\\EngineBlockApiClient\\\\DependencyInjection\\\\Configuration not found\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:base_url_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:getConfiguration\\(\\) has invalid return type OpenConext\\\\EngineBlockApiClient\\\\DependencyInjection\\\\Configuration\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:nonStringScalarProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:password_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:username_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Property OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:\\$validConfig type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
 
 		-
 			message: "#^Cannot access offset 'consent_given_on' on mixed\\.$#"
@@ -275,6 +335,245 @@ parameters:
 			message: "#^Method OpenConext\\\\Profile\\\\Exception\\\\AssertionFailedException\\:\\:getConstraints\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/OpenConext/Profile/Exception/AssertionFailedException.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\AssertTest\\:\\:matchingKeysProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/AssertTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\AssertTest\\:\\:missingKeysProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/AssertTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\AssertTest\\:\\:missing_required_keys_trigger_an_exception\\(\\) has parameter \\$expectedKeys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/AssertTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\AssertTest\\:\\:missing_required_keys_trigger_an_exception\\(\\) has parameter \\$givenArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/AssertTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\AssertTest\\:\\:present_keys_do_not_trigger_an_exception\\(\\) has parameter \\$expectedKeys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/AssertTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\AssertTest\\:\\:present_keys_do_not_trigger_an_exception\\(\\) has parameter \\$givenArray with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/AssertTest.php
+
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 5
+			path: ../../src/OpenConext/Profile/Tests/Entity/AuthenticatedUserTest.php
+
+		-
+			message: """
+				#^Call to deprecated method createFrom\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Entity/AuthenticatedUserTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Entity\\\\AuthenticatedUserTest\\:\\:mockAssertionAdapterWith\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Entity/AuthenticatedUserTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$xml of class SAML2\\\\Assertion constructor expects DOMElement\\|null, DOMNode\\|null given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Entity/AuthenticatedUserTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ArpTest\\:\\:invalidArpData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ArpTest\\:\\:test_it_rejects_invalid_data_structures\\(\\) has parameter \\$invalidArpData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$arp of static method OpenConext\\\\Profile\\\\Value\\\\Arp\\:\\:createWith\\(\\) expects array, mixed given\\.$#"
+			count: 3
+			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
+			count: 3
+			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$emailAddress of class OpenConext\\\\Profile\\\\Value\\\\ContactEmailAddress constructor expects string, mixed given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:contact_type_can_be_invalid\\(\\) has parameter \\$contactTypeValue with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:email_address_must_be_valid\\(\\) has parameter \\$invalidEmailAddress with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:invalidEmailAddressProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EntityIdTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EntityIdTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EntityIdTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EntityIdTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EntityIdTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EntityIdTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EntityIdTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EntityIdTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$entityId of class OpenConext\\\\Profile\\\\Value\\\\EntityId constructor expects string, mixed given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/EntityIdTest.php
+
+		-
+			message: "#^Call to an undefined method Traversable\\<mixed, mixed\\>\\:\\:getArrayCopy\\(\\)\\.$#"
+			count: 2
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
+
+		-
+			message: "#^Cannot call method getServiceProvider\\(\\) on OpenConext\\\\Profile\\\\Value\\\\SpecifiedConsent\\|null\\.$#"
+			count: 4
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\SpecifiedConsentListTest\\:\\:buildMockSpecifiedConsent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
+
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class OpenConext\\\\ProfileBundle\\\\Attribute\\\\AttributeSetWithFallbacks\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 4
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$arp of static method OpenConext\\\\Profile\\\\Value\\\\Arp\\:\\:createWith\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$value of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\Attribute constructor expects array\\<string\\>, array\\<int, array\\<string, string\\>\\> given\\.$#"
+			count: 4
+			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\UrlTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/UrlTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\UrlTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/UrlTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\UrlTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/UrlTest.php
+
+		-
+			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\UrlTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Tests/Value/UrlTest.php
 
 		-
 			message: "#^Method OpenConext\\\\Profile\\\\Value\\\\Arp\\:\\:__construct\\(\\) has parameter \\$arp with no value type specified in iterable type array\\.$#"
@@ -720,6 +1019,53 @@ parameters:
 			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
 
 		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 2
+			path: ../../src/OpenConext/ProfileBundle/Tests/Attribute/AttributeFilterTest.php
+
+		-
+			message: "#^Method OpenConext\\\\ProfileBundle\\\\Tests\\\\Attribute\\\\AttributeFilterTest\\:\\:getMockAttribute\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Tests/Attribute/AttributeFilterTest.php
+
+		-
+			message: """
+				#^Call to deprecated method createFrom\\(\\) of class OpenConext\\\\ProfileBundle\\\\Attribute\\\\AttributeSetWithFallbacks\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 2
+			path: ../../src/OpenConext/ProfileBundle/Tests/Attribute/AttributeSetWithFallbacksTest.php
+
+		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\|Mockery\\\\ExpectsHigherOrderMessage\\:\\:with\\(\\)\\.$#"
+			count: 2
+			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
+
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class OpenConext\\\\ProfileBundle\\\\Attribute\\\\AttributeSetWithFallbacks\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 2
+			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
+
+		-
+			message: """
+				#^Call to deprecated method create\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
+				Will be replaced with different creation implementation$#
+			"""
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$value of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\Attribute constructor expects array\\<string\\>, array\\<int, array\\<string, string\\>\\> given\\.$#"
+			count: 2
+			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
+
+		-
 			message: "#^Method OpenConext\\\\ProfileBundle\\\\Twig\\\\I18n\\:\\:getFilters\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Twig/I18n.php
@@ -768,3 +1114,28 @@ parameters:
 			message: "#^Method OpenConext\\\\UserLifecycleApiClientBundle\\\\Http\\\\JsonApiClient\\:\\:read\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/OpenConext/UserLifecycleApiClientBundle/Http/JsonApiClient.php
+
+		-
+			message: "#^Method OpenConext\\\\UserLifecycleApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:base_url_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/UserLifecycleApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\UserLifecycleApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:nonStringScalarProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/UserLifecycleApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\UserLifecycleApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:password_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/UserLifecycleApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Method OpenConext\\\\UserLifecycleApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:username_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../../src/OpenConext/UserLifecycleApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
+
+		-
+			message: "#^Property OpenConext\\\\UserLifecycleApiClientBundle\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:\\$validConfig type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/UserLifecycleApiClientBundle/Tests/DependencyInjection/HttpClientConfigurationTest.php
