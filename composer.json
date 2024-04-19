@@ -12,7 +12,7 @@
     "php": "^8.2",
     "ext-json": "*",
     "beberlei/assert": "^3.0",
-    "doctrine/annotations": "*",
+    "doctrine/annotations": "^2.0.1",
     "incenteev/composer-parameter-handler": "^2.2",
     "jms/translation-bundle": "^2.0",
     "nelmio/security-bundle": "^2.10",
