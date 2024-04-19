@@ -9,7 +9,7 @@ rules:
 #    - Surfnet\NoNullOrArrayReturnRule
 parameters:
     checkUninitializedProperties: true
-    level: 5
+    level: 9
     paths:
         - ../../src
         - ../../config
