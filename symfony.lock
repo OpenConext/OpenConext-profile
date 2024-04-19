@@ -47,9 +47,6 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
-    "hamcrest/hamcrest-php": {
-        "version": "v1.2.2"
-    },
     "incenteev/composer-parameter-handler": {
         "version": "v2.1.4"
     },
@@ -64,9 +61,6 @@
     },
     "matthiasnoback/symfony-config-test": {
         "version": "v2.2.0"
-    },
-    "mockery/mockery": {
-        "version": "0.9.11"
     },
     "monolog/monolog": {
         "version": "1.26.1"

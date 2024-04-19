@@ -1005,11 +1005,6 @@ parameters:
 			path: ../../src/OpenConext/ProfileBundle/Tests/Attribute/AttributeSetWithFallbacksTest.php
 
 		-
-			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\|Mockery\\\\ExpectsHigherOrderMessage\\:\\:with\\(\\)\\.$#"
-			count: 2
-			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
-
-		-
 			message: """
 				#^Call to deprecated method create\\(\\) of class OpenConext\\\\ProfileBundle\\\\Attribute\\\\AttributeSetWithFallbacks\\:
 				Will be replaced with different creation implementation$#
@@ -1022,6 +1017,11 @@ parameters:
 				#^Call to deprecated method create\\(\\) of class Surfnet\\\\SamlBundle\\\\SAML2\\\\Attribute\\\\AttributeSet\\:
 				Will be replaced with different creation implementation$#
 			"""
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
+
+		-
+			message: "#^Match expression does not handle remaining values\\: int\\<min, 0\\>\\|int\\<3, max\\>$#"
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Tests/Service/AttributeReleasePolicyServiceTest.php
 
