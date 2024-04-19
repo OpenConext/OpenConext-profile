@@ -47,8 +47,9 @@ final readonly class AttributeAggregationRepository implements AttributeAggregat
         int $accountId,
     ): bool {
         try {
-            $this->apiClient->delete('disconnect/%d', [$accountId]);
-            return true;
+            // In the rare situation the API returns a non-OK status,
+            // but with a correct body we will return false.
+            return $this->apiClient->delete('disconnect/%d', [$accountId])['status'] === 'OK';
         } catch (Exception) {
             return false;
         }
