@@ -149,41 +149,6 @@ parameters:
 			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
 
 		-
-			message: "#^Instantiated class OpenConext\\\\EngineBlockApiClient\\\\DependencyInjection\\\\Configuration not found\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
-			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:base_url_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
-			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:getConfiguration\\(\\) has invalid return type OpenConext\\\\EngineBlockApiClient\\\\DependencyInjection\\\\Configuration\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
-			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:nonStringScalarProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
-			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:password_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
-			message: "#^Method OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:username_cannot_be_other_than_string\\(\\) has parameter \\$value with no type specified\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
-			message: "#^Property OpenConext\\\\EngineBlockApiClient\\\\Tests\\\\DependencyInjection\\\\HttpClientConfigurationTest\\:\\:\\$validConfig type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DependencyInjection/HttpClientConfigurationTest.php
-
-		-
 			message: "#^Cannot access offset 'consent_given_on' on mixed\\.$#"
 			count: 2
 			path: ../../src/OpenConext/EngineBlockApiClient/Value/ConsentListFactory.php
