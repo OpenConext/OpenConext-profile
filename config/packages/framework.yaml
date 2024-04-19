@@ -19,11 +19,9 @@ framework:
   php_errors:
     log: true
   annotations: { enabled: false }
-
-when@prod:
-  framework:
-    router:
-      strict_requirements: null
+  router:
+    utf8: true
+    strict_requirements: null
 
 when@dev:
   framework:
