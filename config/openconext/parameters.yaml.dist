@@ -4,7 +4,6 @@ parameters:
   app_debug: false
   app_secret: NotSoSecretReplaceMe!
 
-  secret: ThisTokenIsNotSoSecretChangeIt
   # Available translation languages: en, nl, pt
   locales: [en, nl]
   default_locale: en
