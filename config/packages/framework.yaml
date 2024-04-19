@@ -10,8 +10,8 @@ framework:
   trusted_hosts: ~
   session:
     handler_id: "%session_handler%"
-    cookie_secure: auto
-    cookie_samesite: lax
+    cookie_secure: true
+    cookie_samesite: none
   esi: false
   fragments: false
   http_method_override: true
