@@ -6,11 +6,13 @@ monolog:
       passthru_level: NOTICE # this means that all message of level NOTICE or higher are always logged
       handler: main_syslog
       bubble: false # if we handle it, nothing else should
+      path: "php://stderr"
     main_syslog:
       ident: openconext-profile
       type: stream
       path: "php://stderr"
     console:
+      path: "php://stderr"
       type: console
       process_psr_3_messages: false
 
