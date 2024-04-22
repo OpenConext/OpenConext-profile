@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccd16fbe01ffd5736c89c6b5861bb5e9",
+    "content-hash": "c82ab44603d516127ec88f42b26c9909",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1879,16 +1879,16 @@
         },
         {
             "name": "surfnet/stepup-saml-bundle",
-            "version": "6.0.24",
+            "version": "6.0.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/OpenConext/Stepup-saml-bundle.git",
-                "reference": "c074c51cf08fa98fdfc3e120e53dc5309b581205"
+                "reference": "6c5ed1bc660a4474875ad27bccf8b5b3b34e14bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/c074c51cf08fa98fdfc3e120e53dc5309b581205",
-                "reference": "c074c51cf08fa98fdfc3e120e53dc5309b581205",
+                "url": "https://api.github.com/repos/OpenConext/Stepup-saml-bundle/zipball/6c5ed1bc660a4474875ad27bccf8b5b3b34e14bd",
+                "reference": "6c5ed1bc660a4474875ad27bccf8b5b3b34e14bd",
                 "shasum": ""
             },
             "require": {
@@ -1945,9 +1945,9 @@
             ],
             "support": {
                 "issues": "https://github.com/OpenConext/Stepup-saml-bundle/issues",
-                "source": "https://github.com/OpenConext/Stepup-saml-bundle/tree/6.0.24"
+                "source": "https://github.com/OpenConext/Stepup-saml-bundle/tree/6.0.26"
             },
-            "time": "2024-04-18T11:38:35+00:00"
+            "time": "2024-04-22T06:10:59+00:00"
         },
         {
             "name": "symfony/asset",

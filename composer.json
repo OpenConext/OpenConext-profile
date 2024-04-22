@@ -17,7 +17,7 @@
     "jms/translation-bundle": "^2.0",
     "nelmio/security-bundle": "^2.10",
     "openconext/monitor-bundle": "^4.0",
-    "surfnet/stepup-saml-bundle": "^6.0.18",
+    "surfnet/stepup-saml-bundle": "^6.0.22",
     "symfony/expression-language": "6.4.*",
     "symfony/flex": "^2",
     "symfony/form": "6.4.*",
