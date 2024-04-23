@@ -1,7 +1,7 @@
 <?php
 
 $overrides = [];
-$overridesFile = '../config/openconext/translationoverrides/overrides.en.php';
+$overridesFile = __DIR__ . '/../config/openconext/translationoverrides/overrides.en.php';
 if (file_exists($overridesFile)) {
     $overrides = require $overridesFile;
 }
