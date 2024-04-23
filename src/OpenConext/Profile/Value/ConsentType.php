@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
@@ -50,10 +51,10 @@ final class ConsentType implements Stringable
     }
 
     /**
-     * @param string $consentType
+     * @throws AssertionFailedException
      */
     private function __construct(
-        $consentType,
+        string $consentType,
     ) {
         Assert::choice(
             $consentType,

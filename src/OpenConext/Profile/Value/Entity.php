@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
 use OpenConext\Profile\Value\EntityId;
@@ -29,7 +30,7 @@ use Stringable;
 final readonly class Entity implements Stringable
 {
     /**
-     * @return Entity
+     * @throws AssertionFailedException
      */
     public static function fromDescriptor(
         array $descriptor,

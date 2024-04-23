@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\EngineBlockApiClient\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\ContactPerson;
@@ -28,6 +29,9 @@ use OpenConext\Profile\Value\ContactType;
 
 final class ContactPersonListFactory
 {
+    /**
+     * @throws AssertionFailedException
+     */
     public static function createListFromMetadata(
         mixed $data,
     ): ContactPersonList {
@@ -45,8 +49,8 @@ final class ContactPersonListFactory
     }
 
     /**
-     * @return ContactPerson
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
+     * @throws AssertionFailedException
      */
     private static function createContactPerson(
         mixed $data,

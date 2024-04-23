@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
 use Stringable;
@@ -41,24 +42,16 @@ class DisplayName implements Stringable
         $this->translations = $translations;
     }
 
-    /**
-     * @param string $locale
-     * @return bool
-     */
     public function hasFilledTranslationForLocale(
-        $locale,
+       string $locale,
     ): bool {
-        Assert::string($locale, 'Locale must be string', 'locale');
 
         return array_key_exists($locale, $this->translations) && trim($this->translations[$locale]) !== '';
     }
 
-    /**
-     * @return string
-     */
     public function getTranslation(
-        $locale,
-    ) {
+        string $locale,
+    ): string {
         if (!isset($this->translations[$locale])) {
             throw new LogicException(sprintf('Could not find translation for locale "%s"', $locale));
         }

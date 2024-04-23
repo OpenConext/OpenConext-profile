@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\EngineBlockApiClient\Value;
 
+use Assert\AssertionFailedException;
 use DateTime;
 use DateTimeImmutable;
 use OpenConext\Profile\Assert;
@@ -40,6 +41,9 @@ use OpenConext\Profile\Value\Url;
  */
 final class ConsentListFactory
 {
+    /**
+     * @throws AssertionFailedException
+     */
     public static function createListFromMetadata(
         mixed $data,
     ): ConsentList {
@@ -55,7 +59,7 @@ final class ConsentListFactory
     }
 
     /**
-     * @return Consent
+     * @throws AssertionFailedException
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
     private static function createConsent(

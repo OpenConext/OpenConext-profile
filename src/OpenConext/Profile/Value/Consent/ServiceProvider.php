@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value\Consent;
 
+use Assert\AssertionFailedException;
 use OpenConext\EngineBlockApiClient\Exception\LogicException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Value\ContactEmailAddress;
@@ -67,12 +68,11 @@ class ServiceProvider
     }
 
     /**
-     * @param string $locale
-     * @return string
+     * @throws AssertionFailedException
      */
     public function getLocaleAwareEntityName(
-        $locale,
-    ) {
+        string $locale,
+    ): string {
         Assert::string($locale);
 
         if ($this->displayName->hasFilledTranslationForLocale($locale)) {
@@ -110,12 +110,8 @@ class ServiceProvider
         return $this->supportEmail->__toString();
     }
 
-    /**
-     * @param string $locale
-     * @return null|Url
-     */
     public function getSupportUrl(
-        $locale,
+        string $locale,
     ): ?Url {
         if ($locale === 'nl') {
             return $this->supportUrlNl;
@@ -124,12 +120,8 @@ class ServiceProvider
         }
     }
 
-    /**
-     * @param $locale
-     * @return bool
-     */
     public function hasSupportUrl(
-        $locale,
+        string $locale,
     ): bool {
         if ($locale === 'nl') {
             return $this->supportUrlNl !== null;

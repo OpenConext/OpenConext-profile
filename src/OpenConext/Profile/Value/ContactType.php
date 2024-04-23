@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
@@ -31,22 +32,17 @@ final class ContactType implements Stringable
     public const TYPE_BILLING = 'billing';
     public const TYPE_OTHER = 'other';
 
-    private readonly string $contactType;
-
     /**
-     * @param string $contactType
+     * @throws AssertionFailedException
      */
     public function __construct(
-        $contactType,
+        private readonly string $contactType,
     ) {
-        Assert::string($contactType);
         Assert::choice(
             $contactType,
             [self::TYPE_TECHNICAL, self::TYPE_SUPPORT, self::TYPE_ADMINISTRATIVE, self::TYPE_BILLING, self::TYPE_OTHER],
             '"%s" is not one of the valid ContactTypes: %s',
         );
-
-        $this->contactType = $contactType;
     }
 
     public function equals(

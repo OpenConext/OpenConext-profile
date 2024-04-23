@@ -20,22 +20,15 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
 final class ContactEmailAddress implements Stringable
 {
-    private readonly string $emailAddress;
-
-    /**
-     * @param string $emailAddress
-     */
     public function __construct(
-        $emailAddress,
+        private readonly string $emailAddress,
     ) {
-        Assert::string($emailAddress, 'E-mail address "%s" must be a string');
-
-        $this->emailAddress = $emailAddress;
     }
 
     public function equals(

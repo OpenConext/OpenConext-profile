@@ -20,6 +20,7 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
@@ -29,19 +30,13 @@ final class EntityType implements Stringable
     public const TYPE_IDP = 'saml20-idp';
 
     /**
-     * @var string
-     */
-    private $type;
-
-    /**
      * @param string $type
+     * @throws AssertionFailedException
      */
     public function __construct(
-        $type,
+        private readonly string $type,
     ) {
         Assert::inArray($type, [self::TYPE_SP, self::TYPE_IDP]);
-
-        $this->type = $type;
     }
 
     /**
@@ -68,17 +63,11 @@ final class EntityType implements Stringable
         return new EntityType(self::TYPE_IDP);
     }
 
-    /**
-     * @return bool
-     */
     public function isSP(): bool
     {
         return $this->type === self::TYPE_SP;
     }
 
-    /**
-     * @return bool
-     */
     public function isIdP(): bool
     {
         return $this->type === self::TYPE_IDP;
