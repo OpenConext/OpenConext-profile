@@ -43,7 +43,7 @@ class DisplayName implements Stringable
     }
 
     public function hasFilledTranslationForLocale(
-       string $locale,
+        string $locale,
     ): bool {
 
         return array_key_exists($locale, $this->translations) && trim($this->translations[$locale]) !== '';
