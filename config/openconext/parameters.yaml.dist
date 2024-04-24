@@ -13,10 +13,10 @@ parameters:
   open_conext_locale_cookie_http_only: false
   open_conext_locale_cookie_secure: true
 
-  saml_sp_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
-  saml_sp_privatekey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_privatekey.pem
-  saml_metadata_publickey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_publickey.cer
-  saml_metadata_privatekey: ../vendor/surfnet/stepup-saml-bundle/src/Resources/keys/development_privatekey.pem
+  saml_sp_publickey: /config/profile/profile_saml_sp.crt
+  saml_sp_privatekey: /config/profile/profile_saml_sp.key
+  saml_metadata_publickey: /config/profile/profile_saml_sp.crt
+  saml_metadata_privatekey: /config/profile/profile_saml_sp.key
 
   saml_remote_idp_entity_id: https://engine.dev.openconext.local/authentication/idp/metadata
   saml_remote_idp_sso_url: https://engine.dev.openconext.local/authentication/idp/single-sign-on
