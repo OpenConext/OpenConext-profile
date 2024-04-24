@@ -378,56 +378,6 @@ parameters:
 			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
 
 		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactEmailAddressTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$emailAddress of class OpenConext\\\\Profile\\\\Value\\\\ContactEmailAddress constructor expects string, mixed given\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactEmailAddressTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:contact_type_can_be_invalid\\(\\) has parameter \\$contactTypeValue with no type specified\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:intFloatBoolProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:nonStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:notNonEmptyOrBlankStringProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\ContactTypeTest\\:\\:notObjectProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/ContactTypeTest.php
-
-		-
 			message: "#^Method OpenConext\\\\Profile\\\\Tests\\\\Value\\\\EmailAddressTest\\:\\:email_address_must_be_valid\\(\\) has parameter \\$invalidEmailAddress with no type specified\\.$#"
 			count: 1
 			path: ../../src/OpenConext/Profile/Tests/Value/EmailAddressTest.php
@@ -661,11 +611,6 @@ parameters:
 			path: ../../src/OpenConext/Profile/Value/Consent/ServiceProvider.php
 
 		-
-			message: "#^Method OpenConext\\\\Profile\\\\Value\\\\Consent\\\\ServiceProvider\\:\\:hasSupportUrl\\(\\) has parameter \\$locale with no type specified\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Consent/ServiceProvider.php
-
-		-
 			message: "#^Class OpenConext\\\\Profile\\\\Value\\\\ConsentList implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: ../../src/OpenConext/Profile/Value/ConsentList.php
@@ -687,11 +632,6 @@ parameters:
 
 		-
 			message: "#^Method OpenConext\\\\Profile\\\\Value\\\\DisplayName\\:\\:__construct\\(\\) has parameter \\$translations with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/DisplayName.php
-
-		-
-			message: "#^Method OpenConext\\\\Profile\\\\Value\\\\DisplayName\\:\\:getTranslation\\(\\) has parameter \\$locale with no type specified\\.$#"
 			count: 1
 			path: ../../src/OpenConext/Profile/Value/DisplayName.php
 
