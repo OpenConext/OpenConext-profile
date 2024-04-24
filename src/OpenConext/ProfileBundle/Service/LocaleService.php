@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,53 +20,27 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Repository\LocaleRepositoryInterface;
 use OpenConext\Profile\Value\Locale;
-use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\LocaleSet;
 
-final class LocaleService
+final readonly class LocaleService
 {
-    /**
-     * @var LocaleRepositoryInterface
-     */
-    private $localeRepository;
-
-    /**
-     * @var LocaleSet
-     */
-    private $availableLocales;
-
-    /**
-     * @var Locale
-     */
-    private $defaultLocale;
-
-    /**
-     * @param LocaleRepositoryInterface $localeRepository
-     * @param LocaleSet $availableLocales
-     * @param Locale $defaultLocale
-     */
-    public function __construct(LocaleRepositoryInterface $localeRepository, LocaleSet $availableLocales, Locale $defaultLocale)
-    {
-        $this->localeRepository = $localeRepository;
-        $this->availableLocales = $availableLocales;
-        $this->defaultLocale    = $defaultLocale;
+    public function __construct(
+        private LocaleRepositoryInterface $localeRepository,
+        private LocaleSet $availableLocales,
+        private Locale $defaultLocale,
+    ) {
     }
 
-    /**
-     * @param Locale $locale
-     * @return bool
-     */
-    public function isAvailableLocale(Locale $locale)
-    {
+    public function isAvailableLocale(
+        Locale $locale,
+    ): bool {
         return $this->availableLocales->contains($locale);
     }
 
-    /**
-     * @return Locale
-     */
-    public function getLocale()
+    public function getLocale(): Locale
     {
         $locale = $this->localeRepository->findLocale();
 
@@ -75,18 +51,13 @@ final class LocaleService
         return $this->defaultLocale;
     }
 
-    /**
-     * @param ApiUserInterface $user
-     */
-    public function saveLocaleOf(ApiUserInterface $user)
-    {
+    public function saveLocaleOf(
+        ApiUserInterface $user,
+    ): void {
         $this->localeRepository->save($user->getLocale());
     }
 
-    /**
-     * @return LocaleSet
-     */
-    public function getAvailableLocales()
+    public function getAvailableLocales(): LocaleSet
     {
         return $this->availableLocales;
     }

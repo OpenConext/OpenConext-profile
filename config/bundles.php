@@ -3,7 +3,6 @@
 return [
     Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
     OpenConext\AttributeAggregationApiClientBundle\OpenConextAttributeAggregationApiClientBundle::class => ['all' => true],
-    OpenConext\EngineBlockApiClientBundle\OpenConextEngineBlockApiClientBundle::class => ['all' => true],
     OpenConext\MonitorBundle\OpenConextMonitorBundle::class => ['all' => true],
     OpenConext\ProfileBundle\OpenConextProfileBundle::class => ['all' => true],
     OpenConext\UserLifecycleApiClientBundle\OpenConextUserLifecycleApiClientBundle::class => ['all' => true],
@@ -15,6 +14,6 @@ return [
     Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
+    Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
 ];

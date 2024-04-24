@@ -1,0 +1,15 @@
+includes:
+    - ./phpstan-baseline.neon
+    - ../../vendor/phpstan/phpstan-symfony/extension.neon
+    - ../../vendor/phpstan/phpstan-deprecation-rules/rules.neon
+rules:
+#    - Surfnet\NoDebugFunctionRule
+#    - Surfnet\InvokableControllerRule
+#    - Surfnet\UntypedIdParamRule
+#    - Surfnet\NoNullOrArrayReturnRule
+parameters:
+    checkUninitializedProperties: true
+    level: 9
+    paths:
+        - ../../src
+        - ../../config

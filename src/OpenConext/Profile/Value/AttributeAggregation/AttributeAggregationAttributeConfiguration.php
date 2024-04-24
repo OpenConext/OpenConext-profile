@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -20,62 +22,35 @@ namespace OpenConext\Profile\Value\AttributeAggregation;
 
 final class AttributeAggregationAttributeConfiguration
 {
-    /**
-     * @var string
-     */
-    private $accountType;
-
-    /**
-     * @var string
-     */
-    private $logoPath;
-
-    /**
-     * @var string
-     */
-    private $connectUrl;
-
-    /**
-     * @param string $accountType
-     * @param string $logoPath
-     * @param string $connectUrl
-     */
-    public function __construct($accountType, $logoPath, $connectUrl)
-    {
-        $this->accountType = $accountType;
-        $this->logoPath = $logoPath;
-        $this->connectUrl = $connectUrl;
+    public function __construct(
+        private readonly string $accountType,
+        private readonly string $logoPath,
+        private readonly string $connectUrl,
+    ) {
     }
 
-    public static function fromConfig($accountType, $attributeConfigParameters)
-    {
+    public static function fromConfig(
+        $accountType,
+        array $attributeConfigParameters,
+    ): self {
         return new self(
             $accountType,
             $attributeConfigParameters['logo_path'],
-            $attributeConfigParameters['connect_url']
+            $attributeConfigParameters['connect_url'],
         );
     }
 
-    /**
-     * @return string
-     */
-    public function getAccountType()
+    public function getAccountType(): string
     {
         return $this->accountType;
     }
 
-    /**
-     * @return string
-     */
-    public function getLogoPath()
+    public function getLogoPath(): string
     {
         return $this->logoPath;
     }
 
-    /**
-     * @return string
-     */
-    public function getConnectUrl()
+    public function getConnectUrl(): string
     {
         return $this->connectUrl;
     }

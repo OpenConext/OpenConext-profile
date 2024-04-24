@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2018 SURFnet B.V.
  *
@@ -25,26 +27,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class OpenConextUserLifecycleApiClientExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container)
-    {
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
-
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
-
-        $container->getDefinition('openconext_user_lifecycle_api.guzzle')
-            ->replaceArgument(0, [
-                'base_uri' => $config['http_client']['base_url'],
-                'verify' => $config['http_client']['verify_ssl'],
-                'auth' => [
-                    $config['http_client']['username'],
-                    $config['http_client']['password'],
-                    'basic'
-                ],
-                'headers' => [
-                    'Accept' => 'application/json'
-                ]
-            ]);
+    public function load(
+        array $configs,
+        ContainerBuilder $container,
+    ): void {
     }
 }

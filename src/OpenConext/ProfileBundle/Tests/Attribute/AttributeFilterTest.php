@@ -18,7 +18,6 @@
 
 namespace OpenConext\ProfileBundle\Tests\Attribute;
 
-use Mockery as m;
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use PHPUnit\Framework\TestCase;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
@@ -27,13 +26,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeFilterTest extends TestCase
 {
-    protected function tearDown()
-    {
-        parent::tearDown();
-        m::close();
-    }
-
-    public function test_it_handles_empty_set()
+    public function test_it_handles_empty_set(): void
     {
         $filter = new AttributeFilter();
         $set = AttributeSet::create([]);
@@ -43,7 +36,7 @@ class AttributeFilterTest extends TestCase
         $this->assertEquals($set->count(), $filterResult->count());
     }
 
-    public function test_it_filters_inappropriate_attributes()
+    public function test_it_filters_inappropriate_attributes(): void
     {
         $filter = new AttributeFilter();
 
@@ -58,21 +51,14 @@ class AttributeFilterTest extends TestCase
         $this->assertEquals(2, $filterResult->count());
     }
 
-    private function getMockAttribute($attributeName)
+    private function getMockAttribute(string $attributeName)
     {
-        $mockAttribute = m::mock(Attribute::class);
-        $attributeDefinition = m::mock(AttributeDefinition::class);
-        $mockAttribute
-            ->shouldReceive('equals')
-            ->andReturn(false);
+        $mockAttribute = $this->createMock(Attribute::class);
+        $attributeDefinition = $this->createMock(AttributeDefinition::class);
 
-        $mockAttribute
-            ->shouldReceive('getAttributeDefinition')
-            ->andReturn($attributeDefinition);
-
-        $attributeDefinition
-            ->shouldReceive('getName')
-            ->andReturn($attributeName);
+        $mockAttribute->method('equals')->willReturn(false);
+        $mockAttribute->method('getAttributeDefinition')->willReturn($attributeDefinition);
+        $attributeDefinition->method('getName')->willReturn($attributeName);
 
         return $mockAttribute;
     }

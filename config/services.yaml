@@ -1,15 +1,35 @@
 imports:
-    - { resource: 'legacy/global_view_parameters.yaml' }
-    - { resource: 'legacy/parameters.yaml' }
+    - { resource: 'openconext/global_view_parameters.yaml' }
+    - { resource: 'openconext/parameters.yaml' }
 
 services:
-    logger:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    OpenConext\:
+        resource: '../src/OpenConext/'
+        exclude:
+            - '../src/OpenConext/Profile/Value/'
+            - '../src/OpenConext/ProfileBundle/'
+            - '../src/OpenConext/Kernel.php'
+
+    OpenConext\ProfileBundle\Controller\:
+        resource: '../src/OpenConext/ProfileBundle/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    OpenConext\ProfileBundle\Controller\MyServicesController:
+        arguments:
+            $removeConsentEnabled: '%remove_consent_enabled%'
+        tags: [ 'controller.service_arguments' ]
+
+    surfnet_saml.saml_provider:
+        class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
+
+    Psr\Log\LoggerInterface:
         alias: 'monolog.logger'
         public: true
-    twig.text_extension:
-        class: Twig_Extensions_Extension_Text
-        tags:
-            - name: twig.extension
 
     OpenConext\ProfileBundle\Service\GlobalViewParameters:
         arguments:
@@ -22,9 +42,76 @@ services:
             - '%profile_explanation_image_path%'
             - '%attribute_information_url%'
             - '%remove_consent_enabled%'
+
     open_conext.profile_bundle.service.global_view_parameters:
         alias: OpenConext\ProfileBundle\Service\GlobalViewParameters
+
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
         arguments:
             - '%dsn%'
+
     Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler:
+
+    OpenConext\ProfileBundle\Twig\LocaleExtension:
+        arguments:
+            $defaultLocale: '%default_locale%'
+        tags: ['twig.extension']
+
+    OpenConext\ProfileBundle\Twig\I18n:
+        tags: ['twig.extension']
+
+
+    OpenConext\ProfileBundle\Service\UserService:
+        calls:
+            - [ setUserLifecycleApiClient,
+                [ '@OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient' ] ]
+
+    OpenConext\Profile\Value\Locale:
+        arguments:
+            - '%default_locale%' # default locale
+
+    profile.attribute_support.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%attribute_support_email_from%'
+
+    OpenConext\Profile\Value\EmailAddressSupport: '@profile.attribute_support.email_to'
+    OpenConext\Profile\Value\EmailAddressInformationRequest: '@profile.information_request.email_to'
+
+    profile.attribute_support.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%attribute_support_email_to%'
+
+    profile.information_request.email_from:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%information_request_email_from%'
+
+    profile.information_request.email_to:
+        public: false
+        class: OpenConext\Profile\Value\EmailAddress
+        arguments:
+            - '%information_request_email_to%'
+
+    OpenConext\ProfileBundle\Service\AttributeSupportMailService:
+        arguments:
+            - '@profile.attribute_support.email_from'
+            - '@profile.attribute_support.email_to'
+
+    OpenConext\ProfileBundle\Service\InformationRequestMailService:
+        arguments:
+            - '@profile.information_request.email_from'
+            - '@profile.information_request.email_to'
+
+    OpenConext\ProfileBundle\EventListener\LocaleListener:
+        tags:
+            - { name: kernel.event_subscriber }
+
+    OpenConext\Profile\Repository\UserRepositoryInterface:
+        class: OpenConext\ProfileBundle\Profile\Repository\UserRepository
+        arguments:
+            - '@request_stack'

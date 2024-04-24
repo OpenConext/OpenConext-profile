@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2017 SURFnet B.V.
+ * Copyright 2018 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,10 +34,12 @@ final class Arp
     /**
      * @var array The arp configuration is grouped on source. The source values are a collection of Attribute
      */
-    private $arp;
+    private readonly array $arp;
 
-    public static function createWith(array $arp, AttributeDictionary $dictionary = null)
-    {
+    public static function createWith(
+        array $arp,
+        AttributeDictionary $dictionary = null,
+    ): self {
         // Input validation
         foreach ($arp as $attributeInformation) {
             if (!is_array($attributeInformation)) {
@@ -49,8 +53,10 @@ final class Arp
         return new self($arp, $dictionary);
     }
 
-    private function __construct(array $arp, AttributeDictionary $dictionary = null)
-    {
+    private function __construct(
+        array $arp,
+        AttributeDictionary $dictionary = null,
+    ) {
         $arpCollection = [];
 
         // Create Attribute instances for all attributes
@@ -62,7 +68,7 @@ final class Arp
             if (!is_null($dictionary)) {
                 try {
                     $attributeDefinition = $dictionary->getAttributeDefinitionByUrn($attributeName);
-                } catch (UnknownUrnException $exception) {
+                } catch (UnknownUrnException) {
                     // Use the previously created attributeDefinition.
                 }
             }
@@ -116,11 +122,11 @@ final class Arp
      *   ],
      * ]
      *
-     * @param array $attributeInformation
      * @return bool
      */
-    private static function isValidAttribute(array $attributeInformation)
-    {
+    private static function isValidAttribute(
+        array $attributeInformation,
+    ): bool {
         foreach ($attributeInformation as $attributeInformationEntry) {
             if (!isset($attributeInformationEntry['value'])) {
                 return false;
@@ -150,10 +156,7 @@ final class Arp
         return $this->arp;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMotivations()
+    public function hasMotivations(): bool
     {
         foreach ($this->arp as $arpSource) {
             foreach ($arpSource as $arpEntry) {
@@ -167,8 +170,9 @@ final class Arp
         return false;
     }
 
-    public function getMotivationFor(Attribute $attribute)
-    {
+    public function getMotivationFor(
+        Attribute $attribute,
+    ) {
         foreach ($this->arp as $arpSource) {
             foreach ($arpSource as $arpEntry) {
                 if ($attribute->getAttributeDefinition()->getUrnMace() == $arpEntry->getAttributeDefinition()->getUrnMace()) {

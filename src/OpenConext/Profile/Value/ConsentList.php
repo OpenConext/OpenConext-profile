@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,47 +23,44 @@ namespace OpenConext\Profile\Value;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 final class ConsentList implements IteratorAggregate, Countable
 {
     /**
      * @var Consent[]
      */
-    private $consents = [];
+    private array $consents = [];
 
     /**
      * @param Consent[] $consents
      */
-    public function __construct(array $consents)
-    {
+    public function __construct(
+        array $consents,
+    ) {
         foreach ($consents as $consent) {
             $this->initializeWith($consent);
         }
     }
 
-    /**
-     * @param Consent $consent
-     */
-    private function initializeWith(Consent $consent)
-    {
+    private function initializeWith(
+        Consent $consent,
+    ): void {
         $this->consents[] = $consent;
     }
 
-    /**
-     * @param callable $predicate
-     * @return array
-     */
-    public function map(callable $predicate)
-    {
+    public function map(
+        callable $predicate,
+    ): array {
         return array_map($predicate, $this->consents);
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->consents);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->consents);
     }

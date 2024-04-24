@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2018 SURFnet B.V.
  *
@@ -18,43 +20,32 @@
 
 namespace OpenConext\UserLifecycleApiClientBundle\Http;
 
-use GuzzleHttp\ClientInterface;
-use OpenConext\UserLifecycleApiClientBundle\Exception\InvalidArgumentException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\ResourceNotFoundException;
 use OpenConext\UserLifecycleApiClientBundle\Exception\RuntimeException;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class JsonApiClient
 {
-    /**
-     * @var ClientInterface
-     */
-    private $httpClient;
-
-    /**
-     * @param ClientInterface $httpClient
-     */
-    public function __construct(ClientInterface $httpClient)
-    {
-        $this->httpClient = $httpClient;
+    public function __construct(
+        private readonly HttpClientInterface $userLifecycleApiClient,
+    ) {
     }
 
     /**
-     * @param string $path A URL path, optionally containing printf parameters. The parameters
-     *               will be URL encoded and formatted into the path string.
-     *               Example: "connections/%d.json"
-     * @param array  $parameters
-     * @return mixed $data
-     * @throws InvalidResponseException
-     * @throws MalformedResponseException
-     * @throws ResourceNotFoundException
+     * A URL path, optionally containing printf parameters. The parameters
+     * will be URL encoded and formatted into the path string.
+     * Example: "connections/%d.json"
      */
-    public function read($path, array $parameters = [])
-    {
+    public function read(
+        string $path,
+        array $parameters = [],
+    ): array {
         $resource = $this->buildResourcePath($path, $parameters);
 
-        $response = $this->httpClient->request('GET', $resource, ['exceptions' => false]);
+        $response = $this->userLifecycleApiClient->request('GET', $resource);
 
         $statusCode = $response->getStatusCode();
 
@@ -67,16 +58,16 @@ class JsonApiClient
                 sprintf(
                     'Request to resource "%s" returned an invalid response with status code %s',
                     $resource,
-                    $statusCode
-                )
+                    $statusCode,
+                ),
             );
         }
 
         try {
-            $data = $this->parseJson((string) $response->getBody());
-        } catch (InvalidArgumentException $e) {
+            $data = $response->toArray();
+        } catch (DecodingExceptionInterface) {
             throw new MalformedResponseException(
-                sprintf('Cannot read resource "%s": malformed JSON returned', $resource)
+                sprintf('Cannot read resource "%s": malformed JSON returned', $resource),
             );
         }
 
@@ -84,13 +75,12 @@ class JsonApiClient
     }
 
     /**
-     * @param string $path
-     * @param array $parameters
-     * @return string
      * @throws RuntimeException
      */
-    private function buildResourcePath($path, array $parameters)
-    {
+    private function buildResourcePath(
+        string $path,
+        array $parameters,
+    ): string {
         if (count($parameters) > 0) {
             $resource = vsprintf($path, array_map('urlencode', $parameters));
         } else {
@@ -102,46 +92,11 @@ class JsonApiClient
                 sprintf(
                     'Could not construct resource path from path "%s", parameters "%s"',
                     $path,
-                    implode('","', $parameters)
-                )
+                    implode('","', $parameters),
+                ),
             );
         }
 
         return $resource;
-    }
-
-    /**
-     * Function to provide functionality common to Guzzle 5 Response's json method,
-     * without config options as they are not needed.
-     *
-     * @param string $json
-     * @return mixed
-     * @throws InvalidArgumentException
-     */
-    private function parseJson($json)
-    {
-        $jsonErrors = [
-            JSON_ERROR_DEPTH          => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',
-            JSON_ERROR_STATE_MISMATCH => 'JSON_ERROR_STATE_MISMATCH - Underflow or the modes mismatch',
-            JSON_ERROR_CTRL_CHAR      => 'JSON_ERROR_CTRL_CHAR - Unexpected control character found',
-            JSON_ERROR_SYNTAX         => 'JSON_ERROR_SYNTAX - Syntax error, malformed JSON',
-            JSON_ERROR_UTF8           => 'JSON_ERROR_UTF8 - Malformed UTF-8 characters, possibly incorrectly encoded',
-        ];
-
-        $data = json_decode($json, true);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            $last = json_last_error();
-
-            $errorMessage = $jsonErrors[$last];
-
-            if (!isset($errorMessage)) {
-                $errorMessage = 'Unknown error';
-            }
-
-            throw new InvalidArgumentException(sprintf('Unable to parse JSON data: %s', $errorMessage));
-        }
-
-        return $data;
     }
 }

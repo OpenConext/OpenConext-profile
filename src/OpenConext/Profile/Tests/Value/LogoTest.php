@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -28,7 +30,7 @@ class LogoTest extends TestCase
      * @group Logo
      * @group Value
      */
-    public function hasUrlReturnsFalseWhenThereIsNoUrl()
+    public function hasUrlReturnsFalseWhenThereIsNoUrl(): void
     {
         $logoWithoutUrl = new Logo(null, null, null);
         $otherLogoWithoutUrl = new Logo('', '', '');
@@ -41,7 +43,7 @@ class LogoTest extends TestCase
      * @group Logo
      * @group Value
      */
-    public function hasUrlReturnsTrueWhenUrlIsPresent()
+    public function hasUrlReturnsTrueWhenUrlIsPresent(): void
     {
         $logoWithUrl = new Logo("https//fake.logo/logo.jpg", null, null);
         $this->assertTrue($logoWithUrl->hasUrl());

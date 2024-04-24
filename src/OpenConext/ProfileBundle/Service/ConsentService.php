@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,35 +20,27 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
+use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Repository\ConsentRepositoryInterface;
 use OpenConext\Profile\Value\ConsentList;
-use OpenConext\Profile\Entity\AuthenticatedUser;
-use Psr\Log\LoggerInterface;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 
-final class ConsentService
+final readonly class ConsentService
 {
-    /**
-     * @var ConsentRepositoryInterface
-     */
-    private $consentRepository;
-
-    public function __construct(ConsentRepositoryInterface $consentRepository)
-    {
-        $this->consentRepository = $consentRepository;
+    public function __construct(
+        private ConsentRepositoryInterface $consentRepository,
+    ) {
     }
 
-    /**
-     * @param AuthenticatedUser $user
-     * @return ConsentList|null
-     */
-    public function findAllFor(AuthenticatedUser $user)
-    {
+    public function findAllFor(
+        AuthenticatedUser $user,
+    ): ConsentList {
         return $this->consentRepository->findAllFor($user->getNameId());
     }
 
-    public function deleteServiceWith(AuthenticatedUser $user, string $serviceEntityId): bool
-    {
+    public function deleteServiceWith(
+        AuthenticatedUser $user,
+        string $serviceEntityId,
+    ): bool {
         return $this->consentRepository->deleteServiceWith($user->getNameId(), $serviceEntityId);
     }
 }

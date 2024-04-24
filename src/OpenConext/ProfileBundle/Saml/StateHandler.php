@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,70 +20,53 @@
 
 namespace OpenConext\ProfileBundle\Saml;
 
-use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class StateHandler
 {
-    /**
-     * @var NamespacedAttributeBag
-     */
-    private $attributeBag;
-
-    public function __construct(NamespacedAttributeBag $attributeBag)
-    {
-        $this->attributeBag = $attributeBag;
+    public const REQUEST_ID = 'request_id';
+    public const CURRENT_URI = 'current_uri';
+    public function __construct(
+        private readonly RequestStack $requestStack,
+    ) {
     }
 
-    /**
-     * @param string $originalRequestId
-     * @return $this
-     */
-    public function setRequestId($originalRequestId)
-    {
-        $this->attributeBag->set('request_id', $originalRequestId);
+    public function setRequestId(
+        string $originalRequestId,
+    ): StateHandler {
+        $this->requestStack->getSession()->set(self::REQUEST_ID, $originalRequestId);
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getRequestId()
+    public function getRequestId(): ?string
     {
-        return $this->attributeBag->get('request_id');
+        return $this->requestStack->getSession()->get(self::REQUEST_ID);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasRequestId()
+    public function hasRequestId(): bool
     {
-        return $this->attributeBag->has('request_id');
+        return $this->requestStack->getSession()->has(self::REQUEST_ID);
     }
 
     /**
      * Removes the requestId from the session
      */
-    public function clearRequestId()
+    public function clearRequestId(): void
     {
-        $this->attributeBag->remove('request_id');
+        $this->requestStack->getSession()->remove(self::REQUEST_ID);
     }
 
-    /**
-     * @param string $uri
-     */
-    public function setCurrentRequestUri($uri)
-    {
-        $this->attributeBag->set('current_uri', $uri);
+    public function setCurrentRequestUri(
+        string $uri,
+    ): void {
+        $this->requestStack->getSession()->set(self::CURRENT_URI, $uri);
     }
 
-    /**
-     * @return string
-     */
-    public function getCurrentRequestUri()
+    public function getCurrentRequestUri(): string
     {
-        $uri = $this->attributeBag->get('current_uri');
-        $this->attributeBag->remove('current_uri');
+        $uri = $this->requestStack->getSession()->get(self::CURRENT_URI);
+        $this->requestStack->getSession()->remove(self::CURRENT_URI);
 
         return $uri;
     }

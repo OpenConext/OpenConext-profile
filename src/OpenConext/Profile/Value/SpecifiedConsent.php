@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,67 +20,39 @@
 
 namespace OpenConext\Profile\Value;
 
+use OpenConext\Profile\Value\Consent;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class SpecifiedConsent
 {
-    /**
-     * @var Consent
-     */
-    private $consent;
-
-    /**
-     * @var AttributeSet
-     */
-    private $releasedAttributes;
-
-    /**
-     * @var Arp
-     */
-    private $arp;
-
-    /**
-     * @param Consent $consent
-     * @param AttributeSet $releasedAttributes
-     * @param Arp $arp
-     * @return SpecifiedConsent
-     */
-    public static function specifies(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
-    {
+    public static function specifies(
+        Consent $consent,
+        AttributeSet $releasedAttributes,
+        Arp $arp,
+    ): self {
         return new self($consent, $releasedAttributes, $arp);
     }
 
-    /**
-     * @param Consent $consent
-     * @param AttributeSet $releasedAttributes
-     * @param Arp $arp
-     */
-    private function __construct(Consent $consent, AttributeSet $releasedAttributes, Arp $arp)
-    {
-        $this->consent = $consent;
-        $this->releasedAttributes = $releasedAttributes;
-        $this->arp = $arp;
+    private function __construct(
+        private readonly Consent $consent,
+        private readonly AttributeSet $releasedAttributes,
+        private readonly Arp $arp,
+    ) {
     }
 
-    /**
-     * @return Consent
-     */
-    public function getConsent()
+    public function getConsent(): Consent
     {
         return $this->consent;
     }
 
-    /**
-     * @return AttributeSet
-     */
-    public function getReleasedAttributes()
+    public function getReleasedAttributes(): AttributeSet
     {
         return $this->releasedAttributes;
     }
 
-    public function hasMultipleSources()
+    public function hasMultipleSources(): bool
     {
         $sources = [];
         foreach ($this->getReleasedAttributes() as $attribute) {
@@ -92,15 +66,17 @@ class SpecifiedConsent
     }
 
     /**
-     * Groups the released attributes on the group they originate from. This can be used to show the AA attributes.
+     * Groups the released attributes on the group they originate from. This
+     * can be used to show the AA attributes.
      * Note that the attributes from the IdP source are omitted in the results.
      *
-     * @return Attribute[]
+     * @return array<string, array<int, Attribute>>
      */
     public function getIdPAttributes(): array
     {
         $grouped = [];
         foreach ($this->getReleasedAttributes() as $attribute) {
+            assert($attribute instanceof Attribute);
             // The source is the same for all possible attribute values, so use the first one.
             $source = $attribute->getValue()[0]['source'];
             if ($source !== 'idp') {
@@ -117,16 +93,14 @@ class SpecifiedConsent
         return $this->arp->getNonIdpAttributes();
     }
 
-    /**
-     * @return bool
-     */
-    public function hasMotivations()
+    public function hasMotivations(): bool
     {
         return $this->arp->hasMotivations();
     }
 
-    public function getMotivation(Attribute $attribute)
-    {
+    public function getMotivation(
+        Attribute $attribute,
+    ) {
         return $this->arp->getMotivationFor($attribute);
     }
 

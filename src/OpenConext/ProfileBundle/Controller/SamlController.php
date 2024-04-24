@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,42 +23,39 @@ namespace OpenConext\ProfileBundle\Controller;
 use Psr\Log\LoggerInterface;
 use Surfnet\SamlBundle\Http\XMLResponse;
 use Surfnet\SamlBundle\Metadata\MetadataFactory;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Routing\Attribute\Route;
 
-class SamlController
+class SamlController extends AbstractController
 {
-    /**
-     * @var MetadataFactory
-     */
-    private $metadataFactory;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @param MetadataFactory $metadataFactory
-     * @param LoggerInterface $logger
-     */
-    public function __construct(MetadataFactory $metadataFactory, LoggerInterface $logger)
-    {
-        $this->metadataFactory = $metadataFactory;
-        $this->logger = $logger;
+    public function __construct(
+        private readonly MetadataFactory $metadataFactory,
+        private readonly LoggerInterface $logger,
+    ) {
     }
 
-    public function consumeAssertionAction()
+    #[Route(
+        path: '/authentication/consume-assertion',
+        name: 'profile.saml_consume_assertion',
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
+    public function consumeAssertion(): never
     {
         throw new BadRequestHttpException('Unexpected request sent to ACS');
     }
 
-    /**
-     * @return XMLResponse
-     */
-    public function metadataAction()
+    #[Route(
+        path: '/authentication/metadata',
+        name: 'profile.saml_metadata',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function metadata(): XMLResponse
     {
         $this->logger->info('Showing SAML metadata');
 
-        return new XMLResponse($this->metadataFactory->generate());
+        return new XMLResponse((string) $this->metadataFactory->generate());
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -27,14 +29,15 @@ final class LocaleSet implements IteratorAggregate, Countable
     /**
      * @var Locale[]
      */
-    private $locales = [];
+    private array $locales = [];
 
     /**
      * @param Locale[] $locales
      * @return LocaleSet
      */
-    public static function create(array $locales)
-    {
+    public static function create(
+        array $locales,
+    ): LocaleSet {
         $localeSet = new LocaleSet();
 
         foreach ($locales as $locale) {
@@ -48,12 +51,9 @@ final class LocaleSet implements IteratorAggregate, Countable
     {
     }
 
-    /**
-     * @param Locale $otherLocale
-     * @return bool
-     */
-    public function contains(Locale $otherLocale)
-    {
+    public function contains(
+        Locale $otherLocale,
+    ): bool {
         foreach ($this->locales as $locale) {
             if ($locale->equals($otherLocale)) {
                 return true;
@@ -63,23 +63,22 @@ final class LocaleSet implements IteratorAggregate, Countable
         return false;
     }
 
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->locales);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->locales);
     }
 
     /**
-     * @param Locale $locale
-     *
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod) PHPMD does not see that this is being called in our static method
      */
-    private function initializeWith(Locale $locale)
-    {
+    private function initializeWith(
+        Locale $locale,
+    ): void {
         if ($this->contains($locale)) {
             return;
         }

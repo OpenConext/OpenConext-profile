@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,12 +20,14 @@
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class ConsentType
+final class ConsentType implements Stringable
 {
-    const TYPE_EXPLICIT = 'explicit';
-    const TYPE_IMPLICIT = 'implicit';
+    public const TYPE_EXPLICIT = 'explicit';
+    public const TYPE_IMPLICIT = 'implicit';
 
     /**
      * @var string
@@ -33,7 +37,7 @@ final class ConsentType
     /**
      * @return ConsentType
      */
-    public static function explicit()
+    public static function explicit(): self
     {
         return new self(self::TYPE_EXPLICIT);
     }
@@ -41,54 +45,43 @@ final class ConsentType
     /**
      * @return ConsentType
      */
-    public static function implicit()
+    public static function implicit(): self
     {
         return new self(self::TYPE_IMPLICIT);
     }
 
     /**
-     * @param string $consentType
+     * @throws AssertionFailedException
      */
-    private function __construct($consentType)
-    {
+    private function __construct(
+        string $consentType,
+    ) {
         Assert::choice(
             $consentType,
             [ConsentType::TYPE_EXPLICIT, ConsentType::TYPE_IMPLICIT],
-            '"%s" is not one of the valid ConsentTypes: %s'
+            '"%s" is not one of the valid ConsentTypes: %s',
         );
 
         $this->consentType = $consentType;
     }
 
-    /**
-     * @param ConsentType $other
-     * @return bool
-     */
-    public function equals(ConsentType $other)
-    {
+    public function equals(
+        ConsentType $other,
+    ): bool {
         return $this->consentType === $other->consentType;
     }
 
-    /**
-     * @return bool
-     */
-    public function isExplicit()
+    public function isExplicit(): bool
     {
         return $this->consentType === self::TYPE_EXPLICIT;
     }
 
-    /**
-     * @return bool
-     */
-    public function isImplicit()
+    public function isImplicit(): bool
     {
         return $this->consentType === self::TYPE_IMPLICIT;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->consentType;
     }

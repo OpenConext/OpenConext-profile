@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,9 +20,11 @@
 
 namespace OpenConext\Profile\Tests;
 
+use stdClass;
+
 trait DataProvider
 {
-    public function notObjectProvider()
+    public function notObjectProvider(): array
     {
         return [
             'string' => [''],
@@ -32,19 +36,15 @@ trait DataProvider
         ];
     }
 
-    public function notNonEmptyOrBlankStringProvider()
+    public function notNonEmptyOrBlankStringProvider(): array
     {
         return [
             'empty string' => [''],
             'blank string' => ['   '],
-            'array'        => [[]],
-            'integer'      => [1],
-            'float'        => [1.2],
-            'object'       => [new \StdClass()],
         ];
     }
 
-    public function nonStringProvider()
+    public function nonStringProvider(): array
     {
         return [
             'int'      => [1],
@@ -54,12 +54,12 @@ trait DataProvider
             'null'     => [null],
             'bool'     => [false],
             'array'    => [[]],
-            'object'   => [new \stdClass],
+            'object'   => [new stdClass],
             'resource' => [fopen('php://memory', 'w')],
         ];
     }
 
-    public function intFloatBoolProvider()
+    public function intFloatBoolProvider(): array
     {
         return [
             'int 0'   => [0],

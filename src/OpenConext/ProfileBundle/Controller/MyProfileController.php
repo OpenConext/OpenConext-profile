@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,60 +20,36 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Twig\Environment;
+use Symfony\Component\Routing\Attribute\Route;
 
-class MyProfileController
+class MyProfileController extends AbstractController
 {
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
 
     public function __construct(
-        UserService $userService,
-        Environment $templateEngine,
-        Guard $guard,
-        LoggerInterface $logger
+        private readonly UserService $userService,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->userService    = $userService;
-        $this->templateEngine = $templateEngine;
-        $this->guard          = $guard;
-        $this->logger         = $logger;
     }
 
-    /**
-     * @return Response
-     */
-    public function overviewAction()
+    #[Route(
+        path: "/my-profile",
+        name: "profile.my_profile_overview",
+        methods: ["GET"],
+        schemes: "https",
+    )]
+    public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $this->logger->info('Showing My Profile page');
 
         $user = $this->userService->getUser();
 
-        return new Response($this->templateEngine->render(
+        return $this->render(
             '@OpenConextProfile/MyProfile/overview.html.twig',
-            ['user' => $user]
-        ));
+            ['user' => $user],
+        );
     }
 }

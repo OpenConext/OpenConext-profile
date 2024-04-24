@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -22,17 +24,10 @@ use Assert\AssertionFailedException as AssertAssertionFailedException;
 
 class AssertionFailedException extends InvalidArgumentException implements AssertAssertionFailedException
 {
-    private $propertyPath;
-    private $value;
-    private $constraints;
-
     // @codingStandardsIgnoreStart
-    public function __construct($message, $code, $propertyPath = null, $value, array $constraints = array())
+    public function __construct($message, $code, private $value, private $propertyPath = null, private readonly array $constraints = [])
     {
         parent::__construct($message, $code);
-        $this->propertyPath = $propertyPath;
-        $this->value        = $value;
-        $this->constraints  = $constraints;
     }
     // @codingStandardsIgnoreEnd
     /**
@@ -44,7 +39,7 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
      *
      * @return string
      */
-    public function getPropertyPath()
+    public function getPropertyPath(): ?string
     {
         return $this->propertyPath;
     }
@@ -54,7 +49,7 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
      *
      * @return mixed
      */
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }
@@ -63,7 +58,7 @@ class AssertionFailedException extends InvalidArgumentException implements Asser
      *
      * @return array
      */
-    public function getConstraints()
+    public function getConstraints(): array
     {
         return $this->constraints;
     }

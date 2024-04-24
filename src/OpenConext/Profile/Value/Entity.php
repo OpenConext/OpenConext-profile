@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,71 +20,53 @@
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
+use OpenConext\Profile\Value\EntityId;
+use OpenConext\Profile\Value\EntityType;
+use Stringable;
 
-final class Entity
+final readonly class Entity implements Stringable
 {
     /**
-     * @var EntityId
+     * @throws AssertionFailedException
      */
-    private $entityId;
-
-    /**
-     * @var EntityType
-     */
-    private $entityType;
-
-    /**
-     * @param array $descriptor
-     * @return Entity
-     */
-    public static function fromDescriptor(array $descriptor)
-    {
+    public static function fromDescriptor(
+        array $descriptor,
+    ): self {
         Assert::count($descriptor, 2);
 
-        switch ($descriptor[1]) {
-            case 'sp':
-                return new Entity(new EntityId($descriptor[0]), EntityType::SP());
-            case 'idp':
-                return new Entity(new EntityId($descriptor[0]), EntityType::IdP());
-            default:
-                throw new LogicException('Entity descriptor type neither "sp" nor "idp"');
-        }
+        return match ($descriptor[1]) {
+            'sp' => new Entity(new EntityId($descriptor[0]), EntityType::SP()),
+            'idp' => new Entity(new EntityId($descriptor[0]), EntityType::IdP()),
+            default => throw new LogicException('Entity descriptor type neither "sp" nor "idp"'),
+        };
     }
 
-    public function __construct(EntityId $entityId, EntityType $entityType)
-    {
-        $this->entityId = $entityId;
-        $this->entityType = $entityType;
+    public function __construct(
+        private EntityId $entityId,
+        private EntityType $entityType,
+    ) {
     }
 
-    /**
-     * @return EntityId
-     */
-    public function getEntityId()
+    public function getEntityId(): EntityId
     {
         return $this->entityId;
     }
 
-    /**
-     * @return EntityType
-     */
-    public function getEntityType()
+    public function getEntityType(): EntityType
     {
         return $this->entityType;
     }
 
-    /**
-     * @param Entity $other
-     * @return bool
-     */
-    public function equals(Entity $other)
-    {
+    public function equals(
+        Entity $other,
+    ): bool {
         return $this->entityId->equals($other->entityId) && $this->entityType->equals($other->entityType);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->entityId . '(' . $this->entityType . ')';
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -20,60 +22,35 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use OpenConext\ProfileBundle\Profile\Command\ChangeLocaleCommand;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Routing\Attribute\Route;
 
-class LocaleController
+class LocaleController extends AbstractController
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var FlashBagInterface
-     */
-    private $flashBag;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
 
     public function __construct(
-        FormFactoryInterface $formFactory,
-        UserService $userService,
-        FlashBagInterface $flashBag,
-        Guard $guard,
-        LoggerInterface $logger
+        private readonly FormFactoryInterface $formFactory,
+        private readonly UserService $userService,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->formFactory = $formFactory;
-        $this->userService = $userService;
-        $this->flashBag    = $flashBag;
-        $this->guard       = $guard;
-        $this->logger      = $logger;
     }
 
-    public function switchLocaleAction(Request $request)
-    {
-        $this->guard->userIsLoggedIn();
-
+    #[Route(
+        path: '/switch-locale',
+        name: 'profile.locale_switch_locale',
+        requirements: ['return-url' => '.+'],
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
+    public function switchLocale(
+        Request $request,
+    ): RedirectResponse {
         $this->logger->info('User requested to switch locale');
 
         $returnUrl = $request->query->get('return-url');
@@ -82,10 +59,10 @@ class LocaleController
         // @see https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpFoundation/Request.php#L878
         $domain = $request->getSchemeAndHttpHost() . '/';
 
-        if (strpos($returnUrl, $domain) !== 0) {
+        if (!str_starts_with($returnUrl, $domain)) {
             $this->logger->error(sprintf(
                 'Illegal return-url ("%s") for redirection after changing locale, aborting request',
-                $returnUrl
+                $returnUrl,
             ));
             throw new BadRequestHttpException('Invalid return-url given');
         }
@@ -96,20 +73,20 @@ class LocaleController
         $this->logger->notice(sprintf(
             'Switching locale from "%s" to "%s"',
             $request->getLocale(),
-            $command->newLocale
+            $command->newLocale,
         ));
 
         if ($form->isValid()) {
             $this->userService->changeLocale($command);
-            $this->flashBag->add('success', 'profile.locale.locale_change_success');
+            $this->addFlash('success', 'profile.locale.locale_change_success');
 
             $this->logger->notice(sprintf(
                 'Successfully switched locale from "%s" to "%s"',
                 $request->getLocale(),
-                $command->newLocale
+                $command->newLocale,
             ));
         } else {
-            $this->flashBag->add('error', 'profile.locale.locale_change_fail');
+            $this->addFlash('error', 'profile.locale.locale_change_fail');
 
             $this->logger->error('Locale not switched: the switch locale form contained invalid data');
         }

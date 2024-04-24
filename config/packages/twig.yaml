@@ -3,5 +3,10 @@ twig:
   strict_variables: "%kernel.debug%"
   globals:
     global_view_parameters: "@open_conext.profile_bundle.service.global_view_parameters"
-    root_path: "%kernel.root_dir%"
+    root_path: "%kernel.project_dir%"
+  paths:
+    '%kernel.project_dir%/templates': 'OpenConextProfile'
 
+when@test:
+  twig:
+    strict_variables: true

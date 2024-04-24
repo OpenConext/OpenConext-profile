@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -29,15 +31,17 @@ class AssertTest extends TestCase
      * @group Assert
      * @dataProvider missingKeysProvider
      *
-     * @expectedException \OpenConext\Profile\Exception\AssertionFailedException
-     * @expectedExceptionMessage Required key
+     *
+     *
      */
-    public function missing_required_keys_trigger_an_exception($givenArray, $expectedKeys)
+    public function missing_required_keys_trigger_an_exception(array $givenArray, array $expectedKeys): void
     {
+        $this->expectException(AssertionFailedException::class);
+        $this->expectExceptionMessage("Required key");
         Assert::keysArePresent($givenArray, $expectedKeys);
     }
 
-    public function missingKeysProvider()
+    public function missingKeysProvider(): array
     {
         return [
             'empty given array' => [[], ['MissingOne', 'MissingTwo']],
@@ -53,20 +57,20 @@ class AssertTest extends TestCase
      * @group Assert
      * @dataProvider matchingKeysProvider
      */
-    public function present_keys_do_not_trigger_an_exception($givenArray, $expectedKeys)
+    public function present_keys_do_not_trigger_an_exception(array $givenArray, array $expectedKeys): void
     {
         $exceptionIsThrown = false;
 
         try {
             Assert::keysArePresent($givenArray, $expectedKeys);
-        } catch (AssertionFailedException $e) {
+        } catch (AssertionFailedException) {
             $exceptionIsThrown = true;
         }
 
         $this->assertFalse($exceptionIsThrown);
     }
 
-    public function matchingKeysProvider()
+    public function matchingKeysProvider(): array
     {
         return [
             'empty array and no keys' => [[], []],

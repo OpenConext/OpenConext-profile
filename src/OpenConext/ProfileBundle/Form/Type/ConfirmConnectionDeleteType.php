@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2018 SURFnet B.V.
  *
@@ -25,8 +27,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 class ConfirmConnectionDeleteType extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options,
+    ): void {
         $builder
             ->add(
                 'confirm-button',
@@ -36,11 +40,11 @@ class ConfirmConnectionDeleteType extends AbstractType
                         'class' => 'button modalWindow__button modalWindow__button--form',
                     ],
                     'label' => 'general.confirm',
-                ]
+                ],
             );
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_confirm_connection_delete';
     }

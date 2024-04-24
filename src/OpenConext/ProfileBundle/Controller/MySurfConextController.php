@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -18,75 +20,52 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Twig\Environment;
 
-class MySurfConextController
+class MySurfConextController extends AbstractController
 {
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
 
     public function __construct(
-        UserService $userService,
-        Environment $templateEngine,
-        Guard $guard,
-        LoggerInterface $logger
+        private readonly UserService $userService,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->userService    = $userService;
-        $this->templateEngine = $templateEngine;
-        $this->guard          = $guard;
-        $this->logger         = $logger;
     }
 
-    /**
-     * @return Response
-     */
-    public function overviewAction()
+    #[Route(
+        path: "/my-surfconext",
+        name: "profile.my_surf_conext_overview",
+        methods: ["GET"],
+        schemes: "https",
+    )]
+    public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $this->logger->info('Showing My SURFconext page');
 
         $user = $this->userService->getUser();
 
-        return new Response($this->templateEngine->render(
+        return $this->render(
             '@OpenConextProfile/MySurfConext/overview.html.twig',
             [
                 'user' => $user,
                 'userLifecycleIsEnabled' => $this->userService->userLifecycleApiIsEnabled(),
-            ]
-        ));
+            ],
+        );
     }
 
-    /**
-     * @return Response
-     */
-    public function userDataDownloadAction()
+    #[Route(
+        path: "/my-surfconext/download",
+        name: "profile.my_surf_conext_user_data_download",
+        methods: ["GET"],
+        schemes: "https",
+    )]
+    public function userDataDownload(): JsonResponse
     {
-        $this->guard->userIsLoggedIn();
-
         if (!$this->userService->userLifecycleApiIsEnabled()) {
             throw new ResourceNotFoundException('User lifecycle API is disabled');
         }
@@ -95,10 +74,10 @@ class MySurfConextController
 
         return new JsonResponse(
             $this->userService->getUserLifecycleData(),
-            200,
+            Response::HTTP_OK,
             [
                 'Content-Disposition' => 'attachment; filename="profile-user-data.json"'
-            ]
+            ],
         );
     }
 }

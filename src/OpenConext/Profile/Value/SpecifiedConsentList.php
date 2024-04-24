@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,7 +23,7 @@ namespace OpenConext\Profile\Value;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
-use OpenConext\Profile\Exception\LogicException;
+use Traversable;
 use function ksort;
 use const SORT_STRING;
 
@@ -36,23 +38,26 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
      * @param SpecifiedConsent[] $specifiedConsents
      * @return SpecifiedConsentList
      */
-    public static function createWith(array $specifiedConsents)
-    {
+    public static function createWith(
+        array $specifiedConsents,
+    ): self {
         return new self($specifiedConsents);
     }
 
     /**
      * @param SpecifiedConsent[] $specifiedConsents
      */
-    private function __construct(array $specifiedConsents)
-    {
+    private function __construct(
+        array $specifiedConsents,
+    ) {
         foreach ($specifiedConsents as $specifiedConsent) {
             $this->initializeWith($specifiedConsent);
         }
     }
 
-    public function sortByDisplayName(string $locale): void
-    {
+    public function sortByDisplayName(
+        string $locale,
+    ): void {
         $sorted = [];
         $sortedByEntityId = [];
         /** @var SpecifiedConsent $consent */
@@ -68,20 +73,18 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
         ksort($sortedByEntityId, SORT_STRING);
         $this->specifiedConsents = $sorted +  $sortedByEntityId;
     }
-    /**
-     * @param SpecifiedConsent $specifiedConsent
-     */
-    private function initializeWith(SpecifiedConsent $specifiedConsent)
-    {
+    private function initializeWith(
+        SpecifiedConsent $specifiedConsent,
+    ): void {
         $this->specifiedConsents[] = $specifiedConsent;
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->specifiedConsents);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->specifiedConsents);
     }

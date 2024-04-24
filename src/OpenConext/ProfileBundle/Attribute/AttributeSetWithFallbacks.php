@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2016 SURFnet B.V.
  *
@@ -29,14 +31,16 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 
 final class AttributeSetWithFallbacks extends AttributeSet implements AttributeSetFactory, AttributeSetInterface
 {
-    public static function createFrom(Assertion $assertion, AttributeDictionary $attributeDictionary)
-    {
+    public static function createFrom(
+        Assertion $assertion,
+        AttributeDictionary $attributeDictionary,
+    ): AttributeSet {
         $attributeSet = new AttributeSetWithFallbacks();
 
         foreach ($assertion->getAttributes() as $urn => $attributeValue) {
             try {
                 $attributeDefinition = $attributeDictionary->getAttributeDefinitionByUrn($urn);
-            } catch (UnknownUrnException $exception) {
+            } catch (UnknownUrnException) {
                 $attributeDefinition = new AttributeDefinition($urn, $urn, $urn);
             }
 
@@ -46,8 +50,9 @@ final class AttributeSetWithFallbacks extends AttributeSet implements AttributeS
         return $attributeSet;
     }
 
-    public static function create(array $attributes)
-    {
+    public static function create(
+        array $attributes,
+    ): AttributeSet {
         $attributeSet = new AttributeSetWithFallbacks();
 
         foreach ($attributes as $attribute) {

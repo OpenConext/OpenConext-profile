@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -20,68 +22,17 @@ namespace OpenConext\Profile\Value\AttributeAggregation;
 
 use Assert\Assertion;
 
-final class AttributeAggregationAttribute
+final readonly class AttributeAggregationAttribute
 {
-    /**
-     * @var int
-     */
-    private $id;
-
-    /**
-     * @var string
-     */
-    private $userId;
-
-    /**
-     * @var string
-     */
-    private $accountType;
-
-    /**
-     * @var string
-     */
-    private $linkedId;
-
-    /**
-     * @var string
-     */
-    private $logoPath;
-
-    /**
-     * @var string
-     */
-    private $connectUrl;
-
-    /**
-     * @var bool
-     */
-    private $isConnected = false;
-
-    /**
-     * @param int $id
-     * @param string $userId
-     * @param string $accountType
-     * @param string $linkedId
-     * @param string $logoPath
-     * @param string $connectUrl
-     * @param bool $isConnected
-     */
     public function __construct(
-        $id,
-        $userId,
-        $accountType,
-        $linkedId,
-        $logoPath,
-        $connectUrl,
-        $isConnected
+        private int    $id,
+        private string $userId,
+        private string $accountType,
+        private ?string $linkedId,
+        private string $logoPath,
+        private string $connectUrl,
+        private bool   $isConnected,
     ) {
-        $this->id = $id;
-        $this->userId = $userId;
-        $this->accountType = $accountType;
-        $this->linkedId = $linkedId;
-        $this->logoPath = $logoPath;
-        $this->connectUrl = $connectUrl;
-        $this->isConnected = $isConnected;
     }
 
     public static function fromConfig(
@@ -89,8 +40,8 @@ final class AttributeAggregationAttribute
         $isConnected,
         $id,
         $userId,
-        $linkedId = null
-    ) {
+        $linkedId = null,
+    ): AttributeAggregationAttribute {
         return new self(
             $id,
             $userId,
@@ -98,12 +49,13 @@ final class AttributeAggregationAttribute
             $linkedId,
             $enabledAttribute->getLogoPath(),
             $enabledAttribute->getConnectUrl(),
-            $isConnected
+            $isConnected,
         );
     }
 
-    public static function fromApiResponse(array $attributeData)
-    {
+    public static function fromApiResponse(
+        array $attributeData,
+    ): AttributeAggregationAttribute {
         Assertion::keyExists($attributeData, 'id', 'No id found on attribute');
         Assertion::integer($attributeData['id'], 'Id should be integer');
 
@@ -123,60 +75,41 @@ final class AttributeAggregationAttribute
             $attributeData['linkedId'],
             '',
             '',
-            '',
-            true
+            true,
         );
     }
 
-    /**
-     * @return string
-     */
-    public function getAccountType()
+    public function getAccountType(): string
     {
         return $this->accountType;
     }
 
-    /**
-     * @return string
-     */
-    public function getLinkedId()
+    public function getLinkedId(): string
     {
         return $this->linkedId;
     }
 
-    /**
-     * @return string
-     */
-    public function getLogoPath()
+    public function getLogoPath(): string
     {
         return $this->logoPath;
     }
 
-    /**
-     * @return string
-     */
-    public function getConnectUrl()
+    public function getConnectUrl(): string
     {
         return $this->connectUrl;
     }
 
-    /**
-     * @return bool
-     */
-    public function isConnected()
+    public function isConnected(): bool
     {
         return $this->isConnected;
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getUserNameId()
+    public function getUserNameId(): string
     {
         return $this->userId;
     }

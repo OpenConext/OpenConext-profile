@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,6 +20,7 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
+use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\EntityId;
 use PHPUnit\Framework\TestCase;
@@ -32,12 +35,10 @@ class EntityIdTest extends TestCase
      * @group Value
      *
      * @dataProvider notNonEmptyOrBlankStringProvider
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     *
-     * @param mixed $invalidValue
      */
-    public function only_non_empty_strings_are_valid_entity_ids($invalidValue)
+    public function only_non_empty_strings_are_valid_entity_ids(mixed $invalidValue): void
     {
+        $this->expectException(InvalidArgumentException::class);
         new EntityId($invalidValue);
     }
 
@@ -46,7 +47,7 @@ class EntityIdTest extends TestCase
      * @group Entity
      * @group Value
      */
-    public function the_same_entity_ids_are_considered_equal()
+    public function the_same_entity_ids_are_considered_equal(): void
     {
         $base      = new EntityId('a');
         $theSame   = new EntityId('a');

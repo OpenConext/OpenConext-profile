@@ -2,14 +2,39 @@ framework:
   assets:
     json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
   translator: { fallback: [ en ] }
-  secret: "%secret%"
+  secret: "%app_secret%"
   form: ~
   csrf_protection: ~
-  validation: { enable_annotations: true }
+  validation: { enable_attributes: true }
   default_locale: "%default_locale%"
   trusted_hosts: ~
   session:
     handler_id: "%session_handler%"
+    cookie_secure: true
+    cookie_samesite: none
   esi: false
   fragments: false
   http_method_override: true
+  handle_all_throwables: true
+  php_errors:
+    log: true
+  annotations: { enabled: false }
+  router:
+    utf8: true
+    strict_requirements: null
+
+when@dev:
+  framework:
+    router:
+      strict_requirements: true
+    profiler: { only_exceptions: false }
+
+when@test:
+  framework:
+    test: ~
+    session:
+      storage_factory_id: session.storage.factory.mock_file
+    profiler:
+      collect: false
+    validation:
+      not_compromised_password: false

@@ -1,0 +1,79 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Copyright 2024 SURFnet B.V.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+$dir = new RecursiveDirectoryIterator(directory: 'src/');
+$iterator = new RecursiveIteratorIterator(iterator: $dir);
+$regex = new RegexIterator(iterator: $iterator, pattern:'/^.+\.php$/i', mode: RegexIterator::GET_MATCH);
+
+$fileCounter = 0;
+$counter = 0;
+
+foreach ($regex as $file) {
+    $fileCounter++;
+    $filePath = $file[0];
+
+    $year = shell_exec(
+        command: "git log --diff-filter=A --format=%ad --date=format:'%Y' $filePath"
+    );
+
+    if (empty($year)) {
+        // No year found, probably the file does not exists in git yet
+        // Should we force current year then, or leave oit alone?
+        echo "No year found for file $filePath. Probably the file does not exists in git yet. Skipping..." . PHP_EOL;
+        continue;
+    }
+
+    $year = trim(string: $year);
+
+    if (!preg_match(
+        pattern: '/^[0-9]{4}$/',
+        subject:$year
+    )) {
+        echo "Invalid year $year for file $filePath. Skipping..." . PHP_EOL;
+        continue;
+    }
+
+    $originalContent = file_get_contents(filename: $filePath);
+
+    $newContent = preg_replace_callback(
+        pattern: '/Copyright [0-9]{4} SURFnet/',
+        callback:
+        function ($matches) use ($year) {
+            if ($matches[0] === "Copyright $year SURFnet") {
+                return $matches[0];  // No change needed
+            }
+            return "Copyright $year SURFnet";
+        },
+        subject: $originalContent
+    );
+
+    if ($originalContent === $newContent) {
+        echo "No changes needed for file $filePath" . PHP_EOL;
+        continue;
+    }
+    file_put_contents(filename: $filePath, data: $newContent);
+
+    echo "File $filePath was adjusted" . PHP_EOL;
+    $counter++;
+}
+
+echo "Number of files changed: $counter" . PHP_EOL;
+echo "Number of files evaluated: $fileCounter" . PHP_EOL;

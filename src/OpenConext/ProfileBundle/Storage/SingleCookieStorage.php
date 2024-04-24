@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,95 +21,45 @@
 namespace OpenConext\ProfileBundle\Storage;
 
 use DateTime;
-use OpenConext\Profile\Assert;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class SingleCookieStorage implements EventSubscriberInterface
 {
-    /**
-     * @var string
-     */
-    private $cookieDomain;
-
-    /**
-     * @var string
-     */
-    private $cookieKey;
-
-    /**
-     * @var string|null
-     */
-    private $cookieValue;
-
-    /**
-     * @var DateTime|null
-     */
-    private $cookieExpirationDate;
-
-    /**
-     * @var boolean
-     */
-    private $cookieSecure;
-
-    /**
-     * @var boolean
-     */
-    private $cookieHttpOnly;
+    private ?string $cookieValue = null;
 
     public function __construct(
-        $cookieDomain,
-        $cookieKey,
-        DateTime $cookieExpirationDate = null,
-        $cookieSecure = false,
-        $cookieHttpOnly = true
+        private readonly string    $cookieDomain,
+        private readonly string    $cookieKey,
+        private readonly ?DateTime $cookieExpirationDate = null,
+        private readonly bool      $cookieSecure = false,
+        private readonly bool      $cookieHttpOnly = true,
     ) {
-        Assert::string($cookieDomain, 'Cookie domain "%s" expected to be string, type %s given.');
-        Assert::string($cookieKey, 'Cookie key "%s" expected to be string, type %s given.');
-        Assert::boolean($cookieSecure, 'Cookie secure setting "%s" is expected to be boolean.');
-        Assert::boolean($cookieHttpOnly, 'Cookie HttpOnly setting "%s" expected to be boolean');
-
-        $this->cookieDomain         = $cookieDomain;
-        $this->cookieKey            = $cookieKey;
-        $this->cookieExpirationDate = $cookieExpirationDate;
-        $this->cookieSecure         = $cookieSecure;
-        $this->cookieHttpOnly       = $cookieHttpOnly;
     }
 
-    /**
-     * @param string $value
-     */
-    public function setValue($value)
-    {
-        Assert::string($value);
-
+    public function setValue(
+        string $value,
+    ): void {
         $this->cookieValue = $value;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->cookieValue;
     }
 
-    /**
-     * @param GetResponseEvent $event
-     */
-    public function loadValueFromCookie(GetResponseEvent $event)
-    {
+    public function loadValueFromCookie(
+        RequestEvent $event,
+    ): void {
         $this->cookieValue = $event->getRequest()->cookies->get($this->cookieKey, null);
     }
 
-    /**
-     * @param FilterResponseEvent $event
-     */
-    public function storeValueInCookie(FilterResponseEvent $event)
-    {
+    public function storeValueInCookie(
+        ResponseEvent $event,
+    ): void {
         // If no date is specified for cookie expiration, a session cookie should be created
         $cookieExpirationDate = $this->cookieExpirationDate ?: 0;
         $event->getResponse()->headers->setCookie(
@@ -118,12 +70,12 @@ class SingleCookieStorage implements EventSubscriberInterface
                 null,
                 $this->cookieDomain,
                 $this->cookieSecure,
-                $this->cookieHttpOnly
-            )
+                $this->cookieHttpOnly,
+            ),
         );
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             // Must be loaded early

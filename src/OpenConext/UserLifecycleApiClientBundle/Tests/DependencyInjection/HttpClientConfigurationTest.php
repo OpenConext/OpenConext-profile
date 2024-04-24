@@ -24,12 +24,12 @@ use OpenConext\UserLifecycleApiClientBundle\Tests\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 
-final class ConfigurationTest extends TestCase
+final class HttpClientConfigurationTest extends TestCase
 {
     use ConfigurationTestCaseTrait;
     use DataProvider;
 
-    private $validConfig = [
+    private array $validConfig = [
         'base_url' => 'http://ul.invalid/',
         'username' => 'test user',
         'password' => 'test password',
@@ -40,7 +40,7 @@ final class ConfigurationTest extends TestCase
      * @group eb_api_config
      * @dataProvider nonStringScalarProvider
      */
-    public function base_url_cannot_be_other_than_string($value)
+    public function base_url_cannot_be_other_than_string($value): void
     {
         $config = $this->validConfig;
         $config["base_url"] = $value;
@@ -56,7 +56,7 @@ final class ConfigurationTest extends TestCase
      * @test
      * @group eb_api_config
      */
-    public function base_url_has_to_be_valid_url()
+    public function base_url_has_to_be_valid_url(): void
     {
         $config = $this->validConfig;
         $config["base_url"] = "not a valid URL";
@@ -72,7 +72,7 @@ final class ConfigurationTest extends TestCase
      * @test
      * @group eb_api_config
      */
-    public function base_url_must_end_in_forward_slash()
+    public function base_url_must_end_in_forward_slash(): void
     {
         $config = $this->validConfig;
         $config["base_url"] = "https://eb.invalid";
@@ -89,7 +89,7 @@ final class ConfigurationTest extends TestCase
      * @group eb_api_config
      * @dataProvider nonStringScalarProvider
      */
-    public function username_cannot_be_other_than_string($value)
+    public function username_cannot_be_other_than_string($value): void
     {
         $config = $this->validConfig;
         $config["username"] = $value;
@@ -106,7 +106,7 @@ final class ConfigurationTest extends TestCase
      * @group eb_api_config
      * @dataProvider nonStringScalarProvider
      */
-    public function password_cannot_be_other_than_string($value)
+    public function password_cannot_be_other_than_string($value): void
     {
         $config = $this->validConfig;
         $config["password"] = $value;
@@ -118,7 +118,7 @@ final class ConfigurationTest extends TestCase
         );
     }
 
-    protected function getConfiguration()
+    protected function getConfiguration(): \OpenConext\UserLifecycleApiClientBundle\DependencyInjection\Configuration
     {
         return new Configuration();
     }

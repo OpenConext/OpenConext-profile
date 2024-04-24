@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -20,31 +22,29 @@ namespace OpenConext\ProfileBundle\Profile\Repository;
 
 use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Repository\UserRepositoryInterface;
-use Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class UserRepository implements UserRepositoryInterface
 {
-    /**
-     * @var NamespacedAttributeBag
-     */
-    private $namespacedAttributeBag;
+    public const USER = 'user';
 
-    public function __construct(NamespacedAttributeBag $namespacedAttributeBag)
-    {
-        $this->namespacedAttributeBag = $namespacedAttributeBag;
+    public function __construct(
+        private readonly RequestStack $requestStack,
+    ) {
     }
 
     public function findUser()
     {
-        if (!$this->namespacedAttributeBag->has('user')) {
+        if (!$this->requestStack->getSession()->has(self::USER)) {
             return null;
         }
 
-        return $this->namespacedAttributeBag->get('user');
+        return $this->requestStack->getSession()->get(self::USER);
     }
 
-    public function save(ApiUserInterface $user)
-    {
-        $this->namespacedAttributeBag->set('user', $user);
+    public function save(
+        ApiUserInterface $user,
+    ): void {
+        $this->requestStack->getSession()->set(self::USER, $user);
     }
 }

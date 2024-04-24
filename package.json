@@ -3,15 +3,26 @@
   "version": "1.0.0",
   "description": "OpenConext-profile provides an overview of your OpenConext profile",
   "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
     "axe-core": "^4.3.3",
     "cypress": "^13.2.0",
     "cypress-axe": "^0.13.0",
     "cypress-html-validate": "^2.1.0",
     "cypress-terminal-report": "^3.3.2",
-    "html-validate": "^6.2.0"
+    "html-validate": "^6.2.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "@symfony/webpack-encore": "^4.6.1",
+    "autoprefixer": "^10.3.2",
+    "cssnano": "^5.0.8",
+    "details-element-polyfill": "^2.4.0",
+    "file-loader": "^6.2.0",
+    "postcss-loader": "^7.0.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^14.0.0"
   },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "test": "echo \"Error: no test specified\" && exit 1",
     "encore": "encore",
     "build": "encore production",
@@ -37,14 +48,6 @@
     "IE 11"
   ],
   "dependencies": {
-    "@symfony/webpack-encore": "^1.7",
-    "autoprefixer": "^10.3.2",
-    "cssnano": "^5.0.8",
-    "details-element-polyfill": "^2.4.0",
-    "file-loader": "^6.2.0",
-    "postcss-loader": "^5.3.0",
-    "sass": "^1.35.1",
-    "sass-loader": "^12.1.0"
   },
   "resolutions": {
     "postcss": ">8.2.13"

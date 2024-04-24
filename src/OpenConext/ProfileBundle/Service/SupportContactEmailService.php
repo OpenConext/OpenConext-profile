@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,35 +20,26 @@
 
 namespace OpenConext\ProfileBundle\Service;
 
-use OpenConext\Profile\Value\ContactPerson;
-use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Repository\ContactPersonRepositoryInterface;
 use OpenConext\Profile\Value\ContactEmailAddress;
+use OpenConext\Profile\Value\ContactPerson;
+use OpenConext\Profile\Value\ContactType;
 use OpenConext\Profile\Value\EntityId;
 
-final class SupportContactEmailService
+final readonly class SupportContactEmailService
 {
-    /**
-     * @var ContactPersonRepositoryInterface
-     */
-    private $contactPersonRepository;
-
-    public function __construct(ContactPersonRepositoryInterface $contactPersonRepository)
-    {
-        $this->contactPersonRepository = $contactPersonRepository;
+    public function __construct(
+        private ContactPersonRepositoryInterface $contactPersonRepository,
+    ) {
     }
 
-    /**
-     * @param string EntityId $entityId
-     * @return null|ContactEmailAddress
-     */
-    public function findSupportContactEmailForIdp(EntityId $entityId)
-    {
+    public function findSupportContactEmailForIdp(
+        EntityId $entityId,
+    ): ?ContactEmailAddress {
         $supportContactPersons = $this->contactPersonRepository->findAllForIdp($entityId)->filter(
-            function (ContactPerson $contactPerson) {
-                return $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
-                    && $contactPerson->hasEmailAddress();
-            }
+            fn(ContactPerson $contactPerson): bool
+                => $contactPerson->hasContactTypeOf(new ContactType(ContactType::TYPE_SUPPORT))
+                    && $contactPerson->hasEmailAddress(),
         );
 
         if (count($supportContactPersons) === 0) {

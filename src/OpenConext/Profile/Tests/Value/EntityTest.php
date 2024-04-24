@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -30,7 +32,7 @@ class EntityTest extends TestCase
      * @group Entity
      * @group Value
      */
-    public function two_entities_with_the_same_entity_id_and_entity_type_are_equal()
+    public function two_entities_with_the_same_entity_id_and_entity_type_are_equal(): void
     {
         $entityIdOne = new EntityId('one');
         $entityIdTwo = new EntityId('two');

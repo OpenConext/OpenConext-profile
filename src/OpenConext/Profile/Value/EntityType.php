@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,26 +20,23 @@
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class EntityType
+final class EntityType implements Stringable
 {
-    const TYPE_SP  = 'saml20-sp';
-    const TYPE_IDP = 'saml20-idp';
-
-    /**
-     * @var string
-     */
-    private $type;
+    public const TYPE_SP  = 'saml20-sp';
+    public const TYPE_IDP = 'saml20-idp';
 
     /**
      * @param string $type
+     * @throws AssertionFailedException
      */
-    public function __construct($type)
-    {
+    public function __construct(
+        private readonly string $type,
+    ) {
         Assert::inArray($type, [self::TYPE_SP, self::TYPE_IDP]);
-
-        $this->type = $type;
     }
 
     /**
@@ -47,7 +46,7 @@ final class EntityType
      * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public static function SP()
+    public static function SP(): EntityType
     {
         return new EntityType(self::TYPE_SP);
     }
@@ -59,38 +58,28 @@ final class EntityType
      *
      * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
-    public static function IdP()
+    public static function IdP(): \OpenConext\Profile\Value\EntityType
     {
         return new EntityType(self::TYPE_IDP);
     }
 
-    /**
-     * @return bool
-     */
-    public function isSP()
+    public function isSP(): bool
     {
         return $this->type === self::TYPE_SP;
     }
 
-    /**
-     * @return bool
-     */
-    public function isIdP()
+    public function isIdP(): bool
     {
         return $this->type === self::TYPE_IDP;
     }
     // @codingStandardsIgnoreEnd
-
-    /**
-     * @param EntityType $other
-     * @return bool
-     */
-    public function equals(EntityType $other)
-    {
+    public function equals(
+        EntityType $other,
+    ): bool {
         return $this->type === $other->type;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->type;
     }

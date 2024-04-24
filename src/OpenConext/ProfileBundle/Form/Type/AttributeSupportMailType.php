@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,12 +23,13 @@ namespace OpenConext\ProfileBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AttributeSupportMailType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options,
+    ): void {
         $builder
             ->add(
                 'sendMail',
@@ -36,11 +39,11 @@ class AttributeSupportMailType extends AbstractType
                     'attr'  => [
                         'class' => 'button modalWindow__button modalWindow__button--form',
                     ]
-                ]
+                ],
             );
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_attribute_support_mail';
     }

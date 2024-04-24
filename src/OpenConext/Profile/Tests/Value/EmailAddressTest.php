@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,6 +20,7 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
+use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\EmailAddress;
 use PHPUnit\Framework\TestCase;
@@ -30,32 +33,23 @@ final class EmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function it_accepts_emails()
+    public function it_accepts_emails(): void
     {
-        new EmailAddress('juliette.dupree+spam@that.invalid');
+        $email = new EmailAddress('juliette.dupree+spam@that.invalid');
+
+        $this->assertTrue((string) $email === 'juliette.dupree+spam@that.invalid');
     }
 
-    /**
-     * @test
-     * @group Value
-     * @dataProvider nonStringProvider
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     *
-     * @param mixed $nonString
-     */
-    public function it_doesnt_accept_non_strings_as_email($nonString)
-    {
-        new EmailAddress($nonString);
-    }
 
     /**
      * @test
      * @group Value
      *
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
+     *
      */
-    public function email_address_may_not_contain_mailto()
+    public function email_address_may_not_contain_mailto(): void
     {
+        $this->expectException(InvalidArgumentException::class);
         $emailAddressWithMailto = 'mailto:mail@domain.invalid';
         new EmailAddress($emailAddressWithMailto);
     }
@@ -65,10 +59,11 @@ final class EmailAddressTest extends TestCase
      * @group Value
      * @dataProvider invalidEmailAddressProvider
      *
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
+     *
      */
-    public function email_address_must_be_valid($invalidEmailAddress)
+    public function email_address_must_be_valid($invalidEmailAddress): void
     {
+        $this->expectException(InvalidArgumentException::class);
         new EmailAddress($invalidEmailAddress);
     }
 
@@ -76,7 +71,7 @@ final class EmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function two_emails_can_equal_each_other()
+    public function two_emails_can_equal_each_other(): void
     {
         $url0 = new EmailAddress('renee.dupree@datrijmtook.invalid');
         $url1 = new EmailAddress('renee.dupree@datrijmtook.invalid');
@@ -88,7 +83,7 @@ final class EmailAddressTest extends TestCase
      * @test
      * @group Value
      */
-    public function two_emails_can_differ()
+    public function two_emails_can_differ(): void
     {
         $url0 = new EmailAddress('renee.boulanger@vara.invalid');
         $url1 = new EmailAddress('francois.boulanger@vara.invalid');
@@ -96,7 +91,7 @@ final class EmailAddressTest extends TestCase
         $this->assertFalse($url0->equals($url1));
     }
 
-    public function invalidEmailAddressProvider()
+    public function invalidEmailAddressProvider(): array
     {
         return [
             ['empty'       => ''],

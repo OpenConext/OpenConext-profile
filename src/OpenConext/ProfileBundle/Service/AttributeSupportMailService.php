@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -22,41 +24,17 @@ use OpenConext\Profile\Value\EmailAddress;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface as Mailer;
 
-final class AttributeSupportMailService
+final readonly class AttributeSupportMailService
 {
-    /**
-     * @var EmailAddress
-     */
-    private $mailFrom;
-
-    /**
-     * @var EmailAddress
-     */
-    private $mailTo;
-
-    /**
-     * @var Mailer
-     */
-    private $mailer;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
     public function __construct(
-        EmailAddress $mailFrom,
-        EmailAddress $mailTo,
-        Mailer $mailer,
-        UserService $userService
+        private EmailAddress $mailFrom,
+        private EmailAddress $mailTo,
+        private Mailer $mailer,
+        private UserService $userService,
     ) {
-        $this->mailFrom       = $mailFrom;
-        $this->mailTo         = $mailTo;
-        $this->mailer         = $mailer;
-        $this->userService    = $userService;
     }
 
-    public function sendAttributeSupportMail()
+    public function sendAttributeSupportMail(): void
     {
         $user = $this->userService->getUser();
 

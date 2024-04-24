@@ -2,8 +2,8 @@
 #############
 .idea
 
-/config/legacy/parameters.yaml
-/config/legacy/global_view_parameters.yaml
+/config/openconext/parameters.yaml
+/config/openconext/global_view_parameters.yaml
 /vendor/
 /var/
 /composer.phar
@@ -57,3 +57,13 @@ yarn-error.log
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 /web/build/*
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

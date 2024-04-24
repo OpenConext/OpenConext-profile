@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,31 +20,16 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\ContactType;
 use PHPUnit\Framework\TestCase;
 
 class ContactTypeTest extends TestCase
 {
-    use DataProvider;
-
-    /**
-     * @test
-     * @group ContactPerson
-     *
-     * @dataProvider nonStringProvider
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     */
-    public function contact_type_can_be_invalid($contactTypeValue)
-    {
-        new ContactType($contactTypeValue);
-    }
-
     /**
      * @test
      * @group ContactPerson
      */
-    public function two_contact_types_can_equal_each_other()
+    public function two_contact_types_can_equal_each_other(): void
     {
         $contactType     = new ContactType(ContactType::TYPE_TECHNICAL);
         $sameContactType = new ContactType(ContactType::TYPE_TECHNICAL);
@@ -56,7 +43,7 @@ class ContactTypeTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function two_contact_types_can_differ()
+    public function two_contact_types_can_differ(): void
     {
         $contactType          = new ContactType(ContactType::TYPE_TECHNICAL);
         $differentContactType = new ContactType(ContactType::TYPE_ADMINISTRATIVE);

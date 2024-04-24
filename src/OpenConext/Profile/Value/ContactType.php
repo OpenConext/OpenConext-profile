@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,46 +20,38 @@
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class ContactType
+final class ContactType implements Stringable
 {
-    const TYPE_TECHNICAL = 'technical';
-    const TYPE_SUPPORT = 'support';
-    const TYPE_ADMINISTRATIVE = 'administrative';
-    const TYPE_BILLING = 'billing';
-    const TYPE_OTHER = 'other';
+    public const TYPE_TECHNICAL = 'technical';
+    public const TYPE_SUPPORT = 'support';
+    public const TYPE_ADMINISTRATIVE = 'administrative';
+    public const TYPE_BILLING = 'billing';
+    public const TYPE_OTHER = 'other';
 
     /**
-     * @var string
+     * @throws AssertionFailedException
      */
-    private $contactType;
-
-    /**
-     * @param string $contactType
-     */
-    public function __construct($contactType)
-    {
-        Assert::string($contactType);
+    public function __construct(
+        private readonly string $contactType,
+    ) {
         Assert::choice(
             $contactType,
             [self::TYPE_TECHNICAL, self::TYPE_SUPPORT, self::TYPE_ADMINISTRATIVE, self::TYPE_BILLING, self::TYPE_OTHER],
-            '"%s" is not one of the valid ContactTypes: %s'
+            '"%s" is not one of the valid ContactTypes: %s',
         );
-
-        $this->contactType = $contactType;
     }
 
-    /**
-     * @param ContactType $other
-     * @return bool
-     */
-    public function equals(ContactType $other)
-    {
+    public function equals(
+        ContactType $other,
+    ): bool {
         return $this->contactType === $other->contactType;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->contactType;
     }

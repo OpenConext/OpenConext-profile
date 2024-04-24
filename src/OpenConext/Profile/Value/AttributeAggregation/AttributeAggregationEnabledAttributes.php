@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -23,17 +25,15 @@ final class AttributeAggregationEnabledAttributes
     /**
      * @var AttributeAggregationAttributeConfiguration[]
      */
-    private $attributes = [];
+    private array $attributes = [];
 
-    /**
-     * @param array $attributes
-     */
-    public function __construct(array $attributes)
-    {
+    public function __construct(
+        array $attributes,
+    ) {
         foreach ($attributes as $accountType => $attribute) {
             $this->attributes[$accountType] = AttributeAggregationAttributeConfiguration::fromConfig(
                 $accountType,
-                $attribute
+                $attribute,
             );
         }
     }
@@ -46,8 +46,9 @@ final class AttributeAggregationEnabledAttributes
         return $this->attributes;
     }
 
-    public function isEnabled($accountType)
-    {
+    public function isEnabled(
+        $accountType,
+    ): bool {
         return array_key_exists($accountType, $this->attributes);
     }
 }

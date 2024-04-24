@@ -1,8 +1,6 @@
 name: build-push-docker-image
 
 on:
-  push:
-    branches: feature/docker_configs
   workflow_dispatch:
 
 jobs:
@@ -18,8 +16,14 @@ jobs:
         id: release
         uses: robinraju/release-downloader@v1.9
         with:
-          latest: true
-          fileName: "*.tar.gz"
+          fileName: "*.tar.bz2"
+          tag: "${{ github.ref_name }}" 
+
+      - name: Get commit details for the tag from the latest release
+        id: commit_details
+        run: |
+          echo "sha=$(git rev-list -n 1 ${{ steps.release.outputs.tag_name }})" >> $GITHUB_OUTPUT
+          echo "commit_time=$(git show -s --format=%ci ${{ steps.release.outputs.tag_name }})" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -33,27 +37,28 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set docker metadata for the container
+   
+      - name: Set docker labels and tags
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: |
-            ghcr.io/openconext/openconext-profile/profile
+          images: ghcr.io/openconext/openconext-profile/profile
           tags: |
             type=ref,event=tag
-            type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
+            type=sha
+            type=raw,value=prod
 
       - name: Build and push the Production image
         uses: docker/build-push-action@v5
         with:
           context: .
+          build-args: |
+            APP_VERSION=${{ steps.release.outputs.tag_name }}
+            GIT_SHA=${{ steps.commit_details.outputs.sha }}
+            GIT_COMMIT_TIME=${{ steps.commit_details.outputs.commit_time }}
           file: docker/Dockerfile.prod
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -26,24 +28,16 @@ use OpenConext\AttributeAggregationApiClientBundle\Exception\InvalidArgumentExce
 final class AttributeAggregationAttributesList
 {
     /**
-     * @var AttributeAggregationAttribute[]
-     */
-    private $attributes;
-
-    /**
      * @param AttributeAggregationAttribute[] $attributes
      */
-    public function __construct(array $attributes)
-    {
-        $this->attributes = $attributes;
+    public function __construct(
+        private array $attributes,
+    ) {
     }
 
-    /**
-     * @param array $attributes
-     * @return AttributeAggregationAttributesList
-     */
-    public static function fromApiResponse(array $attributes)
-    {
+    public static function fromApiResponse(
+        array $attributes,
+    ): self {
         $attributeCollection = [];
         foreach ($attributes as $attributeData) {
             $attributeCollection[] = AttributeAggregationAttribute::fromApiResponse($attributeData);
@@ -51,7 +45,7 @@ final class AttributeAggregationAttributesList
         return new self($attributeCollection);
     }
 
-    public function getActiveAttributes()
+    public function getActiveAttributes(): array
     {
         $output = [];
         foreach ($this->attributes as $attribute) {
@@ -62,7 +56,7 @@ final class AttributeAggregationAttributesList
         return $output;
     }
 
-    public function getAvailableAttributes()
+    public function getAvailableAttributes(): array
     {
         $output = [];
         foreach ($this->attributes as $attribute) {
@@ -73,12 +67,9 @@ final class AttributeAggregationAttributesList
         return $output;
     }
 
-    /**
-     * @param string $accountType
-     * @return bool
-     */
-    public function hasAttribute($accountType)
-    {
+    public function hasAttribute(
+        string $accountType,
+    ): bool {
         foreach ($this->attributes as $attribute) {
             if ($attribute->getAccountType() === $accountType) {
                 return true;
@@ -87,23 +78,19 @@ final class AttributeAggregationAttributesList
         return false;
     }
 
-    public function filterEnabledAttributes(AttributeAggregationEnabledAttributes $enabledAttributes)
-    {
+    public function filterEnabledAttributes(
+        AttributeAggregationEnabledAttributes $enabledAttributes,
+    ): void {
         $this->attributes = array_filter(
             $this->attributes,
-            function (AttributeAggregationAttribute $attribute) use ($enabledAttributes) {
-                return $enabledAttributes->isEnabled($attribute->getAccountType());
-            }
+            fn(AttributeAggregationAttribute $attribute): bool
+                => $enabledAttributes->isEnabled($attribute->getAccountType()),
         );
     }
 
-    /**
-     * @param string $accountType
-     * @return AttributeAggregationAttribute
-     * @throws InvalidArgumentException
-     */
-    public function getAttribute($accountType)
-    {
+    public function getAttribute(
+        string $accountType,
+    ): AttributeAggregationAttribute {
         foreach ($this->attributes as $attribute) {
             if ($attribute->getAccountType() === $accountType) {
                 return $attribute;
@@ -113,8 +100,8 @@ final class AttributeAggregationAttributesList
         throw new InvalidArgumentException(
             sprintf(
                 'The requested attribute for account type "%s" could not be found',
-                $accountType
-            )
+                $accountType,
+            ),
         );
     }
 }

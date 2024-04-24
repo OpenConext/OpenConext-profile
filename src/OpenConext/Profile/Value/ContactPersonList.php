@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -22,42 +24,38 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use OpenConext\Profile\Exception\OutOfRangeException;
+use Stringable;
+use Traversable;
 
-final class ContactPersonList implements IteratorAggregate, Countable
+final class ContactPersonList implements IteratorAggregate, Countable, Stringable
 {
     /**
      * @var ContactPerson[]
      */
-    private $contactPersons = [];
+    private array $contactPersons = [];
 
-    public function __construct(array $contactPersons)
-    {
+    public function __construct(
+        array $contactPersons,
+    ) {
         foreach ($contactPersons as $contactPerson) {
             $this->initializeWith($contactPerson);
         }
     }
 
-    /**
-     * @param ContactPerson $contactPerson
-     */
-    private function initializeWith(ContactPerson $contactPerson)
-    {
+    private function initializeWith(
+        ContactPerson $contactPerson,
+    ): void {
         $this->contactPersons[] = $contactPerson;
     }
 
-    /**
-     * @param callable $predicate
-     * @return ContactPersonList
-     */
-    public function filter(callable $predicate)
-    {
+    public function filter(
+        callable $predicate,
+    ): ContactPersonList {
         return new ContactPersonList(
             array_filter(
                 $this->contactPersons,
-                function (ContactPerson $contactPerson) use ($predicate) {
-                    return $predicate($contactPerson);
-                }
-            )
+                fn(ContactPerson $contactPerson) => $predicate($contactPerson),
+            ),
         );
     }
 
@@ -73,17 +71,17 @@ final class ContactPersonList implements IteratorAggregate, Countable
         return $this->contactPersons[0];
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->contactPersons);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->contactPersons);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return implode(', ', $this->contactPersons);
     }

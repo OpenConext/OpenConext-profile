@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,25 +21,18 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Entity\AuthenticatedUser;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
+final readonly class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
 
-    public function __construct(TokenStorageInterface $tokenStorage)
-    {
-        $this->tokenStorage = $tokenStorage;
+    public function __construct(
+        private TokenStorageInterface $tokenStorage,
+    ) {
     }
 
-    /**
-     * @return AuthenticatedUser
-     */
-    public function getCurrentUser()
+    public function getCurrentUser(): UserInterface
     {
         return $this->tokenStorage->getToken()->getUser();
     }

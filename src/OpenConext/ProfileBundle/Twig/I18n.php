@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2010 SURFnet B.V.
+ * Copyright 2022 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +21,14 @@
 namespace OpenConext\ProfileBundle\Twig;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Twig\Extensions\I18nExtension;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class I18n extends I18nExtension
+class I18n extends AbstractExtension
 {
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    public function __construct(TranslatorInterface $translator)
-    {
-        $this->translator = $translator;
+    public function __construct(
+        private readonly TranslatorInterface $translator,
+    ) {
     }
 
     /**
@@ -39,44 +36,32 @@ class I18n extends I18nExtension
      *
      * @return array An array of filters
      */
-    public function getFilters()
+    public function getFilters(): array
     {
-        return array(
-            new TwigFilter('trans', array($this, 'translateSingular')),
-            new TwigFilter('transchoice', array($this, 'translatePlural')),
-        );
+        return [new TwigFilter('trans', $this->translateSingular(...)), new TwigFilter('transchoice', $this->translatePlural(...))];
     }
 
-    /**
-     * @return string
-     */
-    public function translateSingular()
+    public function translateSingular(): string
     {
         $args = func_get_args();
         return call_user_func_array(
-            [$this->translator, 'trans'],
-            $this->prepareDefaultPlaceholders($args)
+            $this->translator->trans(...),
+            $this->prepareDefaultPlaceholders($args),
         );
     }
 
-    /**
-     * @return string
-     */
-    public function translatePlural()
+    public function translatePlural(): string
     {
         $args = func_get_args();
         return call_user_func_array(
             [$this->translator, 'transChoice'],
-            $this->prepareDefaultPlaceholders($args)
+            $this->prepareDefaultPlaceholders($args),
         );
     }
 
-    /**
-     * @param array $args
-     * @return array
-     */
-    private function prepareDefaultPlaceholders(array $args)
-    {
+    private function prepareDefaultPlaceholders(
+        array $args,
+    ): array {
         $args[1]['%suiteName%'] = $this->translator->trans('general.suite_name');
         $args[1]['%organisationNoun%'] = $this->translator->trans('general.organisation_noun');
 

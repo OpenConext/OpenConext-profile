@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2017 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,48 +25,18 @@ use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface as Mailer;
 
-final class InformationRequestMailService
+final readonly class InformationRequestMailService
 {
-    /**
-     * @var EmailAddress
-     */
-    private $mailFrom;
-
-    /**
-     * @var EmailAddress
-     */
-    private $mailTo;
-
-    /**
-     * @var Mailer
-     */
-    private $mailer;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var AttributeFilter
-     */
-    private $attributeFilter;
-
     public function __construct(
-        EmailAddress $mailFrom,
-        EmailAddress $mailTo,
-        Mailer $mailer,
-        UserService $userService,
-        AttributeFilter $attributeFilter
+        private EmailAddress $mailFrom,
+        private EmailAddress $mailTo,
+        private Mailer $mailer,
+        private UserService $userService,
+        private AttributeFilter $attributeFilter,
     ) {
-        $this->mailFrom = $mailFrom;
-        $this->mailTo = $mailTo;
-        $this->mailer = $mailer;
-        $this->userService = $userService;
-        $this->attributeFilter = $attributeFilter;
     }
 
-    public function sendInformationRequestMail()
+    public function sendInformationRequestMail(): void
     {
         $user = $this->userService->getUser();
         $attributes = $this->attributeFilter->filter($user->getAttributes());

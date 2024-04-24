@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,88 +21,50 @@
 namespace OpenConext\ProfileBundle\Security\Authentication;
 
 use OpenConext\ProfileBundle\Saml\StateHandler;
+use SAML2\Assertion;
 use Surfnet\SamlBundle\Entity\IdentityProvider;
 use Surfnet\SamlBundle\Entity\ServiceProvider;
 use Surfnet\SamlBundle\Http\PostBinding;
 use Surfnet\SamlBundle\Http\RedirectBinding;
 use Surfnet\SamlBundle\SAML2\AuthnRequestFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class SamlInteractionProvider
 {
-    /**
-     * @var \Surfnet\SamlBundle\Entity\ServiceProvider
-     */
-    private $serviceProvider;
-
-    /**
-     * @var \Surfnet\SamlBundle\Entity\IdentityProvider
-     */
-    private $identityProvider;
-
-    /**
-     * @var \Surfnet\SamlBundle\Http\RedirectBinding
-     */
-    private $redirectBinding;
-
-    /**
-     * @var \Surfnet\SamlBundle\Http\PostBinding
-     */
-    private $postBinding;
-
-    /**
-     * @var \OpenConext\ProfileBundle\Saml\StateHandler
-     */
-    private $stateHandler;
-
     public function __construct(
-        ServiceProvider $serviceProvider,
-        IdentityProvider $identityProvider,
-        RedirectBinding $redirectBinding,
-        PostBinding $postBinding,
-        StateHandler $sessionHandler
+        private readonly ServiceProvider $serviceProvider,
+        private readonly IdentityProvider $identityProvider,
+        private readonly RedirectBinding $redirectBinding,
+        private readonly PostBinding $postBinding,
+        private readonly StateHandler $stateHandler,
     ) {
-        $this->serviceProvider = $serviceProvider;
-        $this->identityProvider = $identityProvider;
-        $this->redirectBinding = $redirectBinding;
-        $this->postBinding = $postBinding;
-        $this->stateHandler = $sessionHandler;
     }
 
-    /**
-     * @return bool
-     */
-    public function isSamlAuthenticationInitiated()
+    public function isSamlAuthenticationInitiated(): bool
     {
         return $this->stateHandler->hasRequestId();
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function initiateSamlRequest()
+    public function initiateSamlRequest(): RedirectResponse
     {
         $authnRequest = AuthnRequestFactory::createNewRequest(
             $this->serviceProvider,
-            $this->identityProvider
+            $this->identityProvider,
         );
 
         $this->stateHandler->setRequestId($authnRequest->getRequestId());
 
-        return $this->redirectBinding->createRedirectResponseFor($authnRequest);
+        return $this->redirectBinding->createResponseFor($authnRequest);
     }
 
-    /**
-     * @param Request $request
-     * @return \SAML2\Assertion
-     */
-    public function processSamlResponse(Request $request)
-    {
-        /** @var \SAML2\Assertion $assertion */
+    public function processSamlResponse(
+        Request $request,
+    ): Assertion {
         $assertion = $this->postBinding->processResponse(
             $request,
             $this->identityProvider,
-            $this->serviceProvider
+            $this->serviceProvider,
         );
 
         $this->stateHandler->clearRequestId();
@@ -111,7 +75,7 @@ class SamlInteractionProvider
     /**
      * Resets the SAML flow.
      */
-    public function reset()
+    public function reset(): void
     {
         $this->stateHandler->clearRequestId();
     }

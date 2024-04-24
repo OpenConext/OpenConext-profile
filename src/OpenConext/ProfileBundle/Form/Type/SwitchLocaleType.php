@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -31,26 +33,16 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SwitchLocaleType extends AbstractType
 {
-    /**
-     * @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var LocaleService
-     */
-    private $localeService;
-
     public function __construct(
-        UrlGeneratorInterface $urlGenerator,
-        LocaleService $localeService
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly LocaleService $localeService,
     ) {
-        $this->urlGenerator  = $urlGenerator;
-        $this->localeService = $localeService;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options,
+    ): void {
         $availableLocales = $this->localeService->getAvailableLocales();
         $localeChoices    = $this->formatLocaleChoices($availableLocales);
 
@@ -58,8 +50,8 @@ class SwitchLocaleType extends AbstractType
             ->setAction(
                 $this->urlGenerator->generate(
                     'profile.locale_switch_locale',
-                    ['return-url' => $options['return_url']]
-                )
+                    ['return-url' => $options['return_url']],
+                ),
             )
             ->add(
                 'newLocale',
@@ -70,39 +62,37 @@ class SwitchLocaleType extends AbstractType
                     'attr'    => [
                         'data-locale-options' => ''
                     ]
-                ]
+                ],
             )
             ->add('changeLocale', SubmitType::class, ['label' => 'profile.locale.choose_locale']);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(
+        OptionsResolver $resolver,
+    ): void {
         $resolver->setDefaults(
             [
                 'return_url' => '',
                 'data_class' => ChangeLocaleCommand::class
-            ]
+            ],
         );
 
         $resolver->setRequired('return_url');
         $resolver->setAllowedTypes('return_url', 'string');
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_switch_locale';
     }
 
-    /**
-     * @param LocaleSet $availableLocales
-     * @return array
-     */
-    private function formatLocaleChoices(LocaleSet $availableLocales)
-    {
+    private function formatLocaleChoices(
+        LocaleSet $availableLocales,
+    ): array {
         $localeChoices = [];
 
-        /** @var Locale $locale */
         foreach ($availableLocales as $locale) {
+            assert($locale instanceof Locale);
             $localeChoices['profile.locale.' . $locale->getLocale()] = $locale->getLocale();
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -24,14 +26,9 @@ use OpenConext\ProfileBundle\Service\LocaleStorageDriver;
 
 class LocaleRepository implements LocaleRepositoryInterface
 {
-    /**
-     * @var LocaleStorageDriver
-     */
-    private $localeStorageDriver;
-
-    public function __construct(LocaleStorageDriver $localeStorageDriver)
-    {
-        $this->localeStorageDriver = $localeStorageDriver;
+    public function __construct(
+        private readonly LocaleStorageDriver $localeStorageDriver,
+    ) {
     }
 
     public function findLocale()
@@ -39,8 +36,9 @@ class LocaleRepository implements LocaleRepositoryInterface
         return $this->localeStorageDriver->find();
     }
 
-    public function save(Locale $locale)
-    {
+    public function save(
+        Locale $locale,
+    ): void {
         $this->localeStorageDriver->save($locale);
     }
 }

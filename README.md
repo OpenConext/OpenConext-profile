@@ -17,7 +17,7 @@ from the IdP (OpenConext Engineblock) and requests and displays additional
 information via EngineBlock's internal API.
 
 ## Requirements
-- PHP 7.0
+- PHP 8.2
 - EngineBlock 5.6 >= 5.6.7 
 - EngineBlock 5.7 >= 5.7.1
 - EngineBlock must be configured to release an unspecified NameID to Profile
@@ -26,19 +26,15 @@ information via EngineBlock's internal API.
 
 You can use docker to start a development environment.
 
-### Docker
-
-The docker container comes with EB and profile already installed & configured.  Follow the below steps to get it up and running.
-
 1. Clone the repo
-2. Copy .env file: `cp ./.env.dist ./.env` and fill it with sensible settings (for instance use the dev env)
-2. Copy parameters file: `cp config/legacy/parameters.yaml.dist config/legacy/parameters/parameters.yaml`
-3. Copy global_view_parameters file: `cp config/legacy/parameters/global_view_parameters.yaml.dist config/legacy/parameters/global_view_parameters.yaml`
-4. Install composer dependencies: `SYMFONY_ENV=dev composer install --prefer-dist`
-5. Install npm dependencies: `npm i`
-6. Run a build: `npm run build`
-7. Ensure the var folder has the correct rights: `chmod -R 777 var/`
-9. Start developing on docker: `docker-compose up -d`
+2. Go to the devconf core
+3. Run `/start-dev-env.sh profile:<path to your local profile development directory>`
+4. Run `docker exec -it core-profile-1 bash`
+5. Run `composer install`
+6. Run `bin/console c:c`
+7. Install npm dependencies: `yarn install`
+8. Run a build: `yarn encore dev`
+9. Ensure the var folder has the correct rights. If not, run: `chmod -R 777 var/`
 
 ## Attribute aggregation support
 Supported attribute aggregation attributes can be configured in the config.yml file. The example below uses

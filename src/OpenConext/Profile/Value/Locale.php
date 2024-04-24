@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,46 +21,28 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class Locale
+final class Locale implements Stringable
 {
-    /**
-     * @var string
-     */
-    private $locale;
-
-    /**
-     * @param string $locale
-     */
-    public function __construct($locale)
-    {
-        Assert::string($locale);
+    public function __construct(
+        private readonly string $locale,
+    ) {
         Assert::notEmpty($locale);
-
-        $this->locale = $locale;
     }
 
-    /**
-     * @param Locale $other
-     * @return bool
-     */
-    public function equals(Locale $other)
-    {
+    public function equals(
+        Locale $other,
+    ): bool {
         return $this->locale === $other->locale;
     }
 
-    /**
-     * @return string
-     */
-    public function getLocale()
+    public function getLocale(): string
     {
         return $this->locale;
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->locale;
     }

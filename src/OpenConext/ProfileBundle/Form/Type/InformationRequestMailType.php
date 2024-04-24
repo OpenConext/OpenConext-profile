@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -24,8 +26,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class InformationRequestMailType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options,
+    ): void {
         $builder
             ->add(
                 'sendMail',
@@ -35,11 +39,11 @@ class InformationRequestMailType extends AbstractType
                     'attr'  => [
                         'class' => 'button modalWindow__button modalWindow__button--form',
                     ]
-                ]
+                ],
             );
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'profile_information_request_mail';
     }

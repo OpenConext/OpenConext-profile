@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,48 +20,40 @@
 
 namespace OpenConext\ProfileBundle\Twig;
 
-use OpenConext\Profile\Assert;
 use OpenConext\ProfileBundle\Form\Type\SwitchLocaleType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Twig\Extension\AbstractExtension as Extension;
-use Twig\TwigFunction as SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-final class LocaleExtension extends Extension
+final class LocaleExtension extends AbstractExtension
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
+    private string $locale = 'en';
 
-    /**
-     * @var string
-     */
-    private $locale;
-
-    public function __construct(FormFactoryInterface $formFactory, RequestStack $requestStack, $defaultLocale)
-    {
-        $this->formFactory = $formFactory;
+    public function __construct(
+        private readonly FormFactoryInterface $formFactory,
+        RequestStack $requestStack,
+        string $defaultLocale,
+    ) {
         $this->locale = $this->retrieveLocale($requestStack, $defaultLocale);
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new SimpleFunction('profile_locale_switcher', [$this, 'getLocalePreferenceForm']),
-            new SimpleFunction('locale', [$this, 'getLocale']),
+            new TwigFunction('profile_locale_switcher', $this->getLocalePreferenceForm(...)),
+            new TwigFunction('locale', $this->getLocale(...)),
         ];
     }
 
-    public function getLocalePreferenceForm(string $returnUrl): FormView
-    {
-        Assert::string($returnUrl);
-
+    public function getLocalePreferenceForm(
+        string $returnUrl,
+    ): FormView {
         $form = $this->formFactory->create(
             SwitchLocaleType::class,
             null,
-            ['return_url' => $returnUrl]
+            ['return_url' => $returnUrl],
         );
 
         return $form->createView();
@@ -75,8 +69,10 @@ final class LocaleExtension extends Extension
         return $this->locale;
     }
 
-    private function retrieveLocale(RequestStack $requestStack, $defaultLocale): string
-    {
+    private function retrieveLocale(
+        RequestStack $requestStack,
+        string $defaultLocale,
+    ): string {
         $currentRequest = $requestStack->getCurrentRequest();
         $locale = $defaultLocale;
         if ($currentRequest) {

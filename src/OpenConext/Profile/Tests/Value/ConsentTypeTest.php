@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -28,7 +30,7 @@ class ConsentTypeTest extends TestCase
      * @group Consent
      * @group Value
      */
-    public function different_consent_types_are_not_equal()
+    public function different_consent_types_are_not_equal(): void
     {
         $explicit = ConsentType::explicit();
         $implicit = ConsentType::implicit();
@@ -42,7 +44,7 @@ class ConsentTypeTest extends TestCase
      * @group Consent
      * @group Value
      */
-    public function same_type_of_consent_types_are_equal()
+    public function same_type_of_consent_types_are_equal(): void
     {
         $explicit = ConsentType::explicit();
         $implicit = ConsentType::implicit();

@@ -1,0 +1,88 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    OpenConext\ProfileBundle\Security\:
+        resource: '../../Security'
+
+    OpenConext\ProfileBundle\Service\:
+        resource: '../../Service'
+
+    OpenConext\Profile\Value\EntityId:
+        arguments:
+            - ~ # engine block entity id
+
+    OpenConext\EngineBlockApiClient\Repository\InstitutionRepository:
+
+    OpenConext\ProfileBundle\Controller\MyServicesController:
+        arguments:
+            $removeConsentEnabled: '%remove_consent_enabled%'
+        tags: ['controller.service_arguments']
+
+    OpenConext\ProfileBundle\Storage\SingleCookieStorage:
+        arguments:
+            - ~ # locale cookie domain
+            - ~ # locale cookie key
+            - ~ # locale cookie expiration date
+            - ~ # locale cookie secure
+            - ~ # locale cookie http only
+        tags:
+            - { name: kernel.event_subscriber }
+
+    OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes:
+        arguments:
+            - [] # available attribute aggregation attributes
+
+    OpenConext\Profile\Repository\LocaleRepositoryInterface:
+        class: OpenConext\ProfileBundle\Profile\Repository\LocaleRepository
+
+    OpenConext\Profile\Repository\ContactPersonRepositoryInterface:
+        class: OpenConext\EngineBlockApiClient\Repository\ContactPersonRepository
+
+    OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface:
+        class: OpenConext\AttributeAggregationApiClientBundle\Repository\AttributeAggregationRepository
+
+    OpenConext\Profile\Repository\ConsentRepositoryInterface:
+        class: OpenConext\EngineBlockApiClient\Repository\ConsentRepository
+
+    OpenConext\Profile\Api\AuthenticatedUserProviderInterface:
+        class: OpenConext\ProfileBundle\Service\AuthenticatedUserProvider
+
+    OpenConext\ProfileBundle\Form\Type\SwitchLocaleType:
+        tags:
+            - { name: form.type, alias: profile_switch_locale }
+
+    OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType:
+        tags:
+            - { name: form.type, alias: profile_attribute_support_mail }
+
+    OpenConext\ProfileBundle\Form\Type\InformationRequestMailType:
+        tags:
+            - { name: form.type, alias: profile_information_request_mail }
+
+    OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType:
+        tags:
+            - { name: form.type, alias: profile_confirm_connection_delete }
+
+    OpenConext\ProfileBundle\Attribute\AttributeFilter:
+
+    OpenConext\ProfileBundle\Security\Authentication\SamlInteractionProvider:
+        arguments:
+            - '@surfnet_saml.hosted.service_provider'
+            - '@surfnet_saml.remote.idp'
+            - '@surfnet_saml.http.redirect_binding'
+            - '@surfnet_saml.http.post_binding'
+            - '@OpenConext\ProfileBundle\Saml\StateHandler'
+
+    OpenConext\ProfileBundle\Saml\StateHandler:
+        arguments:
+            - '@request_stack'
+
+    OpenConext\Profile\Value\LocaleSet:
+        factory: [OpenConext\Profile\Value\LocaleSet, create]
+        arguments:
+            - [] # available locales
+
+

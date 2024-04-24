@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2018 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,21 +20,8 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use DateTimeImmutable;
-use Mockery;
 use OpenConext\Profile\Exception\InvalidArpDataException;
 use OpenConext\Profile\Value\Arp;
-use OpenConext\Profile\Value\Consent;
-use OpenConext\Profile\Value\Consent\ServiceProvider;
-use OpenConext\Profile\Value\ConsentType;
-use OpenConext\Profile\Value\ContactEmailAddress;
-use OpenConext\Profile\Value\DisplayName;
-use OpenConext\Profile\Value\Entity;
-use OpenConext\Profile\Value\EntityId;
-use OpenConext\Profile\Value\EntityType;
-use OpenConext\Profile\Value\SpecifiedConsent;
-use OpenConext\Profile\Value\Url;
-use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
@@ -41,29 +30,24 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 
 class ArpTest extends TestCase
 {
-    public function test_it_can_be_constructed_with_empty_arp_data()
+    public function test_it_can_be_constructed_with_empty_arp_data(): void
     {
         $arp = Arp::createWith([]);
         $this->assertInstanceOf(Arp::class, $arp);
         $this->assertEmpty($arp->getAttributesGroupedBySource());
     }
 
-    protected function tearDown()
-    {
-        parent::tearDown();
-        Mockery::close();
-    }
-
     /**
-     * @expectedException \OpenConext\Profile\Exception\InvalidArpDataException
+     *
      * @dataProvider invalidArpData
      */
-    public function test_it_rejects_invalid_data_structures($invalidArpData)
+    public function test_it_rejects_invalid_data_structures(array $invalidArpData): void
     {
+        $this->expectException(InvalidArpDataException::class);
         Arp::createWith($invalidArpData);
     }
 
-    public function test_construction_with_valid_arp_data()
+    public function test_construction_with_valid_arp_data(): void
     {
         $arp = Arp::createWith(json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true));
         $this->assertInstanceOf(Arp::class, $arp);
@@ -81,7 +65,7 @@ class ArpTest extends TestCase
         }
     }
 
-    public function test_filtering_of_idp_sources()
+    public function test_filtering_of_idp_sources(): void
     {
         $arp = Arp::createWith(json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true));
         $this->assertArrayNotHasKey('idp', $arp->getNonIdpAttributes());
@@ -92,19 +76,18 @@ class ArpTest extends TestCase
         $this->assertArrayNotHasKey('idp', $arp->getAttributesGroupedBySource());
     }
 
-    public function test_dictionary_usage()
+    public function test_dictionary_usage(): void
     {
         // The dictionary is mocked and always returns the same definition.
-        $dictionary = Mockery::mock(AttributeDictionary::class);
+        $dictionary = $this->createMock(AttributeDictionary::class);
         $bogusDefinition = new AttributeDefinition('Foobar', 'urn.mace.FooBar', '123.323.432.12');
-        $dictionary
-            ->shouldReceive('getAttributeDefinitionByUrn')
-            ->times(13)
-            ->andReturn($bogusDefinition);
+        $dictionary->expects($this->exactly(13))
+            ->method('getAttributeDefinitionByUrn')
+            ->willReturn($bogusDefinition);
 
         $arp = Arp::createWith(
             json_decode(file_get_contents(__DIR__ . '/../fixture/arp-response.json'), true),
-            $dictionary
+            $dictionary,
         );
 
         // All entries should have the same attribute definition
@@ -113,7 +96,7 @@ class ArpTest extends TestCase
         }
     }
 
-    public function invalidArpData()
+    public function invalidArpData(): array
     {
         return [
             [[null]],

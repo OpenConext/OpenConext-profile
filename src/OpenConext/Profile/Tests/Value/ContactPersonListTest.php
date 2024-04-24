@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,6 +20,7 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
+use OpenConext\Profile\Exception\OutOfRangeException;
 use OpenConext\Profile\Value\ContactPerson;
 use OpenConext\Profile\Value\ContactPersonList;
 use OpenConext\Profile\Value\ContactType;
@@ -30,7 +33,7 @@ class ContactPersonListTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function contact_person_list_can_be_filtered_according_to_predicate()
+    public function contact_person_list_can_be_filtered_according_to_predicate(): void
     {
         $filterCriterium = new ContactType(ContactType::TYPE_SUPPORT);
 
@@ -40,9 +43,7 @@ class ContactPersonListTest extends TestCase
             new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('second@invalid.email')),
         ]);
 
-        $filterPredicate = function (ContactPerson $contactPerson) use ($filterCriterium) {
-            return $contactPerson->hasContactTypeOf($filterCriterium);
-        };
+        $filterPredicate = fn(ContactPerson $contactPerson) => $contactPerson->hasContactTypeOf($filterCriterium);
 
         $expectedFilteredList = new ContactPersonList([
             new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),
@@ -58,10 +59,11 @@ class ContactPersonListTest extends TestCase
      * @test
      * @group ContactPerson
      *
-     * @expectedException \OpenConext\Profile\Exception\OutOfRangeException
+     *
      */
-    public function first_contact_person_cannot_be_retrieved_from_empty_list()
+    public function first_contact_person_cannot_be_retrieved_from_empty_list(): void
     {
+        $this->expectException(OutOfRangeException::class);
         $contactPersonList = new ContactPersonList([]);
         $contactPersonList->first();
     }
@@ -70,7 +72,7 @@ class ContactPersonListTest extends TestCase
      * @test
      * @group ContactPerson
      */
-    public function first_contact_person_can_be_retrieved_from_list()
+    public function first_contact_person_can_be_retrieved_from_list(): void
     {
         $contactPersonList = new ContactPersonList([
             new ContactPerson(new ContactType(ContactType::TYPE_SUPPORT), new ContactEmailAddress('first@invalid.email')),
@@ -79,7 +81,7 @@ class ContactPersonListTest extends TestCase
 
         $expectedFirstContactPerson = new ContactPerson(
             new ContactType(ContactType::TYPE_SUPPORT),
-            new ContactEmailAddress('first@invalid.email')
+            new ContactEmailAddress('first@invalid.email'),
         );
 
         $actualFirstContactPerson = $contactPersonList->first();

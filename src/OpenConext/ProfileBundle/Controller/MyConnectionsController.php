@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -19,93 +21,42 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Value\EmailAddress;
 use OpenConext\Profile\Value\EmailAddressSupport;
 use OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Templating\EngineInterface;
-use Twig\Environment;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class MyConnectionsController
+class MyConnectionsController extends AbstractController
 {
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var AttributeAggregationService
-     */
-    private $service;
-
-    /**
-     * @var AuthenticatedUserProviderInterface
-     */
-    private $userProvider;
-
-    /**
-     * @var EmailAddress
-     */
-    private $mailTo;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
     public function __construct(
-        Environment $templateEngine,
-        Guard $guard,
-        LoggerInterface $logger,
-        AttributeAggregationService $service,
-        AuthenticatedUserProviderInterface $userProvider,
-        EmailAddressSupport $mailTo,
-        FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator
+        private readonly LoggerInterface $logger,
+        private readonly AttributeAggregationService $service,
+        private readonly AuthenticatedUserProviderInterface $userProvider,
+        private readonly EmailAddressSupport $mailTo,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly UrlGeneratorInterface $urlGenerator,
     ) {
-        $this->templateEngine = $templateEngine;
-        $this->guard = $guard;
-        $this->logger = $logger;
-        $this->service = $service;
-        $this->userProvider = $userProvider;
-        $this->mailTo = $mailTo;
-        $this->formFactory = $formFactory;
-        $this->urlGenerator = $urlGenerator;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function overviewAction(Request $request)
-    {
-        $this->guard->userIsLoggedIn();
+    #[Route(
+        path: '/my-connections',
+        name: 'profile.my_connections_overview',
+        methods: ['GET', 'POST'],
+        schemes: ['https'],
+    )]
+    public function overview(
+        Request $request,
+    ): Response {
         $this->logger->info('Showing My Connections page');
 
         $user = $this->userProvider->getCurrentUser();
@@ -129,14 +80,14 @@ class MyConnectionsController
             return new RedirectResponse($this->urlGenerator->generate('profile.my_connections_overview'));
         }
 
-        return new Response($this->templateEngine->render(
+        return $this->render(
             '@OpenConextProfile/MyConnections/overview.html.twig',
             [
                 'activeConnections' => $activeConnections,
                 'availableConnections' => $availableConnections,
                 'mailTo' => $this->mailTo->getEmailAddress(),
                 'confirmForm' => $confirmationForm->createView(),
-            ]
-        ));
+            ],
+        );
     }
 }

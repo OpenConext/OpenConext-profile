@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,50 +20,34 @@
 
 namespace OpenConext\Profile\Value;
 
-final class ContactPerson
+use OpenConext\Profile\Value\ContactEmailAddress;
+use Stringable;
+
+final readonly class ContactPerson implements Stringable
 {
-    /**
-     * @var ContactType
-     */
-    private $contactType;
-
-    /**
-     * @var ContactEmailAddress|null
-     */
-    private $emailAddress;
-
-    public function __construct(ContactType $contactType, ContactEmailAddress $emailAddress = null)
-    {
-        $this->contactType  = $contactType;
-        $this->emailAddress = $emailAddress;
+    public function __construct(
+        private ContactType $contactType,
+        private ?ContactEmailAddress $emailAddress = null,
+    ) {
     }
 
-    /**
-     * @param ContactType $otherContactType
-     * @return bool
-     */
-    public function hasContactTypeOf(ContactType $otherContactType)
-    {
+    public function hasContactTypeOf(
+        ContactType $otherContactType,
+    ): bool {
         return $this->contactType->equals($otherContactType);
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEmailAddress()
+    public function hasEmailAddress(): bool
     {
         return $this->emailAddress !== null;
     }
 
-    /**
-     * @return null|ContactEmailAddress
-     */
-    public function getEmailAddress()
+    public function getEmailAddress(): ?ContactEmailAddress
     {
         return $this->emailAddress;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->contactType . ': ' . $this->emailAddress;
     }

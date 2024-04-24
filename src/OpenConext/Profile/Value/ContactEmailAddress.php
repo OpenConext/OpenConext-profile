@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,35 +20,24 @@
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class ContactEmailAddress
+final class ContactEmailAddress implements Stringable
 {
-    /**
-     * @var string
-     */
-    private $emailAddress;
-
-    /**
-     * @param string $emailAddress
-     */
-    public function __construct($emailAddress)
-    {
-        Assert::string($emailAddress, 'E-mail address "%s" must be a string');
-
-        $this->emailAddress = $emailAddress;
+    public function __construct(
+        private readonly string $emailAddress,
+    ) {
     }
 
-    /**
-     * @param ContactEmailAddress $other
-     * @return bool
-     */
-    public function equals(ContactEmailAddress $other)
-    {
+    public function equals(
+        ContactEmailAddress $other,
+    ): bool {
         return $this->emailAddress === $other->emailAddress;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->emailAddress;
     }

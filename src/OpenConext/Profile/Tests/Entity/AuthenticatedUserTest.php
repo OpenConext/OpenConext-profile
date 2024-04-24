@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2016 SURFnet B.V.
  *
@@ -18,14 +20,12 @@
 
 namespace OpenConext\Profile\Tests\Entity;
 
-use Mockery as m;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use SAML2\Assertion;
 use SAML2\Compat\ContainerSingleton;
 use SAML2\DOMDocumentFactory;
-use SAML2\Exception\RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
@@ -38,7 +38,7 @@ class AuthenticatedUserTest extends TestCase
     /**
      * We need to set the correct SAML2 Container Singleton for SAML2 to work.
      */
-    public function setUp()
+    public function setUp(): void
     {
         ContainerSingleton::setContainer(new BridgeContainer(new NullLogger()));
     }
@@ -48,7 +48,7 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function no_attributes_are_set_if_no_attributes_are_given_when_creating_an_authenticated_user()
+    public function no_attributes_are_set_if_no_attributes_are_given_when_creating_an_authenticated_user(): void
     {
         $emptyAttributeSet = AttributeSet::create([]);
 
@@ -65,16 +65,16 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function attributes_are_set_with_given_attributes_when_creating_an_authenticated_user()
+    public function attributes_are_set_with_given_attributes_when_creating_an_authenticated_user(): void
     {
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Chuck', 'Tester']
+                ['Chuck', 'Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
-                ['Chuck Tester']
+                ['Chuck Tester'],
             )
         ]);
 
@@ -91,31 +91,31 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function attributes_are_filtered_when_creating_an_authenticated_user()
+    public function attributes_are_filtered_when_creating_an_authenticated_user(): void
     {
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Chuck', 'Tester']
+                ['Chuck', 'Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
-                ['Chuck Tester']
+                ['Chuck Tester'],
             )
         ]);
 
         $attributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Chuck', 'Tester']
+                ['Chuck', 'Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('commonName', 'urn:mace:dir:attribute-def:cn'),
-                ['Chuck Tester']
+                ['Chuck Tester'],
             ),
             new Attribute(
                 new AttributeDefinition('LDAP Directory string', '', 'urn:oid:1.3.6.1.4.1.1466.115.121.1.15'),
-                ['testers/chuck1']
+                ['testers/chuck1'],
             )
         ]);
 
@@ -133,16 +133,16 @@ class AuthenticatedUserTest extends TestCase
      * @group Authentication
      * @group Attributes
      */
-    public function epti_attribute_is_correctly_set_when_creating_an_authenticated_user()
+    public function epti_attribute_is_correctly_set_when_creating_an_authenticated_user(): void
     {
         $expectedAttributeSet = AttributeSet::create([
             new Attribute(
                 new AttributeDefinition('eduPersonTargetedID', 'urn:mace:dir:attribute-def:eduPersonTargetedID'),
-                ['abcd-some-value-xyz']
+                ['abcd-some-value-xyz'],
             ),
             new Attribute(
                 new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
-                ['Tester']
+                ['Tester'],
             ),
         ]);
 
@@ -151,7 +151,7 @@ class AuthenticatedUserTest extends TestCase
 
         $assertionAdapter  = $this->mockAssertionAdapterWith(
             AttributeSet::createFrom($assertionWithEpti, $attributeDictionary),
-            'abcd-some-value-xyz'
+            'abcd-some-value-xyz',
         );
 
         $authenticatedUser  = AuthenticatedUser::createFrom($assertionAdapter, []);
@@ -160,36 +160,31 @@ class AuthenticatedUserTest extends TestCase
         $this->assertEquals($expectedAttributeSet, $actualAttributeSet);
     }
 
-    private function mockAssertionAdapterWith(AttributeSet $attributeSet, $nameId)
+    private function mockAssertionAdapterWith(AttributeSet $attributeSet, string $nameId)
     {
-        $assertionAdapter = m::mock(AssertionAdapter::class);
-        $assertionAdapter
-            ->shouldReceive('getAttributeSet')
-            ->andReturn($attributeSet);
-
-        $assertionAdapter
-            ->shouldReceive('getNameID')
-            ->andReturn($nameId);
+        $assertionAdapter = $this->createMock(AssertionAdapter::class);
+        $assertionAdapter->method('getAttributeSet')->willReturn($attributeSet);
+        $assertionAdapter->method('getNameID')->willReturn($nameId);
 
         return $assertionAdapter;
     }
 
-    private function getAttributeDictionary()
+    private function getAttributeDictionary(): AttributeDictionary
     {
         $attributeDictionary = new AttributeDictionary();
         $attributeDictionary->addAttributeDefinition(
-            new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName')
+            new AttributeDefinition('displayName', 'urn:mace:dir:attribute-def:displayName'),
         );
         $attributeDictionary->addAttributeDefinition(
-            new AttributeDefinition('eduPersonTargetedID', 'urn:mace:dir:attribute-def:eduPersonTargetedID')
+            new AttributeDefinition('eduPersonTargetedID', 'urn:mace:dir:attribute-def:eduPersonTargetedID'),
         );
 
         return $attributeDictionary;
     }
 
-    private function getAssertionWithEpti()
+    private function getAssertionWithEpti(): Assertion
     {
-        $xml = <<<XML
+        $xml = <<<XML_WRAP
 <saml:Assertion
         xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
         xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
@@ -209,7 +204,7 @@ class AuthenticatedUserTest extends TestCase
          </saml:Attribute>
       </saml:AttributeStatement>
    </saml:Assertion>
-XML;
+XML_WRAP;
 
         return new Assertion(DOMDocumentFactory::fromString($xml)->firstChild);
     }

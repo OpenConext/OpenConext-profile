@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,44 +21,29 @@
 namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
+use Stringable;
 
-final class EntityId
+final readonly class EntityId implements Stringable
 {
-    /**
-     * @var string
-     */
-    private $entityId;
-
-    /**
-     * @param string $entityId
-     */
-    public function __construct($entityId)
-    {
+    public function __construct(
+        private string $entityId,
+    ) {
         Assert::notEmpty($entityId);
-        Assert::string($entityId);
         Assert::notBlank($entityId);
-
-        $this->entityId = $entityId;
     }
 
-    /**
-     * @param EntityId $other
-     * @return bool
-     */
-    public function equals(EntityId $other)
-    {
+    public function equals(
+        EntityId $other,
+    ): bool {
         return $this->entityId === $other->entityId;
     }
 
-    /**
-     * @return string
-     */
-    public function getEntityId()
+    public function getEntityId(): string
     {
         return $this->entityId;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->entityId;
     }

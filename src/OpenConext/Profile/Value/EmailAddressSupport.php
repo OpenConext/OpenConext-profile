@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2019 SURFnet B.V.
  *
@@ -20,4 +22,5 @@ namespace OpenConext\Profile\Value;
 
 interface EmailAddressSupport
 {
+    public function getEmailAddress(): string;
 }

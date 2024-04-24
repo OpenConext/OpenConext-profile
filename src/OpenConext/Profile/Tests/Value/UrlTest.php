@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -21,6 +23,7 @@ namespace OpenConext\Profile\Tests\Value;
 use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\Url;
 use PHPUnit\Framework\TestCase;
+use OpenConext\Profile\Exception\InvalidArgumentException;
 
 class UrlTest extends TestCase
 {
@@ -30,31 +33,20 @@ class UrlTest extends TestCase
      * @test
      * @group Value
      */
-    public function one_can_be_created_with_a_valid_url()
+    public function one_can_be_created_with_a_valid_url(): void
     {
-        new Url('https://domain.invalid');
+        $url = new Url('https://domain.invalid');
+
+        $this->assertTrue((string) $url === 'https://domain.invalid');
     }
 
     /**
      * @test
      * @group Value
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
      */
-    public function one_without_scheme_fails_validation()
+    public function one_without_scheme_fails_validation(): void
     {
+        $this->expectException(InvalidArgumentException::class);
         new Url('www.exampe.org');
-    }
-
-    /**
-     * @test
-     * @group value
-     * @dataProvider nonStringProvider
-     * @expectedException \OpenConext\Profile\Exception\InvalidArgumentException
-     *
-     * @param mixed $nonString
-     */
-    public function it_doesnt_accept_anything_else_than_strings($nonString)
-    {
-        new Url($nonString);
     }
 }

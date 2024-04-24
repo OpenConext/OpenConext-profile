@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,65 +20,36 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\UserService;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Twig\Environment;
+use Symfony\Component\Routing\Attribute\Route;
 
-class IntroductionController
+class IntroductionController extends AbstractController
 {
-    /**
-     * @var UserService
-     */
-    private $userService;
 
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @param UserService $userService
-     * @param Environment $templateEngine
-     * @param Guard $guard
-     * @param LoggerInterface $logger
-     */
     public function __construct(
-        UserService $userService,
-        Environment $templateEngine,
-        Guard $guard,
-        LoggerInterface $logger
+        private readonly UserService     $userService,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->userService    = $userService;
-        $this->templateEngine = $templateEngine;
-        $this->guard          = $guard;
-        $this->logger         = $logger;
     }
 
-    /**
-     * @return Response
-     */
-    public function overviewAction()
+    #[Route(
+        path: "/",
+        name: "profile.introduction_overview",
+        methods: ["GET"],
+        schemes: "https",
+    )]
+    public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
         $this->logger->info('Showing Introduction page');
         $attributeDefinition = new AttributeDefinition(
             'givenName',
             'urn:mace:dir:attribute-def:givenName',
-            'urn:oid:2.5.4.42'
+            'urn:oid:2.5.4.42',
         );
         try {
             $userName = $this->userService
@@ -84,12 +57,13 @@ class IntroductionController
                 ->getAttributes()
                 ->getAttributeByDefinition($attributeDefinition)
                 ->getValue()[0];
-        } catch (RuntimeException $e) {
+        } catch (RuntimeException) {
             $this->logger->info("Unable to retrieve the givenName attribute. It is not present in the attribute set");
             $userName = false;
         }
-        return new Response($this->templateEngine->render('@OpenConextProfile/Introduction/overview.html.twig', [
-            'userName' => $userName,
-        ]));
+        return $this->render(
+            '@OpenConextProfile/Introduction/overview.html.twig',
+            ['userName' => $userName],
+        );
     }
 }

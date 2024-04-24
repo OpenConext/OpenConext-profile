@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -18,7 +20,6 @@
 
 namespace OpenConext\Profile\Tests\Value;
 
-use Mockery as m;
 use OpenConext\Profile\Value\Consent\ServiceProvider;
 use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\SpecifiedConsent;
@@ -28,7 +29,7 @@ use function array_shift;
 
 class SpecifiedConsentListTest extends TestCase
 {
-    public function test_it_can_order_by_display_name_of_sp()
+    public function test_it_can_order_by_display_name_of_sp(): void
     {
         $locale = 'en';
         $specifiedConsent = [
@@ -48,7 +49,7 @@ class SpecifiedConsentListTest extends TestCase
      * The entities with a display name are sorted on top of the list, followed by the ones with only an entityID.
      * Both lists are sorted alphabetically.
      */
-    public function test_it_can_order_by_display_name_of_sp_handle_sps_without_display_name_correctly()
+    public function test_it_can_order_by_display_name_of_sp_handle_sps_without_display_name_correctly(): void
     {
         $locale = 'en';
         $specifiedConsent = [
@@ -67,7 +68,7 @@ class SpecifiedConsentListTest extends TestCase
         $this->assertEquals('https://selfservice.stepup.example.com/metadata', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
     }
 
-    public function test_it_can_order_nothing()
+    public function test_it_can_order_nothing(): void
     {
         $specifiedConsent = [];
         $list = SpecifiedConsentList::createWith($specifiedConsent);
@@ -77,27 +78,26 @@ class SpecifiedConsentListTest extends TestCase
 
     private function buildMockSpecifiedConsent(string $locale, string $displayName, string $entityId = '')
     {
-        $mockSp = m::mock(ServiceProvider::class);
+        $mockSp = $this->createMock(ServiceProvider::class);
         if ($entityId === '') {
-            $mockSp->shouldReceive('getLocaleAwareEntityName')->with($locale)->andReturn($displayName);
-            $displayNameMock = m::mock(DisplayName::class);
-            $displayNameMock
-                ->shouldReceive('hasFilledTranslationForLocale')
-                ->with($locale)
-                ->andReturn(true);
-            $mockSp->shouldReceive('getDisplayName')->andReturn($displayNameMock);
+            $mockSp->method('getLocaleAwareEntityName')->with($locale)->willReturn($displayName);
+
+            $displayNameMock = $this->createMock(DisplayName::class);
+            $displayNameMock->method('hasFilledTranslationForLocale')->with($locale)->willReturn(true);
+
+            $mockSp->method('getDisplayName')->willReturn($displayNameMock);
         } else {
-            $mockSp->shouldReceive('getLocaleAwareEntityName')->with($locale)->andReturn($entityId);
-            $displayNameMock = m::mock(DisplayName::class);
-            $displayNameMock
-                ->shouldReceive('hasFilledTranslationForLocale')
-                ->with($locale)
-                ->andReturn(false);
-            $mockSp->shouldReceive('getDisplayName')->andReturn($displayNameMock);
+            $mockSp->method('getLocaleAwareEntityName')->with($locale)->willReturn($entityId);
+
+            $displayNameMock = $this->createMock(DisplayName::class);
+            $displayNameMock->method('hasFilledTranslationForLocale')->with($locale)->willReturn(false);
+
+            $mockSp->method('getDisplayName')->willReturn($displayNameMock);
         }
 
-        $mock = m::mock(SpecifiedConsent::class);
-        $mock->shouldReceive('getServiceProvider')->andReturn($mockSp);
+        $mock = $this->createMock(SpecifiedConsent::class);
+        $mock->method('getServiceProvider')->willReturn($mockSp);
+
         return $mock;
     }
 }

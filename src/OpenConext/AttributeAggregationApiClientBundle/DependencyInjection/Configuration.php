@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -23,7 +25,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('open_conext_attribute_aggregation');
         $rootNode = $treeBuilder->getRootNode();
@@ -38,22 +40,22 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(function ($baseUrl) {
-                                    return !is_string($baseUrl);
-                                })
+                                ->ifTrue(fn($baseUrl): bool => !is_string($baseUrl))
                                 ->thenInvalid('The Attribute Aggregation API base URL should be a string')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($baseUrl) {
-                                    return !filter_var($baseUrl, FILTER_VALIDATE_URL);
-                                })
+                                ->ifTrue(fn($baseUrl): bool => !filter_var($baseUrl, FILTER_VALIDATE_URL))
                                 ->thenInvalid('The Attribute Aggregation API base URL should be a valid URL')
                             ->end()
                             ->validate()
-                                ->ifTrue(function ($baseUrl) {
+                                ->ifTrue(function ($baseUrl): bool {
                                     $path = parse_url($baseUrl, PHP_URL_PATH);
 
-                                    return $path[strlen($path)-1] !== '/';
+                                    if ($path === null) {
+                                        return true;
+                                    }
+
+                                    return ! str_ends_with($path, '/');
                                 })
                                 ->thenInvalid('The Attribute Aggregation API base URL must end in a forward slash')
                             ->end()
@@ -66,9 +68,7 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(function ($username) {
-                                    return !is_string($username);
-                                })
+                                ->ifTrue(fn($username): bool => !is_string($username))
                                 ->thenInvalid('The Attribute Aggregation API username should be a string')
                             ->end()
                         ->end()
@@ -77,9 +77,7 @@ class Configuration implements ConfigurationInterface
                             ->isRequired()
                             ->cannotBeEmpty()
                             ->validate()
-                                ->ifTrue(function ($password) {
-                                    return !is_string($password);
-                                })
+                                ->ifTrue(fn($password): bool => !is_string($password))
                                 ->thenInvalid('The Attribute Aggregation API password should be a string')
                             ->end()
                         ->end()

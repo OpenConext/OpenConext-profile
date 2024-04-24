@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2019 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,34 +26,17 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 interface ApiUserInterface
 {
-    /**
-     * @param Locale $locale
-     * @return void
-     */
-    public function switchLocaleTo(Locale $locale);
+    public function switchLocaleTo(
+        Locale $locale,
+    ): void;
 
-    /**
-     * @return bool
-     */
-    public function hasSupportContactEmail();
+    public function hasSupportContactEmail(): bool;
 
-    /**
-     * @return null|ContactEmailAddress
-     */
-    public function getSupportContactEmail();
+    public function getSupportContactEmail(): ?ContactEmailAddress;
 
-    /**
-     * @return Locale
-     */
-    public function getLocale();
+    public function getLocale(): Locale;
 
-    /**
-     * @return AttributeSet
-     */
-    public function getAttributes();
+    public function getAttributes(): AttributeSet;
 
-    /**
-     * @return string
-     */
-    public function getId();
+    public function getId(): string;
 }

@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2017 SURFnet B.V.
+ * Copyright 2019 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,24 +20,19 @@
 
 namespace OpenConext\Profile\Repository;
 
-use OpenConext\Profile\Exception\InvalidArgumentException;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 
 interface AttributeAggregationRepositoryInterface
 {
-    /**
-     * @param string $userId
-     * @return AttributeAggregationAttributesList
-     * @throws InvalidArgumentException When $userId is not a non-empty string
-     */
-    public function findAllFor($userId);
+    public function findAllFor(
+        string $userId,
+    ): AttributeAggregationAttributesList;
 
     /**
      * Removes an account by providing the account id. The method returns a boolean value reflecting the
      * result of the API call.
-     *
-     * @param $accountId
-     * @return bool
      */
-    public function unsubscribeAccount($accountId);
+    public function unsubscribeAccount(
+        int $accountId,
+    ): bool;
 }

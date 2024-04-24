@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -18,26 +20,22 @@
 
 namespace OpenConext\AttributeAggregationApiClientBundle\Repository;
 
+use Exception;
 use OpenConext\AttributeAggregationApiClientBundle\Http\JsonApiClient;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Repository\AttributeAggregationRepositoryInterface;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 
-final class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
+final readonly class AttributeAggregationRepository implements AttributeAggregationRepositoryInterface
 {
-    /**
-     * @var JsonApiClient
-     */
-    private $apiClient;
-
-    public function __construct(JsonApiClient $apiClient)
-    {
-        $this->apiClient = $apiClient;
+    public function __construct(
+        private JsonApiClient $apiClient,
+    ) {
     }
 
-    public function findAllFor($userId)
-    {
-        Assert::string($userId, '$userId "%s" (NameID) expected to be string, type %s given.');
+    public function findAllFor(
+        string $userId,
+    ): AttributeAggregationAttributesList {
         Assert::notEmpty($userId, '$userId "%s" (NameID) can not be empty');
 
         $attributes = $this->apiClient->read('accounts/%s', [$userId]);
@@ -45,12 +43,15 @@ final class AttributeAggregationRepository implements AttributeAggregationReposi
         return AttributeAggregationAttributesList::fromApiResponse($attributes);
     }
 
-    public function unsubscribeAccount($accountId)
-    {
-        Assert::integer($accountId, 'Account id "%s" expected to be string, type %s given.');
-
-        $result = $this->apiClient->delete('disconnect/%d', [$accountId]);
-
-        return isset($result->status) && $result->status === 'OK';
+    public function unsubscribeAccount(
+        int $accountId,
+    ): bool {
+        try {
+            // In the rare situation the API returns a non-OK status,
+            // but with a correct body we will return false.
+            return $this->apiClient->delete('disconnect/%d', [$accountId])['status'] === 'OK';
+        } catch (Exception) {
+            return false;
+        }
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,99 +21,70 @@
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Form\Type\AttributeSupportMailType;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\AttributeSupportMailService;
 use OpenConext\ProfileBundle\Service\UserService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
-class AttributeSupportController
+class AttributeSupportController extends AbstractController
 {
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var AttributeSupportMailService
-     */
-    private $attributeSupportMailService;
-
     public function __construct(
-        Guard $guard,
-        Environment $templateEngine,
-        FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator,
-        UserService $userService,
-        AttributeSupportMailService $attributeSupportMailService
+        private readonly FormFactoryInterface        $formFactory,
+        private readonly UrlGeneratorInterface       $urlGenerator,
+        private readonly UserService                 $userService,
+        private readonly AttributeSupportMailService $attributeSupportMailService,
     ) {
-        $this->guard                       = $guard;
-        $this->templateEngine              = $templateEngine;
-        $this->formFactory                 = $formFactory;
-        $this->urlGenerator                = $urlGenerator;
-        $this->userService                 = $userService;
-        $this->attributeSupportMailService = $attributeSupportMailService;
     }
 
-    public function overviewAction()
+    #[Route(
+        path: '/attribute-support',
+        name: 'profile.attribute_support_overview',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $attributeSupportMailForm = $this->formFactory->create(
             AttributeSupportMailType::class,
             null,
-            ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')]
+            ['action' => $this->urlGenerator->generate('profile.attribute_support_send_mail')],
         );
 
-        return new Response(
-            $this->templateEngine->render(
+        return
+            $this->render(
                 '@OpenConextProfile/AttributeSupport/overview.html.twig',
                 [
                     'attributes'               => $this->userService->getUser()->getAttributes(),
                     'attributeSupportMailForm' => $attributeSupportMailForm->createView()
-                ]
-            )
-        );
+                ],
+            );
     }
 
-    public function sendMailAction()
+    #[Route(
+        path: '/attribute-support/send-mail',
+        name: 'profile.attribute_support_send_mail',
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
+    public function sendMail(): RedirectResponse
     {
-        $this->guard->userIsLoggedIn();
-
         $this->attributeSupportMailService->sendAttributeSupportMail();
 
         return new RedirectResponse($this->urlGenerator->generate('profile.attribute_support_confirm_mail_sent'));
     }
 
-    public function confirmMailSentAction()
+    #[Route(
+        path: '/attribute-support/confirmation',
+        name: 'profile.attribute_support_confirm_mail_sent',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function confirmMailSent(): Response
     {
-        $this->guard->userIsLoggedIn();
-
-        return new Response(
-            $this->templateEngine->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig')
-        );
+        return $this->render('@OpenConextProfile/AttributeSupport/confirmation.html.twig');
     }
 }

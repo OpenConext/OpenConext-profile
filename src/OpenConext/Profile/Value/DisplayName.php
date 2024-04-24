@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,18 +20,21 @@
 
 namespace OpenConext\Profile\Value;
 
+use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use OpenConext\Profile\Exception\LogicException;
+use Stringable;
 
-class DisplayName
+class DisplayName implements Stringable
 {
     /**
      * @var string[]
      */
-    private $translations = [];
+    private array $translations;
 
-    public function __construct(array $translations = [])
-    {
+    public function __construct(
+        array $translations = [],
+    ) {
         Assert::allString(array_keys($translations), 'Translations must be indexed by locale');
         Assert::allNotBlank(array_keys($translations), 'Locales may not be blank');
         Assert::allString($translations, 'Translations must be strings');
@@ -37,22 +42,16 @@ class DisplayName
         $this->translations = $translations;
     }
 
-    /**
-     * @param string $locale
-     * @return bool
-     */
-    public function hasFilledTranslationForLocale($locale)
-    {
-        Assert::string($locale, 'Locale must be string', 'locale');
+    public function hasFilledTranslationForLocale(
+        string $locale,
+    ): bool {
 
         return array_key_exists($locale, $this->translations) && trim($this->translations[$locale]) !== '';
     }
 
-    /**
-     * @return string
-     */
-    public function getTranslation($locale)
-    {
+    public function getTranslation(
+        string $locale,
+    ): string {
         if (!isset($this->translations[$locale])) {
             throw new LogicException(sprintf('Could not find translation for locale "%s"', $locale));
         }
@@ -60,19 +59,17 @@ class DisplayName
         return $this->translations[$locale];
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             'DisplayName(%s)',
             join(
                 ', ',
                 array_map(
-                    function ($locale) {
-                        return sprintf('%s=%s', $locale, $this->translations[$locale]);
-                    },
-                    array_keys($this->translations)
-                )
-            )
+                    fn($locale): string => sprintf('%s=%s', $locale, $this->translations[$locale]),
+                    array_keys($this->translations),
+                ),
+            ),
         );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,86 +20,39 @@
 
 namespace OpenConext\ProfileBundle\Controller;
 
-use OpenConext\EngineBlockApiClientBundle\Repository\ConsentRepository;
-use OpenConext\EngineBlockApiClientBundle\Repository\InstitutionRepository;
+use OpenConext\EngineBlockApiClient\Repository\InstitutionRepository;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Entity\AuthenticatedUser;
-use OpenConext\Profile\Value\SpecifiedConsent;
-use OpenConext\Profile\Value\SpecifiedConsentList;
 use OpenConext\ProfileBundle\Service\SpecifiedConsentListService;
-use OpenConext\ProfileBundle\Security\Guard;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
-class MyServicesController
+class MyServicesController extends AbstractController
 {
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var SpecifiedConsentListService
-     */
-    private $specifiedConsentListService;
-
-    /**
-     * @var AuthenticatedUserProviderInterface
-     */
-    private $authenticatedUserProvider;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var InstitutionRepository
-     */
-    private $institutionRepository;
-
-    /** @var bool */
-    private $removeConsentEnabled;
-
     public function __construct(
-        Environment $templateEngine,
-        AuthenticatedUserProviderInterface $authenticatedUserProvider,
-        SpecifiedConsentListService $specifiedConsentListService,
-        Guard $guard,
-        UrlGeneratorInterface $urlGenerator,
-        LoggerInterface $logger,
-        InstitutionRepository $institutionRepository,
-        bool $removeConsentEnabled
+        private readonly AuthenticatedUserProviderInterface $authenticatedUserProvider,
+        private readonly SpecifiedConsentListService        $specifiedConsentListService,
+        private readonly UrlGeneratorInterface              $urlGenerator,
+        private readonly LoggerInterface                    $logger,
+        private readonly InstitutionRepository              $institutionRepository,
+        private readonly bool                               $removeConsentEnabled,
     ) {
-        $this->templateEngine = $templateEngine;
-        $this->authenticatedUserProvider = $authenticatedUserProvider;
-        $this->specifiedConsentListService = $specifiedConsentListService;
-        $this->guard = $guard;
-        $this->urlGenerator = $urlGenerator;
-        $this->logger = $logger;
-        $this->institutionRepository = $institutionRepository;
-        $this->removeConsentEnabled = $removeConsentEnabled;
     }
 
-    public function overviewAction(Request $request)
-    {
-        $this->guard->userIsLoggedIn();
-
+    #[Route(
+        path: '/my-services',
+        name: 'profile.my_services_overview',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function overview(
+        Request $request,
+    ): Response {
         $this->logger->info('User requested My Services page');
 
         $locale = $request->getLocale();
@@ -109,30 +64,38 @@ class MyServicesController
 
         $organization = $this->institutionRepository->getOrganizationAndLogoForIdp($user);
 
-        return new Response($this->templateEngine->render(
+        return $this->render(
             '@OpenConextProfile/MyServices/overview.html.twig',
             [
                 'specifiedConsentList' => $specifiedConsentList,
                 'locale' => $locale,
                 'displayName' => $organization->getDisplayName($locale),
                 'logo' => $organization->getLogo(),
-            ]
-        ));
+            ],
+        );
     }
 
-    public function deleteAction(string $serviceEntityId): Response
-    {
-        $this->guard->userIsLoggedIn();
+    #[Route(
+        path: '/my-services/delete/{serviceEntityId}',
+        name: 'profile.my_services_delete',
+        requirements: ['serviceEntityId' => '.+'],
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function delete(
+        string $serviceEntityId,
+    ): Response {
         if (!$this->removeConsentEnabled) {
             throw new ResourceNotFoundException('The remove consent action is disabled');
         }
 
         $this->logger->notice(
-            sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId)
+            sprintf('User wants to retract consent from a service with Entity ID: %s', $serviceEntityId),
         );
         $user = $this->authenticatedUserProvider->getCurrentUser();
         $result = $this->specifiedConsentListService->deleteServiceWith($user, $serviceEntityId);
         $this->logger->notice(sprintf('Removing consent %s', ($result ? 'succeeded' : 'failed')));
+
         return new RedirectResponse($this->urlGenerator->generate('profile.my_services_overview'));
     }
 }

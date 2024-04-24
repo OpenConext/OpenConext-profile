@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -25,41 +27,23 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttribute;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationAttributesList;
 use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAttributes;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 final class AttributeAggregationService
 {
-    /**
-     * @var AttributeAggregationRepositoryInterface
-     */
-    private $repository;
-
-    /**
-     * @var AttributeAggregationEnabledAttributes
-     */
-    private $attributeAggregationEnabledAttributes;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
     public function __construct(
-        AttributeAggregationRepositoryInterface $repository,
-        AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
-        LoggerInterface $logger
+        private readonly AttributeAggregationRepositoryInterface $repository,
+        private AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
+        private readonly LoggerInterface $logger,
     ) {
-        $this->repository = $repository;
-        $this->attributeAggregationEnabledAttributes = $attributeAggregationEnabledAttributes;
-        $this->logger = $logger;
     }
 
-    /**
-     * @param AuthenticatedUser $user
-     * @return null|AttributeAggregationAttributesList
-     */
-    public function findByUser(AuthenticatedUser $user)
-    {
+    public function findByUser(
+        UserInterface $user,
+    ): ?AttributeAggregationAttributesList {
         $enabledAttributes = $this->attributeAggregationEnabledAttributes;
+
+        assert($user instanceof AuthenticatedUser);
 
         try {
             $collection = [];
@@ -75,7 +59,7 @@ final class AttributeAggregationService
                         true,
                         $aaAttribute->getId(),
                         $aaAttribute->getUserNameId(),
-                        $aaAttribute->getLinkedId()
+                        $aaAttribute->getLinkedId(),
                     );
                 } else {
                     $collection[] = AttributeAggregationAttribute::fromConfig($enabledAttribute, false, -1, '');
@@ -87,10 +71,9 @@ final class AttributeAggregationService
             $this->logger->error(
                 sprintf(
                     'Error while finding AA attributes. Original error message: "%s"',
-                    $e->getMessage()
-                )
+                    $e->getMessage(),
+                ),
             );
-            return null;
         }
 
         $this->logger->notice('No enabled attribute aggregation attributes found.');
@@ -98,13 +81,15 @@ final class AttributeAggregationService
     }
 
     /**
-     * @param AuthenticatedUser $user
-     * @param AttributeAggregationAttribute $orcidAttribute
      *
      * @return bool returns false when deletion failed
      */
-    public function disconnectAttributeFor(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
-    {
+    public function disconnectAttributeFor(
+        UserInterface $user,
+        AttributeAggregationAttribute $orcidAttribute,
+    ): bool {
+        assert($user instanceof AuthenticatedUser);
+
         if ($this->isValidRequest($user, $orcidAttribute)) {
             $result = $this->repository->unsubscribeAccount($orcidAttribute->getId());
             if (!$result) {
@@ -117,19 +102,17 @@ final class AttributeAggregationService
 
     /**
      * Validate the users identity matches that of the identity set on the ORCID attribute retrieved from AA.
-     *
-     * @param AttributeAggregationAttribute $orcidAttribute
-     *
-     * @return bool
      */
-    private function isValidRequest(AuthenticatedUser $user, AttributeAggregationAttribute $orcidAttribute)
-    {
+    private function isValidRequest(
+        AuthenticatedUser $user,
+        AttributeAggregationAttribute $orcidAttribute,
+    ): bool {
         $nameId = $user->getNameId();
 
         if ($nameId !== $orcidAttribute->getUserNameId()) {
             $this->logger->error(
                 'The users NameId associated with ORCID iD account does not match the NameId of the 
-                authenticated user.'
+                authenticated user.',
             );
             return false;
         }

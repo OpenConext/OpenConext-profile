@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -22,30 +24,25 @@ use OpenConext\Profile\Assert;
 
 final class Logo
 {
-    /**
-     * @var string
-     */
-    private $url;
+    private readonly string $url;
 
-    /**
-     * @var string
-     */
-    private $height;
+    private readonly string $height;
 
-    /**
-     * @var string
-     */
-    private $width;
+    private readonly string $width;
 
-    public function __construct(?string $url, ?string $height, ?string $width)
-    {
+    public function __construct(
+        ?string $url,
+        ?string $height,
+        ?string $width,
+    ) {
         $this->url = $url ?? '';
         $this->height = $height ?? '';
         $this->width = $width ?? '';
     }
 
-    public static function fromArray(array $logo): Logo
-    {
+    public static function fromArray(
+        array $logo,
+    ): Logo {
         Assert::keysArePresent($logo, ['url', 'height', 'width']);
         return new self($logo['url'], $logo['height'], $logo['width']);
     }
@@ -58,5 +55,15 @@ final class Logo
     public function hasUrl(): bool
     {
         return !empty($this->getUrl());
+    }
+
+    public function getHeight(): string
+    {
+        return $this->height;
+    }
+
+    public function getWidth(): string
+    {
+        return $this->width;
     }
 }

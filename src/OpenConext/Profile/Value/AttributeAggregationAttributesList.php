@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -18,25 +20,14 @@
 
 namespace OpenConext\Profile\Value;
 
-final class AttributeAggregationAttributesList
+final readonly class AttributeAggregationAttributesList
 {
-    /**
-     * @var array
-     */
-    private $attributes;
-
-    /**
-     * @param array $attributes
-     */
-    public function __construct(array $attributes)
-    {
-        $this->attributes = $attributes;
+    public function __construct(
+        private array $attributes,
+    ) {
     }
 
-    /**
-     * @return array
-     */
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
@@ -45,8 +36,9 @@ final class AttributeAggregationAttributesList
      * @param $attributeName
      * @return bool
      */
-    public function hasAttribute($attributeName)
-    {
+    public function hasAttribute(
+        $attributeName,
+    ): bool {
         return array_key_exists($attributeName, $this->attributes);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -19,8 +21,9 @@
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Api\ApiUserInterface;
-use OpenConext\Profile\Entity\User;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
+use OpenConext\Profile\Entity\AuthenticatedUser;
+use OpenConext\Profile\Entity\User;
 use OpenConext\Profile\Repository\UserRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Locale;
@@ -29,70 +32,35 @@ use OpenConext\UserLifecycleApiClientBundle\Http\JsonApiClient as UserLifecycleA
 
 final class UserService
 {
-    /**
-     * @var SupportContactEmailService
-     */
-    private $supportContactEmailService;
-
-    /**
-     * @var UserRepositoryInterface
-     */
-    private $userRepository;
-
-    /**
-     * @var AuthenticatedUserProviderInterface
-     */
-    private $authenticatedUserProvider;
-
-    /**
-     * @var LocaleService
-     */
-    private $localeService;
-
-    /**
-     * @var EntityId
-     */
-    private $engineBlockEntityId;
-
-    /**
-     * @var UserLifecycleApiClient
-     */
-    private $userLifecycleApiClient;
+    private ?UserLifecycleApiClient $userLifecycleApiClient = null;
 
     public function __construct(
-        SupportContactEmailService $supportContactEmailService,
-        UserRepositoryInterface $userRepository,
-        AuthenticatedUserProviderInterface $authenticatedUserProvider,
-        LocaleService $localeService,
-        EntityId $engineBlockEntityId
+        private readonly SupportContactEmailService $supportContactEmailService,
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly AuthenticatedUserProviderInterface $authenticatedUserProvider,
+        private readonly LocaleService $localeService,
+        private readonly EntityId $engineBlockEntityId,
     ) {
-        $this->supportContactEmailService = $supportContactEmailService;
-        $this->userRepository             = $userRepository;
-        $this->authenticatedUserProvider  = $authenticatedUserProvider;
-        $this->localeService              = $localeService;
-        $this->engineBlockEntityId        = $engineBlockEntityId;
     }
 
     /**
      * The user lifecycle client is optional.
-     *
-     * @param UserLifecycleApiClient $client
      */
-    public function setUserLifecycleApiClient(UserLifecycleApiClient $client = null)
-    {
+    public function setUserLifecycleApiClient(
+        ?UserLifecycleApiClient $client = null,
+    ): void {
         $this->userLifecycleApiClient = $client;
     }
 
-    /**
-     * @return ApiUserInterface
-     */
-    public function getUser()
+    public function getUser(): ApiUserInterface
     {
         $user = $this->userRepository->findUser();
 
         if ($user) {
             return $user;
         }
+
+        assert($this->authenticatedUserProvider->getCurrentUser() instanceof AuthenticatedUser);
 
         $user = new User($this->authenticatedUserProvider->getCurrentUser(), $this->localeService->getLocale());
         $user = $this->enrichUserWithSupportContactEmail($user);
@@ -102,47 +70,36 @@ final class UserService
         return $user;
     }
 
-    /**
-     * @param ChangeLocaleCommand $changeLocaleCommand
-     */
-    public function changeLocale(ChangeLocaleCommand $changeLocaleCommand)
-    {
+    public function changeLocale(
+        ChangeLocaleCommand $changeLocaleCommand,
+    ): void {
         $user = $this->getUser();
         $user->switchLocaleTo(new Locale($changeLocaleCommand->newLocale));
 
         $this->localeService->saveLocaleOf($user);
     }
 
-    /**
-     * @return array
-     */
-    public function getUserLifecycleData()
+    public function getUserLifecycleData(): array
     {
         if (!$this->userLifecycleApiIsEnabled()) {
-            return;
+            return [];
         }
 
         $user = $this->getUser();
 
         return $this->userLifecycleApiClient->read(
-            sprintf('/api/deprovision/%s', $user->getId())
+            sprintf('/api/deprovision/%s', $user->getId()),
         );
     }
 
-    /**
-     * @return bool
-     */
-    public function userLifecycleApiIsEnabled()
+    public function userLifecycleApiIsEnabled(): bool
     {
         return $this->userLifecycleApiClient !== null;
     }
 
-    /**
-     * @param ApiUserInterface $user
-     * @return ApiUserInterface
-     */
-    private function enrichUserWithSupportContactEmail(ApiUserInterface $user)
-    {
+    private function enrichUserWithSupportContactEmail(
+        ApiUserInterface $user,
+    ): ApiUserInterface {
         $entityIds                 = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
 
@@ -151,7 +108,7 @@ final class UserService
         }
 
         $supportContactEmail = $this->supportContactEmailService->findSupportContactEmailForIdp(
-            $authenticatingIdpEntityId
+            $authenticatingIdpEntityId,
         );
 
         if ($supportContactEmail === null) {
@@ -163,10 +120,10 @@ final class UserService
 
     /**
      * @param EntityId[] $entityIds
-     * @return null|EntityId
      */
-    private function getNearestAuthenticatingAuthorityEntityId(array $entityIds)
-    {
+    private function getNearestAuthenticatingAuthorityEntityId(
+        array $entityIds,
+    ): ?EntityId {
         $lastEntityId = array_pop($entityIds);
 
         if ($lastEntityId === null) {

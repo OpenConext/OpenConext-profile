@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,21 +20,20 @@
 
 namespace OpenConext\ProfileBundle;
 
-use OpenConext\ProfileBundle\DependencyInjection\Compiler\StateHandlerSessionPass;
 use OpenConext\ProfileBundle\Security\Factory\SamlFactory;
+use Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class OpenConextProfileBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
-    {
+    public function build(
+        ContainerBuilder $container,
+    ): void {
         parent::build($container);
 
-        $container->addCompilerPass(new StateHandlerSessionPass());
-
-        /** @var \Symfony\Bundle\SecurityBundle\DependencyInjection\SecurityExtension $extension */
         $extension = $container->getExtension('security');
-        $extension->addSecurityListenerFactory(new SamlFactory());
+        assert($extension instanceof SecurityExtension);
+        $extension->addAuthenticatorFactory(new SamlFactory());
     }
 }

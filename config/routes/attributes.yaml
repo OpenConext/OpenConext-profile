@@ -1,0 +1,7 @@
+controllers:
+    resource: ../../src/OpenConext/ProfileBundle/Controller
+    type: attribute
+
+kernel:
+    resource: ../../src/OpenConext/Kernel.php
+    type: attribute

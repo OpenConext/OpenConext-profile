@@ -5,9 +5,10 @@ nelmio_security:
   external_redirects:
     abort: true
     log: true
-    whitelist:
+    allow_list:
       - '%saml_remote_idp_host%'
   csp:
+    compat_headers: false
     report_logger_service: monolog.logger.security
     hosts: [ ]
     content_types: [ ]
@@ -25,3 +26,18 @@ nelmio_security:
     mode_block: true
   forced_ssl:
     enabled: true
+when@dev:
+  nelmio_security:
+    csp:
+      enforce:
+        img-src: [ self, 'data:' ]
+        script-src: [ self, unsafe-inline, 'unsafe-eval' ]
+        style-src: [ self, unsafe-inline ]
+
+when@test:
+  nelmio_security:
+    csp:
+      enforce:
+        img-src: [ self, 'data:' ]
+        script-src: [ self, unsafe-inline ]
+        style-src: [ self, unsafe-inline ]

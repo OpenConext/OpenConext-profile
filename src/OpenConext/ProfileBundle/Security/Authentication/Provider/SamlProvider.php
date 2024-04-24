@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2015 SURFnet B.V.
  *
@@ -18,51 +20,59 @@
 
 namespace OpenConext\ProfileBundle\Security\Authentication\Provider;
 
+use BadMethodCallException;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\ProfileBundle\Attribute\AttributeSetWithFallbacks;
-use OpenConext\ProfileBundle\Security\Authentication\Token\SamlToken;
+use SAML2\Assertion;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
-use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetFactory;
 use Surfnet\SamlBundle\SAML2\Attribute\ConfigurableAttributeSetFactory;
-use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Surfnet\SamlBundle\Security\Authentication\Provider\SamlProviderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class SamlProvider implements AuthenticationProviderInterface
+class SamlProvider implements SamlProviderInterface, UserProviderInterface
 {
-    /**
-     * @var \Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary
-     */
-    private $attributeDictionary;
-
-    public function __construct(AttributeDictionary $attributeDictionary)
-    {
-        $this->attributeDictionary = $attributeDictionary;
+    public function __construct(
+        private readonly AttributeDictionary $attributeDictionary,
+    ) {
     }
 
-    public function authenticate(TokenInterface $token)
-    {
+    public function getNameId(
+        Assertion $assertion,
+    ): string {
+        return $this->attributeDictionary->translate($assertion)->getNameID();
+    }
+
+    public function getUser(
+        Assertion $assertion,
+    ): UserInterface {
         ConfigurableAttributeSetFactory::configureWhichAttributeSetToCreate(AttributeSetWithFallbacks::class);
-        $translatedAssertion = $this->attributeDictionary->translate($token->assertion);
+        $translatedAssertion = $this->attributeDictionary->translate($assertion);
 
         $authenticatingAuthorities = array_map(
-            function ($authenticatingAuthority) {
-                return new EntityId($authenticatingAuthority);
-            },
-            $token->assertion->getAuthenticatingAuthority()
+            fn($authenticatingAuthority): EntityId => new EntityId($authenticatingAuthority),
+            $assertion->getAuthenticatingAuthority(),
         );
 
-        $user = AuthenticatedUser::createFrom($translatedAssertion, $authenticatingAuthorities);
-
-        $authenticatedToken = new SamlToken(['ROLE_USER']);
-        $authenticatedToken->setUser($user);
-
-        return $authenticatedToken;
+        return AuthenticatedUser::createFrom($translatedAssertion, $authenticatingAuthorities);
     }
 
-    public function supports(TokenInterface $token)
-    {
-        return $token instanceof SamlToken;
+    public function refreshUser(
+        UserInterface $user,
+    ): UserInterface {
+        return $user;
+    }
+
+    public function supportsClass(
+        string $class,
+    ): bool {
+        return $class === AuthenticatedUser::class;
+    }
+
+    public function loadUserByIdentifier(
+        string $identifier,
+    ): UserInterface {
+        throw new BadMethodCallException('Use `getUser` to load a user by username');
     }
 }

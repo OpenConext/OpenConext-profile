@@ -1,7 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * Copyright 2015 SURFnet B.V.
+ * Copyright 2019 SURFnet B.V.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +30,9 @@ interface UserRepositoryInterface
     public function findUser();
 
     /**
-     * @param ApiUserInterface $user
      * @return void
      */
-    public function save(ApiUserInterface $user);
+    public function save(
+        ApiUserInterface $user,
+    );
 }

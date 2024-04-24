@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2021 SURFnet B.V.
  *
@@ -18,7 +20,6 @@
 
 namespace OpenConext\Profile\Value;
 
-use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 
 final class Organization
@@ -26,20 +27,18 @@ final class Organization
     /**
      * @var string[]
      */
-    private $displayName;
+    private array $displayName;
 
     /**
      * @var string[]
      */
-    private $name;
+    private array $name;
 
-    /**
-     * @var Logo
-     */
-    private $logo;
-
-    public function __construct(array $displayName, array $name, Logo $logo)
-    {
+    public function __construct(
+        array $displayName,
+        array $name,
+        private readonly Logo $logo,
+    ) {
         Assert::allString(array_keys($displayName), 'DisplayName translations must be indexed by locale');
         Assert::allNotBlank(array_keys($displayName), 'Locales may not be blank');
         Assert::allString(array_keys($name), 'Name translations must be indexed by locale');
@@ -47,17 +46,18 @@ final class Organization
 
         $this->displayName = $displayName;
         $this->name = $name;
-        $this->logo = $logo;
     }
 
-    public static function fromArray(array $json): Organization
-    {
+    public static function fromArray(
+        array $json,
+    ): Organization {
         Assert::keysArePresent($json, ['display_name', 'name', 'logo']);
         return new self($json['display_name'], $json['name'], Logo::fromArray($json['logo']));
     }
 
-    public function getDisplayName(string $locale): string
-    {
+    public function getDisplayName(
+        string $locale,
+    ): string {
         $displayNameLocale = $this->displayName[$locale];
         if (!empty($displayNameLocale)) {
             return $displayNameLocale;

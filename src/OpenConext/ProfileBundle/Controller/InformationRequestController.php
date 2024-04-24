@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2017 SURFnet B.V.
  *
@@ -20,108 +22,72 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Attribute\AttributeFilter;
 use OpenConext\ProfileBundle\Form\Type\InformationRequestMailType;
-use OpenConext\ProfileBundle\Security\Guard;
 use OpenConext\ProfileBundle\Service\InformationRequestMailService;
 use OpenConext\ProfileBundle\Service\UserService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Twig\Environment;
 
-class InformationRequestController
+class InformationRequestController extends AbstractController
 {
-    /**
-     * @var Guard
-     */
-    private $guard;
-
-    /**
-     * @var Environment
-     */
-    private $templateEngine;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var InformationRequestMailService
-     */
-    private $informationRequestMailService;
-
-    /**
-     * @var AttributeFilter
-     */
-    private $attributeFilter;
-
     public function __construct(
-        Guard $guard,
-        Environment $templateEngine,
-        FormFactoryInterface $formFactory,
-        UrlGeneratorInterface $urlGenerator,
-        UserService $userService,
-        AttributeFilter $attributeFilter,
-        InformationRequestMailService $informationRequestMailService
+        private readonly FormFactoryInterface $formFactory,
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly UserService $userService,
+        private readonly AttributeFilter $attributeFilter,
+        private readonly InformationRequestMailService $informationRequestMailService,
     ) {
-        $this->guard = $guard;
-        $this->templateEngine = $templateEngine;
-        $this->formFactory = $formFactory;
-        $this->urlGenerator = $urlGenerator;
-        $this->userService = $userService;
-        $this->attributeFilter = $attributeFilter;
-        $this->informationRequestMailService = $informationRequestMailService;
     }
 
-    public function overviewAction()
+    #[Route(
+        path: '/information-request',
+        name: 'profile.information_request_overview',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function overview(): Response
     {
-        $this->guard->userIsLoggedIn();
-
         $informationRequestMailForm = $this->formFactory->create(
             InformationRequestMailType::class,
             null,
-            ['action' => $this->urlGenerator->generate('profile.information_request_send_mail')]
+            ['action' => $this->urlGenerator->generate('profile.information_request_send_mail')],
         );
 
         $attributes = $this->attributeFilter->filter($this->userService->getUser()->getAttributes());
 
-        return new Response(
-            $this->templateEngine->render(
-                '@OpenConextProfile/InformationRequest/overview.html.twig',
-                [
+        return $this->render(
+            '@OpenConextProfile/InformationRequest/overview.html.twig',
+            [
                     'attributes' => $attributes,
                     'informationRequestMailForm' => $informationRequestMailForm->createView()
-                ]
-            )
+                ],
         );
     }
 
-    public function sendMailAction()
+    #[Route(
+        path: '/information-request/send-mail',
+        name: 'profile.information_request_send_mail',
+        methods: ['POST'],
+        schemes: ['https'],
+    )]
+    public function sendMail(): RedirectResponse
     {
-        $this->guard->userIsLoggedIn();
-
         $this->informationRequestMailService->sendInformationRequestMail();
 
         return new RedirectResponse($this->urlGenerator->generate('profile.information_request_confirm_mail_sent'));
     }
 
-    public function confirmMailSentAction()
+    #[Route(
+        path: '/information-request/confirmation',
+        name: 'profile.information_request_confirm_mail_sent',
+        methods: ['GET'],
+        schemes: ['https'],
+    )]
+    public function confirmMailSent(): Response
     {
-        $this->guard->userIsLoggedIn();
-
-        return new Response(
-            $this->templateEngine->render('@OpenConextProfile/InformationRequest/confirmation.html.twig')
-        );
+        return $this->render('@OpenConextProfile/InformationRequest/confirmation.html.twig');
     }
 }
