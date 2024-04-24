@@ -30,7 +30,7 @@ You can use docker to start a development environment.
 2. Go to the devconf core
 3. Run `/start-dev-env.sh profile:<path to your local profile development directory>`
 4. Run `docker exec -it core-profile-1 bash`
-5. Run `composer install --prefer-dist`
+5. Run `composer install`
 6. Run `bin/console c:c`
 7. Install npm dependencies: `yarn install`
 8. Run a build: `yarn encore dev`
