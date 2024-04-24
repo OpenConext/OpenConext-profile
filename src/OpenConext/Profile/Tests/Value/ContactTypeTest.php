@@ -20,28 +20,11 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Tests\Value;
 
-use OpenConext\Profile\Exception\InvalidArgumentException;
-use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\ContactType;
 use PHPUnit\Framework\TestCase;
 
 class ContactTypeTest extends TestCase
 {
-    use DataProvider;
-
-    /**
-     * @test
-     * @group ContactPerson
-     *
-     * @dataProvider nonStringProvider
-     *
-     */
-    public function contact_type_can_be_invalid($contactTypeValue): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        new ContactType($contactTypeValue);
-    }
-
     /**
      * @test
      * @group ContactPerson

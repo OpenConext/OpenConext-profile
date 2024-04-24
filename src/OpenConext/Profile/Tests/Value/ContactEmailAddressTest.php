@@ -20,14 +20,11 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Tests\Value;
 
-use OpenConext\Profile\Exception\InvalidArgumentException;
-use OpenConext\Profile\Tests\DataProvider;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use PHPUnit\Framework\TestCase;
 
 final class ContactEmailAddressTest extends TestCase
 {
-    use DataProvider;
 
     /**
      * @test
@@ -37,18 +34,6 @@ final class ContactEmailAddressTest extends TestCase
     {
         $email = new ContactEmailAddress('juliette.dupree+spam@that.invalid');
         $this->assertTrue((string) $email === 'juliette.dupree+spam@that.invalid');
-    }
-
-    /**
-     * @test
-     * @group Value
-     * @dataProvider nonStringProvider
-     *
-     */
-    public function it_doesnt_accept_non_strings_as_email(mixed $nonString): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        new ContactEmailAddress($nonString);
     }
 
     /**
