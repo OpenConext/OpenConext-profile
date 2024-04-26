@@ -11,7 +11,7 @@ monolog:
       ident: openconext-profile
       type: stream
       path: "php://stderr"
-      formatter: \OpenConext\Infrastructure\Monolog\Formatter\JsonFormatter
+      formatter: 'OpenConext\Infrastructure\Monolog\Formatter\JsonFormatter'
     console:
       path: "php://stderr"
       type: console

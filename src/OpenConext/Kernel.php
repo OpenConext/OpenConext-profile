@@ -31,4 +31,15 @@ class Kernel extends BaseKernel
     {
         return dirname(__DIR__, 2);
     }
+
+    /**
+     * Although we don't use the log dir, the method is required
+     * to be implemented because it is required during building of the container
+     */
+    public function getLogDir(): string
+    {
+        return $this->getCacheDir();
+    }
+
+
 }
