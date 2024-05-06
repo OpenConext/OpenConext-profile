@@ -45,6 +45,22 @@ class SpecifiedConsentListTest extends TestCase
         $this->assertEquals('C-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
     }
 
+    public function test_it_can_order_by_display_name_of_sp_case_insensitively(): void
+    {
+        $locale = 'en';
+        $specifiedConsent = [
+            $this->buildMockSpecifiedConsent($locale, 'C-service'),
+            $this->buildMockSpecifiedConsent($locale, 'A-service'),
+            $this->buildMockSpecifiedConsent($locale, 'b-service'),
+        ];
+        $list = SpecifiedConsentList::createWith($specifiedConsent);
+        $list->sortByDisplayName('en');
+        $sorted = $list->getIterator()->getArrayCopy();
+        $this->assertEquals('A-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('b-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('C-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
+    }
+
     /**
      * The entities with a display name are sorted on top of the list, followed by the ones with only an entityID.
      * Both lists are sorted alphabetically.
