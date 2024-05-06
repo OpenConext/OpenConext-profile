@@ -40,6 +40,4 @@ class Kernel extends BaseKernel
     {
         return $this->getCacheDir();
     }
-
-
 }
