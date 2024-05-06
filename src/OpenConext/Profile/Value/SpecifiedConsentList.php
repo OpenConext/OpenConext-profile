@@ -69,8 +69,8 @@ final class SpecifiedConsentList implements IteratorAggregate, Countable
                 $sortedByEntityId[$displayName] = $consent;
             }
         }
-        ksort($sorted, SORT_STRING);
-        ksort($sortedByEntityId, SORT_STRING);
+        ksort($sorted, SORT_STRING|SORT_FLAG_CASE);
+        ksort($sortedByEntityId, SORT_STRING|SORT_FLAG_CASE);
         $this->specifiedConsents = $sorted +  $sortedByEntityId;
     }
     private function initializeWith(
