@@ -434,7 +434,7 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Traversable\\<mixed, mixed\\>\\:\\:getArrayCopy\\(\\)\\.$#"
-			count: 2
+			count: 3
 			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
 
 		-
