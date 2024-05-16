@@ -45,7 +45,6 @@ final class Arp
 
         // Input validation
         foreach ($arp as $attributeInformation) {
-
             if (!self::isValidAttribute($attributeInformation)) {
                 throw new InvalidArpDataException('The attribute information is formatted invalidly.');
             }
@@ -193,8 +192,9 @@ final class Arp
      * the ARP data should only contain the following keys: value, source, motivation.
      * This function will filter out all other keys, which are to be ignored.
      */
-    private static function sanitizeARPData(array $arp): array
-    {
+    private static function sanitizeARPData(
+        array $arp,
+    ): array {
         $validKeys = ['value', 'source', 'motivation'];
 
         $sanitizedArp = [];
@@ -214,7 +214,7 @@ final class Arp
                     function ($key) use ($validKeys) {
                         return in_array($key, $validKeys);
                     },
-                    ARRAY_FILTER_USE_KEY
+                    ARRAY_FILTER_USE_KEY,
                 );
             }
 
