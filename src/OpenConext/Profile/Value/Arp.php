@@ -40,11 +40,12 @@ final class Arp
         array $arp,
         AttributeDictionary $dictionary = null,
     ): self {
+
+        $arp = self::sanitizeARPData($arp);
+
         // Input validation
         foreach ($arp as $attributeInformation) {
-            if (!is_array($attributeInformation)) {
-                throw new InvalidArpDataException('The attribute information in the arp should be an array.');
-            }
+
             if (!self::isValidAttribute($attributeInformation)) {
                 throw new InvalidArpDataException('The attribute information is formatted invalidly.');
             }
@@ -185,5 +186,41 @@ final class Arp
             }
         }
         return '';
+    }
+
+    /**
+     * Accordingly to https://www.pivotaltracker.com/n/projects/1453004/stories/187607790
+     * the ARP data should only contain the following keys: value, source, motivation.
+     * This function will filter out all other keys, which are to be ignored.
+     */
+    private static function sanitizeARPData(array $arp): array
+    {
+        $validKeys = ['value', 'source', 'motivation'];
+
+        $sanitizedArp = [];
+        foreach ($arp as $attributeName => $attributeInformation) {
+            if (!is_array($attributeInformation)) {
+                throw new InvalidArpDataException('The attribute information in the arp should be an array.');
+            }
+
+            $sanitizedAttributeInformation = [];
+            foreach ($attributeInformation as $attributeInformationEntry) {
+                if (!is_array($attributeInformationEntry)) {
+                    continue;
+                }
+
+                $sanitizedAttributeInformation[] = array_filter(
+                    $attributeInformationEntry,
+                    function ($key) use ($validKeys) {
+                        return in_array($key, $validKeys);
+                    },
+                    ARRAY_FILTER_USE_KEY
+                );
+            }
+
+            $sanitizedArp[$attributeName] = $sanitizedAttributeInformation;
+        }
+
+        return $sanitizedArp;
     }
 }

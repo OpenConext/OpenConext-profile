@@ -66,5 +66,12 @@
     {
       "value": "*"
     }
+  ],
+  "urn:mace:dir:attribute-def:eduPersonAffiliation": [
+    {
+      "value": "filter-value",
+      "source": "voot",
+      "use_as_name_id": false
+    }
   ]
 }
