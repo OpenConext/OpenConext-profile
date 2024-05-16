@@ -191,10 +191,14 @@ final class Arp
      * Accordingly to https://www.pivotaltracker.com/n/projects/1453004/stories/187607790
      * the ARP data should only contain the following keys: value, source, motivation.
      * This function will filter out all other keys, which are to be ignored.
+     *
+     * @param array<string, array<array<string, string>>> $arp
+     * @return array<string, array<array<string, string>>>
      */
     private static function sanitizeARPData(
         array $arp,
     ): array {
+
         $validKeys = ['value', 'source', 'motivation'];
 
         $sanitizedArp = [];
