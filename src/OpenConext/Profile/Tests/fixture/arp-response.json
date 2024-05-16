@@ -59,18 +59,13 @@
   ],
   "urn:mace:dir:attribute-def:uid": [
     {
-      "value": "*"
+      "value": "*",
+      "motivation": "my-motivation"
     }
   ],
   "urn:mace:dir:attribute-def:preferredLanguage": [
     {
-      "value": "*"
-    }
-  ],
-  "urn:mace:dir:attribute-def:eduPersonAffiliation": [
-    {
-      "value": "filter-value",
-      "source": "voot",
+      "value": "*",
       "use_as_name_id": false
     }
   ]
