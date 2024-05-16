@@ -195,7 +195,7 @@ final class Arp
      * @param array<string, array<array<string, string>>> $arp
      * @return array<string, array<array<string, string>>>
      */
-    private static function sanitizeARPData(
+    private static function sanitizeArpData(
         array $arp,
     ): array {
 
