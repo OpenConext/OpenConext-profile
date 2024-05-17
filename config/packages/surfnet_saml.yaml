@@ -4,6 +4,8 @@ parameters:
 surfnet_saml:
   enable_authentication: true
   hosted:
+    attribute_dictionary:
+      ignore_unknown_attributes: true
     service_provider:
       enabled: true
       assertion_consumer_route: profile.saml_consume_assertion
