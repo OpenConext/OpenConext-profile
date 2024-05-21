@@ -41,7 +41,7 @@ final class Arp
         AttributeDictionary $dictionary = null,
     ): self {
 
-        $arp = self::sanitizeARPData($arp);
+        $arp = self::sanitizeArpData($arp);
 
         // Input validation
         foreach ($arp as $attributeInformation) {
