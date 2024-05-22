@@ -59,12 +59,14 @@
   ],
   "urn:mace:dir:attribute-def:uid": [
     {
-      "value": "*"
+      "value": "*",
+      "motivation": "my-motivation"
     }
   ],
   "urn:mace:dir:attribute-def:preferredLanguage": [
     {
-      "value": "*"
+      "value": "*",
+      "use_as_name_id": false
     }
   ]
 }

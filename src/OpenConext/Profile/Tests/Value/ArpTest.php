@@ -27,6 +27,7 @@ use stdClass;
 use Surfnet\SamlBundle\SAML2\Attribute\Attribute;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDefinition;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
+use function PHPUnit\Framework\assertTrue;
 
 class ArpTest extends TestCase
 {
@@ -94,6 +95,31 @@ class ArpTest extends TestCase
         foreach ($arp->getAttributesGroupedBySource()['idp'] as $attribute) {
             $this->assertEquals($bogusDefinition, $attribute->getAttributeDefinition());
         }
+    }
+
+    public function test_that_sanitized_arp_data_only_have_the_allowed_keys(): void
+    {
+        $input = ['urn:mace:terena.org:attribute-def:schacHomeOrganization' => [[
+            'invalid-key' => 'foo',
+            'value' => '*',
+            'source' => 'voot',
+            'motivation' => 'foo',
+            'test' => true,
+        ]]];
+
+        $expected = [
+            "value" => "*",
+            "source" => "voot",
+            "motivation" => "foo",
+          ];
+
+        $arp = Arp::createWith($input);
+
+
+        $this->assertTrue(
+            $expected === $arp->getAttributesGroupedBySource()[$expected['source']][0]->getValue()[0]
+        );
+
     }
 
     public function invalidArpData(): array
