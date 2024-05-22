@@ -97,7 +97,7 @@ class ArpTest extends TestCase
         }
     }
 
-    public function test_that_sanitized_arp_data_only_have_the_allowed_keys()
+    public function test_that_sanitized_arp_data_only_have_the_allowed_keys(): void
     {
         $input = ['urn:mace:terena.org:attribute-def:schacHomeOrganization' => [[
             'invalid-key' => 'foo',
