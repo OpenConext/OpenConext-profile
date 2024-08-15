@@ -186,3 +186,11 @@
     background-image: url($connections_active);
   }
 }
+
+.navigation__inviteRoles {
+  background-image: url($invite_roles);
+
+  &.active {
+    background-image: url($invite_roles_active);
+  }
+}

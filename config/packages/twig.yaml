@@ -4,6 +4,7 @@ twig:
   globals:
     global_view_parameters: "@open_conext.profile_bundle.service.global_view_parameters"
     root_path: "%kernel.project_dir%"
+    navigation_invite_roles_enabled: "%invite_roles_enabled%"
   paths:
     '%kernel.project_dir%/templates': 'OpenConextProfile'
 

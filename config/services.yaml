@@ -24,6 +24,11 @@ services:
             $removeConsentEnabled: '%remove_consent_enabled%'
         tags: [ 'controller.service_arguments' ]
 
+    OpenConext\ProfileBundle\Controller\InviteRolesController:
+        arguments:
+            $enabled: '%invite_roles_enabled%'
+        tags: [ 'controller.service_arguments' ]
+
     surfnet_saml.saml_provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
 

@@ -1,0 +1,14 @@
+{% extends '@OpenConextProfile/layout.html.twig' %}
+
+{% block title %}
+    {{ 'profile.my_profile.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block contentClasses %}
+    content__myProfile
+{% endblock %}
+
+{% block content %}
+    <h1 class="content__title">{{ 'profile.invite_roles.long_title'|trans }}</h1>
+    <p class="myProfile__intro">{{ 'profile.invite_roles.intro'|trans }}</p>
+{% endblock %}

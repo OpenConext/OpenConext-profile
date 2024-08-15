@@ -69,6 +69,12 @@ return array_replace_recursive([
             'short_title' => 'Identification request',
         ],
 
+        'invite_roles' => [
+            'long_title' => 'Your roles',
+            'short_title' => 'Your roles',
+            'intro' => 'Your roles intro text',
+        ],
+
         'information_request_confirmation' => [
             'explanation' => 'Your request about the processing of personal data will be taken care of.',
             'long_title' => 'Thanks for sending your attributes',
