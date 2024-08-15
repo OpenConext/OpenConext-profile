@@ -77,6 +77,13 @@ delete button. Clicking this button will retract consent for only that service.
 In order for this feature to work, you need to have an EngineBlock instance that supports this feature. See the
 EngineBlock docs for more information on enabling the feature on the EngineBlock Api.
 
+## OpenConext Invite roles
+
+By setting the `invite_roles_enabled` flag to `true`, Profile will display the Invite Roles assigned to the logged in 
+user. By default the roles page is disabled.
+
+See: https://github.com/OpenConext/OpenConext-Invite
+
 ## Release strategy
 Please read: https://github.com/OpenConext/Stepup-Deploy/wiki/Release-Management for more information on the release strategy used in Openconext projects.
 
