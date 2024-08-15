@@ -22,3 +22,9 @@ framework:
                 verify_host: '%attribute_aggregation_api_verify_ssl%'
                 verify_peer: '%attribute_aggregation_api_verify_ssl%'
 
+            invite_api_client:
+                base_uri: '%invite_api_base_url%'
+                auth_basic: '%invite_api_username%:%invite_api_password%'
+                verify_host: '%invite_api_verify_ssl%'
+                verify_peer: '%invite_api_verify_ssl%'
+

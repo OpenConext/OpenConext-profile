@@ -58,6 +58,12 @@ parameters:
   # Feature flag to display the OpenConext Invite roles assigned to the logged in user
   invite_roles_enabled: false
 
+  # The Invite API credentials
+  invite_api_base_url: "https://invite.dev.openconext.local/api/external/v1"
+  invite_api_username: eb
+  invite_api_password: secret
+  invite_api_verify_ssl: true
+
   # Session handler override
   # Change to the following to use the database to store sessions:
   #session_handler: 'Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler'
