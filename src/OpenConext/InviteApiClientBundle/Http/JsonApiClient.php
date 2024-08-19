@@ -26,6 +26,7 @@ use OpenConext\InviteApiClientBundle\Exception\ProfileNotFoundException;
 use OpenConext\InviteApiClientBundle\Exception\RuntimeException;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use function http_build_query;
 
 class JsonApiClient
 {
@@ -74,29 +75,12 @@ class JsonApiClient
         return $data;
     }
 
-    /**
-     * @throws RuntimeException
-     */
-    private function buildResourcePath(
-        string $path,
-        array $parameters,
-    ): string {
+    private function buildResourcePath(string $path, array $parameters): string
+    {
+        $resource = $path;
         if (count($parameters) > 0) {
-            $resource = vsprintf($path, array_map('urlencode', $parameters));
-        } else {
-            $resource = $path;
+            $resource = $path . '?' . http_build_query($parameters);
         }
-
-        if (empty($resource)) {
-            throw new RuntimeException(
-                sprintf(
-                    'Could not construct profile path from path "%s", parameters "%s"',
-                    $path,
-                    implode('","', $parameters),
-                ),
-            );
-        }
-
         return $resource;
     }
 }

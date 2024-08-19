@@ -10,5 +10,25 @@
 
 {% block content %}
     <h1 class="content__title">{{ 'profile.invite_roles.long_title'|trans }}</h1>
-    <p class="myProfile__intro">{{ 'profile.invite_roles.intro'|trans }}</p>
+    <p class="content__intro">{{ 'profile.invite_roles.intro'|trans }}</p>
+
+    {% if inviteRoles is not empty %}
+        <div class="inviteRoles">
+        {% for invite in inviteRoles %}
+            <div class="inviteRoles__container">
+                {% if invite.hasLogo %}
+                <img src="{{ asset('build/images/orcid_small.png') }}" />
+                {% endif %}
+                <section class="inviteRoles__info">
+                    <p>{{ invite.name }}</p>
+                    {% if invite.hasApplicationData %}
+                    <h3></h3>
+                    {% endif %}
+                    <span class="inviteRoles__info--description">{{ invite.description }}</span>
+                </section>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="myProfile__noResults">{{ 'profile.invite_roles.no_results'|trans }}</p>
+    {% endif %}
 {% endblock %}

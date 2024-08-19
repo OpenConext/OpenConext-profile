@@ -73,6 +73,7 @@ return array_replace_recursive([
             'long_title' => 'Your roles',
             'short_title' => 'Your roles',
             'intro' => 'Your roles intro text',
+            'no_results' => 'There are no roles assigned to your account',
         ],
 
         'information_request_confirmation' => [

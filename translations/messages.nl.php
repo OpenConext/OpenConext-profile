@@ -75,6 +75,7 @@ return array_replace_recursive([
             'long_title' => 'Je rollen',
             'short_title' => 'Je rollen',
             'intro' => 'Your roles intro text',
+            'no_results' => 'There are no roles assigned to your account',
         ],
         'information_request_confirmation' => [
             'explanation' => 'Uw verzoek rondom de verwerking van persoonsgegevens zal in behandeling worden genomen.',

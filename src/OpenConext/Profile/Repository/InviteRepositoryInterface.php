@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Copyright 2024 SURFnet B.V.
  *
@@ -16,16 +18,13 @@
  * limitations under the License.
  */
 
-namespace OpenConext\InviteApiClientBundle\Tests;
+namespace OpenConext\Profile\Repository;
 
-trait DataProvider
+use OpenConext\Profile\Value\InviteRoleList;
+
+interface InviteRepositoryInterface
 {
-    public function nonStringScalarProvider(): array
-    {
-        return [
-            'boolean'      => [true],
-            'integer'      => [1],
-            'float'        => [1.2],
-        ];
-    }
+    public function findAllFor(
+        string $collabPersonId,
+    ): InviteRoleList;
 }
