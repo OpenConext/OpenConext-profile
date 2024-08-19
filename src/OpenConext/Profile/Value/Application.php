@@ -31,33 +31,53 @@ final readonly class Application
         private string $logo
     ) {}
 
-    public function getLandingPage(): string
+    public function hasName(): bool
     {
-        return $this->landingPage;
+        return $this->nameEn !== '' || $this->nameNl !== '';
     }
 
-    public function getNameEn(): string
+    public function hasOrganisationName(): bool
     {
-        return $this->nameEn;
+        return $this->organisationEn !== '' || $this->organisationNl !== '';
     }
 
-    public function getNameNl(): string
+    public function hasLogo(): bool
     {
-        return $this->nameNl;
+        return $this->logo !== null;
     }
 
-    public function getOrganisationEn(): string
+    public function hasLandingPage(): bool
     {
-        return $this->organisationEn;
+        return $this->landingPage !== null;
     }
 
-    public function getOrganisationNl(): string
+    public function getName(string $locale): string
     {
-        return $this->organisationNl;
+        switch ($locale) {
+            case 'nl':
+                return $this->nameNl;
+            default:
+                return $this->nameEn;
+        }
+    }
+
+    public function getOrganisationName(string $locale): string
+    {
+        switch ($locale) {
+            case 'nl':
+                return $this->organisationNl;
+            default:
+                return $this->organisationEn;
+        }
     }
 
     public function getLogo(): string
     {
         return $this->logo;
+    }
+
+    public function getLandingPage(): string
+    {
+        return $this->landingPage;
     }
 }

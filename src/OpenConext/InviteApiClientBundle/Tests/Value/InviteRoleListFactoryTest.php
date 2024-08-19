@@ -18,7 +18,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\OpenConext\InviteApiClientBundle\Value;
+namespace OpenConext\InviteApiClientBundle\Tests\Value;
 
 use InvalidArgumentException;
 use OpenConext\InviteApiClientBundle\Value\InviteRoleListFactory;

@@ -25,7 +25,6 @@ use OpenConext\InviteApiClientBundle\Value\InviteRoleListFactory;
 use OpenConext\Profile\Repository\InviteRepositoryInterface;
 use OpenConext\Profile\Value\InviteRoleList;
 use Psr\Log\LoggerInterface;
-use function json_decode;
 
 final readonly class InviteRepository implements InviteRepositoryInterface
 {
@@ -40,41 +39,6 @@ final readonly class InviteRepository implements InviteRepositoryInterface
     ): InviteRoleList {
         $this->logger->info(sprintf('OpenConext-invite API: GET v1/profile for "%s', $collabPersonId));
         $inviteRoleList = $this->apiClient->read('v1/profile', ['collabPersonId' => $collabPersonId]);
-        $inviteRoleList = json_decode('[
-                    {
-                        "name": "Admin Role",
-                        "description": "Administrator role with full access",
-                        "applications": [
-                            {
-                                "landingPage": "https://admin.example.com",
-                                "nameEn": "Admin Panel",
-                                "nameNl": "Beheerderspaneel",
-                                "organisationEn": "Example Org",
-                                "organisationNl": "Voorbeeldorganisatie",
-                                "logo": "https://marketplace.canva.com/EAFQvjYQ5x4/1/0/1600w/canva-brown-cream-aesthetic-bakso-logo-L6bA2WdwREE.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "User Role",
-                        "description": "Standard user role",
-                        "applications": [
-                            {
-                                "landingPage": "https://user.example.com",
-                                "nameEn": "User Dashboard",
-                                "nameNl": "Gebruikersdashboard",
-                                "organisationEn": "Example Org",
-                                "organisationNl": "Voorbeeldorganisatie",
-                                "logo": "https://marketplace.canva.com/EAFQvjYQ5x4/1/0/1600w/canva-brown-cream-aesthetic-bakso-logo-L6bA2WdwREE.jpg"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "The third one",
-                        "description": "Lorem ipsum dolor sit",
-                        "applications": []
-                    }
-                ]', true);
         return InviteRoleListFactory::createList($inviteRoleList);
     }
 }

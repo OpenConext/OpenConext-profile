@@ -1,0 +1,24 @@
+{% set locale = app.request.getLocale %}
+<div class="inviteRoles__container">
+    <section class="inviteRoles__top">
+        <div class="inviteRoles__logo">
+        {% if application.hasLogo %}
+            <img src="{{ application.logo }}" />
+        {% endif %}
+        </div>
+        <section class="inviteRoles__info">
+            <p>{{ invite.name }}</p>
+            {% if application.hasName %}
+            <h3>{{ application.getName(locale) }}{% if application.hasOrganisationName %} ({{ application.organisationName(locale) }}){% endif %}</h3>
+            {% endif %}
+            <span class="inviteRoles__info--description">{{ invite.description }}</span>
+        </section>
+    </section>
+    {% if application.hasLandingPage %}
+    <section class="inviteRoles__bottom">
+        <div class="inviteRoles__launch">
+            <a href="{{ application.landingPage }}" class="button button--secondary">{{ 'profile.invite_roles.launch'|trans }}</a>
+        </div>
+    </section>
+    {% endif %}
+</div>

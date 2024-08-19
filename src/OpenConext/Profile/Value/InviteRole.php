@@ -31,12 +31,12 @@ final readonly class InviteRole
     ) {
         $this->applications = array_map(
             fn(array $appData) => new Application(
-                $appData['landingPage'],
-                $appData['nameEn'],
-                $appData['nameNl'],
-                $appData['organisationEn'],
-                $appData['organisationNl'],
-                $appData['logo']
+                $appData['landingPage'] ?? '',
+                $appData['nameEn'] ?? '',
+                $appData['nameNl'] ?? '',
+                $appData['organisationEn'] ?? '',
+                $appData['organisationNl'] ?? '',
+                $appData['logo'] ?? ''
             ),
             $applications
         );
@@ -57,18 +57,11 @@ final readonly class InviteRole
         return count($this->applications) > 0;
     }
 
-    public function hasApplicationData(): array
+    /**
+     * @return array<int, Application>
+     */
+    public function getApplications(): array
     {
         return $this->applications;
-    }
-
-    public function getLogo(): string
-    {
-        return $this->applications[0]->getLogo();
-    }
-
-    public function hasLogo(): bool
-    {
-        return $this->hasApplications() && $this->applications[0]->getLogo() !== null;
     }
 }
