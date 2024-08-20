@@ -25,8 +25,11 @@ use OpenConext\Profile\Value\InviteRoleList;
 
 final class InviteRoleListFactory
 {
+    /**
+     * @param array<string, mixed> $data
+     */
     public static function createList(
-        mixed $data,
+        array $data,
     ): InviteRoleList {
         $roles = array_map(
             self::createInviteRole(...),
@@ -36,8 +39,12 @@ final class InviteRoleListFactory
         return new InviteRoleList($roles);
     }
 
-    private static function createInviteRole(mixed $data): InviteRole
-    {
+    /**
+     * @param array<mixed> $data
+     */
+    private static function createInviteRole(
+        array $data,
+    ): InviteRole {
         $applications = [];
         if (array_key_exists('applications', $data)) {
             $applications = $data['applications'];

@@ -25,6 +25,9 @@ use Countable;
 use IteratorAggregate;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<InviteRole>
+ */
 final class InviteRoleList implements IteratorAggregate, Countable
 {
     /**
@@ -35,13 +38,16 @@ final class InviteRoleList implements IteratorAggregate, Countable
     /**
      * @param InviteRole[] $inviteRoles
      */
-    public function __construct(array $inviteRoles) {
+    public function __construct(
+        array $inviteRoles,
+    ) {
         foreach ($inviteRoles as $invite) {
             $this->initializeWith($invite);
         }
     }
 
-    private function initializeWith(InviteRole $inviteRole,
+    private function initializeWith(
+        InviteRole $inviteRole,
     ): void {
         $this->roles[] = $inviteRole;
     }

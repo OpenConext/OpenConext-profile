@@ -244,6 +244,51 @@ parameters:
 			path: ../../src/OpenConext/EngineBlockApiClient/Value/ConsentListFactory.php
 
 		-
+			message: "#^Call to an undefined method Traversable\\<mixed, OpenConext\\\\Profile\\\\Value\\\\InviteRole\\>\\:\\:getArrayCopy\\(\\)\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Cannot access offset 'description' on mixed\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Cannot access offset 'name' on mixed\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Cannot access offset mixed on mixed\\.$#"
+			count: 2
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Method OpenConext\\\\InviteApiClientBundle\\\\Tests\\\\Value\\\\InviteRoleListFactoryTest\\:\\:invalidDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Method OpenConext\\\\InviteApiClientBundle\\\\Tests\\\\Value\\\\InviteRoleListFactoryTest\\:\\:validDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of static method OpenConext\\\\InviteApiClientBundle\\\\Value\\\\InviteRoleListFactory\\:\\:createList\\(\\) expects array\\<string, mixed\\>, mixed given\\.$#"
+			count: 2
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(mixed\\)\\: mixed\\)\\|null, Closure\\(array\\)\\: OpenConext\\\\Profile\\\\Value\\\\InviteRole given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/InviteApiClientBundle/Value/InviteRoleListFactory.php
+
+		-
 			message: "#^Method OpenConext\\\\Profile\\\\Assert\\:\\:keysArePresent\\(\\) has parameter \\$array with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/OpenConext/Profile/Assert.php
@@ -639,6 +684,11 @@ parameters:
 			message: "#^Method OpenConext\\\\Profile\\\\Value\\\\Entity\\:\\:fromDescriptor\\(\\) has parameter \\$descriptor with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../src/OpenConext/Profile/Value/Entity.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(string\\)\\: mixed\\)\\|null, Closure\\(array\\)\\: OpenConext\\\\Profile\\\\Value\\\\Application given\\.$#"
+			count: 1
+			path: ../../src/OpenConext/Profile/Value/InviteRole.php
 
 		-
 			message: "#^Class OpenConext\\\\Profile\\\\Value\\\\LocaleSet implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"

@@ -23,10 +23,8 @@ namespace OpenConext\InviteApiClientBundle\Http;
 use OpenConext\InviteApiClientBundle\Exception\InvalidResponseException;
 use OpenConext\InviteApiClientBundle\Exception\MalformedResponseException;
 use OpenConext\InviteApiClientBundle\Exception\ProfileNotFoundException;
-use OpenConext\InviteApiClientBundle\Exception\RuntimeException;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use function http_build_query;
 
 class JsonApiClient
 {
@@ -39,6 +37,9 @@ class JsonApiClient
      * A URL path, optionally containing printf parameters. The parameters
      * will be URL encoded and formatted into the path string.
      * Example: "connections/%d.json"
+     *
+     * @param array<string, string> $parameters
+     * @return array<mixed>
      */
     public function read(
         string $path,
@@ -75,8 +76,13 @@ class JsonApiClient
         return $data;
     }
 
-    private function buildResourcePath(string $path, array $parameters): string
-    {
+    /**
+     * @param array<string, string> $parameters
+     */
+    private function buildResourcePath(
+        string $path,
+        array $parameters,
+    ): string {
         $resource = $path;
         if (count($parameters) > 0) {
             $resource = $path . '?' . http_build_query($parameters);

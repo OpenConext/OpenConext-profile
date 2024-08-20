@@ -28,8 +28,9 @@ final readonly class Application
         private string $nameNl,
         private string $organisationEn,
         private string $organisationNl,
-        private string $logo
-    ) {}
+        private string $logo,
+    ) {
+    }
 
     public function hasName(): bool
     {
@@ -51,8 +52,9 @@ final readonly class Application
         return $this->landingPage !== null;
     }
 
-    public function getName(string $locale): string
-    {
+    public function getName(
+        string $locale,
+    ): string {
         switch ($locale) {
             case 'nl':
                 return $this->nameNl;
@@ -61,8 +63,9 @@ final readonly class Application
         }
     }
 
-    public function getOrganisationName(string $locale): string
-    {
+    public function getOrganisationName(
+        string $locale,
+    ): string {
         switch ($locale) {
             case 'nl':
                 return $this->organisationNl;

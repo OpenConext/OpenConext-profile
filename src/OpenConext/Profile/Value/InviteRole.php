@@ -22,12 +22,18 @@ namespace OpenConext\Profile\Value;
 
 final readonly class InviteRole
 {
+    /**
+     * @var Application[]
+     */
     private array $applications;
 
+    /**
+     * @param array<string, string> $applications
+     */
     public function __construct(
         private string $name,
         private string $description,
-        array $applications
+        array $applications,
     ) {
         $this->applications = array_map(
             fn(array $appData) => new Application(
@@ -36,9 +42,9 @@ final readonly class InviteRole
                 $appData['nameNl'] ?? '',
                 $appData['organisationEn'] ?? '',
                 $appData['organisationNl'] ?? '',
-                $appData['logo'] ?? ''
+                $appData['logo'] ?? '',
             ),
-            $applications
+            $applications,
         );
     }
 
@@ -52,7 +58,7 @@ final readonly class InviteRole
         return $this->description;
     }
 
-    public function hasApplications()
+    public function hasApplications(): bool
     {
         return count($this->applications) > 0;
     }

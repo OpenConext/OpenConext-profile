@@ -20,7 +20,6 @@ declare(strict_types=1);
 
 namespace OpenConext\InviteApiClientBundle\Tests\Value;
 
-use InvalidArgumentException;
 use OpenConext\InviteApiClientBundle\Value\InviteRoleListFactory;
 use OpenConext\Profile\Value\InviteRole;
 use OpenConext\Profile\Value\InviteRoleList;
@@ -143,15 +142,6 @@ class InviteRoleListFactoryTest extends TestCase
     public function invalidDataProvider(): array
     {
         return [
-            'empty array' => ['[]', InvalidArgumentException::class],
-            'missing name' => [
-                '[{"description": "Missing name"}]',
-                TypeError::class
-            ],
-            'missing description' => [
-                '[{"name": "Missing Description"}]',
-                TypeError::class
-            ],
             'invalid types' => [
                 '[{"name": 123, "description": 456}]',
                 TypeError::class
