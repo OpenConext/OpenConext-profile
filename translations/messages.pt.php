@@ -72,7 +72,7 @@ return array_replace_recursive([
         'invite_roles' => [
             'long_title' => 'Your roles',
             'short_title' => 'Your roles',
-            'intro' => 'Your roles intro text',
+            'intro' => 'Here are the applications you can access through SURFconext Invite.',
             'no_results' => 'There are no roles assigned to your account',
             'launch' => 'Launch',
         ],

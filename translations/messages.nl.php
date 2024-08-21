@@ -74,9 +74,9 @@ return array_replace_recursive([
         'invite_roles' => [
             'long_title' => 'Je rollen',
             'short_title' => 'Je rollen',
-            'intro' => 'Your roles intro text',
-            'no_results' => 'There are no roles assigned to your account',
-            'launch' => 'Launch',
+            'intro' => 'Hier zijn de applicaties waar je via SURFconext Invite toegang toe hebt.',
+            'no_results' => 'Er zijn geen rollen toegekend aan je account',
+            'launch' => 'Open',
         ],
         'information_request_confirmation' => [
             'explanation' => 'Uw verzoek rondom de verwerking van persoonsgegevens zal in behandeling worden genomen.',
