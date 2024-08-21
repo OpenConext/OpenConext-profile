@@ -27,6 +27,14 @@
                 {{ 'profile.my_profile.short_title'|trans }}
             </a>
         </li>
+        {% if navigation_invite_roles_enabled %}
+            {% set isActive = route == 'profile.invite_roles' %}
+            <li class="navigation__item  navigation__inviteRoles{% if isActive %} active{% endif %}">
+                <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.invite_roles') }}">
+                    {{ 'profile.invite_roles.short_title'|trans }}
+                </a>
+            </li>
+        {% endif %}
         {% set isActive = route == 'profile.my_surf_conext_overview' %}
         <li class="navigation__item navigation__mySurf{% if isActive %} active{% endif %}">
             <a{% if isActive %} aria-current="page"{% endif %} class="navigation__link{% if isActive %} active{% endif %}" href="{{ path('profile.my_surf_conext_overview') }}">

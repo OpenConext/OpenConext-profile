@@ -1,0 +1,30 @@
+{% extends '@OpenConextProfile/layout.html.twig' %}
+
+{% block title %}
+    {{ 'profile.my_profile.short_title'|trans }} &mdash; {{ parent() }}
+{% endblock %}
+
+{% block contentClasses %}
+    content__myProfile
+{% endblock %}
+
+{% block content %}
+    <h1 class="content__title">{{ 'profile.invite_roles.long_title'|trans }}</h1>
+    <p class="content__intro">{{ 'profile.invite_roles.intro'|trans }}</p>
+
+    {% if inviteRoles is not empty %}
+        <div class="inviteRoles">
+        {% for invite in inviteRoles %}
+            {% if not invite.hasApplications %}
+                {% include '@OpenConextProfile/InviteRoles/partial/invite-without-application.html.twig' with {'invite': invite} %}
+            {% else %}
+                {% for application in invite.applications %}
+                    {% include '@OpenConextProfile/InviteRoles/partial/invite-with-application.html.twig' with {'invite': invite, 'application': application} %}
+                {% endfor %}
+            {% endif  %}
+        {% endfor %}
+        </div>
+    {% else %}
+        <p class="myProfile__noResults">{{ 'profile.invite_roles.no_results'|trans }}</p>
+    {% endif %}
+{% endblock %}

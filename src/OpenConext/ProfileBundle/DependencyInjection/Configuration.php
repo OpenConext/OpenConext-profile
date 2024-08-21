@@ -46,6 +46,10 @@ class Configuration implements ConfigurationInterface
                     ->info('This is the feature flag that toggles the remove consent feature')
                     ->isRequired()
                 ->end()
+                ->booleanNode('invite_roles_enabled')
+                    ->info('This is the feature flag that toggles the OpenConext Invite roles page feature')
+                    ->isRequired()
+                ->end()
             ->end();
 
         $this->setupLocaleConfiguration($rootNode);
