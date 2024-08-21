@@ -17,7 +17,7 @@ open_conext_profile:
   attribute_aggregation_supported_attributes:
     # The accountType of the attribute. Should match the value of the name attribute from the Attribute Aggregation
     # API account list response. For a list of supported attributes see:
-    # https://wiki.surfnet.nl/display/surfconextdev/Attributen+in+SURFconext
+    # https://support.surfconext.nl/attributes-nl
     'ORCID':
       # The relative path to an image. Starting from the /web folder
       logo_path: '%attribute_aggregation_orcid_logo_path%'
