@@ -1,5 +1,10 @@
 # Next release
 
+# 4.1.0
+* Add optional OpenConext-Invite roles overview #294
+* Use support.surfconext.nl to link documentation #295 (thanks @FlorisFokkinga)
+* Security updates
+
 # 4.0.1  
 * Centralized services in cerntal services.yaml
 * Replaced guzzle with symfony native
