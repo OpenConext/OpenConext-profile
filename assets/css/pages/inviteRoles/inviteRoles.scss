@@ -29,9 +29,10 @@
     }
   }
   &__logo {
-    height: 90px;
-    min-width: 90px;
     align-content: flex-start;
+    overflow: hidden;
+    max-width: 120px;
+    min-width: 120px;
     margin-right: 1rem;
     img {
       height: inherit;
