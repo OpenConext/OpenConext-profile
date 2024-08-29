@@ -1,5 +1,8 @@
 # Next release
 
+# 4.1.1
+* Ensure the Invite roles overview logo is displayed nice
+
 # 4.1.0
 * Add optional OpenConext-Invite roles overview #294
 * Use support.surfconext.nl to link documentation #295 (thanks @FlorisFokkinga)
