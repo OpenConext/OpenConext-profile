@@ -1,5 +1,8 @@
 # Next release
 
+# 4.1.2
+* Ensure the Invite roles overview logo is displayed nice | Take 2
+
 # 4.1.1
 * Ensure the Invite roles overview logo is displayed nice
 
