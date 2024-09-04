@@ -1,10 +1,7 @@
 # Next release
 
-# 4.1.2
-* Ensure the Invite roles overview logo is displayed nice | Take 2
-
 # 4.1.1
-* Ensure the Invite roles overview logo is displayed nice
+* Ensure the Invite roles overview logo is displayed nice #297
 
 # 4.1.0
 * Add optional OpenConext-Invite roles overview #294
