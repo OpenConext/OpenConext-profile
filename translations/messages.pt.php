@@ -63,7 +63,7 @@ return array_replace_recursive([
         ],
 
         'information_request' => [
-            'explanation' => 'If you press \'confirm request\', your attributes will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
+            'explanation' => 'If you press \'confirm request\', your personal data will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
             'long_title' => 'Identification because of request data subject',
             'send_mail' => 'Confirm request',
             'short_title' => 'Identification request',
@@ -79,7 +79,7 @@ return array_replace_recursive([
 
         'information_request_confirmation' => [
             'explanation' => 'Your request about the processing of personal data will be taken care of.',
-            'long_title' => 'Thanks for sending your attributes',
+            'long_title' => 'Thanks for sending your personal data',
             'short_title' => 'Identification request',
         ],
 
@@ -220,7 +220,7 @@ return array_replace_recursive([
 
             'service_information' => [
                 'title' => 'Information transferred to the application',
-                'aa_text' => 'In addition to the attributes listed above, this application also receives attributes from the following sources:',
+                'aa_text' => 'In addition to the personal data listed above, this application also receives personal data from the following sources:',
             ],
 
             'short_title' => 'Os Meus Serviços',
@@ -280,7 +280,7 @@ return array_replace_recursive([
             ],
             'explanation' => [
                 'singular' => 'This attribute is',
-                'plural' => 'These attributes are',
+                'plural' => 'These personal data are',
                 'text' => '%singularOrPlural% retrieved at the time you log in to the application. We are therefore unable to show the actual values here.'
             ],
         ],

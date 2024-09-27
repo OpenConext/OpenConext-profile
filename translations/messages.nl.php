@@ -65,7 +65,7 @@ return array_replace_recursive([
         ],
 
         'information_request' => [
-            'explanation' => 'Door op de verzend-knop te drukken, worden uw attributen naar de Privacy Officer van SURF gestuurd en kan uw verzoek rondom de verwerking van persoonsgegevens in behandeling worden genomen.',
+            'explanation' => 'Door op de verzend-knop te drukken, worden uw persoonsgegevens naar de Privacy Officer van SURF gestuurd en kan uw verzoek rondom de verwerking van persoonsgegevens in behandeling worden genomen.',
             'long_title' => 'Identificatie n.a.v. verzoek betrokkene',
             'send_mail' => 'Verzenden',
             'short_title' => 'Identificatieverzoek',
@@ -80,7 +80,7 @@ return array_replace_recursive([
         ],
         'information_request_confirmation' => [
             'explanation' => 'Uw verzoek rondom de verwerking van persoonsgegevens zal in behandeling worden genomen.',
-            'long_title' => 'Bedankt voor het verzenden van uw attributen',
+            'long_title' => 'Bedankt voor het verzenden van uw persoonsgegevens',
             'short_title' => 'Identificatieverzoek',
         ],
 
@@ -99,7 +99,7 @@ return array_replace_recursive([
             'purpose' => [
                 'profile_storage' => 'Op verzoek van jouw %organisationNoun% geeft %suiteName% een beperkt aantal persoonsgegevens door aan de applicatie waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgifte van jouw gegevens.
 
-            Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw %organisationNoun%, via %suiteName% aan welke applicatie wordt doorgegeven. Ook kun je zien welke gegevens door %suiteName% worden opgeslagen en bij welke applicaties je in het verleden bent ingelogd via %suiteName%.',
+            Deze profielpagina geeft je inzicht in welke persoonsgegevens, afkomstig van jouw %organisationNoun%, via %suiteName% aan welke applicatie wordt doorgegeven. Ook kun je zien welke gegevens door %suiteName% worden opgeslagen en bij welke applicaties je in het verleden bent ingelogd via %suiteName%.',
                 'title' => 'Wat kun je op deze profielpagina?
             ',
             ],
@@ -127,7 +127,7 @@ return array_replace_recursive([
                 'warning' => 'Een applicatie zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor je geen toegang meer hebt tot je gegevens.',
             ],
 
-            'explanation' => 'Je kunt externe bronnen koppelen aan je %suiteName%-profiel. %suiteName% kan deze gegevens gebruiken om je bestaande attributen afkomstig van je %organisationNoun%saccount te verrijken met de waarden uit de gekoppelde account. Applicaties die verbonden zijn met %suiteName% kunnen vervolgens deze informatie ontvangen.',
+            'explanation' => 'Je kunt externe bronnen koppelen aan je %suiteName%-profiel. %suiteName% kan deze gegevens gebruiken om je bestaande persoonsgegevens afkomstig van je %organisationNoun%saccount te verrijken met de waarden uit de gekoppelde account. Applicaties die verbonden zijn met %suiteName% kunnen vervolgens deze informatie ontvangen.',
             'long_title' => 'Accounts gelinkt aan je profiel',
             'missing_connections' => 'Missende koppelingen?',
 
@@ -156,14 +156,14 @@ return array_replace_recursive([
         ],
 
         'my_profile' => [
-            'attributes_information_link_title' => 'Attributen in %suiteName%',
+            'attributes_information_link_title' => 'Persoonsgegevens in %suiteName%',
 
             'cards' => [
                 'button' => 'Bekijken',
 
                 'data' => [
-                    'description' => 'Welke persoonlijke gegevens doorgegeven kunnen worden naar de applicaties die je gebruikt.',
-                    'title' => 'Je persoonlijke data',
+                    'description' => 'Welke persoonsgegevens doorgegeven kunnen worden naar de applicaties die je gebruikt.',
+                    'title' => 'Je persoonsgegevens',
                 ],
 
                 'services' => [
@@ -177,14 +177,14 @@ return array_replace_recursive([
                 ],
             ],
 
-            'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan applicaties. In %suiteName% worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze attributen heeft %suiteName% een aparte informatiepagina ingericht:',
+            'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan applicaties, bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze persoonsgegevens heeft %suiteName% een aparte informatiepagina ingericht:',
             'questions' => 'Let op: jouw %organisationNoun% is verantwoordelijk voor de persoonsgegevens die je hier ziet. %suiteName% laat slechts de informatie zien zoals ontvangen van jouw %organisationNoun%. Heb je vragen over je persoonsgegevens? Neem dan contact op met je %organisationNoun% via:',
             'questions_no_support_contact_email' => 'Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je %organisationNoun%.',
-            'short_title' => 'Je persoonlijke data',
-            'sup_text' => 'Je %organisationNoun% beslist welke applicaties toegankelijk voor je zijn via %suiteName%.  De meeste applicaties die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige applicaties gebruiken geen persoonlijke data.  Indien je wil weten welke applicaties welke data ontvingen, dan vind je dat bij',
+            'short_title' => 'Je persoonsgegevens',
+            'sup_text' => 'Je %organisationNoun% beslist welke applicaties toegankelijk voor je zijn via %suiteName%.  De meeste applicaties die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige applicaties gebruiken geen persoonsgegevens.  Indien je wil weten welke applicaties welke data ontvingen, dan vind je dat bij',
 
             'user_data_download' => [
-                'explanation' => 'Je kunt een overzicht van de persoonlijke data die %suiteName% bewaart downloaden in json-formaat.',
+                'explanation' => 'Je kunt een overzicht van de persoonsgegevens die %suiteName% bewaart downloaden in json-formaat.',
                 'link_text' => 'Download overzicht',
                 'title' => 'Downloaden',
             ],
@@ -201,7 +201,7 @@ return array_replace_recursive([
             'eula' => 'Gebruikersovereenkomst',
 
             'explanation' => [
-                'end' => 'Het toont welke subset van je persoonlijke data (attributen) gedeeld werd tussen je %organisationNoun% en de applicatie.  Daarnaast toont het ook of het jij of je %organisationNoun% was die toestemming gaf om je attributen te delen met de applicatie.',
+                'end' => 'Het toont welke subset van je persoonsgegevens gedeeld werd tussen je %organisationNoun% en de applicatie.  Daarnaast toont het ook of het jij of je %organisationNoun% was die toestemming gaf om je persoonsgegevens te delen met de applicatie.',
                 'start' => 'Dit overzicht bevat alle applicaties waar je minstens één maal op ingelogd bent via %suiteName%.',
             ],
 
@@ -237,7 +237,7 @@ return array_replace_recursive([
             'account_data_origin' => 'Gebruikers-ID en de naam van jouw %organisationNoun% + nummer gegenereerd door %suiteName%',
             'account_data_retention_period' => 'Tot 3 jaar na laatste inlog.',
             'consent_data' => 'Toestemmingsgegevens',
-            'consent_data_explanation' => 'Bij de meeste applicaties moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw attributen te delen met de applicatie waar je wilt inloggen. %suiteName% slaat op wanneer en voor welke applicatie je deze toestemming hebt gegeven. Meer over welke gegevens je per applicatie heb gedeeld, vind je onder',
+            'consent_data_explanation' => 'Bij de meeste applicaties moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw persoonsgegevens te delen met de applicatie waar je wilt inloggen. %suiteName% slaat op wanneer en voor welke applicatie je deze toestemming hebt gegeven. Meer over welke gegevens je per applicatie heb gedeeld, vind je onder',
             'consent_data_origin' => 'Gegenereerd door %suiteName%',
             'consent_data_retention_period' => 'Tot 3 jaar na laatste inlog.',
             'data_origin' => 'Gegevens en herkomst',
@@ -282,7 +282,7 @@ return array_replace_recursive([
             ],
             'explanation' => [
                 'singular' => 'Dit attribuut wordt',
-                'plural' => 'Deze attributen worden',
+                'plural' => 'Deze persoonsgegevens worden',
                 'text' => '%singularOrPlural% opgehaald op het moment dat je inlogt bij de applicatie. We kunnen daarom de betreffende waarde hier niet laten zien.'
             ],
         ],
