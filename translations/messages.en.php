@@ -62,7 +62,7 @@ return array_replace_recursive([
         ],
 
         'information_request' => [
-            'explanation' => 'If you press \'confirm request\', your attributes will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
+            'explanation' => 'If you press \'confirm request\', your personal data will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
             'long_title' => 'Identification because of request data subject',
             'send_mail' => 'Confirm request',
             'short_title' => 'Identification request',
@@ -78,7 +78,7 @@ return array_replace_recursive([
 
         'information_request_confirmation' => [
             'explanation' => 'Your request about the processing of personal data will be taken care of.',
-            'long_title' => 'Thanks for sending your attributes',
+            'long_title' => 'Thanks for sending your personal data',
             'short_title' => 'Identification request',
         ],
 
@@ -124,7 +124,7 @@ return array_replace_recursive([
                 'warning' => 'An application might not recognize you the next time you log in and all personal data within this application might no longer be available.',
             ],
 
-            'explanation' => 'It\'s possible to connect external sources to your %suiteName% profile. %suiteName% can use this information to enrich the existing attributes of your %organisationNoun%al account with the values from this external account. Applications connected to %suiteName% can receive and use this information.',
+            'explanation' => 'It\'s possible to connect external sources to your %suiteName% profile. %suiteName% can use this information to enrich the existing personal data of your %organisationNoun%al account with the values from this external account. Applications connected to %suiteName% can receive and use this information.',
             'long_title' => 'Accounts linked to your profile',
             'missing_connections' => 'Missing Connections?',
 
@@ -153,7 +153,7 @@ return array_replace_recursive([
         ],
 
         'my_profile' => [
-            'attributes_information_link_title' => 'Attributes in %suiteName%',
+            'attributes_information_link_title' => 'Personal data in %suiteName%',
 
             'cards' => [
                 'button' => 'View',
@@ -174,8 +174,8 @@ return array_replace_recursive([
                 ],
             ],
 
-            'introduction' => 'The table below contains an overview of all your personal data that your %organisationNoun% can pass on to several applications through %suiteName%. Within %suiteName%, your personal data are called \'attributes\'. An attribute can for instance be your name, your e-mail address or the name of your %organisationNoun%. For more technical information about these attributes, %suiteName% provides the following extra information page:',
-            'questions' => 'Please note: your %organisationNoun% is responsible for the personal data displayed here. %suiteName% is simply showing the information received from your %organisationNoun%. If you have any questions about your attributes, please contact the help desk of your %organisationNoun% through:',
+            'introduction' => 'The table below contains an overview of all your personal data that your %organisationNoun% can pass on to several applications through %suiteName%, for instance your name, your e-mail address or the name of your %organisationNoun%. For more technical information about this personal data, %suiteName% provides the following extra information page:',
+            'questions' => 'Please note: your %organisationNoun% is responsible for the personal data displayed here. %suiteName% is simply showing the information received from your %organisationNoun%. If you have any questions about your personal data, please contact the help desk of your %organisationNoun% through:',
             'questions_no_support_contact_email' => 'If you have any questions about your personal data, please contact the help desk of your %organisationNoun%.',
             'short_title' => 'Your personal data',
             'sup_text' => 'Your %organisationNoun% decides which applications are accessible for you through %suiteName%. Most applications you use through %suiteName% request a subset of this data. Some applications require no personal data. If you want to see which applications received which data, please refer to',
@@ -198,7 +198,7 @@ return array_replace_recursive([
             'eula' => 'EULA',
 
             'explanation' => [
-                'end' => 'It shows which subset of your personal data (attributes) has been shared between your %organisationNoun% and the application. Additionally it shows whether you or your %organisationNoun% has agreed to sharing your attributes with the application.',
+                'end' => 'It shows which subset of your personal data has been shared between your %organisationNoun% and the application. Additionally it shows whether you or your %organisationNoun% has agreed to sharing your personal data with the application.',
                 'start' => 'This overview contains all applications you have logged in to through %suiteName% at least once.',
             ],
 
@@ -219,7 +219,7 @@ return array_replace_recursive([
 
             'service_information' => [
                 'title' => 'Information transferred to the application',
-                'aa_text' => 'In addition to the attributes listed above, this application also receives attributes from the following sources:',
+                'aa_text' => 'In addition to the personal data listed above, this application also receives personal data from the following sources:',
             ],
 
             'short_title' => 'Accessed applications',
@@ -279,7 +279,7 @@ return array_replace_recursive([
             ],
             'explanation' => [
                 'singular' => 'This attribute is',
-                'plural' => 'These attributes are',
+                'plural' => 'These personal data are',
                 'text' => '%singularOrPlural% retrieved at the time you log in to the application. We are therefore unable to show the actual values here.'
             ]
         ],
