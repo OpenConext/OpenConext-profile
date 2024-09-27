@@ -85,7 +85,7 @@ return array_replace_recursive([
         'introduction' => [
             'explanation' => [
                 'introduction' => [
-                    'end' => 'you login with your %organisationNoun%al account on different (cloud)applications. You can find more info here.',
+                    'end' => 'you log in with your %organisationNoun%al account on different (cloud)applications. You can find more info here.',
                     'serviceName' => '%suiteName%',
                     'start' => 'With',
                 ],
@@ -121,7 +121,7 @@ return array_replace_recursive([
             'delete_connection' => [
                 'explanation' => 'Are you sure you want to delete your connection to %serviceName% and revoke access to your linked accounts?',
                 'title' => 'Delete application',
-                'warning' => 'An application might not recognize you the next time you login and all personal data within this application might no longer be available.',
+                'warning' => 'An application might not recognize you the next time you log in and all personal data within this application might no longer be available.',
             ],
 
             'explanation' => 'It\'s possible to connect external sources to your %suiteName% profile. %suiteName% can use this information to enrich the existing attributes of your %organisationNoun%al account with the values from this external account. Applications connected to %suiteName% can receive and use this information.',

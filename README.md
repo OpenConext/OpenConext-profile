@@ -138,7 +138,7 @@ In your translation file (php based in this case)
     'suite_name' => 'Unseen university',
     'organisation_noun' => 'library',
 ]
-'introduction' => 'With %suiteName% you login with all different applications used by your %organisationNoun%';
+'introduction' => 'With %suiteName% you log in with all different applications used by your %organisationNoun%';
 ```
 
 In your twig template:
@@ -148,7 +148,7 @@ In your twig template:
 
 Results in the following translation
 
-`With Unseen university you login with all different applications used by your library`
+`With Unseen university you log in with all different applications used by your library`
 
 
 ## Common tasks
