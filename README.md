@@ -4,7 +4,7 @@ OpenConext-profile
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/OpenConext/OpenConext-profile/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/OpenConext/OpenConext-profile/?branch=develop)
 
 OpenConext Profile can present a logged in user with an overview of all the
-attributes their IdP provides, a list of services they have logged in to
+attributes their IdP provides, a list of applications they have logged in to
 and any other information that is known about the user.
 
 It can be used for informational purposes, to provide users insight into what
@@ -70,9 +70,9 @@ Make sure to fill all parameters, also when the `user_lifecycle_enabled` toggle 
 See the User Lifecycle project on [GitHub](https://github.com/OpenConext/OpenConext-user-lifecycle) for more information.
 
 ## EngineBlock consent removal support
-In order to allow user to retract consent for a given service. You can enable the remove consent feature in the 
-`parameters.yaml`. By setting `remove_consent_enabled` to `true`, every service in the 'my services' page will have a 
-delete button. Clicking this button will retract consent for only that service.
+In order to allow user to retract consent for a given application. You can enable the remove consent feature in the 
+`parameters.yaml`. By setting `remove_consent_enabled` to `true`, every application in the 'my applications' page will have a 
+delete button. Clicking this button will retract consent for only that application.
 
 In order for this feature to work, you need to have an EngineBlock instance that supports this feature. See the
 EngineBlock docs for more information on enabling the feature on the EngineBlock Api.
@@ -138,7 +138,7 @@ In your translation file (php based in this case)
     'suite_name' => 'Unseen university',
     'organisation_noun' => 'library',
 ]
-'introduction' => 'With %suiteName% you login with all different services used by your %organisationNoun%';
+'introduction' => 'With %suiteName% you login with all different applications used by your %organisationNoun%';
 ```
 
 In your twig template:
@@ -148,7 +148,7 @@ In your twig template:
 
 Results in the following translation
 
-`With Unseen university you login with all different services used by your library`
+`With Unseen university you login with all different applications used by your library`
 
 
 ## Common tasks
@@ -177,19 +177,19 @@ In EngineBlock ARP, attributes can be derived from a source other than the IdP. 
 the IdP is configured. Profile will not (yet) attempt to retrieve the value for that attribute. But will show only a
 summation of the attribute names for each given source. 
 
-When a new source is added in the Service Registry (or Manage) it must also be added to Profile.  
+When a new source is added in the Application Registry (or Manage) it must also be added to Profile.  
 1. Add translation entry in `translations.html.twig`. At the bottom of the file:
     ```twig
     {{ 'profile.table.source_description.voot'|trans }}
     {{ 'profile.table.source_description.orcid'|trans }}
     {{ 'profile.table.source_description.sab'|trans }}
     
-    {# Add your new source here, make sure the source name complies with the sourcename specified in the service registry. #}
+    {# Add your new source here, make sure the source name complies with the sourcename specified in the application registry. #}
     ```
 2. Extract the new translation and translate them in the available `messages.LANG.yml` translation files.
 3. Done.
 
-To test your change. Modify one of the SP's already present in the 'My Services' overview with the newly added source. 
+To test your change. Modify one of the SP's already present in the 'My Applications' overview with the newly added source. 
 Do this by changing the source of one of the attributes to the newly added source. You might need to add the source to 
 the SR/Manage configuration first. 
 

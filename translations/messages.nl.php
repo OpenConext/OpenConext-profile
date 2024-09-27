@@ -87,7 +87,7 @@ return array_replace_recursive([
         'introduction' => [
             'explanation' => [
                 'introduction' => [
-                    'end' => 'log je in met de account van je %organisationNoun% bij verschillende (cloud)diensten.  Je kunt hier meer info vinden.',
+                    'end' => 'log je in met de account van je %organisationNoun% bij verschillende (cloud)applicaties.  Je kunt hier meer info vinden.',
                     'serviceName' => '%suiteName%',
                     'start' => 'Met',
                 ],
@@ -97,9 +97,9 @@ return array_replace_recursive([
             'long_title_user_name_replacement' => 'daar',
 
             'purpose' => [
-                'profile_storage' => 'Op verzoek van jouw %organisationNoun% geeft %suiteName% een beperkt aantal persoonsgegevens door aan de dienst waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgifte van jouw gegevens.
+                'profile_storage' => 'Op verzoek van jouw %organisationNoun% geeft %suiteName% een beperkt aantal persoonsgegevens door aan de applicatie waar je inlogt. Soms gaat dit automatisch bij het inloggen, in andere gevallen moet jij vooraf expliciet toestemming geven voor de doorgifte van jouw gegevens.
 
-            Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw %organisationNoun%, via %suiteName% aan welke dienst wordt doorgegeven. Ook kun je zien welke gegevens door %suiteName% worden opgeslagen en bij welke diensten je in het verleden bent ingelogd via %suiteName%.',
+            Deze profielpagina geeft je inzicht in welke persoonlijke data, afkomstig van jouw %organisationNoun%, via %suiteName% aan welke applicatie wordt doorgegeven. Ook kun je zien welke gegevens door %suiteName% worden opgeslagen en bij welke applicaties je in het verleden bent ingelogd via %suiteName%.',
                 'title' => 'Wat kun je op deze profielpagina?
             ',
             ],
@@ -123,11 +123,11 @@ return array_replace_recursive([
 
             'delete_connection' => [
                 'explanation' => 'Weet je zeker dat je jouw connectie met %serviceName% wil verwijderen en de toegang tot je gelinkte accounts wil herroepen?',
-                'title' => 'Dienst verwijderen',
-                'warning' => 'Een dienst zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor je geen toegang meer hebt tot je gegevens.',
+                'title' => 'Applicatie verwijderen',
+                'warning' => 'Een applicatie zal je misschien niet meer herkennen de volgende keer je inlogt, waardoor je geen toegang meer hebt tot je gegevens.',
             ],
 
-            'explanation' => 'Je kunt externe bronnen koppelen aan je %suiteName%-profiel. %suiteName% kan deze gegevens gebruiken om je bestaande attributen afkomstig van je %organisationNoun%saccount te verrijken met de waarden uit de gekoppelde account. Diensten die verbonden zijn met %suiteName% kunnen vervolgens deze informatie ontvangen.',
+            'explanation' => 'Je kunt externe bronnen koppelen aan je %suiteName%-profiel. %suiteName% kan deze gegevens gebruiken om je bestaande attributen afkomstig van je %organisationNoun%saccount te verrijken met de waarden uit de gekoppelde account. Applicaties die verbonden zijn met %suiteName% kunnen vervolgens deze informatie ontvangen.',
             'long_title' => 'Accounts gelinkt aan je profiel',
             'missing_connections' => 'Missende koppelingen?',
 
@@ -143,7 +143,7 @@ return array_replace_recursive([
                 'connect_title' => 'Registreer of koppel je ORCID iD',
 
                 'description' => [
-                    'end' => 'Nadat je bent geredirected naar ORCID, kan je jouw ORCID iD linken door in te loggen en te klikken op "Autoriseren". Vanaf dan kan je ORCID iD via %suiteName% doorgegeven worden aan de diensten die het willen gebruiken.',
+                    'end' => 'Nadat je bent geredirected naar ORCID, kan je jouw ORCID iD linken door in te loggen en te klikken op "Autoriseren". Vanaf dan kan je ORCID iD via %suiteName% doorgegeven worden aan de applicaties die het willen gebruiken.',
                     'start' => 'Verbind je bestaande of nieuw aangemaakte ORCID iD eenmalig met %suiteName%. ORCID iD is een code die gebruikt wordt om wetenschappelijke- en academische auteurs uniek te identificeren.',
                 ],
 
@@ -162,13 +162,13 @@ return array_replace_recursive([
                 'button' => 'Bekijken',
 
                 'data' => [
-                    'description' => 'Welke persoonlijke gegevens doorgegeven kunnen worden naar de diensten die je gebruikt.',
+                    'description' => 'Welke persoonlijke gegevens doorgegeven kunnen worden naar de applicaties die je gebruikt.',
                     'title' => 'Je persoonlijke data',
                 ],
 
                 'services' => [
-                    'description' => 'Bij welke diensten je in het verleden bent ingelogd via %suiteName%.',
-                    'title' => 'Gebruikte diensten',
+                    'description' => 'Bij welke applicaties je in het verleden bent ingelogd via %suiteName%.',
+                    'title' => 'Gebruikte applicaties',
                 ],
 
                 'store' => [
@@ -177,11 +177,11 @@ return array_replace_recursive([
                 ],
             ],
 
-            'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan diensten. In %suiteName% worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze attributen heeft %suiteName% een aparte informatiepagina ingericht:',
+            'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan applicaties. In %suiteName% worden jouw persoonsgegevens "attributen" genoemd. Een attribuut kan bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze attributen heeft %suiteName% een aparte informatiepagina ingericht:',
             'questions' => 'Let op: jouw %organisationNoun% is verantwoordelijk voor de persoonsgegevens die je hier ziet. %suiteName% laat slechts de informatie zien zoals ontvangen van jouw %organisationNoun%. Heb je vragen over je persoonsgegevens? Neem dan contact op met je %organisationNoun% via:',
             'questions_no_support_contact_email' => 'Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je %organisationNoun%.',
             'short_title' => 'Je persoonlijke data',
-            'sup_text' => 'Je %organisationNoun% beslist welke diensten toegankelijk voor je zijn via %suiteName%.  De meeste diensten die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige diensten gebruiken geen persoonlijke data.  Indien je wil weten welke diensten welke data ontvingen, dan vind je dat bij',
+            'sup_text' => 'Je %organisationNoun% beslist welke applicaties toegankelijk voor je zijn via %suiteName%.  De meeste applicaties die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige applicaties gebruiken geen persoonlijke data.  Indien je wil weten welke applicaties welke data ontvingen, dan vind je dat bij',
 
             'user_data_download' => [
                 'explanation' => 'Je kunt een overzicht van de persoonlijke data die %suiteName% bewaart downloaden in json-formaat.',
@@ -194,15 +194,15 @@ return array_replace_recursive([
             'consent_first_used_on' => 'Voor het eerst gebruikt op',
             'consent_type' => 'Toestemming gegeven door',
             'delete_button' => 'Verwijder login gegevens',
-            'delete_explanation' => 'Deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je %suiteName% account. Je hebt dan nog steeds een account bij de dienst zelf.  Indien je die ook wil verwijderen moet je dat bij de dienst zelf doen.',
+            'delete_explanation' => 'Deze login gegevens verwijderen betekent dat de informatie verwijderd wordt van je %suiteName% account. Je hebt dan nog steeds een account bij de applicatie zelf.  Indien je die ook wil verwijderen moet je dat bij de applicatie zelf doen.',
             'entity_id' => 'Entity ID',
             'organization_name' => 'Aangeboden door',
-            'error_loading_consent' => 'De lijst met diensten waar je bent ingelogd kan niet opgehaald worden.',
+            'error_loading_consent' => 'De lijst met applicaties waar je bent ingelogd kan niet opgehaald worden.',
             'eula' => 'Gebruikersovereenkomst',
 
             'explanation' => [
-                'end' => 'Het toont welke subset van je persoonlijke data (attributen) gedeeld werd tussen je %organisationNoun% en de dienst.  Daarnaast toont het ook of het jij of je %organisationNoun% was die toestemming gaf om je attributen te delen met de dienst.',
-                'start' => 'Dit overzicht bevat alle diensten waar je minstens één maal op ingelogd bent via %suiteName%.',
+                'end' => 'Het toont welke subset van je persoonlijke data (attributen) gedeeld werd tussen je %organisationNoun% en de applicatie.  Daarnaast toont het ook of het jij of je %organisationNoun% was die toestemming gaf om je attributen te delen met de applicatie.',
+                'start' => 'Dit overzicht bevat alle applicaties waar je minstens één maal op ingelogd bent via %suiteName%.',
             ],
 
             'explicit_consent_given' => 'gebruiker',
@@ -218,14 +218,14 @@ return array_replace_recursive([
 
             'implicit_consent_given' => '%organisationNoun%',
             'login_details' => 'Login details',
-            'no_attribute_released' => 'Deze dienst ontvangt geen gegevens over jou.',
+            'no_attribute_released' => 'Deze applicatie ontvangt geen gegevens over jou.',
 
             'service_information' => [
-                'title' => 'Informatie doorgegeven aan de dienst',
-                'aa_text' => 'In aanvulling op de gegevens hierboven ontvangt deze dienst de volgende gegevens uit andere bronnen:',
+                'title' => 'Informatie doorgegeven aan de applicatie',
+                'aa_text' => 'In aanvulling op de gegevens hierboven ontvangt deze applicatie de volgende gegevens uit andere bronnen:',
             ],
 
-            'short_title' => 'Gebruikte diensten',
+            'short_title' => 'Gebruikte applicaties',
             'supportEmail' => 'E-mailadres support',
             'support_title' => 'Support',
             'support_url' => 'Support pagina\'s',
@@ -233,18 +233,18 @@ return array_replace_recursive([
 
         'my_surf_conext' => [
             'account_data' => 'Accountgegevens',
-            'account_data_explanation' => '%suiteName% kan (cloud)diensten een privacyvriendelijke identifier (nummer) geven waarmee je herkend kan worden als je opnieuw inlogt bij een dienst. Om dit te kunnen doen, moet %suiteName% je Gebruikers-ID en de naam van jouw %organisationNoun% opslaan.',
+            'account_data_explanation' => '%suiteName% kan (cloud)applicaties een privacyvriendelijke identifier (nummer) geven waarmee je herkend kan worden als je opnieuw inlogt bij een applicatie. Om dit te kunnen doen, moet %suiteName% je Gebruikers-ID en de naam van jouw %organisationNoun% opslaan.',
             'account_data_origin' => 'Gebruikers-ID en de naam van jouw %organisationNoun% + nummer gegenereerd door %suiteName%',
             'account_data_retention_period' => 'Tot 3 jaar na laatste inlog.',
             'consent_data' => 'Toestemmingsgegevens',
-            'consent_data_explanation' => 'Bij de meeste diensten moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw attributen te delen met de dienst waar je wilt inloggen. %suiteName% slaat op wanneer en voor welke dienst je deze toestemming hebt gegeven. Meer over welke gegevens je per dienst heb gedeeld, vind je onder',
+            'consent_data_explanation' => 'Bij de meeste applicaties moet je, voordat je voor de eerste keer inlogt, expliciet toestemming geven om jouw attributen te delen met de applicatie waar je wilt inloggen. %suiteName% slaat op wanneer en voor welke applicatie je deze toestemming hebt gegeven. Meer over welke gegevens je per applicatie heb gedeeld, vind je onder',
             'consent_data_origin' => 'Gegenereerd door %suiteName%',
             'consent_data_retention_period' => 'Tot 3 jaar na laatste inlog.',
             'data_origin' => 'Gegevens en herkomst',
             'data_retention_period' => 'Bewaartermijn',
-            'introduction' => '%suiteName% slaat gegevens op om je eenvoudig en veilig in te kunnen laten loggen bij verschillende (cloud)diensten en om je inzicht te geven waar je allemaal bent ingelogd. Jouw %organisationNoun% bepaalt welke diensten voor jou toegankelijk zijn via %suiteName%. De meeste diensten die je via %suiteName% benadert krijgen een klein deel van jouw gegevens. Sommige diensten hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke dienst welke gegevens krijgt, kijk dan bij %my_services_link%.',
+            'introduction' => '%suiteName% slaat gegevens op om je eenvoudig en veilig in te kunnen laten loggen bij verschillende (cloud)applicaties en om je inzicht te geven waar je allemaal bent ingelogd. Jouw %organisationNoun% bepaalt welke applicaties voor jou toegankelijk zijn via %suiteName%. De meeste applicaties die je via %suiteName% benadert krijgen een klein deel van jouw gegevens. Sommige applicaties hebben helemaal geen persoonsgegevens nodig. Als je wilt zien welke applicatie welke gegevens krijgt, kijk dan bij %my_services_link%.',
             'logging_data' => 'Loggegevens',
-            'logging_data_explanation' => '%suiteName% bewaart tijdelijk wanneer en vanaf welk IP-adres je gebruik maakt van %suiteName% en bij welke diensten je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van %suiteName%.',
+            'logging_data_explanation' => '%suiteName% bewaart tijdelijk wanneer en vanaf welk IP-adres je gebruik maakt van %suiteName% en bij welke applicaties je hebt ingelogd. Dit is nodig voor het beheer en de beveiliging van %suiteName%.',
             'logging_data_origin' => 'Gegenereerd door %suiteName%',
             'logging_data_retention_period' => '6 maanden. Na 6 maanden worden de logbestanden geanonimiseerd.',
             'origin' => 'Herkomst',
@@ -260,7 +260,7 @@ return array_replace_recursive([
         'saml' => [
             'attributes' => [
                 'eduPersonTargetedId' => [
-                    'persistent' => 'Pseudoniem dat per dienst verschilt',
+                    'persistent' => 'Pseudoniem dat per applicatie verschilt',
                     'transient' => 'Pseudoniem dat per login verschilt',
                 ],
             ],
@@ -283,7 +283,7 @@ return array_replace_recursive([
             'explanation' => [
                 'singular' => 'Dit attribuut wordt',
                 'plural' => 'Deze attributen worden',
-                'text' => '%singularOrPlural% opgehaald op het moment dat je inlogt bij de dienst. We kunnen daarom de betreffende waarde hier niet laten zien.'
+                'text' => '%singularOrPlural% opgehaald op het moment dat je inlogt bij de applicatie. We kunnen daarom de betreffende waarde hier niet laten zien.'
             ],
         ],
     ],
