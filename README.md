@@ -184,7 +184,7 @@ When a new source is added in Manage it must also be added to Profile.
     {{ 'profile.table.source_description.orcid'|trans }}
     {{ 'profile.table.source_description.sab'|trans }}
     
-    {# Add your new source here, make sure the source name complies with the sourcename specified in the application registry. #}
+    {# Add your new source here, make sure the source name complies with the sourcename specified in Manage. #}
     ```
 2. Extract the new translation and translate them in the available `messages.LANG.yml` translation files.
 3. Done.
