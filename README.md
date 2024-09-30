@@ -177,7 +177,7 @@ In EngineBlock ARP, attributes can be derived from a source other than the IdP. 
 the IdP is configured. Profile will not (yet) attempt to retrieve the value for that attribute. But will show only a
 summation of the attribute names for each given source. 
 
-When a new source is added in the Application Registry (or Manage) it must also be added to Profile.  
+When a new source is added in Manage it must also be added to Profile.  
 1. Add translation entry in `translations.html.twig`. At the bottom of the file:
     ```twig
     {{ 'profile.table.source_description.voot'|trans }}
