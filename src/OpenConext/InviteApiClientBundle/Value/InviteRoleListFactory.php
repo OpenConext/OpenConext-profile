@@ -49,6 +49,6 @@ final class InviteRoleListFactory
         if (array_key_exists('applications', $data)) {
             $applications = $data['applications'];
         }
-        return new InviteRole($data['name'], $data['description'], $applications);
+        return new InviteRole($data['name'], $data['description'] ?? $data['name'], $applications);
     }
 }

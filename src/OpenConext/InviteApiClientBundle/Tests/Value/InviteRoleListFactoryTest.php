@@ -45,7 +45,7 @@ class InviteRoleListFactoryTest extends TestCase
 
         foreach ($roles as $index => $role) {
             $this->assertEquals($data[$index]['name'], $role->getName());
-            $this->assertEquals($data[$index]['description'], $role->getDescription());
+            $this->assertEquals($data[$index]['description'] ?? $data[$index]['name'], $role->getDescription());
         }
     }
 
@@ -85,6 +85,24 @@ class InviteRoleListFactoryTest extends TestCase
                     }
                 ]',
                 2
+            ],
+            'without description' => [
+                '[
+                    {
+                        "name": "Admin Role",
+                        "applications": [
+                            {
+                                "landingPage": "https://admin.example.com",
+                                "nameEn": "Admin Panel",
+                                "nameNl": "Beheerderspaneel",
+                                "organisationEn": "Example Org",
+                                "organisationNl": "Voorbeeldorganisatie",
+                                "logo": "https://example.com/logo.png"
+                            }
+                        ]
+                    }
+                ]',
+                1
             ],
             'without applications section' => [
                 '[
