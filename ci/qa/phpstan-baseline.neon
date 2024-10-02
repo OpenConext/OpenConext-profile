@@ -255,12 +255,12 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'name' on mixed\\.$#"
-			count: 1
+			count: 2
 			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
 
 		-
 			message: "#^Cannot access offset mixed on mixed\\.$#"
-			count: 2
+			count: 3
 			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
 
 		-
