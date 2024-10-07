@@ -63,7 +63,7 @@ return array_replace_recursive([
         ],
 
         'information_request' => [
-            'explanation' => 'If you press \'confirm request\', your attributes will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
+            'explanation' => 'If you press \'confirm request\', your personal data will be sent to SURF\'s Privacy Officer, and your request about the processing of personal data will be taken care of.',
             'long_title' => 'Identification because of request data subject',
             'send_mail' => 'Confirm request',
             'short_title' => 'Identification request',
@@ -79,7 +79,7 @@ return array_replace_recursive([
 
         'information_request_confirmation' => [
             'explanation' => 'Your request about the processing of personal data will be taken care of.',
-            'long_title' => 'Thanks for sending your attributes',
+            'long_title' => 'Thanks for sending your personal data',
             'short_title' => 'Identification request',
         ],
 
@@ -121,8 +121,8 @@ return array_replace_recursive([
 
             'delete_connection' => [
                 'explanation' => 'Are you sure you want to delete your connection to %serviceName% and revoke access to your linked accounts?',
-                'title' => 'Delete Service',
-                'warning' => 'This service might not recognize you the next time you login and all your personal data within this service might be lost.',
+                'title' => 'Delete application',
+                'warning' => 'This application might not recognize you the next time you login and all your personal data within this application might be lost.',
             ],
 
             'explanation' => 'É possível ligar fontes externas ao seu Perfil %suiteName%. A %suiteName% consegue usar esta informação para enriquecer os atributos existentes da sua conta institucional com os valores desta conta externa. Os serviços ligados à %suiteName% podem receber e usar esta informação.',
@@ -219,8 +219,8 @@ return array_replace_recursive([
             'no_attribute_released' => 'Este serviço não recebe informações sobre si.',
 
             'service_information' => [
-                'title' => 'Information transferred to the service',
-                'aa_text' => 'In addition to the attributes listed above, this service also receives attributes from the following sources:',
+                'title' => 'Information transferred to the application',
+                'aa_text' => 'In addition to the personal data listed above, this application also receives personal data from the following sources:',
             ],
 
             'short_title' => 'Os Meus Serviços',
@@ -280,8 +280,8 @@ return array_replace_recursive([
             ],
             'explanation' => [
                 'singular' => 'This attribute is',
-                'plural' => 'These attributes are',
-                'text' => '%singularOrPlural% retrieved at the time you log in to the service. We are therefore unable to show the actual values here.'
+                'plural' => 'These personal data are',
+                'text' => '%singularOrPlural% retrieved at the time you log in to the application. We are therefore unable to show the actual values here.'
             ],
         ],
     ],
