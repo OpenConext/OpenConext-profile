@@ -165,7 +165,7 @@ return array_replace_recursive([
 
                 'services' => [
                     'description' => 'Which applications you logged in to in the past using %suiteName%.',
-                    'title' => 'Accessed applications',
+                    'title' => 'Applications',
                 ],
 
                 'store' => [
@@ -222,7 +222,7 @@ return array_replace_recursive([
                 'aa_text' => 'In addition to the personal data listed above, this application also receives personal data from the following sources:',
             ],
 
-            'short_title' => 'Accessed applications',
+            'short_title' => 'Applications',
             'supportEmail' => 'Contact support',
             'support_title' => 'Support',
             'support_url' => 'Support pages',
@@ -278,7 +278,7 @@ return array_replace_recursive([
                 'sbs' => 'SURF Research Access Management',
             ],
             'explanation' => [
-                'singular' => 'This attribute is',
+                'singular' => 'This personal data is',
                 'plural' => 'These personal data are',
                 'text' => '%singularOrPlural% retrieved at the time you log in to the application. We are therefore unable to show the actual values here.'
             ]

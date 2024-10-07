@@ -163,12 +163,12 @@ return array_replace_recursive([
 
                 'data' => [
                     'description' => 'Welke persoonsgegevens doorgegeven kunnen worden naar de applicaties die je gebruikt.',
-                    'title' => 'Je persoonsgegevens',
+                    'title' => 'Je gegevens',
                 ],
 
                 'services' => [
                     'description' => 'Bij welke applicaties je in het verleden bent ingelogd via %suiteName%.',
-                    'title' => 'Gebruikte applicaties',
+                    'title' => 'Applicaties',
                 ],
 
                 'store' => [
@@ -180,7 +180,7 @@ return array_replace_recursive([
             'introduction' => 'De tabel hieronder biedt een overzicht van de persoonsgegevens die door jouw %organisationNoun% via %suiteName% kunnen worden doorgegeven aan applicaties, bijvoorbeeld je naam, e-mailadres of de naam van jouw %organisationNoun% zijn. Voor technische informatie over deze persoonsgegevens heeft %suiteName% een aparte informatiepagina ingericht:',
             'questions' => 'Let op: jouw %organisationNoun% is verantwoordelijk voor de persoonsgegevens die je hier ziet. %suiteName% laat slechts de informatie zien zoals ontvangen van jouw %organisationNoun%. Heb je vragen over je persoonsgegevens? Neem dan contact op met je %organisationNoun% via:',
             'questions_no_support_contact_email' => 'Heb je vragen over je persoonsgegevens? Neem dan contact op met de helpdesk van je %organisationNoun%.',
-            'short_title' => 'Je persoonsgegevens',
+            'short_title' => 'Je gegevens',
             'sup_text' => 'Je %organisationNoun% beslist welke applicaties toegankelijk voor je zijn via %suiteName%.  De meeste applicaties die je gebruikt via %suiteName% vragen een subset van deze data.  Sommige applicaties gebruiken geen persoonsgegevens.  Indien je wil weten welke applicaties welke data ontvingen, dan vind je dat bij',
 
             'user_data_download' => [
@@ -225,7 +225,7 @@ return array_replace_recursive([
                 'aa_text' => 'In aanvulling op de gegevens hierboven ontvangt deze applicatie de volgende gegevens uit andere bronnen:',
             ],
 
-            'short_title' => 'Gebruikte applicaties',
+            'short_title' => 'Applicaties',
             'supportEmail' => 'E-mailadres support',
             'support_title' => 'Support',
             'support_url' => 'Support pagina\'s',
@@ -281,7 +281,7 @@ return array_replace_recursive([
                 'sbs' => 'SURF Research Access Management',
             ],
             'explanation' => [
-                'singular' => 'Dit attribuut wordt',
+                'singular' => 'Dit persoonsgegeven wordt',
                 'plural' => 'Deze persoonsgegevens worden',
                 'text' => '%singularOrPlural% opgehaald op het moment dat je inlogt bij de applicatie. We kunnen daarom de betreffende waarde hier niet laten zien.'
             ],
