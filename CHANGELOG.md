@@ -1,5 +1,9 @@
 # Next release
 
+# 4.1.2
+* Deal with invite roles not having a description field.
+* Updates for various libraries.
+
 # 4.1.1
 * Ensure the Invite roles overview logo is displayed nice #297
 
