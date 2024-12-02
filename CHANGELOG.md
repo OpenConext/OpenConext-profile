@@ -1,5 +1,9 @@
 # Next release
 
+# 4.1.3
+* Change some terminology to new OpenConext defaults.
+* Update for libraries.
+
 # 4.1.2
 * Deal with invite roles not having a description field.
 * Updates for various libraries.
