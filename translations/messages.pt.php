@@ -271,6 +271,7 @@ return array_replace_recursive([
             'source_description' => [
                 'orcid' => 'ORCID iD',
                 'sab' => 'Gestão de Autorização %suiteName%',
+                'sabrest' => 'Gestão de Autorização %suiteName%',
                 'voot' => 'Membros do Grupo',
                 'invite' => '%suiteName% Invite',
                 'manage' => 'SURF CRM',
