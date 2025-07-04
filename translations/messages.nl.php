@@ -273,6 +273,7 @@ return array_replace_recursive([
             'source_description' => [
                 'orcid' => 'ORCID iD',
                 'sab' => 'SURF Autorisatie Beheer',
+                'sabrest' => 'SURF Autorisatie Beheer',
                 'voot' => 'Groepslidmaatschap',
                 'invite' => '%suiteName% Invite',
                 'manage' => 'SURF CRM',
