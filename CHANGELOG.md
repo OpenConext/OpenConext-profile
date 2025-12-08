@@ -1,5 +1,8 @@
 # Next release
 
+# 4.1.5
+* Update xmlseclibs dependency to fix canonicalization bypass error
+
 # 4.1.4
 * Update saml2 library.
 
@@ -19,7 +22,7 @@
 * Use support.surfconext.nl to link documentation #295 (thanks @FlorisFokkinga)
 * Security updates
 
-# 4.0.1  
+# 4.0.1
 * Centralized services in cerntal services.yaml
 * Replaced guzzle with symfony native
 * Moved some extension config to yaml values
@@ -127,7 +130,7 @@
  - Company rebranding
  - Add ansi-regex resolution adressing GitHub advisory #209
  - Update Swiftmailer configuration #218
- 
+
 # 3.0.1
 **Bugfixes**
 - Ensure givenName is not required for using Profile #205
@@ -189,7 +192,7 @@ The major changes of this version:
 
 **Improvements**
 * Upgrade to Symfony 3.4 and fix deprecation issues while at it #126
-* Added Portuguese translations #121 
+* Added Portuguese translations #121
 * Update ORCiD ID styling on the my connections page #128
 * Install and configure Webpack Encore #130
 
@@ -203,7 +206,7 @@ The major changes of this version:
 Further removes the SURFconextId usages in the project. The AA Api client still used the attribute, causing issues on the My connections page. Thanks @domgon for raising the issue!
 
 **Bugfix**
-* Stop using SurfConextId in the AA client #118 
+* Stop using SurfConextId in the AA client #118
 * Add Portuguese language support #119 (Thanks @domgon!) #120
 
 **Maintenance**
@@ -217,7 +220,7 @@ Further removes the SURFconextId usages in the project. The AA Api client still 
 In order to be compatible with EngineBlock 5.9, Profile needed to stop using the SURFconextId. As Engine no longer releases it.
 
 **Bugfix**
-* Stop using SURFconextId as user identifier #114 
+* Stop using SURFconextId as user identifier #114
 
 **Maintenance**
 * Security updates #113
