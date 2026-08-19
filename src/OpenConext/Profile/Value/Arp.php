@@ -38,7 +38,7 @@ final class Arp
 
     public static function createWith(
         array $arp,
-        AttributeDictionary $dictionary = null,
+        ?AttributeDictionary $dictionary = null,
     ): self {
 
         $arp = self::sanitizeArpData($arp);
@@ -55,7 +55,7 @@ final class Arp
 
     private function __construct(
         array $arp,
-        AttributeDictionary $dictionary = null,
+        ?AttributeDictionary $dictionary = null,
     ) {
         $arpCollection = [];
 

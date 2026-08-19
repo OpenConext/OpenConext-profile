@@ -9,7 +9,7 @@
     }
   },
   "require": {
-    "php": "^8.2",
+    "php": "^8.5",
     "ext-json": "*",
     "beberlei/assert": "^3.0",
     "doctrine/annotations": "^2.0.1",
@@ -97,13 +97,14 @@
   "config": {
     "optimize-autoloader": true,
     "platform": {
-      "php": "8.2.17"
+      "php": "8.5.2"
     },
     "sort-packages": true,
     "allow-plugins": {
       "symfony/flex": true,
       "symfony/runtime": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "endroid/installer": false
     }
   },
   "archive": {
