@@ -24,14 +24,23 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class I18n
+class I18n extends AbstractExtension
 {
     public function __construct(
         private readonly TranslatorInterface $translator,
     ) {
     }
 
-    #[\Twig\Attribute\AsTwigFilter(name: 'trans')]
+    /**
+     * Returns a list of filters to add to the existing list.
+     *
+     * @return array An array of filters
+     */
+    public function getFilters(): array
+    {
+        return [new TwigFilter('trans', $this->translateSingular(...)), new TwigFilter('transchoice', $this->translatePlural(...))];
+    }
+
     public function translateSingular(): string
     {
         $args = func_get_args();
@@ -41,7 +50,6 @@ class I18n
         );
     }
 
-    #[\Twig\Attribute\AsTwigFilter(name: 'transchoice')]
     public function translatePlural(): string
     {
         $args = func_get_args();

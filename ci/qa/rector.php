@@ -12,4 +12,9 @@ return RectorConfig::configure()
     ->withSkip([
         \Rector\Php84\Rector\MethodCall\NewMethodCallWithoutParenthesesRector::class,
         \Rector\Php84\Rector\Class_\DeprecatedAnnotationToDeprecatedAttributeRector::class,
+        // Converts getFilters()/getFunctions() to #[AsTwigFilter]/#[AsTwigFunction] attributes,
+        // which requires symfony/twig-bundle 7.3+. This app runs 6.4.*, where the resulting
+        // classes no longer implement Twig\Extension\ExtensionInterface (since they stop
+        // extending AbstractExtension), which fatals the Twig environment at boot.
+        \Rector\Symfony\Symfony73\Rector\Class_\GetFiltersAndFunctionsToAsTwigAttributeRector::class,
     ]);
