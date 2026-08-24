@@ -25,6 +25,7 @@ use OpenConext\Profile\Exception\AssertionFailedException;
 
 class Assert extends BaseAssertion
 {
+    #[\Override]
     protected static $exceptionClass = AssertionFailedException::class;
 
     /**

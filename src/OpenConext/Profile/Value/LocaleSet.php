@@ -54,13 +54,7 @@ final class LocaleSet implements IteratorAggregate, Countable
     public function contains(
         Locale $otherLocale,
     ): bool {
-        foreach ($this->locales as $locale) {
-            if ($locale->equals($otherLocale)) {
-                return true;
-            }
-        }
-
-        return false;
+        return array_any($this->locales, fn($locale) => $locale->equals($otherLocale));
     }
 
     public function getIterator(): ArrayIterator

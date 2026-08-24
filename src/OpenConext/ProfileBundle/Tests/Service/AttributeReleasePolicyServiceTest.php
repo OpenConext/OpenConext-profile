@@ -44,7 +44,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
 
 class AttributeReleasePolicyServiceTest extends TestCase
 {
-    private const ARP_DATA = [
+    private const array ARP_DATA = [
         'some-entity-id' => [
             'urn:mace:some-attribute' => [
                 [
@@ -75,7 +75,7 @@ class AttributeReleasePolicyServiceTest extends TestCase
         ],
     ];
 
-    private const FIRST_BODY = [
+    private const array FIRST_BODY = [
         'entityIds' => [
             'some-entity-id',
             'another-entity-id'
@@ -88,14 +88,14 @@ class AttributeReleasePolicyServiceTest extends TestCase
         'showSources' => true
     ];
 
-    private const SECOND_BODY = [
+    private const array SECOND_BODY = [
         'entityIds' => [
             'some-entity-id',
             'another-entity-id',
         ]
     ];
 
-    private const FIRST_RETURN =               [
+    private const array FIRST_RETURN =               [
         'some-entity-id' => [
             'urn:mace:some-attribute' => [
                 [
@@ -150,12 +150,10 @@ class AttributeReleasePolicyServiceTest extends TestCase
         // see https://stackoverflow.com/questions/75389000/replace-phpunit-method-withconsecutive-abandoned-in-phpunit-10
         $client->expects($matcher)
             ->method('post')
-            ->willReturnCallback(function () use ($matcher) {
-            return match ($matcher->getInvocationCount()) {
+            ->willReturnCallback(fn() => match ($matcher->getInvocationCount()) {
                 1 => [$this->equalTo(self::FIRST_BODY), $this->equalTo('/arp')],
                 2 => [$this->equalTo(self::SECOND_BODY), $this->equalTo('/read-arp')],
-            };
-        })
+            })
             ->willReturnOnConsecutiveCalls(
                 self::FIRST_RETURN,
                 self::ARP_DATA,

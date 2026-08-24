@@ -24,19 +24,19 @@ use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
-final class ContactType implements Stringable
+final readonly class ContactType implements Stringable
 {
-    public const TYPE_TECHNICAL = 'technical';
-    public const TYPE_SUPPORT = 'support';
-    public const TYPE_ADMINISTRATIVE = 'administrative';
-    public const TYPE_BILLING = 'billing';
-    public const TYPE_OTHER = 'other';
+    public const string TYPE_TECHNICAL = 'technical';
+    public const string TYPE_SUPPORT = 'support';
+    public const string TYPE_ADMINISTRATIVE = 'administrative';
+    public const string TYPE_BILLING = 'billing';
+    public const string TYPE_OTHER = 'other';
 
     /**
      * @throws AssertionFailedException
      */
     public function __construct(
-        private readonly string $contactType,
+        private string $contactType,
     ) {
         Assert::choice(
             $contactType,

@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-final class LocaleExtension extends AbstractExtension
+final class LocaleExtension
 {
     private string $locale = 'en';
 
@@ -39,14 +39,7 @@ final class LocaleExtension extends AbstractExtension
         $this->locale = $this->retrieveLocale($requestStack, $defaultLocale);
     }
 
-    public function getFunctions(): array
-    {
-        return [
-            new TwigFunction('profile_locale_switcher', $this->getLocalePreferenceForm(...)),
-            new TwigFunction('locale', $this->getLocale(...)),
-        ];
-    }
-
+    #[\Twig\Attribute\AsTwigFunction(name: 'profile_locale_switcher')]
     public function getLocalePreferenceForm(
         string $returnUrl,
     ): FormView {
@@ -64,6 +57,7 @@ final class LocaleExtension extends AbstractExtension
         return 'profile_locale';
     }
 
+    #[\Twig\Attribute\AsTwigFunction(name: 'locale')]
     public function getLocale(): string
     {
         return $this->locale;

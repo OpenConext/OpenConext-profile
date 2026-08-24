@@ -22,13 +22,13 @@ namespace OpenConext\Profile\Value;
 
 use OpenConext\Profile\Assert;
 
-final class Logo
+final readonly class Logo
 {
-    private readonly string $url;
+    private string $url;
 
-    private readonly string $height;
+    private string $height;
 
-    private readonly string $width;
+    private string $width;
 
     public function __construct(
         ?string $url,

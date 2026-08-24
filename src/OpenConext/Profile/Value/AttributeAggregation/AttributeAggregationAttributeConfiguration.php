@@ -20,12 +20,12 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value\AttributeAggregation;
 
-final class AttributeAggregationAttributeConfiguration
+final readonly class AttributeAggregationAttributeConfiguration
 {
     public function __construct(
-        private readonly string $accountType,
-        private readonly string $logoPath,
-        private readonly string $connectUrl,
+        private string $accountType,
+        private string $logoPath,
+        private string $connectUrl,
     ) {
     }
 

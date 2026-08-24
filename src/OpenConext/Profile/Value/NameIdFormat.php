@@ -22,8 +22,8 @@ namespace OpenConext\Profile\Value;
 
 final class NameIdFormat
 {
-    public const PERSISTENT_IDENTIFIER = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
-    public const TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
+    public const string PERSISTENT_IDENTIFIER = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
+    public const string TRANSIENT_IDENTIFIER  = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient';
 
 
     public function __construct(

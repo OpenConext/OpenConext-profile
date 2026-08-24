@@ -39,6 +39,6 @@ final readonly class AttributeAggregationAttributesList
     public function hasAttribute(
         $attributeName,
     ): bool {
-        return array_key_exists($attributeName, $this->attributes);
+        return array_key_exists((string) $attributeName, $this->attributes);
     }
 }

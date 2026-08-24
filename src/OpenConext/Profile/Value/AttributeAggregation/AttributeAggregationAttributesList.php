@@ -70,12 +70,7 @@ final class AttributeAggregationAttributesList
     public function hasAttribute(
         string $accountType,
     ): bool {
-        foreach ($this->attributes as $attribute) {
-            if ($attribute->getAccountType() === $accountType) {
-                return true;
-            }
-        }
-        return false;
+        return array_any($this->attributes, fn($attribute) => $attribute->getAccountType() === $accountType);
     }
 
     public function filterEnabledAttributes(

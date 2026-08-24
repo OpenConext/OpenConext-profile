@@ -24,10 +24,10 @@ use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
-final class ContactEmailAddress implements Stringable
+final readonly class ContactEmailAddress implements Stringable
 {
     public function __construct(
-        private readonly string $emailAddress,
+        private string $emailAddress,
     ) {
     }
 

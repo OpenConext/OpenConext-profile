@@ -49,6 +49,6 @@ final class AttributeAggregationEnabledAttributes
     public function isEnabled(
         $accountType,
     ): bool {
-        return array_key_exists($accountType, $this->attributes);
+        return array_key_exists((string) $accountType, $this->attributes);
     }
 }

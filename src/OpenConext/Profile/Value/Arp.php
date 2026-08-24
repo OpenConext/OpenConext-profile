@@ -29,12 +29,12 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 /**
  * The Arp value object represents the Arp configuration for a given entity.
  */
-final class Arp
+final readonly class Arp
 {
     /**
      * @var array The arp configuration is grouped on source. The source values are a collection of Attribute
      */
-    private readonly array $arp;
+    private array $arp;
 
     public static function createWith(
         array $arp,
@@ -215,9 +215,7 @@ final class Arp
 
                 $sanitizedAttributeInformation[] = array_filter(
                     $attributeInformationEntry,
-                    function ($key) use ($validKeys) {
-                        return in_array($key, $validKeys);
-                    },
+                    fn($key) => in_array($key, $validKeys),
                     ARRAY_FILTER_USE_KEY,
                 );
             }

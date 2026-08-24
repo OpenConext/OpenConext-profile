@@ -24,17 +24,17 @@ use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
-final class EntityType implements Stringable
+final readonly class EntityType implements Stringable
 {
-    public const TYPE_SP  = 'saml20-sp';
-    public const TYPE_IDP = 'saml20-idp';
+    public const string TYPE_SP  = 'saml20-sp';
+    public const string TYPE_IDP = 'saml20-idp';
 
     /**
      * @param string $type
      * @throws AssertionFailedException
      */
     public function __construct(
-        private readonly string $type,
+        private string $type,
     ) {
         Assert::inArray($type, [self::TYPE_SP, self::TYPE_IDP]);
     }
