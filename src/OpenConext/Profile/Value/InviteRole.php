@@ -20,6 +20,8 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use TypeError;
+
 final readonly class InviteRole
 {
     /**
@@ -55,7 +57,7 @@ final readonly class InviteRole
         }
 
         if (!is_string($value)) {
-            throw new \TypeError(sprintf('Invite role application field "%s" must be a string', $field));
+            throw new TypeError(sprintf('Invite role application field "%s" must be a string', $field));
         }
 
         return $value;

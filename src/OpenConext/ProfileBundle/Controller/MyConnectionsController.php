@@ -25,6 +25,7 @@ use OpenConext\Profile\Value\EmailAddressSupport;
 use OpenConext\ProfileBundle\Form\Type\ConfirmConnectionDeleteType;
 use OpenConext\ProfileBundle\Service\AttributeAggregationService;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -76,7 +77,7 @@ class MyConnectionsController extends AbstractController
         $confirmationForm->handleRequest($request);
         if ($confirmationForm->isSubmitted() && $confirmationForm->isValid()) {
             if ($attributes === null || !$attributes->hasAttribute('ORCID')) {
-                throw new \RuntimeException('Cannot disconnect ORCID when no ORCID connection is available');
+                throw new RuntimeException('Cannot disconnect ORCID when no ORCID connection is available');
             }
 
             $this->logger->notice('The authenticated user is disconnecting ORCID iD.');
