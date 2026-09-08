@@ -50,8 +50,10 @@ final readonly class InviteRole
         ));
     }
 
-    private static function requireOptionalString(mixed $value, string $field): string
-    {
+    private static function requireOptionalString(
+        mixed $value,
+        string $field,
+    ): string {
         if ($value === null) {
             return '';
         }

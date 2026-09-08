@@ -57,8 +57,10 @@ final class InviteRoleListFactory
         return new InviteRole($name, $description, $applications);
     }
 
-    private static function requireString(mixed $value, string $field): string
-    {
+    private static function requireString(
+        mixed $value,
+        string $field,
+    ): string {
         if (!is_string($value)) {
             throw new TypeError(sprintf('Invite role field "%s" must be a string', $field));
         }
@@ -69,8 +71,9 @@ final class InviteRoleListFactory
     /**
      * @return array<int, array<string, mixed>>
      */
-    private static function requireApplications(mixed $value): array
-    {
+    private static function requireApplications(
+        mixed $value,
+    ): array {
         if (!is_array($value)) {
             throw new TypeError('Invite role applications must be an array');
         }
