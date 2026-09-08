@@ -43,8 +43,8 @@ final readonly class EntityType implements Stringable
      * Creates a new ServiceProvider Type
      * @return EntityType
      *
-     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
-     * @SuppressWarnings(PHPMD.ShortMethodName)
+     * @SuppressWarnings("PHPMD.CamelCaseMethodName")
+     * @SuppressWarnings("PHPMD.ShortMethodName")
      */
     public static function SP(): EntityType
     {
@@ -56,7 +56,7 @@ final readonly class EntityType implements Stringable
      * Creates a new IdentityProvider Type
      * @return EntityType
      *
-     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
+     * @SuppressWarnings("PHPMD.CamelCaseMethodName")
      */
     public static function IdP(): \OpenConext\Profile\Value\EntityType
     {

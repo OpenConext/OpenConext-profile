@@ -103,11 +103,12 @@ class ServiceProvider
 
     public function getSupportEmail(): string
     {
-        if (!$this->hasSupportEmail()) {
+        $supportEmail = $this->supportEmail;
+        if ($supportEmail === null) {
             throw new LogicException('Service provider has no support e-mail address');
         }
 
-        return $this->supportEmail->__toString();
+        return $supportEmail->__toString();
     }
 
     public function getSupportUrl(

@@ -22,7 +22,6 @@ namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
-use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Entity\User;
 use OpenConext\Profile\Repository\UserRepositoryInterface;
 use OpenConext\Profile\Value\EntityId;
@@ -60,9 +59,8 @@ final class UserService
             return $user;
         }
 
-        assert($this->authenticatedUserProvider->getCurrentUser() instanceof AuthenticatedUser);
-
-        $user = new User($this->authenticatedUserProvider->getCurrentUser(), $this->localeService->getLocale());
+        $authenticatedUser = $this->authenticatedUserProvider->getCurrentUser();
+        $user = new User($authenticatedUser, $this->localeService->getLocale());
         $user = $this->enrichUserWithSupportContactEmail($user);
 
         $this->userRepository->save($user);
@@ -79,15 +77,19 @@ final class UserService
         $this->localeService->saveLocaleOf($user);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getUserLifecycleData(): array
     {
-        if (!$this->userLifecycleApiIsEnabled()) {
+        $client = $this->userLifecycleApiClient;
+        if ($client === null) {
             return [];
         }
 
         $user = $this->getUser();
 
-        return $this->userLifecycleApiClient->read(
+        return $client->read(
             sprintf('/api/deprovision/%s', $user->getId()),
         );
     }
@@ -98,8 +100,8 @@ final class UserService
     }
 
     private function enrichUserWithSupportContactEmail(
-        ApiUserInterface $user,
-    ): ApiUserInterface {
+        User $user,
+    ): User {
         $entityIds                 = $this->authenticatedUserProvider->getCurrentUser()->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
 

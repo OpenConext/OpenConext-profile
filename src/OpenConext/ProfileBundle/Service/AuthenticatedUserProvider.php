@@ -21,8 +21,9 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Service;
 
 use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
+use OpenConext\Profile\Entity\AuthenticatedUser;
+use RuntimeException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
@@ -32,8 +33,19 @@ final readonly class AuthenticatedUserProvider implements AuthenticatedUserProvi
     ) {
     }
 
-    public function getCurrentUser(): UserInterface
+    public function getCurrentUser(): AuthenticatedUser
     {
-        return $this->tokenStorage->getToken()->getUser();
+        $token = $this->tokenStorage->getToken();
+
+        if ($token === null) {
+            throw new RuntimeException('No authentication token is available');
+        }
+
+        $user = $token->getUser();
+        if (!$user instanceof AuthenticatedUser) {
+            throw new RuntimeException('The current token does not contain an AuthenticatedUser instance');
+        }
+
+        return $user;
     }
 }

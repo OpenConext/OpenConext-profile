@@ -145,18 +145,6 @@ parameters:
 			path: ../../src/OpenConext/EngineBlockApiClient/Http/JsonApiClient.php
 
 		-
-			message: '#^Cannot call method getEntityId\(\) on OpenConext\\Profile\\Value\\EntityId\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Repository/InstitutionRepository.php
-
-		-
-			message: '#^Method OpenConext\\EngineBlockApiClient\\Repository\\InstitutionRepository\:\:findAllForIdp\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Repository/InstitutionRepository.php
-
-		-
 			message: '''
 				#^Call to deprecated method create\(\) of class OpenConext\\ProfileBundle\\Attribute\\AttributeSetWithFallbacks\:
 				Will be replaced with different creation implementation$#
@@ -176,30 +164,6 @@ parameters:
 			identifier: method.nonObject
 			count: 2
 			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CouplingBetweenObjects\) Build and mapping logic causes complexity\)\: Unexpected token "\.CouplingBetweenObjects\)", expected ''\)'' at offset 30 on line 2$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CyclomaticComplexity\) Build and mapping logic causes complexity\)\: Unexpected token "\.CyclomaticComplexity\)", expected ''\)'' at offset 160 on line 4$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.NPathComplexity\) Build and mapping logic causes complexity\)\: Unexpected token "\.NPathComplexity\)", expected ''\)'' at offset 70 on line 3$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Service/AttributeReleasePolicyService.php
-
-		-
-			message: '#^Trait OpenConext\\EngineBlockApiClient\\Tests\\DataProvider is used zero times and is not analysed\.$#'
-			identifier: trait.unused
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Tests/DataProvider.php
 
 		-
 			message: '#^Cannot access offset ''consent_given_on'' on mixed\.$#'
@@ -274,18 +238,6 @@ parameters:
 			path: ../../src/OpenConext/EngineBlockApiClient/Value/ConsentListFactory.php
 
 		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CouplingBetweenObjects\)\)\: Unexpected token "\.CouplingBetweenObjects\)", expected ''\)'' at offset 30 on line 2$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Value/ConsentListFactory.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.UnusedPrivateMethod\)\)\: Unexpected token "\.UnusedPrivateMethod\)", expected ''\)'' at offset 74 on line 3$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Value/ConsentListFactory.php
-
-		-
 			message: '#^Parameter \#1 \$emailAddress of class OpenConext\\Profile\\Value\\ContactEmailAddress constructor expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -328,64 +280,10 @@ parameters:
 			path: ../../src/OpenConext/EngineBlockApiClient/Value/ConsentListFactory.php
 
 		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.UnusedPrivateMethod\)\)\: Unexpected token "\.UnusedPrivateMethod\)", expected ''\)'' at offset 34 on line 2$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/EngineBlockApiClient/Value/ContactPersonListFactory.php
-
-		-
-			message: '#^Call to an undefined method Traversable\<mixed, OpenConext\\Profile\\Value\\InviteRole\>\:\:getArrayCopy\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Cannot access offset ''description'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Cannot access offset ''name'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Cannot access offset mixed on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 3
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Method OpenConext\\InviteApiClientBundle\\Tests\\Value\\InviteRoleListFactoryTest\:\:invalidDataProvider\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Method OpenConext\\InviteApiClientBundle\\Tests\\Value\\InviteRoleListFactoryTest\:\:validDataProvider\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Parameter \#1 \$data of static method OpenConext\\InviteApiClientBundle\\Value\\InviteRoleListFactory\:\:createList\(\) expects array\<string, mixed\>, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Parameter \#1 \$exception of method PHPUnit\\Framework\\TestCase\:\:expectException\(\) expects class\-string\<Throwable\>, string given\.$#'
+			message: '#^Parameter \#1 \$data of static method OpenConext\\InviteApiClientBundle\\Value\\InviteRoleListFactory\:\:createList\(\) expects array\<int, array\<string, mixed\>\>, array\<mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../src/OpenConext/InviteApiClientBundle/Tests/Value/InviteRoleListFactoryTest.php
-
-		-
-			message: '#^Parameter \#1 \$callback of function array_map expects \(callable\(mixed\)\: mixed\)\|null, Closure\(array\<mixed\>\)\: OpenConext\\Profile\\Value\\InviteRole given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../src/OpenConext/InviteApiClientBundle/Value/InviteRoleListFactory.php
+			path: ../../src/OpenConext/InviteApiClientBundle/Repository/InviteRepository.php
 
 		-
 			message: '#^Method OpenConext\\Profile\\Assert\:\:keysArePresent\(\) has parameter \$array with no value type specified in iterable type array\.$#'
@@ -419,12 +317,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: ../../src/OpenConext/Profile/Entity/AuthenticatedUser.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Entity\\User\:\:withSupportContactEmail\(\) never returns Symfony\\Component\\Security\\Core\\User\\UserInterface so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: ../../src/OpenConext/Profile/Entity/User.php
 
 		-
 			message: '#^Method OpenConext\\Profile\\Exception\\AssertionFailedException\:\:__construct\(\) has parameter \$code with no type specified\.$#'
@@ -541,7 +433,7 @@ parameters:
 			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
 
 		-
-			message: '#^Parameter \#1 \$arp of static method OpenConext\\Profile\\Value\\Arp\:\:createWith\(\) expects array, mixed given\.$#'
+			message: '#^Parameter \#1 \$arp of static method OpenConext\\Profile\\Value\\Arp\:\:createWith\(\) expects array\<string, mixed\>, mixed given\.$#'
 			identifier: argument.type
 			count: 3
 			path: ../../src/OpenConext/Profile/Tests/Value/ArpTest.php
@@ -619,30 +511,6 @@ parameters:
 			path: ../../src/OpenConext/Profile/Tests/Value/EntityIdTest.php
 
 		-
-			message: '#^Call to an undefined method Traversable\<mixed, mixed\>\:\:getArrayCopy\(\)\.$#'
-			identifier: method.notFound
-			count: 3
-			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
-
-		-
-			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with OpenConext\\Profile\\Value\\SpecifiedConsentList will always evaluate to false\.$#'
-			identifier: method.impossibleType
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
-
-		-
-			message: '#^Cannot call method getServiceProvider\(\) on OpenConext\\Profile\\Value\\SpecifiedConsent\|null\.$#'
-			identifier: method.nonObject
-			count: 4
-			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Tests\\Value\\SpecifiedConsentListTest\:\:buildMockSpecifiedConsent\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentListTest.php
-
-		-
 			message: '''
 				#^Call to deprecated method create\(\) of class OpenConext\\ProfileBundle\\Attribute\\AttributeSetWithFallbacks\:
 				Will be replaced with different creation implementation$#
@@ -652,7 +520,7 @@ parameters:
 			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentTest.php
 
 		-
-			message: '#^Parameter \#1 \$arp of static method OpenConext\\Profile\\Value\\Arp\:\:createWith\(\) expects array, mixed given\.$#'
+			message: '#^Parameter \#1 \$arp of static method OpenConext\\Profile\\Value\\Arp\:\:createWith\(\) expects array\<string, mixed\>, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: ../../src/OpenConext/Profile/Tests/Value/SpecifiedConsentTest.php
@@ -694,62 +562,8 @@ parameters:
 			path: ../../src/OpenConext/Profile/Tests/Value/UrlTest.php
 
 		-
-			message: '#^Strict comparison using \!\=\= between string and null will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 2
-			path: ../../src/OpenConext/Profile/Value/Application.php
-
-		-
-			message: '#^Call to function is_array\(\) with array\<array\<string, string\>\> will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Call to function is_array\(\) with array\<string, string\> will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\Arp\:\:__construct\(\) has parameter \$arp with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\Arp\:\:createWith\(\) has parameter \$arp with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\Arp\:\:getAttributesGroupedBySource\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\Arp\:\:getMotivationFor\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\Arp\:\:getNonIdpAttributes\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\Arp\:\:isValidAttribute\(\) has parameter \$attributeInformation with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Arp.php
-
-		-
-			message: '#^Property OpenConext\\Profile\\Value\\Arp\:\:\$arp type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Parameter \#2 \$value of class Surfnet\\SamlBundle\\SAML2\\Attribute\\Attribute constructor expects array\<string\>, array\<array\<string, string\>\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: ../../src/OpenConext/Profile/Value/Arp.php
 
@@ -850,12 +664,6 @@ parameters:
 			path: ../../src/OpenConext/Profile/Value/AttributeAggregationAttributesList.php
 
 		-
-			message: '#^Cannot call method __toString\(\) on OpenConext\\Profile\\Value\\ContactEmailAddress\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/Consent/ServiceProvider.php
-
-		-
 			message: '#^Class OpenConext\\Profile\\Value\\ConsentList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
 			identifier: missingType.generics
 			count: 1
@@ -890,54 +698,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../../src/OpenConext/Profile/Value/Entity.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CamelCaseMethodName\)\)\: Unexpected token "\.CamelCaseMethodName\)", expected ''\)'' at offset 109 on line 5$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/EntityType.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CamelCaseMethodName\)\)\: Unexpected token "\.CamelCaseMethodName\)", expected ''\)'' at offset 110 on line 5$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/EntityType.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.ShortMethodName\)\)\: Unexpected token "\.ShortMethodName\)", expected ''\)'' at offset 161 on line 6$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/EntityType.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\InviteRole\:\:getApplications\(\) should return array\<int, OpenConext\\Profile\\Value\\Application\> but returns array\<string, OpenConext\\Profile\\Value\\Application\>\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/InviteRole.php
-
-		-
-			message: '#^Parameter \#1 \$callback of function array_map expects \(callable\(string\)\: mixed\)\|null, Closure\(array\)\: OpenConext\\Profile\\Value\\Application given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/InviteRole.php
-
-		-
-			message: '#^Class OpenConext\\Profile\\Value\\LocaleSet implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/LocaleSet.php
-
-		-
-			message: '#^Method OpenConext\\Profile\\Value\\LocaleSet\:\:getIterator\(\) return type with generic class ArrayIterator does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/LocaleSet.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.UnusedPrivateMethod\) PHPMD does not see that this is being called in our static method\)\: Unexpected token "\.UnusedPrivateMethod\)", expected ''\)'' at offset 34 on line 2$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/Profile/Value/LocaleSet.php
 
 		-
 			message: '#^Method OpenConext\\Profile\\Value\\Logo\:\:fromArray\(\) has parameter \$logo with no value type specified in iterable type array\.$#'
@@ -994,35 +754,11 @@ parameters:
 			path: ../../src/OpenConext/Profile/Value/SpecifiedConsentList.php
 
 		-
-			message: '#^Call to an undefined method Traversable\<mixed, mixed\>\:\:getArrayCopy\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
-
-		-
 			message: '''
 				#^Call to deprecated method create\(\) of class Surfnet\\SamlBundle\\SAML2\\Attribute\\AttributeSet\:
 				Will be replaced with different creation implementation$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
-
-		-
-			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
-
-		-
-			message: '#^Instanceof between Surfnet\\SamlBundle\\SAML2\\Attribute\\Attribute and Surfnet\\SamlBundle\\SAML2\\Attribute\\Attribute will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
-
-		-
-			message: '#^Property OpenConext\\ProfileBundle\\Attribute\\AttributeFilter\:\:\$filterValues type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Attribute/AttributeFilter.php
 
@@ -1043,18 +779,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Controller/LocaleController.php
-
-		-
-			message: '#^Cannot call method getAttribute\(\) on OpenConext\\Profile\\Value\\AttributeAggregation\\AttributeAggregationAttributesList\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Controller/MyConnectionsController.php
-
-		-
-			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CouplingBetweenObjects\)\)\: Unexpected token "\.CouplingBetweenObjects\)", expected ''\)'' at offset 30 on line 2$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Controller/MyConnectionsController.php
 
 		-
 			message: '#^Method OpenConext\\ProfileBundle\\DependencyInjection\\OpenConextProfileExtension\:\:parseAvailableLocaleConfiguration\(\) has parameter \$availableLocaleConfig with no value type specified in iterable type array\.$#'
@@ -1123,8 +847,20 @@ parameters:
 			path: ../../src/OpenConext/ProfileBundle/Form/Type/InformationRequestMailType.php
 
 		-
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Form/Type/SwitchLocaleType.php
+
+		-
 			message: '#^Class OpenConext\\ProfileBundle\\Form\\Type\\SwitchLocaleType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
 			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/ProfileBundle/Form/Type/SwitchLocaleType.php
+
+		-
+			message: '#^Instanceof between OpenConext\\Profile\\Value\\Locale and OpenConext\\Profile\\Value\\Locale will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Form/Type/SwitchLocaleType.php
 
@@ -1193,18 +929,6 @@ parameters:
 			identifier: return.type
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Security/Factory/SamlFactory.php
-
-		-
-			message: '#^Cannot call method getUser\(\) on Symfony\\Component\\Security\\Core\\Authentication\\Token\\TokenInterface\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Service/AuthenticatedUserProvider.php
-
-		-
-			message: '#^Method OpenConext\\ProfileBundle\\Service\\AuthenticatedUserProvider\:\:getCurrentUser\(\) should return Symfony\\Component\\Security\\Core\\User\\UserInterface but returns Symfony\\Component\\Security\\Core\\User\\UserInterface\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Service/AuthenticatedUserProvider.php
 
 		-
 			message: '#^Method OpenConext\\ProfileBundle\\Service\\GlobalViewParameters\:\:__construct\(\) has parameter \$attributeInformationUrls with no value type specified in iterable type array\.$#'
@@ -1283,30 +1007,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../../src/OpenConext/ProfileBundle/Service/GlobalViewParameters.php
-
-		-
-			message: '#^Call to an undefined method OpenConext\\Profile\\Api\\ApiUserInterface\:\:withSupportContactEmail\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
-
-		-
-			message: '#^Call to an undefined method Symfony\\Component\\Security\\Core\\User\\UserInterface\:\:getAuthenticatingAuthorities\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
-
-		-
-			message: '#^Cannot call method read\(\) on OpenConext\\UserLifecycleApiClientBundle\\Http\\JsonApiClient\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
-
-		-
-			message: '#^Method OpenConext\\ProfileBundle\\Service\\UserService\:\:getUserLifecycleData\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../src/OpenConext/ProfileBundle/Service/UserService.php
 
 		-
 			message: '''

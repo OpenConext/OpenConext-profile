@@ -32,10 +32,13 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 final readonly class Arp
 {
     /**
-     * @var array The arp configuration is grouped on source. The source values are a collection of Attribute
+     * @var array<string, list<Attribute>> The arp configuration is grouped on source.
      */
     private array $arp;
 
+    /**
+     * @param array<string, mixed> $arp
+     */
     public static function createWith(
         array $arp,
         ?AttributeDictionary $dictionary = null,
@@ -53,6 +56,9 @@ final readonly class Arp
         return new self($arp, $dictionary);
     }
 
+    /**
+     * @param array<string, array<array<string, string>>> $arp
+     */
     private function __construct(
         array $arp,
         ?AttributeDictionary $dictionary = null,
@@ -122,7 +128,7 @@ final readonly class Arp
      *   ],
      * ]
      *
-     * @return bool
+     * @param array<array<string, mixed>> $attributeInformation
      */
     private static function isValidAttribute(
         array $attributeInformation,
@@ -142,16 +148,19 @@ final readonly class Arp
     }
 
     /**
-     * @return array
+     * @return array<string, list<Attribute>>
      */
-    public function getNonIdpAttributes()
+    public function getNonIdpAttributes(): array
     {
         $attributes = $this->getAttributesGroupedBySource();
         unset($attributes['idp']);
         return $attributes;
     }
 
-    public function getAttributesGroupedBySource()
+    /**
+     * @return array<string, list<Attribute>>
+     */
+    public function getAttributesGroupedBySource(): array
     {
         return $this->arp;
     }
@@ -172,7 +181,7 @@ final readonly class Arp
 
     public function getMotivationFor(
         Attribute $attribute,
-    ) {
+    ): string {
         foreach ($this->arp as $arpSource) {
             foreach ($arpSource as $arpEntry) {
                 if ($attribute->getAttributeDefinition()->getUrnMace() == $arpEntry->getAttributeDefinition()->getUrnMace()) {
@@ -192,7 +201,7 @@ final readonly class Arp
      * the ARP data should only contain the following keys: value, source, motivation.
      * This function will filter out all other keys, which are to be ignored.
      *
-     * @param array<string, array<array<string, string>>> $arp
+     * @param array<string, mixed> $arp
      * @return array<string, array<array<string, string>>>
      */
     private static function sanitizeArpData(
@@ -207,17 +216,20 @@ final readonly class Arp
                 throw new InvalidArpDataException('The attribute information in the arp should be an array.');
             }
 
+            /** @var list<array<string, string>> $sanitizedAttributeInformation */
             $sanitizedAttributeInformation = [];
             foreach ($attributeInformation as $attributeInformationEntry) {
                 if (!is_array($attributeInformationEntry)) {
                     continue;
                 }
 
-                $sanitizedAttributeInformation[] = array_filter(
+                /** @var array<string, string> $sanitizedAttributeInformationEntry */
+                $sanitizedAttributeInformationEntry = array_filter(
                     $attributeInformationEntry,
-                    fn($key) => in_array($key, $validKeys),
+                    fn(string $key): bool => in_array($key, $validKeys, true),
                     ARRAY_FILTER_USE_KEY,
                 );
+                $sanitizedAttributeInformation[] = $sanitizedAttributeInformationEntry;
             }
 
             $sanitizedArp[$attributeName] = $sanitizedAttributeInformation;

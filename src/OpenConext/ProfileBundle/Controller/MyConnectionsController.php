@@ -34,7 +34,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 class MyConnectionsController extends AbstractController
 {
@@ -75,6 +75,10 @@ class MyConnectionsController extends AbstractController
 
         $confirmationForm->handleRequest($request);
         if ($confirmationForm->isSubmitted() && $confirmationForm->isValid()) {
+            if ($attributes === null || !$attributes->hasAttribute('ORCID')) {
+                throw new \RuntimeException('Cannot disconnect ORCID when no ORCID connection is available');
+            }
+
             $this->logger->notice('The authenticated user is disconnecting ORCID iD.');
             $this->service->disconnectAttributeFor($user, $attributes->getAttribute('ORCID'));
             return new RedirectResponse($this->urlGenerator->generate('profile.my_connections_overview'));

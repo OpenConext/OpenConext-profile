@@ -26,7 +26,6 @@ use OpenConext\EngineBlockApiClient\Http\JsonApiClient;
 use OpenConext\Profile\Entity\AuthenticatedUser;
 use OpenConext\Profile\Value\EntityId;
 use OpenConext\Profile\Value\Organization;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 final readonly class InstitutionRepository
 {
@@ -36,9 +35,12 @@ final readonly class InstitutionRepository
     ) {
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function findAllForIdp(
         string $entityId,
-    ) {
+    ): array {
         try {
             return $this->apiClient->read('metadata/idp?entity-id=%s', [$entityId]);
         } catch (Exception $e) {
@@ -68,12 +70,14 @@ final readonly class InstitutionRepository
     }
 
     public function getOrganizationAndLogoForIdp(
-        UserInterface $user,
+        AuthenticatedUser $user,
     ): Organization {
-        assert($user instanceof AuthenticatedUser);
-
         $entityIds = $user->getAuthenticatingAuthorities();
         $authenticatingIdpEntityId = $this->getNearestAuthenticatingAuthorityEntityId($entityIds);
+        if ($authenticatingIdpEntityId === null) {
+            throw new ResourceNotFoundException('Unable to determine the authenticating identity provider for the current user');
+        }
+
         $json = $this->findAllForIdp($authenticatingIdpEntityId->getEntityId());
 
         return Organization::fromArray($json);

@@ -22,6 +22,8 @@ information via EngineBlock's internal API.
 - EngineBlock 5.7 >= 5.7.1
 - EngineBlock must be configured to release an unspecified NameID to Profile
 
+Upgrade notes for runtime and dependency bumps are tracked in [CHANGELOG.md](CHANGELOG.md).
+
 ## Development
 
 You can use docker to start a development environment.

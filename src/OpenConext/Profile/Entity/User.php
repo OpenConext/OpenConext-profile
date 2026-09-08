@@ -24,7 +24,6 @@ use OpenConext\Profile\Api\ApiUserInterface;
 use OpenConext\Profile\Value\ContactEmailAddress;
 use OpenConext\Profile\Value\Locale;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSet;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 final class User implements ApiUserInterface
 {
@@ -36,12 +35,9 @@ final class User implements ApiUserInterface
     ) {
     }
 
-    /**
-     * @return UserInterface
-     */
     public function withSupportContactEmail(
         ContactEmailAddress $supportContactEmail,
-    ): UserInterface|User {
+    ): self {
         $newUser = clone $this;
         $newUser->supportContactEmail = $supportContactEmail;
 
