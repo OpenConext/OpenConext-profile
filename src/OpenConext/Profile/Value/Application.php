@@ -44,34 +44,30 @@ final readonly class Application
 
     public function hasLogo(): bool
     {
-        return $this->logo !== null;
+        return $this->logo !== '';
     }
 
     public function hasLandingPage(): bool
     {
-        return $this->landingPage !== null;
+        return $this->landingPage !== '';
     }
 
     public function getName(
         string $locale,
     ): string {
-        switch ($locale) {
-            case 'nl':
-                return $this->nameNl;
-            default:
-                return $this->nameEn;
-        }
+        return match ($locale) {
+            'nl' => $this->nameNl,
+            default => $this->nameEn,
+        };
     }
 
     public function getOrganisationName(
         string $locale,
     ): string {
-        switch ($locale) {
-            case 'nl':
-                return $this->organisationNl;
-            default:
-                return $this->organisationEn;
-        }
+        return match ($locale) {
+            'nl' => $this->organisationNl,
+            default => $this->organisationEn,
+        };
     }
 
     public function getLogo(): string

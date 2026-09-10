@@ -24,17 +24,17 @@ use Assert\AssertionFailedException;
 use OpenConext\Profile\Assert;
 use Stringable;
 
-final class EntityType implements Stringable
+final readonly class EntityType implements Stringable
 {
-    public const TYPE_SP  = 'saml20-sp';
-    public const TYPE_IDP = 'saml20-idp';
+    public const string TYPE_SP  = 'saml20-sp';
+    public const string TYPE_IDP = 'saml20-idp';
 
     /**
      * @param string $type
      * @throws AssertionFailedException
      */
     public function __construct(
-        private readonly string $type,
+        private string $type,
     ) {
         Assert::inArray($type, [self::TYPE_SP, self::TYPE_IDP]);
     }
@@ -43,8 +43,8 @@ final class EntityType implements Stringable
      * Creates a new ServiceProvider Type
      * @return EntityType
      *
-     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
-     * @SuppressWarnings(PHPMD.ShortMethodName)
+     * @SuppressWarnings("PHPMD.CamelCaseMethodName")
+     * @SuppressWarnings("PHPMD.ShortMethodName")
      */
     public static function SP(): EntityType
     {
@@ -56,7 +56,7 @@ final class EntityType implements Stringable
      * Creates a new IdentityProvider Type
      * @return EntityType
      *
-     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
+     * @SuppressWarnings("PHPMD.CamelCaseMethodName")
      */
     public static function IdP(): \OpenConext\Profile\Value\EntityType
     {

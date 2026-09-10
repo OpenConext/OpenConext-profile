@@ -24,6 +24,7 @@ use OpenConext\InviteApiClientBundle\Value\InviteRoleListFactory;
 use OpenConext\Profile\Value\InviteRole;
 use OpenConext\Profile\Value\InviteRoleList;
 use PHPUnit\Framework\TestCase;
+use Throwable;
 use TypeError;
 
 class InviteRoleListFactoryTest extends TestCase
@@ -34,13 +35,15 @@ class InviteRoleListFactoryTest extends TestCase
     public function testCreateList(string $jsonData, int $expectedCount): void
     {
         $data = json_decode($jsonData, true);
+        $this->assertIsArray($data);
+        /** @var array<int, array<string, mixed>> $data */
 
         $result = InviteRoleListFactory::createList($data);
 
         $this->assertInstanceOf(InviteRoleList::class, $result);
         $this->assertCount($expectedCount, $result);
 
-        $roles = $result->getIterator()->getArrayCopy();
+        $roles = iterator_to_array($result->getIterator());
         $this->assertContainsOnlyInstancesOf(InviteRole::class, $roles);
 
         foreach ($roles as $index => $role) {
@@ -49,6 +52,9 @@ class InviteRoleListFactoryTest extends TestCase
         }
     }
 
+    /**
+     * @return array<string, array{0: string, 1: int}>
+     */
     public function validDataProvider(): array
     {
         return [
@@ -148,15 +154,21 @@ class InviteRoleListFactoryTest extends TestCase
 
     /**
      * @dataProvider invalidDataProvider
+     * @param class-string<Throwable> $expectedException
      */
     public function testCreateListWithInvalidData(string $jsonData, string $expectedException): void
     {
         $this->expectException($expectedException);
 
         $data = json_decode($jsonData, true);
+        $this->assertIsArray($data);
+        /** @var array<int, array<string, mixed>> $data */
         InviteRoleListFactory::createList($data);
     }
 
+    /**
+     * @return array<string, array{0: string, 1: class-string<TypeError>}>
+     */
     public function invalidDataProvider(): array
     {
         return [

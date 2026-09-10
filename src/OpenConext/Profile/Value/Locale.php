@@ -23,10 +23,10 @@ namespace OpenConext\Profile\Value;
 use OpenConext\Profile\Assert;
 use Stringable;
 
-final class Locale implements Stringable
+final readonly class Locale implements Stringable
 {
     public function __construct(
-        private readonly string $locale,
+        private string $locale,
     ) {
         Assert::notEmpty($locale);
     }

@@ -49,7 +49,7 @@ final class ContactPersonListFactory
     }
 
     /**
-     * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
+     * @SuppressWarnings("PHPMD.UnusedPrivateMethod")
      * @throws AssertionFailedException
      */
     private static function createContactPerson(

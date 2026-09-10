@@ -78,7 +78,7 @@ class MyServicesController extends AbstractController
     #[Route(
         path: '/my-services/delete/{serviceEntityId}',
         name: 'profile.my_services_delete',
-        requirements: ['serviceEntityId' => '.+'],
+        requirements: ['serviceEntityId' => \Symfony\Component\Routing\Requirement\Requirement::CATCH_ALL],
         methods: ['GET'],
         schemes: ['https'],
     )]

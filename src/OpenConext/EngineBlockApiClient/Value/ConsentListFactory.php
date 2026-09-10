@@ -37,7 +37,7 @@ use OpenConext\Profile\Value\NameIdFormat;
 use OpenConext\Profile\Value\Url;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 final class ConsentListFactory
 {
@@ -60,7 +60,7 @@ final class ConsentListFactory
 
     /**
      * @throws AssertionFailedException
-     * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
+     * @SuppressWarnings("PHPMD.UnusedPrivateMethod")
      */
     private static function createConsent(
         mixed $data,

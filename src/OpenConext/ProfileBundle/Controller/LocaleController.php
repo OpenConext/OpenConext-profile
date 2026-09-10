@@ -44,7 +44,7 @@ class LocaleController extends AbstractController
     #[Route(
         path: '/switch-locale',
         name: 'profile.locale_switch_locale',
-        requirements: ['return-url' => '.+'],
+        requirements: ['return-url' => \Symfony\Component\Routing\Requirement\Requirement::CATCH_ALL],
         methods: ['POST'],
         schemes: ['https'],
     )]

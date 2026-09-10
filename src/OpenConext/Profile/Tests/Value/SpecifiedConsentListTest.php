@@ -25,7 +25,6 @@ use OpenConext\Profile\Value\DisplayName;
 use OpenConext\Profile\Value\SpecifiedConsent;
 use OpenConext\Profile\Value\SpecifiedConsentList;
 use PHPUnit\Framework\TestCase;
-use function array_shift;
 
 class SpecifiedConsentListTest extends TestCase
 {
@@ -39,10 +38,12 @@ class SpecifiedConsentListTest extends TestCase
         ];
         $list = SpecifiedConsentList::createWith($specifiedConsent);
         $list->sortByDisplayName('en');
-        $sorted = $list->getIterator()->getArrayCopy();
-        $this->assertEquals('A-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('B-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('C-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
+        /** @var list<SpecifiedConsent> $sorted */
+        $sorted = array_values(iterator_to_array($list->getIterator()));
+        $this->assertCount(3, $sorted);
+        $this->assertEquals('A-service', $sorted[0]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('B-service', $sorted[1]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('C-service', $sorted[2]->getServiceProvider()->getLocaleAwareEntityName($locale));
     }
 
     public function test_it_can_order_by_display_name_of_sp_case_insensitively(): void
@@ -55,10 +56,12 @@ class SpecifiedConsentListTest extends TestCase
         ];
         $list = SpecifiedConsentList::createWith($specifiedConsent);
         $list->sortByDisplayName('en');
-        $sorted = $list->getIterator()->getArrayCopy();
-        $this->assertEquals('A-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('b-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('C-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
+        /** @var list<SpecifiedConsent> $sorted */
+        $sorted = array_values(iterator_to_array($list->getIterator()));
+        $this->assertCount(3, $sorted);
+        $this->assertEquals('A-service', $sorted[0]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('b-service', $sorted[1]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('C-service', $sorted[2]->getServiceProvider()->getLocaleAwareEntityName($locale));
     }
 
     /**
@@ -76,12 +79,13 @@ class SpecifiedConsentListTest extends TestCase
         ];
         $list = SpecifiedConsentList::createWith($specifiedConsent);
         $list->sortByDisplayName('en');
-        /** @var SpecifiedConsent[] $sorted */
-        $sorted = $list->getIterator()->getArrayCopy();
-        $this->assertEquals('Healty-service', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('https://selfservice', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('https://aa.example.com/metadata', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
-        $this->assertEquals('https://selfservice.stepup.example.com/metadata', array_shift($sorted)->getServiceProvider()->getLocaleAwareEntityName($locale));
+        /** @var list<SpecifiedConsent> $sorted */
+        $sorted = array_values(iterator_to_array($list->getIterator()));
+        $this->assertCount(4, $sorted);
+        $this->assertEquals('Healty-service', $sorted[0]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('https://selfservice', $sorted[1]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('https://aa.example.com/metadata', $sorted[2]->getServiceProvider()->getLocaleAwareEntityName($locale));
+        $this->assertEquals('https://selfservice.stepup.example.com/metadata', $sorted[3]->getServiceProvider()->getLocaleAwareEntityName($locale));
     }
 
     public function test_it_can_order_nothing(): void
@@ -89,10 +93,10 @@ class SpecifiedConsentListTest extends TestCase
         $specifiedConsent = [];
         $list = SpecifiedConsentList::createWith($specifiedConsent);
         $list->sortByDisplayName('nl');
-        $this->assertEmpty($list);
+        $this->assertCount(0, $list);
     }
 
-    private function buildMockSpecifiedConsent(string $locale, string $displayName, string $entityId = '')
+    private function buildMockSpecifiedConsent(string $locale, string $displayName, string $entityId = ''): SpecifiedConsent
     {
         $mockSp = $this->createMock(ServiceProvider::class);
         if ($entityId === '') {

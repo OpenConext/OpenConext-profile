@@ -24,6 +24,9 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 
+/**
+ * @implements IteratorAggregate<int, Locale>
+ */
 final class LocaleSet implements IteratorAggregate, Countable
 {
     /**
@@ -54,15 +57,12 @@ final class LocaleSet implements IteratorAggregate, Countable
     public function contains(
         Locale $otherLocale,
     ): bool {
-        foreach ($this->locales as $locale) {
-            if ($locale->equals($otherLocale)) {
-                return true;
-            }
-        }
-
-        return false;
+        return array_any($this->locales, fn($locale) => $locale->equals($otherLocale));
     }
 
+    /**
+     * @return ArrayIterator<int, Locale>
+     */
     public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->locales);
@@ -74,7 +74,7 @@ final class LocaleSet implements IteratorAggregate, Countable
     }
 
     /**
-     * @SuppressWarnings(PHPMD.UnusedPrivateMethod) PHPMD does not see that this is being called in our static method
+     * @SuppressWarnings("PHPMD.UnusedPrivateMethod") PHPMD does not see that this is being called in our static method
      */
     private function initializeWith(
         Locale $locale,

@@ -23,10 +23,10 @@ namespace OpenConext\Profile\Value;
 use OpenConext\Profile\Assert;
 use Stringable;
 
-final class EmailAddress implements EmailAddressSupport, EmailAddressInformationRequest, Stringable
+final readonly class EmailAddress implements EmailAddressSupport, EmailAddressInformationRequest, Stringable
 {
     public function __construct(
-        private readonly string $emailAddress,
+        private string $emailAddress,
     ) {
         Assert::email($emailAddress);
     }

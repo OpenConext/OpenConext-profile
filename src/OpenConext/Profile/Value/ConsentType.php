@@ -26,8 +26,8 @@ use Stringable;
 
 final class ConsentType implements Stringable
 {
-    public const TYPE_EXPLICIT = 'explicit';
-    public const TYPE_IMPLICIT = 'implicit';
+    public const string TYPE_EXPLICIT = 'explicit';
+    public const string TYPE_IMPLICIT = 'implicit';
 
     /**
      * @var string

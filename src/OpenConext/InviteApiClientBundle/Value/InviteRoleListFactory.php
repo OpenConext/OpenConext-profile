@@ -22,11 +22,12 @@ namespace OpenConext\InviteApiClientBundle\Value;
 
 use OpenConext\Profile\Value\InviteRole;
 use OpenConext\Profile\Value\InviteRoleList;
+use TypeError;
 
 final class InviteRoleListFactory
 {
     /**
-     * @param array<string, mixed> $data
+     * @param array<int, array<string, mixed>> $data
      */
     public static function createList(
         array $data,
@@ -40,15 +41,44 @@ final class InviteRoleListFactory
     }
 
     /**
-     * @param array<mixed> $data
+     * @param array<string, mixed> $data
      */
     private static function createInviteRole(
         array $data,
     ): InviteRole {
         $applications = [];
         if (array_key_exists('applications', $data)) {
-            $applications = $data['applications'];
+            $applications = self::requireApplications($data['applications']);
         }
-        return new InviteRole($data['name'], $data['description'] ?? $data['name'], $applications);
+
+        $name = self::requireString($data['name'] ?? null, 'name');
+        $description = self::requireString($data['description'] ?? $name, 'description');
+
+        return new InviteRole($name, $description, $applications);
+    }
+
+    private static function requireString(
+        mixed $value,
+        string $field,
+    ): string {
+        if (!is_string($value)) {
+            throw new TypeError(sprintf('Invite role field "%s" must be a string', $field));
+        }
+
+        return $value;
+    }
+
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    private static function requireApplications(
+        mixed $value,
+    ): array {
+        if (!is_array($value)) {
+            throw new TypeError('Invite role applications must be an array');
+        }
+
+        /** @var array<int, array<string, mixed>> $value */
+        return $value;
     }
 }

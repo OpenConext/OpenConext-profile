@@ -20,6 +20,8 @@ declare(strict_types = 1);
 
 namespace OpenConext\Profile\Value;
 
+use TypeError;
+
 final readonly class InviteRole
 {
     /**
@@ -28,24 +30,39 @@ final readonly class InviteRole
     private array $applications;
 
     /**
-     * @param array<string, string> $applications
+     * @param array<int, array<string, mixed>> $applications
      */
     public function __construct(
         private string $name,
         private string $description,
         array $applications,
     ) {
-        $this->applications = array_map(
+        $this->applications = array_values(array_map(
             fn(array $appData) => new Application(
-                $appData['landingPage'] ?? '',
-                $appData['nameEn'] ?? '',
-                $appData['nameNl'] ?? '',
-                $appData['organisationEn'] ?? '',
-                $appData['organisationNl'] ?? '',
-                $appData['logo'] ?? '',
+                self::requireOptionalString($appData['landingPage'] ?? null, 'landingPage'),
+                self::requireOptionalString($appData['nameEn'] ?? null, 'nameEn'),
+                self::requireOptionalString($appData['nameNl'] ?? null, 'nameNl'),
+                self::requireOptionalString($appData['organisationEn'] ?? null, 'organisationEn'),
+                self::requireOptionalString($appData['organisationNl'] ?? null, 'organisationNl'),
+                self::requireOptionalString($appData['logo'] ?? null, 'logo'),
             ),
             $applications,
-        );
+        ));
+    }
+
+    private static function requireOptionalString(
+        mixed $value,
+        string $field,
+    ): string {
+        if ($value === null) {
+            return '';
+        }
+
+        if (!is_string($value)) {
+            throw new TypeError(sprintf('Invite role application field "%s" must be a string', $field));
+        }
+
+        return $value;
     }
 
     public function getName(): string

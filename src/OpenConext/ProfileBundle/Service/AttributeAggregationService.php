@@ -29,12 +29,12 @@ use OpenConext\Profile\Value\AttributeAggregation\AttributeAggregationEnabledAtt
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-final class AttributeAggregationService
+final readonly class AttributeAggregationService
 {
     public function __construct(
-        private readonly AttributeAggregationRepositoryInterface $repository,
+        private AttributeAggregationRepositoryInterface $repository,
         private AttributeAggregationEnabledAttributes $attributeAggregationEnabledAttributes,
-        private readonly LoggerInterface $logger,
+        private LoggerInterface $logger,
     ) {
     }
 

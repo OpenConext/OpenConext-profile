@@ -36,7 +36,7 @@ use Surfnet\SamlBundle\SAML2\Attribute\AttributeDictionary;
 use Surfnet\SamlBundle\SAML2\Attribute\AttributeSetInterface;
 
 /**
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects) Build and mapping logic causes complexity
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects") Build and mapping logic causes complexity
  */
 final readonly class AttributeReleasePolicyService
 {
@@ -48,8 +48,8 @@ final readonly class AttributeReleasePolicyService
 
     /**
      * @return SpecifiedConsentList
-     * @SuppressWarnings(PHPMD.NPathComplexity) Build and mapping logic causes complexity
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity) Build and mapping logic causes complexity
+     * @SuppressWarnings("PHPMD.NPathComplexity") Build and mapping logic causes complexity
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity") Build and mapping logic causes complexity
      */
     public function applyAttributeReleasePolicies(
         ConsentList $consentList,

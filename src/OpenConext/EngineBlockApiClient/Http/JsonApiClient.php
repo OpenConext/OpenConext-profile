@@ -74,7 +74,7 @@ class JsonApiClient
         array $parameters,
     ): string {
         if (count($parameters) > 0) {
-            $resource = vsprintf($path, array_map('urlencode', $parameters));
+            $resource = vsprintf($path, array_map(urlencode(...), $parameters));
         } else {
             $resource = $path;
         }
