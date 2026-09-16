@@ -21,10 +21,12 @@ declare(strict_types = 1);
 namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Service\UserService;
+use OpenConext\ProfileBundle\Service\WayfResetLinkBuilder;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class MyProfileController extends AbstractController
 {
@@ -32,6 +34,9 @@ class MyProfileController extends AbstractController
     public function __construct(
         private readonly UserService $userService,
         private readonly LoggerInterface $logger,
+        private readonly WayfResetLinkBuilder $wayfResetLinkBuilder,
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly string $wayfResetUrl,
     ) {
     }
 
@@ -47,9 +52,17 @@ class MyProfileController extends AbstractController
 
         $user = $this->userService->getUser();
 
+        $wayfResetLink = $this->wayfResetLinkBuilder->build(
+            $this->wayfResetUrl,
+            $this->urlGenerator->generate('profile.my_profile_overview', [], UrlGeneratorInterface::ABSOLUTE_URL),
+        );
+
         return $this->render(
             '@OpenConextProfile/MyProfile/overview.html.twig',
-            ['user' => $user],
+            [
+                'user' => $user,
+                'wayfResetLink' => $wayfResetLink,
+            ],
         );
     }
 }
