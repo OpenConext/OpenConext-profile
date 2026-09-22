@@ -40,9 +40,12 @@
                 {% endset %}
 
                 {% set buttonRowContent %}
-                    <a href="{{ wayfResetLink }}" class="button modalWindow__button">
-                        {{ 'profile.my_profile.wayf_reset.confirm_button'|trans }}
-                    </a>
+                    <form method="post" action="{{ path('profile.my_profile_wayf_reset') }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('wayf_reset') }}">
+                        <button type="submit" class="button modalWindow__button">
+                            {{ 'profile.my_profile.wayf_reset.confirm_button'|trans }}
+                        </button>
+                    </form>
                 {% endset %}
 
                 {# The modal helper presupposes a `for` loop context (it derives its element
