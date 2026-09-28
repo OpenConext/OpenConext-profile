@@ -1,6 +1,7 @@
-# Next release
+# UNRELEASED
 * Upgrade the runtime and build toolchain to PHP 8.5 and Node.js 24.
 * Refresh the CI Docker base image plus Composer and npm dependencies for the PHP 8.5 build.
+* Preserve the originally requested deeplink after SAML login instead of redirecting to the homepage #325
 
 # 4.1.4
 * Update saml2 library.
