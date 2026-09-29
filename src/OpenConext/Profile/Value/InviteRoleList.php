@@ -61,4 +61,34 @@ final class InviteRoleList implements IteratorAggregate, Countable
     {
         return count($this->roles);
     }
+
+    /**
+     * Sorts the roles alphabetically (case-insensitively) by the display name of their
+     * first application, falling back to the role name for roles without applications.
+     */
+    public function sortByApplicationDisplayName(
+        string $locale,
+    ): void {
+        usort(
+            $this->roles,
+            fn(InviteRole $a, InviteRole $b): int => strcasecmp(
+                $this->getSortNameFor($a, $locale),
+                $this->getSortNameFor($b, $locale),
+            ),
+        );
+    }
+
+    private function getSortNameFor(
+        InviteRole $inviteRole,
+        string $locale,
+    ): string {
+        if ($inviteRole->hasApplications()) {
+            $applicationName = $inviteRole->getApplications()[0]->getName($locale);
+            if ($applicationName !== '') {
+                return $applicationName;
+            }
+        }
+
+        return $inviteRole->getName();
+    }
 }

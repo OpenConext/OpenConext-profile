@@ -24,6 +24,7 @@ use OpenConext\Profile\Api\AuthenticatedUserProviderInterface;
 use OpenConext\Profile\Repository\InviteRepositoryInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -44,8 +45,9 @@ class InviteRolesController extends AbstractController
         methods: ['GET'],
         schemes: ['https'],
     )]
-    public function __invoke(): Response
-    {
+    public function __invoke(
+        Request $request,
+    ): Response {
         if (!$this->enabled) {
             throw $this->createAccessDeniedException();
         }
@@ -53,6 +55,8 @@ class InviteRolesController extends AbstractController
 
         $user = $this->userProvider->getCurrentUser();
         $inviteRoles = $this->inviteRepository->findAllFor($user->getUserIdentifier());
+        $inviteRoles->sortByApplicationDisplayName($request->getLocale());
+
         return $this->render('@OpenConextProfile/InviteRoles/overview.html.twig', ['inviteRoles' => $inviteRoles]);
     }
 }
