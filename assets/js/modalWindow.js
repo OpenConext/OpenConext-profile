@@ -16,6 +16,29 @@ window.addEventListener('load', function () {
         }
     }
 
+    // Modals rendered with `autoOpen: true` (see helpers/modal.html.twig) should show
+    // themselves immediately, e.g. to give feedback after a redirect back from another
+    // service. The query parameter that signalled the result is stripped from the URL
+    // first so a page refresh does not reopen the modal. This has to happen before the
+    // trigger is clicked: Firefox resolves the trigger's fragment link against the URL
+    // as it was at click time, and would otherwise reload the page with the original
+    // query string, over and over.
+    const autoOpenButtons = document.querySelectorAll('.modalWindowButton[data-auto-open="true"]');
+    if (!!autoOpenButtons) {
+        for (let i = 0; i < autoOpenButtons.length; i++) {
+            const trigger = autoOpenButtons[i];
+
+            const cleanParam = trigger.getAttribute('data-clean-param');
+            if (cleanParam) {
+                const url = new URL(window.location.href);
+                url.searchParams.delete(cleanParam);
+                window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+            }
+
+            trigger.click();
+        }
+    }
+
     const cancelButtons = document.querySelectorAll('.modalWindow__cancel');
     if (!!cancelButtons) {
         for (let i = 0; i < cancelButtons.length; i++) {

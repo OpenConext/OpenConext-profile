@@ -32,6 +32,7 @@ use OpenConext\ProfileBundle\Service\LocaleService;
 use OpenConext\ProfileBundle\Service\SupportContactEmailService;
 use OpenConext\ProfileBundle\Service\UserService;
 use OpenConext\ProfileBundle\Service\WayfResetLinkBuilder;
+use OpenConext\ProfileBundle\Service\WayfResetResultResolver;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,6 +65,7 @@ class MyProfileControllerTest extends TestCase
             $this->createUserService(),
             $this->createMock(LoggerInterface::class),
             new WayfResetLinkBuilder(),
+            new WayfResetResultResolver(),
             $urlGenerator,
             'https://engine.example.org/reset-remember-wayf',
             $csrfTokenManager,
@@ -96,6 +98,7 @@ class MyProfileControllerTest extends TestCase
             $this->createUserService(),
             $this->createMock(LoggerInterface::class),
             new WayfResetLinkBuilder(),
+            new WayfResetResultResolver(),
             $urlGenerator,
             'https://engine.example.org/reset-remember-wayf',
             $csrfTokenManager,
