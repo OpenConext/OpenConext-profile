@@ -16,6 +16,26 @@ window.addEventListener('load', function () {
         }
     }
 
+    // Modals rendered with `autoOpen: true` (see helpers/modal.html.twig) should show
+    // themselves immediately, e.g. to give feedback after a redirect back from another
+    // service. Opening them re-uses the same click handling as a user-triggered modal,
+    // then strips the query parameter that signalled the result from the URL so a page
+    // refresh does not reopen the modal.
+    const autoOpenButtons = document.querySelectorAll('.modalWindowButton[data-auto-open="true"]');
+    if (!!autoOpenButtons) {
+        for (let i = 0; i < autoOpenButtons.length; i++) {
+            const trigger = autoOpenButtons[i];
+            trigger.click();
+
+            const cleanParam = trigger.getAttribute('data-clean-param');
+            if (cleanParam) {
+                const url = new URL(window.location.href);
+                url.searchParams.delete(cleanParam);
+                window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+            }
+        }
+    }
+
     const cancelButtons = document.querySelectorAll('.modalWindow__cancel');
     if (!!cancelButtons) {
         for (let i = 0; i < cancelButtons.length; i++) {

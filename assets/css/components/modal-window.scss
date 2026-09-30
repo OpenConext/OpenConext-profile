@@ -62,6 +62,10 @@
   display: flex;
   justify-content: space-between;
   margin-top: calculateRem(45px);
+
+  &--single {
+    justify-content: flex-end;
+  }
 }
 
 .modalWindowButton {
