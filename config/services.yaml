@@ -32,6 +32,14 @@ services:
     surfnet_saml.saml_provider:
         class: OpenConext\ProfileBundle\Security\Authentication\Provider\SamlProvider
 
+    Surfnet\SamlBundle\Security\Authentication\Handler\SuccessHandler:
+        arguments:
+            - '@security.http_utils'
+            - []
+            - '@logger'
+        calls:
+            - setFirewallName: [ 'saml_based' ]
+
     Psr\Log\LoggerInterface:
         alias: 'monolog.logger'
         public: true
