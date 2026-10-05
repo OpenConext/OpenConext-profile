@@ -188,6 +188,15 @@ return array_replace_recursive([
                 'link_text' => 'Download overzicht',
                 'title' => 'Downloaden',
             ],
+
+            'wayf_reset' => [
+                'confirm_button' => 'Alles resetten',
+                'explanation' => 'Bij het inloggen via %suiteName% kun je ervoor kiezen om steeds dezelfde inlogmethode voor een applicatie te gebruiken. Je kunt deze keuze hier voor alle applicaties resetten.',
+                'link_text' => 'Inlogmethode-keuzes resetten',
+                'modal_explanation' => 'Hiermee verwijder je je opgeslagen inlogmethode-keuze voor elke applicatie. De volgende keer dat je inlogt, vraagt %suiteName% je opnieuw om een inlogmethode te kiezen.',
+                'modal_title' => 'Inlogmethode-keuzes resetten',
+                'title' => 'Inlogmethode-keuzes',
+            ],
         ],
 
         'my_services' => [

@@ -30,4 +30,40 @@
         text: text
     } %}
 
+    <section class="myProfile__section myProfile__wayfReset">
+        <h2 class="title__emphasis">{{ 'profile.my_profile.wayf_reset.title'|trans }}</h2>
+        <div class="myProfile__wayfResetExplanation">
+            <p class="myProfile__wayfResetText">{{ 'profile.my_profile.wayf_reset.explanation'|trans }}</p>
+            <div class="myProfile__wayfResetButtonWrapper">
+                {% set modalContent %}
+                    <p id="wayf-reset-description">{{ 'profile.my_profile.wayf_reset.modal_explanation'|trans }}</p>
+                {% endset %}
+
+                {% set buttonRowContent %}
+                    <form method="post" action="{{ path('profile.my_profile_wayf_reset') }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('wayf_reset') }}">
+                        <button type="submit" class="button modalWindow__button">
+                            {{ 'profile.my_profile.wayf_reset.confirm_button'|trans }}
+                        </button>
+                    </form>
+                {% endset %}
+
+                {# The modal helper presupposes a `for` loop context (it derives its element
+                   ids from `loop.index`); wrap it in a single-iteration loop since this page
+                   only ever shows one reset link. #}
+                {% for _ in [1] %}
+                    {% include "@OpenConextProfile/helpers/modal.html.twig" with {
+                        buttonText: 'profile.my_profile.wayf_reset.link_text'|trans,
+                        linkIdPrefix: 'wayf_reset_',
+                        buttonClass: 'modalWindowButton myProfile__wayfResetButton',
+                        describedBy: 'wayf-reset-description',
+                        modalHeader: 'profile.my_profile.wayf_reset.modal_title'|trans,
+                        modalContent: modalContent,
+                        buttonRowContent: buttonRowContent,
+                    } %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

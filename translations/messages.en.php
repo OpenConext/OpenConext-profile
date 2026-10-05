@@ -185,6 +185,15 @@ return array_replace_recursive([
                 'link_text' => 'Download overview',
                 'title' => 'Download',
             ],
+
+            'wayf_reset' => [
+                'confirm_button' => 'Reset all',
+                'explanation' => 'When logging in through %suiteName%, you can choose to always use the same login method for an application. You can reset this choice for all applications here.',
+                'link_text' => 'Reset login method choices',
+                'modal_explanation' => 'This removes your saved login method choice for every application. The next time you log in, %suiteName% will ask you to choose a login method again.',
+                'modal_title' => 'Reset login method choices',
+                'title' => 'Login method choices',
+            ],
         ],
 
         'my_services' => [
