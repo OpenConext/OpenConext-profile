@@ -40,7 +40,7 @@
                 {% endset %}
 
                 {% set buttonRowContent %}
-                    <form method="post" action="{{ path('profile.my_profile_wayf_reset') }}">
+                    <form method="post" action="{{ path('profile.my_profile_wayf_reset') }}" class="modalWindow__button--form">
                         <input type="hidden" name="_token" value="{{ csrf_token('wayf_reset') }}">
                         <button type="submit" class="button modalWindow__button">
                             {{ 'profile.my_profile.wayf_reset.confirm_button'|trans }}

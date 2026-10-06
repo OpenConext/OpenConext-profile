@@ -1,4 +1,6 @@
 # Next release
+* Add a link on My Profile to reset remembered per-SP WAYF login-method choices #353
+* Deployments must set the new `wayf_reset_url` parameter in `parameters.yaml` (see `config/openconext/parameters.yaml.dist`) to the EngineBlock `/reset-remember-wayf` endpoint.
 * Upgrade the runtime and build toolchain to PHP 8.5 and Node.js 24.
 * Refresh the CI Docker base image plus Composer and npm dependencies for the PHP 8.5 build.
 
