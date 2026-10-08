@@ -2,7 +2,10 @@
 {% if linkId is not defined %}
     {% set linkId = linkIdPrefix ~ loop.index %}
 {% endif %}
-{% set headerId = 'dialog-header-' ~ loop.index %}
+{# Derive headerId from linkId (always unique) rather than loop.index, so that
+   multiple modal instances rendered outside of a real iteration (e.g. two
+   independent modals on the same page) don't end up with duplicate ids. #}
+{% set headerId = 'dialog-header-' ~ linkId %}
 
 <a
     class="button__secondary--white {{ buttonClass }}"
@@ -10,6 +13,8 @@
     href="#{{ linkId }}"
     role="button"
     {% if buttonDescription is defined %} aria-describedBy="{{ buttonDescription }}"{% endif %}
+    {% if autoOpen is defined and autoOpen %} data-auto-open="true" tabindex="-1"{% endif %}
+    {% if cleanParam is defined %} data-clean-param="{{ cleanParam }}"{% endif %}
 >
     {{ buttonText }}
 </a>
@@ -29,8 +34,8 @@
         >{{ modalHeader }}</h4>
         <div class="modalWindow__main">
             {{ modalContent }}
-            <div class="modalWindow__buttonRow">
-                <a href="#ok" class="button button__secondary--white modalWindow__button modalWindow__cancel"  data-to={{ linkId }}>{{ 'general.cancel'|trans }}</a>
+            <div class="modalWindow__buttonRow{% if buttonRowContent is not defined or buttonRowContent|trim is empty %} modalWindow__buttonRow--single{% endif %}">
+                <a href="#ok" class="button button__secondary--white modalWindow__button modalWindow__cancel"  data-to={{ linkId }}>{{ cancelButtonText|default('general.cancel'|trans) }}</a>
                 {{ buttonRowContent }}
             </div>
         </div>

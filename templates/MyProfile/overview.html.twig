@@ -66,4 +66,34 @@
         </div>
     </section>
 
+    {% if wayfResetResult is not empty %}
+        {% set resultModalContent %}
+            <p id="wayf-reset-result-description">
+                {% if wayfResetResult == 'removed' %}
+                    {{ 'profile.my_profile.wayf_reset.result_removed_message'|trans }}
+                {% else %}
+                    {{ 'profile.my_profile.wayf_reset.result_none_message'|trans }}
+                {% endif %}
+            </p>
+        {% endset %}
+
+        {# Explicitly clear buttonRowContent: `include` without `only` inherits the
+           surrounding scope, so without this the form set for the modal above would
+           leak into this single-button modal. #}
+        {% set buttonRowContent = '' %}
+        {% include "@OpenConextProfile/helpers/modal.html.twig" with {
+            buttonText: 'profile.my_profile.wayf_reset.link_text'|trans,
+            linkId: 'wayf_reset_result',
+            buttonClass: 'modalWindowButton visually-hidden',
+            describedBy: 'wayf-reset-result-description',
+            modalHeader: wayfResetResult == 'removed'
+                ? 'profile.my_profile.wayf_reset.result_removed_title'|trans
+                : 'profile.my_profile.wayf_reset.result_none_title'|trans,
+            modalContent: resultModalContent,
+            cancelButtonText: 'general.ok'|trans,
+            autoOpen: true,
+            cleanParam: 'wayfReset',
+        } %}
+    {% endif %}
+
 {% endblock %}
