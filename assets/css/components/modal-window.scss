@@ -79,7 +79,8 @@
     width: unset;
   }
 
-  &--form {
-    width: 100%;
-  }
+}
+
+.modalWindow__button--form {
+  display: contents;
 }

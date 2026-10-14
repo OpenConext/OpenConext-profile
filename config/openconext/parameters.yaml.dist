@@ -28,6 +28,11 @@ parameters:
   engineblock_api_password: secret
   engineblock_api_verify_ssl: true
 
+  # The EngineBlock endpoint that clears a user's remembered per-SP WAYF IdP
+  # choices. Profile links to this with a `redirect` query parameter so the
+  # user is sent back here afterwards. See OpenConext-engineblock#2085/#345.
+  wayf_reset_url: "https://engine.dev.openconext.local/reset-remember-wayf"
+
   user_lifecycle_enabled: true
   user_lifecycle_api_base_url: "https://userlifecycle.dev.openconext.local/"
   user_lifecycle_api_username: userlifecycle

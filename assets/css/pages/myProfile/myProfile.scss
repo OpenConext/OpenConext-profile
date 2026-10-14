@@ -1,6 +1,7 @@
 @import 'attributesTable';
 @import '../../helpers/breakpoints';
 @import '../../helpers/functions';
+@import '../../helpers/variables';
 
 .content__myProfile {
   padding-right: calculateRem(70px);
@@ -20,4 +21,43 @@
 
 .myProfile__note {
   margin-bottom: calculateRem(80px);
+}
+
+.myProfile__wayfResetExplanation {
+  color: $titleBlack;
+  display: flex;
+  font-size: $f-normal;
+
+  @include screen('mobile') {
+    flex-direction: column;
+  }
+}
+
+.myProfile__wayfResetButtonWrapper {
+  flex: 0 0 max-content;
+  height: max-content;
+  min-width: max-content;
+  text-align: center;
+
+  @include screen('mobile') {
+    text-align: left;
+  }
+}
+
+.myProfile__wayfResetButton {
+  height: 100%;
+  width: 100%;
+}
+
+.myProfile__wayfResetText {
+  margin-top: 0;
+}
+
+@include ie11Only('.myProfile__wayfResetButtonWrapper, .myProfile__wayfResetButton, .myProfile__wayfResetText') {
+  display: inline-block;
+}
+
+@include ie11Only('.myProfile__wayfResetButton') {
+  height: auto;
+  min-width: 14rem;
 }

@@ -186,6 +186,15 @@ return array_replace_recursive([
                 'link_text' => 'Download visão geral',
                 'title' => 'Download',
             ],
+
+            'wayf_reset' => [
+                'confirm_button' => 'Repor tudo',
+                'explanation' => 'Ao iniciar sessão através de %suiteName%, pode optar por usar sempre o mesmo método de início de sessão para um serviço. Pode repor esta escolha aqui para todos os serviços.',
+                'link_text' => 'Repor escolhas de método de início de sessão',
+                'modal_explanation' => 'Isto remove a sua escolha guardada de método de início de sessão para todos os serviços. Da próxima vez que iniciar sessão, %suiteName% pedir-lhe-á novamente para escolher um método de início de sessão.',
+                'modal_title' => 'Repor escolhas de método de início de sessão',
+                'title' => 'Escolhas de método de início de sessão',
+            ],
         ],
 
         'my_services' => [
