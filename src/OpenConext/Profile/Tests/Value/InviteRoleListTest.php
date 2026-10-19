@@ -34,13 +34,29 @@ class InviteRoleListTest extends TestCase
             $this->buildInviteRole('Role B', 'B-application'),
         ]);
 
-        $list->sortByApplicationDisplayName('en');
+        $sortedList = $list->sortByApplicationDisplayName('en');
 
-        $sorted = array_values(iterator_to_array($list->getIterator()));
+        $sorted = array_values(iterator_to_array($sortedList->getIterator()));
         $this->assertCount(3, $sorted);
         $this->assertEquals('A-application', $sorted[0]->getApplications()[0]->getName('en'));
         $this->assertEquals('B-application', $sorted[1]->getApplications()[0]->getName('en'));
         $this->assertEquals('C-application', $sorted[2]->getApplications()[0]->getName('en'));
+    }
+
+    public function test_sorting_does_not_mutate_the_original_list(): void
+    {
+        $list = new InviteRoleList([
+            $this->buildInviteRole('Role C', 'C-application'),
+            $this->buildInviteRole('Role A', 'A-application'),
+            $this->buildInviteRole('Role B', 'B-application'),
+        ]);
+
+        $list->sortByApplicationDisplayName('en');
+
+        $original = array_values(iterator_to_array($list->getIterator()));
+        $this->assertEquals('C-application', $original[0]->getApplications()[0]->getName('en'));
+        $this->assertEquals('A-application', $original[1]->getApplications()[0]->getName('en'));
+        $this->assertEquals('B-application', $original[2]->getApplications()[0]->getName('en'));
     }
 
     public function test_it_can_order_by_application_display_name_case_insensitively(): void
@@ -51,9 +67,9 @@ class InviteRoleListTest extends TestCase
             $this->buildInviteRole('Role B', 'B-application'),
         ]);
 
-        $list->sortByApplicationDisplayName('en');
+        $sortedList = $list->sortByApplicationDisplayName('en');
 
-        $sorted = array_values(iterator_to_array($list->getIterator()));
+        $sorted = array_values(iterator_to_array($sortedList->getIterator()));
         $this->assertCount(3, $sorted);
         $this->assertEquals('a-application', $sorted[0]->getApplications()[0]->getName('en'));
         $this->assertEquals('B-application', $sorted[1]->getApplications()[0]->getName('en'));
@@ -68,9 +84,9 @@ class InviteRoleListTest extends TestCase
             $this->buildInviteRole('Role B', 'B-application'),
         ]);
 
-        $list->sortByApplicationDisplayName('en');
+        $sortedList = $list->sortByApplicationDisplayName('en');
 
-        $sorted = array_values(iterator_to_array($list->getIterator()));
+        $sorted = array_values(iterator_to_array($sortedList->getIterator()));
         $this->assertCount(3, $sorted);
         $this->assertEquals('B-application', $sorted[0]->getApplications()[0]->getName('en'));
         $this->assertEquals('C-application', $sorted[1]->getApplications()[0]->getName('en'));
@@ -80,8 +96,8 @@ class InviteRoleListTest extends TestCase
     public function test_it_can_order_nothing(): void
     {
         $list = new InviteRoleList([]);
-        $list->sortByApplicationDisplayName('en');
-        $this->assertCount(0, $list);
+        $sortedList = $list->sortByApplicationDisplayName('en');
+        $this->assertCount(0, $sortedList);
     }
 
     private function buildInviteRole(string $roleName, string $applicationNameEn): InviteRole

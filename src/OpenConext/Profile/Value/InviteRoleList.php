@@ -63,19 +63,24 @@ final class InviteRoleList implements IteratorAggregate, Countable
     }
 
     /**
-     * Sorts the roles alphabetically (case-insensitively) by the display name of their
-     * first application, falling back to the role name for roles without applications.
+     * Returns a new list with the roles sorted alphabetically (case-insensitively) by the
+     * display name of their first application, falling back to the role name for roles
+     * without applications. This instance is left unchanged.
      */
     public function sortByApplicationDisplayName(
         string $locale,
-    ): void {
+    ): self {
+        $sortedRoles = $this->roles;
+
         usort(
-            $this->roles,
+            $sortedRoles,
             fn(InviteRole $a, InviteRole $b): int => strcasecmp(
                 $this->getSortNameFor($a, $locale),
                 $this->getSortNameFor($b, $locale),
             ),
         );
+
+        return new self($sortedRoles);
     }
 
     private function getSortNameFor(

@@ -55,7 +55,7 @@ class InviteRolesController extends AbstractController
 
         $user = $this->userProvider->getCurrentUser();
         $inviteRoles = $this->inviteRepository->findAllFor($user->getUserIdentifier());
-        $inviteRoles->sortByApplicationDisplayName($request->getLocale());
+        $inviteRoles = $inviteRoles->sortByApplicationDisplayName($request->getLocale());
 
         return $this->render('@OpenConextProfile/InviteRoles/overview.html.twig', ['inviteRoles' => $inviteRoles]);
     }
