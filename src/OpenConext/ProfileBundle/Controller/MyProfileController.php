@@ -22,6 +22,7 @@ namespace OpenConext\ProfileBundle\Controller;
 
 use OpenConext\ProfileBundle\Service\UserService;
 use OpenConext\ProfileBundle\Service\WayfResetLinkBuilder;
+use OpenConext\ProfileBundle\Service\WayfResetResultResolver;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -40,6 +41,7 @@ class MyProfileController extends AbstractController
         private readonly UserService $userService,
         private readonly LoggerInterface $logger,
         private readonly WayfResetLinkBuilder $wayfResetLinkBuilder,
+        private readonly WayfResetResultResolver $wayfResetResultResolver,
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly string $wayfResetUrl,
         private readonly CsrfTokenManagerInterface $csrfTokenManager,
@@ -52,8 +54,9 @@ class MyProfileController extends AbstractController
         methods: ["GET"],
         schemes: "https",
     )]
-    public function overview(): Response
-    {
+    public function overview(
+        Request $request,
+    ): Response {
         $this->logger->info('Showing My Profile page');
 
         $user = $this->userService->getUser();
@@ -62,6 +65,7 @@ class MyProfileController extends AbstractController
             '@OpenConextProfile/MyProfile/overview.html.twig',
             [
                 'user' => $user,
+                'wayfResetResult' => $this->wayfResetResultResolver->resolve($request),
             ],
         );
     }
